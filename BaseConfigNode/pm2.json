@@ -1,0 +1,35 @@
+{
+  "apps": [
+    {
+      "cwd": "/d/WorkSpace/code/trunk/WorkSpace-WebClient-WH/BaseConfigNode/",
+      "name": "PosaDPNodeServer",
+      "max_memory_restart": "300M",
+      "script": "./dist/index.js",
+      "out_file": "./logs/app-out.log",
+      "error_file": "./logs/app-err.log",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "instances": 2,
+      "watch": ["dist"],
+      "ignore_watch": [
+        ".idea",
+        "node_modules",
+        "src",
+        "test",
+        "logs"
+      ],
+      "watch_options": {
+        "usePolling": true,
+        "useFsEvents": false,
+        "atomic": false
+      },
+      "followSymlinks": false,
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production":{
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}

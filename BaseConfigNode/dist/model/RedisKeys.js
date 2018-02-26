@@ -1,0 +1,31 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Config_1 = require("../Config");
+class RedisKeys {
+}
+RedisKeys.ResourceNowAllResult = Config_1.default.IS_DEV ? 'ResourceNowAllResult_DEV' : 'ResourceNowAllResult';
+RedisKeys.ResourceMonthAllResult = Config_1.default.IS_DEV ? 'ResourceMonthAllResult_DEV' : 'ResourceMonthAllResult';
+RedisKeys.ResourceDayAllResult = Config_1.default.IS_DEV ? 'ResourceDayAllResult_DEV' : 'ResourceDayAllResult';
+RedisKeys.ResourceWeekAllResult = Config_1.default.IS_DEV ? 'ResourceWeekAllResult_DEV' : 'ResourceWeekAllResult';
+RedisKeys.ResourceYearAllResult = Config_1.default.IS_DEV ? 'ResourceYearAllResult_DEV' : 'ResourceYearAllResult';
+RedisKeys.ResourceNowFaceResult = Config_1.default.IS_DEV ? 'ResourceNowFaceResult_DEV' : 'ResourceNowFaceResult';
+RedisKeys.ResourceMonthFaceResult = Config_1.default.IS_DEV ? 'ResourceMonthFaceResult_DEV' : 'ResourceMonthFaceResult';
+RedisKeys.ResourceDayFaceResult = Config_1.default.IS_DEV ? 'ResourceDayFaceResult_DEV' : 'ResourceDayFaceResult';
+RedisKeys.ResourceWeekFaceResult = Config_1.default.IS_DEV ? 'ResourceWeekFaceResult_DEV' : 'ResourceWeekFaceResult';
+RedisKeys.ResourceYearFaceResult = Config_1.default.IS_DEV ? 'ResourceYearFaceResult_DEV' : 'ResourceYearFaceResult';
+RedisKeys.ResourceNowWifiResult = Config_1.default.IS_DEV ? 'ResourceNowWifiResult_DEV' : 'ResourceNowWifiResult';
+RedisKeys.ResourceMonthWifiResult = Config_1.default.IS_DEV ? 'ResourceMonthWifiResult_DEV' : 'ResourceMonthWifiResult';
+RedisKeys.ResourceDayWifiResult = Config_1.default.IS_DEV ? 'ResourceDayWifiResult_DEV' : 'ResourceDayWifiResult';
+RedisKeys.ResourceWeekWifiResult = Config_1.default.IS_DEV ? 'ResourceWeekWifiResult_DEV' : 'ResourceWeekWifiResult';
+RedisKeys.ResourceYearWifiResult = Config_1.default.IS_DEV ? 'ResourceYearWifiResult_DEV' : 'ResourceYearWifiResult';
+RedisKeys.ResourceNowEfenceResult = Config_1.default.IS_DEV ? 'ResourceNowEfenceResult_DEV' : 'ResourceNowEfenceResult';
+RedisKeys.ResourceMonthEfenceResult = Config_1.default.IS_DEV ? 'ResourceMonthEfenceResult_DEV' : 'ResourceMonthEfenceResult';
+RedisKeys.ResourceDayEfenceResult = Config_1.default.IS_DEV ? 'ResourceDayEfenceResult_DEV' : 'ResourceDayEfenceResult';
+RedisKeys.ResourceWeekEfenceResult = Config_1.default.IS_DEV ? 'ResourceWeekEfenceResult_DEV' : 'ResourceWeekEfenceResult';
+RedisKeys.ResourceYearEfenceResult = Config_1.default.IS_DEV ? 'ResourceYearEfenceResult_DEV' : 'ResourceYearEfenceResult';
+RedisKeys.ResourceNowCarResult = Config_1.default.IS_DEV ? 'ResourceNowCarResult_DEV' : 'ResourceNowCarResult';
+RedisKeys.ResourceMonthCarResult = Config_1.default.IS_DEV ? 'ResourceMonthCarResult_DEV' : 'ResourceMonthCarResult';
+RedisKeys.ResourceDayCarResult = Config_1.default.IS_DEV ? 'ResourceDayCarResult_DEV' : 'ResourceDayCarResult';
+RedisKeys.ResourceWeekCarResult = Config_1.default.IS_DEV ? 'ResourceWeekCarResult_DEV' : 'ResourceWeekCarResult';
+RedisKeys.ResourceYearCarResult = Config_1.default.IS_DEV ? 'ResourceYearCarResult_DEV' : 'ResourceYearCarResult';
+exports.RedisKeys = RedisKeys;

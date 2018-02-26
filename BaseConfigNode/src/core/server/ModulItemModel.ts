@@ -1,0 +1,31 @@
+/**
+ * 功能权限
+ */
+export class ModuleItem{
+    Key:string;
+    ParentKey:string;
+    //名称
+    Name:string;
+    //备注
+    Remark:string;
+    //页面路径
+    Url:string;
+    //图标路径
+    IconUrl:string;
+    //页面上的唯一标识
+    FullNameSpacePath:string;
+    //排序号,都为0的话，按获取顺序排
+    Seq:number;
+    //子模块项文件路径
+    SubModuleFilePath:string;
+    //类型,ModuleItem|OperateItem
+    ItemType:string;
+    //是否是基础组件
+    IsBasePlugin:string;
+    //是否可用
+    IsEnabled:boolean;
+    //是否一直可见
+    IsAlwaysVisible:boolean;
+    //拓展字段
+    Ext:boolean;
+}

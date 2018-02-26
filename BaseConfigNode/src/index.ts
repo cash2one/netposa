@@ -1,0 +1,23 @@
+import "./main/main";
+
+
+// import * as http from "http";
+// import config from "./config/config";
+// import {SocketMain} from "./socket/socket.main";
+
+
+// // Init the express application
+// const app = require("./config/express").default();
+
+// const server: http.Server = http.createServer(app);
+
+// //SocketMain.init(server);
+// server.listen(config.port);
+
+// server.on("error", (e : Error) => {
+//   console.log("Error starting server" + e);
+// });
+
+// server.on("listening", () => {
+//   console.log("Server started on port " + config.port);
+// });
