@@ -1,0 +1,36 @@
+<div class="left-tab">
+    <ul ng-scrollbars>
+        <li ng-repeat="(index,item) in newRoleCtrl.faceLibList"
+            ng-class="{active:newRoleCtrl.selectAreaLibIndex == index}"
+            ng-click="newRoleCtrl.changeSelectAreaLib(item,index)">
+            <i ng-class="{'isAll':newRoleCtrl.faceLibListMap[item.ID].checkboxStatus == 0,
+                          'isPart':newRoleCtrl.faceLibListMap[item.ID].checkboxStatus == 1}"
+               ng-click="newRoleCtrl.changeCheckedLibStatus(newRoleCtrl.faceLibListMap[item.ID],newRoleCtrl.faceLibListMap[item.ID].checkboxStatus)"></i>{{item.Name}}
+        </li>
+    </ul>
+</div>
+
+<div class="right-content" ng-scrollbars>
+    <ul>
+        <li ng-repeat="(index,item) in newRoleCtrl.faceLibList[newRoleCtrl.selectAreaLibIndex].children">
+            <div class="auth-title" style="white-space: nowrap;text-overflow: ellipsis;width:160px">
+                <i ng-class="{'isAll':newRoleCtrl.faceLibListMap[item.ID].checkboxStatus == 0,
+                          'isPart':newRoleCtrl.faceLibListMap[item.ID].checkboxStatus == 1}"
+                   ng-click="newRoleCtrl.changeCheckedLibStatus(newRoleCtrl.faceLibListMap[item.ID],newRoleCtrl.faceLibListMap[item.ID].checkboxStatus)"></i>
+                {{item.Name}}
+            </div>
+            <div class="auth-action" style="width:680px">
+                <div class="auth-action-btn" ng-repeat="(i,action) in item.operateForFaceLib">
+                    <span ng-if="!action.IsSlide"
+                          ng-class="{'isEnable':newRoleCtrl.faceLibListMap[item.ID].operateForFaceLib[i].IsEnabled}"
+                          ng-click="newRoleCtrl.changeFaceLibActionStatus(action)">{{action.text}}</span>
+
+                    <facelib-select ng-if="action.IsSlide"
+                                    slide-click="newRoleCtrl.changeFaceLibActionStatus2(result,index,action)"
+                                    slide-data="action"></facelib-select>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>

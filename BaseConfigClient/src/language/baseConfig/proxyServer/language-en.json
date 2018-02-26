@@ -1,0 +1,21 @@
+{
+    "note": "/** 编码规则**/",
+    "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+    "note": "/***************************************** 基础控件  start ****************************************************/",
+  
+    "note": "/*******公共操作*********/",
+    "DP_CONFIG_PROXYSERVER_01": "Proxy server",
+    "DP_CONFIG_PROXYSERVER_02": "Create a new server",
+    
+    "note": "/*******列表表名称*********/",
+    "DP_CONFIG_PROXYSERVER_03": "IP address",
+    "DP_CONFIG_PROXYSERVER_04": "Server type",
+
+    "note": "/*******删除操作*********/",
+    "DP_CONFIG_PROXYSERVER_05": "Are you sure you want to delete the proxy configuration??",
+    "DP_CONFIG_PROXYSERVER_06": "Please select the server type",
+
+
+    "note": "/*******视频服务器*********/",
+    "DP_CONFIG_VIDEOSERVER_06": "Are you sure you want to delete the video server configuration?"
+  }

@@ -1,0 +1,30 @@
+.Wdate{
+	padding: 7px 9px;
+    line-height: 18px;
+    border: 1px solid #c1c1c1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    color: #595959;
+    font-size: 12px;
+	background:#fff url(datePicker.gif) no-repeat 95% center;
+}
+
+.Wdate:hover,
+.Wdate-hover {
+    border: 1px solid #c1c1c1;
+    box-shadow: none;
+    /* border-top-color: #808080; */
+}
+
+.Wdate:focus,
+.Wdate-focus {
+    border: 1px #f9c723 solid;
+    box-shadow: none;
+    color: #595959;
+}
+
+.Wdate::-ms-clear{display:none;}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}

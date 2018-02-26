@@ -1,0 +1,122 @@
+<div class="search-advanced-main" ng-controller="EFSearchPageController as EFSearchPageCtrl">
+    <div class="search-advanced-maincon" ng-scrollbars>
+        <div class="advanced-condition">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">关键词：</span>
+                            <input type="text" class="params-item-input"  ng-model="EFSearchPageCtrl.searchParams.keyWord" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">时段：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in EFSearchPageCtrl.crossTrainTimeList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="EFSearchPageCtrl.selectTime(item)">{{item.name}}</span>
+                            <div class="custom-time" ng-if="EFSearchPageCtrl.selectTimeAcitve===4">
+                                <input class="custom-time-input" ng-model="EFSearchPageCtrl.searchParams.startTime" date-picker show-init="true" type="text" placeholder="开始时间"/>
+                                <span>-</span>
+                                <input class="custom-time-input" ng-model="EFSearchPageCtrl.searchParams.endTime" date-picker show-init="true" type="text" placeholder="结束时间"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">资源选择：</span>
+                            <button class="params-item-select select-camera button" ng-click="EFSearchPageCtrl.selectElectronicFence()">选择设备</button>
+                            <div class="icon-device-map-select" ng-click="EFSearchPageCtrl.selectDevice('EFENCE')">
+                                <i ></i>
+                            </div>
+                            <div class="select-device-total" ng-if="EFSearchPageCtrl.searchParams.ArObjectID.length > 0">
+                                已选择
+                                <span class="number">{{ EFSearchPageCtrl.searchParams.ArObjectID.length }}</span>
+                                个设备
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="more">-->
+                    <!--<span class="down icon-arrow-down" title="展开" ng-if="EFSearchPageCtrl.showMore" ng-click="EFSearchPageCtrl.showMore = false"></span>-->
+                    <!--<span class="up icon-arrow-up" title="收起" ng-if="!EFSearchPageCtrl.showMore" ng-click="EFSearchPageCtrl.showMore = true"></span>-->
+                <!--</div>-->
+
+                <button class="search-advanced-submit"  ng-class="{'active':(EFSearchPageCtrl.queryStatus === 2)}" type="submit" ng-click="EFSearchPageCtrl.searchAdvancedSubmit()">
+                    <i class="icon-search">搜索</i>
+                </button>
+            </div>
+        </div>
+        <div class="advanced-result-content" ng-if="EFSearchPageCtrl.queryStatus !== 2">
+            <div class="advanced-operate-tab">
+                <div class="advanced-right">
+                    <i class="icon iconActive icon-table-model"></i>
+                    <i class="icon icon-ul-model"></i>
+                    <label class="advanced-label"><input type="checkbox"/><span>全选</span></label>
+                    <button><i></i>导出</button>
+                </div>
+            </div>
+            <div class="advanced-result-data">
+                <div class="result-data media-right electronic" ng-repeat="item in EFSearchPageCtrl.electronicResult.data">
+                    <ul class="data-img" ng-click="EFSearchPageCtrl.detailPopup($index, EFSearchPageCtrl.electronicResult.data)">
+                        <li class="imsi">
+                            <div class="name"></div>
+                            <div class="text">{{item.eFenceLog.IMSI||item.eFenceLog.IMSI2}}</div>
+                        </li>
+                        <li class="imei">
+                            <div class="name"></div>
+                            <div class="text">{{item.eFenceLog.IMEI}}</div>
+                        </li>
+                        <li class="time">
+                            <div class="name"></div>
+                            <div class="text">{{item.eFenceLog.AcqTime}}</div>
+                        </li>
+                        <li class="address">
+                            <div class="name"></div>
+                            <div class="text">{{item.deviceInfo.Name}}</div>
+                        </li>
+                        <input class="checkbox" type="checkbox"/>
+                    </ul>
+                    <div class="data-info">
+                        <div class="operate">
+                            <i class="icon_collect" title="收藏" ng-click="EFSearchPageCtrl.clickCollect(item)" ng-class="{'active': item.collectStatus}"></i>
+                            <i class="icon_analysis" title="分析" ng-click="EFSearchPageCtrl.clickAnalysis(item)"></i>
+                            <i class="icon_dispatched" title="布控" ng-click="EFSearchPageCtrl.clickSurveillance(item)" ng-class="{'active': item.surveillanceStatus}"></i>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="EFSearchPageCtrl.electronicResult.data.length<1&&(EFSearchPageCtrl.queryStatus === 3)" class="m-noMessage">暂无数据</div>
+                <div ng-if="EFSearchPageCtrl.queryStatus === 1" class="m-noMessage m-noQuery">请输入检索条件检索</div>
+            </div>
+        </div>
+        <div class="advanced-result-content" ng-if="EFSearchPageCtrl.queryStatus === 2">
+            <div class="loading"></div>
+        </div>
+    </div>
+    <div class="all-result-footer container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="page-bottom col-md-9">
+                <util-paging
+                        page-params="EFSearchPageCtrl.electronicResult.pageParams"
+                        prev-page="EFSearchPageCtrl.changePage(num)"
+                        next-page="EFSearchPageCtrl.changePage(num)"
+                        go-page="EFSearchPageCtrl.changePage(num)"
+                        hide-size="true"
+                        hide-gopage="true"
+                ></util-paging>
+                <div class="page-total" ng-if="EFSearchPageCtrl.electronicResult.pageParams.totalCount">共 <i class="blue-font">{{EFSearchPageCtrl.electronicResult.pageParams.totalCount}}</i> 个资源</div>
+            </div>
+        </div>
+    </div>
+</div>

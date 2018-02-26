@@ -1,0 +1,30 @@
+<div class="m-technologystack-map">
+    <div class="m-technologystack-map-left">
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.locateCamera()" ng-bind="technologyStackMapCtrl.buttonName"></button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.measureDistance()">量距</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.measureArea()">量面</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.selectLine()">线选点位</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.selectPolygon()">多边形选点位</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.selectRect()">矩形选点位</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.selectCircle()">圆选点位</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.drawLine()">画线</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.drawPolygon()">画多边形</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.drawRect()">画矩形</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.drawCircle()">画圆</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.clearAll()">清除所有</button>
+        <div>点位隐藏显示相关</div>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.showCamera()">显示摄像机点位</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.hideCamera()">隐藏摄像机点位</button>
+        <div>
+            <p>当前选择的点位个数为: {{technologyStackMapCtrl.selectPoints.length}}</p>
+        </div>
+
+        <div>轨迹分析相关</div>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.startTraceAnalyze()">开始轨迹分析</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.stopTraceAnalyze()">停止轨迹分析</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.pauseTraceAnalyze()">暂停轨迹分析</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.reStartTraceAnalyze()">重新开始轨迹分析</button>
+        <button class="u-button u-button-blue-1" ng-click="technologyStackMapCtrl.clearTraceAnalyze()">清除轨迹分析</button>
+    </div>
+    <div class="m-technologystack-map-mn" id="mapShowContainer"></div>
+</div>

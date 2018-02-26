@@ -1,0 +1,76 @@
+<div  class="person-popu-layer"
+      ng-controller="personSelectController as personSelectCtrl">
+    <div class="person-layer">
+        <div class="person-tree">
+            <div class="person-tree-serach-input">
+                <input type="text"
+                       ng-model="personSelectCtrl.searchPersonStr"
+                       placeholder="{{'请输入摄像机名称'|translate}}"
+                       ng-change="personSelectCtrl.onChangeSearchTree()"
+                />
+                <i class="u-input-search" ng-click="personSelectCtrl.onChangeSearchTree()"></i>
+            </div>
+            <div class="tree-data">
+                <util-tree tree-id="{{personSelectCtrl.personTreeParams.treeId}}"
+                           tree-init-complete="personSelectCtrl.personTreeParams.treeInitComplete(treeId)"
+                           tree-datas="personSelectCtrl.personTreeParams.treeDatas"
+
+                           check-enable="{{personSelectCtrl.personTreeParams.checkEnable}}"
+
+                           single-select="{{personSelectCtrl.personTreeParams.isSingleSelect}}"
+                           is-simple-data="{{personSelectCtrl.personTreeParams.isSimpleData}}"
+                           show-icon="{{personSelectCtrl.personTreeParams.isShowIcon}}"
+                           show-line="{{personSelectCtrl.personTreeParams.isShowLine}}"
+                           default-no-data-msg="{{personSelectCtrl.personTreeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{personSelectCtrl.personTreeParams.searchNoDataMsg}}"
+
+                           on-click="personSelectCtrl.personTreeParams.onClick(event, treeId, treeNode)"
+                           on-check="personSelectCtrl.personTreeParams.onCheck(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           edit-enable="{{personSelectCtrl.personTreeParams.editEnable}}"
+                           is-prev="false"
+                           is-next="false"
+                           is-inner="false"
+                           is-copy="false"
+                           is-move="false"
+                           default-expand-level="0"
+                ></util-tree>
+            </div>
+        </div>
+
+        <div class="person-select-list-name">
+            <div class="tree-title">
+                <span class="select-num">已选（<i>{{personSelectCtrl.personSelectedList.length}}</i>）</span>
+                <span class="clear-select" ng-click="personSelectCtrl.removeSelected(false,true)">清空所有</span>
+            </div>
+            <div class="select-person-layer">
+        <span ng-repeat="item in personSelectCtrl.personSelectedList">
+            {{item.Name}}
+            <i class="icon-btn i-btn-close"
+               ng-click="personSelectCtrl.removeSelected(item)"
+            ></i>
+        </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="popup-btns submit-btn"
+    >
+
+        <button class="u-button u-button-blue-2 f-fr m-right15"
+                ng-click="personSelectCtrl.closeUpdateModel(false)"
+                translate="FDS_00_07_02"
+
+        >
+        </button>
+
+        <button class="u-button u-button-blue-1 f-fr m-right15"
+                ng-click="personSelectCtrl.commitPersonSelect()"
+                translate="FDS_00_07_01"
+                ng-disabled="tnpsmCtrl.personSelectedList.length == 0"
+        >
+        </button>
+    </div>
+</div>

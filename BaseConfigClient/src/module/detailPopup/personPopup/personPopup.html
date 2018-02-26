@@ -1,0 +1,172 @@
+<div class="layer-component person-component" ng-controller="personPopupController as personCtrl">
+    <div class="media-title">
+        <span class="licence-plate">人员详情</span>
+        <a class="layui-layer-ico m-layui-close" ng-click="personCtrl.closeLayer()"></a>
+    </div>
+
+
+    <div class="media-box-con">
+        <div class="box-con-left">
+            <img class="image" ng-src="{{personCtrl.accessRecords.AccessLog.FacePath | imageUrlFilter}}">
+            <div class="operate-box">
+                <div class="full-screen" ng-click="personCtrl.fullScreen((personCtrl.accessRecords.AccessLog.ScenePath | imageUrlFilter))"></div>
+                <div class="full-play" ng-click="personCtrl.fullPlay()"></div>
+            </div>
+        </div>
+        <div class="box-con-right">
+            <div class="switch-group">
+                <div
+                    class="switch-item"
+                    ng-class="{'active':personCtrl.switchButton}"
+                    ng-click="personCtrl.switchButton=true">
+                    通行记录
+                </div>
+                <div
+                    class="switch-item"
+                    ng-class="{'active':!personCtrl.switchButton}"
+                    ng-click="personCtrl.switchButton=false">
+                    人员档案
+                </div>
+            </div>
+            <div class="records" ng-if="personCtrl.switchButton">
+                <span class="operate">
+                    <i class="icon_collect" ng-class="{'active': personCtrl.accessRecords.collectStatus}" ng-click="personCtrl.clickCollect()">收藏</i>
+                    <i class="icon_analysis">
+                        分析
+                        <ul class="analysis-ul" ng-if="personCtrl.checkAnalysis">
+                            <li class="analysis-li" ng-if="personCtrl.checkFaceTrack" ng-click="personCtrl.clickAnalysis(personCtrl.accessRecords, personCtrl.analysisGoTo.Track.key)">{{personCtrl.analysisGoTo.Track.name}}</li>
+                            <li class="analysis-li" ng-if="personCtrl.checkAccompanyingAnalysis" ng-click="personCtrl.clickAnalysis(personCtrl.accessRecords, personCtrl.analysisGoTo.Accompanying.key)">{{personCtrl.analysisGoTo.Accompanying.name}}</li>
+                            <li class="analysis-li" ng-if="personCtrl.checkFrequencyAnalysis" ng-click="personCtrl.clickAnalysis(personCtrl.accessRecords, personCtrl.analysisGoTo.Frequency.key)">{{personCtrl.analysisGoTo.Frequency.name}}</li>
+                            <li class="analysis-li" ng-click="personCtrl.clickAnalysis(personCtrl.accessRecords, personCtrl.analysisGoTo.More.key)">{{personCtrl.analysisGoTo.More.name}}</li>
+                        </ul>
+                    </i>
+                    <i class="icon_dispatched" ng-class="{'active': personCtrl.accessRecords.surveillanceStatus}" ng-click="personCtrl.clickSurveillance()">布控</i>
+                </span>
+                <div class="person-info">
+                    <i class="m-person-license" ng-if="personCtrl.accessRecords.Score">{{personCtrl.accessRecords.Score|roundNumber}}%</i>
+                    <i class="search-user" ng-class="{'women': personCtrl.detailRecords.Gender==='1','men': personCtrl.detailRecords.Gender==='0'}"></i>
+                </div>
+                <ul class="group-ul">
+                    <li class="group-li">
+                        <div class="name">年龄段 :</div>
+                        <div class="text">{{ personCtrl.detailRecords.Age | ageToGroupAge }}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">发型 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">戴眼镜 :</div>
+                        <div class="text">{{ personCtrl.accessRecords.AccessLog.Glass | glassFilter }}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">通行时间 :</div>
+                        <div class="text">{{ personCtrl.detailRecords.LogTime }}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">抓拍设备 :</div>
+                        <div class="text">{{ personCtrl.accessRecords.deviceInfo.Name }}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">衣着特征 :</div>
+                        <div class="text">{{ personCtrl.detailRecords.IsPants | isPantsFilter }} {{ personCtrl.detailRecords.IsSleeve | isSleeveFilter }}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">戴帽子 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">戴口罩 :</div>
+                        <div class="text">{{ personCtrl.detailRecords.Mask | maskFilter }}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">携带物 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">鞋子 :</div>
+                        <div class="text"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="lience" ng-if="!personCtrl.switchButton">
+                <div ng-if="personCtrl.loopStatus&&personCtrl.persionLibraryList.length > 0">
+                    <div class="lience-loop">
+                        <div class="image-loop">
+                            <div class="goto-before" ng-click="personCtrl.goto(-1)" ng-class="{'disabled':personCtrl.loopIndex === 1}"></div>
+                            <div class="image-loop-box" ng-class="['loopTotal'+personCtrl.loopTotal,'loopIndex'+personCtrl.loopIndex]">
+                                <div class="image-box" ng-repeat="item in personCtrl.persionLibraryList" ng-class="{'active': $index === (personCtrl.loopIndex-1)}" ng-click="personCtrl.loopSelect($index)">
+                                    <img ng-src="{{item.PersonInfo.FacePicPath[0] | imageUrlFilter}}">
+                                </div>
+                            </div>
+                            <div class="goto-after" ng-click="personCtrl.goto(1)" ng-class="{'disabled':personCtrl.loopIndex=== personCtrl.loopTotal||personCtrl.loopIndex>7}"></div>
+                        </div>
+                    </div>
+                    <div class="person-info">
+                        <i class="search-user" ng-class="{'Women': personCtrl.loopInfo.PersonInfo.Gender==='Women','men': personCtrl.loopInfo.PersonInfo.Gender==='Men'}">{{ personCtrl.loopInfo.PersonInfo.Name }}</i>
+                    </div>
+                    <ul class="group-ul">
+                        <li class="group-li">
+                            <div class="name">相似度 :</div>
+                            <div class="text">{{ personCtrl.loopInfo.Score|roundNumber }}%</div>
+                        </li>
+                        <li class="group-li">
+                            <div class="name">民族 :</div>
+                            <div class="text">{{ personCtrl.loopInfo.PersonInfo.Nation }}</div>
+                        </li>
+                        <li class="group-li">
+                            <div class="name">籍贯 :</div>
+                            <div class="text">{{ personCtrl.loopInfo.PersonInfo.CertifyingAuthority }}</div>
+                        </li>
+                        <li class="group-li">
+                            <div class="name">出生日期 :</div>
+                            <div class="text">{{ personCtrl.loopInfo.PersonInfo.Birth }}</div>
+                        </li>
+                        <li class="group-li">
+                            <div class="name">身份证号 :</div>
+                            <div class="text">{{ personCtrl.loopInfo.PersonInfo.IDCardNumber }}</div>
+                        </li>
+                        <li class="group-li">
+                            <div class="name">家庭住址 :</div>
+                            <div class="text">{{ personCtrl.loopInfo.PersonInfo.HomeAdivress }}</div>
+                        </li>
+                        <li class="group-li">
+                            <div class="name">婚姻 :</div>
+                            <div class="text"></div>
+                        </li>
+                    </ul>
+                    <div class="operate">
+                        <i class="icon_record">完整档案 ></i>
+                        <i class="icon_view_cube">视图立方 ></i>
+                    </div>
+                </div>
+                <div class="loop-loading" ng-if="personCtrl.loopStatus&&personCtrl.persionLibraryList.length === 0">
+                    未查询到人员档案
+                </div>
+                <div class="loop-loading" ng-if="!personCtrl.loopStatus">
+                    正在查询人员，请稍等...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="media-footer" ng-if="!personCtrl.showFooter">
+        <div class="m-footer-text">
+            搜周边 :
+            <span class="ambitus-info">
+                <i ng-repeat="item in personCtrl.ambitusInfo" ng-click="personCtrl.selectAmbitusInfo(item)" ng-class="{'active': item.status}">{{item.value}}</i>
+            </span>
+            <input type="text" class="m-footer-input" ng-model="personCtrl.quickSearchAgainText" placeholder="请输入关键字">
+            <i class="search-border" ng-click="personCtrl.quickSearchAgain()"></i>
+
+            <span class="m-footer-last">
+                <span class="m-toggle-border" ng-click="personCtrl.popupUp()" ng-if="personCtrl.activeRank > 1">
+                    <i class="m-left-triangle"></i>
+                </span>
+                <span class="m-toggle-border" ng-click="personCtrl.popupDown()" ng-if="personCtrl.activeRank < personCtrl.totalRank">
+                    <i class="m-right-triangle"></i>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

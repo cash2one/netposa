@@ -1,0 +1,427 @@
+.mac-track-box{
+    width:100%;
+    height:100%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    .macAddress(){
+        display: inline-block;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAMCAYAAAB4MH11AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YWJjY2IwNC04ODJmLWE0NDItODNmYy1kZTBlMTY2YjE4NWQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEYzOEEzOTg5M0FFMTFFNzgwRDZBMjdFNjk2QTM4REEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEYzOEEzOTc5M0FFMTFFNzgwRDZBMjdFNjk2QTM4REEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Y2Y4MWU1ODMtZDg2OS00OTRmLWE4OTUtMTAzZmMzYjYzNGY5IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6NDc1MDg0ZjYtOTNhZC0xMWU3LThkZDgtYTBjZmE3NGE1YTRjIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+G5l+xgAAAOxJREFUeNpi3L9/PwMQqAJxBxC7ADEfA2XgExDvAeIKIL7NBCTUgfgIEB8EYkUgZqQQK0LNApmpzgIk2qB4EgN1wDuoWZwgcxmBQfQRZOutW7fepqenM6Krnjlz5n9kcXQ+TAzGBslBg10IiB+yQMP8HTFOgxmObAk2B0CDCmQmDxMul2DjEwPQfcdEyLXY+DBfEGMhC7rt2MKYEh+xQNOtEKnex2UZUhyAzPzCAs0Usfh8gc1XyOpwpKIUIN4F4mhAM0YrEC8G4vcU5gNBqIOrgdgeFMk3gNgOxAGlWyD+TyF+CDULZOYNgAADAI2ZiuUr4Rm+AAAAAElFTkSuQmCC);
+        background-repeat: no-repeat;
+        padding-left: 26px;
+        margin-left: -5px;
+        background-position: left top;
+        padding-bottom: 10px;
+    }
+    .mac-track-form{
+        position: absolute;
+        height: 100%;
+        width: 260px;
+        left: 0;
+        right:0;
+        padding-left:20px;
+        top:58px;
+        .mac-track-index-title{
+            line-height: 30px;
+            padding-bottom:5px;
+            border-bottom:1px solid #ddd;
+            height: 38px;
+            .add{
+                background:#2d87f9;
+                padding:8px 15px;
+                color:#fff;
+                border:none;
+                width: 127px;
+                height: 28px;
+            }
+        }
+    }
+
+    .mac-trace-list-main{
+        overflow: hidden;
+        margin-top: 8px;
+    }
+    .mCustomScrollbar{
+        position: absolute;
+
+    }
+    // 列表
+    .face-track-res {
+        opacity: 0;
+        width: 0;
+        &.active {
+            width:280px;
+            opacity: 1;
+            height: 100%;
+        }
+
+        .mac-mytrack-form {
+            position: absolute;
+            width: 100%;
+            top: 48px;
+            padding: 0;
+            background: rgba(244,244,243,0.9);
+            .mac-trace-list {
+                width: 280px;
+                height: 100px;
+                background: #ffffff;
+                margin-bottom: 10px;
+                .macTraceList{
+                    border: 1px solid #E4E4E4;
+                    padding: 20px 20px 10px 20px;
+                    .macTraceList-title{
+                        height: 30px;
+                        border-bottom: 1px solid #E4E4E4;
+                        font-weight: bold;
+                        .mac-address {
+                            .macAddress();
+                        }
+                    }
+                    .button-content{
+                        padding-top: 10px;
+                        .button-find(@background:null){
+                            width: 115px;
+                            height: 28px;
+                            display: inline-block;
+                            color: #ffffff;
+                            background: @background;
+                            text-align: center;
+                            line-height: 28px;
+                            cursor: pointer;
+                        }
+                        .find-result{
+                            .button-find(#2D87F9)
+                        }
+                        .find-trace{
+                            .button-find(#25C2F2)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 详情
+    .face-track-result-res{
+        .taggle-result{
+
+        }
+        .find-track-head{
+            border: 1px solid #e4e4e4;
+            background: #ffffff;
+            padding: 0;
+            height: 70px;
+            position: absolute;
+            .head-title{
+                border-bottom:0;
+            }
+            .mac-head-text{
+                height: 27px;
+                font-weight: bold;
+                .mac-address {
+                    .macAddress();
+                }
+            }
+        }
+        .track-result-content {
+            .before-layer{
+                width: 280px;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 75px;
+                padding: 0;
+                background: rgba(255, 255, 255, 0.9);
+                border: 1px solid #e4e4e4;
+                .desc {
+                    width: 100%;
+                    left: 10px;
+                    .mac-address{
+                        .macAddress();
+                    }
+                }
+            }
+            .head-title {
+                span {
+                    height: 30px;
+                    line-height: 28px;
+                }
+                .head-right button {
+                    width: 80px;
+                    height: 26px;
+                    border: none;
+                    background: #25C2F2;
+                    color: #fff;
+                }
+            }
+            .page-bottom{
+                bottom: 50px;
+            }
+        }
+        .licence{
+            position: relative;
+            width: 76px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            margin-top: 5px;
+            margin-left: 5px;
+            background: #2D87F9;
+            color: #fff !important;
+            display: inline-block;
+            &:after{
+                content: "";
+                position: absolute;
+                width: 95%;
+                height: 92%;
+                top: 3%;
+                left: 2%;
+                border: solid 1px #fff;
+            }
+        }
+        .count{
+            padding:0 20px;
+            height:30px;
+            line-height:28px;
+            background:#F4F4F3;
+            border-bottom: 1px solid #e4e4e4;
+            i{
+                color:#25C2F2
+            }
+        }
+    }
+
+
+
+
+    .delete-position{
+        position: relative;
+        .m-mac-delete {
+            background-position: 1px -40px;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            position: absolute;
+            top: -1px;
+            left: 7px;
+        }
+    }
+    .analysis-alarm-inquiry.find-data{
+        border-radius: 0;
+        width: 240px;
+        height: 34px;
+        line-height: 35px;
+        cursor: pointer;
+    }
+
+    .mc-track-title-border{
+        width: 240px;
+        border-bottom:1px solid #dedede;
+
+        .mac-track-index-address{
+            line-height: 30px;
+            width: 245px;
+            .title{
+                display:inline-block;
+                width:60px;
+                margin-right:2px;
+                .macType{
+                    display:inline-block;
+                    width:63px;
+                    height:30px;
+                    text-indent: 5px;
+                    border: 1px solid #dedede;
+                }
+                .required{
+                    color:red
+                }
+            }
+            .fillin{
+                display: inline-block;
+                width: 142px;
+                height: 30px;
+                line-height: 28px;
+                border: 1px solid #dedede;
+                text-indent: 5px;
+                margin-left: 10px;
+                input{
+                    height:28px;
+                    border:0;
+                }
+            }
+            .delete-btn{
+                display: inline-block;
+                padding: 8px 10px;
+                background: #2D87F9;
+                color: #fff;
+                border-radius: 4px;
+                margin-left: 5px;
+                border: none;
+            }
+            .delete-btn[disabled] {
+                cursor: not-allowed;
+                background: #f6f7fb;
+                color: #999;
+            }
+            .mac-track-address-line{
+                margin-bottom: 10px;
+
+            }
+        }
+    }
+
+    .m-trace-address-line{
+        line-height: 30px;
+        border-bottom: 1px solid #ddd;
+        i{
+            float:right;
+            width:30px;
+            height:30px;
+            &.fold{
+                background-image:url("../../../images/analysis/right-blue.png");
+                background-repeat:no-repeat;
+                background-size: 40% auto;
+                background-position: center center;
+            }
+            &.unfold{
+                background-image:url("../../../images/analysis/left-blue.png");
+                background-repeat:no-repeat;
+                background-size: 40% auto;
+                background-position: center center;
+                transform:rotate(270deg)
+            }
+        }
+
+    }
+    .m-trace-address-individual{
+        padding: 8px 0;
+        border-top: 1px solid #ddd;
+        p{
+            line-height: 24px;
+        }
+        &:first-child{
+            border-top:none
+        }
+    }
+
+    .m-trace-list-action{
+        i{
+            float:right
+        }
+
+    }
+    .mac-track-detail-action {
+        padding:6px 0;
+        i{
+            float:left
+        }
+    }
+
+
+    .mac-trace-detail{
+        background: #fff;
+        height: 100%;
+        width:0;
+        opacity:0;
+        position: absolute;
+        top:0;
+        background:#fff;
+        &.active{
+            transition:all .2s;
+            opacity: 1;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:10000;
+            overflow: scroll;
+        }
+        .mac-trace-detail-wrap{
+            margin-top: 48px;
+            // border: 1px solid #ddd;
+            overflow: hidden;
+        }
+    }
+
+    .mac-track-detail-wrap{
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    .mac-track-detail-title{
+        line-height: 40px;
+        width:100%;
+        border:1px solid #ddd;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        .mac-trace-export{
+            float: right;
+            border:none;
+            background: #2D87F9;
+            color: #fff;
+            line-height: 24px;
+            padding: 0 10px;
+            border-radius: 4px;
+            margin-top:8px;
+        }
+        .fold{
+            float:right;
+            width:50px;
+            height:40px;
+            text-align: left;
+            position: relative;
+            margin:0 12px;
+            i{
+                position: absolute;
+                right:0;
+                top:0;
+                height:40px;
+                width:26px;
+                background-repeat:no-repeat;
+                background-size: 50% auto;
+                background-position: right center;
+                &.up{
+                    background-image:url("../../../images/analysis/more-up.png");
+                }
+                &.down{
+                    background-image:url("../../../images/analysis/more-down.png");
+                }
+
+            }
+        }
+    }
+    .m-trace-detail-Info{
+        padding: 8px 0;
+        border-top: 1px solid #ddd;
+        width: 280px;
+        float: left;
+    }
+    .mac-track-detail-ad{
+        overflow: hidden;
+        .mac-track-detail-Info{
+            float: left;
+            width:280px;
+            border: 1px solid #ddd;
+            margin: 5px 8px;
+            padding-left: 8px;
+            p{
+                line-height: 26px;
+            }
+        }
+    }
+
+    .mac-trace-Index{
+        position: absolute;
+        width:0;
+        opacity:0;
+        z-index:-1;
+        height: 100%;
+        background:#fff;
+        &.active{
+            width:280px;
+            opacity: 1;
+            z-index:9999;
+        }
+        .analaysis-head{
+            .analaysis-head-title{
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyZTk3OTU3MS1hYWY3LTM2NGMtYTQwZS02ZDI0NWEwNjhkZjQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Mjg2RjZBRDg5ODMzMTFFNzhFRkREMkM4MzRFNTNDM0EiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Mjg2RjZBRDc5ODMzMTFFNzhFRkREMkM4MzRFNTNDM0EiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6YmJjNTYxOTItMGVmNi03ZDRjLTk0NTgtZDhiYzI1YzQ0NDk0IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzU3ODJlOGEtOTgzMi0xMWU3LTk3MDgtODFkN2IxMzYxN2ZjIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+8YEOZQAAAuhJREFUeNq0lttvTVEQh885Wq1Gq5U2iopI0AeUNC5piUsTqoogcUk8e5FI0Fev/gBPEkRaEiJ4UfdbpKggqlSiD+ISlVAVUaUXl+Ob5LdkurOrHpjky9p7nVkza82emXWS6XQ68T8lI25yTXPLLIYzcA+aYCQkI2q2s36ogGWwvrGy/P6wDjCeYlgEn+E51ENmjAOTrzAGymE5a1tx8m24EyyAHKiGjZDPojdDnLSQoQdqRRVc8jpJ/w1YkMWwBxrgmRyMgqMKSVS2KHxHoAh2w1421BMUUpEFNfBSxk0uQylMjTE+Gexbndf7e3gEq71Syu2+WOE5637/BHdhu8Yvwp53QCt0Of0rMBNbEwc5YCKhmD/keO/cghI7MuyE+fo2OXquUzh/G2PtBzldic2kP8F0mATXnHGLbaPt6A9pXqYQZbm5GzAhhDWFJzO01OKnHQTZBnP+opbKpBtO0aVTLMZ2ZkqeRsPFyMKtGm2HBdDsfrtp6ask8LoJlxy2ptTqYL/qoROP2Xru0s4SMjQF8pyBPM3lu1PMY30u43ewYlsFm83YDxjh8tw+zk9nrBJaIjucbQkRmbM6KJSDPui1jMtQ/KwKTxK/AZdVdTLep9YRJ03KqscWStaHlM9Q0lywb/AKPqrIvBzXmC0jDyKEeZNjkbVViszrFF7tSLetKvFc5JQOutAcVionXFrX69ky5oAr2LEMcy3lsd0b6uAFdKjtBrFWvBbalGk2XlethLlWhbffrbOU74T2Qc1OrcLKf58UgsyAFbDJFd0TOK220u507SPvssxk9x2DehETb92OghTrFA26WHJFhTrsOt0HQazRtQXjcd30nI4+ThlRq+7abe8eJYadtFrv1pOmqb3E3wcK1RK1YatWe67HQPcQF854KyaFqkbN8tZwN5pl1EI4BYfsWsRQQYxeWtdqiXZtWXcnqpSM+1eBQWvHJ+CqKjZ7CAcDKkJrihvY/dO/cvAv5ZcAAwB9DO6Vy0rpEgAAAABJRU5ErkJggg==);
+            }
+        }
+    }
+}

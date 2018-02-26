@@ -1,0 +1,127 @@
+<div class="analysis-layout person-alarm">
+    <!--表单区域-->
+    <div class="analysis-form active">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title alarm-analysis-title">报警分析</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="PersonAlarmCtrl.goBack()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="face-track-form analaysis-body">
+                <!--分析条件表单-->
+                <div class="analysis-form-con no-tabs">
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">时间筛选</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in PersonAlarmCtrl.FastDateList" ng-class="{'active':item.key === PersonAlarmCtrl.FastDate.key}" ng-click="PersonAlarmCtrl.setFastDate(item)">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                        <span class="input-layer pdp-icon-calendar">
+                            <input ng-model="PersonAlarmCtrl.PersonAlarmParams.startTime" date-picker show-init="false" type="text" placeholder="请选择开始时间">
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                        <span class="input-layer">
+                            <input ng-model="PersonAlarmCtrl.PersonAlarmParams.endTime" date-picker show-init="false" type="text" placeholder="请选择结束时间">
+                        </span>
+                    </div>
+                    <div class="face-track-select-camera">
+                        <span class="analaysis-form-title">摄像机</span>
+                        <div class="face-track-camera">
+                            <span ng-click="PersonAlarmCtrl.selectCamera()" class="action pdp-icon-select-device" title="选择设备">选择设备</span>
+                            <span ng-click="PersonAlarmCtrl.DrawRect()" class="action pdp-icon-map-square" title="框选"></span>
+                            <span ng-click="PersonAlarmCtrl.DrawCircle()" class="action pdp-icon-map-round" title="圆选"></span>
+                            <span ng-click="PersonAlarmCtrl.DrawPolygon()" class="action pdp-icon-map-polygon" title="多边选"></span>
+                            <span ng-click="PersonAlarmCtrl.ClearDraw()" class="action pdp-icon-map-delete" title="删除"></span>
+                        </div>
+                    </div>
+                    <div class="searh-submit">
+                        <button ng-click="PersonAlarmCtrl.submitSearch()">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 人员报警详情 -->
+    <div class="person-alarm-detail" ng-style="{width:PersonAlarmCtrl.detailLayerWidth}" ng-class="{'active':PersonAlarmCtrl.isShowDetail}">
+        <div class="analysis-content">
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="result-operate">
+                            <button class="export">导出</button>
+                            <i class="pdp-icon-delete-area" ng-click="PersonAlarmCtrl.closeResult()"></i>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="analysis-more-result-group" ng-scrollbars>
+                            <div class="result-item">
+                                <div class="item-row-table active">
+                                    <div class="analysis-person-alarm"  ng-repeat="item in PersonAlarmCtrl.personAlarmResult.Result">
+                                        <div class="alarm-cnt" ng-click="PersonAlarmCtrl.showDetailPopup(item,$index)">
+                                            <div class="imginfo">
+                                                <div class="captrue-img">
+                                                    <div class="img"><img ng-src="{{item.AlarmLog.CapFacePicUrl | imageUrlFilter}}"
+                                                                          alt=""></div>
+                                                    <div class="type row">
+                                                        <span class="col-md-7">抓拍人脸</span>
+                                                        <span class="col-md-5"><i class="sc"></i><i class="fx"></i></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="captrue-img captrue-match-img">
+                                                    <div class="img"><img
+                                                            ng-src="{{item.AlarmLogInfoArr[0].PersonInfo.FacePicPath[0] | imageUrlFilter}}"
+                                                            alt=""></div>
+                                                    <div class="type row">
+                                                        <span class="col-md-7">比中人脸</span>
+                                                        <span class="col-md-5"><i class="sc"></i><i class="fx"></i></span>
+                                                    </div>
+                                                    <div class="match-info">
+                                                        <span>{{item.AlarmLogInfoArr[0].Similarty | roundNumber}}%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="alarm-desc">
+                                                <div class="address">{{item.Address}}</div>
+                                                <div ng-class="{'man':item.AlarmLogInfoArr[0].PersonInfo.Gender == 0,'women':item.AlarmLogInfoArr[0].PersonInfo.Gender == 1 }">{{item.AlarmLogInfoArr[0].PersonInfo.Name}}
+                                                </div>
+                                                <div class="time"><i>时间 : </i>{{item.AlarmLog.AlarmTime}}</div>
+                                                <div class="lib"><i>所在库 : </i>{{item.LibName}}</div>
+                                                <div class="id-card"><i>证件号 : </i> {{item.AlarmLogInfoArr[0].PersonInfo.IDCardNumber}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <div class="page-total">
+                            <div>
+                                共
+                                <i>{{PersonAlarmCtrl.personAlarmResult.TotalCount}}</i>
+                                条记录
+                            </div>
+                        </div>
+                        <util-paging
+                                hide-size="true"
+                                hide-gopage="true"
+                                page-params="PersonAlarmCtrl.pageParams"
+                                prev-page="PersonAlarmCtrl.changeResultPage(num)"
+                                next-page="PersonAlarmCtrl.changeResultPage(num)"
+                                go-page="PersonAlarmCtrl.changeResultPage(num)"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

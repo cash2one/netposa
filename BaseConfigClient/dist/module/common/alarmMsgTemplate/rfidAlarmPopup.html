@@ -1,0 +1,51 @@
+<div class="mac-callPoint-container" ng-controller="rfidAlarmPopupController as rfidAlarmPopupCtrl">
+    <div class="callPoint-title-container" ng-mouseenter="rfidAlarmPopupCtrl.changeAlarmPopupStatus(true)" ng-mouseleave="rfidAlarmPopupCtrl.changeAlarmPopupStatus(false)">
+        <div class="callPoint-title">
+             <span class="callPoint-title-icon"></span>
+            <span ng-if="rfidAlarmPopupCtrl.task.TaskType == 'MAC'">{{rfidAlarmPopupCtrl.task.TaskType}}:{{rfidAlarmPopupCtrl.model.AlarmLog.Notes}}</span>
+            <span ng-if="rfidAlarmPopupCtrl.task.TaskType !== 'MAC'">{{rfidAlarmPopupCtrl.task.TaskType}}:{{rfidAlarmPopupCtrl.model[rfidAlarmPopupCtrl.task.TaskType]}}</span>
+
+            <span ng-click="rfidAlarmPopupCtrl.closeAlarmPopup()" class="callPoint-exit"></span>
+        </div>
+        <div class="callPoint-content">
+            <div class="callPoint-info-container">
+                <div class="callPoint-info callPoint-info-left">
+                    <div class="callPoint-info-li">
+                        <span class="info-title">{{rfidAlarmPopupCtrl.task.TaskType}} :</span>
+                        <span ng-if="rfidAlarmPopupCtrl.task.TaskType == 'MAC'">{{rfidAlarmPopupCtrl.model.AlarmLog.Notes}}</span>
+                        <span ng-if="rfidAlarmPopupCtrl.task.TaskType !== 'MAC'">{{rfidAlarmPopupCtrl.model[rfidAlarmPopupCtrl.task.TaskType]}}</span>
+
+                    </div>
+                    <div class="callPoint-info-li">
+                        <span class="info-title">报警时间 :</span>
+                        <span>{{rfidAlarmPopupCtrl.model.AlarmLog.AlarmTime}}</span>
+                    </div>
+                    <div class="callPoint-info-line">
+                        <span class="info-title">报警设备 :</span>
+                        <span>{{rfidAlarmPopupCtrl.model.AlarmLog.ObjectName}}</span>
+                    </div>
+                    <div class="alarm-mark mark-alarm">
+                        报警信息
+                    </div>
+                </div>
+                <div class="callPoint-info callPoint-info-right">
+                    <div class="callPoint-info-li">
+                        <span class="info-title">{{rfidAlarmPopupCtrl.task.TaskType}} :</span>
+                        <span>{{rfidAlarmPopupCtrl.task.PerceiveData}}</span>
+                    </div>
+                    <div class="callPoint-info-li">
+                        <span class="info-title">布控人 :</span>
+                        <span>{{rfidAlarmPopupCtrl.task.JsonUserData.Person.Name}}</span>
+                    </div>
+                    <div class="callPoint-info-line">
+                        <span class="info-title">描述 :</span>
+                        <span>{{rfidAlarmPopupCtrl.task.Description}}</span>
+                    </div>
+                    <div class="alarm-mark mark-task">
+                        布控信息
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="m-person-statistic" id="personStatistic" ng-class="resourceCtrl.switchButton.switch?'switch-button2':'switch-button1'" ng-controller="personStatisticController as personstatisticCtrl">
+    <div class="m-image-title">实时信息</div>
+    <div class="m-loop-board">
+        <div class="m-loop-message">
+            <div class="m-new-border statistic-message" ng-repeat="item in personstatisticCtrl.PersonAllData">
+                <img ng-src="{{item.FacePath|imageUrlFilter}}" class="m-image-margin">
+                <span class="m-image-text">{{item.Gender|genderFilter}} {{item.Age}}岁</span>
+            </div>
+        </div>
+    </div>
+</div>

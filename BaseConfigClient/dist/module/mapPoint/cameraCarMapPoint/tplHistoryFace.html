@@ -1,0 +1,49 @@
+<div ng-controller="cameraPointHistoryFace as historyFace"   class="maplayer layer-max" >
+    <div class="head">
+        <div class="maplayer-title">摄像机IOS-0060</div>
+        <div class="maplayer-close mylayer-close"></div>
+    </div>
+    <div class="maplayer-cntlayer">
+        <div class="maplayer-right-content-history">
+            <div class="time-pick">
+                <div class="time-pick-input">
+                    <div class="start-time-pick pick">
+                        <input placeholder="开始时间" readonly type="text" ng-model="historyFace.startTime" date-picker
+                               show-init="false">
+                    </div>
+                    <div class="pick hen"></div>
+                    <div class="end-time-pick pick">
+                        <input placeholder="结束时间" readonly type="text" ng-model="historyFace.endTime" date-picker
+                               show-init="false">
+                    </div>
+                </div>
+                <div class="searchbtn"></div>
+            </div>
+            <div class="lllayer" >
+                <div class="llitem" ng-repeat="item in historyFace.historyCaptrueList">
+                    <div class="img">
+                        <img src="{{item.image}}"/>
+                    </div>
+                    <div class="action">
+                        <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                        <span class="fx"></span>
+                        <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                    </div>
+                    <div class="info">
+                        <!--<span class="sex">{{item.sex===0?'男':'女'}}</span>-->
+                        <span class="time">{{item.time}}</span>
+                        <span class="desc">{{item.info}}</span>
+                    </div>
+                </div>
+                <util-paging
+                        page-params="historyFace.historyCaptrueParams"
+                        prev-page="historyFace.changePage(num)"
+                        next-page="historyFace.changePage(num)"
+                        go-page="historyFace.changePage(num)"
+                        page-size="historyFace.changePageSize(num)"
+                ></util-paging>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,241 @@
+<div class="search-advanced-main" ng-controller="PersonSearchPageController as PersonSearchPageCtrl">
+    <div class="search-advanced-maincon" ng-scrollbars>
+        <div class="advanced-condition">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">关键词：</span>
+                            <input type="text" class="params-item-input"  ng-model="PersonSearchPageCtrl.searchParams.keyWord" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="advanced-upload">
+                            <div class="upload-ul">
+                                <div class="upload-li" ng-repeat="item in PersonSearchPageCtrl.faceImgList" ng-drop="true" ng-drop-success="PersonSearchPageCtrl.onDropComplete($data,$event,$index)">
+                                    <div class="upload-li-box" ng-if="item.value!==''">
+                                        <img ng-src="{{item.value|imageUrlFilter}}" alt="">
+                                        <div class="close" ng-click="PersonSearchPageCtrl.imgCancel($index)" title="删除"></div>
+                                    </div>
+                                    <label class="upload-li-box" ng-if="item.value===''">
+                                        <input type="file" accept="image/png,image/jpg,image/jpeg" class="upload-file" ng-upload-change="PersonSearchPageCtrl.imgUploading($event , item, $index)" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="params-item special">
+                            <span class="params-item-name">模式：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.patternList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectPattern(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">资源选择：</span>
+                            <button class="params-item-select select-camera button" ng-click="PersonSearchPageCtrl.selectCamera()">选择设备</button>
+                            <div class="icon-device-map-select" ng-click="PersonSearchPageCtrl.selectDevice('Camera')">
+                                <i ></i>
+                            </div>
+                            <div class="select-device-total" ng-if="PersonSearchPageCtrl.searchParams.arrCameraId.length > 0">
+                                已选择
+                                <span class="number">{{ PersonSearchPageCtrl.searchParams.arrCameraId.length }}</span>
+                                个设备
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item special">
+                            <span class="params-item-name">相似度：</span>
+                            <div class="params-item-select">
+                                <progress-drag
+                                        now-value="PersonSearchPageCtrl.searchParams.threshold"
+                                        min-value="PersonSearchPageCtrl.minSacle"
+                                        max-value="PersonSearchPageCtrl.maxSacle" lengd="180">
+                                </progress-drag>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="!PersonSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">时段：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.crossTrainTimeList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectTime(item)">{{item.name}}</span>
+                            <div class="custom-time" ng-if="PersonSearchPageCtrl.selectTimeAcitve===4">
+                                <input class="custom-time-input" ng-model="PersonSearchPageCtrl.searchParams.startTime" date-picker show-init="true" type="text" placeholder="开始时间"/>
+                                <span>-</span>
+                                <input class="custom-time-input" ng-model="PersonSearchPageCtrl.searchParams.endTime" date-picker show-init="true" type="text" placeholder="结束时间"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">性别：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.sexList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectSex(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="!PersonSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">年龄段：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.ageList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectAge(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">发型：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.hairList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectHair(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="!PersonSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">眼镜：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.glassesList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectGlasses(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">帽子：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.capList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectCap(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="!PersonSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">口罩：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.maskList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectMask(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">衣帽特征：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.clothesList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectClothes(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="!PersonSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">携带物：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.equipmentList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectEquipment(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">鞋子：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in PersonSearchPageCtrl.shoeList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="PersonSearchPageCtrl.selectShoe(item)">{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="more">
+                    <span class="down icon-arrow-down" title="展开" ng-if="PersonSearchPageCtrl.showMore" ng-click="PersonSearchPageCtrl.showMore = false"></span>
+                    <span class="up icon-arrow-up" title="收起" ng-if="!PersonSearchPageCtrl.showMore" ng-click="PersonSearchPageCtrl.showMore = true"></span>
+                </div>
+                <button class="search-advanced-submit"  ng-class="{'active':(PersonSearchPageCtrl.queryStatus === 2)}" type="submit" ng-click="PersonSearchPageCtrl.searchAdvancedSubmit()">
+                    <i class="icon-search">搜索</i>
+                </button>
+            </div>
+        </div>
+        <div class="advanced-result-content" ng-if="PersonSearchPageCtrl.queryStatus !== 2">
+            <div class="advanced-operate-tab">
+                <div class="advanced-right">
+                    <i class="icon iconActive icon-table-model"></i>
+                    <i class="icon icon-ul-model"></i>
+                    <label class="advanced-label"><input type="checkbox"/><span>全选</span></label>
+                    <button><i></i><span>导出</span></button>
+                </div>
+            </div>
+            <div class="advanced-result-data">
+                <div class="result-data media-right face" ng-repeat="item in PersonSearchPageCtrl.faceResult.data"  ng-click="PersonSearchPageCtrl.detailPopup($index, PersonSearchPageCtrl.faceResult.data)">
+                    <div class="data-img">
+                        <img ng-src="{{item.AccessLog.FacePath|imageUrlFilter}}" ng-drag="true" ng-drag-data="item" data-allow-transform="false" />
+                        <input class="checkbox" type="checkbox"/>
+                        <span class="similarity-box" ng-if="item.Score">{{item.Score|roundNumber}}%</span>
+                        <div class="operate">
+                            <i class="icon_collect" title="收藏" ng-click="PersonSearchPageCtrl.clickCollect($event , item)" ng-class="{'active': item.collectStatus}"></i>
+                            <i class="icon_analysis" title="分析">
+                                <ul class="analysis-ul">
+                                    <li class="analysis-li" ng-click="PersonSearchPageCtrl.clickAnalysis($event , item, PersonSearchPageCtrl.analysisGoTo.Track.key)">{{PersonSearchPageCtrl.analysisGoTo.Track.name}}</li>
+                                    <li class="analysis-li" ng-click="PersonSearchPageCtrl.clickAnalysis($event , item, PersonSearchPageCtrl.analysisGoTo.Accompanying.key)">{{PersonSearchPageCtrl.analysisGoTo.Accompanying.name}}</li>
+                                    <li class="analysis-li" ng-click="PersonSearchPageCtrl.clickAnalysis($event , item, PersonSearchPageCtrl.analysisGoTo.Frequency.key)">{{PersonSearchPageCtrl.analysisGoTo.Frequency.name}}</li>
+                                    <li class="analysis-li" ng-click="PersonSearchPageCtrl.clickAnalysis($event , item, PersonSearchPageCtrl.analysisGoTo.More.key)">{{PersonSearchPageCtrl.analysisGoTo.More.name}}</li>
+                                </ul>
+
+                            </i>
+                            <i class="icon_dispatched" title="布控" ng-click="PersonSearchPageCtrl.clickSurveillance($event , item)" ng-class="{'active': item.surveillanceStatus}"></i>
+                        </div>
+                    </div>
+                    <div class="data-info">
+                        <p>{{item.AccessLog.LogTime}}</p>
+                        <p class="device-name">{{item.deviceInfo.Name}}</p>
+                    </div>
+                </div>
+                <div ng-if="PersonSearchPageCtrl.faceResult.data.length<1&&(PersonSearchPageCtrl.queryStatus === 3)" class="m-noMessage">暂无数据</div>
+                <div ng-if="PersonSearchPageCtrl.queryStatus === 1" class="m-noMessage m-noQuery">请输入检索条件检索</div>
+            </div>
+        </div>
+        <div class="advanced-result-content" ng-if="PersonSearchPageCtrl.queryStatus === 2">
+            <div class="loading"></div>
+        </div>
+    </div>
+    <div class="all-result-footer container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="page-bottom col-md-9">
+                <util-paging
+                        page-params="PersonSearchPageCtrl.faceResult.pageParams"
+                        prev-page="PersonSearchPageCtrl.changePage(num)"
+                        next-page="PersonSearchPageCtrl.changePage(num)"
+                        go-page="PersonSearchPageCtrl.changePage(num)"
+                        hide-size="true"
+                        hide-gopage="true"
+                ></util-paging>
+                <div class="page-total" ng-if="PersonSearchPageCtrl.faceResult.pageParams.totalCount">共 <i class="blue-font">{{PersonSearchPageCtrl.faceResult.pageParams.totalCount}}</i> 个资源</div>
+            </div>
+        </div>
+    </div>
+</div>

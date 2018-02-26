@@ -1,0 +1,24 @@
+<div class='m-alarm-video f-pr'
+     ng-controller="alarmVideoController as alarmVideoCtrl"
+    onselectstart="return false">
+
+    <iframe class="u-iframe-layer"></iframe>
+
+    <p class="head-txt f-abs f-bbox">
+        <!--提高层级遮住OCX-->
+        <strong class="f-fl">深圳北站-A1出口</strong>
+        <i class="closed f-fr f-csp" title="关闭" ng-click="alarmVideoCtrl.closeWindow()"></i>
+        <i class="show f-fr f-csp" title="窗格展示" ng-click="alarmVideoCtrl.stateToVideoLayout()"></i>
+    </p>
+    <div class="video-area f-abs bg-color-white"
+         video-ocx init-complete="alarmVideoCtrl.initComplete(ocxControlFunc)"></div>
+    <p class="switch f-abs">
+        <!--提高层级遮住OCX-->
+        <!--<iframe class="f-abs u-iframe-layer"></iframe>-->
+        目标跟随
+        <span class="f-abs f-csp" ng-class="{'active' : !alarmVideoCtrl.switchIsOff}"
+        ng-click="alarmVideoCtrl.targetSwitch()">
+
+        </span>
+    </p>
+</div>

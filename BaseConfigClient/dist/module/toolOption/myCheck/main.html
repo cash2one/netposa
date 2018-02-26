@@ -1,0 +1,87 @@
+<div class="m-check-head">
+    <div class="check-left">
+        <span class="check-text">我的审核</span>
+        <span class="check-check-icon"></span>
+    </div>
+</div>
+<div class="m-check-content">
+    <div class="check-info">
+        <div class="check-inline">
+            <div class="form f-f1">
+                <span class="title">有效时间</span>
+                <div class="form-label">
+                    <input class="input-t1" placeholder="开始时间" date-picker
+                           ng-model="myCheckCtrl.startTime"/>
+                    <span>-</span>
+                    <input class="input-t2" placeholder="结束时间" date-picker ng-model="myCheckCtrl.endTime"/>
+                </div>
+            </div>
+            <div class="form f-f2">
+                <span class="title">任务类型</span>
+                <select class="text u-input"
+                        ng-options="item.value as item.text for item in myCheckCtrl.taskTypeArr"
+                        ng-change="myCheckCtrl.changeStatus()"
+                        ng-model="myCheckCtrl.CurrentInfo.taskType">
+                </select>
+            </div>
+            <div class="form f-f3">
+                <span class="title">审核状态</span>
+                <select class="text u-input"
+                        ng-options="item.value as item.text for item in myCheckCtrl.AuditStatusLib"
+                        ng-change="myCheckCtrl.changeStatus()"
+                        ng-model="myCheckCtrl.CurrentInfo.AuditStatus">
+                </select>
+            </div>
+            <button class="search-btn" ng-click="myCheckCtrl.search()">搜索</button>
+        </div>
+    </div>
+    <div class="check-centerFixed">
+
+        <util-table-head table-headers="myCheckCtrl.tHeadList" table-has-check='true' class="table-content"
+                         table-sort-fun="myCheckCtrl.sortByField(index,fieldName,sortStatus)"
+                         table-after-check="myCheckCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+            <util-table-tr ng-repeat="tbody_data in myCheckCtrl.tBodyList track by $index">
+                <util-table-tr-td>{{myCheckCtrl.taskTypeMap[tbody_data.taskType]}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.tName || ('未知'|translate)}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.createUserAreaName}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.createUserName}}</util-table-tr-td>
+                <util-table-tr-td>{{myCheckCtrl.taskTypeMap[tbody_data.taskType]}}</util-table-tr-td>
+                <util-table-tr-td>
+                    <span ng-if="tbody_data.isLongEffective|isLongEffectiveFilter">长期有效</span>
+                    <span ng-if="!(tbody_data.isLongEffective|isLongEffectiveFilter)">
+                                <p>{{tbody_data.validTimeStart}}</p>
+                                <p>-</p>
+                                <p>{{tbody_data.validTimeEnd}}</p>
+                            </span>
+                </util-table-tr-td>
+                <util-table-tr-td>{{myCheckCtrl.taskStatusMap[tbody_data.tStatus]}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.description}}</util-table-tr-td>
+                <util-table-tr-td>{{myCheckCtrl.auditStatusMap[tbody_data.auditStatus]}}</util-table-tr-td>
+                <util-table-tr-td>
+                    <div class="table-icon-cntr f-cfb">
+                        <i ng-if="myCheckCtrl.isInCheck(tbody_data.auditStatus)" class="icon-btn i-incheck z-gray f-csp"
+                           title="{{'审核状态'|translate}}" ng-click="myCheckCtrl.audit(tbody_data)"></i>
+                        <i ng-if="!myCheckCtrl.isInCheck(tbody_data.auditStatus)"
+                           class="icon-btn i-checked z-gray f-csp" title="{{'审核状态'|translate}}"></i>
+                        <i class="icon-btn i-checkedit z-gray f-csp" title="{{'查看详情'|translate}}"
+                           ng-click="myCheckCtrl.editCheck(tbody_data)"></i>
+                    </div>
+                </util-table-tr-td>
+            </util-table-tr>
+
+            <div class="u-table-no-data" ng-show="myCheckCtrl.tableNoData" translate="DP_CONFIG_COMMON_16">
+
+            </div>
+
+        </util-table-head>
+    </div>
+    <div class="check-bottomFixed">
+        <util-paging
+                page-params="myCheckCtrl.pageParams"
+                prev-page="myCheckCtrl.changePage(num)"
+                next-page="myCheckCtrl.changePage(num)"
+                go-page="myCheckCtrl.changePage(num)"
+                page-size="myCheckCtrl.changePageSize(num)"></util-paging>
+    </div>
+</div>

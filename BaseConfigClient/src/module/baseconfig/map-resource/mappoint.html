@@ -1,0 +1,48 @@
+<div ng-controller="mapResourcePointController as mapResourcePointCtrl" style="width: 100%;height: 100%">
+    <div class="left-layer">
+        <ul class="device-type">
+            <li ng-repeat="(index,item) in mapResourcePointCtrl.deviceTypelist"
+                ng-class="{active:mapResourcePointCtrl.selectDeviceType == item.value}"
+                ng-click="mapResourcePointCtrl.changeSelectDevice(item)">{{item.text}}</li>
+        </ul>
+        <div class="tree-layer">
+            <div class="pdp-form search-input">
+                <input type="text"
+                       ng-model="mapResourcePointCtrl.searchPersonStr"
+                       placeholder="{{'请输入设备名称'|translate}}"
+                       ng-change="mapResourcePointCtrl.onChangeSearchTree()"
+                />
+                <i class="u-input-search" ng-click="mapResourcePointCtrl.onChangeSearchTree()"></i>
+            </div>
+            <div class="tree-data" ng-scrollbars>
+                <util-tree tree-id="{{mapResourcePointCtrl.treeParams.treeId}}"
+                           tree-init-complete="mapResourcePointCtrl.treeParams.treeInitComplete(treeId)"
+                           tree-datas="mapResourcePointCtrl.treeParams.treeDatas"
+                           check-enable="{{mapResourcePointCtrl.treeParams.checkEnable}}"
+                           single-select="{{mapResourcePointCtrl.treeParams.isSingleSelect}}"
+                           is-simple-data="{{mapResourcePointCtrl.treeParams.isSimpleData}}"
+                           show-icon="{{mapResourcePointCtrl.treeParams.isShowIcon}}"
+                           show-line="{{mapResourcePointCtrl.treeParams.isShowLine}}"
+                           default-no-data-msg="{{mapResourcePointCtrl.treeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{mapResourcePointCtrl.treeParams.searchNoDataMsg}}"
+                           on-click="mapResourcePointCtrl.treeParams.onClick(event, treeId, treeNode)"
+                           before-mouse-down="mapResourcePointCtrl.treeParams.beforeMouseDown(treeId, treeNode)"
+                           add-diy-dom="mapResourcePointCtrl.treeParams.addDiyDom(treeId, treeNode)"
+                           on-dbl-click="mapResourcePointCtrl.treeParams.onDblClick(event,treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           show-locate-status="true"
+                           edit-enable="{{mapResourcePointCtrl.treeParams.editEnable}}"
+                           is-prev="false"
+                           is-next="false"
+                           is-inner="false"
+                           is-copy="false"
+                           is-move="false"
+                           default-expand-level="0"
+                ></util-tree>
+            </div>
+        </div>
+    </div>
+    <div class="map-config-map"  id="MapResourcePointMap"></div>
+</div>

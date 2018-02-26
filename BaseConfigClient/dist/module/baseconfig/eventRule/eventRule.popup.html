@@ -1,0 +1,224 @@
+<div class="task-case" ng-controller="EventRulePopupController as EventRulePopupCtrl">
+    <div class="new-task">
+        <form class="new-task-form" ng-submit="EventRulePopupCtrl.newTaskSubmit()">
+            <div class="new-task-form-con" style="padding:0;height: auto">
+                <div class="new-task-con" style="padding:0;height: auto">
+                    <div class="left-form" style="margin-bottom: 10px;float: left;">
+                        <div class="pdp-form" style="padding:5px 0;">
+                            <span class="form-title"><i class="c-font-red">*</i>预案名称</span>
+                            <input valid-nonempty="{{'预案名称'|translate}}" style="width: 280px" type="text" ng-model="EventRulePopupCtrl.eventRule.Name"/>
+
+                        </div>
+                        <div class="pdp-form pdp-form-select" style="padding:5px 0;">
+                            <div class="form-title">应用预案</div>
+                            <select style="width: 280px"
+                                    ng-change="EventRulePopupCtrl.insetTplEventRule(EventRulePopupCtrl.tplEventRuleId)"
+                                    ng-model="EventRulePopupCtrl.tplEventRuleId"
+                                    ng-options="item.ID as item.Name for item in EventRulePopupCtrl.eventRuleList">
+                                <option value="">请选择应用其他模版</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="right-form" style="margin-bottom: 10px;float: left;">
+                        <div class="pdp-form pdp-form-textarea" style="padding:5px 0;">
+                            <span class="form-title">描述</span>
+                            <span style="left:64px" class="text-area-layer">
+                                     <textarea style="width: 280px"
+                                      ng-model="EventRulePopupCtrl.eventRule.Description"></textarea>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-radio" style="height: 585px;padding:0;border-top:1px solid #e4e4e4;clear: both"
+                         ng-scrollbars>
+                        <div class="radio-group"
+                             ng-init="itemSendClientAlarm= EventRulePopupCtrl.actionTypeMap.SendAlarmToClient">
+                            <div class="radio-item">
+                                <switch-button class="m-switch-button" name="itemSendClientAlarm.isCheck"
+                                               ng-model="itemSendClientAlarm.isCheck"
+                                               change-status="EventRulePopupCtrl.onChangeActionType(itemSendClientAlarm)"></switch-button>
+                                <div class="radio-item-name">客户端接受报警</div>
+                                <div class="radio-more" ng-class="{'active':itemSendClientAlarm.isShrink}"
+                                     ng-click="EventRulePopupCtrl.onChangeShrinkStatus(itemSendClientAlarm)"></div>
+                            </div>
+                            <div class="radio-tree-box" ng-class="{'hide-animation':!itemSendClientAlarm.isShrink}">
+                                <div class="tree-box-left">
+                                    <div class="tree-box-title">
+                                        <div class="name">选择用户</div>
+                                    </div>
+                                    <div class="tree-con"
+                                         ng-if="EventRulePopupCtrl.sendAlarmPersonTreeParams.treeDatas.length>0"
+                                         ng-scrollbars>
+                                        <div class="tree-search">
+                                            <input type="text" ng-model="EventRulePopupCtrl.treeSearchInput"
+                                                   placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                                                   ng-keyup="EventRulePopupCtrl.treeSearchInputKeyUp($event)"/>
+                                            <i class="icon-search"
+                                               ng-click="EventRulePopupCtrl.treeSearchInputFunc()"></i>
+                                        </div>
+                                        <util-tree tree-id="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.treeId}}"
+                                                   tree-init-complete="EventRulePopupCtrl.sendAlarmPersonTreeParams.treeInitComplete(treeId)"
+                                                   tree-datas="EventRulePopupCtrl.sendAlarmPersonTreeParams.treeDatas"
+
+                                                   check-enable="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.checkEnable}}"
+
+                                                   single-select="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.isSingleSelect}}"
+                                                   is-simple-data="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.isSimpleData}}"
+                                                   show-icon="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.isShowIcon}}"
+                                                   show-line="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.isShowLine}}"
+                                                   default-no-data-msg="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.defaultNoDataMsg}}"
+                                                   search-no-data-msg="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.searchNoDataMsg}}"
+
+                                                   on-click="EventRulePopupCtrl.sendAlarmPersonTreeParams.onClick(event, treeId, treeNode)"
+                                                   on-check="EventRulePopupCtrl.sendAlarmPersonTreeParams.onCheck(event, treeId, treeNode)"
+
+                                                   tree-id-key="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.treeIdKey}}"
+                                                   tree-pid-key="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.treePidKey}}"
+                                                   tree-key-name="{{EventRulePopupCtrl.sendAlarmPersonTreeParams.treeKeyName}}"
+                                                   default-expand-level="0"
+                                        ></util-tree>
+                                    </div>
+                                    <div class="tree-con">
+                                        <div ng-show="EventRulePopupCtrl.sendAlarmPersonTreeParams.treeNoData"
+                                             class="tree-con-no-data" translate="暂无数据"></div>
+                                    </div>
+                                </div>
+                                <div class="tree-box-right">
+                                    <div class="tree-box-title">
+                                        <div class="name">
+                                            {{"已选（"+EventRulePopupCtrl.sendAlarmToClientPersonSelectList.length+"）"}}
+                                        </div>
+                                        <div class="clera-tree-datas"
+                                             ng-click="EventRulePopupCtrl.removeAllSelectedPerson(EventRulePopupCtrl.sendAlarmPersonTreeId,EventRulePopupCtrl.sendAlarmToClientPersonSelectList.length)">
+                                            清空所有
+                                        </div>
+                                    </div>
+                                    <div class="tree-con" ng-scrollbars>
+                                        <ul class="tree-selected-box-content">
+                                            <li class="selected-list u-button-blue-2 f-fl f-cfb"
+                                                ng-repeat="selectedItem in EventRulePopupCtrl.sendAlarmToClientPersonSelectList">
+                                                <span ng-bind="selectedItem.Name"></span>
+                                                <i class="icon-btn i-btn-close"
+                                                   ng-click="EventRulePopupCtrl.removeSelectedPerson(EventRulePopupCtrl.sendAlarmPersonTreeId,selectedItem)"
+                                                ></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="radio-group" ng-init="itemSendMsgAlarm= EventRulePopupCtrl.actionTypeMap.SendSms">
+                            <div class="radio-item">
+                                <switch-button class="m-switch-button" name="enabled"
+                                               ng-model="itemSendMsgAlarm.isCheck"
+                                               change-status="EventRulePopupCtrl.onChangeActionType(itemSendMsgAlarm)"></switch-button>
+                                <div class="radio-item-name">发送短信</div>
+                                <div class="radio-more" ng-class="{'active':itemSendMsgAlarm.isShrink}"
+                                     ng-click="EventRulePopupCtrl.onChangeShrinkStatus(itemSendMsgAlarm)"></div>
+                            </div>
+                            <div class="radio-tree-box" ng-class="{'hide-animation':!itemSendMsgAlarm.isShrink}">
+
+                                <div class="pdp-form" style="padding:5px 0;">
+                                    <span class="form-title"><i class="c-font-red">*</i>短信内容</span>
+                                    <input type="text" ng-model="EventRulePopupCtrl.eventRule.EventRuleAction.SendSms.Text"/>
+                                </div>
+                                <div class="tree-box-left">
+                                    <div class="tree-box-title">
+                                        <div class="name">选择用户</div>
+                                    </div>
+                                    <div class="tree-con"
+                                         ng-if="EventRulePopupCtrl.sendAlarmMsgTreeParams.treeDatas.length>0"
+                                         ng-scrollbars>
+
+                                        <div class="tree-search">
+                                            <input type="text" ng-model="EventRulePopupCtrl.treeSearchInput"
+                                                   placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                                                   ng-keyup="EventRulePopupCtrl.treeSearchInputKeyUp($event)"/>
+                                            <i class="icon-search"
+                                               ng-click="EventRulePopupCtrl.treeSearchInputFunc()"></i>
+                                        </div>
+
+                                        <util-tree tree-id="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.treeId}}"
+                                                   tree-init-complete="EventRulePopupCtrl.sendAlarmMsgTreeParams.treeInitComplete(treeId)"
+                                                   tree-datas="EventRulePopupCtrl.sendAlarmMsgTreeParams.treeDatas"
+
+                                                   check-enable="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.checkEnable}}"
+
+                                                   single-select="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.isSingleSelect}}"
+                                                   is-simple-data="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.isSimpleData}}"
+                                                   show-icon="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.isShowIcon}}"
+                                                   show-line="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.isShowLine}}"
+                                                   default-no-data-msg="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.defaultNoDataMsg}}"
+                                                   search-no-data-msg="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.searchNoDataMsg}}"
+
+                                                   on-click="EventRulePopupCtrl.sendAlarmMsgTreeParams.onClick(event, treeId, treeNode)"
+                                                   on-check="EventRulePopupCtrl.sendAlarmMsgTreeParams.onCheck(event, treeId, treeNode)"
+
+                                                   tree-id-key="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.treeIdKey}}"
+                                                   tree-pid-key="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.treePidKey}}"
+                                                   tree-key-name="{{EventRulePopupCtrl.sendAlarmMsgTreeParams.treeKeyName}}"
+                                                   default-expand-level="0"
+                                        ></util-tree>
+                                    </div>
+                                    <div class="tree-con">
+                                        <div ng-show="EventRulePopupCtrl.sendAlarmMsgTreeParams.treeNoData"
+                                             class="tree-con-no-data" translate="暂无数据"></div>
+                                    </div>
+                                </div>
+                                <div class="tree-box-right">
+                                    <div class="tree-box-title">
+                                        <div class="name">
+                                            {{"已选（"+EventRulePopupCtrl.sendMsgPersonSelectList.length+"）"}}
+                                        </div>
+                                        <div class="clera-tree-datas"
+                                             ng-click="EventRulePopupCtrl.removeAllSelectedPerson(EventRulePopupCtrl.sendAlarmMsgTreeId,EventRulePopupCtrl.sendMsgPersonSelectList.length)">
+                                            清空所有
+                                        </div>
+                                    </div>
+                                    <div class="tree-con" ng-scrollbars>
+                                        <ul class="tree-selected-box-content">
+                                            <li class="selected-list u-button-blue-2 f-fl f-cfb"
+                                                ng-repeat="selectedItem in EventRulePopupCtrl.sendMsgPersonSelectList">
+                                                <span ng-bind="selectedItem.Name"></span>
+                                                <i class="icon-btn i-btn-close"
+                                                   ng-click="EventRulePopupCtrl.removeSelectedPerson(EventRulePopupCtrl.sendAlarmMsgTreeId,selectedItem)"
+                                                ></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <switch-button ng-model="EventRulePopupCtrl.actionTypeMap.CommandSoundLightAlarm.isCheck" class="m-switch-button" name="enabled"></switch-button>
+                                <div class="radio-item-name">声光报警</div>
+                                <div class="radio-more"></div>
+                            </div>
+                        </div>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <switch-button ng-model="EventRulePopupCtrl.actionTypeMap.SendAlarmToMsgServer.isCheck" class="m-switch-button" name="enabled"></switch-button>
+                                <div class="radio-item-name">消息推送服务</div>
+                            </div>
+                        </div>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <switch-button ng-model="EventRulePopupCtrl.actionTypeMap.SendAlarmToWebChat.isCheck" class="m-switch-button" name="enabled"></switch-button>
+                                <div class="radio-item-name">微信推送</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-task-footer"
+                     style="position: static;text-align:right;border-top:1px solid #e4e4e4;line-height: 50px;">
+                    <button style="float: none" class="form-btn" ng-click="EventRulePopupCtrl.addOrUpdateEventRule()">
+                        确定
+                    </button>
+                    <button style="float: none" class="form-btn cancel" ng-click="EventRulePopupCtrl.cancelPopup()">取消
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

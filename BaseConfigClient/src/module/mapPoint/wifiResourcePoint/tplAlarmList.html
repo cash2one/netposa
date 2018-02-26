@@ -1,0 +1,55 @@
+<div ng-controller="alarmListController as alarmListCtrl" class="alarm-list wifi-pop-up">
+    <!--<div class="title">-->
+    <!--<div class="name">历史报警信息</div>-->
+    <!--<div class="close" ng-click="alarmListCtrl.closePopup()"></div>-->
+    <!--</div>-->
+    <div class="con">
+        <div class="top">
+            <div class="time-area">
+                <input date-picker class="start-time" ng-model="alarmListCtrl.startTime" placeholder="开始时间" clearfun="FrequencyAppearCrtl.changeTime(value)" okfun="FrequencyAppearCrtl.changeTime(value)" choosefun="FrequencyAppearCrtl.changeTime(value)" init-add-type="month"
+                    init-add-val="1" is-clear="false" />
+                <span>-</span>
+                <input date-picker class="end-time" ng-model="alarmListCtrl.endTime" placeholder="结束时间" clearfun="FrequencyAppearCrtl.changeTime(value)" okfun="FrequencyAppearCrtl.changeTime(value)" choosefun="FrequencyAppearCrtl.changeTime(value)" init-add-type="month"
+                    init-add-val="1" is-clear="false" />
+            </div>
+            <div class="searchbtn" ng-click="alarmListCtrl.changeTime()"></div>
+        </div>
+        <div class="table">
+            <div class="table-header">
+                <div class="tr">
+                    <div class="td1 td">MAC地址</div>
+                    <div class="td2 td">报警时间</div>
+                    <div class="td3 td">报警设备</div>
+                    <div class="td4 td">布控人</div>
+                    <div class="td5 td">状态</div>
+                    <div class="td6 td">操作</div>
+                </div>
+            </div>
+            <div class="table-con">
+                <div class="tr" ng-click="alarmListCtrl.lookCollectDetail($index)" ng-repeat="item in alarmListCtrl.resultParams.data">
+                    <div class="td1 td">{{item.AlarmLog.Notes}}</div>
+                    <div class="td2 td">{{item.AlarmLog.AlarmTime}}</div>
+                    <div class="td3 td">{{}}</div>
+                    <div class="td4 td">{{}}</div>
+                    <div class="td5 td s1">{{}}</div>
+                    <div class="td6 td">
+                        <div class="collect" ng-class="{'active':item.collectStatus}" ng-click="alarmListCtrl.clickCollect(item);$event.stopPropagation();"></div>
+                        <div class="analyze"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="footer-con">
+            <div class="total">
+                共
+                <span>{{alarmListCtrl.MockWifiAlarmList.length}}</span> 条记录
+            </div>
+            <div class="page">
+                <util-paging page-params="alarmListCtrl.resultParams" prev-page="alarmListCtrl.changePage(num)" next-page="alarmListCtrl.changePage(num)" go-page="alarmListCtrl.changePage(num)" hide-size="true"></util-paging>
+            </div>
+        </div>
+    </div>
+</div>

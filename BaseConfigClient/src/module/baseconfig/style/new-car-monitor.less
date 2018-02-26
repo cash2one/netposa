@@ -1,0 +1,316 @@
+
+.m-car-monitor {
+  padding: 20px;
+  height: 100%;
+  .car-monitor-route {
+    li {
+      font-size: 14px;
+    }
+  }
+  .car-monitor{
+    height: 100%;
+    background: #fff;
+  }
+}
+
+.m-car-monitor .car-monitor-content {
+  background: #fff;
+  border-radius: 2px;
+  .content-center {
+    &:after {
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+  }
+  .content-head {
+    font-weight: bold;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #e4e4e4;
+    clear: both;
+  }
+  .car-monitor-left-form {
+    float: left;
+  }
+  .car-monitor-right-form {
+    padding-top:10px;
+    padding-left:40px;
+    float: left;
+  }
+  .upload-car{
+    width: 300px;
+    border:1px solid #e4e4e4;
+    .upload-img{
+      height: 222px;
+      width: 100%;
+      background: #fff url("../../../images/baseconfig/car-photo-default.png") no-repeat center center;
+    }
+    .upload-btn{
+      width: 100%;
+      height: 42px;
+      border-top:1px solid #e4e4e4;
+      text-align: center;
+      line-height: 42px;
+
+      position: relative;
+      input{
+        position: absolute;
+        left:0;
+        top:0;
+        width: 100%;
+        height:100%;
+        opacity: 0;
+
+      }
+    }
+  }
+  .car-monitor-form {
+    padding: 5px 20px;
+    position: relative;
+    .form-title {
+      display: inline-block;
+      width: 60px;
+      text-align: right;
+      padding-right: 5px;
+    }
+    input, textarea, select {
+      width: 330px;
+      height: 30px;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+      text-decoration: none;
+      color: #000000;
+      text-align: left;
+      padding: 4px;
+      outline-style: none;
+      border: 1px solid #e4e4e4;
+      &:focus {
+        border-color: #3fa9fe
+      }
+    }
+  }
+
+  .car-monitor-form.car-monitor-form-time-picker {
+    input {
+      width: 160px;
+    }
+    i {
+      display: inline-block;
+      width: 10px;
+      text-align: center;
+      margin-right: -4px;
+    }
+  }
+  .car-monitor-form.car-monitor-form-select {
+
+    select {
+      width: 330px;
+    }
+
+  }
+  .car-monitor-form.car-monitor-form-radio {
+    height: 88px;
+    input[type=radio] {
+      width: 12px;
+      height: 12px;
+      position: relative;
+      top: 1px;
+    }
+    .radio-group {
+      position: absolute;
+      left: 83px;
+      top: 2px;
+      label {
+        font-weight: normal;
+      }
+      span {
+        display: block;
+      }
+    }
+
+  }
+  .car-monitor-form.car-monitor-form-radio-input {
+    height: 38px;
+    .radio-group.radio-group-and-input {
+      top: 3px;
+      span {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        input[type=text] {
+          width: 163px;
+        }
+      }
+    }
+  }
+  .car-monitor-form.car-monitor-form-textarea {
+    height: 88px;
+    .text-area-layer {
+      position: absolute;
+      left: 83px;
+      top: 4px;
+    }
+    textarea {
+      height: 70px;
+    }
+  }
+  .car-monitor-form.car-monitor-form-tree {
+    position: relative;
+    height: 460px;
+    overflow: visible;
+  }
+  .open-person-btn {
+    background: #fff;
+    border: 1px solid #8FC31F;
+    padding: 5px 6px;
+    border-radius: 2px;
+    margin-left: 5px;
+    box-shadow: 2px 2px 10px rgba(143, 195, 31, 0.2);
+  }
+  .add-tpl {
+    padding: 7px 6px 6px 24px;
+    background: #fff url("../../../images/common/add-greeen.png") no-repeat 6px center;
+    border: 1px solid #8FC31F;
+    margin-left: 10px;
+    box-shadow: 2px 2px 10px rgba(143, 195, 31, 0.2);
+  }
+  .tree-layer {
+    width: 100%;
+    height: 460px;
+    overflow: hidden;
+    position: absolute;
+    padding-left: 82px;
+    left: 0;
+    top: 5px;
+
+  }
+  .config-ocx {
+    float: left;
+    width: 560px;
+    height: 420px;
+    position: relative;
+  }
+  .tree-content {
+    width: 248px;
+    height: 100%;
+    border: 1px solid #e4e4e4;
+    float: left;
+    margin-right: 20px;
+    &.tree-with-ocx {
+      margin-right: 0;
+      border-right: none;
+    }
+  }
+  .tree-title {
+    background: #EAF3FE;
+    padding: 10px 20px;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 1px solid #e4e4e4;
+    position: relative;
+    .config-camera {
+      border: none;
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      padding: 4px 6px 5px 26px;
+      color: #fff;
+      background: #8FC31F url("../../../images/baseconfig/camera-config-car-monite.png") no-repeat 5px center;
+    }
+  }
+  .tree-data {
+    width: 248px;
+    height: 376px;
+    overflow: auto;
+
+  }
+  .camera-tree-serach-input {
+    width: 100%;
+    padding: 10px 20px;
+    position: relative;
+    input {
+      width: 100%;
+      height: 30px;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+      text-decoration: none;
+      color: #000000;
+      text-align: left;
+      padding: 4px;
+      outline-style: none;
+      border: 1px solid #e4e4e4;
+      &:focus {
+        border-color: #3fa9fe
+      }
+    }
+    .u-input-search {
+      right: 30px;
+      top: 16px;
+    }
+  }
+  .camera-select-list-name {
+    width: 328px;
+    height: 100%;
+    float: left;
+    .tree-title {
+      width: 100%;
+      &:after {
+        content: ' ';
+        display: block;
+        clear: both;
+      }
+      font-weight: normal;
+    }
+    .select-num {
+      float: left;
+      i {
+        color: #30AAFF;
+        font-weight: bold;
+      }
+    }
+    .clear-select {
+      float: right;
+      color: #30AAFF;
+      cursor: pointer;
+    }
+  }
+  .select-camera-layer {
+    height: 424px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
+    span {
+      float: left;
+      background: #F1F7FF;
+      border: 1px solid #83B8FF;
+      border-radius: 4px;
+      padding: 6px 6px 5px;
+      color: #368CFF;
+      margin: 0 10px 10px 0;
+      .i-btn-close {
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        margin-left: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+  .form-layer {
+    position: absolute;
+    padding-right: 10px;
+    line-height: 40px;
+    height: 40px;
+    text-align: right;
+    border: 1px solid #e4e4e4;
+    border-top: none;
+    width: 100%;
+    bottom: -40px;
+    left: 0;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "note": "/** 编码规则**/",
+  "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+  "note": "/***************************************** 基础控件  start ****************************************************/",
+
+  "note": "/*******公共操作*********/",
+  "DP_CONFIG_UNIT_01": "Administrative unit",
+  "DP_CONFIG_UNIT_02": "modify",
+  "DP_CONFIG_UNIT_03": "Area name",
+  "DP_CONFIG_UNIT_04": "Area code",
+  "DP_CONFIG_UNIT_05": "company name",
+  "DP_CONFIG_UNIT_06": "Unit code",
+  "DP_CONFIG_UNIT_07": "Add units"  
+}

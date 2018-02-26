@@ -1,0 +1,94 @@
+@color_1: #333;
+@color_2: #45a2ff;
+@color_3: #666;
+@color_4: #999;
+@border_bottom_color_1: #45a2ff;
+
+/*时间区段选择*/
+/*操作日志*/
+/*运行日志*/
+.m-operateLog-container {
+    width: 98%;
+    background: #fff;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    .operateLog-info-top {
+        padding-left: 15px;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+        border-radius: 5px 5px 0 0;
+    }
+    .info-top-btn {
+        padding: 15px;
+        border-bottom: 2px solid transparent;
+        color: @color_1;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 15px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .info-top-btn-selected {
+        color: @color_2;
+        border-bottom-color: @border_bottom_color_1;
+    }
+    .operateLog-info-bottom {
+        padding: 15px;
+        background: #fff;
+    }
+    .info-bottom-txt {
+        line-height: 30px;
+        color: @color_3;
+    }
+    .info-bottom-dateSelect {
+        width: 160px;
+        padding-right: 28px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        color: @color_4;
+    }
+    .info-bottom-dateIcon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 28px;
+        height: 100%;
+    }
+    .operateLog-bottomFixed {
+        top: 48px;
+    }
+    .info-top-dateSelect {
+        width: 160px;
+        padding-right: 28px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        color: @color_4;
+        background: url(../../../images/common/riqi.png) 134px center no-repeat;
+        background-size: 20px 20px;
+    }
+    .table-container {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+    }
+    .table-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 70px;
+        overflow: auto;
+    }
+    .table-paging {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}

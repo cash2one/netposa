@@ -1,0 +1,89 @@
+<div ng-controller="efResourcePointMoreController as efResourcePointMoreCtrl" class="pop-up-common ef-resource-more-pop-up" style="z-index:999">
+    <!-- <div class="title">
+        <div class="name">历史信息</div>
+        <div class="close" ng-click="efResourcePointMoreCtrl.closePopup()"></div>
+    </div> -->
+    <div class="con">
+        <div class="top">
+            <div class="switch-ul">
+                <div class="switch-li" ng-class="{'active': efResourcePointMoreCtrl.switchStatus}" ng-click="efResourcePointMoreCtrl.switchChange(true)">流量</div>
+                <div class="switch-li" ng-class="{'active': !efResourcePointMoreCtrl.switchStatus}" ng-click="efResourcePointMoreCtrl.switchChange(false)">告警</div>
+            </div>
+            <div class="time-area">
+                <input date-picker class="start-time" ng-model="efResourcePointMoreCtrl.startTime" placeholder="开始时间" init-add-type="month" init-add-val="1" is-clear="false" />
+                <span>-</span>
+                <input date-picker class="end-time" ng-model="efResourcePointMoreCtrl.endTime" placeholder="结束时间" init-add-type="month" init-add-val="1" is-clear="false" />
+            </div>
+            <div class="searchbtns" ng-click="efResourcePointMoreCtrl.changeTime()"></div>
+        </div>
+        <!-- 流量 -->
+        <div class="table" ng-show="efResourcePointMoreCtrl.switchStatus">
+            <div class="table-header">
+                <div class="tr">
+                    <div class="td imsi">IMSI</div>
+                    <div class="td imei">IMEI</div>
+                    <div class="td time">采集时间</div>
+                    <div class="td address">采集地址</div>
+                    <div class="td operation">操作</div>
+                </div>
+            </div>
+            <div class="table-con">
+                <div class="tr" ng-click="efResourcePointMoreCtrl.lookCollectDetail($index)" ng-repeat="item in efResourcePointMoreCtrl.renderDataList">
+                    <div class="td imsi">{{item.eFenceLog.IMSI}}</div>
+                    <div class="td imei">{{item.eFenceLog.IMEI}}</div>
+                    <div class="td time">{{item.eFenceLog.AcqTime}}</div>
+                    <div class="td address">{{efResourcePointMoreCtrl.name}}</div>
+                    <div class="td operation">
+                        <div class="collect" ng-class="{'active':item.collectStatus}" ng-click="efResourcePointMoreCtrl.clickCollect(item);$event.stopPropagation();"></div>
+                        <div class="analyze"></div>
+                        <div class="surveillance"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 告警 -->
+        <div class="table" ng-show="!efResourcePointMoreCtrl.switchStatus">
+            <div class="table-header">
+
+                <div class="tr">
+                    <div class="td imsi">IMSI</div>
+                    <div class="td imei">IMEI</div>
+                    <div class="td alarm">报警设备</div>
+                    <div class="td monitor-people">布控人</div>
+                    <div class="td status">状态</div>
+                    <div class="td operation1">操作</div>
+                </div>
+            </div>
+            <div class="table-con">
+                <div class="tr" ng-click="efResourcePointMoreCtrl.lookAlarmDetail($index)" ng-repeat="item in efResourcePointMoreCtrl.renderAlarmdataList">
+                    <div class="td imsi">{{item.AlarmLog.IMSI}}</div>
+                    <div class="td imei">{{item.AlarmLog.IMEI}}</div>
+                    <div class="td alarm">{{efResourcePointMoreCtrl.name}}</div>
+                    <div class="td monitor-people">{{item.AlarmLog.taskCreatePerson}}</div>
+                    <div class="td status s1">{{}}</div>
+                    <div class="td operation1">
+                        <div class="collect" ng-class="{'active':item.collectStatus}" ng-click="efResourcePointMoreCtrl.clickCollect(item);$event.stopPropagation();"></div>
+                        <div class="analyze"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="footer-con" ng-show="efResourcePointMoreCtrl.switchStatus">
+            <div class="total">
+                共<span>{{efResourcePointMoreCtrl.dataListTotal}}</span>条记录
+            </div>
+            <util-paging page-params="efResourcePointMoreCtrl.pageParams" prev-page="efResourcePointMoreCtrl.changePage(num)" next-page="efResourcePointMoreCtrl.changePage(num)" go-page="efResourcePointMoreCtrl.changePage(num)" hide-size="efResourcePointMoreCtrl.hideSize"
+                hide-gopage="efResourcePointMoreCtrl.hideGopage"></util-paging>
+        </div>
+        <div class="footer-con" ng-show="!efResourcePointMoreCtrl.switchStatus">
+            <div class="total">
+                共<span>{{efResourcePointCtrl.alarmdataListTotal}}</span>条记录
+            </div>
+            <util-paging page-params="efResourcePointMoreCtrl.pageParamsAlarm" prev-page="efResourcePointMoreCtrl.changePage(num)" next-page="efResourcePointMoreCtrl.changePage(num)" go-page="efResourcePointMoreCtrl.changePage(num)" hide-size="efResourcePointMoreCtrl.hideSize"
+                hide-gopage="efResourcePointMoreCtrl.hideGopage"></util-paging>
+        </div>
+    </div>
+</div>

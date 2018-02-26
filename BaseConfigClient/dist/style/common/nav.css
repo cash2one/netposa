@@ -1,0 +1,123 @@
+.u-nav-container{
+
+}
+.u-nav-control-btn{
+    height: 38px;
+    line-height: 38px;
+    background-color: #383e4c;
+    cursor: pointer;
+    background: url("../../images/common/spread.png") no-repeat;
+    background-position: 10px center;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.u-re-btn{
+    background: url("../../images/common/retract.png") no-repeat;
+    background-position: 10px center;
+    -webkit-transition: all .1s;
+    transition: all .1s;
+}
+.u-nav-group{
+    
+    position: relative;
+    color: #fff;
+}
+.u-nav-header{
+    height: 40px;
+    line-height: 40px;
+    background-color: #42485b;
+    cursor: pointer;
+}
+.u-nav-header .header-icon-cntr{
+    float: left;
+    width: 40px;
+    height: 40px;
+    padding: 16px;
+}
+.u-nav-header .header-icon{
+    float: left;
+    vertical-align: middle;
+    border-style: solid;
+    transition: -webkit-transform 0.12s;
+    transition: transform 0.12s;
+    transition: transform 0.12s, -webkit-transform 0.12s;
+    -o-transition: -o-transform 0.12s;
+    -ms-transition: -ms-transform 0.12s;
+    -moz-transition: -moz-transform 0.12s;
+    -webkit-transition: -webkit-transform 0.12s;
+}
+.u-nav-header .header-icon.z-show{
+    border-width: 4px 4px 0 4px;
+    border-color: rgba(255,255,255,1) transparent transparent;
+}
+.u-nav-header .header-icon.z-hide{
+    border-width: 4px 0px 4px 4px;
+    border-color: transparent rgba(255,255,255,1) transparent rgba(255,255,255,1);
+}
+
+.u-nav-header .header-text{
+    float: left;
+    width: 120px;
+    color: #fff;
+    font-size: 12px;
+}
+.u-nav-header .header-text.z-no-text{
+    display:none;
+}
+.u-nav-content{
+    display: block;
+    text-align: center;
+}
+.u-nav-content .content{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    background-color: #313542;
+    color: #fff;
+    /*padding-left:10px;*/
+}
+.u-nav-content .content .content-icon-cntr{
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+.u-nav-content .content .content-icon{
+    margin: 11px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.u-nav-content .content .content-text{
+    float: left;
+    width: 120px;
+    text-align: left;
+    font-size: 12px;
+}
+.u-nav-content .content:hover
+{
+    background-color: #3088df;
+}
+
+.u-nav-content .content.z-active{
+    background-color: #3088df;
+}
+
+
+/*ani and nav hide*/
+.u-nav-content.z-content-hidden{
+    height: 0;
+    visibility: collapse;
+    overflow: hidden;
+}
+.u-nav-content{
+    -o-transition: all 0.12s ease, 0.12s ease;
+    -ms-transition: all 0.12s ease, 0.12s ease;
+    -moz-transition: all 0.12s ease, 0.12s ease;
+    -webkit-transition: height 0.12s ease, 0.12s ease;
+}
+
+.u-nav-header .header-text.z-no-text{
+    display: none;
+}
+.u-nav-content .content-text.z-no-text{
+    display: none;
+}

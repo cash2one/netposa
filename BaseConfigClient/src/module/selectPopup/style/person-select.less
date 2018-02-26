@@ -1,0 +1,106 @@
+.person-popu-layer{
+  width: 578px;
+  .submit-btn{
+    height: 50px;
+    padding:10px;
+  }
+}
+.person-layer {
+  width: 100%;
+  height: 460px;
+  overflow: hidden;
+  border: 1px solid #e4e4e4;
+}
+.person-tree{
+  width:248px ;
+  height: 100%;
+  border-right:1px solid #e4e4e4;
+  float: left;
+}
+.tree-title{
+  background: #EAF3FE;
+  padding:10px 20px;
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 1px solid #e4e4e4;
+}
+.tree-data{
+  width: 248px;
+  height: 408px;
+  overflow: auto;
+}
+.person-tree-serach-input{
+  width: 100%;
+  padding:10px 20px;
+  position: relative;
+  input{
+    width: 100%;
+    height: 30px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    text-decoration: none;
+    color: #000000;
+    text-align: left;
+    padding: 4px;
+    outline-style: none;
+    border: 1px solid #e4e4e4;
+    &:focus{
+      border-color:#3fa9fe
+    }
+  }
+  .u-input-search{
+    right:30px;
+    top:16px;
+  }
+}
+.person-select-list-name{
+  width: 328px;
+  height: 100%;
+  float: left;
+  .tree-title{
+    width: 100%;
+    &:after{
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+    font-weight: normal;
+  }
+  .select-num{
+    float: left;
+    i{
+      color: #30AAFF;
+      font-weight: bold;
+    }
+  }
+  .clear-select{
+    float: right;
+    color: #30AAFF;
+    cursor: pointer;
+  }
+}
+.select-person-layer{
+  height: 424px;
+  width: 100%;
+  overflow-x:hidden ;
+  overflow-y: auto;
+  padding:20px;
+  span{
+    float: left;
+    background: #F1F7FF;
+    border:1px solid #83B8FF;
+    border-radius: 4px;
+    padding:6px 6px 5px;
+    color:#368CFF;
+    margin: 0 10px 10px 0;
+    .i-btn-close{
+      display: inline-block;
+      position: relative;
+      top:2px;
+      margin-left: 4px;
+      cursor: pointer;
+    }
+  }
+
+}

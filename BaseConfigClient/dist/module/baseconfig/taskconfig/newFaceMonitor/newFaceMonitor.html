@@ -1,0 +1,329 @@
+<div class="m-face-monitor f-cfb">
+    <div class="face-monitor-route">
+        <ol class="m-route f-cfb">
+            <li translate="DP_VIDEOSTRUCTURE_13"></li>
+            <li class="route-separate">/</li>
+            <li translate="布控任务"></li>
+            <li class="route-separate">/</li>
+            <li translate="新建布控任务"></li>
+
+        </ol>
+    </div>
+    <div class="face-monitor">
+        <div class="face-monitor-content">
+            <div class="content-head">
+                基本信息
+            </div>
+            <div class="content-center" style=" padding-top:8px;">
+
+                <div class="face-monitor-left-form">
+                    <div class="face-monitor-form">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'任务名称'|translate}}</span>
+                        <input valid-nonempty="{{'任务名称'|translate}}"
+                               placeholder="{{'请填写任务名称' | translate}}"
+                               type="text"
+                               ng-model="newFaceMonitorCtrl.taskModel.Name">
+                    </div>
+                    <div class="face-monitor-form face-monitor-form-radio">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'权限设置'|translate}}</span>
+                        <div class="radio-group">
+                            <span>
+                                <input id="everybody" value="EveryBody"
+                                       ng-model="newFaceMonitorCtrl.taskModel.AuthStatus" name="authUser" type="radio">
+                                <label for="everybody"> 所有人可见 </label>
+                            </span>
+                            <span>
+                                <input id="self" value="Self" ng-model="newFaceMonitorCtrl.taskModel.AuthStatus"
+                                       name="authUser" type="radio">
+                                <label for="self">仅自己可见</label>
+                            </span>
+                            <span>
+                                <input id="partbody" value="Part" ng-model="newFaceMonitorCtrl.taskModel.AuthStatus"
+                                       name="authUser" type="radio">
+                                <label for="partbody"> 部分用户可见 </label>
+                                <button ng-show="newFaceMonitorCtrl.taskModel.AuthStatus==='Part'"
+                                        class="open-person-btn"
+                                        ng-click="newFaceMonitorCtrl.openPersonSelectModel()"
+                                        translate="DP_VIDEOSTRUCTURE_20"></button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="face-monitor-right-form">
+                    <div class="face-monitor-form face-monitor-form-time-picker">
+                        <span class="form-title">{{'有效时间'|translate}}</span>
+                        <span>
+                                <input type="text"
+                                       name="newTaskStartTime"
+                                       ng-model="newFaceMonitorCtrl.taskModel.ValidTimeStart"
+                                       date-picker
+                                       placeholder="请选择开始时间"
+                                       show-init="false"
+                                /><i>-</i>
+                                <input type="text"
+                                       name="newTaskEndTime"
+                                       ng-model="newFaceMonitorCtrl.taskModel.ValidTimeEnd"
+                                       date-picker
+                                       placeholder="请选择结束时间"
+                                       show-init="false"
+                                />
+                            </span>
+                    </div>
+                    <div class="face-monitor-form face-monitor-form-textarea">
+                        <span class="form-title">{{'描述'|translate}}</span>
+                        <span class="text-area-layer">
+                            <textarea
+                                    placeholder="请输入任务描述"
+                                    ng-model="newFaceMonitorCtrl.taskModel.Description"
+                                    class="taskForm-input1"></textarea>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-head">
+                选择设备
+            </div>
+            <div class="content-center" style=" padding-top:12px;">
+                <div class="face-monitor-left-form">
+                    <div class="face-monitor-form face-monitor-form-radio face-monitor-form-radio-input" style="padding-top:10px">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'报警规则'|translate}}</span>
+                        <div class="radio-group radio-group-and-input">
+                            <span>
+                                <input id="highalarm" ng-change="newFaceMonitorCtrl.changeThresholdType('Hight')"
+                                       value="Hight" ng-model="newFaceMonitorCtrl.thresholdType" name="ThresholdType"
+                                       type="radio">
+                                <label for="highalarm"> 高阈值 </label>
+                                <input type="text" ng-disabled="newFaceMonitorCtrl.thresholdType != 'Hight'"
+                                       placeholder="请输入高阈值" ng-model="newFaceMonitorCtrl.taskModel.HighThreshold"/>
+                            </span>
+                            <span>
+                                <input id="lowalarm" value="Low"
+                                       ng-change="newFaceMonitorCtrl.changeThresholdType('Low')"
+                                       ng-model="newFaceMonitorCtrl.thresholdType" name="ThresholdType" type="radio">
+                                <label for="lowalarm">低阈值</label>
+                                <input type="text" ng-disabled="newFaceMonitorCtrl.thresholdType != 'Low'"
+                                       placeholder="请输入低阈值" ng-model="newFaceMonitorCtrl.taskModel.LowThreshold"/>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="face-monitor-form">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'联动策略'|translate}}</span>
+                        <input valid-nonempty="{{'联动策略'|translate}}"
+                               placeholder="{{'请选择联动策略' | translate}}"
+                               type="text"
+                               readonly
+                               ng-model="newFaceMonitorCtrl.taskModel.EventRule.Name">
+                        <button class="add-tpl" ng-click="newFaceMonitorCtrl.addEventRule()">新建联动策略</button>
+                    </div>
+
+                </div>
+
+                <div class="face-monitor-right-form">
+                    <div class="face-monitor-form face-monitor-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'审核人员'|translate}}</span>
+                        <select  name="auditUser" ng-model="newFaceMonitorCtrl.taskModel.AuditUser"
+                                ng-options="userAudit.ID as userAudit.JsonUserData.Person.Name for userAudit in newFaceMonitorCtrl.userAuditList"
+                        >
+                            <option value="">请选择审核人员</option>
+                        </select>
+                    </div>
+                    <div class="face-monitor-form face-monitor-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'运行计划'|translate}}</span>
+                        <input valid-nonempty="{{'运行计划'|translate}}"
+                               placeholder="{{'请选择运行计划' | translate}}"
+                               type="text"
+                               readonly
+                               ng-model="newFaceMonitorCtrl.taskModel.TimeTemplate.Name">
+                        <button class="add-tpl" ng-click="newFaceMonitorCtrl.addTimeTemplate()">新建运行计划</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="face-monitor-form face-monitor-form-tree" style="margin-bottom: 20px;">
+                <span class="form-title"><i class="c-font-red">*</i>{{'选择资源'|translate}}</span>
+                <div class="tree-layer">
+                    <div class="tree-content">
+                        <div class="tree-title">
+                            库资源列表
+                        </div>
+
+                        <div class="camera-tree-serach-input">
+                            <input type="text"
+                                   ng-model="newFaceMonitorCtrl.searchFaceLibStr"
+                                   placeholder="{{'请输入人像库名称'|translate}}"
+                                   ng-change="newFaceMonitorCtrl.onChangeSearchTree(newFaceMonitorCtrl.faceLibTreeParams.treeId,newFaceMonitorCtrl.searchFaceLibStr)"
+                            />
+                            <i class="u-input-search"
+                               ng-click="newFaceMonitorCtrl.onChangeSearchTree(newFaceMonitorCtrl.faceLibTreeParams.treeId,newFaceMonitorCtrl.searchFaceLibStr)"></i>
+                        </div>
+                        <div class="tree-data">
+                            <util-tree tree-id="{{newFaceMonitorCtrl.faceLibTreeParams.treeId}}"
+                                       tree-init-complete="newFaceMonitorCtrl.faceLibTreeParams.treeInitComplete(treeId)"
+                                       tree-datas="newFaceMonitorCtrl.faceLibTreeParams.treeDatas"
+
+                                       check-enable="{{newFaceMonitorCtrl.faceLibTreeParams.checkEnable}}"
+
+                                       single-select="{{newFaceMonitorCtrl.faceLibTreeParams.isSingleSelect}}"
+                                       is-simple-data="{{newFaceMonitorCtrl.faceLibTreeParams.isSimpleData}}"
+                                       show-icon="{{newFaceMonitorCtrl.faceLibTreeParams.isShowIcon}}"
+                                       show-line="{{newFaceMonitorCtrl.faceLibTreeParams.isShowLine}}"
+                                       default-no-data-msg="{{newFaceMonitorCtrl.faceLibTreeParams.defaultNoDataMsg}}"
+                                       search-no-data-msg="{{newFaceMonitorCtrl.faceLibTreeParams.searchNoDataMsg}}"
+
+                                       on-click="newFaceMonitorCtrl.faceLibTreeParams.onClick(event, treeId, treeNode)"
+                                       on-check="newFaceMonitorCtrl.faceLibTreeParams.onCheck(event, treeId, treeNode)"
+                                       tree-id-key="ID"
+                                       tree-pid-key="ParentID"
+                                       tree-key-name="Name"
+                                       edit-enable="{{newFaceMonitorCtrl.faceLibTreeParams.editEnable}}"
+                                       is-prev="false"
+                                       is-next="false"
+                                       is-inner="false"
+                                       is-copy="false"
+                                       is-move="false"
+                                       default-expand-level="0"
+                            ></util-tree>
+                        </div>
+                    </div>
+
+
+                    <div class="tree-content">
+                        <div class="tree-title">
+                            摄像机资源列表
+                            <button class="config-camera" ng-click="newFaceMonitorCtrl.showCameraConfigFn()">批量配置
+                            </button>
+                        </div>
+
+                        <div class="camera-tree-serach-input">
+                            <input type="text"
+                                   ng-model="newFaceMonitorCtrl.searchCameraStr"
+                                   placeholder="{{'请输入摄像机名称'|translate}}"
+                                   ng-change="newFaceMonitorCtrl.onChangeSearchTree(newFaceMonitorCtrl.cameraTreeParams.treeId,newFaceMonitorCtrl.searchCameraStr)"
+                            />
+                            <i class="u-input-search"
+                               ng-click="newFaceMonitorCtrl.onChangeSearchTree(newFaceMonitorCtrl.cameraTreeParams.treeId,newFaceMonitorCtrl.searchCameraStr)"></i>
+                        </div>
+                        <div class="tree-data">
+                            <util-tree tree-id="{{newFaceMonitorCtrl.cameraTreeParams.treeId}}"
+                                       tree-init-complete="newFaceMonitorCtrl.cameraTreeParams.treeInitComplete(treeId)"
+                                       tree-datas="newFaceMonitorCtrl.cameraTreeParams.treeDatas"
+
+                                       check-enable="{{newFaceMonitorCtrl.cameraTreeParams.checkEnable}}"
+
+                                       single-select="{{newFaceMonitorCtrl.cameraTreeParams.isSingleSelect}}"
+                                       is-simple-data="{{newFaceMonitorCtrl.cameraTreeParams.isSimpleData}}"
+                                       show-icon="{{newFaceMonitorCtrl.cameraTreeParams.isShowIcon}}"
+                                       show-line="{{newFaceMonitorCtrl.cameraTreeParams.isShowLine}}"
+                                       default-no-data-msg="{{newFaceMonitorCtrl.cameraTreeParams.defaultNoDataMsg}}"
+                                       search-no-data-msg="{{newFaceMonitorCtrl.cameraTreeParams.searchNoDataMsg}}"
+
+                                       on-click="newFaceMonitorCtrl.cameraTreeParams.onClick(event, treeId, treeNode)"
+                                       on-check="newFaceMonitorCtrl.cameraTreeParams.onCheck(event, treeId, treeNode)"
+                                       tree-id-key="ID"
+                                       tree-pid-key="ParentID"
+                                       tree-key-name="Name"
+                                       edit-enable="{{newFaceMonitorCtrl.cameraTreeParams.editEnable}}"
+                                       is-prev="false"
+                                       is-next="false"
+                                       is-inner="false"
+                                       is-copy="false"
+                                       is-move="false"
+                                       default-expand-level="0"
+                            ></util-tree>
+                        </div>
+                    </div>
+
+                    <div class="tree-content tree-with-ocx" ng-show="newFaceMonitorCtrl.showCameraConfig">
+                        <div class="tree-title">
+                            已选摄像机资源列表
+                        </div>
+
+                        <div class="camera-tree-serach-input">
+                            <input type="text"
+                                   ng-model="newFaceMonitorCtrl.searchSelectCameraStr"
+                                   placeholder="{{'请输入摄像机名称'|translate}}"
+                                   ng-change="newFaceMonitorCtrl.onChangeSearchTree(newFaceMonitorCtrl.selectCameraTreeParams.treeId,newFaceMonitorCtrl.searchSelectCameraStr)"
+                            />
+                            <i class="u-input-search"
+                               ng-click="newFaceMonitorCtrl.onChangeSearchTree(newFaceMonitorCtrl.selectCameraTreeParams.treeId,newFaceMonitorCtrl.searchSelectCameraStr)"></i>
+                        </div>
+                        <div class="tree-data">
+                            <util-tree tree-id="{{newFaceMonitorCtrl.selectCameraTreeParams.treeId}}"
+                                       tree-init-complete="newFaceMonitorCtrl.selectCameraTreeParams.treeInitComplete(treeId)"
+                                       tree-datas="newFaceMonitorCtrl.selectCameraTreeParams.treeDatas"
+
+                                       check-enable="{{newFaceMonitorCtrl.selectCameraTreeParams.checkEnable}}"
+
+                                       single-select="{{newFaceMonitorCtrl.selectCameraTreeParams.isSingleSelect}}"
+                                       is-simple-data="{{newFaceMonitorCtrl.selectCameraTreeParams.isSimpleData}}"
+                                       show-icon="{{newFaceMonitorCtrl.selectCameraTreeParams.isShowIcon}}"
+                                       show-line="{{newFaceMonitorCtrl.selectCameraTreeParams.isShowLine}}"
+                                       default-no-data-msg="{{newFaceMonitorCtrl.selectCameraTreeParams.defaultNoDataMsg}}"
+                                       search-no-data-msg="{{newFaceMonitorCtrl.selectCameraTreeParams.searchNoDataMsg}}"
+
+                                       on-check="newFaceMonitorCtrl.selectCameraTreeParams.onCheck(event, treeId, treeNode)"
+                                       on-dbl-click="newFaceMonitorCtrl.selectCameraTreeParams.onDblClick(event, treeId, treeNode)"
+                                       tree-id-key="ID"
+                                       tree-pid-key="ParentID"
+                                       tree-key-name="Name"
+                                       edit-enable="{{newFaceMonitorCtrl.selectCameraTreeParams.editEnable}}"
+                                       is-prev="false"
+                                       is-next="false"
+                                       is-inner="false"
+                                       is-copy="false"
+                                       is-move="false"
+                                       default-expand-level="0"
+                                       add-diy-dom="newFaceMonitorCtrl.selectCameraTreeParams.addDiyDom(treeId,treeNode)"
+                            ></util-tree>
+                        </div>
+                    </div>
+
+                    <div class="config-ocx" ng-show="newFaceMonitorCtrl.showCameraConfig">
+                        <div id="draw-space" class="draw-space">
+                            <div class="child-max">
+                                <span style="" class="circle circle-max"></span>
+                                <span class="max-text">大：200*200</span>
+                            </div>
+                            <div class="child-min">
+                                <span style="" class="circle circle-min"></span>
+                                <span class="min-text">小：60*60</span>
+                            </div>
+                            <div class="space-area">
+                                <span class="circle-space circle-lt"></span>
+                                <span class="circle-space circle-rb"></span>
+                                <span class="space-text">布控区域：800*600</span>
+                            </div>
+                        </div>
+                        <div class="ocx-player-monitor" ng-if="newFaceMonitorCtrl.showOcx"
+                             video-ocx init-complete="newFaceMonitorCtrl.initComplete(ocxControlFunc)"></div>
+                        <div class="form-layer">
+                            <button class="u-button u-button-blue-1 btnStyle"
+                                    ng-disabled="!newFaceMonitorCtrl.playSuccess || !newFaceMonitorCtrl.showOcx"
+                                    ng-click="newFaceMonitorCtrl.capturePic()">截屏
+                            </button>
+                            <button class="u-button u-button-blue-1 btnStyle"
+                                    ng-disabled="newFaceMonitorCtrl.tempSelectPositonCameraList.length==0 || !newFaceMonitorCtrl.playSuccess"
+                                    ng-click="newFaceMonitorCtrl.setCaneraPositon()">设置
+                            </button>
+                            <button ng-click="newFaceMonitorCtrl.cencalConfig()"
+                                    class="u-button u-button-blue-2 btnStyle">取消
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="form" style="padding:10px 20px;border-top:1px solid #ededed">
+                <button class="u-button u-button-blue-1 btnStyle" ng-click="newFaceMonitorCtrl.submitTask()"
+                        ng-disabled="!newFaceMonitorCtrl.taskModel.Name.length"
+                        translate="确定"></button>
+                <button class="u-button u-button-blue-2 btnStyle" ng-click="newFaceMonitorCtrl.cancelTask()"
+                        translate="DP_CONFIG_COMMON_19"></button>
+            </div>
+        </div>
+    </div>
+</div>

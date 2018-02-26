@@ -1,0 +1,26 @@
+<div class="track-popup-layer map-persion-popup" ng-class="{'face':TrackPopupCtrl.traceData.AccessLog,'efe':TrackPopupCtrl.traceData.EFenceLog,'wifi':TrackPopupCtrl.traceData.WiFiLog,}" ng-controller="TrackPopupController as TrackPopupCtrl">
+    <div class="track-popup" ng-if="TrackPopupCtrl.traceData.AccessLog">
+        <div class="img">
+            <img ng-src="{{TrackPopupCtrl.traceData.AccessLog.FacePath | imageUrlFilter}}"/>
+        </div>
+        <ul>
+            <li><i class="pdp-icon-time"></i>{{TrackPopupCtrl.traceData.AccessLog.LogTime}}</li>
+            <li><i class="pdp-icon-address"></i>{{TrackPopupCtrl.traceData.AccessLog.address}}</li>
+        </ul>
+    </div>
+    <div class="track-popup" ng-if="TrackPopupCtrl.traceData.EFenceLog">
+        <ul>
+            <li><i class="pdp-icon-imei"></i>{{TrackPopupCtrl.traceData.EFenceLog.IMEI}}</li>
+            <li><i class="pdp-icon-imsi"></i>{{TrackPopupCtrl.traceData.EFenceLog.IMSI}}</li>
+            <li><i class="pdp-icon-time"></i>{{TrackPopupCtrl.traceData.EFenceLog.AcqTime}}</li>
+            <li><i class="pdp-icon-address"></i></li>
+        </ul>
+    </div>
+    <div class="track-popup" ng-if="TrackPopupCtrl.traceData.WiFiLog">
+        <ul>
+            <li><i class="pdp-icon-mac"></i>{{TrackPopupCtrl.traceData.WiFiLog.Mac}}</li>
+            <li><i class="pdp-icon-time"></i>{{TrackPopupCtrl.traceData.WiFiLog.AcqTime}}</li>
+            <li><i class="pdp-icon-address"></i></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="m-carChart">
+    <ul class="m-resource-left" ng-class="carResourceCtrl.leftChartHidden?'switch-button3':'switch-button2'">
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <!-- <span class="m-resource-parse" ng-click="carResourceCtrl.onAnalysis()">同比分析</span> -->
+                <i class="m-font-size14" translate="{{carResourceCtrl.ResourceNameArr.carStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="!carResourceCtrl.enlarge('carStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !carResourceCtrl.noMessage.carStatistics}" translate="{{carResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': carResourceCtrl.noMessage.carStatistics}">
+                <div id="carStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{carResourceCtrl.ResourceNameArr.areaCarStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="carResourceCtrl.enlarge('areaCarStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !carResourceCtrl.noMessage.areaCarStatistics}" translate="{{carResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': carResourceCtrl.noMessage.areaCarStatistics}">
+                <div id="areaCarStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{carResourceCtrl.ResourceNameArr.areaCarAlarmStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="carResourceCtrl.enlarge('areaCarAlarmStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !carResourceCtrl.noMessage.areaCarAlarmStatistics}" translate="{{carResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': carResourceCtrl.noMessage.areaCarAlarmStatistics}">
+                <div id="areaCarAlarmStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+    </ul>
+    <i class="i-right-hide f-csp m-hidden-static" ng-class="carResourceCtrl.leftChartHidden?'i-left-display':'i-right-hide'"
+        ng-click="carResourceCtrl.hiddenLeftRightChart('left')"></i>
+    <!--ng-show="resourceCtrl.carRight"-->
+    <ul class="m-resource-right" ng-class="resourceCtrl.switchButton.switch||carResourceCtrl.rightChartHidden?'switch-button1':'switch-button2'">
+        <!--<ul class="m-resource-right">-->
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{carResourceCtrl.ResourceNameArr.carTypeStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="carResourceCtrl.enlarge('carTypeStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !carResourceCtrl.noMessage.carTypeStatistics}" translate="{{carResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': carResourceCtrl.noMessage.carTypeStatistics}">
+                <div id="carTypeStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{carResourceCtrl.ResourceNameArr.carColorStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="carResourceCtrl.enlarge('carColorStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !carResourceCtrl.noMessage.carColorStatistics}" translate="{{carResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': carResourceCtrl.noMessage.carColorStatistics}">
+                <div id="carColorStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{carResourceCtrl.ResourceNameArr.CarRankList}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="carResourceCtrl.enlarge('AllRankList')"></i>
+            </span>
+            <div id="ResourcebKeywordSearch" class="m-resource-eContent m-float-im">
+                <table class="table" ng-if="carResourceCtrl.AllRankListConfig.config.length">
+                    <tr ng-repeat="rankdata in carResourceCtrl.AllRankListConfig.config">
+                        <td>
+                            <i class="f-csp" ng-class="carResourceCtrl.rankClassName[$index]"></i>
+                        </td>
+                        <td>{{ rankdata.name }}</td>
+                        <td>{{ rankdata.value }}</td>
+                    </tr>
+                </table>
+                <i class='resource-no-message' ng-if="!carResourceCtrl.AllRankListConfig.config.length" translate="{{carResourceCtrl.ResourceNameArr.NOData}}">
+
+                </i>
+            </div>
+        </li>
+    </ul>
+    <i class="f-csp rightStatic" ng-class="carResourceCtrl.rightChartHidden?'i-left-display':'i-right-hide'" ng-click="carResourceCtrl.hiddenLeftRightChart('right')"></i>
+</div>

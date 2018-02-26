@@ -1,0 +1,65 @@
+<div class="compare-one-point"  ng-controller="compareController as compareCtrl">
+        <div class="compare-title">
+            <span class="compare-title-analyze">人脸相似度分析</span>
+            <span class="compare-title-icon"  ng-click="compareCtrl.closePage()"></span>
+        </div>
+    
+        <div class="compare-content">
+            <div class="compare-middle">
+                <div class="compare-input-one">
+                    
+                    <input type="text" class="compare-input-text-one" placeholder="请输入身份证号" ng-click="conpareCtrl.inputContent(this.value)" >
+                    <img src="../../images/compare/1.png" class="compare-input-img-one">
+                </div>
+                <div class="compare-input-two">
+                          
+                    <input type="text" class="compare-input-text-two" placeholder="请输入身份证号">
+                    <img src="../../images/compare/1.png" class="compare-input-img-two"> 
+                </div>
+            </div>
+    
+            <div class="compare-footer">
+                
+               <div class="footer-picture-left">
+                    <input type="file" class=" left-file" >
+                    <div class="picture-left-photo">
+                            <img src=""/>
+                    </div>
+                    <div class="picture-left-inner"> 
+                       
+                            <img src="../images/compare/6.png" class="picture-left-outside"/>
+                            <img src="../images/compare/7.png" class="picture-left-inside"/> 
+                         
+                    </div>
+                    <div class="picture-left-text">
+                        <span class="picture-left-text-or">或者</span>
+                        <span class="picture-left-text-other">上传人脸图片</span>
+                    </div>
+                    
+               </div>
+    
+               <div class="footer-picture-middle">
+                   <img class="picture-middle-img-outside" src="../images/compare/4.png"/>
+                   <img class="picture-middle-img-inside" src="../images/compare/3.png">
+                   <span class="picture-middle-text">人脸识别</span>
+               </div>
+    
+               <div class="footer-picture-right">
+                    <input type="file" class=" right-file" >
+                   <div class="picture-right-photo">
+                       <img src=""/>
+                   </div>
+                   
+                   <div class="picture-right-inner"> 
+                       
+                      <img src="../../images/compare/6.png" class="picture-right-outside"/>
+                      <img src="../../images/compare/7.png" class="picture-right-inside"/> 
+                   </div>
+                   <div class="picture-right-text">
+                        <span class="picture-right-text-or">或者</span>
+                        <span class="picture-right-text-other">上传人脸图片</span>
+                    </div>
+               </div>
+            </div>
+        </div>
+<div>

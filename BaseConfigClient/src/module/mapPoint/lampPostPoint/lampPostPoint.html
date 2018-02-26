@@ -1,0 +1,91 @@
+<div class="perch-layer" ng-controller="lampPostPointController as lampPostPointCtrl">
+    <div class="perch-layer-box" ng-mouseleave="lampPostPointCtrl.close()">
+        <div class="panel_state_content">
+
+            <!-- 背景图 -->
+            <div class="bg-circle">
+            </div>
+            <div ng-repeat="item in lampPostPointCtrl.deviceList" ng-class="['perch-sector-'+($index+1)]">
+                <div class="ax_default ellipse perch-bg">
+                    <div class="img"></div>
+                </div>
+                <div class="ax_default perch-con" ng-click="lampPostPointCtrl.selectChild(item)">
+                    <div class="img" ng-class="[item.iconType]"></div>
+                    <div class="perch-text">{{item.Name}}</div>
+                </div>
+            </div>
+            <!--<div class="perch-sector-1">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img car"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="perch-sector-2">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img carCamera"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="perch-sector-3">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img face"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="perch-sector-4">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img faceCamera"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="perch-sector-5">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img wifi"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="perch-sector-6">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img efence"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="perch-sector-7">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img hd"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="perch-sector-8">-->
+                <!--<div class="ax_default ellipse perch-bg">-->
+                    <!--<div class="img"></div>-->
+                <!--</div>-->
+                <!--<div class="ax_default perch-con">-->
+                    <!--<div class="img camera"></div>-->
+                    <!--<div class="perch-text">保利国际中心人像卡口</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

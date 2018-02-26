@@ -1,0 +1,288 @@
+<div class="container-fluid" id="container-fluid003">
+    <ol class="m-route f-cfb col-sm-12 col-xs-12">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="报警统计"></li>
+    </ol>
+    <!-- 区域报警数 -->
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height326">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{alarmStatisticsCtrl.echartNameArr.areaAlarm}}"></span>
+                    <span class="m-bar-tool">
+                        <i ng-class="alarmStatisticsCtrl.areaAlarmList?'icon-histogram-blue':'icon-histogram-ddd'" ng-click="alarmStatisticsCtrl.AlarmSwitch('alarmStatisticsHistogram')">柱状图</i>
+                        <i ng-class="alarmStatisticsCtrl.areaAlarmList?'icon-listview-ddd':'icon-listview-blue'" ng-click="alarmStatisticsCtrl.AlarmSwitch('alarmStatisticsList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportImage(alarmStatisticsCtrl.ModuleNameArr.areaAlarm)">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportExcel(alarmStatisticsCtrl.ModuleNameArr.areaAlarm,alarmStatisticsCtrl.areaAlarmTableData)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button 
+                            button-click="alarmStatisticsCtrl.AreaAlarmNumTimeButtonClick()" 
+                            default-select-by-value="ALL" 
+                            ng-model="alarmStatisticsCtrl.Area_Alarm_Model.module"
+                            is-resize="false" 
+                            is-multiple="false" 
+                            init-No-Click="true" 
+                            items="alarmStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input 
+                            ng-model="alarmStatisticsCtrl.Area_Alarm_Model.Time" 
+                            date-picker t
+                            ype="text" 
+                            placeholder="开始时间          -          结束时间"
+                            range="true" 
+                            done="alarmStatisticsCtrl.AreaAlarmNumTimeButtonClick(value)" 
+                            class="m-time" />
+                    </span>
+                </div>
+                <div ng-show="alarmStatisticsCtrl.areaAlarmList">
+                    <div id="areaAlarm"></div>
+                </div>
+                <div class="areaAlarm" ng-show="!alarmStatisticsCtrl.areaAlarmList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>行政区域</th>
+                            <th ng-repeat="item in alarmStatisticsCtrl.areaAlarmTableData.legendData">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in alarmStatisticsCtrl.areaAlarmTableData.xData track by $index" ng-init="outIndex = $index">
+                            <td>{{item}}</td>
+                            <td ng-repeat="itemtd in alarmStatisticsCtrl.areaAlarmTableData.legendData">
+                                {{alarmStatisticsCtrl.areaAlarmTableData.seriesData[$index][outIndex]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 区域报警趋势 -->
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height360">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{alarmStatisticsCtrl.echartNameArr.areaAlarmTrend}}"></span>
+                    <span class="m-bar-tool">
+                        <i ng-class="alarmStatisticsCtrl.areaAlarmTrendList?'icon-brokenLine-blue':'icon-brokenLine-ddd'" ng-click="alarmStatisticsCtrl.AlarmSwitch('areaAlarmTrendHistogram')">折线图</i>
+                        <i ng-class="alarmStatisticsCtrl.areaAlarmTrendList?'icon-listview-ddd':'icon-listview-blue'" ng-click="alarmStatisticsCtrl.AlarmSwitch('areaAlarmTrendList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportImage('areaAlarmTrend')">折线图</span>
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportExcel(alarmStatisticsCtrl.ModuleNameArr.areaAlarmTrend,alarmStatisticsCtrl.areaAlarmTrendTableData)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button button-click="alarmStatisticsCtrl.AreaTrendTimeButtonClick()" default-select-by-value="ALL" ng-model="alarmStatisticsCtrl.Area_Alarm_Trend_Model.module"
+                            is-resize="false" is-multiple="false" init-No-Click="true" items="alarmStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="alarmStatisticsCtrl.Area_Alarm_Trend_Model.Time" date-picker type="text" placeholder="开始时间          -          结束时间"
+                            range="true" done="alarmStatisticsCtrl.AreaTrendTimeButtonClick(value)" class="m-time" />
+                    </span>
+
+                    <span class="drop-list-device" style="left: 630px;">
+                        <label class="title-area">
+                            <span translate="资源类型"></span>
+                        </label>
+                        <span class="m-droplist-area">
+                            <util-selects
+                                select-data="alarmStatisticsCtrl.deviceAlarmData"
+                                select-repeat-by-key="text"
+                                select-name-key="text"
+                                select-val="alarmStatisticsCtrl.deviceAlarmData[0]"
+                                select-click="alarmStatisticsCtrl.TrendStatusType(selectVal)">
+                            </util-selects>
+                        </span>
+                    </span>
+                    <span class="drop-list-device" style="right: 34px;">
+                        <span class="title-area">
+                            <span translate="行政区域"></span>
+                        </span>
+                        <span class="m-droplist-area">
+                            <util-selects
+                                select-data="alarmStatisticsCtrl.TrendAreaDropList"
+                                select-repeat-by-key="text"
+                                select-name-key="text"
+                                is-mutile="true"
+                                is-color="true"
+                                select-val="alarmStatisticsCtrl.areaDefaultSelected"
+                                select-click="alarmStatisticsCtrl.TrendStatusArea(selectVal)">
+                            </util-selects>
+                        </span>
+                    </span>
+                </div>
+                <div ng-show="alarmStatisticsCtrl.areaAlarmTrendList">
+                    <div id="areaAlarmTrend"></div>
+                </div>
+                <div class="areaAlarmTrend" ng-show="!alarmStatisticsCtrl.areaAlarmTrendList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>日期</th>
+                            <th ng-repeat="itemth in alarmStatisticsCtrl.areaAlarmTrendData.areaDropMenu">{{itemth.text}}</th>
+                        </tr>
+                        <tr ng-repeat="(index,item) in alarmStatisticsCtrl.areaAlarmTrendData.xData track by $index">
+                            <td>{{item}}</td>
+                            <td ng-repeat="(zindex,zitem) in alarmStatisticsCtrl.areaAlarmTrendData.areaDropMenu">
+                                {{alarmStatisticsCtrl.areaAlarmTrendData.seriesData[zindex][index]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 设备报警统计(Top10) -->
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height540">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{alarmStatisticsCtrl.echartNameArr.deviceAlarmStatistics}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="alarmStatisticsCtrl.deviceAlarmStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'" ng-click="alarmStatisticsCtrl.AlarmSwitch('deviceAlarmHistogram')">柱状图</i>
+                        <i ng-class="alarmStatisticsCtrl.deviceAlarmStatisticsList?'icon-listview-ddd':'icon-listview-blue'" ng-click="alarmStatisticsCtrl.AlarmSwitch('deviceAlarmList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportImage(alarmStatisticsCtrl.ModuleNameArr.deviceAlarmStatistics)">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportExcel(alarmStatisticsCtrl.ModuleNameArr.deviceAlarmStatistics,alarmStatisticsCtrl.deviceAlarmStatisticsTableData)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button button-click="alarmStatisticsCtrl.AlarmTimeButtonClick()" default-select-by-value="ALL" ng-model="alarmStatisticsCtrl.Device_Alarm_Statistics_Model.module"
+                            is-resize="false" is-multiple="false" init-No-Click="true" items="alarmStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="alarmStatisticsCtrl.Device_Alarm_Statistics_Model.Time" date-picker type="text" placeholder="开始时间          -          结束时间"
+                            range="true" done="alarmStatisticsCtrl.AlarmTimeButtonClick(value)" class="m-time" />
+                    </span>
+
+                    <span class="drop-list-device" style="left: 630px;">
+                        <label class="title-area">
+                            <span translate="设备类型"></span>
+                        </label>
+                        <span class="m-droplist-area">
+                            <util-selects 
+                                select-data="alarmStatisticsCtrl.deviceAlarmData" 
+                                select-repeat-by-key="text" 
+                                select-name-key="text"
+                                select-val="alarmStatisticsCtrl.deviceAlarmData[0]"
+                                select-click="alarmStatisticsCtrl.AlarmDeviceDrop(selectVal)">
+                            </util-selects>
+                        </span>
+                    </span>
+
+                    <span class="drop-list-device" style="right: 34px;">
+                        <label class="title-area">
+                            <span translate="行政区域"></span>
+                        </label>
+                        <span class="m-droplist-area">
+                            <util-selects
+                                select-data="alarmStatisticsCtrl.defaultAreaDropMenu" 
+                                select-repeat-by-key="text" 
+                                select-name-key="text"
+                                select-val="alarmStatisticsCtrl.defaultAreaDropMenu[0]" 
+                                select-list-diy-icon="false" 
+                                select-click="alarmStatisticsCtrl.AlarmAreaDrop(selectVal)">
+                            </util-selects>
+                        </span>
+                    </span>
+                </div>
+                <div ng-show="alarmStatisticsCtrl.deviceAlarmStatisticsList">
+                    <div id="deviceAlarmStatistics"></div>
+                </div>
+                <div class="deviceAlarmStatistics" ng-show="!alarmStatisticsCtrl.deviceAlarmStatisticsList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="itemth in alarmStatisticsCtrl.areaAlarmTrendTableData.legendData track by $index">{{itemth}}</th>
+                        </tr>
+                        <tr ng-repeat="item in alarmStatisticsCtrl.deviceAlarmStatisticsTableData.yData track by $index">
+                            <td>{{item}}</td>
+                            <td>{{alarmStatisticsCtrl.deviceAlarmStatisticsTableData.seriesData[$index]}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top m-bottom-chart">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height540">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{alarmStatisticsCtrl.echartNameArr.dispatchedAboutAlarm}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="alarmStatisticsCtrl.dispatchedAboutAlarmList?'icon-histogram-blue':'icon-histogram-ddd'" ng-click="alarmStatisticsCtrl.AlarmSwitch('dispatchedAboutAlarmHistogram')">柱状图</i>
+                        <i ng-class="alarmStatisticsCtrl.dispatchedAboutAlarmList?'icon-listview-ddd':'icon-listview-blue'" ng-click="alarmStatisticsCtrl.AlarmSwitch('dispatchedAboutList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportImage('dispatchedAboutAlarm')">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="alarmStatisticsCtrl.exportExcel(alarmStatisticsCtrl.ModuleNameArr.dispatchedAboutAlarm,alarmStatisticsCtrl.dispatchedAboutAlarmTableData)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button button-click="alarmStatisticsCtrl.DispatchedTimeButtonClick()" default-select-by-value="ALL" ng-model="alarmStatisticsCtrl.Dispatched_About_Alarm_Model.module"
+                            init-No-Click="true" is-resize="false" is-multiple="false" items="alarmStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="alarmStatisticsCtrl.Dispatched_About_Alarm_Model.Time" date-picker type="text" placeholder="开始时间          -          结束时间"
+                            range="true" done="alarmStatisticsCtrl.DispatchedTimeButtonClick(value)" class="m-time" />
+                    </span>
+                </div>
+                <div ng-show="alarmStatisticsCtrl.dispatchedAboutAlarmList">
+                    <div id="dispatchedAboutAlarm"></div>
+                </div>
+                <div class="dispatchedAboutAlarm" ng-show="!alarmStatisticsCtrl.dispatchedAboutAlarmList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="item in alarmStatisticsCtrl.dispatchedAboutAlarmTableData.legendData">
+                                {{item}}
+                            </th>
+                        </tr>
+                        <tr ng-repeat="(index,item) in alarmStatisticsCtrl.dispatchedAboutAlarmTableData.yData track by $index">
+                            <td>{{item}}</td>
+                            <td ng-repeat="(zindex,zitem) in alarmStatisticsCtrl.dispatchedAboutAlarmTableData.legendData">
+                                {{alarmStatisticsCtrl.dispatchedAboutAlarmTableData.seriesData[zindex][index]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

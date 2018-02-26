@@ -1,0 +1,87 @@
+/*选择控件*/
+
+.u-toggle{
+    color: #444;
+    position: relative;
+    display: block;
+}
+
+.u-toggle-content{
+    position: absolute;
+    z-index: 3;
+}
+.u-toggle-content input[type=checkbox]{
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 0;
+    display: none;
+    margin: 0;
+    line-height: normal;
+}
+.u-toggle-content .toggle-track{
+    width: 33px;
+    height: 20px;
+    border: solid 4px #dfe5eb;
+    border-radius: 20px;
+    position: relative;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-property: background-color,border;
+    transition-property: background-color,border;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: #c3c3c3;
+    content: ' ';
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.u-toggle-content .toggle-track .toggle-handle{
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-transition: .3s cubic-bezier(0,1.1,1,1.1);
+    transition: .3s cubic-bezier(0,1.1,1,1.1);
+    -webkit-transition-property: background-color,transform;
+    -webkit-transition-property: background-color,-webkit-transform;
+    transition-property: background-color,-webkit-transform;
+    transition-property: background-color,transform;
+    transition-property: background-color,transform,-webkit-transform;
+    display: block;
+    -webkit-box-shadow: 0 2px 7px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.15);
+            box-shadow: 0 2px 7px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.15);
+}
+
+.u-toggle-content.z-checked .toggle-track{
+    background-color: #4cc75b;
+}
+
+.u-toggle-content.z-checked .toggle-track .toggle-handle{
+    left: 13px;
+}
+
+/*.toggle-track .toggle-handle:before{
+    position: absolute;
+    top: -4px;
+    left: -21.5px;
+    padding: 18px 34px;
+    content: " ";
+}*/
+
+/*
+.toggle-content input:checked+.toggle-track{
+    border-color: #4cd964;
+    background-color: #4cd964;
+}
+.toggle-content input:checked+.toggle-track .toggle-handle{
+    -webkit-transform: translate3d(1px,0,0);
+    transform: translate3d(1px,0,0);
+    background-color: #fff;
+}*/

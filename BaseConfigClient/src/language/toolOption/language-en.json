@@ -1,0 +1,22 @@
+{
+  "note": "/*****选项******/",
+
+  "note": "/*****人脸比对******/",
+  "FDS_06_00_00":"Please enter your id number",
+
+  "FDS_06_00_05":"photo handling failure",
+  "FDS_06_00_08":"comparison timeout",
+
+  "FDS_06_00_10":"ID card cannot be null",
+  "FDS_06_00_11":"No human face is detected",
+
+  "note": "/*****下载中心******/",
+  "FDS_06_01_00":"Download",
+  "FDS_06_01_01":"file",
+  "FDS_06_01_02":"download complete",
+  "FDS_06_01_03":"downloading",
+  "FDS_06_01_04":"download failure",
+  "FDS_06_01_05":"Click file name to download to local",
+
+  "note": "/*****意见反馈******/"
+}

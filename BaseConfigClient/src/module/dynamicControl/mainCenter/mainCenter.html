@@ -1,0 +1,112 @@
+<!-- update by Zyh 2017 06 03 -->
+
+<div  class="g-dynamicControl-center" 
+      ng-controller="mainCenterController as mainCenterCtrl"
+      ng-class="{'left-fold' : mainCenterCtrl.leftIsFold , 'right-fold' : mainCenterCtrl.rightIsFold}"
+        >
+    <!-- 地图模式 -->
+    <div class="m-dynCtrl-map f-abs f-oh" id="mapInit"
+         ng-show="mainCenterCtrl.patternState || mainCenterCtrl.btnParams.isOpen">
+    </div>
+
+    <!-- 列表模式 -->
+    <div class="m-dynCtrl-list f-abs f-oh"
+         ng-show="!mainCenterCtrl.patternState || !mainCenterCtrl.btnParams.isOpen">
+
+
+        <!--内部工具栏-->
+        <div class="pattern-tool f-abs">
+
+            <!--关闭视频-->
+            <a class="close-video f-abs"
+               title="{{ 'FDS_04_03_13' | translate }}"
+                ng-click="mainCenterCtrl.stopAll()"></a>
+            <div class="layout-choose f-abs f-csp"
+            ng-mouseover="mainCenterCtrl.layoutMouseOver(1)"
+            ng-mouseleave="mainCenterCtrl.layoutMouseOver(0)">
+                <i class="f-abs " ng-class="mainCenterCtrl.layoutState"></i>
+                <div class="f-abs iframe-box" ng-show="mainCenterCtrl.layoutShow">
+                    <!--提高层级遮住OCX-->
+                    <iframe class=" u-iframe-layer"></iframe>
+                    <!--模式列表-->
+                    <p class="f-abs">
+                        <a href="javascript:;" class="one"
+                        title="{{ 'FDS_04_03_10' | translate}}"
+                        ng-click="mainCenterCtrl.changeLayoutType(1 ,'one')"></a>
+                        <a href="javascript:;" class="four"
+                        title="{{ 'FDS_04_03_11' | translate}}"
+                        ng-click="mainCenterCtrl.changeLayoutType(4 ,'four')"></a>
+                        <a href="javascript:;" class="nine"
+                        title="{{ 'FDS_04_03_12' | translate}}"
+                        ng-click="mainCenterCtrl.changeLayoutType(9 ,'nine')"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- video区域 -->
+        <div class="pattern-video f-abs f-oh"
+             video-ocx init-complete="mainCenterCtrl.initComplete(ocxControlFunc)">
+        </div>
+
+
+        <!-- 列表展示区域 -->
+        <div class="pattern-list f-abs f-oh bg-color-white">
+            <p class="txt">
+                <!--人脸实时抓拍-->
+                <a class="f-fl">
+                    {{'FDS_04_03_06' | translate}}
+                </a>
+                <a class="more f-fr f-pr" ng-click="mainCenterCtrl.facePickMore()">
+                    <!--更多-->
+                    {{ 'FDS_04_03_09' | translate}}
+                    <i class="f-abs"></i>
+                </a>
+                <a class="f-fr">
+                    <!--今日：-->
+                    {{ 'FDS_04_03_07' | translate}}
+                    <span class="c-font-red">1265</span>
+                </a>
+                <a class="f-fr">
+                    <!--本月：-->
+                    {{ 'FDS_04_03_08' | translate}}
+                    <span class="c-font-red">26354</span>
+                </a>
+            </p>
+            <!--人脸抓拍推送-->
+            <ol class="pics f-oh">
+               <!-- <li class="f-csp" ng-repeat="data in  mainCenterCtrl.facePicData">
+                    <div class="img-box">
+                        <img ng-src="{{ data.imgUrl }}" alt="">
+                    </div>
+                    <p class="ellipsis f-tac">{{ data.time }}</p>
+                </li>-->
+            </ol>
+        </div>
+    </div>
+
+    <!-- 地图-列表模式切换按钮 -->
+    <util-map-top-tool
+        full-screen-change="mainCenterCtrl.fullScreenClick(pattern)"
+        pattern-map="mainCenterCtrl.patternMap()"
+        pattern-list="mainCenterCtrl.patternList()"
+        layer-check="mainCenterCtrl.layerClick(checked)"
+        is-map-of-pattern="mainCenterCtrl.btnParams.isOpen"
+    >
+        <!-- is-show-clear-tool="mainCenterCtrl.clearAllLayerIsShow"
+        clear-all-layer="mainCenterCtrl.clearAllLayer()"-->
+    </util-map-top-tool>
+
+    <div class="u-left-fold f-abs bg-color-lessBlue f-csp"
+        ng-class="{'unfold' : mainCenterCtrl.leftIsFold}"
+        title="{{ mainCenterCtrl.leftFoldBtn | translate }}"
+        ng-click="mainCenterCtrl.leftFoldClick()">
+        <i class="f-fl"></i>
+    </div>
+    <div class="u-right-fold f-abs bg-color-lessBlue f-csp"
+        ng-class="{'unfold' : mainCenterCtrl.rightIsFold}"
+        title="{{ mainCenterCtrl.rightFoldBtn | translate }}"
+         ng-click="mainCenterCtrl.rightFoldClick()">
+        <i class="f-fl"></i>
+    </div>
+
+</div>

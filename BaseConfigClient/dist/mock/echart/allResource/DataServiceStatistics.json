@@ -1,0 +1,75 @@
+{
+    "color": ["#5A9EFF"],
+    "tooltip" : {
+        "trigger": "axis",
+        "axisPointer" : {       
+            "type" : "shadow" 
+        }
+    },
+    "grid": {
+        "left": 55,
+        "top":20,
+        "bottom":40
+    },
+    "xAxis" : [
+        {
+            "type" : "category",
+            "data" : ["检索", "人像", "车辆", "MAC", "视图立方"],
+            "axisTick": {
+                "alignWithLabel": true
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": ["#F8F0E9"],
+                    "interval":false 
+                }
+            },
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#C9C9C9"
+                }
+            },
+            "axisLabel": {
+                "textStyle": {
+                    "color": "#6F6E6E",
+                    "fontSize":"10"
+                }
+            }
+        }
+    ],
+    "yAxis" : [
+        {
+            "type" : "value",
+            "max": 40000,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": ["#F8F0E9"],
+                    "interval":false 
+                }
+            },
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#C9C9C9"
+                }
+            },
+            "axisLabel": {
+                "textStyle": {
+                    "color": "#6F6E6E",
+                    "fontSize":"10"
+                }
+            }
+        }
+    ],
+    "series" : [
+        {
+            "name":"数据服务统计",
+            "type":"bar",
+            "barWidth" : 20,
+            "data":[23000, 3000, 26500, 32500, 25600]
+        }
+    ]
+}

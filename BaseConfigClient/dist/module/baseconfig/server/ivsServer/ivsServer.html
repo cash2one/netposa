@@ -1,0 +1,103 @@
+<div class="m-ivsServer f-cfb">
+    <div class="g-baseconfig-left">
+             <span class="tree-search">
+                <input type="text" class="u-input tree-search"
+                       ng-model="bcIvsServerCtrl.areaTreeSearchInputStr"
+                       placeholder="请输入信息进行搜索"
+                       ng-keyup="bcIvsServerCtrl.areaTreeSearchInputKeyUp($event)"
+                />
+                <i class="u-input-search" ng-click="bcIvsServerCtrl.areaTreeSearchInput()"></i>
+             </span>
+        <div ng-show="bcIvsServerCtrl.areaTreeDatas.treeDatas.length > 0" class="m-ivsServer-tree-container">
+            <util-tree tree-hide="bcIvsServerCtrl.areaTreeDatas.treeDatas.length == 0"
+                       tree-id="{{bcIvsServerCtrl.areaTreeDatas.treeId}}"
+                       tree-datas="bcIvsServerCtrl.areaTreeDatas.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="bcIvsServerCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg="bcIvsServerCtrl.areaTreeDatas.defaultNoDataMsg"
+                       search-no-data-msg="bcIvsServerCtrl.areaTreeDatas.searchNoDataMsg"
+                       on-click="bcIvsServerCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="bcIvsServerCtrl.areaTreeDatas.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div class="u-table-no-data" ng-show="bcIvsServerCtrl.areaTreeDatas.finishedNoData"
+        >暂无数据
+        </div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+
+            <div class="m-baseconfig-topfixed ivsServer-topFixed">
+                <div class="server-info f-cfb">
+                    <button class="u-button f-fl m-right15" ng-click="bcIvsServerCtrl.addIvsServer()">
+                        新建服务器
+                    </button>
+                    <button class="u-button f-fl m-right15 u-button-blue-3">在线检测</button>
+                    <button class="u-button f-fl m-right15 u-button-blue-3">重启服务器</button>
+                    <button class="u-button f-fl m-right15 u-button-blue-3" ng-click="bcIvsServerCtrl.deleteByIds()">测试批量删除</button>
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed ivsServer-centerFixed">
+
+                <util-table-head table-headers="bcIvsServerCtrl.tHeadList"
+                                 table-has-check='true'
+                                 class="table-content"
+                                 table-sort-fun="bcIvsServerCtrl.sortByField(index,fieldName,sortStatus)"
+                                 table-after-check="bcIvsServerCtrl.afterChangeCheck(checkList,isCheckAll)"
+
+                >
+
+                    <util-table-tr ng-repeat="(index,tbody_data) in bcIvsServerCtrl.tBodyList">
+
+                        <util-table-tr-td>{{tbody_data.Name}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.IpAddress}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.Port}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.ServerType}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.Description}}</util-table-tr-td>
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <div class="table-icon-cntr f-cfb">
+                                    <i class="icon-btn i-edit z-gray"
+                                       ng-click="bcIvsServerCtrl.updateIvsServer(tbody_data)"></i>
+                                    <i class="icon-btn i-delete z-gray"
+                                       ng-click="bcIvsServerCtrl.deleteById(tbody_data)"></i>
+                                </div>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+
+                    <!--<div class="u-table-no-data">
+                        暂无数据
+                    </div>-->
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging
+                        page-params="bcIvsServerCtrl.pageParams"
+                        prev-page="bcIvsServerCtrl.changePage(num)"
+                        next-page="bcIvsServerCtrl.changePage(num)"
+                        go-page="bcIvsServerCtrl.changePage(num)"
+                        page-size="bcIvsServerCtrl.changePageSize(num)"
+                ></util-paging>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+

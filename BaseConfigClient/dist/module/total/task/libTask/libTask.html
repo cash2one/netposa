@@ -1,0 +1,48 @@
+<ul class="m-totalTask-wrapper m-last-totalTask-wrapper" ng-controller="libTaskController as libTaskCtrl">
+    <li class="wrap-content">
+        <div class="wrap-cont-head f-cfb">
+            <span class="cont-head-title" translate="FDS_05_01_01"></span>
+            <span class="cont-head-detail"></span>
+        </div>
+
+        <div class="wrap-cont-table">
+            <div class="cont-table-top f-cfb">
+
+                <div class="f-fr f-cfb m-right15">
+                    <span class="f-fl slideTitle m-right5" translate="FDS_05_10"></span>
+                    <div class="f-fl f-pr">
+                        <input class="u-select devStatus-select-width" type="text" readonly
+                               ng-click="libTaskCtrl.isShowAreaTree = !libTaskCtrl.isShowAreaTree"
+                               ng-model="libTaskCtrl.areaName">
+
+                        <div class="tree-container" ng-show="libTaskCtrl.isShowAreaTree">
+                            <util-tree tree-hide="libTaskCtrl.areaTreeDataParams.treeDatas.length == 0"
+                                       tree-id="{{libTaskCtrl.areaTreeDataParams.treeId}}"
+                                       tree-datas="libTaskCtrl.areaTreeDataParams.treeDatas"
+                                       is-default-selected="true"
+                                       tree-init-complete="libTaskCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                                       check-enable="false"
+                                       single-select="true"
+                                       is-simple-data="true"
+                                       show-icon="true"
+                                       show-line="false"
+                                       default-no-data-msg="libTaskCtrl.areaTreeDataParams.defaultNoDataMsg"
+                                       search-no-data-msg="libTaskCtrl.areaTreeDataParams.searchNoDataMsg"
+                                       on-click="libTaskCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                                       tree-id-key="ID"
+                                       tree-pid-key="ParentID"
+                                       tree-key-name="Name"
+                                       default-select-tree-id="libTaskCtrl.areaTreeDataParams.defaultSelectTreeId"
+                                       default-expand-level="0"
+                            ></util-tree>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cont-table-bottom" id="task-2">
+                <div class="m-echart-no-data" ng-show="libTaskCtrl.isNoData" translate="FDS_00_01_18"></div>
+            </div>
+        </div>
+    </li>
+</ul>

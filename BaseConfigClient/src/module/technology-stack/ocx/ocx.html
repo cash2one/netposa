@@ -1,0 +1,14 @@
+<div class="m-technologystack-ocx">
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.playRealTime();">播放实时视频</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.playRtsp();">播放rtsp</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.playRtspMultiple();">播放多路</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.pause();">暂停</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.stop();">停止单路</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.stopAll();">停止所有</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.changeLayoutType(1);">转换为1分格</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.changeLayoutType(4);">转换为4分格</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.changeLayoutType(9);">转换为9分格</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.changeLayoutType(16);">转换为16分格</button>
+    <button class="u-button u-button-blue-1" ng-click="technologyStackOcxCtrl.getPhoto();">抓拍</button>
+    <div style="position: absolute; top: 100px; left: 0; right: 0; bottom: 0; width: 100%;" video-ocx init-complete="technologyStackOcxCtrl.initComplete(ocxControlFunc)"></div>
+</div>

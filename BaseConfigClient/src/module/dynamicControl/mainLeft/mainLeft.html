@@ -1,0 +1,124 @@
+<!-- update by Zyh 2017 06 03-->
+
+
+<!--左侧栏-->
+<div class="g-dynamicControl-left bg-color-lessBlue f-pr f-dn"
+     ng-controller="mainLeftController as mainLeftCtrl">
+    <!-- 模块按钮 -->
+    <div class="m-dynCtrl-moduleName f-cfb ">
+        <div class="moduleName">
+            <a href="javascript:;"
+               class="module-tabs f-ib line" data-type="resource"
+               ng-class="{ 'active' : mainLeftCtrl.moduleState === 'resource'}"
+               ng-click="mainLeftCtrl.tabsChange('resource')">{{ 'FDS_04_01_01' | translate }}</a>
+            <!--资源-->
+        </div>
+        <div class="moduleName">
+            <a href="javascript:;"
+               class="module-tabs f-ib" data-type="mission"
+               ng-class="{ 'active' : mainLeftCtrl.moduleState === 'mission'}"
+               ng-click="mainLeftCtrl.tabsChange('mission')">{{ 'FDS_04_01_02' | translate }}</a>
+            <!--任务-->
+        </div>
+    </div>
+
+    <!-- 模块内容区 resource -->
+    <div class="module-content resource f-abs"
+         ng-show="mainLeftCtrl.moduleState === 'resource'">
+        <!-- 按钮 -->
+        <!--版本不含-->
+        <div class="m-dynCtrl-btnBox f-pr" ng-if="false">
+           <!-- <a href="javascript:;"
+               class="u-button f-abs active camera">{{ 'FDS_04_01_03' | translate }}</a>
+            &lt;!&ndash;摄像机&ndash;&gt;
+            <a href="javascript:;"
+               class="u-button u-button-blue-7 f-abs  police">{{ 'FDS_04_01_04' | translate }}</a>
+            警力-->
+            <unique-button
+                    button-click="mainLeftCtrl.resourcesTypeClick()"
+                    ng-model="mainLeftCtrl.typeChecked"
+                    items="mainLeftCtrl.resourcesType"
+                    need-translate="true"
+                    default-select-by-index="0">
+            </unique-button>
+        </div>
+        <!-- 搜索框 -->
+        <div class="m-dynCtrl-input">
+            <input class="dynCtrl-input u-input" type="text"
+                   placeholder="{{ 'FDS_04_01_05' | translate }}"
+                   ng-model="mainLeftCtrl.rSearchKey"
+                   ng-keyup="mainLeftCtrl.resourcesSearch()">
+            <!--请输入搜索关键字-->
+            <i class="dynCtrl-input-icon f-abs u-input-search"
+               ng-click="mainLeftCtrl.resourcesSearch()"></i>
+        </div>
+        <!--树形结构-->
+        <div class="tree f-abs f-oya" >
+            <util-tree
+                tree-id="{{mainLeftCtrl.camerasId}}"
+                tree-datas="mainLeftCtrl.camerasData"
+                is-simple-data="true"
+                show-icon="true"
+                show-line="false"
+                tree-id-key="ID"
+                tree-pid-key="ParentID"
+                tree-key-name="Name"
+                default-expand-level="0"
+                on-click="mainLeftCtrl.treeClick(event, treeId, treeNode)"
+                on-dbl-click="mainLeftCtrl.treeDblClick(event, treeId, treeNode)"
+                show-locate-and-attention-btn="true"
+                diy-dom-func1="mainLeftCtrl.diyLocation(treeId, treeNode)"
+                diy-dom-func2="mainLeftCtrl.diyAttention(treeId, treeNode)">
+            </util-tree>
+        </div>
+    </div>
+
+    <!-- 模块内容区 mission -->
+    <div class="module-content mission f-abs"
+         ng-show="mainLeftCtrl.moduleState === 'mission'">
+        <!-- 搜索框 -->
+        <div class="m-dynCtrl-input">
+            <input class="dynCtrl-input u-input" type="text"
+                   placeholder="{{ 'FDS_04_01_05' | translate }}"
+                   ng-model="mainLeftCtrl.mSerachKey"
+                   ng-keyup="mainLeftCtrl.missionSerach()">
+            <!--请输入搜索关键字-->
+            <i class="dynCtrl-input-icon f-abs u-input-search"
+               ng-click="mainLeftCtrl.missionSerach()"></i>
+        </div>
+        <!-- 按钮 -->
+        <div class="radios f-pr f-bbox">
+            <!--按库-->
+            <a href="javascript:;"
+               ng-click="mainLeftCtrl.pickWay('room')"
+               ng-class="{'active' : mainLeftCtrl.pickState === 'room'}"
+               class="f-fr room f-pr ">
+                <i class="circle f-ib f-abs bg-color-white"></i>
+                {{ 'FDS_04_01_07' | translate }}
+            </a>
+
+            <!--按区域-->
+            <a href="javascript:;"
+               ng-click="mainLeftCtrl.pickWay('area')"
+               ng-class="{'active' : mainLeftCtrl.pickState === 'area'}"
+               class=" f-fr f-pr area">
+                <i class="circle f-abs f-ib bg-color-white"></i>
+                {{ 'FDS_04_01_06' | translate }}
+            </a>
+            <a class="u-button u-button-blue" href="#/baseconfig/taskconfig/taskNewTask">
+                <!--新建-->
+                {{ 'FDS_04_01_08' | translate }}
+            </a>
+        </div>
+
+        <!--树形结构-->
+        <div class="tree f-abs f-oya">
+            任务
+            <util-tree
+                    tree-id="mainLeftCtrl.camerasId"
+                    tree-datas="mainLeftCtrl.camerasData">
+            </util-tree>
+        </div>
+    </div>
+
+</div>

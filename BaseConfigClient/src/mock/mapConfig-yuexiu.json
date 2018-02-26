@@ -1,0 +1,49 @@
+{
+    "mapOpts": {
+        "minZoom": 6,
+        "maxZoom": 18,
+        "centerPoint": [
+            113.2881025,
+            23.1427515
+        ],
+        "restrictedExtent": [
+            113.247062,
+            23.110977,
+            113.329143,
+            23.174526
+        ],
+        "projection": "EPSG:4326"
+    },
+    "vectorLayer": [{
+        "layerName": "yuexiu",
+        "layerType": "NPMapLib.Layers.NPLayer",
+        "layerOpt": {
+            "url": "http://172.17.2.113:8888/netposa/NPGIS/services/yuexiu/MapServer",
+            "layerInfo": {
+                "centerPoint": [
+                    113.2881025,
+                    23.1427515
+                ],
+                "fullExtent": [
+                    113.247062,
+                    23.110977,
+                    113.329143,
+                    23.174526
+                ],
+                "layerType": "tiandi",
+                "maxZoom": 18,
+                "minZoom": 6,
+                "projection": "4326",
+                "restrictedExtent": [
+                    113.247062,
+                    23.110977,
+                    113.329143,
+                    23.174526
+                ],
+                "type": "png",
+                "zoomLevelSequence": "2"
+            }
+        }
+    }],
+    "sattilateLayer": []
+}

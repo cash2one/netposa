@@ -1,0 +1,25 @@
+{
+    "note": "/** 编码规则**/",
+    "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+    "note": "/***************************************** 基础控件  start ****************************************************/",
+  
+    "note": "/*******时间模板*********/",
+    "DP_CONFIG_RUNPLAN_01": "业务配置",
+    "DP_CONFIG_RUNPLAN_02": "时间模板",
+    "DP_CONFIG_RUNPLAN_03": "新增时间模板",
+    
+    "note": "/*******新增*********/",
+
+    "DP_CONFIG_RUNPLAN_04": "时间模板名称",
+    "DP_CONFIG_RUNPLAN_05": "自定义",
+    "DP_CONFIG_RUNPLAN_06": "至",
+
+    "note": "/*******删除*********/",
+    "DP_CONFIG_RUNPLAN_07": "确定删除<strong>{{value}}</strong>这条时间模板？",
+    "DP_CONFIG_RUNPLAN_08": "确定删除已选中 {{value}} 条时间模板？",
+    "DP_CONFIG_RUNPLAN_09": "请输入模板名称",
+    "DP_CONFIG_RUNPLAN_10": "请输入模板相关描述",
+
+    "note": "/*******给外部调用新增模板时用*********/",
+    "DP_CONFIG_RUNPLAN_11": "模板名称"
+  }

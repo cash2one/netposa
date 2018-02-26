@@ -1,0 +1,89 @@
+<ul class="m-totalTask-wrapper m-last-totalTask-wrapper" ng-controller="areaSearchController as areaSearchCtrl">
+    <li class="wrap-content">
+        <div class="wrap-cont-head f-cfb">
+            <span class="cont-head-title" translate="FDS_05_05_01"></span>
+            <span class="cont-head-detail"></span>
+        </div>
+
+        <div class="wrap-cont-table">
+            <div class="cont-table-top f-cfb">
+                <div class="f-fr f-cfb">
+
+                    <div class="f-fl f-cfb m-right15">
+                        <span class="f-fl m-right15" translate="FDS_05_11"></span>
+
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaSearchCtrl.changeTimeBtn('ALL')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.duration !== 'ALL'}" translate="FDS_05_06">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaSearchCtrl.changeTimeBtn('SEVEN_DAYS')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.duration !== 'SEVEN_DAYS'}" translate="FDS_05_07">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaSearchCtrl.changeTimeBtn('THIRY_DAYS')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.duration !== 'THIRY_DAYS'}" translate="FDS_05_08">
+                        </button>
+                        <button class="u-button f-fl m-top5"
+                                ng-click="areaSearchCtrl.changeTimeBtn('SIX_MONTHS')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.duration !== 'SIX_MONTHS'}" translate="FDS_05_09">
+                        </button>
+                    </div>
+
+                    <div class="f-fl f-pr">
+                        <input date-picker class="u-input cont-table-dateSelect" type="text" placeholder="{{'FDS_05_12'|translate}}"
+                               ng-model="areaSearchCtrl.startTime"
+                               format="YYYY-MM-DD"
+                               init-add-type="month"
+                               init-add-val="-1"
+                               is-clear="false">
+                    </div>
+
+                    <span class="f-fl m-right5 m-left5">-</span>
+
+                    <div class="f-fl m-right15 f-pr">
+                        <input date-picker class="u-input cont-table-dateSelect" type="text" placeholder="{{'FDS_05_12'|translate}}"
+                               ng-model="areaSearchCtrl.endTime"
+                               okfun="areaSearchCtrl.showCustomTime()"
+                               choosefun="areaSearchCtrl.showCustomTime()"
+                               format="YYYY-MM-DD"
+                               init-add-type="month"
+                               init-add-val="0"
+                               is-clear="false">
+                    </div>
+
+                    <div class="f-fl f-cfb m-right15">
+                        <span class="f-fl m-right15" translate="FDS_05_05_02"></span>
+
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaSearchCtrl.changeCauseBtn('')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.retrievalType !== ''}"
+                                translate="FDS_05_06">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaSearchCtrl.changeCauseBtn('GeneralRetrieval')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.retrievalType !== 'GeneralRetrieval'}"
+                                translate="FDS_05_05_03">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaSearchCtrl.changeCauseBtn('PublicSecurityEvent')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.retrievalType !== 'PublicSecurityEvent'}"
+                                translate="FDS_05_05_04">
+                        </button>
+                        <button class="u-button f-fl m-top5"
+                                ng-click="areaSearchCtrl.changeCauseBtn('CriminalEvent')"
+                                ng-class="{'u-button-blue-3':areaSearchCtrl.retrievalType !== 'CriminalEvent'}"
+                                translate="FDS_05_05_05">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!--放e-chart图-->
+            <div class="cont-table-bottom" id="search-2">
+                <div class="m-echart-no-data" ng-show="areaSearchCtrl.isNoData" translate="FDS_00_01_18"></div>
+            </div>
+        </div>
+    </li>
+</ul>
+

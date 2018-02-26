@@ -1,0 +1,309 @@
+/*TODO 按钮样式定义*/
+/*TODO 弹出框中所有语义和(确定/提交/修改/增加)相似的按钮: u-button-ok  语义与(取消)相似的按钮 u-button-cancel*/
+/*一般按钮宽度*/
+@import './factory/button.less';
+@import './color/botton.less';
+.pdp-btn{
+    .btn-default();
+}
+.btn-cancel{
+    background-color: @btn-bg-cancle;
+    color:@btn-blue;
+    &:hover{
+        color:@btn-blue;
+        background-color:@btn-bg-cancle;
+        border-color:@btn-blue;
+    }
+}
+
+
+.pdp-btn-icon{
+    .btn-icon();
+}
+
+.btn-add{
+    
+}
+.btn-export{
+    background-color:@btn-green;
+    box-shadow: 2px 2px 10px @btn-green-shadow;
+    border-color:@btn-green;
+    i{
+        background-position: 0 -16px;
+    }
+    &:hover{
+        background-color:@btn-green-hover;
+        border-color:@btn-green-hover;
+    }
+}
+.btn-open{
+    background-color:@btn-green;
+    box-shadow: 2px 2px 10px @btn-green-shadow;
+    border-color:@btn-green;
+    i{
+        background-position: 0 -32px;
+    }
+    &:hover{
+        background-color:@btn-green-hover;
+        border-color:@btn-green-hover;
+    }
+}
+.btn-stop{
+    background-color:@btn-gray;
+    box-shadow: 2px 2px 10px @btn-gray-shadow;
+    border-color:@btn-gray;
+    i{
+        background-position: 0 -48px;
+    }
+    &:hover{
+        background-color:@btn-gray-hover;
+        border-color:@btn-gray-hover;
+    }
+}
+
+.btn-delete{
+    background-color:@btn-orange;
+    box-shadow: 2px 2px 10px @btn-orange-shadow;
+    border-color:@btn-orange;
+    i{
+        background-position: 0 -63px;
+    }
+    &:hover{
+        background-color:@btn-orange-hover;
+        border-color:@btn-orange-hover;
+    }
+}
+
+.pdp-btn-large{
+    .btn-large();
+}
+.btn-blue-large{
+    background-color:@btn-blue;
+    box-shadow: 2px 2px 10px @btn-blue-shadow;
+    border-color:@btn-blue;
+    &:hover{
+        background-color:@btn-blue-hover;
+        border-color:@btn-blue-hover;
+    }
+}
+.btn-light-blue-large{    
+    background-color:@btn-light-blue;
+    box-shadow: 2px 2px 10px @btn-blue-shadow;
+    border-color:@btn-light-blue;
+    &:hover{
+        background-color:@btn-light-blue-hover;
+        border-color:@btn-light-blue-hover;
+    }
+}
+.pdp-icon{
+    .icon-default();
+    &[disabled]{
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+}
+.icon-run{
+    background-position: -48px -32px;
+    &:hover{
+        background-position: -32px -32px;
+    }
+    &[disabled]{
+        &:hover{
+            background-position: -48px -32px;
+        }
+    }
+}
+.icon-stop{
+    background-position: -48px -48px;
+    &:hover{
+        background-position: -32px -48px;
+    }
+    &[disabled]{
+        &:hover{
+            background-position: -48px -48px;
+        }
+    }
+}
+
+.icon-edit{
+    background-position: -48px -79px;
+    &:hover{
+        background-position: -32px -79px;
+    }
+    &[disabled]{
+        cursor: not-allowed;
+        opacity: 0.6;
+        &:hover{
+            background-position: -48px -79px;
+        }
+    }
+}
+.icon-delete{
+    background-position: -48px -63px;
+    &:hover{
+        background-position: -32px -63px;
+    }
+    &[disabled]{
+        cursor: not-allowed;
+        opacity: 0.6;
+        &:hover{
+            background-position: -48px -63px;
+        }
+    }
+}
+
+
+
+
+
+//下面样式之后需要删除
+.u-button{
+    display: inline-block;
+    height:30px;
+    line-height: 30px;
+    padding: 0 15px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    cursor: pointer;
+    background-color: #4394ff;
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*统一所有按钮不可用状态样式*/
+.u-button[disabled]{
+    cursor: not-allowed;
+    background: #f6f7fb;
+    color: #999;
+}
+/*creator wyr: 弹出框确认相关的按钮*/
+.u-button-ok{
+    background: #0994ff;
+    color: #fff;
+}
+/*creator wyr: 弹出框取消相关的按钮*/
+.u-button-cancel{
+    background: #0994ff;
+    color: #fff;
+}
+
+/*加长按钮*/
+.u-button-width{
+    padding:0 38px;
+}
+
+/*只有border按钮*/
+.u-button-blue-7{
+    background: #fff;
+    color: #666;
+    font-size: 12px;
+    border: 1px solid #ccc;
+}
+/*透明border按钮*/
+.u-button-blue-8{
+    background: #fff;
+    color: #666;
+    border-color: transparent;
+}
+
+/*按钮hover时颜色*/
+.u-button:hover{
+    background-color: #3fa9fe;
+    color: #fff;
+    border-color: #3fa9fe;
+}
+.u-button[disabled]:hover{
+    background: #f6f7fb !important;
+    color: #999 !important;
+}
+
+/*蓝色按钮颜色1  alter wyr: 将此颜色改为ui样式规范上的最基本蓝色按钮样式*/
+.u-button-blue-1{
+    background: #269dfa;
+    color: #fff;
+}
+/*creator: wyr 蓝色按钮1的hover样式, 界面上一般的蓝色按钮尽量使用此颜色*/
+.u-button-blue-1:hover{
+    background: #3fa9fe;
+}
+
+/*取消按钮颜色*/
+.u-button-blue-2{
+    background: #eaf6fe;
+    color: #4394ff;
+    border:1px solid #BAE1FE;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.u-button-blue-2.button-right{
+    float:right
+}
+
+.u-button-blue-2:hover{
+    background: #eaf6fe;
+    color: #4394ff;
+    border-color: #BAE1FE;
+}
+
+/*不可用状态按钮颜色*/
+.u-button-blue-3{
+    background-color: #f6f7fb;
+    color: #999;
+}
+
+.u-button-blue-3:hover{
+    background-color: #f6f7fb;
+    color: #999;
+}
+/*表明状态的按钮颜色三种按顺序 开启 暂停 删除*/
+/*绿 对应开启按钮 alter wyr: 改为#8fc31f*/
+.u-button-blue-4{
+    background: #8fc31f;
+    color: #fff;
+}
+.u-button-blue-4:hover{
+    background: #8fc31f;
+    color: #fff;
+}
+/*灰 对应暂停按钮 alter wyr: 改为#bababa*/
+.u-button-blue-5{
+     background: #bababa;
+     color: #fff;
+}
+.u-button-blue-5:hover{
+    background: #bababa;
+    color: #fff;
+}
+/*橙 对应删除按钮 alter wyr: 改为#fb9d49*/
+.u-button-blue-6{
+    background: #fb9d49;
+    color: #fff;
+}
+.u-button-blue-6:hover{
+    background: #fb9d49;
+    color: #fff;
+}
+/*开启, 暂停, 删除按钮对应的相同的不可用状态*/
+.u-button-blue-4.z-dis,
+.u-button-blue-5.z-dis,
+.u-button-blue-6.z-dis{
+    background: #f6f7fb;
+    color: #999;
+}
+.u-button-blue-4:hover.z-dis,
+.u-button-blue-5:hover.z-dis,
+.u-button-blue-6:hover.z-dis{
+    background: #f6f7fb;
+    color: #999;
+}
+
+/*按钮正常颜色*/
+.u-button-blue{
+    background-color: #4394ff;
+    color: #fff;
+    border-color:#4394ff;
+}

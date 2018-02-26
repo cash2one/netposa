@@ -1,0 +1,29 @@
+.m-technologystack-map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #66ccff;
+}
+.m-technologystack-map-left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+}
+.m-technologystack-map-mn{
+    position: absolute;
+    top: 0;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    background: #B9E2A0;
+}
+
+.m-technologystack-map-popup{
+    width: 300px;
+    height: 300px;
+    background: #66ccff;
+}

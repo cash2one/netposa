@@ -1,0 +1,55 @@
+<div class="search-device-con" ng-controller="eFSearchPageController as eFSearchPageCtrl" ng-show="quickSearchCtrl.electronicResult.data.length&&!QuickCtrl.queryStatus">
+    <ul class="media-list electronic" ng-scrollbars>
+        <li class="media" ng-repeat="item in quickSearchCtrl.electronicResult.data">
+            <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                    <span class="operate">
+                        <i class="icon_collect" ng-class="{'active': item.collectStatus}" ng-click="eFSearchPageCtrl.clickCollect(item)">收藏</i>
+                        <i class="icon_analysis" ng-click="eFSearchPageCtrl.clickAnalysis(item)">分析</i>
+                        <i class="icon_dispatched" ng-class="{'active': item.surveillanceStatus}" ng-click="eFSearchPageCtrl.clickSurveillance(item)">布控</i>
+                    </span>
+                </span>
+            </div>
+            <div class="media-next">
+                <div class="media-right" ng-click="eFSearchPageCtrl.detailPopup($index, quickSearchCtrl.electronicResult.data)">
+                    <ul>
+                        <li class="imsi">
+                            <div class="name"></div>
+                            <div class="text">{{item.eFenceLog.IMSI||item.eFenceLog.IMSI2}}</div>
+                        </li>
+                        <li class="imei">
+                            <div class="name"></div>
+                            <div class="text">{{item.eFenceLog.IMEI}}</div>
+                        </li>
+                        <li class="time">
+                            <div class="name"></div>
+                            <div class="text">{{item.eFenceLog.AcqTime}}</div>
+                        </li>
+                        <li class="address">
+                            <div class="name"></div>
+                            <div class="text">{{ item.deviceInfo.Name }}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="footer-page">
+        <div class="footer-page-con">
+            <div class="total">
+                共<i class="m-mark-num"> {{quickSearchCtrl.electronicResult.pageParams.totalCount}} </i>条记录
+            </div>
+            <util-paging
+                    page-params="quickSearchCtrl.electronicResult.pageParams"
+                    prev-page="quickSearchCtrl.changePage(num, 'eleResult')"
+                    next-page="quickSearchCtrl.changePage(num, 'eleResult')"
+                    go-page="quickSearchCtrl.changePage(num, 'eleResult')"
+                    hide-size="quickSearchCtrl.hideSize"
+                    hide-gopage="quickSearchCtrl.hideGopage"
+            ></util-paging>
+        </div>
+    </div>
+</div>
+<div class="m-noMessage" ng-show="!quickSearchCtrl.electronicResult.data.length&&!QuickCtrl.queryStatus">暂无数据</div>
+<div class="loading" ng-if="QuickCtrl.queryStatus"></div>

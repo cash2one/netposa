@@ -1,0 +1,195 @@
+<div class="search-advanced-main" ng-controller="CarSearchPageController as CarSearchPageCtrl">
+    <div class="search-advanced-maincon" ng-scrollbars>
+        <div class="advanced-condition">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">车牌号：</span>
+                            <input type="text" placeholder="请输入车牌号, 如: 粤AF3E62" class="params-item-input" ng-model="CarSearchPageCtrl.searchParams.plateNumber" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="advanced-upload">
+                            <div class="upload-ul">
+                                <div class="upload-li" ng-repeat="item in CarSearchPageCtrl.carImgList" ng-drop="true" ng-drop-success="CarSearchPageCtrl.onDropComplete($data,$event,$index)">
+                                    <div class="upload-li-box" ng-if="item.value!==''">
+                                        <img ng-src="{{item.value|imageUrlFilter}}" alt="">
+                                        <div class="close" ng-click="CarSearchPageCtrl.imgCancel($index)" title="删除"></div>
+                                    </div>
+                                    <label class="upload-li-box" ng-if="item.value===''">
+                                        <input type="file" accept="image/png,image/jpg,image/jpeg" class="upload-file" ng-upload-change="CarSearchPageCtrl.imgUploading($event, item, $index)" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="params-item z-vehicle">
+                            <span class="params-item-name">特征相似度：</span>
+                            <div class="params-item-select">
+                                <progress-drag
+                                        now-value="CarSearchPageCtrl.searchParams.characterThreshold"
+                                        min-value="CarSearchPageCtrl.minSacle"
+                                        max-value="CarSearchPageCtrl.maxSacle" lengd="180">
+                                </progress-drag>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">资源选择：</span>
+                            <button class="params-item-select select-camera button" ng-click="CarSearchPageCtrl.selectCamera()">选择设备</button>
+                            <div class="icon-device-map-select" ng-click="CarSearchPageCtrl.selectDevice('RmpGate')">
+                                <i></i>
+                            </div>
+                            <div class="select-device-total" ng-if="CarSearchPageCtrl.searchParams.arrObjectID.length > 0">
+                                已选择
+                                <span class="number">{{ CarSearchPageCtrl.searchParams.arrObjectID.length }}</span>
+                                个设备
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item z-vehicle">
+                            <span class="params-item-name">车身相似度：</span>
+                            <div class="params-item-select">
+                                <progress-drag
+                                        now-value="CarSearchPageCtrl.searchParams.vehicleBodyThreshold"
+                                        min-value="CarSearchPageCtrl.minSacle"
+                                        max-value="CarSearchPageCtrl.maxSacle" lengd="180">
+                                </progress-drag>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="!CarSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">车牌颜色：</span>
+                            <div class="params-item-select" ng-repeat="item in CarSearchPageCtrl.licencePlateList" ng-class="{'z-vehicle color': item.other!=='transparent'}" ng-click="CarSearchPageCtrl.selectLicencePlateList(item)" title="{{item.name}}">
+                                <div class="text-box" ng-class="{'text-select': item.status}" ng-if="item.other==='transparent'">{{item.name}}</div>
+                                <div class="color-box z-vehicle" ng-class="{'z-active': item.status}" ng-if="item.other!=='transparent'" ng-style="{'background-color':'{{item.other}}'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">车辆颜色：</span>
+                            <div class="params-item-select" ng-repeat="item in CarSearchPageCtrl.carColorList" ng-class="{'z-vehicle color': item.other!=='transparent'}" ng-click="CarSearchPageCtrl.selectCarColorList(item)" title="{{item.name}}">
+                                <div class="text-box" ng-class="{'text-select': item.status}" ng-if="item.other==='transparent'">{{item.name}}</div>
+                                <div class="color-box z-vehicle" ng-if="item.other!=='transparent'" ng-class="{'z-active': item.status}" ng-style="{'background-color':'{{item.other}}'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="!CarSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">车辆类型：</span>
+                            <div class="params-item-downselect-ctn p-top12">
+                                <util-select class="bg-color-white" selected-empty-val="全部" select-data="CarSearchPageCtrl.carTypeList" select-repeat-by-key="name" select-click="CarSearchPageCtrl.changeCarTypeSelect(selected)" select-list-height="S">
+                                </util-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">过车时段：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in CarSearchPageCtrl.crossTrainTimeList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="CarSearchPageCtrl.selectTime(item)">{{item.name}}</span>
+                            <div class="custom-time" ng-if="CarSearchPageCtrl.selectTimeAcitve===4">
+                                <input class="custom-time-input" ng-model="CarSearchPageCtrl.searchParams.startTime" date-picker show-init="true" type="text" placeholder="开始时间"/>
+                                <span>-</span>
+                                <input class="custom-time-input" ng-model="CarSearchPageCtrl.searchParams.endTime" date-picker show-init="true" type="text" placeholder="结束时间"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="!CarSearchPageCtrl.showMore">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">车辆品牌：</span>
+                            <div class="params-item-downselect-ctn p-top12">
+                                <util-select class="bg-color-white" selected-empty-val="全部" select-data="CarSearchPageCtrl.vehicleBrandList" select-repeat-by-key="name" select-click="CarSearchPageCtrl.changeVehicleBrandTypeSelect(selected)" select-list-height="S">
+                                </util-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">子款品牌：</span>
+                            <div class="params-item-downselect-ctn p-top12">
+                                <util-select class="bg-color-white" selected-empty-val="全部" select-data="CarSearchPageCtrl.currentVehicleSubBrandList" select-repeat-by-key="name" select-click="CarSearchPageCtrl.changeVehicleSubBrand(selected)" select-list-height="S">
+                                </util-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="more">
+                    <span class="down icon-arrow-down" title="展开" ng-if="CarSearchPageCtrl.showMore" ng-click="CarSearchPageCtrl.showMore = false"></span>
+                    <span class="up icon-arrow-up" title="收起" ng-if="!CarSearchPageCtrl.showMore" ng-click="CarSearchPageCtrl.showMore = true"></span>
+                </div>
+                <button class="search-advanced-submit" ng-class="{'active':CarSearchPageCtrl.queryStatus === 2}" type="submit" ng-click="CarSearchPageCtrl.searchAdvancedSubmit()">
+                <i class="icon-search">搜索</i>
+            </button>
+            </div>
+        </div>
+        <div class="advanced-result-content" ng-if="CarSearchPageCtrl.queryStatus !== 2">
+            <div class="advanced-operate-tab">
+                <div class="advanced-right">
+                    <i class="icon iconActive icon-table-model"></i>
+                    <i class="icon icon-ul-model"></i>
+                    <label class="advanced-label"><input type="checkbox"/><span>全选</span></label>
+                    <button><i></i>导出</button>
+                </div>
+            </div>
+            <div class="advanced-result-data">
+                <div class="result-data media-right car" ng-repeat="item in CarSearchPageCtrl.carResult.data">
+                    <div class="data-img" ng-click="CarSearchPageCtrl.fullScreen($event , (item.panoramaImage|imageUrlFilter))">
+                        <img ng-src="{{item.panoramaImage|imageUrlFilter}}" ng-drag="true" ng-drag-data="item" data-allow-transform="false" />
+                        <input class="checkbox" type="checkbox" />
+                        <span class="similarity-box" ng-if="item.score">{{item.score | roundNumber}}%</span>
+                        <div class="operate">
+                            <i class="icon_collect" title="收藏" ng-click="CarSearchPageCtrl.clickCollect($event , item)" ng-class="{'active': item.collectStatus}"></i>
+                            <i class="icon_analysis" title="分析" ng-click="CarSearchPageCtrl.clickAnalysis($event , item)"></i>
+                            <i class="icon_dispatched" title="布控" ng-click="CarSearchPageCtrl.clickSurveillance($event , item)" ng-class="{'active': item.surveillanceStatus}"></i>
+                        </div>
+                    </div>
+                    <div class="data-info" ng-click="CarSearchPageCtrl.detailPopup($index, CarSearchPageCtrl.carResult.data)">
+                        <div class="licence">{{item.plateNumber}}</div>
+                        <p>{{item.storageTime}}</p>
+                        <p class="device-name">{{item.deviceInfo.Name}}</p>
+                    </div>
+                </div>
+                <div ng-if="CarSearchPageCtrl.carResult.data.length<1&&(CarSearchPageCtrl.queryStatus === 3)" class="m-noMessage">暂无数据</div>
+                <div ng-if="CarSearchPageCtrl.queryStatus === 1" class="m-noMessage m-noQuery">请输入检索条件检索</div>
+            </div>
+        </div>
+        <div class="advanced-result-content" ng-if="CarSearchPageCtrl.queryStatus === 2">
+            <div class="loading"></div>
+        </div>
+    </div>
+    <div class="all-result-footer container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="page-bottom col-md-9">
+                <util-paging
+                        hide-size="true"
+                        hide-gopage="true"
+                        page-params="CarSearchPageCtrl.carResult.pageParams"
+                        prev-page="CarSearchPageCtrl.changePage(num)"
+                        next-page="CarSearchPageCtrl.changePage(num)"
+                        go-page="CarSearchPageCtrl.changePage(num)"
+                ></util-paging>
+                <div class="page-total" ng-if="CarSearchPageCtrl.carResult.pageParams.totalCount">共 <i class="blue-font">{{CarSearchPageCtrl.carResult.pageParams.totalCount}}</i> 个资源</div>
+            </div>
+        </div>
+    </div>
+</div>

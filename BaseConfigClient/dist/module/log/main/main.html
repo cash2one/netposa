@@ -1,0 +1,10 @@
+<div class="log-content-container">
+    <div class="content-wrap f-cfb">
+        <div class="u-tab-container" id="logIndex">
+            <ul>
+                <li ng-repeat="item in moduleItems"><a href="javascript:void(0);" ui-sref="{{item.key}}" ui-sref-active="selected" ng-bind="item.moduleName" ng-class="{first: $first, last: $last }"></a></li>
+            </ul>
+        </div>
+        <div id="logContainer" class="g-log-main" ui-view="log"></div>
+    </div>
+</div>

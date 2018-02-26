@@ -1,0 +1,48 @@
+@import "./base";
+.detail-popup-box {
+  .detail-popup-box();
+  .car-component {
+    .media-box-con {
+      .box-con-left {
+        width: 410px;
+        height: 312px;
+      }
+      .box-con-right{
+        width: 200px;
+        height: 312px;
+        .plate-number {
+          position: relative;
+          margin-top: 5px;
+          display: block;
+          height: 30px;
+          .m-car-license{
+            width: 80px;
+            float: left;
+            margin-right: 12px;
+            background-color: @bg-blue;
+            color: @white;
+            text-align: center;
+            height: 24px;
+            line-height: 24px;
+            &:after{
+              content: "";
+              width: 76px;
+              height: 20px;
+              border: 1px solid #fff;
+              display: block;
+              position: absolute;
+              top: 2px;
+              left: 2px;
+            }
+          }
+          .m-car-type {
+            float: left;
+            height: 24px;
+            line-height: 24px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}

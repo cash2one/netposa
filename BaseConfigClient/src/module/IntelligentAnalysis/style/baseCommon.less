@@ -1,0 +1,250 @@
+// 常用查询结果显示动画与样式
+.query-result( ){
+  position: absolute;
+  width: 280px;
+  height: 100%;
+  background: #fff;
+  z-index: 99;
+  left: -280px;
+  opacity: 0;
+  transition: all 0.5s;
+  &.result-active{
+    left: 0px;
+    opacity: 1;
+  }
+  // 头部
+  .analaysis-head{
+    position: relative;
+    z-index: 100;
+  }
+  // 分页
+  .result-page{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+  }
+  // 查询内容区域样式
+  .result-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 48px;
+    padding-bottom: 50px;
+    z-index: 99;
+    .result-ul{
+      padding: 10px 5px;
+      .result-li{
+        padding: 0 5px 5px 5px;
+        border-bottom: 1px solid #ddd;
+        .result-top{
+          position: relative;
+          width: 100%;
+          height: 32px;
+          line-height: 32px;
+          .execute-control{
+            .bkicon;
+            height: 32px;
+            padding-left: 16px;
+            float: right;
+            margin-left: 10px;
+          }
+          .analyze{
+            .fxicon;
+            height: 32px;
+            padding-left: 16px;
+            float: right;
+            margin-left: 10px;
+          }
+          .collect{
+            .scicon;
+            height: 32px;
+            padding-left: 16px;
+            float: right;
+            margin-left: 10px;
+          }
+        }
+        .item{
+          position: relative;
+          width: 100%;
+          height: 24px;
+          line-height: 24px;
+          .item-name{
+            width: 70px;
+            float: left;
+          }
+          .item-con{
+            font-weight: 600;
+            float: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 设置默认样式
+.face-track-custom(){
+  .face-track-form{
+    width: 280px;
+    .track-form{
+      .analaysis-form-input{
+        position: relative;
+        padding: 5px 0;
+        height: 40px;
+        // 文字说明样式
+        .analaysis-form-title{
+          display: inline-block;
+          width: 56px;
+          text-align: right;
+          line-height: 30px;
+        }
+        // 滑杆选择
+        .analaysis-progress .progress-content{
+          margin-top: 10px;
+        }
+        // 表单部分样式
+        .input-layer{
+          width: 180px;
+          // 整行
+          &.full-line{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            line-height: 100%;
+          }
+          // 下拉选择
+          &.analaysis-util-select{
+            display: inline-block;
+            width: 180px;
+            height: 30px;
+            float: right;
+            padding: 0;
+            border: 0;
+            .u-uniquebutton .uniquebutton-item{
+              padding: 7px;
+              margin-right: 10px;
+            }
+          }
+
+          // 块级单选
+          &.util-select-block{
+            width: 180px;
+            padding: 0;
+            border: 0;
+            float: right;
+            &.full-line{
+              width: 100%;
+            }
+            .u-uniquebutton .uniquebutton-item{
+              margin-right: 6px;
+              margin-top: 2px;
+              height: 26px;
+              line-height: 26px;
+              padding: 0 10px;
+              border: 0;
+              &.z-select{
+                background-color: @bg-blue;
+                border-color: @bg-blue;
+              }
+              &:hover{
+                border-color: @bg-blue;
+              }
+            }
+          }
+          // 文字单选
+          &.util-select-line{
+            width: 180px;
+            padding: 0;
+            border: 0;
+            float: right;
+            &.full-line{
+              width: 100%;
+            }
+            .u-uniquebutton .uniquebutton-item{
+              padding: 0 10px;
+              border: 0;
+              height: 30px;
+              line-height: 30px;
+              &.z-select{
+                background-color: transparent;
+                border-color: transparent;
+                color: @bg-blue;
+              }
+              &:hover{
+                background-color: transparent;
+                border-color: transparent;
+                color: @bg-blue;
+              }
+            }
+          }
+          // 后带描述文字
+          &.threshold{
+            width: 130px;
+          }
+          // 伴随
+          &.along-time{
+            position: relative;
+            width: 180px;
+            height: 30px;
+            line-height: 30px;
+            float: right;
+            border: 0;
+            padding: 0;
+            .along-time-before-after{
+              position: relative;
+              width: 85px;
+              height: 100%;
+              border: 1px solid #ccc;
+              overflow: hidden;
+              span{
+                position: relative;
+                height: 28px;
+                line-height: 28px;
+                display: block;
+                padding: 0 3px;
+                background: #ddd;
+                text-align: center;
+                &.span-before{
+                  width: 20px;
+                  float: left;
+                }
+                &.span-after{
+                  width: 30px;
+                  float: right;
+                }
+              }
+              input{
+                width: 32px;
+                height: 28px;
+                line-height: 28px;
+                border: 0;
+                float: left;
+                padding: 0 3px;
+                text-align: center;
+              }
+            }
+            .along-time-before{
+              float: left;
+              .along-time-before-after;
+            }
+            .along-time-after{
+              float: right;
+              .along-time-before-after;
+            }
+          }
+        }
+      }
+      .face-track-select-camera{
+        height: 40px;
+        padding: 7px 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}

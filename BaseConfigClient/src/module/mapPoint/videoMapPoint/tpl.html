@@ -1,0 +1,16 @@
+<div ng-controller="videoMapPointController as videoMapPointCtrl" class="maplayer mylayerMin"  >
+    <div class="head">
+        <div class="maplayer-title">{{videoMapPointCtrl.playerInfo.Name}}</div>
+        <div ng-click="videoMapPointCtrl.closeMyLayer()" class="maplayer-close mylayer-close"></div>
+    </div>
+    <div class="maplayer-cntlayer">
+        <div class="maplayer-right-content-now">
+            <div class="maplayer-ocx">
+                <div class="ocx-player" video-ocx init-complete="videoMapPointCtrl.initComplete(ocxControlFunc)"></div>
+                <!--<div class="ocx-player">-->
+                    <!--<video src="../../images/mock/point/video.mp4" width="500" autoplay  loop></video>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>

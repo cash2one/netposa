@@ -1,0 +1,23 @@
+<div class="u-baseconfig-popup m-device-popup" ng-controller="baseConfigElePopupLamp as elePopupLamp">
+    <div class="f-cfb d-tree-content">
+
+        <div class="box-cntr2 f-fr">
+            <div class="box-head" translate="DP_CONFIG_COMMON_21"></div>
+            <div class="box-bottom">
+                <util-tree tree-id="{{elePopupLamp.treeParams.treeId}}" tree-datas="elePopupLamp.treeParams.treeDatas" check-enable="{{elePopupLamp.treeParams.checkEnable}}" single-select="{{elePopupLamp.treeParams.isSingleSelect}}" is-simple-data="{{elePopupLamp.treeParams.isSimpleData}}"
+                    show-icon="{{elePopupLamp.treeParams.isShowIcon}}" show-line="{{elePopupLamp.treeParams.isShowLine}}" default-no-data-msg="{{elePopupLamp.treeParams.defaultNoDataMsg}}" search-no-data-msg="{{elePopupLamp.treeParams.searchNoDataMsg}}"
+                    on-click="elePopupLamp.treeParams.onClick(event, treeId, treeNode)" tree-id-key="ID" tree-pid-key="ParentID" tree-key-name="Name" edit-enable="{{elePopupLamp.treeParams.editEnable}}" show-remove-btn="{{elePopupLamp.treeParams.showRemoveBtn}}"
+                    show-rename-btn="{{elePopupLamp.treeParams.showRenameBtn}}" is-prev="true" is-next="true" is-inner="true" is-copy="false" is-move="true" default-expand-level="0"
+                    default-select-tree-id="elePopupLamp.deviceData.JsonUserData.lampPost.ID"></util-tree>
+            </div>
+        </div>
+
+    </div>
+    <div class="u-border"></div>
+    <div class="form f-cfb">
+        <img src="../../../images/common/alerm-Icon.png"/>
+        <label style="color: gray;font-weight: 400;position: relative;top: 1px;" translate="DP_CONFIG_COMMON_87"></label>
+        <button class="u-button f-fr m-right15 u-button-blue-2" ng-click="elePopupLamp.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+        <button class="u-button f-fr m-right15 u-button-blue-1" ng-click="elePopupLamp.submit()" translate="DP_CONFIG_COMMON_05"></button>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div ng-controller="collectListController as collectListCtrl" class="collect-list wifi-pop-up">
+    <!--<div class="title">-->
+    <!--<div class="name">历史Wi-Fi采集</div>-->
+    <!--<div class="close" ng-click="collectListCtrl.closePopup()"></div>-->
+    <!--</div>-->
+    <div class="con">
+        <div class="top">
+            <div class="switch-ul">
+                <div ng-class="{'status-act':collectListCtrl.showStatus}" class="switch-li" ng-click="collectListCtrl.showCameraStatus(true)">流量</div>
+                <div ng-class="{'status-act':!collectListCtrl.showStatus}" class="switch-li" ng-click="collectListCtrl.showCameraStatus(false)">告警</div>
+            </div>
+            <div class="time-area">
+                <input date-picker class="start-time" ng-model="collectListCtrl.startTime" placeholder="开始时间" clearfun="collectListCtrl.changeTime(value)" okfun="collectListCtrl.changeTime(value)" choosefun="collectListCtrl.changeTime(value)" init-add-type="month" init-add-val="1"
+                    is-clear="false" />
+                <span>-</span>
+                <input date-picker class="end-time" ng-model="collectListCtrl.endTime" placeholder="结束时间" clearfun="collectListCtrl.changeTime(value)" okfun="collectListCtrl.changeTime(value)" choosefun="collectListCtrl.changeTime(value)" init-add-type="month" init-add-val="1"
+                    is-clear="false" />
+            </div>
+            <div class="searchbtns" ng-click="collectListCtrl.changeTime()"></div>
+        </div>
+        <!-- 通行 -->
+        <div class="table" ng-if="collectListCtrl.showStatus">
+            <div class="table-header">
+                <div class="tr">
+                    <div class="td1 td">MAC地址</div>
+                    <div class="td2 td">采集时间</div>
+                    <div class="td3 td">采集地址</div>
+                    <div class="td4 td">操作</div>
+                </div>
+            </div>
+            <div class="table-con">
+                <!--//ng-click="collectListCtrl.lookCollectDetail()"-->
+                <div class="tr" ng-repeat="item in collectListCtrl.renderDataList" ng-click="collectListCtrl.lookCollectDetail($index)">
+                    <div class="td1 td">{{item.wifiLog.Mac}}</div>
+                    <div class="td2 td">{{item.wifiLog.AcqTime}}</div>
+                    <div class="td3 td">{{collectListCtrl.name}}</div>
+                    <div class="td4 td">
+                        <div class="surveillance" ng-click="{'active':item.surveillanceStatus}" ng-click='collectListCtrl.clickSurveillance(item);$event.stopPropagation();'></div>
+                        <div class="analyze"></div>
+                        <div class="collect" ng-class="{'active':item.collectStatus}" ng-click="collectListCtrl.clickCollect(item);$event.stopPropagation();"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 告警 -->
+        <div class="table tableAlar" ng-if="!collectListCtrl.showStatus">
+            <div class="table-header">
+                <div class="tr">
+                    <div class="td1 td">MAC地址</div>
+                    <div class="td2 td">报警时间</div>
+                    <div class="td3 td">报警设备</div>
+                    <div class="td4 td">布控人</div>
+                    <div class="td5 td">状态</div>
+                    <div class="td6 td">操作</div>
+                </div>
+            </div>
+            <div class="table-con">
+                <div class="tr" ng-click="collectListCtrl.lookCollectDetailAlarm($index)" ng-repeat="item in collectListCtrl.MockWifiAlarmList">
+                    <div class="td1 td">{{item.AlarmLog.Notes}}</div>
+                    <div class="td2 td">{{item.AlarmLog.AlarmTime}}</div>
+                    <div class="td3 td">{{collectListCtrl.name}}</div>
+                    <div class="td4 td">{{item.AlarmLog.taskCreatePerson}}</div>
+                    <div class="td5 td s1">{{}}</div>
+                    <div class="td6 td">
+                        <div class="collect" ng-class="{'active':item.collectStatus}" ng-click="$event.stopPropagation();collectListCtrl.clickCollect(item);"></div>
+                        <div class="analyze"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-con" ng-show="collectListCtrl.showStatus">
+            <div class="total">
+                共
+                <span>{{collectListCtrl.dataListTotal}}</span> 条记录
+            </div>
+            <div class="page">
+                <util-paging page-params="collectListCtrl.pageParams" prev-page="collectListCtrl.changePage(num)" next-page="collectListCtrl.changePage(num)" go-page="collectListCtrl.changePage(num)" hide-size="collectListCtrl.hideSize" hide-gopage="collectListCtrl.hideGopage"></util-paging>
+            </div>
+        </div>
+        <div class="footer-con" ng-show="!collectListCtrl.showStatus">
+            <div class="total">
+                共
+                <span>{{collectListCtrl.alarmdataListTotal}}</span> 条记录
+            </div>
+            <div class="page">
+                <util-paging page-params="collectListCtrl.resultParams" prev-page="collectListCtrl.changePage(num)" next-page="collectListCtrl.changePage(num)" go-page="collectListCtrl.changePage(num)" hide-size="true"></util-paging>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+<div ng-controller="cameraPointHistoryAll as cameraPointHistoryAllCtrl" class="maplayer popul layer-min ">
+    <!--<div class="head">-->
+    <!--<div class="maplayer-title">摄像机IOS-0060</div>-->
+    <!--<div class="maplayer-close mylayer-close"></div>-->
+    <!--</div>-->
+    <div class="history-all">
+        <div class="history-btn">
+            <div class="history-alarm" ng-class="{'active': !cameraPointHistoryAllCtrl.showStatus}" ng-click="cameraPointHistoryAllCtrl.showCameraStatus(false)">更多抓拍</div>
+            <div class="history-snapshot" ng-class="{'active': cameraPointHistoryAllCtrl.showStatus}" ng-click="cameraPointHistoryAllCtrl.showCameraStatus(true)">更多报警</div>
+        </div>
+        <div class="time-pick">
+            <div class="time-pick-input">
+                <div class="start-time-pick pick">
+                    <input placeholder="开始时间" readonly type="text" ng-model="cameraPointHistoryAllCtrl.startTime" date-picker show-init="false">
+                </div>
+                <div class="pick hen"></div>
+                <div class="end-time-pick pick">
+                    <input placeholder="结束时间" readonly type="text" ng-model="cameraPointHistoryAllCtrl.endTime" date-picker show-init="false">
+                </div>
+            </div>
+            <div class="searchbtn" ng-click="cameraPointHistoryAllCtrl.changeTime()"></div>
+        </div>
+    </div>
+    <div class="maplayer-cntlayer">
+        <!--抓拍-->
+        <div class="maplayer-content" ng-show="!cameraPointHistoryAllCtrl.showStatus">
+            <div class="lllayer">
+                <div class="llitem" ng-repeat="item in cameraPointHistoryAllCtrl.SubcribeAccessList">
+                    <div class="img">
+                        <img ng-src="{{item.AccessLog.FacePath| imageUrlFilter}}" />
+                    </div>
+                    <!--<div class="action">-->
+                        <!--<span class="sc" ng-class="{'active':item.collectStatus}" ng-click="cameraPointHistoryAllCtrl.clickCollect($event,item);$event.stopPropagation();"></span>-->
+                        <!--<span class="fx" ng-click="cameraPointHistoryAllCtrl.clickAnalysis($event,item);$event.stopPropagation();"></span>-->
+                        <!--<span class="bk" ng-class="{'active':item.surveillanceStatus}" ng-click='cameraPointHistoryAllCtrl.clickSurveillance($event,item);$event.stopPropagation();'></span>-->
+                    <!--</div>-->
+                    <span class="operate">
+                        <i class="icon_collect" ng-class="{'active': item.collectStatus}" ng-click="cameraPointHistoryAllCtrl.clickCollect(item)">收藏</i>
+                        <i class="icon_analysis">
+                            分析
+                            <ul class="analysis-ul" ng-if="cameraPointHistoryAllCtrl.checkAnalysis">
+                                <li class="analysis-li" ng-if="cameraPointHistoryAllCtrl.checkFaceTrack" ng-click="cameraPointHistoryAllCtrl.clickAnalysis(item, cameraPointHistoryAllCtrl.analysisGoTo.Track.key)">{{cameraPointHistoryAllCtrl.analysisGoTo.Track.name}}</li>
+                                <li class="analysis-li" ng-if="cameraPointHistoryAllCtrl.checkAccompanyingAnalysis" ng-click="cameraPointHistoryAllCtrl.clickAnalysis(item, cameraPointHistoryAllCtrl.analysisGoTo.Accompanying.key)">{{cameraPointHistoryAllCtrl.analysisGoTo.Accompanying.name}}</li>
+                                <li class="analysis-li" ng-if="cameraPointHistoryAllCtrl.checkFrequencyAnalysis" ng-click="cameraPointHistoryAllCtrl.clickAnalysis(item, cameraPointHistoryAllCtrl.analysisGoTo.Frequency.key)">{{cameraPointHistoryAllCtrl.analysisGoTo.Frequency.name}}</li>
+                                <li class="analysis-li" ng-click="cameraPointHistoryAllCtrl.clickAnalysis(item, cameraPointHistoryAllCtrl.analysisGoTo.More.key)">{{cameraPointHistoryAllCtrl.analysisGoTo.More.name}}</li>
+                            </ul>
+                        </i>
+                        <i class="icon_dispatched" ng-class="{'active': item.surveillanceStatus}" ng-click="cameraPointHistoryAllCtrl.clickSurveillance(item)">布控</i>
+                    </span>
+                    <div class="info">
+                        <p>{{item.AccessLog.LogTime}}</p>
+                        <p>{{item.deviceInfo.Name}}</p>
+                        <p>{{item.AccessLog.Gender | genderFilter | hideUnknowFilter}} {{item.AccessLog.Glass | glassFilter | hideUnknowFilter}} {{item.AccessLog.Smile | smileFilter | hideUnknowFilter}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="paging-positon">
+                <util-paging page-params="cameraPointHistoryAllCtrl.resultParams" prev-page="cameraPointHistoryAllCtrl.changePage(num)" next-page="cameraPointHistoryAllCtrl.changePage(num)" go-page="cameraPointHistoryAllCtrl.changePage(num)" hide-size="true"></util-paging>
+            </div>
+        </div>
+
+        <!--报警-->
+        <div class="maplayer-right-content-history SubcribeAlarm" ng-show="cameraPointHistoryAllCtrl.showStatus">
+            <div class="gjlayer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>抓拍人脸</th>
+                            <th>相似度</th>
+                            <th>比中人脸</th>
+                            <th>报警时间</th>
+                            <th>报警摄像机</th>
+                            <th>布控人</th>
+                            <th>所在库</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in cameraPointHistoryAllCtrl.SubcribeAlarmList">
+                            <td width="80">
+                                <div style="width: 40px;height: 40px;">
+                                    <img ng-src="{{item.AlarmLog.CapFacePicUrl | imageUrlFilter}}" alt="">
+                                </div>
+                            </td>
+                            <td width="100">
+                                <span class="num">{{item.AlarmLogInfoArr[0].Similarty | roundNumber}}%</span>
+                            </td>
+                            <td width="70">
+                                <img ng-src="{{item.AlarmLogInfoArr[0].PersonInfo.FacePicPath[0] | imageUrlFilter}}" alt="">
+                            </td>
+                            <td width="136">
+                                {{item.AlarmLog.AlarmTime}}
+                            </td>
+                            <td width="146">
+                                {{item.AlarmLog.ObjectName}}
+                            </td>
+                            <td>
+                                {{item.AlarmLog.taskCreatePerson}}
+                            </td>
+                            <td>
+                                {{item.AlarmLogInfoArr[0].LibName}}
+                            </td>
+                            <td>{{item.status === 0?'有效':'无效'}}</td>
+                            <td width="78" class="action">
+                                <span class="sc" ng-class="{'active':item.collectStatus}" ng-click="cameraPointHistoryAllCtrl.clickCollect($event,item);$event.stopPropagation();"></span>
+                                <span class="fx" ng-click="cameraPointHistoryAllCtrl.clickAnalysis($event,item);$event.stopPropagation();"></span>
+                                <span class="lx" ng-click="cameraPointHistoryAllCtrl.fullPlay(item);$event.stopPropagation();"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="paging-positon">
+                <util-paging page-params="cameraPointHistoryAllCtrl.resultAlarmParams" prev-page="cameraPointHistoryAllCtrl.changePage(num)" next-page="cameraPointHistoryAllCtrl.changePage(num)" go-page="cameraPointHistoryAllCtrl.changePage(num)" hide-size="true"></util-paging>
+            </div>
+        </div>
+    </div>
+</div>

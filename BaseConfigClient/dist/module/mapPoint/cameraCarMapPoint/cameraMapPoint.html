@@ -1,0 +1,78 @@
+<div ng-controller="camCarMapPointController as camCarMapPointCtrl" class="mapCarlayer  {{camCarMapPointCtrl.layerClassName}}">
+    <div class="head">
+        <div class="maplayer-title">{{camCarMapPointCtrl.cameraName}}</div>
+        <div ng-click="camCarMapPointCtrl.closeMyLayer()" class="maplayer-close mylayer-close"></div>
+        <div ng-click="camCarMapPointCtrl.resizeLayer()" class="maplayer-btn {{camCarMapPointCtrl.layerSizeClassName}}"></div>
+    </div>
+    <div class="maplayer-cntlayer">
+        <div class="maplayer-right-content-now">
+
+            <div class="maplayer-ocx">
+                <!-- <div class="ocx-player" video-ocx init-complete="camCarMapPointCtrl.initComplete(ocxControlFunc)">
+                    <iframe src='about:blank' frameBorder='0' marginHeight='0' marginWidth='0' class="{{camCarMapPointCtrl.iframe}}"></iframe>
+                </div> -->
+                <div class="ocx-player">
+                    <img style="width: 100%;height: 100%;" ng-src="{{camCarMapPointCtrl.SubcribeAlarmList[0].detail.imageURLs}}" alt="">
+                    <!--<div ng-style="{'background-image': 'url({{camCarMapPointCtrl.SubcribeAlarmList[0].detail.imageURLs}})'}"></div>-->
+                </div>
+                <div class="alarm-layer" ng-show="camCarMapPointCtrl.showFaceInformation">
+                    <div class="alarm-head">
+                        <div class="left-info">报警信息</div>
+                        <div class="right-info">
+                            <span class="more blue" ng-click="camCarMapPointCtrl.showMoreFace(true)">更多></span>
+                        </div>
+                    </div>
+                    <div class="alarm-cnt">
+                        <div  class="ala-car-list" ng-class="'toptransitiona'" ng-show="$index !=0">
+                            <div class="car-left-info">
+                                <img ng-src="{{camCarMapPointCtrl.SubcribeAlarmList[0].detail.imageURLs}}" alt="">
+                            </div>
+                            <div class="car-right-info">
+                                <div class="carplatenumber">
+                                    <p>{{camCarMapPointCtrl.SubcribeAlarmList[0].alarmObjName}}</p>
+                                    <span class="handle" ng-if="camCarMapPointCtrl.SubcribeAlarmList[0].alarmType==0">未处理</span>
+                                    <span class="effective" ng-if="camCarMapPointCtrl.SubcribeAlarmList[0].alarmType==1">有效</span>
+                                    <span class="noeffec" ng-if="camCarMapPointCtrl.SubcribeAlarmList[0].alarmType==-1">无效</span>
+                                </div>
+                                <div class="time">{{camCarMapPointCtrl.SubcribeAlarmList[0].detail.passTime}}</div>
+                                <div class="info">
+                                    {{camCarMapPointCtrl.SubcribeAlarmList[0].detail.vehicleType}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="capture" ng-show="camCarMapPointCtrl.showFaceInformation">
+                <div class="capture-head">
+                    <div class="left-info">车辆抓拍</div>
+                    <div class="right-info">
+                        <span class="righttext">今日 : <i class="blue">{{camCarMapPointCtrl.dataListTotal}}</i></span> <i style="color: #777">|</i>
+                        <span class="more blue" ng-click="camCarMapPointCtrl.showMoreFace(false)">更多></span>
+                    </div>
+                </div>
+                <div class="captrue-item-layer">
+                    <div class="capture-item" ng-repeat="item in camCarMapPointCtrl.SubcribeAccessList" ng-class="'toptransition'" ng-show="$index !=0">
+                        <div class="head-img">
+                            <img ng-src="{{item.panoramaImage}}">
+                        </div>
+                        <div class="desc">
+                            <div class="carPlateNumber">
+                                <p>{{item.plateNumber}}</p>
+                            </div>
+                            <div class="time">{{item.passTime}}</div>
+                            <div class="info">
+                                {{item.Gender | genderFilter | hideUnknowFilter}} {{item.Glass | glassFilter | hideUnknowFilter}} {{item.Smile | smileFilter | hideUnknowFilter}}
+                            </div>
+                            <div class="action">
+                                <span ng-class="{'active':item.collectStatus}" class="sc" ng-click="camCarMapPointCtrl.clickCollect($event,item)"></span>
+                                <span class="fx"></span>
+                                <span ng-class="{'active':item.isMonitor}" class="bk"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<ul class="u-uniquebutton f-cfb">
+    <li class="uniquebutton-item" ng-class="{'z-select': item.isSelect}" ng-repeat="item in uniqueBtnDirective.visualItems" ng-click="uniqueBtnDirective.select([item])">
+        <span ng-if="uniqueBtnDirective.needTranslate" ng-bind="item[uniqueBtnDirective.textLink] | translate"></span>
+        <span ng-if="!uniqueBtnDirective.needTranslate" ng-bind="item[uniqueBtnDirective.textLink]"></span>
+    </li>
+</ul>

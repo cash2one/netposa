@@ -1,0 +1,39 @@
+/**
+     * @title 配置通用图标
+     * @update chendm
+     * @time  2017-11-14
+     */
+/**
+     * @title 配置管理样式
+     * @update chendm
+     * @time  2017-11-17
+     */
+.g-baseconfig-mn {
+  padding-bottom: 54px;
+}
+/**
+     * @title 基础配置--行政区域
+     * @update chendm
+     * @time  2017-11-22
+     */
+.baseconfig-two-column {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.baseconfig-two-column .g-baseconfig-right .right-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.baseconfig-two-column .g-baseconfig-right .right-content .m-baseconfig-centerFixed {
+  bottom: 55px;
+}
+.baseconfig-two-column .g-baseconfig-right .right-content .m-baseconfig-bottomFixed {
+  height: 55px;
+}
+.baseconfig-two-column .g-baseconfig-right .right-content .m-baseconfig-bottomFixed .u-paging {
+  padding: 12px 20px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJhc2Vjb25maWctYXJlYS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7T0FJTztBQUNQOzs7O09BSU87QUFDUDtFQUNFLHFCQUFxQjtDQUN0QjtBQUNEOzs7O09BSU87QUFDUDtFQUNFLG1CQUFtQjtFQUNuQixZQUFZO0VBQ1osYUFBYTtDQUNkO0FBQ0Q7RUFDRSxtQkFBbUI7RUFDbkIsWUFBWTtFQUNaLGFBQWE7Q0FDZDtBQUNEO0VBQ0UsYUFBYTtDQUNkO0FBQ0Q7RUFDRSxhQUFhO0NBQ2Q7QUFDRDtFQUNFLG1CQUFtQjtDQUNwQiIsImZpbGUiOiJtb2R1bGUvYmFzZWNvbmZpZy9zdHlsZS9iYXNlY29uZmlnLWFyZWEuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gICAgICogQHRpdGxlIOmFjee9rumAmueUqOWbvuagh1xuICAgICAqIEB1cGRhdGUgY2hlbmRtXG4gICAgICogQHRpbWUgIDIwMTctMTEtMTRcbiAgICAgKi9cbi8qKlxuICAgICAqIEB0aXRsZSDphY3nva7nrqHnkIbmoLflvI9cbiAgICAgKiBAdXBkYXRlIGNoZW5kbVxuICAgICAqIEB0aW1lICAyMDE3LTExLTE3XG4gICAgICovXG4uZy1iYXNlY29uZmlnLW1uIHtcbiAgcGFkZGluZy1ib3R0b206IDU0cHg7XG59XG4vKipcbiAgICAgKiBAdGl0bGUg5Z+656GA6YWN572uLS3ooYzmlL/ljLrln59cbiAgICAgKiBAdXBkYXRlIGNoZW5kbVxuICAgICAqIEB0aW1lICAyMDE3LTExLTIyXG4gICAgICovXG4uYmFzZWNvbmZpZy10d28tY29sdW1uIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuLmJhc2Vjb25maWctdHdvLWNvbHVtbiAuZy1iYXNlY29uZmlnLXJpZ2h0IC5yaWdodC1jb250ZW50IHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuLmJhc2Vjb25maWctdHdvLWNvbHVtbiAuZy1iYXNlY29uZmlnLXJpZ2h0IC5yaWdodC1jb250ZW50IC5tLWJhc2Vjb25maWctY2VudGVyRml4ZWQge1xuICBib3R0b206IDU1cHg7XG59XG4uYmFzZWNvbmZpZy10d28tY29sdW1uIC5nLWJhc2Vjb25maWctcmlnaHQgLnJpZ2h0LWNvbnRlbnQgLm0tYmFzZWNvbmZpZy1ib3R0b21GaXhlZCB7XG4gIGhlaWdodDogNTVweDtcbn1cbi5iYXNlY29uZmlnLXR3by1jb2x1bW4gLmctYmFzZWNvbmZpZy1yaWdodCAucmlnaHQtY29udGVudCAubS1iYXNlY29uZmlnLWJvdHRvbUZpeGVkIC51LXBhZ2luZyB7XG4gIHBhZGRpbmc6IDEycHggMjBweDtcbn1cbiJdfQ== */

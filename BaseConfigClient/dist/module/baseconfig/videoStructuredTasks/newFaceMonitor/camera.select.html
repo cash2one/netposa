@@ -1,0 +1,56 @@
+<div class="camera-tree">
+    <div class="tree-title">
+        摄像机资源列表
+    </div>
+    <div class="camera-tree-serach-input">
+        <input type="text"
+               ng-model="videoNewTaskCtrl.searchPersonStr"
+               placeholder="{{'请输入摄像机名称'|translate}}"
+               ng-change="videoNewTaskCtrl.onChangeSearchTree()"
+        />
+        <i class="u-input-search" ng-click="videoNewTaskCtrl.onChangeSearchTree()"></i>
+    </div>
+    <div class="tree-data">
+        <util-tree tree-id="{{videoNewTaskCtrl.cameraTreeParams.treeId}}"
+                   tree-init-complete="videoNewTaskCtrl.cameraTreeParams.treeInitComplete(treeId)"
+                   tree-datas="videoNewTaskCtrl.cameraTreeParams.treeDatas"
+
+                   check-enable="{{videoNewTaskCtrl.cameraTreeParams.checkEnable}}"
+
+                   single-select="{{videoNewTaskCtrl.cameraTreeParams.isSingleSelect}}"
+                   is-simple-data="{{videoNewTaskCtrl.cameraTreeParams.isSimpleData}}"
+                   show-icon="{{videoNewTaskCtrl.cameraTreeParams.isShowIcon}}"
+                   show-line="{{videoNewTaskCtrl.cameraTreeParams.isShowLine}}"
+                   default-no-data-msg="{{videoNewTaskCtrl.cameraTreeParams.defaultNoDataMsg}}"
+                   search-no-data-msg="{{videoNewTaskCtrl.cameraTreeParams.searchNoDataMsg}}"
+
+                   on-click="videoNewTaskCtrl.cameraTreeParams.onClick(event, treeId, treeNode)"
+                   on-check="videoNewTaskCtrl.cameraTreeParams.onCheck(event, treeId, treeNode)"
+                   tree-id-key="ID"
+                   tree-pid-key="ParentID"
+                   tree-key-name="Name"
+                   edit-enable="{{videoNewTaskCtrl.cameraTreeParams.editEnable}}"
+                   is-prev="false"
+                   is-next="false"
+                   is-inner="false"
+                   is-copy="false"
+                   is-move="false"
+                   default-expand-level="0"
+        ></util-tree>
+    </div>
+</div>
+
+<div class="camera-select-list-name">
+    <div class="tree-title">
+        <span class="select-num">已选（<i>{{videoNewTaskCtrl.selectCameraList.length}}</i>）</span>
+        <span class="clear-select" ng-click="videoNewTaskCtrl.removeCameraSelected(false,true)">清空所有</span>
+    </div>
+    <div class="select-camera-layer">
+        <span ng-repeat="item in videoNewTaskCtrl.selectCameraList">
+            {{item.Name}}
+            <i class="icon-btn i-btn-close"
+               ng-click="videoNewTaskCtrl.removeCameraSelected(item)"
+            ></i>
+        </span>
+    </div>
+</div>

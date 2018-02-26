@@ -1,0 +1,236 @@
+<div ng-controller="faceLibPersonUpdateModalController as flpumCtrl"
+        class="u-baseconfig-popup m-face-person-modal">
+        <div class="person-modal-content f-cfb"
+             ng-class="{'has-lib-content':flpumCtrl.hasTree}"
+        >
+            <div class="storage-list f-fl f-pr" ng-if="flpumCtrl.hasTree">
+                <div class="storage-list-head f-cb">
+                    <span>{{'FDS_00_08_20' | translate}}</span>
+                    <i class="i-circle-add f-csp f-fr" ng-click="flpumCtrl.addStorage()"></i>
+                </div>
+                <input type="text" class="ipt query-storage-ipt"
+                       ng-model="flpumCtrl.searchStr"
+                       ng-change="flpumCtrl.onChangeSearch()">
+                <i class="u-input-search"></i>
+                <div class="storage-tree-area">
+                    <util-tree tree-id="{{flpumCtrl.faceLibTreeParams.treeId}}"
+                               tree-init-complete="flpumCtrl.faceLibTreeParams.treeInitComplete(treeId)"
+                               tree-datas="flpumCtrl.faceLibTreeParams.treeDatas"
+
+                               check-enable="true"
+
+                               single-select="false"
+                               is-simple-data="true"
+                               show-icon="true"
+                               show-line="false"
+                               default-no-data-msg="{{flpumCtrl.faceLibTreeParams.defaultNoDataMsg}}"
+                               search-no-data-msg="{{flpumCtrl.faceLibTreeParams.searchNoDataMsg}}"
+
+                               on-click="flpumCtrl.faceLibTreeParams.onClick(event, treeId, treeNode)"
+                               on-check="flpumCtrl.faceLibTreeParams.onCheck(event, treeId, treeNode)"
+
+                               tree-id-key="ID"
+                               tree-pid-key="ParentID"
+                               tree-key-name="Name"
+                               edit-enable="{{flpumCtrl.faceLibTreeParams.editEnable}}"
+                               is-prev="false"
+                               is-next="false"
+                               is-inner="false"
+                               is-copy="false"
+                               is-move="false"
+                               default-expand-level="0"
+                    ></util-tree>
+                </div>
+            </div>
+            <!--图片上传-->
+            <div class="person-modal-content-left f-fl">
+                <div class="u-upload-image-cntr">
+                    <div class="img-content">
+                        <div class="upload-image">
+                            <img util-img-ctrl-size  ng-src="{{flpumCtrl.imageCover | imageUrlFilter}}" style="width: 100%;padding-top: 22.26536312849163px;"/>
+                        </div>
+                        <p class="image-num " ng-click="flpumCtrl.showImageThumbs()"
+                           title="{{'FDS_01_06_49'|translate}}"
+                           ng-bind="flpumCtrl.totalNum + ('DP_CONFIG_FACELIB_34' |translate)"
+                        >
+                        </p>
+                    </div>
+                    <div class="image-btn" id="faceLibPersonImageUploader"
+                         translate="FDS_01_06_32"
+                    ></div>
+                </div>
+            </div>
+
+
+            <div class="person-modal-content-right f-fr " ng-scrollbars>
+                <form  name="flUpdataForm" >
+                    <!--名称-->
+                    <div class="u-form">
+                        <label class="title">
+                            <i class="u-red-star"></i>
+                            <span translate="DP_CONFIG_FACELIB_11"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <input  class="u-input"
+                                    type="text"
+                                    ng-model="flpumCtrl.currentModel.Name"
+                                    placeholder="{{'DP_CONFIG_FACELIB_52' | translate}}"
+                                    valid-m-nonempty="{{'DP_CONFIG_FACELIB_53' | translate}}"
+                                    valid-m-max = "64"
+                                    valid-multiple
+                            >
+                        </div>
+                    </div>
+                    <!--性别-->
+                    <div class="u-form">
+                        <label class="title">
+                            <span translate="FDS_00_12_15"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <div class="u-circle-box f-fl f-cfb">
+                                <a class="f-pr circle" href="javascript:;"
+                                   ng-click="flpumCtrl.currentModel.Gender = genderItem.value;"
+                                   ng-repeat="genderItem in flpumCtrl.genderTypeList"
+                                   ng-class="{'circle-selected':flpumCtrl.currentModel.Gender === genderItem.value || flpumCtrl.currentModel.Gender === genderItem.text}"
+                                   ng-bind="genderItem.text | translate"
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--民族-->
+                    <div class="u-form">
+                        <label class="title">
+                            <span translate="FDS_00_12_16"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <util-select
+                                    select-list-height="S"
+                                    select-data="flpumCtrl.nationList"
+                                    selected-val="flpumCtrl.currentModel.Nation"
+                                    select-repeat-by-key="text"
+                                    select-show-by-key="text"
+                                    select-none-default = "true"
+                            >
+                            </util-select>
+                        </div>
+                    </div>
+                    <!--证件类型-->
+                    <div class="u-form">
+                        <label class="title">
+                            <span translate="FDS_01_06_36"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <util-select
+                                    select-list-height="S"
+                                    select-data="flpumCtrl.credentialsTypeList"
+                                    selected-val="flpumCtrl.personAssist.CredentialsType"
+                                    select-repeat-by-key="text"
+                                    select-show-by-key="text"
+                                    select-none-default = "true"
+                            >
+                            </util-select>
+                        </div>
+                    </div>
+                    <!--证件号码-->
+                    <div class="u-form">
+                        <label class="title">
+                            <i class="u-red-star"></i>
+                            <span translate="FDS_01_06_37"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <input class=" u-input"
+                                   type="text"
+                                   ng-model="flpumCtrl.currentModel.IDCardNumber"
+                                   placeholder="{{'FDS_01_06_37' |translate}}"
+                                   valid-m-nonempty="{{'FDS_01_06_37' |translate}}"
+                                   valid-m-idnum
+                                   valid-m-max = "18"
+                                   valid-multiple
+                            >
+                        </div>
+                    </div>
+                    <!--出生年月-->
+                    <div class="u-form">
+                        <label class="title">
+                            <span translate="FDS_01_06_38"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <input class="u-input form-input f-csp"
+                                   type="text"
+                                   name="newTaskStartTime"
+                                   ng-model="flpumCtrl.currentModel.Birth"
+                                   placeholder="{{'FDS_01_06_45' |translate}}"
+                                   date-picker
+                            />
+                            <i class="iconPosition i-calendar"></i>
+                        </div>
+                    </div>
+
+                    <!--户籍地址-->
+                    <div class="u-form">
+                        <label class="title">
+                            <span translate="FDS_00_12_27"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <input class=" u-input "
+                                   type="text"
+                                   ng-model="flpumCtrl.personAssist.HouseHoldReg"
+                                   placeholder="{{'FDS_01_06_46' |translate}}"
+                                   valid-m-max="30"
+                                   valid-multiple
+                            >
+                        </div>
+                    </div>
+
+                    <!--现住地址-->
+                    <div class="u-form">
+                        <label class="title">
+                            <span title="{{'FDS_01_06_40' |translate}}" translate="FDS_01_06_40"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <input  class=" u-input"
+                                    type="text"
+                                    ng-model="flpumCtrl.currentModel.HomeAddress"
+
+                                    placeholder="{{'FDS_01_06_47' |translate}}"
+                                    valid-m-max="30"
+                                    valid-multiple
+                            >
+                        </div>
+                    </div>
+
+                    <!--详细信息-->
+                    <div class="u-form">
+                        <label class="title">
+                            <span title="{{'FDS_00_12_08' |translate}}" translate="FDS_00_12_08"></span>
+                        </label>
+                        <div class="controls none-space">
+                            <input class=" u-input "
+                                   type="text"
+                                   ng-model="flpumCtrl.personAssist.Memo"
+                                   placeholder="{{'FDS_01_06_48' |translate}}"
+                                   valid-m-max="30"
+                                   valid-multiple
+                            >
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="u-border "></div>
+
+        <div class="u-form simple-form f-cfb ">
+            <button  class="u-button u-button-blue-2  f-fr"
+                     ng-click="flpumCtrl.closeUpdateModel(false)"
+                     type="button"
+                     translate="FDS_00_07_02"
+            ></button>
+            <button  class="u-button m-right15 f-fr"
+                     type="button"
+                     ng-click="flpumCtrl.prevCommitSaveOrUpdate()"
+                     ng-disabled="flUpdataForm.$invalid"
+                     translate="DP_CONFIG_FACELIB_54"
+            ></button>
+        </div>
+</div>

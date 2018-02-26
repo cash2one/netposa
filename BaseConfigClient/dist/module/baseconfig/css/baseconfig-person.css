@@ -1,0 +1,101 @@
+/*用户管理*/
+
+/*.m-person .right-content{
+	min-width: 926px;
+}*/
+.m-person-info .form input,.m-person-info .form select{
+	width: 160px;
+}
+.m-person-tree-container{
+	position: absolute;
+	top: 43px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: auto;
+}
+
+.m-person-info{
+	border-radius: 5px;
+	background-color: #fff;
+	min-width: 900px;
+}
+
+.m-person-info .form-inline{
+	padding: 15px;
+	border-bottom: 1px solid #e8ebec;
+	min-width: 900px;
+}
+
+.m-person-info .form{
+	display: inline-block;
+	font-size: 12px;
+	color: #828a98;
+	margin-right: 15px;
+}
+
+.m-person-info .form .text{
+	width: 160px;
+	border-radius: 2px;
+}
+
+.m-person-info .form label{
+	font-weight: normal;
+}
+
+.m-person-search-top{
+	width:100%;
+	padding:11px 15px;
+	background:#fff;
+	border-radius: 5px 5px 0 0;
+	margin-top: 15px;
+}
+
+.m-person-search-top ul li{
+	float: left;
+	margin-right:10px;
+}
+
+.m-person-search-top .person-btn-color{
+	background: #f6f7fb;
+	color:#999;
+}
+
+.m-person .table-content{
+	min-width: 900px;
+}
+
+/*弹出框分成两栏*/
+.m-person-popup .popup-subField{
+	width: 50%;
+}
+
+.m-person-popup .person-date{
+	position: relative;
+	margin: 0;
+}
+
+.m-person-popup .person-date .personDate-input{
+	height: 30px;
+	line-height: 30px;
+	width: 158px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	color: #333;
+	font-size: 12px;
+	text-indent: 5px;
+	padding: 0 28px 0 5px;
+}
+
+.m-person-popup .iconPosition{
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+
+.m-person .person-centerFixed{
+	top:165px;
+}

@@ -1,0 +1,98 @@
+body .no-scroll .layui-layer-content {
+    overflow: hidden;
+}
+
+body .overflow-visible .layui-layer-content {
+    overflow: visible;
+}
+
+body .layui-layer-msg {
+    min-width: 100px;
+}
+
+body .layer-msg-common .layui-layer-content {
+    padding: 10px 20px;
+    line-height: 20px;
+}
+
+body .layui-layer-msg.layer-msg-common {
+    border: 0px solid #fff !important;
+}
+
+body .layer-msg-common {
+    min-width: 0;
+    color: #fff;
+    text-align: center;
+}
+
+body .layer-msg-success {
+    background-color: #35b528;
+
+}
+
+body .layer-msg-fail {
+    background-color: #eb1542;
+}
+
+body .layer-msg-warn {
+    background-color: #ec9703;
+}
+
+body .layer-msg-info {
+    background-color: #00a7da;
+}
+
+body .layer-define .layui-layer-content {
+    overflow: visible;
+}
+
+.layui-layer-title {
+    padding-left: 12px !important;
+}
+
+.layui-layer-setwin {
+    right: 10px !important;
+}
+
+body .layui-layer-tips .layui-layer-content {
+    padding: 2px 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;
+    border: 1px solid #e4e4e4;
+    position: relative;
+}
+
+body .layui-layer-tips .layui-layer-content:after {
+    content: ' ';
+    width: 8px;
+    height: 8px;
+    left: 15px;
+    bottom: -4px;
+    background: white;
+    position: absolute;
+    color: #333;
+    border-left: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    transform: rotate(-45deg);
+}
+
+body .layui-layer-tips .layui-layer-content .error-msg {
+    background: url("../../images/common/error-icon.png") no-repeat left center;
+    padding: 2px 0 2px 18px;
+}
+
+body .layui-layer-tips i.layui-layer-TipsB, .layui-layer-tips i.layui-layer-TipsT {
+    display: none;
+}
+
+body .layui-laydate .layui-this {
+    background-color: #2D87F9 !important;
+}
+
+body .layui-laydate-footer span:hover {
+    color: #2D87F9
+}
+
+body layui-laydate-footer span[lay-type=date] {
+    color: #2D87F9;
+}

@@ -1,0 +1,71 @@
+<div class="m-check-details" ng-controller="FaceStructDetailsController as FaceStructDetailsCtrl">
+    <div class="head-ctn">
+        <span class="title">查看详情</span>
+        <span class="close" ng-click="FaceStructDetailsCtrl.cancel()">×</span>
+    </div>
+    <div class="content-center">
+        <div class="content-list">
+            <span class="title">审核任务：</span>
+            <span class="text">{{FaceStructDetailsCtrl.TaskTypeMap[FaceStructDetailsCtrl.MyCheck.taskType]}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">有效时间：</span>
+            <span class="text"><span ng-if="FaceStructDetailsCtrl.MyCheck.isLongEffective|isLongEffectiveFilter">长期有效</span>
+            <span class="text" ng-if="!(FaceStructDetailsCtrl.MyCheck.isLongEffective|isLongEffectiveFilter)">
+                <p>{{FaceStructDetailsCtrl.MyCheck.validTimeStart}}</p>
+                <p>-</p>
+                <p>{{FaceStructDetailsCtrl.MyCheck.validTimeEnd}}</p>
+            </span>
+        </div>
+        <div class="content-list">
+            <span class="title">任务名称：</span>
+            <span class="text">{{FaceStructDetailsCtrl.MyCheck.tName}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">任务状态：</span>
+            <span class="text">{{FaceStructDetailsCtrl.TaskStatusMap[FaceStructDetailsCtrl.MyCheck.tStatus]}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">所属区域：</span>
+            <span class="text">{{FaceStructDetailsCtrl.MyCheck.createUserAreaName}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">审核状态：</span>
+            <span class="text">{{FaceStructDetailsCtrl.AuditStatusMap[FaceStructDetailsCtrl.MyCheck.auditStatus]}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">创建人/布控人：</span>
+            <span class="text">{{FaceStructDetailsCtrl.MyCheck.createUserName}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">任务类型：</span>
+            <span class="text">{{FaceStructDetailsCtrl.TaskTypeMap[FaceStructDetailsCtrl.MyCheck.taskType]}}</span>
+        </div>
+        <div class="content-list z-long">
+            <span class="title">描述：</span>
+            <span class="text" title="{{FaceStructDetailsCtrl.MyCheck.description}}">{{FaceStructDetailsCtrl.MyCheck.description}}</span>
+        </div>
+    </div>
+    <div class="content-bottom f-cfb">
+        <div class="bottom-ctn" style="border-left:1px solid #ecebea">
+            <div class="bottom-ctn-title">
+                摄像机
+            </div>
+            <util-tree class="bottom-ctx"
+                       tree-id="{{FaceStructDetailsCtrl.cameraExParams.treeId}}"
+                       tree-datas="FaceStructDetailsCtrl.cameraExParams.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="FaceStructDetailsCtrl.treeInitComplete(treeId)"
+                       check-enable="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       before-check="FaceStructDetailsCtrl.beforeCheck()"
+                       default-expand-level="0">
+            </util-tree>
+        </div>
+    </div>
+</div>

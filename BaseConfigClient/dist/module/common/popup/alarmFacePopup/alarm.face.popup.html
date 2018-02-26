@@ -1,0 +1,64 @@
+<div ng-controller="commonAlarmFacePopupController as commonAlarmFacePopupCtrl" class="u-alarmface-popup">
+    <div class="datillayer">
+        <div class="alarm-layer">
+            <div class="alarm-cnt">
+                <div class="imginfo">
+                    <div class="captrue-img z-min">
+                        <div class="img"><img util-img-center ng-src="{{commonAlarmFacePopupCtrl.faceAlarmData.AlarmLog.CapFacePicUrl|imageUrlFilter}}" alt=""></div>
+                        <div class="type">
+                            <span>抓拍人脸</span>
+                            <span class="action">
+                                <!-- TODO 按钮待完成 -->
+                                <!-- <i class="sc"></i>
+                                <i class="fx"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="captrue-img captrue-match-img z-min">
+                        <div class="img"><img util-img-center ng-src="{{commonAlarmFacePopupCtrl.currentSelectItem.AlarmLogInfo.PersonInfo.FacePicPath[0]|imageUrlFilter}}" alt=""></div>
+                        <div class="type">
+                            <span>比中人脸</span>
+                            <span class="action">
+                                <!-- TODO 按钮待完成 -->
+                                <!-- <i class="sc"></i>
+                                <i class="fx"></i> -->
+                            </span>
+                        </div>
+                        <div class="match-info">
+                            <span>{{commonAlarmFacePopupCtrl.currentSelectItem.AlarmLogInfo.Similarty|roundNumber}}%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="alarm-desc">
+                    <div ng-class="{'man':(commonAlarmFacePopupCtrl.faceAlarmData.currentSelectItem.AlarmLogInfo.PersonInfo.Gender|genderFilter)}">{{commonAlarmFacePopupCtrl.currentSelectItem.AlarmLogInfo.PersonInfo.Name}}</div>
+                    <div class="id-card"><i>证件号 : </i>{{commonAlarmFacePopupCtrl.currentSelectItem.AlarmLogInfo.PersonInfo.IDCardNumber}}</div>
+                    <div class="time"><i>创建时间 : </i>{{commonAlarmFacePopupCtrl.currentSelectItem.AlarmLogInfo.PersonInfo.CreateTime}}</div>
+                    <div class="lib"><i>所在库 : </i>{{commonAlarmFacePopupCtrl.currentSelectItem.LibName}}</div>
+                    <div class="address"><i>户籍地址 : </i>{{commonAlarmFacePopupCtrl.currentSelectItem.AlarmLogInfo.PersonInfo.HomeAddress}}</div>
+                    <div class="lib"><i>详细信息 : </i>{{commonAlarmFacePopupCtrl.currentSelectItem.AlarmLogInfo.PersonInfo.userTag}}</div>
+                </div>
+                <!-- TODO 视频回放待完成 -->
+                <!-- <div class="media-layer">
+                    <div class="media-player"></div>
+                </div> -->
+            </div>
+        </div>
+        <div class="captrue-content">
+            <div class="captrue-layer">
+                <div class="captrue-img" ng-class="{'z-selected': (commonAlarmFacePopupCtrl.currentSelectItem === item)}" ng-repeat="item in commonAlarmFacePopupCtrl.faceAlarmData.AlarmLogInfoArr track by $index" ng-click="commonAlarmFacePopupCtrl.chooseAlarmLogInfo(item)">
+                    <div class="img"><img util-img-center ng-src="{{item.AlarmLogInfo.PersonInfo.FacePicPath[0]|imageUrlFilter}}"></div>
+                    <div class="type">
+                        <span>{{item.AlarmLogInfo.PersonInfo.Name}}</span>
+                        <span>{{item.LibName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alarm-bottom">
+            <div class="action-btn">
+                <button class="my-btn z-{{commonAlarmFacePopupCtrl.faceAlarmData.AlarmLog.ResponseState}}">{{commonAlarmFacePopupCtrl.faceAlarmData.AlarmLog.ResponseState|alarmResponseStateFilter}}</button>
+            </div>
+        </div>
+    </div>
+</div>

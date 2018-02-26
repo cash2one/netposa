@@ -1,0 +1,72 @@
+<div ng-controller="alarmDetailPoupController as alarmDetailPoupCtrl" class="maplayer maplayerDetail">
+    <div class="head">
+        <div class="maplayer-title">报警详情</div>
+        <div ng-click="alarmDetailPoupCtrl.closeMyLayer()" class="maplayer-close mylayer-close"></div>
+    </div>
+    <div class="datillayer">
+        <div class="alarm-layer">
+            <div class="alarm-cnt">
+                <div class="imginfo">
+                    <div class="captrue-img">
+                        <div class="img"><img src="{{alarmDetailPoupCtrl.alarmNowInfo.captrueImage}}" alt=""></div>
+                        <div class="type">
+                            <span>抓拍人脸</span>
+                            <span class="action">
+                                <i class="sc"></i>
+                                <i class="fx"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="captrue-img captrue-match-img">
+                        <div class="img"><img src="{{alarmDetailPoupCtrl.alarmNowInfo.alarmImage}}" alt=""></div>
+                        <div class="type">
+                            <span>比中人脸</span>
+                            <span class="action">
+                                <i class="sc"></i>
+                                <i class="fx"></i>
+                            </span>
+                        </div>
+                        <div class="match-info">
+                            <span>{{alarmDetailPoupCtrl.alarmNowInfo.matchNum}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="alarm-desc">
+                    <div ng-class="{'man':alarmDetailPoupCtrl.alarmNowInfo.sex==0,'woman':alarmDetailPoupCtrl.alarmNowInfo.sex==1}">{{alarmDetailPoupCtrl.alarmNowInfo.name}}</div>
+                    <div class="id-card"><i>证件号 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.cardNum}}</div>
+                    <div class="time"><i>创建时间 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.alarmTime}}</div>
+                    <div class="lib"><i>所在库 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.libName}}</div>
+                    <div class="address"><i>户籍地址 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.cameraAddress}}</div>
+                    <div class="lib"><i>详细信息 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.libName}}</div>
+
+                </div>
+                <div class="media-layer">
+                    <div class="media-player"></div>
+                </div>
+            </div>
+        </div>
+        <div class="captrue-content">
+            <div class="captrue-layer">
+                <div class="captrue-img" ng-repeat="item in alarmDetailPoupCtrl.alarmInfoList">
+                    <div class="img"><img src="{{item.alarmImage}}" alt=""></div>
+                    <div class="type">
+                        <span>{{item.name}}</span>
+                        <span>{{item.libName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alarm-bottom">
+            <div class="change-page">
+                <span class="prev"></span>
+                <span class="next"></span>
+            </div>
+            <div class="action-btn">
+                <button class="my-btn wx">无效</button>
+                <button class="my-btn dd">待定</button>
+                <button class="my-btn yx">有效</button>
+            </div>
+        </div>
+    </div>
+</div>

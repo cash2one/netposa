@@ -1,0 +1,138 @@
+{
+    "tooltip" : {
+        "trigger": "axis",
+        "axisPointer" : {  
+            "type" : "shadow"
+        }
+    },
+    "legend": {
+        "top": 5,
+        "left": 5,
+        "itemHeight":5,
+        "itemWidth":10,
+        "data": [
+            {"name": "车辆",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            },
+            {"name": "人像",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            },
+            {"name": "WIFI",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            },
+            {"name": "电围",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            }
+        ]
+    },
+    "color":["#B752F8", "#3D5DE3", "#00A3FB", "#03FBD9"] ,
+    "grid": {
+        "left": 55,
+        "top":40,
+        "bottom":40
+    },
+    "yAxis":  {
+        "type": "value",
+        "splitLine": {
+            "show": true,
+            "lineStyle": {
+                "color": ["#F8F0E9"],
+                "interval":false 
+            }
+        },
+        "axisLine": {
+            "show": true,
+            "lineStyle": {
+                "color": "#C9C9C9"
+            }
+        },
+        "axisLabel": {
+            "textStyle": {
+                "color": "#6F6E6E",
+                "fontSize":"10"
+            }
+        }
+    },
+    "xAxis": {
+        "type": "category",
+        "data": ["武昌","洪山","汉口","青山","汉阳"],
+        "splitLine": {
+            "show": true,
+            "lineStyle": {
+                "color": ["#F8F0E9"],
+                "interval":false 
+            }
+        },
+        "axisLine": {
+            "show": true,
+            "lineStyle": {
+                "color": "#C9C9C9"
+            }
+        },
+        "axisLabel": {
+            "textStyle": {
+                "color": "#6F6E6E",
+                "fontSize":"10"
+            }
+        }
+    },
+    "series": [
+        {
+            "name": "车辆",
+            "type": "bar",
+            "stack": "总量",
+            "label": {
+                "normal": {
+                    "position": "insideRight"
+                }
+            },
+            "barWidth" : 20,
+            "data": [320, 302, 301, 334, 390]
+        },
+        {
+            "name": "人像",
+            "type": "bar",
+            "stack": "总量",
+            "label": {
+                "normal": {
+                    "position": "insideRight"
+                }
+            },
+            "data": [120, 132, 101, 134, 90]
+        },
+        {
+            "name": "WIFI",
+            "type": "bar",
+            "stack": "总量",
+            "label": {
+                "normal": {
+                    "position": "insideRight"
+                }
+            },
+            "data": [220, 182, 191, 234, 290]
+        },
+        {
+            "name": "电围",
+            "type": "bar",
+            "stack": "总量",
+            "label": {
+                "normal": {
+                    "position": "insideRight"
+                }
+            },
+            "data": [150, 212, 201, 154, 190]
+        }
+    ]
+}

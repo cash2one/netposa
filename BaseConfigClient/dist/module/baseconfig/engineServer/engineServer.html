@@ -1,0 +1,126 @@
+<div class="m-ivsServer f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left  engine-server-list-header">
+        <div>
+            <label class="left-title" translate="DP_CONFIG_ENGINESERVER_02"></label>
+        </div>
+        <div class="left-record-div">
+            <label class="left-record-count" translate="DP_CONFIG_ENGINESERVER_03"></label>
+            <label class="left-record-count left-record-count-color">{{bcEngineServerCtrl.engineServerList.length}}</label>
+            <label class="left-record-count" translate="DP_CONFIG_ENGINESERVER_04"></label>
+        </div>
+        <!--表格-->
+        <!-- <util-table-head class="left-record-top" table-headers="bcEngineServerCtrl.tHeadList" table-has-check='false' table-has-serial="false">
+            <util-table-tr ng-repeat="(index,tbody_data) in bcEngineServerCtrl.engineServerList">
+                <util-table-tr-td ng-bind="tbody_data.IpAddress"></util-table-tr-td>
+            </util-table-tr>
+        </util-table-head> -->
+
+        <div class="engine-server-list-div "  ng-repeat="(index,tbody_data) in bcEngineServerCtrl.engineServerList" ng-class="{'ip-content':index === 0}">
+            <label ng-bind="tbody_data.IpAddress" style="cursor: pointer;" ng-click="bcEngineServerCtrl.choiceEngineServer($event,tbody_data)"></label>
+        </div>
+        
+        <div class="u-table-no-data" ng-show="bcEngineServerCtrl.engineServerNoData" ng-cloak translate="DP_CONFIG_COMMON_16">
+        </div>
+        <div class="server-info f-cfb " style="padding-left: 65px;padding-top: 20px;" ng-show="bcEngineServerCtrl.engineServerList.length==0">
+            <button class="u-button f-fl m-right15" ng-click="bcEngineServerCtrl.addOrUpdateEngineServer(false)" translate="DP_CONFIG_ENGINESERVER_13">
+            </button>
+        </div>
+    </div>
+    <!-- <div class="left-add-button">
+        <img src="../../../images/baseconfig/engineServer/add-server.png">
+        <label translate="DP_CONFIG_ENGINESERVER_05"></label>
+    </div> -->
+
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+            <div class="m-baseconfig-topfixed ivsServer-topFixed">
+                <ol class="m-route f-cfb">
+                    <li translate="DP_CONFIG_COMMON_30"></li>
+                    <li class="route-separate">/</li>
+                    <li translate="DP_CONFIG_ENGINESERVER_01"></li>
+                </ol>
+            </div>
+            <div class="m-baseconfig-topfixed ivsServer-topFixed">
+                <div class="server-info f-cfb server-detail">
+                    <div style="width:16%;display:inline-block;">
+                        <label translate="DP_CONFIG_ENGINESERVER_06" style="font-weight:400;"></label>
+                        <label >{{bcEngineServerCtrl.currentServer.Name}}</label>
+                    </div>
+                    <div style="width:16%;display:inline-block;">
+                        <label translate="DP_CONFIG_ENGINESERVER_07" style="font-weight:400;"></label>
+                        <label >{{bcEngineServerCtrl.currentServer.IpAddress}}</label>
+                    </div>
+                    <div style="width:16%;display:inline-block;">
+                        <label translate="DP_CONFIG_ENGINESERVER_08" style="font-weight:400;"></label>
+                        <label >{{bcEngineServerCtrl.currentServer.Port}}</label>
+                    </div>
+                    <div style="width:16%;display:inline-block;">
+                        <label translate="DP_CONFIG_ENGINESERVER_09" style="font-weight:400;"></label>
+                        <label >{{bcEngineServerCtrl.currentServer.Code}}</label>
+                    </div>
+                    <div style="width:16%;display:inline-block;">
+                        <label translate="DP_CONFIG_ENGINESERVER_10" style="font-weight:400;"></label>
+                        <label style="font-weight:700;">{{bcEngineServerCtrl.currentServer.Description}}</label>
+                    </div>
+                    <div style="width:16%;display:inline-block;" class="table-icon-cntr f-cfb">
+                            <div class="table-icon-cntr f-cfb" style="position: relative;top: 6px;">
+                                <i class="icon-btn i-edit z-gray" ng-show="bcEngineServerCtrl.engineServerList.length!=0" ng-click="bcEngineServerCtrl.addOrUpdateEngineServer(true)"></i>
+                                <i class="icon-btn i-delete z-gray" ng-show="bcEngineServerCtrl.engineServerList.length!=0" ng-click="bcEngineServerCtrl.deleteById()"></i>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+
+            <div class="m-baseconfig-topfixed ivsServer-topFixed" style="margin-top: 12px;">
+                <div class="server-info f-cfb">
+                    <button class="u-button f-fl m-right15" ng-show="(!bcEngineServerCtrl.currentServer)||bcEngineServerCtrl.currentServer.length!=0" ng-click="bcEngineServerCtrl.addEngineNode()" translate="DP_CONFIG_ENGINESERVER_11">
+                    </button>
+                    <!--<button class="u-button f-fl m-right15 u-button-blue-3">在线检测</button>-->
+                    <!--<button class="u-button f-fl m-right15 u-button-blue-3">重启服务器</button>-->
+                    <button class="u-button f-fl m-right15 u-button-blue-6" ng-show="(!bcEngineServerCtrl.currentServer)||bcEngineServerCtrl.currentServer.length!=0" ng-disabled="!bcEngineServerCtrl.isSelectItems" ng-click="bcEngineServerCtrl.deleteByIds()"
+                        translate="DP_CONFIG_ENGINESERVER_12"></button>
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed ivsServer-centerFixed" style="top:153px">
+
+                <util-table-head table-headers="bcEngineServerCtrl.tHeadList" table-has-check='true' class="table-content" 
+                table-after-check="bcEngineServerCtrl.afterChangeCheck(checkList,isCheckAll)"
+                table-sort-fun="bcEngineServerCtrl.sortByField(sortIndex,fieldName,sortStatus)">
+
+                    <util-table-tr ng-repeat="(index,tbody_data) in bcEngineServerCtrl.engineNodeList">
+
+                        <util-table-tr-td ng-bind="tbody_data.Name">index</util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.IpAddress"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.Port"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.Description || (''|translate)"></util-table-tr-td>
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <div class="table-icon-cntr f-cfb">
+                                    <i class="icon-btn i-edit z-gray" ng-click="bcEngineServerCtrl.updateEngineNode(tbody_data)"></i>
+                                    <i class="icon-btn i-delete z-gray" ng-click="bcEngineServerCtrl.deleteNodeById(tbody_data)"></i>
+                                </div>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+
+                    <!--<div class="u-table-no-data">
+                            暂无数据
+                        </div>-->
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging page-params="bcEngineServerCtrl.pageParams" prev-page="bcEngineServerCtrl.changePage(num)" next-page="bcEngineServerCtrl.changePage(num)"
+                    go-page="bcEngineServerCtrl.changePage(num)" page-size="bcEngineServerCtrl.changePageSize(num)"></util-paging>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

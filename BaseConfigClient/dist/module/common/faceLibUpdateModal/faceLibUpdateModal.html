@@ -1,0 +1,73 @@
+<div class="m-faceLib-update u-baseconfig-popup"
+        ng-controller="faceLibUpdateModalController as flumCtrl">
+    <form name="flUpdataForm" class="form-horizontal ">
+        <div class="form">
+            <span  class="title" translate="DP_CONFIG_COMMON_03"><i class="color">*</i></span>
+
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_03'|translate}}"
+                   ng-model="flumCtrl.currentServe.Name"
+                   class="text u-input"
+                   placeholder="{{'DP_CONFIG_COMMON_03'|translate}}"
+
+                   valid-m-nonempty="{{'DP_CONFIG_COMMON_03'|translate}}"
+                   valid-m-max = "32"
+                   valid-multiple
+            >
+        </div>
+
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_AREA_01"></span></span>
+            <input ng-if="!areaPopup.isRootArea" type="hidden" ng-model="areaPopup.Area.ParentArea.ID"/>
+            <div class="u-select-tree form-select" ng-if="!areaPopup.isRootArea">
+                <input type="text"
+                       class="u-input"
+                       ng-model="flumCtrl.currentServe.ParentName"
+                       placeholder="{{'DP_CONFIG_COMMON_70'|translate}}"
+                       valid-nonempty="{{'DP_CONFIG_COMMON_39'|translate}}"
+                       readonly
+                       ng-click="flumCtrl.changeIsShowAreaTree()"/>
+                <i class="tree-toggle-icon" ng-class="{'z-open': flumCtrl.areaTreeDatas.isShow}"></i>
+                <div style="position: fixed" class="tree-cntr" ng-class="{'z-show': flumCtrl.areaTreeDatas.isShow}">
+                    <util-tree   tree-id="{{flumCtrl.areaTreeDatas.treeId}}"
+                                 tree-datas="flumCtrl.areaTreeDatas.treeDatas"
+                                 is-default-selected="true"
+                                 tree-init-complete="flumCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                                 check-enable="false"
+                                 single-select="true"
+                                 is-simple-data="true"
+                                 show-icon="true"
+                                 show-line="false"
+                                 default-no-data-msg="flumCtrl.areaTreeDatas.defaultNoDataMsg"
+                                 search-no-data-msg="flumCtrl.areaTreeDatas.searchNoDataMsg"
+                                 on-click="flumCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                                 tree-id-key="ID"
+                                 tree-pid-key="ParentID"
+                                 tree-key-name="Name"
+                                 default-select-tree-id="flumCtrl.areaTreeDatas.defaultSelectTreeId"
+                                 default-expand-level="0"
+                                 default-select-tree-id ="ParentID"
+                    ></util-tree>
+                </div>
+                <div ng-if="flumCtrl.areaTreeDatas.treeDatas.length==0 && flumCtrl.areaTreeDatas.isShow" class="u-table-no-data" translate="DP_CONFIG_COMMON_16"></div>
+            </div>
+        </div>
+        <div class="form">
+            <span  class="title" translate="DP_CONFIG_COMMON_46"></span>
+
+            <textarea class="text u-textarea"
+                      ng-model="flumCtrl.currentServe.Memo"
+                      placeholder="描述" rows="3"
+                      valid-m-max="150"
+                      valid-multiple
+            ></textarea>
+
+        </div>
+
+        <div class="u-border"></div>
+
+        <div class="form f-cfb" style="padding:10px 0;">
+            <button class="u-button u-button-blue-2 f-fr m-right15" type="button" ng-click="flumCtrl.closeUpdateModel(false)" translate="DP_CONFIG_COMMON_19"></button>
+            <button class="u-button u-button-blue-1 f-fr m-right15" type="button" ng-click="flumCtrl.commitSaveOrUpdate()" ng-disabled="flUpdataForm.$invalid" translate="DP_CONFIG_COMMON_05"></button>
+        </div>
+    </form>
+</div>

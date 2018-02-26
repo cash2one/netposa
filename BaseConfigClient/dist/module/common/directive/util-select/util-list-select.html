@@ -1,0 +1,59 @@
+<div class="u-util-select z-gray"
+     onselectstart="return false"
+     ng-mouseleave="utilSelectDir.mouseLeave()"
+     ng-class="{'select-disabled': utilSelectDir.isDisabled,'option-show' : utilSelectDir.optionListIsShow}"
+     >
+
+    <p class=" selected-line show-icon"
+       ng-class="{'z-disabled':utilSelectDir.isDisabled,
+                    'default-empty':!utilSelectDir.isDisabled && utilSelectDir.selectedVal === utilSelectDir.defaultItem.name
+       }"
+       ng-click="utilSelectDir.normalClick($event)"
+    >
+        <span class="selected-text"
+           ng-bind="utilSelectDir.selectedVal | translate"
+           title="{{ utilSelectDir.selectedVal | translate}}"
+        >
+        </span>
+
+        <span class="right-icon ">
+            <i class="i-turn-down " ></i>
+        </span>
+    </p>
+
+    <div class="context  {{ utilSelectDir.showPosition }}"
+         style="max-height:{{ utilSelectDir.selectListHeight }}"
+         ng-show="utilSelectDir.optionListIsShow">
+        <!--列表模式-->
+        <ul class="list" ng-show="!utilSelectDir.isShowTree"
+            ng-class="{'has-icon' : utilSelectDir.showDiyIcon}">
+            <li class="oneOf first"
+                ng-click="utilSelectDir.optionClick($event ,null)"
+                ng-bind="utilSelectDir.defaultItem.name | translate"
+                ng-hide="utilSelectDir.listNoneDefault"
+            ></li>
+
+            <li class="oneOf select-item"
+                ng-repeat="(itemIndex,optionItem) in utilSelectDir.optionList track by $index"
+                ng-class="{'option-selected':itemIndex === utilSelectDir.selectedIndex,
+                            'show-check':utilSelectDir.selectIsCheck,
+                            'show-icon':utilSelectDir.isShowIcon}"
+            >
+                <i class="check-btn"
+                    ng-class="{'i-checkbox-none':!optionItem.select_isCheck,'i-checkbox-checked':optionItem.select_isCheck }"
+                   ng-if="utilSelectDir.selectIsCheck"
+                   ng-click="utilSelectDir.clickCheckbox(optionItem,itemIndex)"
+                ></i>
+                <span class="selected-text"
+                      ng-click="utilSelectDir.optionClick($event ,optionItem,itemIndex)"
+                    ng-bind="(!!utilSelectDir.repeatByKey?optionItem[utilSelectDir.showByKey]:optionItem)| translate"
+                    title="{{(!!utilSelectDir.repeatByKey?optionItem[utilSelectDir.showByKey]:optionItem)| translate}}"
+                ></span>
+                <a class="diy-icon" ng-if="utilSelectDir.isShowIcon"
+                    ng-click="utilSelectDir.afterClickIcon($event ,optionItem)">
+                    <i class="{{utilSelectDir.endIconClass}}"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

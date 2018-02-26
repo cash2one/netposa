@@ -1,0 +1,7 @@
+<div class="g-model-tab">
+    <ul class="tab-content">
+        <li ng-repeat="item in items" ui-sref="{{item.url}}" ng-class="{'active':$index == current}" title="{{item.title}}">
+            <i class="{{item.className}}" ng-class="{'active':$index == current}"></i>
+        </li>
+    </ul>
+</div>

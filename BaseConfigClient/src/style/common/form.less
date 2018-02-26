@@ -1,0 +1,124 @@
+@import "button.function.less";
+@import "color.less";
+.pdp-form {
+  padding: 5px 20px;
+  position: relative;
+  .form-title {
+    display: inline-block;
+    width: 62px;
+    text-align: right;
+    padding-right: 5px;
+    i {
+      color: red;
+    }
+  }
+  input, textarea, select {
+    width: 330px;
+    height: 30px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    text-decoration: none;
+    color: #000000;
+    text-align: left;
+    padding: 4px;
+    outline-style: none;
+    border: 1px solid #e4e4e4;
+    &:focus {
+      border-color: #3fa9fe
+    }
+  }
+}
+
+.pdp-form.pdp-form-time-picker {
+  input {
+    width: 160px;
+  }
+  i {
+    display: inline-block;
+    width: 10px;
+    text-align: center;
+    margin-right: -4px;
+  }
+}
+
+.pdp-form.pdp-form-select {
+  select {
+    width: 330px;
+  }
+}
+
+.pdp-form.pdp-form-radio {
+  height: 88px;
+  input[type=radio] {
+    width: 12px;
+    height: 12px;
+    position: relative;
+    top: 1px;
+  }
+  .radio-group {
+    position: absolute;
+    left: 83px;
+    top: 2px;
+    label {
+      font-weight: normal;
+    }
+    span {
+      display: block;
+    }
+  }
+
+  .radio-group.radio-group-and-input {
+    top: 3px;
+    span {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.pdp-form.pdp-form-textarea {
+  height: 88px;
+  .text-area-layer {
+    position: absolute;
+    left: 84px;
+    top: 4px;
+  }
+  textarea {
+    height: 70px;
+  }
+}
+.pdp-form.pdp-form-write-more{
+  .more-layer{
+    display: inline-block;
+    width: 330px;
+    position: relative;
+    border:1px solid @form-border-gray;
+    &:after{
+      content: '-';
+      left:140px;
+      top:10px;
+      color:@color-notice-gray;
+      position: absolute;
+    }
+    input{
+      width: 160px;
+      border:none;
+      text-align: center;
+    }
+  }
+}
+
+
+.pdp-form.pdp-form-tree {
+  position: relative;
+  height: 460px;
+  overflow: visible;
+}
+
+.pdp-btn-submit{
+  .btn(60px,28px)
+}
+
+
+
+

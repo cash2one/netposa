@@ -1,0 +1,174 @@
+#container-fluid005{
+  padding:0 20px;
+  .m-device-bar {
+    padding-right: 10px;
+    padding-top: 10px;
+    .m-device-bar-title {
+      background: #FFFFFF;
+      height: 340px;
+      position: relative;
+      border-radius: 3px;
+      .m-status-title{
+        height: 40px;
+        border-bottom: 1px solid #e4e4e4;
+        line-height: 3;
+        .m-border-name{
+          height: 40px;
+          border-bottom: 3px solid #2D87F9;
+          display: inline-block;
+          position: absolute;
+          left: 20px;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .m-device-detail{
+          position: absolute;
+          right: 20px;
+          font-size: 12px;
+          font-weight: 100;
+          color: #579ffa;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        .m-bar-tool{
+          position: absolute;
+          right: 20px;
+          i {
+            font-weight: 100;
+            font-size: 12px;
+          }
+        }
+      }
+      .drop-list-com{
+        position: absolute;
+        right: 20px;
+        .title {
+          position: absolute;
+          left: -60px;
+          top: 20px;
+          color: #666666;
+        }
+        .m-droplist-select {
+          width: 176px;
+          height: 30px;
+          top: 10px;
+          position: relative;
+        }
+      }
+      .active{
+        color: #2D87F9 !important;
+      }
+    }
+    .commonTabelHeight(@height:null){
+      height: @height;
+      overflow-y: auto;
+      margin: 50px 0;
+      padding: 0 20px;
+      .table th,td{
+        text-align: center;
+      }
+    }
+    .m-device-height400{
+      height: 400px!important;
+      #retrievalStatistic, #retrievalTrafficTrend{
+        height: 360px;
+      }
+      .retrievalStatistic, .retrievalTrafficTrend{
+        .commonTabelHeight(320px)
+      }
+    }
+    .m-device-height840{
+      height: 840px!important;
+      #rankStatistics{
+        height: 800px;
+      }
+      .rankStatistics{
+        .commonTabelHeight(750px);
+        overflow-y: hidden;
+        .row-fluid{
+            padding: 60px;
+          .m-row-col{
+            width: 390px;
+            height: 310px;
+            border: 1px solid #dadada;
+            margin: 0 60px 40px;
+            padding: 0;
+            .m-rank-title{
+              height: 60px;
+              padding: 17px;
+              .rank-title{
+                padding-left: 13px;
+                line-height: 27px;
+                position: absolute;
+                font-size: 16px;
+              }
+              .icon-title(@background-image) {
+                background-repeat: no-repeat;
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                background-image:url(@background-image);
+              }
+              .VehicleRetrieval{
+                .icon-title("../../../images/maintain/VehicleRetrieval.png")
+              }
+              .FaceRetrieval{
+                .icon-title("../../../images/maintain/FaceRetrieval.png")
+              }
+              .WiFiRetrieval{
+                .icon-title("../../../images/maintain/WiFiRetrieval.png")
+              }
+              .EFENCERetrieval{
+                .icon-title("../../../images/maintain/EFENCERetrieval.png")
+              }
+              .DeviceRetrieval{
+                .icon-title("../../../images/maintain/DeviceRetrieval.png")
+              }
+              .PositionRetrieval{
+                .icon-title("../../../images/maintain/PositionRetrieval.png")
+              }
+
+            }
+            .m-td-height48{
+              height: 33px;
+              position: relative;
+              left: 20px;
+            }
+            .m-align-left{
+              text-align: left;
+            }
+            .m-border-name{
+              position: relative;
+              top: 4px;
+              color: #4d4d4d;
+              font-size: 14px;
+              font-weight: bold;
+              width: 200px;
+              padding-left: 20px;
+              height: 26px;
+              display: inline-block;
+              line-height: 26px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+            .m-border-time{
+              line-height: 32px;
+              color: #9f9f9f;
+            }
+            .m-tr-background{
+              background-color: #f6f7f9;
+            }
+
+
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

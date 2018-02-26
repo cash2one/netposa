@@ -1,0 +1,48 @@
+<div class="u-baseconfig-popup" ng-controller="DeviceCameraCreateController as deviceCreatePopup">
+    <form name="cameraForm" novalidate>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_03"></span></span>
+            <input type="text" valid-nonempty="DP_CONFIG_COMMON_03"  class="text u-input" placeholder="{{'DP_CONFIG_CAMERA_03'|translate}}" ng-model="deviceCreatePopup.Camera.Name" />
+        </div>
+         <div class="form" style="overflow:visible">
+            <span class="title"><span translate="DP_CONFIG_COMMON_18"></span></span>
+            <input ng-if="!deviceCreatePopup.isRootArea" type="hidden" ng-model="deviceCreatePopup.Camera.JsonUserData.lampPost.ID" />
+            <div class="u-select-tree form-select" ng-if="!deviceCreatePopup.isRootArea">
+                <input type="text" class="u-input" ng-model="deviceCreatePopup.Camera.JsonUserData.lampPost.Name"  readonly ng-click="deviceCreatePopup.isShowAreaTree = !deviceCreatePopup.isShowAreaTree" />
+                <i class="tree-toggle-icon" ng-class="{'z-open': deviceCreatePopup.isShowAreaTree}"></i>
+                <div style="position:absolute" class="tree-cntr" ng-class="{'z-show': deviceCreatePopup.isShowAreaTree}">
+                    <util-tree tree-id="{{deviceCreatePopup.treeParams.treeId}}" tree-datas="deviceCreatePopup.treeParams.treeDatas" is-default-selected="true" check-enable="false" single-select="true" is-simple-data="true" show-icon="true" show-line="false" default-no-data-msg=""
+                        search-no-data-msg="" on-click="deviceCreatePopup.treeParams.onClick(event, treeId, treeNode)" tree-id-key="ID" tree-pid-key="ParentID" tree-key-name="Name" default-select-tree-id="deviceCreatePopup.treeParams.defaultSelectTreeId"
+                        default-expand-level="0"></util-tree>
+                </div>
+            </div>
+            <div style="display: none;" ng-class="{'f-db': deviceCreatePopup.isRootArea}" class="u-select-tree form-select" ng-if="deviceCreatePopup.isRootArea">
+                <input type="text" disabled readonly class="u-input" placeholder="{{'DP_CONFIG_COMMON_79'|translate}}" />
+            </div>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_04"></span></span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_04'|translate}}"  class="text u-input" placeholder="{{'DP_CONFIG_CAMERA_04'|translate}}" ng-model="deviceCreatePopup.Camera.Code" />
+        </div>
+        <div class="form">
+            <span class="title"><span translate="DP_CONFIG_COMMON_25"></span></span>
+            <select style="width:224px;"
+                    class="u-select" ng-model="deviceCreatePopup.Camera.CameraType"
+                    ng-options="cameraType.value as cameraType.text | translate for cameraType in deviceCreatePopup.cameraTypeList">
+            </select>
+        </div>
+
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_13"></span></span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_13'|translate}}" valid-multiple valid-m-max="20" class="text u-input" ng-model="deviceCreatePopup.Camera.JsonUserData.Point.Lon" placeholder="{{'DP_CONFIG_CAMERA_07'|translate}}"/>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_14"></span></span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_14'|translate}}" valid-multiple valid-m-max="20" class="text u-input" ng-model="deviceCreatePopup.Camera.JsonUserData.Point.Lat" placeholder="{{'DP_CONFIG_CAMERA_07'|translate}}"/>
+        </div>
+        <div class="form" style="padding:10px 15px;border-top:1px solid #e4e4e4;margin-top:10px;">
+            <button class="u-button u-button-blue-2 btnStyle" ng-click="deviceCreatePopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+            <button class="u-button u-button-blue-1 btnStyle" ng-click="deviceCreatePopup.submit()" ng-disabled="cameraForm.$invalid" translate="DP_CONFIG_COMMON_05"></button>
+        </div>
+    </form>
+</div>

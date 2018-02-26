@@ -1,0 +1,284 @@
+<!-- created by zyh on 2017/06/07 报警详情处理弹窗模板 -->
+
+<!--提高层级遮住OCX-->
+<iframe class="f-abs u-iframe-layer"></iframe>
+<!-- 弹窗内容区域 -->
+<div class="u-alarm-popup f-pr f-oh"
+     ng-controller="alarmPopupController as alarmPopupCtrl">
+
+    <!-- title 收藏 删除 关闭-->
+    <p class="title-txt f-pr">
+        <a href="javascript:;" class="f-fl name"
+           title="{{ 'FDS_04_04_01' | translate }}">
+            <!--报警详情-->
+            {{ 'FDS_04_04_01' | translate }}
+        </a>
+
+        <!--关闭-->
+        <i class="f-abs closed layui-layer-ico layui-layer-close"
+           title="{{ 'FDS_04_04_02' | translate }}"
+           ng-click="alarmPopupCtrl.closePopup()"></i>
+        <!--删除-->
+        <i class="f-abs delete"
+           ng-click="alarmPopupCtrl.addAttention(alarmPopupCtrl.popupWindowData.ID)"
+           title="{{ 'FDS_04_04_03' | translate }}"></i>
+        <!--收藏-->
+        <i class="f-abs collect"
+           ng-click="alarmPopupCtrl.deleteThat(alarmPopupCtrl.popupWindowData.ID)"
+           title="{{ 'FDS_04_04_04' | translate }}"></i>
+    </p>
+
+    <!-- 比对信息区域 -->
+    <div class="content-area f-bbox">
+
+        <div class="imgs f-fl f-bbox f-pr">
+            <!--比对-->
+            <div class="differ-img f-pr">
+                <!-- 百分比 -->
+                <strong class="percent  f-tac f-abs fontSize-16 c-font-white">
+                    {{ alarmPopupCtrl.libCompareData.percent }}
+                    <span class="fontSize-12"></span>
+                </strong>
+                <!--实时报警图像-->
+                <div class="real-img f-fl f-pr">
+                    <i></i>
+                    <p class="f-abs">
+                        <!--查看大图-->
+                        <a class="showLarge f-ib" href="javascript:;"
+                           title="{{ 'FDS_04_04_05' | translate }}"
+                           ng-click="alarmPopupCtrl.showBiggerImg(alarmPopupCtrl.popupWindowData.imgUrl)"></a>
+                        <!--查看轨迹-->
+                        <a class="showTrack f-ib" href=""
+                           title="{{ 'FDS_04_04_06' | translate }}"
+                           ng-click="alarmPopupCtrl.showTracks()"></a>
+                    </p>
+                    <!--抓拍图像-->
+                    <div class="img">
+                        <img ng-src="{{alarmPopupCtrl.popupWindowData.imgUrl}}" alt="">
+                    </div>
+                </div>
+                <!--库图像-->
+                <div class="repertory-img f-fl">
+                    <img ng-src="{{alarmPopupCtrl.libCompareData.imgUrl}}" alt="">
+                </div>
+                <!--库图像信息-->
+                <div class="repertory-msg f-fl">
+                    <strong class="fontSize-14 f-pr">
+                        <i class="sex-icon f-fl f-abs female"></i>
+                        {{ alarmPopupCtrl.libCompareData.name }}
+                    </strong>
+                    <!--身份证号-->
+                    <p class="ellipsis first">{{ 'FDS_04_04_07' | translate }}
+                        <span>{{ alarmPopupCtrl.libCompareData.ID }}</span>
+                    </p>
+                    <!--创建时间-->
+                    <p class="ellipsis">{{ 'FDS_04_04_08' | translate }}
+                        <span>{{ alarmPopupCtrl.libCompareData.time }}</span>
+                    </p>
+                    <!--所 在 库-->
+                    <p class="ellipsis">{{ 'FDS_04_04_09' | translate }}
+                        <span>{{ alarmPopupCtrl.libCompareData.subjection }}</span>
+                    </p>
+                    <!--详细信息-->
+                    <p class="ellipsis">{{ 'FDS_04_04_10' | translate }}
+                        <span>{{ alarmPopupCtrl.libCompareData.details }}</span>
+                    </p>
+                </div>
+                <!--下一个-->
+                <a href="javascript:;" class="next-btn f-abs"
+                   ng-click="alarmPopupCtrl.changToNext()"
+                   title="{{ 'FDS_04_04_11' | translate }}"></a>
+                <!-- 检索更多 -->
+                <div class="more-txt f-abs">
+                    <p class="f-abs ">
+                        <i class="f-abs bg-color-white">
+                            <span class="f-abs">◇</span>
+                        </i>
+                    </p>
+                    <!--检索更多-->
+                    <a class="f-abs c-font-blue" href="javascript:;"
+                    ng-click="alarmPopupCtrl.searchMore()">
+                        {{ 'FDS_04_04_12' | translate }}
+                    </a>
+                </div>
+
+            </div>
+
+            <!--检索库信息-->
+            <div class="repertory-list f-abs f-oh"
+                 ng-mouseover="alarmPopupCtrl.flipBtnShow()"
+                ng-mouseleave="alarmPopupCtrl.flipBtnHide()">
+                <!--prevous page-->
+                <a href="javascript:;"
+                   ng-show="alarmPopupCtrl.flipPageBtnShow && alarmPopupCtrl.flipPageListLeft < 0"
+                   class="f-abs prev"
+                   ng-click="alarmPopupCtrl.flipPagePrev()"
+                   title="{{'FDS_04_04_24' | translate}}">
+                    <i class="f-abs"></i>
+                </a>
+                <!--next page-->
+                <a href="javascript:;"
+                   ng-show="alarmPopupCtrl.flipPageBtnShow && alarmPopupCtrl.flipNextIsShow"
+                   class="f-abs next"
+                   ng-click="alarmPopupCtrl.flipPageNext()"
+                   title="{{'FDS_04_04_25' | translate}}">
+                    <i class="f-abs"></i>
+                </a>
+                <div class="list f-oh">
+                    <ul class="flip-page-list">
+                        <li class="u-alarm-img f-fl"
+                        ng-repeat="data in alarmPopupCtrl.searchListData"
+                            ng-class="{'active' : data.isChecked}"
+                            ng-click="alarmPopupCtrl.clickCheck(data)"
+                        >
+                            <div>
+                                <img ng-src="{{data.imgUrl}}" alt="">
+                            </div>
+                            <p>
+                                <strong class="f-fl ellipsis">
+                                    {{data.name}}
+                                </strong>
+                                <a class="f-fr">{{data.percent}}</a>
+                                <p class="ellipsis">{{data.subjection}}</p>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 视屏播放区域 -->
+        <div class="video f-abs f-csp"
+             ng-click="alarmPopupCtrl.playRtsp()"
+             video-ocx init-complete="alarmPopupCtrl.initComplete(ocxControlFunc)"></div>
+    </div>
+
+    <!-- 检索更多追加内容 -->
+    <div class="more-content f-oh" ng-show="alarmPopupCtrl.searchIsShow">
+        <!--筛选条件-->
+        <div class="left-info f-fl">
+            <form action="">
+                <!--选择库-->
+                <p class="f-pr">
+                    <a class="f-fl ellipsis" href="javascript:;">
+                        {{ 'FDS_04_04_13' | translate }}
+                    </a>
+                    <!--<input class="u-input f-abs" type="text"
+                           ng-model="alarmPopupCtrl.searchData.checkLib">-->
+                    <span class="util-select f-fr">
+                        <util-select
+                                selected-val="alarmPopupCtrl.searchData.checkedLib"
+                                select-list-height="M"
+                                select-is-tree="true">
+                            <util-tree
+                                    tree-id="{{alarmPopupCtrl.libsId}}"
+                                    tree-datas="alarmPopupCtrl.libsData"
+                                    is-simple-data="true"
+                                    show-icon="true"
+                                    show-line="false"
+                                    tree-id-key="treeID"
+                                    tree-pid-key="treeParentId"
+                                    tree-key-name="Name"
+                                    default-expand-level="0"
+                                    on-click="alarmPopupCtrl.treeClick(event, treeId, treeNode)">
+                            </util-tree>
+                        </util-select>
+                        <!-- on-dbl-click
+                                    show-locate-and-attention-btn
+                                    diy-dom-func1
+                                    diy-dom-func2-->
+                    </span>
+                </p>
+                <!--性别-->
+                <p class="f-pr">
+                    <a class="f-fl ellipsis" href="javascript:;">
+                        {{ 'FDS_04_04_14' | translate }}
+                    </a>
+
+                    <span class="f-abs sex-btns f-oh">
+                        <unique-button
+                            button-click="alarmPopupCtrl.sexCheckClick()"
+                            ng-model="alarmPopupCtrl.searchData.sex"
+                            items="alarmPopupCtrl.sexArrData"
+                            need-translate="true"
+                            default-select-by-index="0">
+                        </unique-button>
+                    </span>
+
+                </p>
+                <!--阈值-->
+                <p class="f-pr">
+                    <a class="f-fl ellipsis" href="javascript:;">
+                        {{ 'FDS_04_04_15' | translate }}
+                    </a>
+                    <input class="u-input f-abs" type="text"
+                           ng-model="alarmPopupCtrl.searchData.range">
+                </p>
+                <p class="f-pr">
+                    <!--检索-->
+                    <button class="f-abs u-button"
+                        ng-click="alarmPopupCtrl.searchClick()">
+                        {{ 'FDS_04_04_16' | translate }}
+                    </button>
+                </p>
+            </form>
+        </div>
+        <!--横向列表-->
+
+
+        <ul class="right-list f-fr f-oya">
+            <li class="u-alarm-img f-fl"
+                ng-repeat="data in alarmPopupCtrl.searchMoreData"
+                ng-class="{'active' : data.isChecked}"
+                ng-click="alarmPopupCtrl.searchMoreCheck(data)"
+            >
+                <div>
+                    <img ng-src="{{data.imgUrl}}" alt="">
+                </div>
+                <p>
+                    <strong class="f-fl ellipsis">
+                        {{data.name}}
+                    </strong>
+                    <a class="f-fr">{{data.percent}}</a>
+                <p class="ellipsis">{{data.subjection}}</p>
+                </p>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- 底部操作栏 -->
+    <div class="operation f-abs f-bbox f-tac">
+        <a href="javascript:;" class="prev f-abs"
+           ng-class="{'not-allow' : alarmPopupCtrl.currentSequence === 0}"
+           ng-click="alarmPopupCtrl.popupAlarmPrev()"
+           title="{{ 'FDS_04_04_20' | translate }}">
+            <i class="f-abs f-ib"></i>
+            {{ 'FDS_04_04_20' | translate }}
+            <!--上一个-->
+        </a>
+        <!--中间操作按钮-->
+            <input class=" dispose des f-bbox" type="text"
+                   placeholder="{{ 'FDS_04_04_23' | translate }}"
+            ng-model="alarmPopupCtrl.disposeMsg">
+        <!--valid-->
+            <button class=" dispose vilid c-font-white"
+            ng-click="alarmPopupCtrl.validDispose()">
+                {{ 'FDS_04_04_21' | translate }}
+            </button>
+        <!--invalid-->
+            <button class=" dispose invilid c-font-white"
+            ng-click="alarmPopupCtrl.inValidDispose()">
+                {{ 'FDS_04_04_22' | translate }}
+            </button>
+        <a href="javascript:;" class="next f-abs"
+           ng-click="alarmPopupCtrl.popupAlarmNext()"
+           ng-class="{'not-allow' : alarmPopupCtrl.currentSequence === alarmPopupCtrl.alarmDataLength}"
+           title="{{ 'FDS_04_04_11' | translate }}">
+            <i class="f-abs f-ib"></i>
+                {{ 'FDS_04_04_11' | translate }}
+            <!--下一个-->
+        </a>
+    </div>
+</div>

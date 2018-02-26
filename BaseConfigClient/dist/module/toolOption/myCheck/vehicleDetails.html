@@ -1,0 +1,66 @@
+<div class="m-check-details" ng-controller="vehicleDetailsController as vehicleDetailsCtrl">
+    <div class="head-ctn m-vehicle-details">
+        <span class="title">查看详情</span>
+        <span class="close" ng-click="vehicleDetailsCtrl.cancel()">×</span>
+    </div>
+    <div class="m-vehicle-content">
+        <span class="m-vehicle-images">
+            <img ng-src="{{vehicleDetailsCtrl.MyTaskModel.CarPhoto}}" alt="">
+        </span>
+        <div class="vehicle-details">
+            <div class="vehicle-list">
+                <span class="vehicle-title">审核任务 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.TaskTypeMap[vehicleDetailsCtrl.MyCheck.taskType]}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">任务名称 ：</span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.MyCheck.tName}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">所属区域 ：</span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.MyCheck.createUserAreaName}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">创建人 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.MyCheck.createUserName}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">有效时间 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.validTime}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">任务状态 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.TaskStatusMap[vehicleDetailsCtrl.MyCheck.tStatus]}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">审核状态 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.AuditStatusMap[vehicleDetailsCtrl.MyCheck.auditStatus]}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">布控类型 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.TaskTypeMap[vehicleDetailsCtrl.MyCheck.taskType]}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">车辆颜色 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.CarForColor[vehicleDetailsCtrl.MyTaskModel.PlateColor].text}}</span>
+            </div>
+            <div class="vehicle-list">
+                <span class="vehicle-title">描述 ： </span>
+                <span class="vehicle-text">{{vehicleDetailsCtrl.MyCheck.description}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="u-form simple-form f-cfb m-popul-controller">
+        <button  class="u-button u-button-blue-2  f-fr"
+                 ng-click="vehicleDetailsCtrl.cancel()"
+                 type="button"
+                 translate="FDS_00_07_02"
+        ></button>
+        <button  class="u-button m-right15 f-fr"
+                 type="button"
+                 ng-click="vehicleDetailsCtrl.cancel()"
+                 ng-disabled="flUpdataForm.$invalid"
+                 translate="DP_CONFIG_FACELIB_54"
+        ></button>
+    </div>
+</div>

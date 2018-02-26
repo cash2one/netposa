@@ -1,0 +1,50 @@
+<div class="advanced-list-box" ng-controller="AdvancedSearchController as AdvancedCtrl">
+    <div class="advanced-list-title">
+        <div class="name">高级检索</div>
+        <div class="advanced-close" ng-click="AdvancedCtrl.advancedClose();QuickCtrl.searchPatternStatus=0;"></div>
+    </div>
+    <div class="search-device-switch">
+        <div class="search-borde-bottom">
+            <div class="search-device-button"
+                 ng-repeat="item in AdvancedCtrl.switchButton"
+                 ng-click="AdvancedCtrl.navigationSwitch(item.name)"
+                 ng-class="item.visible?'icon-background':''"
+            >
+                <div class="search-device-one">
+                        <span class="search-image-radius">
+                            <img ng-src="{{ item.iconPath }}" class="search-device-icon">
+                        </span>
+                    <span class="search-device-text">
+                            {{ item.title }}
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="background-icon" >
+            <img src="../../../images/resourceRetrieval/background-icon.png">
+        </div>
+    </div>
+    <div class="advanced-device-container">
+        <div class="search-advanced-box"
+             ng-include="AdvancedCtrl.advancedSearchCarUrl"
+             ng-if="AdvancedCtrl.switchPage.name=='car'"></div>
+        <div class="search-advanced-box"
+             ng-include="'../module/resourceRetrieval/search/advancedSearch/advancedPage/personSearchPage.html'"
+             ng-if="AdvancedCtrl.switchPage.name=='person'"></div>
+        <div class="search-advanced-box"
+             ng-include="'../module/resourceRetrieval/search/advancedSearch/advancedPage/wifiSearchPage.html'"
+             ng-if="AdvancedCtrl.switchPage.name=='wifi'"></div>
+        <div class="search-advanced-box"
+             ng-include="'../module/resourceRetrieval/search/advancedSearch/advancedPage/rfidSearchPage.html'"
+             ng-if="AdvancedCtrl.switchPage.name=='rfid'"></div>
+        <div class="search-advanced-box"
+             ng-include="'../module/resourceRetrieval/search/advancedSearch/advancedPage/EFSearchPage.html'"
+             ng-if="AdvancedCtrl.switchPage.name=='electronicfence'"></div>
+        <div class="search-advanced-box"
+             ng-include="'../module/resourceRetrieval/search/advancedSearch/advancedPage/deviceSearchPage.html'"
+             ng-if="AdvancedCtrl.switchPage.name=='device'"></div>
+        <div class="search-advanced-box"
+             ng-include="'../module/resourceRetrieval/search/advancedSearch/advancedPage/positionSearchPage.html'"
+             ng-if="AdvancedCtrl.switchPage.name=='position'"></div>
+    </div>
+</div>

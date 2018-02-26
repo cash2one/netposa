@@ -1,0 +1,23 @@
+<div class="g-baseconfig-container f-cfb">
+    <div class="m-baseconfig-nav-layer" ng-class="{'is-slide': baseconfigCtrl.isCollapse}">
+        <div class="g-baseconfig-nav m-baseconfig-nav" >
+            <util-nav-container  class="u-nav-container" is-collapse="baseconfigCtrl.isCollapse" ng-transclude>
+                <util-nav-tool is-collapse="true"></util-nav-tool>
+                <util-nav  ng-repeat="item in baseconfigCtrl.moduleItems track by item.key"
+                           expander-title="{{item.name | translate}}">
+                    <util-nav-content ng-repeat="content in item.children track by content.key"
+                                      content-icon="{{content.icon}}"
+                                      current-router="baseconfigCtrl.currentRouter"
+                                      content-key="{{content.key}}"
+                                      content-name="{{content.moduleName | translate}}">
+                    </util-nav-content>
+                </util-nav>
+                <!--<util-nav-content ng-repeat="content in baseConfigCtrl.others" content-icon="{{content.icon}}" content-key="{{content.key}}" content-key="content.moduleName"></util-nav-content>-->
+            </util-nav-container>
+        </div>
+    </div>
+    <div class="g-baseconfig-mn m-baseconfig-mn" ng-class="{'z-nav-putway': baseconfigCtrl.isCollapse}"
+         ui-view="baseconfig">
+        内容
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="m-iod f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+        <span class="tree-search">
+            <input type="text" class="u-input tree-search" ng-model="iodCtrl.treeSearchInput" placeholder="{{'DP_CONFIG_COMMON_28'|translate}}" ng-keyup="iodCtrl.treeSearchInputKeyUp($event)"/>
+            <i class="u-input-search" ng-click="iodCtrl.treeSearchInputFunc()"></i>
+        </span>
+
+        <div ng-hide="iodCtrl.treeNoData" class="m-iod-tree-container" ng-scrollbars>
+            <util-tree tree-hide="iodCtrl.areaTreeDataParams.treeDatas.length == 0"
+                       tree-id="{{iodCtrl.areaTreeDataParams.treeId}}"
+                       tree-datas="iodCtrl.areaTreeDataParams.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="iodCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg="iodCtrl.areaTreeDataParams.defaultNoDataMsg"
+                       search-no-data-msg="iodCtrl.areaTreeDataParams.searchNoDataMsg"
+                       on-click="iodCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="iodCtrl.areaTreeDataParams.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div ng-show="iodCtrl.treeNoData" class="u-table-no-data" translate="DP_CONFIG_COMMON_16"></div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+
+            <div class="m-baseconfig-topFixed iod-topFixed">
+                <ol class="m-route f-cfb">
+                    <li translate="DP_CONFIG_COMMON_30"></li>
+                    <li class="route-separate">/</li>
+                    <li translate="DP_CONFIG_IODSERVER_01"></li>
+                </ol>
+                <div class="m-iod-search-top f-cfb">
+                    <button class="u-button f-usn f-fl m-right15" ng-click="iodCtrl.addIod(iodCtrl.currentArea)"  translate="DP_CONFIG_PROXYSERVER_08"></button>
+                    <button class="u-button f-usn f-fl u-button-blue-6" ng-click="iodCtrl.deleteByIds()" ng-disabled="!iodCtrl.isSelectItems" translate="DP_CONFIG_COMMON_37"></button>
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed iod-centerFixed">
+                <!--表格-->
+                <util-table-head table-headers="iodCtrl.tHeadList"
+                                 table-has-check='true'
+                                 table-sort-fun="iodCtrl.sortByField(index,fieldName,sortStatus)"
+                                 table-after-check = "iodCtrl.afterChangeCheck(checkList,isCheckAll)"
+                >
+                    <util-table-tr ng-repeat="(index,tbody_data) in iodCtrl.tBodyList">
+
+                        <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+
+
+                        <util-table-tr-td ng-bind="tbody_data.JsonUserData.Area.Name"></util-table-tr-td>
+
+                        <util-table-tr-td ng-bind="tbody_data.IpAddress"></util-table-tr-td>
+
+                        <util-table-tr-td ng-bind="tbody_data.Port"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.DeviceType | toIodTextFilter"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.Description"></util-table-tr-td>
+
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="iodCtrl.editIod(iodCtrl.currentArea,tbody_data)"></i>
+                                <i class="icon-btn i-delete z-gray f-csp" title="{{'DP_CONFIG_COMMON_78'|translate}}" ng-click="iodCtrl.deleteIod(tbody_data)"></i>
+                                <i class="icon-btn i-edit z-gray f-synchronize" title="{{'DP_CONFIG_IODSERVER_11'|translate}}" ng-click="iodCtrl.synchronize(tbody_data)"></i>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                    <div class="u-table-no-data" ng-show="iodCtrl.tableNoData" ng-cloak translate="DP_CONFIG_COMMON_16">
+
+                    </div>
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging
+                        page-params="iodCtrl.pageParams"
+                        prev-page="iodCtrl.changePage(num)"
+                        next-page="iodCtrl.changePage(num)"
+                        go-page="iodCtrl.changePage(num)"
+                        page-size="iodCtrl.changePageSize(num)"
+                ></util-paging>
+            </div>
+
+        </div>
+    </div>
+</div>

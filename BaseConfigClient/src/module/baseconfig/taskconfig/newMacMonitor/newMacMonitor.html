@@ -1,0 +1,99 @@
+<div class="m-rfid-monitor">
+    <div class="rfid-monitor-route">
+        <ol class="m-route f-cfb">
+            <li translate="DP_VIDEOSTRUCTURE_13"></li>
+            <li class="route-separate">/</li>
+            <li translate="布控任务"></li>
+            <li class="route-separate">/</li>
+            <li translate="新建感知数据布控任务"></li>
+        </ol>
+    </div>
+    <div class="rfid-monitor">
+        <div class="rfid-monitor-content">
+            <div class="content-head">基本信息</div>
+            <div class="content-center" style=" padding-top:8px;">
+                <div class="rfid-monitor-left-form">
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i>布控类型</span>
+                        <select
+                                ng-options="item.value as item.text for item in newMacMonitorCtrl.RfidTaskType"
+                                ng-model="newMacMonitorCtrl.TaskModel.ListType">
+                            <option value="">{{'请选择布控类型'|translate}}</option>
+                        </select>
+                    </div>
+                    <div class="pdp-form">
+                        <i class="c-font-red">*</i>
+                        <select style="width: 52px;padding: 0;margin-right: 2px;" class="item-input item-select"
+                                ng-options="item.value as item.name for item in newMacMonitorCtrl.queryPattern"
+                                ng-model="newMacMonitorCtrl.TaskModel.TaskType">
+                        </select>
+                        <input placeholder="请填写布控地址" ng-model="newMacMonitorCtrl.TaskModel.PerceiveData" type="text" />
+                    </div>
+
+                    <div class="pdp-form pdp-form-time-picker">
+                        <span class="form-title">{{'有效时间'|translate}}</span>
+                        <span>
+                                <input type="text"
+                                       name="newTaskStartTime"
+                                       ng-model="newMacMonitorCtrl.TaskModel.ValidTimeStart"
+                                       date-picker
+                                       placeholder="请选择开始时间"
+                                       show-init="false"
+                                /><i>-</i>
+                                <input type="text"
+                                       name="newTaskEndTime"
+                                       ng-model="newMacMonitorCtrl.TaskModel.ValidTimeEnd"
+                                       date-picker
+                                       placeholder="请选择结束时间"
+                                       show-init="false"
+                                />
+                            </span>
+                    </div>
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i> 审核人员</span>
+                        <select
+                                ng-model="newMacMonitorCtrl.TaskModel.AuditUser"
+                                ng-options="userAudit.ID as userAudit.JsonUserData.Person.Name for userAudit in newMacMonitorCtrl.userAuditList"
+                        >
+                            <option value="">{{'DP_CONFIG_TASKCONFUG_80'|translate}}</option>
+                        </select>
+                    </div>
+
+                    <div class="pdp-form pdp-form-textarea">
+                        <span class="form-title">{{'描述'|translate}}</span>
+                        <span class="text-area-layer">
+                            <textarea
+                                    placeholder="请输入任务描述"
+                                    ng-model="newMacMonitorCtrl.TaskModel.Description"></textarea>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="rfid-monitor-right-form">
+
+                </div>
+            </div>
+            <div class="content-head">联动策略</div>
+            <div class="content-center" style="padding-top: 20px;">
+                <div class="rfid-monitor-form">
+                    <span class="form-title"><i class="c-font-red">*</i>{{'联动策略'|translate}}</span>
+                    <input valid-nonempty="{{'联动策略'|translate}}"
+                           placeholder="{{'新建联动策略' | translate}}"
+                           type="text"
+                           readonly
+                           ng-model="newMacMonitorCtrl.TaskModel.EventRule.Name">
+                    <button class="add-tpl" ng-click="newMacMonitorCtrl.addEventRule()">新增联动策略</button>
+                </div>
+            </div>
+            <div class="form" style="padding:10px 20px">
+                <button class="u-button u-button-blue-1 btnStyle" ng-click="newMacMonitorCtrl.newTaskSubmit()"
+                        ng-disabled="!newMacMonitorCtrl.TaskModel.PerceiveData.length"
+                        translate="确定"></button>
+                <button class="u-button u-button-blue-2 btnStyle" ng-click="newMacMonitorCtrl.newTaskCancel()"
+                        translate="DP_CONFIG_COMMON_19"></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

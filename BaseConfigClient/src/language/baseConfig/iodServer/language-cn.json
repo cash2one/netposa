@@ -1,0 +1,20 @@
+{
+    
+   "note": "/*******数据服务器*********/",
+   "DP_CONFIG_IODSERVER_01": "数据服务器",
+   "DP_CONFIG_IODSERVER_02": "添加服务",
+   "DP_CONFIG_IODSERVER_03": "服务器名称",
+   "DP_CONFIG_IODSERVER_04": "代理服务",
+   "DP_CONFIG_IODSERVER_05": "消息服务IP",
+   "DP_CONFIG_IODSERVER_06": "消息主题",
+   "DP_CONFIG_IODSERVER_07": "代理服务",
+   "DP_CONFIG_IODSERVER_08": "服务器编码",
+   "DP_CONFIG_IODSERVER_09": "请选择服务器类型",
+   "DP_CONFIG_IODSERVER_10": "请选择代理服务类型",
+
+   "DP_CONFIG_IODSERVER_11": "同步服务器",
+
+   "DP_CONFIG_IODSERVER_12": "确认要删除{{value}}条数据吗?",
+   "DP_CONFIG_IODSERVER_13": "服务器类型",
+   "DP_CONFIG_IODSERVER_14": "代理服务器类型"
+}

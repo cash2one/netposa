@@ -1,0 +1,72 @@
+<!--运行日志-->
+<div ng-controller="runLogController as runLogCtrl">
+
+    <div class="operateLog-info-bottom f-cfb">
+
+        <div class="f-cfb f-fl m-right15">
+            <span class="info-bottom-txt f-fl m-right5" translate="FDS_02_02_06"></span>
+            <div class="f-cfb f-pr f-fl">
+                <input date-picker
+                       class="u-input info-top-dateSelect"
+                       type="text"
+                       placeholder="{{'FDS_02_01_05'|translate}}"
+                       ng-model="runLogCtrl.handleStartTime"/>
+            </div>
+        </div>
+
+        <div class="f-cfb f-fl m-right15">
+            <div class="f-cfb f-pr">
+                <input date-picker
+                       class="u-input info-top-dateSelect"
+                       type="text"
+                       placeholder="{{'FDS_02_01_05'|translate}}"
+                       ng-model="runLogCtrl.handleEndTime"/>
+            </div>
+        </div>
+
+        <div class="f-fl f-cfb">
+            <button class="u-button f-fl m-right15" ng-click="runLogCtrl.changePage()"
+                    translate="FDS_02_00_11"></button>
+            <button class="u-button u-button-blue-4 f-fl" ng-click="runLogCtrl.exportFile()"
+                    translate="FDS_02_06_12"></button>
+        </div>
+
+    </div>
+
+    <div class="table-container">
+        <div class="table-box">
+            <!--表格-->
+            <util-table-head table-headers="runLogCtrl.tHeadList"
+                             table-has-check='false'>
+
+                <util-table-tr ng-repeat="(index,tbody_data) in runLogCtrl.pageParams.data">
+
+                    <util-table-tr-td ng-bind="tbody_data.ExceptionTime"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.ExceptionServerIP"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.ExceptionModule"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.ExceptionClass"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.ExceptionMessage"></util-table-tr-td>
+
+                </util-table-tr>
+
+                <!--无数据是展示-->
+                <div class="u-table-no-data" ng-show="runLogCtrl.tableNoData" ng-cloak translate="FDS_00_01_18"></div>
+
+            </util-table-head>
+        </div>
+
+        <div class="table-paging">
+            <util-paging
+                    page-params="runLogCtrl.pageParams"
+                    prev-page="runLogCtrl.changePage(num)"
+                    next-page="runLogCtrl.changePage(num)"
+                    go-page="runLogCtrl.changePage(num)"
+                    hide-size="true"
+            ></util-paging>
+        </div>
+    </div>
+</div>

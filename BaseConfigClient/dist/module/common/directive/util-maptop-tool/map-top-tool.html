@@ -1,0 +1,70 @@
+<div class="u-map-tool f-tac f-abs" ng-class="{'short' : !mapTopToolDirective.isMapOfPattern}">
+    <!--工具-->
+        <ul class=" f-abs bg-color-white"
+            ng-class="{'show-list' : mapTopToolDirective.layerListIsShow}"
+            ng-show="mapTopToolDirective.isMapOfPattern">
+            <!--图层-->
+            <li class="f-csp f-pr f-fl layout"
+                ng-mouseover="mapTopToolDirective.layerShow()"
+                ng-mouseleave="mapTopToolDirective.layerHide()">
+
+                <a class="f-bbox f-fl" href="javascript:;">
+                    {{ 'FDS_04_03_01' | translate}}
+                </a>
+
+                <p class="f-abs bg-color-white f-bbox"
+                   ng-show="mapTopToolDirective.layerListIsShow">
+                    <!--摄像机-->
+                    <a data-type="camera"
+                       ng-class="{'active' : mapTopToolDirective.layerCheckData.camera}"
+                       ng-click="mapTopToolDirective.layerCheck('camera')"
+                       class="f-pr " href="javascript:;">
+                        <i class="f-abs"></i>{{ 'FDS_04_01_03' | translate }}
+                    </a>
+                    <!--<a data-type="ball"
+                       ng-click="mapTopToolDirective.layerCheck('null')"
+                       class="f-pr " href="javascript:;">
+                        <i class="f-abs"></i>球　机
+                    </a>-->
+                    <!--警力-->
+                    <a data-type="police"
+                       ng-class="{'active' : mapTopToolDirective.layerCheckData.police}"
+                       ng-click="mapTopToolDirective.layerCheck('police')"
+                       class="f-pr " href="javascript:;">
+                        <i class="f-abs"></i>{{ 'FDS_04_03_16' | translate }}
+                    </a>
+                </p>
+            </li>
+            <!--清除图层-->
+            <li class="f-csp f-pr f-fl clearLayer layout"
+                ng-if="mapTopToolDirective.isShowClearTool"
+                ng-click="mapTopToolDirective.clearAllLayer()">
+                <a class="f-bbox f-fl" href="javascript:;">
+                    {{ 'FDS_04_03_15' | translate}}
+                </a>
+            </li>
+            <!--全屏-->
+            <li class="f-csp f-pr f-fl full"
+                ng-click="mapTopToolDirective.fullScreenChange()">
+                <a class="f-bbox f-fl" href="javascript:;">
+                    {{ mapTopToolDirective.fullScreenState | translate}}
+                </a>
+            </li>
+        </ul>
+
+    <!--模式切换-->
+    <div class="u-dynCtrl-list f-abs f-oh"
+         ng-class="{'pattern' : mapTopToolDirective.isMapOfPattern }">
+        <span class="shape map f-abs"></span>
+        <a href="javascript:;" class="map f-abs"
+           title="{{'FDS_04_03_04' | translate}}"
+           ng-click="mapTopToolDirective.patternMap()">
+            <i></i>
+        </a>
+        <a href="javascript:;" class="list f-abs"
+           title="{{'FDS_04_03_05' | translate}}"
+           ng-click="mapTopToolDirective.patternList()">
+            <i></i>
+        </a>
+    </div>
+</div>

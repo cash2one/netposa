@@ -1,0 +1,260 @@
+<div class="container-fluid" id="container-fluid004">
+    <ol class="m-route f-cfb col-sm-12 col-xs-12">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="流量统计"></li>
+    </ol>
+
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height400">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{trafficStatisticsCtrl.echartNameArr.areaTrafficStatistics}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="trafficStatisticsCtrl.areaTrafficStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="trafficStatisticsCtrl.trafficSwitch('areaTrafficHistogram')">柱状图</i>
+                        <i ng-class="trafficStatisticsCtrl.areaTrafficStatisticsList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="trafficStatisticsCtrl.trafficSwitch('areaTrafficList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="trafficStatisticsCtrl.exportImage('areaTrafficStatistics')">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="trafficStatisticsCtrl.exportExcel(trafficStatisticsCtrl.ModuleNameArr.areaTrafficStatistics,trafficStatisticsCtrl.areaTrafficStatisticsTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="trafficStatisticsCtrl.TrafficTimeButtonClick()"
+                                default-select-by-value="ALL"
+                                is-resize="false"
+                                is-multiple="false"
+                                ng-model="trafficStatisticsCtrl.Area_Traffic_Model.module"
+                                init-No-Click="true"
+                                items="trafficStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="trafficStatisticsCtrl.Area_Traffic_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="trafficStatisticsCtrl.TrafficTimeButtonClick(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div ng-show="trafficStatisticsCtrl.areaTrafficStatisticsList">
+                    <div id="areaTrafficStatistics"></div>
+                </div>
+                <div class="areaTrafficStatistics" ng-show="!trafficStatisticsCtrl.areaTrafficStatisticsList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="item in trafficStatisticsCtrl.areaTrafficStatisticsTableList.legendData">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in trafficStatisticsCtrl.areaTrafficStatisticsTableList.xData track by $index"  ng-init="outIndex = $index">
+                            <td>{{item}}</td>
+                            <td ng-repeat="itemtd in trafficStatisticsCtrl.areaTrafficStatisticsTableList.legendData">
+                                {{trafficStatisticsCtrl.areaTrafficStatisticsTableList.seriesData[$index][outIndex]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height480">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{trafficStatisticsCtrl.echartNameArr.areaTrafficTrend}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="trafficStatisticsCtrl.areaTrafficTrendList?'icon-brokenLine-blue':'icon-brokenLine-ddd'"
+                           ng-click="trafficStatisticsCtrl.trafficSwitch('areaTrafficTrendHistogram')">折线图</i>
+                        <i ng-class="trafficStatisticsCtrl.areaTrafficTrendList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="trafficStatisticsCtrl.trafficSwitch('areaTrendList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="trafficStatisticsCtrl.exportImage(trafficStatisticsCtrl.ModuleNameArr.areaTrafficTrend)">折线图</span>
+                                    <span class="icon-menu-box" ng-click="trafficStatisticsCtrl.exportExcel(trafficStatisticsCtrl.ModuleNameArr.areaTrafficTrend,trafficStatisticsCtrl.areaTrafficTrendTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="trafficStatisticsCtrl.AreaTrafficTrendTimeButtonClick()"
+                                default-select-by-value="ALL"
+                                ng-model="trafficStatisticsCtrl.Area_Traffic_Trend_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="trafficStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="trafficStatisticsCtrl.Area_Traffic_Trend_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="trafficStatisticsCtrl.AreaTrafficTrendTimeButtonClick(value)"
+                               class="m-time"/>
+                    </span>
+                    <span class="drop-list-device" style="left: 630px;">
+                        <label class="title-area">
+                            <span translate="资源类型"></span>
+                        </label>
+                        <span class="m-droplist-area">
+                            <util-selects
+                                    select-data="trafficStatisticsCtrl.TrendDeviceDropList"
+                                    select-repeat-by-key="text"
+                                    select-name-key="text"
+                                    select-val="trafficStatisticsCtrl.TrendDeviceDropList[0]"
+                                    select-click="trafficStatisticsCtrl.TrendStatusType(selected)"
+                                    >
+                            </util-selects>
+                        </span>
+                    </span>
+                    <span class="drop-list-device" style="right: 34px;">
+                        <label class="title-area-a">
+                            <span translate="行政区域"></span>
+                        </label>
+                        <span class="m-droplist-area">
+                            <util-selects
+                                    select-data="trafficStatisticsCtrl.TrendAreaDropList"
+                                    select-repeat-by-key="text"
+                                    select-name-key="text"
+                                    is-mutile="true"
+                                    is-color="true"
+                                    select-val="trafficStatisticsCtrl.DropListMore"
+                                    select-click="trafficStatisticsCtrl.TrendStatusArea(selected)"
+                                    >
+                            </util-selects>
+                        </span>
+                    </span>
+                </div>
+                <div ng-show="trafficStatisticsCtrl.areaTrafficTrendList">
+                    <div id="areaTrafficTrend"></div>
+                </div>
+                <div class="areaTrafficTrend" ng-show="!trafficStatisticsCtrl.areaTrafficTrendList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="item in trafficStatisticsCtrl.areaTrafficTrendTableList.legendData">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in trafficStatisticsCtrl.areaTrafficTrendTableList.xData track by $index">
+                            <td>{{item}}</td>
+                            <td>{{trafficStatisticsCtrl.areaTrafficTrendTableList.seriesData[0][$index]}}</td>
+                            <td>{{trafficStatisticsCtrl.areaTrafficTrendTableList.seriesData[1][$index]}}</td>
+                            <td>{{trafficStatisticsCtrl.areaTrafficTrendTableList.seriesData[2][$index]}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top m-bottom-chart">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height585">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{trafficStatisticsCtrl.echartNameArr.deviceTrafficStatistics}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="trafficStatisticsCtrl.deviceTrafficStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="trafficStatisticsCtrl.trafficSwitch('trafficStatisticsHistogram')">柱状图</i>
+                        <i ng-class="trafficStatisticsCtrl.deviceTrafficStatisticsList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="trafficStatisticsCtrl.trafficSwitch('trafficStatisticsList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="trafficStatisticsCtrl.exportImage(trafficStatisticsCtrl.ModuleNameArr.deviceTrafficStatistics)">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="trafficStatisticsCtrl.exportExcel(trafficStatisticsCtrl.ModuleNameArr.deviceTrafficStatistics,trafficStatisticsCtrl.deviceTrafficStatisticsTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="trafficStatisticsCtrl.DeviceTrafficTimeButtonClick()"
+                                default-select-by-value="ALL"
+                                ng-model="trafficStatisticsCtrl.Device_Traffic_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="trafficStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="trafficStatisticsCtrl.Device_Traffic_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="trafficStatisticsCtrl.DeviceTrafficTimeButtonClick(value)"
+                               class="m-time"/>
+                    </span>
+                    <span class="drop-list-device" style="left: 630px;">
+                        <label class="title-area">
+                            <span translate="设备类型"></span>
+                        </label>
+                        <span class="m-droplist-area">
+                             <util-selects
+                                     select-data="trafficStatisticsCtrl.deviceTrafficData.dropListMenu"
+                                     select-repeat-by-key="text"
+                                     select-name-key="text"
+                                     select-val="trafficStatisticsCtrl.deviceTrafficData.dropListMenu[0]"
+                                     select-list-diy-icon="false"
+                                     select-click="trafficStatisticsCtrl.TrafficDeviceDrop(selectVal)">
+                            </util-selects>
+                        </span>
+                    </span>
+                    <span class="drop-list-device" style="right: 34px;">
+                        <label class="title-area">
+                            <span translate="行政区域"></span>
+                        </label>
+                        <span class="m-droplist-area">
+                            <util-selects
+                                    select-data="trafficStatisticsCtrl.areaTrafficData.dropListMenu"
+                                    select-repeat-by-key="text"
+                                    select-name-key="text"
+                                    select-val="trafficStatisticsCtrl.areaTrafficData.dropListMenu[0]"
+                                    select-list-diy-icon="false"
+                                    select-click="trafficStatisticsCtrl.TrafficAreaDrop(selectVal)">
+                            </util-selects>
+                        </span>
+                    </span>
+                </div>
+                <div ng-show="trafficStatisticsCtrl.deviceTrafficStatisticsList">
+                    <div id="deviceTrafficStatistics"></div>
+                </div>
+                <div class="deviceTrafficStatistics" ng-show="!trafficStatisticsCtrl.deviceTrafficStatisticsList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="itemth in trafficStatisticsCtrl.deviceTrafficStatisticsTableList.legendData track by $index">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in trafficStatisticsCtrl.deviceTrafficStatisticsTableList.yData track by $index">
+                            <td>{{item}}</td>
+                            <td>{{trafficStatisticsCtrl.deviceTrafficStatisticsTableList.seriesData[$index]}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

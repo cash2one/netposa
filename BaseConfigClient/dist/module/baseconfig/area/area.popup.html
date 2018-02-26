@@ -1,0 +1,54 @@
+<div class="u-baseconfig-popup" style="background: #fff" ng-controller="areaPopupController as areaPopup">
+    <form name="areaUpdateForm" novalidate>
+        <div class="form" style="overflow: visible">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_39"></span></span>
+            <input ng-if="!areaPopup.isRootArea" type="hidden" ng-model="areaPopup.Area.ParentArea.ID"/>
+            <div class="u-select-tree form-select" ng-if="!areaPopup.isRootArea">
+                <input type="text" class="u-input" ng-model="areaPopup.Area.ParentArea.Name" valid-nonempty="{{'DP_CONFIG_COMMON_39'|translate}}" readonly ng-click="areaPopup.isShowAreaTree = !areaPopup.isShowAreaTree"/>
+                <i class="tree-toggle-icon" ng-class="{'z-open': areaPopup.isShowAreaTree}"></i>
+                <div style="position: absolute" class="tree-cntr" ng-class="{'z-show': areaPopup.isShowAreaTree}">
+                    <util-tree tree-id="{{areaPopup.treeParams.treeId}}"
+                               tree-datas="areaPopup.treeParams.treeDatas"
+                               is-default-selected="true"
+                               check-enable="false"
+                               single-select="true"
+                               is-simple-data="true"
+                               show-icon="true"
+                               show-line="false"
+                               default-no-data-msg=""
+                               search-no-data-msg=""
+                               on-click="areaPopup.treeParams.onClick(event, treeId, treeNode)"
+                               tree-id-key="ID"
+                               tree-pid-key="ParentID"
+                               tree-key-name="Name"
+                               default-select-tree-id="areaPopup.treeParams.defaultSelectTreeId"
+                               default-expand-level="0"
+                    ></util-tree>
+                </div>
+            </div>
+            <div style="display: none;" ng-class="{'f-db': areaPopup.isRootArea}" class="u-select-tree form-select" ng-if="areaPopup.isRootArea">
+                <input type="text" disabled readonly class="u-input" placeholder="{{'DP_CONFIG_COMMON_79'|translate}}" />
+            </div>
+        </div>
+
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_AREA_03"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_AREA_03'|translate}}"  class="text u-input" placeholder="{{'DP_CONFIG_COMMON_80'|translate}}" ng-model="areaPopup.Area.Name"/>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_AREA_04"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_AREA_04'|translate}}"  class="text u-input" ng-model="areaPopup.Area.Code" placeholder="{{'DP_CONFIG_COMMON_82'|translate}}"/>
+        </div>
+        <div class="form">
+            <span class="title" style="text-indent:10px;" translate="DP_CONFIG_COMMON_34"></span>
+            <textarea class="text u-textarea" placeholder="{{'DP_CONFIG_COMMON_34'|translate}}"  ng-model="areaPopup.Area.Description"></textarea>
+        </div>
+
+        <div class="u-border"></div>
+
+        <div class="form">
+            <button class="u-button u-button-blue-2 btnStyle" ng-click="areaPopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+            <button class="u-button u-button-blue-1 btnStyle" ng-click="areaPopup.submit()" ng-disabled="areaUpdateForm.$invalid" translate="DP_CONFIG_COMMON_05"></button>
+        </div>
+    </form>
+</div>

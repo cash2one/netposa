@@ -1,0 +1,34 @@
+<div class="m-maintain-cntr f-cfb">
+    <div class="m-maintain-nav-bar">
+        <util-nav-container class="u-nav-container m-nav-container" is-collapse="maintainCtrl.isCollapse" ng-transclude ng-click="maintainCtrl.initPage()">
+            <util-nav-tool is-collapse="true"></util-nav-tool>
+            <util-nav  ng-repeat="item in maintainCtrl.moduleItems track by item.key"
+                       expander-title="{{item.name | translate}}">
+                <util-nav-content ng-repeat="content in item.children track by content.key"
+                                  class="m-content-navtool"
+                                  content-icon="{{content.icon}}"
+                                  current-router="maintainCtrl.currentRouter"
+                                  content-key="{{content.key}}"
+                                  ng-scrollbar
+                                  content-name="{{content.moduleName | translate}}">
+                </util-nav-content>
+            </util-nav>
+
+            <util-nav-container class="u-nav-container" is-collapse="maintainCtrl.isCollapse" ng-transclude>
+                <util-nav-single ng-repeat="item in maintainCtrl.others"
+                                 content-icon="{{item.icon}}"
+                                 content-key="{{item.key}}"
+                                 class="m-single-container"
+                                 content-name="{{item.moduleName | translate}}">
+                </util-nav-single>
+            </util-nav-container>
+            <!--<util-nav-content ng-repeat="content in baseConfigCtrl.others" content-icon="{{content.icon}}" content-key="{{content.key}}" content-key="content.moduleName"></util-nav-content>-->
+        </util-nav-container>
+    </div>
+    <!-- echart下载标签 -->
+    <a id="download"></a>
+    
+    <div class="g-maintain-mn m-maintain-content" ng-class="{'z-nav-putway z-content-width': maintainCtrl.isCollapse}" ui-view="maintain">
+    </div>
+
+</div>

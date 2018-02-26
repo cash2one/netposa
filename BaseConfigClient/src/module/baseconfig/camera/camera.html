@@ -1,0 +1,128 @@
+<!--bcCameraCtrl html-->
+<div class="m-device f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+        <span class="tree-search">
+            <input type="text" class="u-input tree-search" ng-model="bcCameraCtrl.areaTreeSearchInputStr"
+                   placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                   ng-keyup="bcCameraCtrl.areaTreeSearchInputKeyUp($event)"/>
+            <i class="u-input-search" ng-click="bcCameraCtrl.areaTreeSearchInput()"></i>
+        </span>
+        <div ng-show="bcCameraCtrl.areaTreeDatas.treeDatas.length > 0" class="m-device-tree-container" ng-scrollbars
+             style="overflow:auto;height:100%">
+            <util-tree tree-hide="bcCameraCtrl.areaTreeDatas.treeDatas.length == 0"
+                       tree-id="{{bcCameraCtrl.areaTreeDatas.treeId}}" tree-datas="bcCameraCtrl.areaTreeDatas.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="bcCameraCtrl.areaTreeDatas.treeInitComplete(treeId)" check-enable="false"
+                       single-select="true" is-simple-data="true" show-icon="true" show-line="false"
+                       default-no-data-msg="bcCameraCtrl.areaTreeDatas.defaultNoDataMsg"
+                       search-no-data-msg="bcCameraCtrl.areaTreeDatas.searchNoDataMsg"
+                       on-click="bcCameraCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID" tree-pid-key="ParentID" tree-key-name="Name"
+                       default-select-tree-id="bcCameraCtrl.areaTreeDatas.defaultSelectTreeId"
+                       default-expand-level="0" ></util-tree>
+        </div>
+        <div class="u-table-no-data" ng-show="bcCameraCtrl.areaTreeDatas.finishedNoData"
+             translate="DP_CONFIG_COMMON_16"></div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+
+            <div class="m-baseconfig-topFixed device-topFixed">
+
+                <ol class="m-route f-cfb">
+                    <li translate="DP_CONFIG_COMMON_01"></li>
+                    <li class="route-separate">/</li>
+                    <li translate="DP_CONFIG_CAMERA_01"></li>
+                </ol>
+                <div class="m-device-menu">
+                    <div class="device-hr">
+                        <span class="device-label device-label-top14" translate="DP_CONFIG_COMMON_25"></span>
+                        <select style="border: 1px solid #ccc;border-radius: 2px;" class="taskBtn f-cfb device-item"
+                                ng-options="type.value as type.text for type in bcCameraCtrl.ButtonList"
+                                ng-change="bcCameraCtrl.onClickTaskTypeBtn(bcCameraCtrl.myoption)"
+                                ng-model="bcCameraCtrl.myoption">
+                            <option value="" selected>{{'DP_CONFIG_COMMON_26'|translate}}</option>
+                        </select>
+                        <span class="device-label-right" translate="DP_CONFIG_COMMON_03"></span>
+                        <input ng-model="bcCameraCtrl.SearchParams.Name"
+                               placeholder="{{'DP_CONFIG_COMMON_03'|translate}}" type="text"
+                               class="u-input device-input"
+                        />
+                        <!--<span class="device-label">IP:</span>
+                        <input ng-model="bcCameraCtrl.SearchParams.IpAddress" type="text" class="u-input device-input" />-->
+                        <button class="u-button device-cButton" ng-click="bcCameraCtrl.search()"
+                                translate="DP_CONFIG_COMMON_24"></button>
+                    </div>
+                </div>
+                <div class="m-device-info">
+                    <div class="info-top f-cfb">
+                        <div>
+                            <!--<button class="u-button" ng-click="bcCameraCtrl.create()" >新增</button>-->
+                            <!--<button class="u-button">批量导入</button>-->
+                            <button class="u-button" ng-click="bcCameraCtrl.configDevices('area')"
+                                    translate="DP_CONFIG_COMMON_08"></button>
+                            <button class="u-button" ng-click="bcCameraCtrl.configDevices('lamp')"
+                                    translate="DP_CONFIG_COMMON_07"></button>
+                            <!--<button class="u-button" ng-disabled="!isSelectItems">删除</button>-->
+                            <!--<select ng-disabled="!bcCameraCtrl.isSelectItems" class="u-select" ng-class="{'z-no-border':!bcCameraCtrl.isSelectItems}" ng-change="bcCameraCtrl.changeCameraTypes(bcCameraCtrl.selectedCameraType)" ng-model="bcCameraCtrl.selectedCameraType"
+                                    ng-options="cameraType.value as cameraType.text | translate for cameraType in bcCameraCtrl.cameraTypeList"
+                            >
+                                <option value="" translate="FDS_01_05_01"></option>
+                            </select>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed camera-centerFixed">
+
+                <util-table-head table-headers="bcCameraCtrl.tHeadListCamera" table-has-check='true'
+                                 class="table-content"
+                                 table-sort-fun="bcCameraCtrl.sortByField(index,fieldName,sortStatus)"
+                                 table-after-check="bcCameraCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+                    <util-table-tr ng-repeat="(index,tbody_data) in bcCameraCtrl.tBodyList">
+
+                        <util-table-tr-td>{{tbody_data.Name}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.Code || ('未知'|translate)}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.JsonUserData.Area.Name}}</util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.CameraType | cameraTypeFilter">
+
+                            <!--<select class="u-select z-translate z-no-border" ng-model="tbody_data.CameraType" ng-change="bcCameraCtrl.changeCameraType(tbody_data)" ng-options="cameraType.value as cameraType.text | translate for cameraType in bcCameraCtrl.cameraTypeList">
+                        </select>-->
+                        </util-table-tr-td>
+
+                        <util-table-tr-td>{{tbody_data.JsonUserData.Point.Lon|number:6 || ('未设置'|translate)}}
+                        </util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.JsonUserData.Point.Lat|number:6 || ('未设置'|translate)}}
+                        </util-table-tr-td>
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}"
+                                   ng-click="bcCameraCtrl.editCamera(tbody_data)"></i>
+                                <!--<i class="icon-btn i-delete z-gray f-csp" title="{{'FDS_01_01_21'|translate}}" ng-click="bcCameraCtrl.deleteCamera(tbody_data)"></i>-->
+                                <i class="icon-btn i-lamp z-gray f-csp" title="{{'DP_CONFIG_COMMON_83'|translate}}"
+                                   ng-click="bcCameraCtrl.setLamp(tbody_data)"></i>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                    <div class="u-table-no-data" ng-show="bcCameraCtrl.tableNoData" translate="DP_CONFIG_COMMON_16">
+
+
+                    </div>
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging page-params="bcCameraCtrl.pageParams" prev-page="bcCameraCtrl.changePage(num)"
+                             next-page="bcCameraCtrl.changePage(num)"
+                             go-page="bcCameraCtrl.changePage(num)"
+                             page-size="bcCameraCtrl.changePageSize(num)"></util-paging>
+            </div>
+        </div>
+    </div>
+
+</div>

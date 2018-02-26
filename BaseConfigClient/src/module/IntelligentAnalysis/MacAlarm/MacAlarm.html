@@ -1,0 +1,105 @@
+<div ng-controller="MacAlarmController as MacAlarmCtrl" class="face-track mac-alarm">
+    <div class="person-alarm-Index">
+        <div class="analaysis-head">
+            <div class="analaysis-head-title">Mac报警</div>
+            <div class="back-btn">
+
+                <button ng-click="MacAlarmCtrl.goBack()">返回上级</button>
+            </div>
+        </div>
+        <div class="face-track-form">
+
+            <div class="track-form">
+                <div class="analaysis-form-input">
+                    <span class="analaysis-form-title">时间筛选</span>
+                    <span class="fast-date">
+                    <span
+                            ng-repeat="item in MacAlarmCtrl.FastDateList"
+                            ng-class="{'active':item.key === MacAlarmCtrl.FastDate.key}"
+                            ng-click="MacAlarmCtrl.setFastDate(item)">{{item.text}}</span>
+                    </span>
+                </div>
+                <div class="analaysis-form-input analaysis-form-input-date">
+                    <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                    <span class="input-layer">
+                    <input type="text" date-picker ng-model="MacAlarmCtrl.PersonAlarmParams.startTime" placeholder="请选择开始时间">
+                </span>
+                </div>
+                <div class="analaysis-form-input analaysis-form-input-date">
+                    <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                    <span class="input-layer">
+                        <input type="text" date-picker ng-model="MacAlarmCtrl.PersonAlarmParams.endTime" placeholder="请选择结束时间">
+                    </span>
+                </div>
+                <div class="face-track-select-camera">
+                    <span class="form-title" ng-click="MacAlarmCtrl.selectCamera()">选择区域</span>
+                    <div class="face-track-camera">
+                        <span class="action choose-camera" ng-click="MacAlarmCtrl.selectCamera()">选择区域</span>
+                        <span ng-click="MacAlarmCtrl.DrawRect()" class="action square"></span>
+                        <span ng-click="MacAlarmCtrl.DrawCircle()" class="action round"></span>
+                        <span ng-click="MacAlarmCtrl.DrawPolygon()" class="action polygon"></span>
+                        <span ng-click="MacAlarmCtrl.ClearDraw()" class="action clear"></span>
+                    </div>
+                </div>
+                <div class="analaysis-form-input">
+                    <button class="analysis-alarm-inquiry bg-blue" ng-click="MacAlarmCtrl.getAllResult()">查询</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 人员报警详情 -->
+    <div  class="person-alarm-detail mac-alarm-detail" ng-style="{width:MacAlarmCtrl.detailLayerWidth}" ng-class="{'active':MacAlarmCtrl.isShowDetail}">
+        <div class="detail-head">
+            <div class="result-operate">
+                    <span class="select-all checkbox">
+                        <input type="checkbox">
+                        <i>全选</i>
+                    </span>
+                <button class="export">导出</button>
+                <i class="result-close" ng-click="MacAlarmCtrl.closeResult()"></i>
+            </div>
+        </div>
+        <div class="detail-cnt">
+            <div class="container-fluid" ng-scrollbars>
+                <div class="row">
+                    <div class="col-md-2 "
+                         ng-repeat="item in MacAlarmCtrl.personAlarmResult.data.AlarmLogInfoArr track by item.ID">
+                        <div class="result-item result-item-mac">
+                            <div class="desc">
+                                <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                <div class="time">{{item.LogTime}}</div>
+                                <div class="info">{{item.Address}}</div>
+                            </div>
+                            <div class="action">
+                                <i class="sc"></i>
+                                <i class="fx"></i>
+                                <i class="bk"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detail-footer container-fluid">
+            <div class="row">
+                <div class="col-md-3" style="padding:15px;">共 <i class="blue-font">{{MacAlarmCtrl.personAlarmResult.totalCount}}</i>
+                    条记录
+                </div>
+
+                <div class="page-bottom col-md-9">
+                    <util-paging
+                            hide-size="true"
+                            hide-gopage="true"
+                            page-params="MacAlarmCtrl.personAlarmResult"
+                            prev-page="MacAlarmCtrl.changeResultPage(num)"
+                            next-page="MacAlarmCtrl.changeResultPage(num)"
+                            go-page="MacAlarmCtrl.changeResultPage(num)"
+                    ></util-paging>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

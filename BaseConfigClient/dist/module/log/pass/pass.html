@@ -1,0 +1,75 @@
+<div class="content-container f-cfb">
+    <div class="g-log-content-top">
+        <ul class="m-search-condition">
+            <li class="condition-list f-cfb">
+                <div class="f-fl channel-list">
+                    <div class="channel-list-1">
+                        <input placeholder="输入证件号或姓名" class="data-remote" ng-model="dataRemote" maxlength="40"/>
+                    </div>
+                </div>
+                <div class="channel-list-2">
+                    <a href="javascript:void(0);" class="ui-button ui-button-yellow-4" id="querySubmit">查询</a>
+                    <a id="exportButton" ng-click="export()" href="javascript:void(0)" class="ui-button ui-button-red-4">导出</a>
+                </div>
+            </li>
+            <li class='condition-list condition-no-padding f-cfb'>
+            </li>
+            <li class="condition-list f-cfb">
+                <div class="condition-left-big">
+                    <span class="u-title-normal event-time-title">时间</span>
+                    <span class="u-vertical-separate">|</span>
+                    <div id="timeUl" class="event-time-content"
+                         style="min-width: 229px; height: 30px;"></div>
+                </div>
+                <div class="condition-right-big">
+                    <span class="u-title-normal event-time-title">自定义</span>
+                    <span class="u-vertical-separate">|</span>
+                    <input class="Wdate"
+                           id="startDate" type="text" value="" style="width: 166px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked: function(){WdatePickerEventPassLogProxy.onchange();}});">
+                    <span>至</span>
+                    <input class="Wdate"
+                           id="endDate" type="text" value="" style="width: 166px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked: function(){WdatePickerEventPassLogProxy.onchange();}});">
+                </div>
+            </li>
+            <li class="condition-list f-cfb">
+                <div class="condition-left-big">
+                    <span class="u-title-normal event-time-title">监控人员</span>
+                    <span class="u-vertical-separate">|</span>
+                    <div id="isMonitorUl" class="event-time-content" style="min-width: 100px; height: 30px;"></div>
+                </div>
+                <div class="condition-right-big">
+                    <span class="u-title-normal event-time-title">通行结果</span>
+                    <span class="u-vertical-separate">|</span>
+                    <div id="isPassUl" class="event-time-content" style="min-width: 100px; height: 30px;"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="in-shadow" class="g-main-content">
+
+        <div class="m-passlog-content">
+            <table id="dataGrid"></table>
+            <div id="dataPager" style="display: none;"></div>
+            <div id="noDataMsg" class="no-data-msg">暂无数据</div>
+        </div>
+
+        <div id="listEventPaging" class="ui-paging f-tac" style="display:none;">
+            <a id="prev-page" href="javascript:void(0);" class="ui-paging-prev">
+                上一页 </a> <span id="pageEllipsis1" class="ui-paging-ellipsis">...</span>
+            <a id="pageNum1" href="javascript:void(0);"	class="ui-paging-item ui-paging-current">1</a>
+            <a id="pageNum2" href="javascript:void(0);" class="ui-paging-item">2</a>
+            <a id="pageNum3" href="javascript:void(0);" class="ui-paging-item">3</a>
+            <a id="pageNum4" href="javascript:void(0);" class="ui-paging-item">4</a>
+            <a id="pageNum5" href="javascript:void(0);" class="ui-paging-item">5</a>
+            <span id="pageEllipsis2" class="ui-paging-ellipsis">...</span>
+            <a id="next-page" href="javascript:void(0);" class="ui-paging-next">下一页 </a>
+            <!-- <span class="ui-paging-info"><span id="ui-paging-bold">5/7</span>页</span>
+            <span class="ui-paging-which"><input id="page-switch"
+                value="1" type="text"></span> <a
+                class="ui-paging-info ui-paging-goto" href="javascript:void(0);"
+                id="gotoPage">跳转</a> -->
+        </div>
+        <div class="p-top12"></div>
+    </div>
+</div>

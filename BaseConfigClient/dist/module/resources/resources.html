@@ -1,0 +1,166 @@
+<div id="Resource" class="Resource">
+    <div ng-include="'../module/resources/map/map.html'"></div>
+    <div ng-include="'../module/resources/chart/statistics/allStatistic.html'" ng-if="resourceCtrl.switchButton.ALLStatistics"></div>
+    <div ng-include="'../module/resources/chart/statistics/carStatistic.html'" ng-if="resourceCtrl.switchButton.VehicleStatistics"></div>
+    <div ng-include="'../module/resources/chart/statistics/personStatistic.html'" ng-if="resourceCtrl.switchButton.FaceStatistics"></div>
+    <div class="m-resource-switch" ng-click="resourceCtrl.hiddenChart()" ng-if="resourceCtrl.switchStateButton">
+        <label class="switch-left">流量</label>
+        <label class="switch-right">统计</label>
+        <div id="switchButton" class="switch-button"
+             ng-class="resourceCtrl.switchButton.switch?'switch-button1':'switch-button2'"></div>
+    </div>
+
+    <div ui-view="resource"></div>
+
+    <div class="title-data-container">
+        <div class="res-t-title" translate="{{resourceCtrl.datatitle}}">
+
+        </div>
+        <div class="res-t-data">
+            <div class="res-t-data-item" ng-repeat="item in resourceCtrl.timeTitleData track by item.key "
+                 ng-style="item.value == 10? {'width': '20px'}: ''">
+                <ul ng-style="item.value == 10 ?{'top': '-800px'}:{'top': '-{{item.value * 80}}px'}">
+                    <li class="res-t-data-item-li res-t-data-item-li-0"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-1"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-2"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-3"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-4"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-5"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-6"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-7"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-8"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-9"></li>
+                    <li class="res-t-data-item-li res-t-data-item-li-10"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="res-t-btn" ng-if="resourceCtrl.datatype == 'ALL'"
+             ng-click="resourceCtrl.shtleInowTifo = !resourceCtrl.shtleInowTifo"
+             ng-style="resourceCtrl.shtleInowTifo?{'bottom':'-247px'}:''">
+            <div ng-style="resourceCtrl.shtleInowTifo?{'transform':'rotateX(180deg)'}:''"></div>
+        </div>
+        <div class="res-t-info" ng-if="resourceCtrl.shtleInowTifo">
+            <div class="res-t-info-title">
+                <ul>
+                    <li translate="DP_RESOURCE_DATA_05"></li>
+                    <li translate="DP_RESOURCE_DATA_06"></li>
+                    <li translate="DP_RESOURCE_DATA_07"></li>
+                </ul>
+            </div>
+            <div class="res-t-info-item">
+                <ul>
+                    <li class="res-t-info-li-type">
+                        <div class="res-t-info-li-car"></div>
+                        <span translate="DP_RESOURCE_DATA_01"></span>
+                    </li>
+                    <li class="res-t-info-li-total">{{resourceCtrl.ResourcePageType.Vehicle.number.totalFlow}}</li>
+                    <li class="res-t-info-li-added">+{{resourceCtrl.ResourcePageType.Vehicle.number.todayFlow}}</li>
+                </ul>
+            </div>
+            <div class="res-t-info-item">
+                <ul>
+                    <li class="res-t-info-li-type">
+                        <div class="res-t-info-li-person"></div>
+                        <span translate="DP_RESOURCE_DATA_02"></span>
+                    </li>
+                    <li class="res-t-info-li-total">{{resourceCtrl.ResourcePageType.Face.number.totalFlow}}</li>
+                    <li class="res-t-info-li-added">+{{resourceCtrl.ResourcePageType.Face.number.todayFlow}}</li>
+                </ul>
+            </div>
+            <div class="res-t-info-item">
+                <ul>
+                    <li class="res-t-info-li-type">
+                        <div class="res-t-info-li-wifi"></div>
+                        <span translate="DP_RESOURCE_DATA_03"></span>
+                    </li>
+                    <li class="res-t-info-li-total">{{resourceCtrl.ResourcePageType.WiFi.number.totalFlow}}</li>
+                    <li class="res-t-info-li-added">+{{resourceCtrl.ResourcePageType.WiFi.number.todayFlow}}</li>
+                </ul>
+            </div>
+            <div class="res-t-info-item">
+                <ul>
+                    <li class="res-t-info-li-type">
+                        <div class="res-t-info-li-ele"></div>
+                        <span translate="DP_RESOURCE_DATA_04"></span>
+                    </li>
+                    <li class="res-t-info-li-total">{{resourceCtrl.ResourcePageType.EFENCE.number.totalFlow}}</li>
+                    <li class="res-t-info-li-added">+{{resourceCtrl.ResourcePageType.EFENCE.number.todayFlow}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="time-line-container">
+        <div class="timelineMain">
+            <!--左侧下拉选择 start-->
+            <div class="t_l_nav">
+                <div class="t_l_select borderRadius">
+                    <div class="t_l_seled" translate="{{resourceCtrl.selectResourceType}}"></div>
+                    <div class="t_l_icon"></div>
+                    <ul class="t_l_option borderRadius">
+                        <li ng-repeat="item in resourceCtrl.typeButtonNameSwitch"
+                            ng-click="resourceCtrl.changType($index, item, resourceCtrl.ResourcePageType[item].name)">
+                            <span translate="{{resourceCtrl.ResourcePageType[item].name}}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--左侧下拉选择 end-->
+            <div class="t_c_tl" ng-style="resourceCtrl.ui_t_c_tl">
+                <div class="t_c_tlBox borderRadius">
+                    <div class="t_c_tlDrop borderRadius" id="drop_box" ng-style="resourceCtrl.ui_t_c_tlDrop">
+                        <a href="javascript:void(0)" id="drop_start" ng-style="resourceCtrl.ui_t_c_tlDrop_start"
+                           class="drop_start " title="{{'DP_RESOURCE_TIME_07'| translate}}"></a>
+                        <a href="javascript:void(0)" id="drop_end" ng-style="resourceCtrl.ui_t_c_tlDrop_end"
+                           class="drop_end " title="{{'DP_RESOURCE_TIME_08' | translate}}"></a>
+                        <div class="drop_playBg borderRadius" ng-style="resourceCtrl.ui_drop_playBg">
+                            <div class="drop_playBg_curPlay borderRadius" id="drop_playBg_curPlay"
+                                 ng-style="resourceCtrl.ui_drop_playBg_curPlay" style="text-align:right;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t_c_tlScale" id="t_c_tlScale">
+                    <span class="t_c_tlScaleItem" ng-style="resourceCtrl.ui_t_c_tlScaleItem"
+                          ng-repeat="item in resourceCtrl.t_c_tlScaleData track by $index">
+                        <span class="scaleText">{{item}}</span>
+                    <em ng-show="item == ''"></em>
+                    <i class=" scaleitmsi scaleitmsi1 "> </i>
+                    <i class=" scaleitmsi scaleitmsi2 "></i>
+                    <i class=" scaleitmsi scaleitmsi3 "></i>
+                    <i class=" scaleitmsi scaleitmsi4 "></i>
+                    <i class=" scaleitmsi scaleitmsi5 "></i>
+                    </span>
+                </div>
+            </div>
+            <em name="tIndex" id="tIndex"></em>
+            <!--右侧下拉选择 start-->
+            <div class="t_r_nav">
+                <a href="javascript:void(0)" ng-class="resourceCtrl.isplay?'t_r_playBtn':'t_r_playBtn2'"
+                   title="{{'DP_RESOURCE_TIME_09'| translate}}" ng-click="resourceCtrl.playData()"></a>
+                <div class="t_r_select borderRadius">
+                    <div class="t_r_seled" translate="{{resourceCtrl.selectResourceTime}}"></div>
+                    <div class="t_r_icon"></div>
+                    <ul class="t_r_option borderRadius">
+                        <li ng-click="resourceCtrl.changTime('ALL','DP_RESOURCE_TIME_17')">
+                            <span translate="DP_RESOURCE_TIME_17"></span>
+                        </li>
+                        <li ng-click="resourceCtrl.changTime('Day','DP_RESOURCE_TIME_12')">
+                            <span translate="DP_RESOURCE_TIME_12"></span>
+                        </li>
+                        <li ng-click="resourceCtrl.changTime('Week','DP_RESOURCE_TIME_13')">
+                            <span translate="DP_RESOURCE_TIME_13"></span>
+                        </li>
+                        <li ng-click="resourceCtrl.changTime('Month','DP_RESOURCE_TIME_14')">
+                            <span translate="DP_RESOURCE_TIME_14"></span>
+                        </li>
+                        <li ng-click="resourceCtrl.changTime('Year','DP_RESOURCE_TIME_15')">
+                            <span translate="DP_RESOURCE_TIME_15"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--右侧下拉选择 start-->
+        </div>
+    </div>
+
+</div>

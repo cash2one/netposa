@@ -1,0 +1,103 @@
+<div class="m-videoServer f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+            <span class="tree-search">
+                <input type="text" class="u-input tree-search"
+                       ng-model="bcVideoServerCtrl.areaTreeSearchInputStr"
+                       placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                       ng-keyup="bcVideoServerCtrl.areaTreeSearchInputKeyUp($event)"
+                />
+                <i class="u-input-search" ng-click="bcVideoServerCtrl.areaTreeSearchInput()"></i>
+             </span>
+        <div ng-show="bcVideoServerCtrl.areaTreeDatas.treeDatas.length > 0" class="m-videoServer-tree-container" ng-scrollbars>
+            <util-tree tree-hide="bcVideoServerCtrl.areaTreeDatas.treeDatas.length == 0"
+                       tree-id="{{bcVideoServerCtrl.areaTreeDatas.treeId}}"
+                       tree-datas="bcVideoServerCtrl.areaTreeDatas.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="bcVideoServerCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg="bcVideoServerCtrl.areaTreeDatas.defaultNoDataMsg"
+                       search-no-data-msg="bcVideoServerCtrl.areaTreeDatas.searchNoDataMsg"
+                       on-click="bcVideoServerCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="bcVideoServerCtrl.areaTreeDatas.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div class="u-table-no-data" ng-show="bcVideoServerCtrl.areaTreeDatas.finishedNoData" translate="DP_CONFIG_COMMON_16">
+        </div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+
+            <div class="m-baseconfig-topFixed videoServer-topFixed">
+                <ol class="m-route f-cfb">
+                    <li translate="DP_CONFIG_COMMON_30"></li>
+                    <li class="route-separate">/</li>
+                    <li translate="DP_CONFIG_PROXYSERVER_01"></li>
+                </ol>
+                <div class="server-info f-cfb">
+                    <div>
+                        <button  class="u-button f-fl m-right15" ng-click="bcVideoServerCtrl.addVideoServer()" translate="DP_CONFIG_PROXYSERVER_07"></button>
+                        <!--<button  class="u-button f-fl m-right15 u-button-blue-3">在线检测</button>-->
+                        <!--<button  class="u-button f-fl m-right15 u-button-blue-3">重启服务器</button>-->
+
+                        <button  class="u-button f-fl u-button-blue-6" ng-disabled="!bcVideoServerCtrl.isSelectItems" ng-click="bcVideoServerCtrl.deleteByIds()" translate="DP_CONFIG_COMMON_37"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed videoServer-centerFixed">
+                <util-table-head    table-headers="bcVideoServerCtrl.tHeadList"
+                                    table-has-check ='true'
+                                    class="table-content"
+                                    table-sort-fun="bcVideoServerCtrl.sortByField(index,fieldName,sortStatus)"
+                                    table-after-check = "bcVideoServerCtrl.afterChangeCheck(checkList,isCheckAll)"
+                >
+
+                    <util-table-tr ng-repeat="(index,tbody_data) in bcVideoServerCtrl.tBodyList">
+
+                        <util-table-tr-td>{{tbody_data.Name}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.IpAddress}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.Port}}</util-table-tr-td>
+                        <util-table-tr-td>{{bcVideoServerCtrl.videoServerTypeObj[tbody_data.VideoServerType] || '未知'}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.Description}}</util-table-tr-td>
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <div class="table-icon-cntr f-cfb">
+                                    <i class="icon-btn i-edit z-gray f-csp"
+                                       title="{{'DP_CONFIG_VIDEOSERVER_06'|translate}}"
+                                       ng-click="bcVideoServerCtrl.updateServer(tbody_data)"></i>
+                                    <i class="icon-btn i-delete z-gray f-csp"
+                                       title="{{'DP_CONFIG_VIDEOSERVER_07'|translate}}"
+                                       ng-click="bcVideoServerCtrl.deleteById(tbody_data)"></i>
+                                       <i class="icon-btn i-edit z-gray f-synchronize" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="bcVideoServerCtrl.synchronize(tbody_data)"></i>
+                                </div>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging
+                        page-params="bcVideoServerCtrl.pageParams"
+                        prev-page="bcVideoServerCtrl.changePage(num)"
+                        next-page="bcVideoServerCtrl.changePage(num)"
+                        go-page="bcVideoServerCtrl.changePage(num)"
+                        page-size="bcVideoServerCtrl.changePageSize(num)"
+                ></util-paging>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

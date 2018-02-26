@@ -1,0 +1,42 @@
+<div class="m-alarm-list bg-color-white f-bbox f-oh"
+     data-num="{{ data.sequence }}"
+     ng-class="{'new-msg' : !!data.animate}"
+     ng-click="mainRightCtrl.disposeAlarm(data)"
+     ng-mouseover="mainRightCtrl.mouseoverImg($event)"
+     ng-mouseleave="mainRightCtrl.mouseoutImg($event)">
+    <div class="new-txt" ng-class="{ 'f-dn' : !!data.animate}">
+        <p class="tit" >
+            <strong class="font-c6">{{ data.site }}</strong>
+            <span class="f-fr font-c9">{{ data.time }}</span>
+        </p>
+        <div class="img-msg" >
+            <div class="imgs rect f-pr" src="" alt="">
+                <p class="f-abs play-control f-dn">
+                    <a class="f-fl f-tac "
+                       href="javascript:;"
+                       ng-click="mainRightCtrl.playVideo($event ,data)">
+                        {{ 'FDS_04_02_06' | translate }}
+                    </a>
+                    <a class="f-fl f-tac"
+                       href="javascript:;"
+                       ng-click="mainRightCtrl.showLargeImg($event ,data.imgUrl)">
+                        {{ 'FDS_04_02_07' | translate }}
+                    </a>
+                </p>
+                <img ng-src="{{data.imgUrl}}"  alt="">
+            </div>
+            <div class="imgs rect" src="" alt="">
+                <img src="../../../images/textPic.jpg" alt="">
+            </div>
+            <section class="rect font-c6 f-pr">
+                <h2 class="c-font-orange2">{{ data.percent }}</h2>
+                <p class="ellipsis">{{ data.subjection }}</p>
+                <p class="ellipsis">{{ data.name }}</p>
+                <div class="status f-abs {{ data.statusCode }}" >
+                    <i class="f-abs"></i>
+                    {{ data.status }}
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="u-paging f-tac" ng-hide="pageDirective.pageParams.totalCount == 0">
+    <i class="pageParams" style="display: block;float: right;">
+    <div ng-if="!hideSize" class="u-paging-select "  ng-mouseover="pageDirective.pagingShow()" ng-mouseleave="pageDirective.pagingHide()">
+
+       <i ng-bind="pageDirective.index"></i>
+
+       <div ng-show="pageDirective.flag" ng-mouseleave="pageDirective.pagingHide()">
+
+           <div ng-repeat="i in pageDirective.pageArr" ng-click="pageDirective.selectPageSize(i);pageDirective.pagingHide()"
+           ng-bind="i"></div>
+       </div>
+
+       <i class="i-select-down selectIcon"></i>
+    </div>
+
+
+    <!--跳转到第一页-->
+    <a href="javascript:void(0)" style="width: 28px"
+       class="u-paging-prev i-pading-first"
+       ng-if="!hideGopage"
+       ng-class="{'u-paging-item-disable':pageDirective.isFirstPage}"
+       ng-click="pageDirective.jumpFirstPage()"></a>
+
+    <a href="javascript:void(0)" style="width: 28px"
+       class="u-paging-prev i-pading-up"
+       ng-class="{'u-paging-item-disable':pageDirective.isFirstPage}"
+       ng-click="pageDirective.jumpPrevPage()"></a>
+
+    <a href="javascript:void(0)"
+       ng-repeat="page in pageDirective.pages" class="u-paging-item"
+       ng-class="{'u-paging-current': pageDirective.pageParams.currentPage === page.value}"
+       ng-click="pageDirective.jumpPage(page.value)">{{page.value}}</a>
+
+    <a href="javascript:void(0)" style="width: 28px"
+       class="u-paging-next i-pading-down"
+       ng-class="{'u-paging-item-disable':pageDirective.isLastPage}"
+       ng-click="pageDirective.jumpNextPage()"></a>
+
+
+    <!--跳转到最后一页-->
+    <a href="javascript:void(0)" style="width: 28px"
+       ng-if="!hideGopage"
+       class="u-paging-prev i-pading-last"
+       ng-class="{'u-paging-item-disable':pageDirective.isLastPage}"
+       ng-click="pageDirective.jumpLastPage()"></a>
+
+    <span class="pageCount">共<i ng-bind="pageDirective.pageParams.pageCount" style="margin: 0 2px;"></i>页</span>
+    </i>
+</div>

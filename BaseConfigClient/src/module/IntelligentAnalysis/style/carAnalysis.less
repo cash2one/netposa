@@ -1,0 +1,299 @@
+
+@import "./base.less";
+.col-xs-1-10,.col-sm-1-10,.col-md-1-10,.col-lg-1-10 {
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+}
+
+.col-xs-1-10 {
+  width: 10%;
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .col-sm-1-10 {
+    width: 10%;
+    float: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-1-10 {
+    width: 10%;
+    float: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-1-10 {
+    width: 10%;
+    float: left;
+  }
+}
+.face-track.carAnalysis {
+  width: 280px;
+  height: 100%;
+  position: relative;
+  .head-title.m-head-title{
+    background: #fff;
+    height: 40px;
+    padding: 5px 20px;
+    border-bottom: 1px solid #efefef;
+  }
+  .analaysis-head{
+    width: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 99;
+  }
+  .face-track-left {
+    position: absolute;
+    width:0 ;
+    overflow: hidden;
+    height: 100%;
+    opacity: 0;
+    background: #fff;
+    color: #333;
+    transition: all 0.5s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    &.active{
+      width: 280px;
+      opacity:1
+    }
+  }
+  .face-track-left-layer{
+    width: 280px;
+    height: 100%;
+    position: relative;
+  }
+  .m-carAnalysis-track{
+    position: static;
+  }
+  .face-track-res {
+    position: absolute;
+    left: 0;
+    width: 0;
+    top: 0;
+    z-index: 99;
+    opacity: 0;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+    &.active {
+      opacity: 1;
+      width: 280px;
+    }
+  }
+  .m-input-group{
+    .m-input-text{
+      top: 10px;
+    }
+    .input-select{
+      margin-top: 10px;
+    }
+  }
+}
+
+
+.carAnalysis{
+  .capture-item.m-capture-item{
+    cursor: pointer;
+    width: 280px;
+    position: relative;
+    padding: 20px 10px;
+    border-bottom: 1px solid #E4E4E4;
+  }
+  .licence{
+    position: relative;
+    width: 76px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 0;
+    background: #2D87F9;
+    color: #fff !important;
+    display: inline-block;
+    &:after{
+      content: "";
+      position: absolute;
+      width: 95%;
+      height: 92%;
+      top: 3%;
+      left: 2%;
+      border: solid 1px #fff;
+    }
+  }
+  .m-padding-text{
+    padding: 7px;
+  }
+  .carAnalysis-title{
+    width: 100%;
+    height: 30px;
+    line-height: 10px;
+    border: 1px solid #e4e4e4;
+    padding: 10px;
+    top: 1px;
+    position: relative;
+  }
+  .carAnalysis-popul{
+    position: absolute;
+    right: 21px;
+    top: 30px;
+    color: #0088cc;
+  }
+  .carAnalysis-body{
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    height: 300px;
+    position: relative;
+    .carAnalysis-positon{
+      position: relative;
+      width: 100%;
+      height: 133px;
+      .img-info.m-img-info{
+        height: 32px;
+        position: relative;
+        .carAnalysis-licence{
+          position: absolute;
+          top: 4px;
+          left: 39px;
+        }
+        .location.m-location{
+          position: relative;
+          top: 13px;
+        }
+        .action.m-action{
+          position: relative;
+          left: 111px;
+          top: -10px;
+        }
+      }
+      .carAnalysis-next{
+        position: absolute;
+        top: 40px;
+        left: 10px;
+      }
+    }
+    .carAnalysis-bottom{
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+  }
+}
+//弹框
+.m-compare-carAnalysis{
+  padding: 20px 35px;
+  overflow: hidden;
+  .m-compare-border{
+    border-right: 1px solid #e4e4e4;
+    width: 436px;
+    .compare-head{
+      height: 40px;
+      .compare-number(@background:null){
+        width: 30px;
+        height: 30px;
+        border: 1px solid #e4e4e4;
+        display: inline-block;
+        text-align: center;
+        line-height: 28px;
+        border-radius: 15px;
+        background: @background;
+        color: #ffffff;
+        font-size: 14px;
+      }
+      .compare-number-A{
+        .compare-number(#1fad55)
+      }
+      .compare-number-B{
+        .compare-number(#ec9000)
+      }
+      .compare-carbrand{
+        position: relative;
+        font-size: 15px;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #2d8df9;
+        color: #fff !important;
+        display: inline-block;
+        left: 120px;
+        border-radius: 1px;
+        &:after{
+          content: "";
+          position: absolute;
+          width: 92%;
+          height: 84%;
+          top: 3px;
+          left: 4px;
+          border: solid 1px #fff;
+        }
+      }
+    }
+    .compare-body{
+      .compare-body-image{
+        width: 400px;
+        height: 300px;
+        border: 1px solid #e4e4e4;
+      }
+    }
+    .compare-bottom{
+      height: 146px;
+      margin-top: 20px;
+      .compare-carInfo{
+        width: 175px;
+        height: 100%;
+        float: left;
+        margin-right:40px;
+        .compare-carInfo-title{
+          border-bottom: 1px solid #e4e4e4;
+          height:20px;
+        }
+
+        .compare-carInfo-relative(@min-width:null,@width:null){
+          position: relative;
+          padding-top: 5px;
+          min-width: 200px;
+
+          .compare-carInfo-li{
+            padding: 4px 0;
+
+            .compare-carInfo-left{
+              display: inline-block;
+              text-align: right;
+              min-width: @min-width;
+              float: left;
+              color: #999999;
+            }
+            .compare-carInfo-right{
+              display: inline-block;
+              width: @width;
+              color: #333333;
+              padding: 0 5px;
+            }
+            .compare-carInfo-left.carInfo-orange-left{
+              color:#ff8b3e;
+            }
+            .compare-carInfo-right.carInfo-orange-right{
+              color:#ff6600;
+              font-weight: 600;
+            }
+          }
+        }
+        .compare-carInfo-relative-A{
+          .compare-carInfo-relative(68px,119px)
+        }
+        .compare-carInfo-relative-B{
+          .compare-carInfo-relative(55px,130px)
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="m-check-details" ng-controller="macDetailsController as macDetailsCtrl">
+    <dl class="m-item-wifi">
+        <div class="head-ctn">
+            <span class="title">查看详情</span>
+            <span class="close" ng-click="macDetailsCtrl.cancel()">×</span>
+        </div>
+        <div class="m-itemwifi-content">
+            <div class="m-itemwifi-left">
+                <div class="m-item-word"><i class="m-color-l">任务类型 : </i><i class="m-color-h">{{macDetailsCtrl.TaskTypeMap[macDetailsCtrl.MyCheck.taskType]}}</i></div>
+                <div class="m-item-word"><i class="m-color-l">任务名称 : </i><i class="m-color-h">{{macDetailsCtrl.MyCheck.tName}}</i></div>
+                <div class="m-item-word"><i class="m-color-l">所属区域 : </i><i class="m-color-h">{{macDetailsCtrl.MyCheck.createUserAreaName}}</i></div>
+                <div class="m-item-word"><i class="m-color-l">创建人/布控人 : </i><i class="m-color-h">{{macDetailsCtrl.MyCheck.createUserName}}</i></div>
+                <div class="m-item-word"><i class="m-color-l">描述 : </i><i class="m-color-h">{{macDetailsCtrl.MyCheck.description}}</i></div>
+            </div>
+            <div class="m-itemwifi-right m-color-h">
+                <div class="m-item-word"><i class="m-color-l">有效时间 : </i><i class="m-color-h">{{macDetailsCtrl.validTime}}</i></div>
+                <div class="m-item-word"><i class="m-color-l">任务状态 : </i><i class="m-color-h">{{macDetailsCtrl.TaskStatusMap[macDetailsCtrl.MyCheck.tStatus]}}</i></div>
+                <div class="m-item-word"><i class="m-color-l">审核状态 : </i><i class="m-color-h">{{macDetailsCtrl.AuditStatusMap[macDetailsCtrl.MyCheck.auditStatus]}}</i></div>
+                <div class="m-item-word"><i class="m-color-l">布控类型 : </i><i class="m-color-h">{{macDetailsCtrl.TaskTypeMap[macDetailsCtrl.MyCheck.taskType]}}</i></div>
+            </div>
+        </div>
+    </dl>
+</div>

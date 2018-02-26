@@ -1,0 +1,78 @@
+<div class="track-detail-popup-layer" ng-controller="TrackPopupDetailController as TrackPopupDetailCtrl">
+    <div class="track-detail-popup">
+        <div class="track-detail-img">
+            <img ng-src="{{TrackPopupDetailCtrl.result.AccessLog.ScenePath | imageUrlFilter}}"/>
+        </div>
+        <div class="track-detail-content">
+            <div class="tab">
+                <div class="tab-row">
+                    <span class="active">通行记录</span>
+                    <span>人员档案</span>
+                </div>
+            </div>
+            <div class="action">
+                <span class="sc">收藏</span>
+                <span class="fx">分析</span>
+                <span class="bk">布控</span>
+            </div>
+            <div class="same-scale-sex">
+                <span class="same-scale">{{TrackPopupDetailCtrl.result.Score | roundNumber}}%</span>
+                <span class="sex man"></span>
+            </div>
+            <div class="info">
+                <div class="info-cell">
+                    <span class="title">年龄段:</span>
+                    <span class="text">{{TrackPopupDetailCtrl.result.AccessLog.Age | ageToGroupAge}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">发型:</span>
+                    <span class="text">未知</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">抓拍设备:</span>
+                    <span class="text">{{TrackPopupDetailCtrl.result.AccessLog.Address}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">衣着特征:</span>
+                    <span class="text">未知</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">戴眼镜:</span>
+                    <span class="text">{{TrackPopupDetailCtrl.result.AccessLog.Glass | glassFilter}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">戴帽子:</span>
+                    <span class="text">未知</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">戴口罩:</span>
+                    <span class="text">{{TrackPopupDetailCtrl.result.AccessLog.Mask | markFilter}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">携带物:</span>
+                    <span class="text">未知</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">鞋子:</span>
+                    <span class="text">未知</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">通行时间:</span>
+                    <span class="text">{{TrackPopupDetailCtrl.result.AccessLog.LogTime}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">通行地点:</span>
+                    <span class="text">保利国际中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="track-detail-bottom">
+            <p class="count">共<i>{{TrackPopupDetailCtrl.allResult.length}}</i>条</p>
+            <div class="change-page">
+                <span class="current-index">当前第<i>{{TrackPopupDetailCtrl.resultIndex +1}}</i>条</span>
+                <span class="prev" ng-click="TrackPopupDetailCtrl.prevResult()"></span>
+                <span class="next" ng-click="TrackPopupDetailCtrl.nextResult()"></span>
+            </div>
+        </div>
+    </div>
+</div>

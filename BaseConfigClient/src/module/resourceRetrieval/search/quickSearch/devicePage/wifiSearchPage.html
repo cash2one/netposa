@@ -1,0 +1,51 @@
+<div class="search-device-con" ng-controller="wifiSearchPageController as wifiSearchPageCtrl" ng-show="quickSearchCtrl.wifiResult.data.length&&!QuickCtrl.queryStatus">
+    <ul class="media-list wifi" ng-scrollbars>
+        <li class="media" ng-repeat="item in quickSearchCtrl.wifiResult.data">
+            <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                    <span class="operate">
+                        <i class="icon_collect" ng-class="{'active': item.collectStatus}" ng-click="wifiSearchPageCtrl.clickCollect(item)">收藏</i>
+                        <i class="icon_analysis" ng-click="wifiSearchPageCtrl.clickAnalysis(item)">分析</i>
+                        <i class="icon_dispatched" ng-class="{'active': item.surveillanceStatus}" ng-click="wifiSearchPageCtrl.clickSurveillance(item)">布控</i>
+                    </span>
+                </span>
+            </div>
+            <div class="media-next">
+                <div class="media-right" ng-click="wifiSearchPageCtrl.detailPopup($index, quickSearchCtrl.wifiResult.data)">
+                    <ul>
+                        <li class="mac">
+                            <div class="name"></div>
+                            <div class="text">{{item.wifiLog.Mac}}</div>
+                        </li>
+                        <li class="time">
+                            <div class="name"></div>
+                            <div class="text">{{ item.wifiLog.AcqTime }}</div>
+                        </li>
+                        <li class="address">
+                            <div class="name"></div>
+                            <div class="text">{{ item.deviceInfo.Name }}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="footer-page">
+        <div class="footer-page-con">
+            <div class="total">
+                共<i class="m-mark-num"> {{quickSearchCtrl.wifiResult.pageParams.totalCount}} </i>条记录
+            </div>
+            <util-paging
+                    page-params="quickSearchCtrl.wifiResult.pageParams"
+                    prev-page="quickSearchCtrl.changePage(num, 'wifiResult')"
+                    next-page="quickSearchCtrl.changePage(num, 'wifiResult')"
+                    go-page="quickSearchCtrl.changePage(num, 'wifiResult')"
+                    hide-size="quickSearchCtrl.hideSize"
+                    hide-gopage="quickSearchCtrl.hideGopage"
+            ></util-paging>
+        </div>
+    </div>
+</div>
+<div class="m-noMessage" ng-show="!quickSearchCtrl.wifiResult.data.length&&!QuickCtrl.queryStatus">暂无数据</div>
+<div class="loading" ng-if="QuickCtrl.queryStatus"></div>

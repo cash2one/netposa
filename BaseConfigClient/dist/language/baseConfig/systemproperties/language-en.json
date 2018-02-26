@@ -1,0 +1,39 @@
+{
+    "note": "/** 编码规则**/",
+    "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+    "note": "/***************************************** 基础控件  start ****************************************************/",
+  
+    "note": "/*******时间模板*********/",
+    "DP_CONFIG_SYSTEMPROPERTIES_01": "System parameters",
+    "DP_CONFIG_SYSTEMPROPERTIES_02": "Alarm management settings",
+    "DP_CONFIG_SYSTEMPROPERTIES_03": "The number of photos of the proportion",
+    "DP_CONFIG_SYSTEMPROPERTIES_04": "Retrieve record settings",
+    "DP_CONFIG_SYSTEMPROPERTIES_05": "Image storage settings",
+    "DP_CONFIG_SYSTEMPROPERTIES_06": "Storage period",
+    "DP_CONFIG_SYSTEMPROPERTIES_07": "storage",
+    
+    "note": "/*******搜索导航*********/",
+     "DP_CONFIG_SYSTEMPROPERTIES_08": "used",
+     "DP_CONFIG_SYSTEMPROPERTIES_09": "total",
+     "DP_CONFIG_SYSTEMPROPERTIES_10": "Batch pause",
+     "DP_CONFIG_SYSTEMPROPERTIES_11": "Batch delete",
+        
+    "note": "/*******人像布控表头信息*********/",
+    "DP_CONFIG_SYSTEMPROPERTIES_12": "mission name", 
+    "DP_CONFIG_SYSTEMPROPERTIES_13": "your region",
+    "DP_CONFIG_SYSTEMPROPERTIES_14": "Charge person",
+    "DP_CONFIG_SYSTEMPROPERTIES_15": "Effective time",
+    "DP_CONFIG_SYSTEMPROPERTIES_16": "Approval Status",
+    "DP_CONFIG_SYSTEMPROPERTIES_17": "Dispatch state",
+    "DP_CONFIG_SYSTEMPROPERTIES_18": "Authority",
+
+    "note": "/*******车辆布控表头信息*********/",
+    "DP_CONFIG_SYSTEMPROPERTIES_19": "License plate number",
+    "DP_CONFIG_SYSTEMPROPERTIES_20": "Charge person",
+    "DP_CONFIG_SYSTEMPROPERTIES_21": "Effective time",
+    "DP_CONFIG_SYSTEMPROPERTIES_22": "Type of deployment",
+
+     "note": "/*******Mac布控表头信息*********/",
+    "DP_CONFIG_SYSTEMPROPERTIES_23": "Mac address"
+
+  }

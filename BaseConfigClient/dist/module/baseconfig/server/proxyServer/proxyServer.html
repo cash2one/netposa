@@ -1,0 +1,55 @@
+<div class="m-proxyServer right-content">
+
+    <div class="m-baseconfig-topFixed proxyServer-topFixed">
+        <div class="server-info f-cfb">
+            <button class="u-button f-fl m-right15" ng-click="bcProxyServerCtrl.addVideoServer()">新建服务器</button>
+            <button class="u-button f-fl m-right15 u-button-blue-3">在线{{bcVideoServerCtrl.tBodyList.length}}检测</button>
+            <button class="u-button f-fl m-right15 u-button-blue-3">重启服务器</button>
+            <button class="u-button f-fl u-button-blue-3" ng-click="bcProxyServerCtrl.deleteByIds()">测试批量删除</button>
+        </div>
+    </div>
+
+    <div class="m-baseconfig-centerFixed proxyServer-centerFixed">
+        <util-table-head table-headers="bcProxyServerCtrl.tHeadList"
+                         table-has-check='true'
+                         class="table-content"
+                         table-sort-fun="bcProxyServerCtrl.sortByField(sortIndex,fieldName,sortStatus)"
+                         table-after-check="bcProxyServerCtrl.afterChangeCheck(checkList,isCheckAll)"
+        >
+            <util-table-tr ng-repeat="(index,tbody_data) in bcProxyServerCtrl.tBodyList">
+
+                <util-table-tr-td>{{tbody_data.Name}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.IpAddress}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.Port}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.ProxyServerType}}</util-table-tr-td>
+                <util-table-tr-td>{{tbody_data.Description}}</util-table-tr-td>
+                <util-table-tr-td>
+                    <div class="table-icon-cntr f-cfb">
+                        <i class="icon-btn i-edit z-gray" ng-click="bcProxyServerCtrl.updateServer(tbody_data)"></i>
+                        <i class="icon-btn i-delete z-gray" ng-click="bcProxyServerCtrl.deleteById(tbody_data)"></i>
+                    </div>
+                </util-table-tr-td>
+            </util-table-tr>
+            <!--
+                        <div class="u-table-no-data">
+                            暂无数据
+                        </div>-->
+
+        </util-table-head>
+    </div>
+
+    <div class="m-baseconfig-bottomFixed">
+        <util-paging
+                page-params="bcProxyServerCtrl.pageParams"
+                prev-page="bcProxyServerCtrl.changePage(num)"
+                next-page="bcProxyServerCtrl.changePage(num)"
+                go-page="bcProxyServerCtrl.changePage(num)"
+                page-size="bcProxyServerCtrl.changePageSize(num)"
+        ></util-paging>
+    </div>
+
+</div>
+
+
+
+

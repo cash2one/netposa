@@ -1,0 +1,102 @@
+<div class="left-tab">
+    <ul ng-scrollbars>
+        <li ng-repeat="(index,item) in newRoleCtrl.deviceTypelist" class="deviceTab"
+            ng-class="{active:newRoleCtrl.selectDeviceType == item.value}"
+            ng-click="newRoleCtrl.changeSelectDevice(item)">
+            {{item.text}}
+        </li>
+    </ul>
+</div>
+
+<div class="right-content" style="overflow: hidden">
+    <div class="device-tree">
+        <div class="pdp-form search-input">
+            <input type="text"
+                   ng-model="newRoleCtrl.searchPersonStr"
+                   placeholder="{{'请输入设备名称'|translate}}"
+                   ng-change="newRoleCtrl.onChangeSearchTree()"
+            />
+            <i class="u-input-search" ng-click="newRoleCtrl.onChangeSearchTree()"></i>
+        </div>
+        <div class="tree-data" ng-scrollbars>
+            <util-tree tree-id="{{newRoleCtrl.treeParams.treeId}}"
+                       tree-init-complete="newRoleCtrl.treeParams.treeInitComplete(treeId)"
+                       tree-datas="newRoleCtrl.treeParams.treeDatas"
+                       check-enable="{{newRoleCtrl.treeParams.checkEnable}}"
+                       single-select="{{newRoleCtrl.treeParams.isSingleSelect}}"
+                       is-simple-data="{{newRoleCtrl.treeParams.isSimpleData}}"
+                       show-icon="{{newRoleCtrl.treeParams.isShowIcon}}"
+                       show-line="{{newRoleCtrl.treeParams.isShowLine}}"
+                       default-no-data-msg="{{newRoleCtrl.treeParams.defaultNoDataMsg}}"
+                       search-no-data-msg="{{newRoleCtrl.treeParams.searchNoDataMsg}}"
+
+                       on-click="newRoleCtrl.treeParams.onClick(event, treeId, treeNode)"
+                       on-check="newRoleCtrl.treeParams.onCheck(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       edit-enable="{{newRoleCtrl.treeParams.editEnable}}"
+                       is-prev="false"
+                       is-next="false"
+                       is-inner="false"
+                       is-copy="false"
+                       is-move="false"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+    </div>
+
+    <div class="device-select-list-name">
+        <div class="role-device-select-title">
+            <div class="head-select">
+                <span class="select-num">已选设备
+                    <i ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.Camera.value">
+                        {{newRoleCtrl.selectCameraList.length}}</i>
+                    <i ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.Wifi.value">
+                        {{newRoleCtrl.selectWifiList.length}}</i>
+                    <i ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.RmpGate.value">
+                        {{newRoleCtrl.selectRmpgateList.length}}</i>
+                    <i ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.ElectronicFence.value">
+                        {{newRoleCtrl.selectEfenceList.length}}</i>
+                </span>
+                <span class="clear-select" ng-click="newRoleCtrl.removeDeviceSelected(false,true)">清空所有</span>
+            </div>
+        </div>
+        <div class="select-camera-layer" ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.Camera.value" ng-scrollbars>
+            <span class="camera" ng-repeat="item in newRoleCtrl.selectCameraList">
+                {{item.Name}}
+                <i class="delete-btn"
+                   ng-click="newRoleCtrl.removeDeviceSelected(item)"
+                ></i>
+            </span>
+        </div>
+
+        <div class="select-camera-layer" ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.Wifi.value" ng-scrollbars>
+            <span class="wifi" ng-repeat="item in newRoleCtrl.selectWifiList">
+                {{item.Name}}
+                <i class="delete-btn"
+                   ng-click="newRoleCtrl.removeDeviceSelected(item)"
+                ></i>
+            </span>
+        </div>
+
+        <div class="select-camera-layer" ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.RmpGate.value" ng-scrollbars>
+            <span class="rmpgate" ng-repeat="item in newRoleCtrl.selectRmpgateList">
+                {{item.Name}}
+                <i class="delete-btn"
+                   ng-click="newRoleCtrl.removeDeviceSelected(item)"
+                ></i>
+            </span>
+        </div>
+
+        <div class="select-camera-layer" ng-show="newRoleCtrl.selectDeviceType === newRoleCtrl.deviceTypeMap.ElectronicFence.value" ng-scrollbars>
+            <span class="efence" ng-repeat="item in newRoleCtrl.selectEfenceList">
+                {{item.Name}}
+                <i class="delete-btn"
+                   ng-click="newRoleCtrl.removeDeviceSelected(item)"
+                ></i>
+            </span>
+        </div>
+    </div>
+
+</div>

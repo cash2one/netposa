@@ -1,0 +1,46 @@
+.u-select-tree {
+    min-width: 200px;
+    position: relative;
+}
+
+.form-input .tree-toggle-icon,
+.u-select-tree .tree-toggle-icon {
+    position: absolute;
+    left: 277px;
+    right: auto;
+    top: 14px;
+    border-width: 4px 4px 0 4px;
+    border-color: rgba(0, 0, 0, 1) transparent transparent;
+    border-style: solid;
+    vertical-align: middle;
+    transition: -webkit-transform 0.12s;
+    transition: transform 0.12s;
+    transition: transform 0.12s, -webkit-transform 0.12s;
+    -o-transition: -o-transform 0.12s;
+    -moz-transition: -moz-transform 0.12s;
+    -webkit-transition: -webkit-transform 0.12s;
+}
+
+.form-input .tree-toggle-icon.z-open,
+.u-select-tree .tree-toggle-icon.z-open {
+    border-width: 0 4px 4px 4px;
+    border-color: transparent transparent rgba(0, 0, 0, 1);
+}
+
+.form-input .tree-cntr,
+.u-select-tree .tree-cntr {
+    margin-left: 70px;
+    display: none;
+    width: 224px;
+    max-height: 120px;
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    /*alert wyr 2017.6.27 不止为何这里之前底部border为none*/
+    overflow: auto;
+    z-index: 1000;
+}
+
+.form-input .tree-cntr.z-show,
+.u-select-tree .tree-cntr.z-show {
+    display: block;
+}

@@ -1,0 +1,35 @@
+<div class="m-camera-pop g-pop f-cb">
+    <div class="m-height m-popul-right" ng-show="lampPopup.CurrentDevice=='RmpGate'">
+        <div class="tree-search f-pr" ng-show="lampPopup.RmpGateOnTheLamp.treeDatas.length">
+            <input type="text"
+                class="ipt m-search-size u-input"
+                ng-model="lampPopup.RmpGateOnTheLamp.searchStr"
+                placeholder="{{'DP_CONFIG_COMMON_86' | translate}}"
+                ng-change="lampPopup.onChangeSearch(lampPopup.RmpGateOnTheLamp.treeId, lampPopup.RmpGateOnTheLamp.searchStr)">
+            <a href="javascript:" class="u-input-search tree-search-btn m-search-btn"></a>
+        </div>
+        <div class="tree-area-content">
+            <util-tree tree-id="{{lampPopup.RmpGateOnTheLamp.treeId}}"
+                    tree-datas="lampPopup.RmpGateOnTheLamp.treeDatas"
+                    check-enable="true"
+                    on-check="lampPopup.RmpGateOnTheLamp.onCheck(event, treeId, treeNode)"
+                    add-diy-dom="lampPopup.RmpGateOnTheLamp.addDiyDom(treeId, treeNode)"
+                    single-select="true"
+                    edit-enable="false"
+                    is-simple-data="true"
+                    show-icon="true"
+                    show-line="false"
+                    default-no-data-msg=""
+                    search-no-data-msg=""
+                    tree-id-key="ID"
+                    tree-pid-key="ParentID"
+                    tree-key-name="Name"
+                    default-expand-level="0"
+                    tree-init-complete = "lampPopup.RmpGateOnTheLamp.treeInitComplete(treeId)"
+            ></util-tree>
+        </div>
+    </div>
+    <div style="display: none;" ng-class="{'f-db': lampPopup.isRootLamp}" class="u-select-tree form-select" ng-if="lampPopup.isRootLamp">
+        <input type="text" class="u-input"/>
+    </div>
+</div>

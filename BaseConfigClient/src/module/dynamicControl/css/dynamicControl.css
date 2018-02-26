@@ -1,0 +1,1518 @@
+/*
+ * alter by ZYH on 2017/06/03  对照设计图精确布局样式
+ */
+/* update 2017/6/8 */
+.g-dynamicControl-left, .g-dynamicControl-right, .m-alarm-list, .pattern-video, .pattern-list > ul {
+    box-shadow: 0 0 5px 0 rgba(100, 100, 100, .3)
+}
+
+.g-main {
+    min-width: 1366px
+}
+
+/***** 库图像公共样式 *****/
+.u-alarm-img {
+    width: 110px;
+    height: 160px;
+    margin-right: 10px;
+    border: 1px solid #e2e2e2;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.u-alarm-img.active {
+    border-color: #2197ff
+}
+
+.u-alarm-img:hover {
+    border-color: #2197ff
+}
+
+.u-alarm-img > div {
+    width: 110px;
+    height: 109px;
+    border-bottom: 1px solid #e2e2e2;
+}
+.u-alarm-img > div>img {
+    width: 108px;
+    height: 108px;
+}
+
+.u-alarm-img p {
+    width: 108px;
+    padding: 0 6px;
+    margin-top: 7px;
+    overflow: hidden;
+}
+
+.u-alarm-img strong {
+    color: #596476;
+    width:62px
+}
+
+.u-alarm-img a {
+    color: #ffae00;
+}
+
+/***** 库图像公共样式 *****/
+
+/*** 左侧边栏 ***/
+.g-dynamicControl-left {
+    position: absolute;
+    width: 280px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    /*box-shadow: 0 0 5px 0 rgba(100,100,100,.2);*/
+}
+
+.g-dynamicControl-left .left-growth {
+    width: 12px;
+    height: 40px;
+    right: -10px;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.g-dynamicControl-left .left-growth > i {
+    width: 12px;
+    height: 12px;
+    left: 0;
+    top: 14px;
+    background: url('../../../images/common/shangyiye.png') no-repeat;
+    background-size: 100% auto;
+}
+
+/** 左侧边栏-内容 **/
+.module-content {
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.module-content .tree {
+    padding: 0 15px 15px 15px;
+    top: 105px;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+.module-content.mission .m-dynCtrl-input {
+    top: 15px
+}
+
+.module-content.resource .m-dynCtrl-input {
+    top: 15px
+}
+
+.module-content.mission .m-dynCtrl-btnBox {
+    top: 45px
+}
+
+.module-content.resource .tree {
+    top: 65px
+}
+
+.module-content.mission .radios {
+    width: 100%;
+    height: 30px;
+    margin-top: 60px;
+    padding: 0 15px
+}
+
+.module-content.mission .radios > a:not(:last-child) {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px 0 20px
+}
+
+.module-content.mission i.circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    top: 6px;
+    left: 0;
+}
+
+.module-content.mission .radios > a.active {
+    color: #4394ff;
+}
+
+.module-content.mission .radios > a.active > i.circle:after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #8fc31f;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+}
+
+.m-dynCtrl-moduleName {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    position: relative;
+}
+
+.m-dynCtrl-moduleName .moduleName {
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    line-height: 37px;
+    position: relative
+}
+
+.m-dynCtrl-moduleName .module-tabs {
+    padding: 0 20px;
+    height: 40px;
+    max-width: 140px; /* 英文预留 */
+    color: #999;
+}
+
+.m-dynCtrl-moduleName .module-tabs.active { /*激活*/
+    color: #4394ff;
+    border-bottom: 3px solid #0a94ff
+}
+
+.m-dynCtrl-moduleName .module-tabs:hover { /*鼠标悬停*/
+    color: #4394ff;
+    border-bottom: 3px solid #0a94ff
+}
+
+.m-dynCtrl-moduleName a.line:after { /*竖向短线*/
+    content: "";
+    width: 1px;
+    height: 12px;
+    background: #e2e6e9;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+/* 左侧边栏 - 内容区按钮 */
+.m-dynCtrl-btnBox {
+    width: 100%;
+    height: 60px;
+    padding: 15px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+}
+
+.m-dynCtrl-btnBox .u-uniquebutton {
+    display: flex;
+    justify-content: center
+}
+
+.m-dynCtrl-btnBox .u-uniquebutton .uniquebutton-item {
+    min-width: 60px;
+    max-width: 140px; /* 英文预留 */
+
+    border-radius: 2px;
+    top: 15px;
+    /**/
+    padding: 6px 10px;
+}
+
+.m-dynCtrl-btnBox .u-uniquebutton:after {
+    content: '';
+}
+
+.m-dynCtrl-btnBox .u-uniquebutton .uniquebutton-item.z-select {
+    background-color: #269dfa;
+    border-color: #269dfa;
+}
+
+.m-dynCtrl-btnBox .u-uniquebutton .uniquebutton-item:hover {
+    border-color: #269dfa;
+}
+
+/*
+.m-dynCtrl-btnBox > a.camera {
+    right: 145px;
+}
+
+.m-dynCtrl-btnBox > a.police {
+    left: 145px;
+}*/
+
+/* 左侧边栏 - 搜索框 */
+.m-dynCtrl-input {
+    width: 100%;
+    height: 30px;
+    padding: 0 15px;
+    position: absolute;
+    top: 60px;
+}
+
+.m-dynCtrl-input .dynCtrl-input {
+    width: 250px;
+    padding-right: 24px;
+}
+
+.m-dynCtrl-input .dynCtrl-input-icon {
+    width: 24px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.m-dynCtrl-treeContainer { /* 左侧边栏-ztree */
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    overflow: auto;
+}
+
+/*** 左侧边栏 ***/
+
+/*** 中间地图区域 ***/
+.g-dynamicControl-center {
+    position: absolute;
+    top: 0;
+    left: 280px;
+    right: 350px;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 5
+}
+
+.g-dynamicControl-center.left-fold {
+    left: 0;
+}
+
+.g-dynamicControl-center.right-fold {
+    right: 0;
+}
+
+.g-dynamicControl-center.right-fold.left-fold {
+    left: 0;
+    right: 0;
+}
+
+/** 模式切换按钮 **/
+/*
+.u-dynCtrl-list {
+    right: 10px;
+    top: 10px;
+    width: 106px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #eff1f4;
+    z-index: 12;
+    !*box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);*!
+}
+
+.u-dynCtrl-list.pattern {
+    top: 2px
+}
+
+.u-dynCtrl-list > a {
+    width: 50%;
+    height: 100%;
+    top: 0;
+}
+
+.u-dynCtrl-list > a > i {
+    background: url("../../../images/map/map-tool-icon.png") no-repeat
+}
+
+.u-dynCtrl-list > a.map {
+    left: 0
+}
+
+.u-dynCtrl-list > a.map > i {
+    left: 0;
+    background-position: 0 -32px
+}
+
+.u-dynCtrl-list > a.list {
+    right: 0
+}
+
+.u-dynCtrl-list > a.list > i {
+    right: 0;
+    background-position: 0 -48px
+}
+
+.u-dynCtrl-list > a > i {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 10px 0 0 18px
+}
+
+.u-dynCtrl-list > span.shape {
+    width: 56px;
+    height: 32px;
+    top: 2px;
+    background-color: #fff;
+    border-radius: 16px
+}
+
+.u-dynCtrl-list > span.shape.map {
+    left: 2px
+}
+
+.u-dynCtrl-list > span.shape.list {
+    right: 2px
+}
+*/
+
+/*tools*/
+/*.u-map-tool {
+    left: 10px;
+    right: 136px;
+    height: 46px;
+    left: 50%;
+    margin-left: -120px;
+}
+
+.u-map-tool > ul {
+    width: auto;
+    height: 36px;
+    top: 10px;
+    border-radius: 6px;
+}
+
+.u-map-tool > ul > li {
+    width: 80px;
+    height: 36px;
+    line-height: 18px;
+    padding: 10px;
+}
+
+.u-map-tool > ul > li.tool {
+    width: 90px
+}
+
+.u-map-tool > ul > li > a {
+    width: 100%;
+    padding-left: 25px
+}
+
+.u-map-tool > ul > li:hover a {
+    color: #4394ff;
+}
+
+.u-map-tool > ul > li > a:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    background: url('../../../images/map/map-tool-icon.png') no-repeat;
+    left: 15px;
+}
+
+.u-map-tool > ul > li.layout > a:before {
+    background-position: 0 0;
+}
+
+.u-map-tool > ul > li.layout:hover > a:before {
+    background-position: -16px 0;
+}
+
+.u-map-tool > ul > li.tool > a:before {
+    background-position: 0 -123px;
+}
+
+.u-map-tool > ul > li.tool:hover > a:before {
+    background-position: -16px -123px;
+}
+
+.u-map-tool > ul > li.full > a:before {
+    background-position: 0 -16px;
+}
+
+.u-map-tool > ul > li.full:hover > a:before {
+    background-position: -16px -16px;
+}
+
+.u-map-tool > ul > li.tool > span.down {
+    width: 10px;
+    height: 10px;
+    background: url("../../../images/common/selectIcon.png") no-repeat;
+    right: 8px;
+    top: 14px;
+    background-size: 100% 100%;
+
+}
+
+.u-map-tool > ul > li.tool:hover > span.down {
+    background: url("../../../images/common/selectIcon-blue.png") no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.u-map-tool > ul > li.tool > a {
+    padding-left: 16px
+}
+
+.u-map-tool > ul > li:not(:last-child) > a:after {
+    content: '';
+    width: 0;
+    height: 16px;
+    position: absolute;
+    border-right: 1px dashed #dbdee2;
+    right: 0
+}*/
+
+/*左右折叠按钮*/
+.u-left-fold, .u-right-fold {
+    width: 12px;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+    box-shadow: 1px 0 5px 0 rgba(0, 0, 0, .3);
+}
+
+.u-left-fold > i, .u-right-fold > i {
+    width: 12px;
+    height: 12px;
+    margin-top: 14px
+}
+
+.u-left-fold.unfold > i {
+    background: url("../../../images/common/xiayiye.png") no-repeat;
+    background-size: cover
+}
+
+.u-left-fold > i {
+    background: url("../../../images/common/shangyiye.png") no-repeat;
+    background-size: cover
+}
+
+.u-left-fold.unfold, .u-right-fold.unfold {
+    position: fixed
+}
+
+.u-right-fold.unfold > i {
+    background: url("../../../images/common/shangyiye.png") no-repeat;
+    background-size: cover
+}
+
+.u-right-fold > i {
+    background: url("../../../images/common/xiayiye.png") no-repeat;
+    background-size: cover
+}
+
+.u-left-fold {
+    left: 0
+}
+
+.u-right-fold {
+    right: 0
+}
+
+.m-dynCtrl-map, .m-dynCtrl-list {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ebeef1;
+}
+
+/* 列表模式 */
+.m-dynCtrl-list .pattern-tool {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    /*border-bottom: 1px solid #ccc;*/
+    z-index: 11
+}
+
+.m-dynCtrl-list .pattern-video {
+    left: 10px;
+    right: 10px;
+    top: 51px;
+    bottom: 190px;
+    background-color: #f5f5f5
+}
+
+.m-dynCtrl-list .pattern-list {
+    left: 10px;
+    right: 10px;
+    height: 170px;
+    bottom: 10px
+}
+
+.m-dynCtrl-list .pattern-list p.txt {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+.m-dynCtrl-list .pattern-list p.txt > a {
+    padding-right: 15px;
+}
+
+.m-dynCtrl-list .pattern-list a.more > i {
+    right: 0;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    background: url("../../../images/common/more_link.png") no-repeat 2px 3px;
+}
+
+.m-dynCtrl-list .pics {
+    width: 100%;
+    height: 130px;
+    padding-right:10px
+}
+
+.m-dynCtrl-list .pics > li {
+    float: left;
+    width: 0;
+    height: 120px;
+    margin: 10px 0 10px 10px;
+    opacity: 0;
+}
+
+.m-dynCtrl-list .pics div.img-box {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #d5dce0;
+}
+.m-dynCtrl-list .pics div.img-box>img{
+    width:90px;
+    height:90px;
+    margin:-1px 0 0 -1px;
+}
+
+.m-dynCtrl-list .pics > li > p {
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.m-dynCtrl-list .close-video {
+    width: 24px;
+    height: 24px;
+    top: 8px;
+    right: 136px;
+    background: url("../../../images/map/map-tool-icon.png") no-repeat 0 -184px;
+}
+
+.m-dynCtrl-list .pattern-video span.col {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    background-color: #ebeef1
+}
+
+.m-dynCtrl-list .pattern-video span.row {
+    width: 100%;
+    height: 1px;
+    left: 0;
+    top: 50%;
+    background-color: #ebeef1
+}
+
+.m-dynCtrl-list .pattern-video > div {
+    box-sizing: border-box;
+    border: 1px solid #ccc
+}
+
+.m-dynCtrl-list .pattern-video > div > div.video-resources {
+    width: 100%;
+    height: 100%
+}
+
+.m-dynCtrl-list .pattern-video.one > div {
+    width: 100%;
+    height: 100%
+}
+
+.m-dynCtrl-list .pattern-video.four > div {
+    width: 50%;
+    height: 50%
+}
+
+.m-dynCtrl-list .pattern-video.nine > div {
+    width: 33.33%;
+    height: 33.33%
+}
+
+.m-dynCtrl-list .layout-choose {
+    width: 37px;
+    height: 24px;
+    top: 8px;
+    right: 180px;
+    background: url("../../../images/map/map-tool-icon.png") no-repeat 0 -158px;
+}
+
+.m-dynCtrl-list .layout-choose > .iframe-box {
+    width: 24px;
+    height: 73px;
+    top: 20px
+}
+
+.m-dynCtrl-list .layout-choose > i {
+    width: 12px;
+    height: 12px;
+    left: 6px;
+    top: 6px;
+    background: url("../../../images/map/map-tool-icon.png") no-repeat
+}
+
+.m-dynCtrl-list .layout-choose > i.one {
+    background-position: -2px -64px
+}
+
+.m-dynCtrl-list .layout-choose > i.four {
+    background-position: -2px -80px
+}
+
+.m-dynCtrl-list .layout-choose > i.nine {
+    background-position: -2px -96px
+}
+
+.m-dynCtrl-list .layout-choose p {
+    width: 24px;
+    background-color: #eff1f4;
+    border: 1px solid #bec7ce;
+    border-top: 0;
+    left: 0;
+    top: 0;
+    padding-bottom: 6px;
+}
+
+.m-dynCtrl-list .layout-choose p > a {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url("../../../images/map/map-tool-icon.png") no-repeat;
+    margin: 10px 0 0 5px;
+}
+
+.m-dynCtrl-list .layout-choose p > a.one {
+    background-position: -2px -64px
+}
+
+.m-dynCtrl-list .layout-choose p > a.four {
+    background-position: -2px -80px
+}
+
+.m-dynCtrl-list .layout-choose p > a.nine {
+    background-position: -2px -96px
+}
+
+/*** 中间地图区域 ***/
+
+/*** 右侧栏 ***/
+.g-dynamicControl-right {
+    position: absolute;
+    width: 350px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #f0f8ff;
+    overflow: auto;
+    z-index: 10;
+    /*box-shadow: 0 0 5px 0 rgba(100,100,100,.2);*/
+}
+
+.g-dynamicControl-right .total {
+    top: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    left: 0;
+    right: 0
+}
+
+.g-dynamicControl-right .total > .more {
+    right: 16px;
+    height: 16px;
+    line-height: 16px;
+    top: 12px;
+    color: #29a7ff;
+    padding-right: 16px;
+    background: url("../../../images/common/more_link.png") no-repeat 28px 4px;;
+}
+
+.g-dynamicControl-right .total > .more:hover {
+    color: #4394ff
+}
+
+.m-dynCtrl-wrapper.realAlarm, .m-dynCtrl-wrapper {
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+.m-dynCtrl-wrapper.realAlarm {
+    top: 80px;
+}
+
+.m-dynCtrl-wrapper {
+    top: 40px;
+    overflow-x: hidden;
+    overflow-y: auto
+}
+
+/** 报警信息块 **/
+.m-alarm-list {
+    width: 350px;
+    height: 150px;
+    /*box-shadow: 0 0 5px 0 rgba(100, 100, 100, .2);*/
+    padding: 10px 18px 10px 10px; /* 右侧宽版滚动条遮挡内容 */
+    /*box-sizing: border-box;*/
+    margin-bottom: 15px;
+    cursor: pointer
+}
+
+.m-alarm-list.new-msg {
+    background-color: #ffe8e8;
+    height: 0px;
+}
+
+/*动画*/
+/*@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.m-alarm-list.new-msg{
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+}*/
+/*动画*/
+
+.m-alarm-list:hover {
+    box-shadow: 0 0 5px 0 rgba(100, 100, 100, 1);
+}
+
+.m-alarm-list p.tit > strong {
+    padding-left: 20px;
+    background: url("../../../images/common/ditudinwei-blue.png") no-repeat;
+    background-size: auto 100%
+}
+
+.m-alarm-list .img-msg {
+    margin-top: 10px
+}
+
+.m-alarm-list .rect {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.m-alarm-list .imgs.rect {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 9px
+}
+
+/* 录像|大图 */
+.m-alarm-list p.play-control {
+    width: 100%;
+    height: 28px;
+    background-color: rgba(0, 0, 0, .5);
+    bottom: 0;
+}
+
+.m-alarm-list p.play-control > a {
+    width: 50%;
+    height: 28px;
+    line-height: 28px;
+    color: #fff
+}
+
+.m-alarm-list p.play-control > a:first-child:after {
+    content: "";
+    width: 1px;
+    height: 14px;
+    position: absolute;
+    top: 7px;
+    right: 50%;
+    background-color: #d5d5d4
+}
+
+.m-alarm-list .rect > img {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.m-alarm-list .rect > h2 {
+    font-size: 24px;
+    margin-bottom: 10px
+}
+
+.m-alarm-list .rect p {
+    line-height: 20px
+}
+
+.m-alarm-list .rect .status {
+    bottom: 0;
+    padding: 3px 5px;
+    left: 10px
+}
+
+.m-alarm-list .rect .status > i {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    left: -20px;
+    top: -0.5px;
+}
+
+/*有效*/
+.m-alarm-list .rect .status.vilid {
+    color: #fb5532;
+    background-color: #feeae8
+}
+
+/*有效*/
+.m-alarm-list .rect .status.vilid > i {
+    border-right-color: #feeae8
+}
+
+/*无效*/
+.m-alarm-list .rect .status.invilid {
+    color: #8090a7;
+    background-color: #e5e5e5
+}
+
+/*无效*/
+.m-alarm-list .rect .status.invilid > i {
+    border-right-color: #e5e5e5
+}
+
+/*未处理*/
+.m-alarm-list .rect .status.untreated {
+    color: #4ad0cb;
+    background-color: #eafaf9
+}
+
+/*未处理*/
+.m-alarm-list .rect .status.untreated > i {
+    border-right-color: #eafaf9
+}
+
+/*!*待定*!
+.m-alarm-list .rect .status.undetermined {
+    color: #ffae00;
+    background-color: #fff7e5
+}
+
+!*待定*!
+.m-alarm-list .rect .status.undetermined > i {
+    border-right-color: #fff7e5
+}*/
+
+/* 报警信息弹窗 */
+.u-alarm-popup {
+    width: 100%;
+    min-height: 450px;
+}
+.u-alarm-popup .container{
+    
+    z-index: 10;
+}
+
+/*弹窗顶部标题工具栏*/
+.u-alarm-popup .title-txt {
+    padding: 0 15px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #e6eef1;
+}
+
+.u-alarm-popup .title-txt > i {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    top: 12px;
+}
+
+.u-alarm-popup .title-txt > i.closed {
+    background-position: 2px -39px;
+    right: 10px;
+}
+
+.u-alarm-popup .title-txt > i.delete {
+    background: url('../../../images/dynamicControl/dynamicControl.png') no-repeat;
+    background-position: 0 -16px;
+    right: 42px;
+}
+
+.u-alarm-popup .title-txt > i.delete:hover {
+    background-position: -16px -16px;
+}
+
+.u-alarm-popup .title-txt > i.collect {
+    background: url('../../../images/dynamicControl/dynamicControl.png') no-repeat;
+    background-position: 0 0;
+    right: 72px
+}
+
+.u-alarm-popup .title-txt > i.collect:hover {
+    background-position: -17px 0;
+}
+
+/*比对图像内容区域*/
+.u-alarm-popup .content-area {
+    width: 100%;
+    height: 370px;
+    padding: 10px;
+}
+
+.u-alarm-popup .content-area .percent {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffae00;
+    line-height: 50px;
+    color: #fff;
+    top: 118px;
+    left: 138px;
+    z-index: 10;
+}
+
+.u-alarm-popup .imgs {
+    width: 590px;
+    height: 350px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.u-alarm-popup .video {
+    right: 10px;
+    top: 50px;
+    width: 315px;
+    height: 350px;
+    background: url('../../../images/common/vedio-play.png') no-repeat center center;
+}
+
+.u-alarm-popup .video, .u-alarm-popup .real-img, .u-alarm-popup .repertory-img {
+    border: 1px solid #f2f2f2;
+}
+
+.u-alarm-popup .real-img, .u-alarm-popup .repertory-img {
+    width: 160px;
+    height: 160px;
+}
+
+.u-alarm-popup .real-img img {
+    width: 158px;
+    height: 158px;
+}
+
+.u-alarm-popup .real-img p {
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    padding: 3px 10px;
+    background-color: rgba(0, 0, 0, .3);
+    left: 0;
+    bottom: 0;
+}
+
+.u-alarm-popup .showLarge, .u-alarm-popup .showTrack {
+    margin-right: 5px;
+    background: url('../../../images/dynamicControl/dynamicControl.png') no-repeat;
+}
+
+.u-alarm-popup .showLarge {
+    width: 14px;
+    height: 14px;
+    background-position: -1px -34px;
+}
+
+.u-alarm-popup .showTrack {
+    width: 16px;
+    height: 16px;
+    background-position: 1px -48px;
+}
+
+.u-alarm-popup .showLarge:hover {
+    background-position: -17px -33px;
+}
+
+.u-alarm-popup .showTrack:hover {
+    background-position: -15px -48px;
+}
+
+.u-alarm-popup .repertory-img {
+    margin-left: 5px
+}
+.u-alarm-popup .repertory-img>img {
+    width:158px;height:158px
+}
+
+.u-alarm-popup .repertory-msg {
+    width: 225px;
+    height: 160px;
+    margin-left: 15px;
+    padding-top: 3px
+}
+
+.u-alarm-popup .next-btn {
+    width: 30px;
+    height: 160px;
+    right: -10px;
+    top: 0;
+    background: url("../../../images/common/xiayiye.png") no-repeat center center;
+    background-size: 100% auto;
+}
+
+.u-alarm-popup .repertory-msg i.sex-icon {
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 0;
+}
+
+.u-alarm-popup .repertory-msg strong {
+    color: #596476;
+    padding: 0 0 0 18px;
+}
+
+/*性别图标*/
+.u-alarm-popup .repertory-msg i.male {
+    background: url('../../../images/dynamicControl/dynamicControl.png') no-repeat -16px -96px;
+}
+
+.u-alarm-popup .repertory-msg i.female {
+    background: url('../../../images/dynamicControl/dynamicControl.png') no-repeat 0 -96px;
+}
+
+.u-alarm-popup .repertory-msg p {
+    width: 930px;
+    line-height: 24px;
+    color: #7f8fa8;
+}
+
+.u-alarm-popup .repertory-msg p.first {
+    margin-top: 10px;
+}
+
+.u-alarm-popup .repertory-msg p > span {
+    color: #596476
+}
+
+/*检索库图像列表*/
+.u-alarm-popup .more-txt {
+    width: 100%;
+    height: 1px;
+    top: 172px;
+    left: 0
+}
+
+.u-alarm-popup .more-txt > p {
+    width: 535px;
+    border-top: 1px solid #b3e4ff;
+}
+
+.u-alarm-popup .more-txt i {
+    width: 14px;
+    height: 11px;
+    overflow: hidden;
+    left: 238px;
+    top: -11px
+}
+
+.u-alarm-popup .more-txt > a {
+    right: -5px;
+    top: -7px
+}
+
+.u-alarm-popup .more-txt span {
+    font-size: 36px;
+    color: #b3e4ff;
+    top: -9px;
+    left: -4px;
+}
+
+.u-alarm-popup .repertory-list {
+    width: 100%;
+    height: 161px;
+    bottom: -1px;
+}
+
+.u-alarm-popup .repertory-list .list {
+    width: 600px;
+    height: 170px;
+}
+
+.u-alarm-popup .repertory-list .list ul {
+    width: auto;
+    height: 170px;
+    margin-left:0
+}
+
+.u-alarm-popup .repertory-list > a {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 50%;
+    top: 60px
+}
+
+.u-alarm-popup .repertory-list > a:hover {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.u-alarm-popup .repertory-list .prev {
+    left: -25px;
+}
+
+.u-alarm-popup .repertory-list .prev > i {
+    background: url("../../../images/common/shangyiye-white.png") no-repeat;
+    left: 26px;
+    background-size: cover;
+}
+
+.u-alarm-popup .repertory-list .next {
+    right: -25px;
+}
+
+.u-alarm-popup .repertory-list .next > i {
+    background: url("../../../images/common/xiayiye-white.png") no-repeat;
+    right: 26px;
+    background-size: cover;
+}
+
+.u-alarm-popup .repertory-list > a > i {
+    width: 16px;
+    height: 16px;
+    top: 17px;
+}
+
+/*检索库图像列表*/
+
+/*弹窗底部操作栏*/
+
+.u-alarm-popup .operation {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    line-height: 40px;
+    border-top: 1px solid #e6eef1;
+    bottom: 0
+}
+
+.u-alarm-popup .operation > a {
+}
+
+.u-alarm-popup .operation > a.prev {
+    left: 12px;
+    padding-left: 18px
+}
+.u-alarm-popup .operation > a.prev.not-allow,.u-alarm-popup .operation > a.next.not-allow {
+    cursor: not-allowed;
+    opacity:0.3;
+}
+
+.u-alarm-popup .operation > a.next {
+    right: 12px;
+    padding-right: 18px
+}
+
+.u-alarm-popup .operation i {
+    width: 16px;
+    height: 15px;
+    background: url('../../../images/dynamicControl/dynamicControl.png') no-repeat;
+    top: 11px;
+}
+
+.u-alarm-popup .operation > a.prev > i {
+    background-position: 0 -64px;
+    left: 0;
+}
+
+.u-alarm-popup .operation > a.next > i {
+    background-position: 0 -80px;
+    right: 0;
+}
+
+.u-alarm-popup .operation > a.prev:hover > i {
+    background-position: -17px -63px;
+    left: 0;
+}
+
+.u-alarm-popup .operation > a.next:hover > i {
+    background-position: -16px -80px;
+    right: 0;
+}
+
+.u-alarm-popup .operation .des {
+    width: 120px;
+    height: 28px;
+    border: 1px solid #ccc;
+    padding: 0 5px;
+}
+
+.u-alarm-popup .operation .dispose {
+    margin-left: 10px
+}
+
+.u-alarm-popup .operation > button {
+    padding: 0 10px;
+    height: 28px;
+    border: 0;
+    border-radius: 3px;
+}
+
+.u-alarm-popup .operation .vilid {
+    background-color: #ff441a;
+}
+
+.u-alarm-popup .operation .invilid {
+    background-color: #ffa200;
+}
+
+/* 检索更多追加内容 */
+.u-alarm-popup .more-content {
+    width: 100%;
+    height: 221px;
+    border-top: 1px solid #f2f2f2;
+}
+
+.u-alarm-popup .more-content .left-info {
+    width: 226px;
+    height: 181px;
+    border-right: 1px solid #e2e2e2;
+    background-color: #fcfcfd;
+}
+
+.u-alarm-popup .more-content .right-list {
+    width: 724px;
+    height: 181px;
+    padding-left: 10px;
+}
+
+.layui-layer-content .larger-pic{
+    padding:20px;
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.u-alarm-popup .more-content .right-list li {
+    margin: 10px 6px 0 0;
+}
+
+/*检索条件筛选*/
+.u-alarm-popup .left-info p {
+    height: 30px;
+    padding: 9px 10px;
+    margin-top: 12px;
+}
+.u-alarm-popup .left-info .util-select{
+    width:152px;height:30px;
+    background:#ccc;
+    margin-top:-9px;
+}
+
+.u-alarm-popup .left-info p > a {
+    width: 52px;
+    line-height: 14px;
+}
+
+.u-alarm-popup .left-info p > input,
+.u-alarm-popup .left-info p:last-child > button,
+.u-alarm-popup .left-info .sex-btns {
+    width: 152px;
+}
+
+/*性别按钮组*/
+.u-alarm-popup .left-info .sex-btns {
+    right: 10px;
+    top: 0;
+    height: 30px
+}
+
+.u-alarm-popup .left-info .sex-btns li {
+    margin-right: 5px;
+    height: 30px;
+    line-height: 10px;
+}
+
+/*自定义指令样式覆盖*/
+/*.u-alarm-popup .u-uniquebutton .uniquebutton-item{
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+.u-alarm-popup .u-uniquebutton .uniquebutton-item.z-select{
+    background-color:#ffa200;
+    border-color : #ffa200
+}
+.u-alarm-popup .u-uniquebutton .uniquebutton-item:hover{
+    border-color : #ffa200;
+    margin:1px 5px 1px 1px;!*指令带*!
+}*/
+/*自定义指令样式覆盖*/
+
+.u-alarm-popup .left-info p > input,
+.u-alarm-popup .left-info p:last-child > button {
+    right: 10px;
+    top: 0;
+    height: 30px;
+}
+
+/*
+.u-alarm-popup .left-info p > a {
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 5px;
+    border-radius: 2px;
+}*/
+/*英文*/
+/*.u-alarm-popup .left-info p.english > a {
+    padding: 0 10px;
+    margin:0 0 0 5px;
+}*/
+
+/*.u-alarm-popup .left-info p > a:hover {
+    cursor: pointer;
+    background-color: #4394ff;
+    color: #fff;
+}*/
+
+.u-alarm-popup .left-info p > a.active {
+    cursor: pointer;
+    background-color: #4394ff;
+    color: #fff;
+}
+
+/*视屏窗口*/
+.m-alarm-video {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .1)
+}
+
+.m-alarm-video .video-area {
+    left : 0;
+    top : 30px;
+    right : 0;
+    bottom : 30px;
+    z-index : 10;
+    padding : 0 1px
+}
+
+.m-alarm-video .head-txt {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    top: 0;
+    left: 0;
+    padding: 0 10px /*background-color: rgba(0,0,0,.2)*/;
+    z-index: 10
+}
+
+.m-alarm-video .closed, .m-alarm-video .show {
+    width: 16px;
+    height: 16px;
+    margin: 7px 0 0 10px;
+    background: url("../../../images/dynamicControl/dynamicControl.png") no-repeat
+}
+
+.m-alarm-video .closed {
+    background-position: -96px -16px
+}
+
+.m-alarm-video .closed:hover {
+    background-position: -112px -16px
+}
+
+.m-alarm-video .show {
+    background-position: -96px 0
+}
+
+.m-alarm-video .show:hover {
+    background-position: -112px 0
+}
+
+.m-alarm-video .switch {
+    left: 24px;
+    bottom: 4px;
+    height: 22px;
+    line-height: 20px;
+    width: 120px;
+    z-index: 10
+}
+
+.m-alarm-video .switch > span {
+    width: 40px;
+    height: 20px;
+    top: 1px;
+    right: 10px;
+    background-color: #464646;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .1)
+}
+
+.m-alarm-video .switch > span:after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background-color: #d0d0d0;
+    border-radius: 50%;
+    left: -1px;
+    top: -1px
+}
+
+.m-alarm-video .switch > span.active {
+    background-color: #ff920b
+}
+
+.m-alarm-video .switch > span.active:after {
+    background-color: #fff;
+    left: 19px
+}
+
+/* 报警信息弹窗 */
+/** 报警信息块 **/
+/*** 右侧栏 ***/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

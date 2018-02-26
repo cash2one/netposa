@@ -1,0 +1,63 @@
+<ul class="table-tree">
+    <!-- 只有当需要头部时显示就可 -->
+    <li class="f-cfb">
+
+        <div class="f-cfb tree-td">
+            <span class="table-tree-checkbox"></span>
+
+            <span class="showChild"></span>
+
+            <span class="tree-td-txt-1">库A</span>
+        </div>
+
+        <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+        <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+        <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+        <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+        <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+        <div class="tree-td">
+
+        </div>
+
+    </li>
+
+    <!-- 子节点容器 -->
+    <li>
+        <ul class="table-tree">
+
+            <li class="f-cfb"
+                ng-repeat="(_index,subItem) in currentItem.children"
+                ng-include="'../../module/baseconfig/facelib/library/facelib.lib-item-template.html'"
+                ng-init="currentItem = subItem"
+            >
+<!--
+                <div class="f-cfb tree-td">
+                    <span class="table-tree-checkbox"></span>
+
+                    <span class="showChild"></span>
+
+                    <span class="tree-td-txt-1">库A</span>
+                </div>
+
+                <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+                <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+                <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+                <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+                <div class="tree-td"><span class="tree-td-txt-2">库A</span></div>
+
+                <div class="tree-td">
+
+                </div>-->
+            </li>
+        </ul>
+    </li>
+</ul>

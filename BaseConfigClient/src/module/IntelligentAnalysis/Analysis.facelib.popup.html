@@ -1,0 +1,47 @@
+<div class="analysis-camera-pop g-pop f-cb"  ng-controller="AnalysisFacelibPopup as AnalysisFacelibCtl">
+    <div class="camera-tree-area f-fl">
+        <div class="tree-search f-pr">
+            <input type="text" class="ipt" ng-model="AnalysisFacelibCtl.searchStr"  ng-change="AnalysisFacelibCtl.onChangeSearch()">
+            <a href="javascript:" class="u-input-search tree-search-btn"></a>
+        </div>
+        <div class="tree-area-content">
+            <util-tree tree-id="{{AnalysisFacelibCtl.treeParams.treeId}}"
+                       tree-datas="AnalysisFacelibCtl.treeParams.treeDatas"
+                       check-enable="true"
+                       on-check="AnalysisFacelibCtl.treeParams.onCheck(event, treeId, treeNode)"
+                       single-select="true"
+                       edit-enable="false"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg=""
+                       search-no-data-msg=""
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-expand-level="0"
+                       tree-init-complete = "AnalysisFacelibCtl.addCache()"
+            ></util-tree>
+        </div>
+    </div>
+    <div class="sel-area f-fl">
+        <div class="area-header f-cb">
+            <span>已选 <span>{{AnalysisFacelibCtl.selNum}}</span></span>
+            <span class="f-fr c-font-blue f-csp" ng-click="AnalysisFacelibCtl.clearAll()">清除所有</span>
+        </div>
+        <div class="sel-content f-cb">
+            <div class="camera-item f-fl f-pr" ng-repeat="node in AnalysisFacelibCtl.cacheSelFaceLib">{{node.Name}}
+                <i class="u-close f-abs f-csp" ng-click="AnalysisFacelibCtl.removeChecked(node)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="analysis-camera-pop-action">
+        <a href="javascript:" class="u-button u-button-blue-1  pop-btn-sty" ng-click="AnalysisFacelibCtl.saveFacelib()">
+            保存
+        </a>
+        <a href="javascript:" class="u-button u-button-blue-2  pop-btn-sty" ng-click="AnalysisFacelibCtl.cancelFacelibPop()">
+            取消
+        </a>
+
+    </div>
+</div>

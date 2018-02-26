@@ -1,0 +1,86 @@
+<div class="search-advanced-main" ng-controller="DeviceSearchPageController as DeviceSearchPageCtrl">
+    <div class="search-advanced-maincon">
+        <div class="advanced-car-condition">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">资源：</span>
+                            <button class="params-item-select select-camera button" ng-click="AdvancedCtrl.selectCamera()">选择摄像机</button>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="params-item">
+                            <span class="params-item-name">过车时段：</span>
+                            <span class="params-item-select"
+                                  ng-repeat="item in DeviceSearchPageCtrl.crossTrainTimeList"
+                                  ng-class="{'active':item.status}"
+                                  ng-click="DeviceSearchPageCtrl.selectTime(item)">{{item.name}}</span>
+                            <div class="custom-time" ng-if="DeviceSearchPageCtrl.selectTimeAcitve===4">
+                                <input class="custom-time-input" ng-model="DeviceSearchPageCtrl.pageParams.startTime" date-picker show-init="true" type="text" placeholder="开始时间"/>
+                                <span>-</span>
+                                <input class="custom-time-input" ng-model="DeviceSearchPageCtrl.pageParams.endTime" date-picker show-init="true" type="text" placeholder="结束时间"/>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="more">
+                    <span class="down" ng-if="DeviceSearchPageCtrl.showMore" ng-click="DeviceSearchPageCtrl.showMore = false">更多<i></i></span>
+                    <span class="up" ng-if="!DeviceSearchPageCtrl.showMore" ng-click="DeviceSearchPageCtrl.showMore = true">收起<i></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="advanced-face-content">
+            <div class="advanced-face-tab">
+                <div class="advanced-left">
+                    <label class="advanced-label"><input type="checkbox" checked/> <span>报警信息</span></label>
+                </div>
+                <div class="advanced-right">
+                    <label class="advanced-label"><input type="checkbox"/><span>全选</span></label>
+                    <button><i></i>导出</button>
+                    <i class="icon iconActive"></i>
+                    <i class="icon"></i>
+                </div>
+            </div>
+            <div class="advanced-face-data">
+                <div class="wifi-data" ng-repeat="item in AdvancedCtrl.MockWifi">
+                    <div class="check"><input type="checkbox"/></div>
+                    <p class="mac">
+                        <span class="data-name">编号：</span>
+                        <span>{{item.mac}}</span>
+                    </p>
+                    <p class="time">
+                        <span class="data-name">类型：</span>
+                        <span>{{item.time}}</span>
+                    </p>
+                    <p class="address">
+                        <span class="data-name">名称：</span>
+                        <span>{{item.address}}</span>
+                    </p>
+                    <div class="cover">
+                        <i class="icon icon_collect"></i>
+                    </div>
+                </div>
+                <div ng-if="AdvancedCtrl.MockWifi.length<1" class="m-noMessage">暂无数据</div>
+            </div>
+        </div>
+    </div>
+    <div class="all-result-footer container-fluid">
+        <div class="row">
+            <div class="col-md-3">共 <i class="blue-font">200</i> 条记录</div>
+
+            <div class="page-bottom col-md-9">
+                <util-paging
+                        hide-size="true"
+                        hide-gopage="true"
+                        page-params="DeviceSearchPageCtrl.pageParams"
+                        prev-page="DeviceSearchPageCtrl.changePage(num)"
+                        next-page="DeviceSearchPageCtrl.changePage(num)"
+                        go-page="DeviceSearchPageCtrl.changePage(num)"
+                ></util-paging>
+            </div>
+        </div>
+    </div>
+</div>

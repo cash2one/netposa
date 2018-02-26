@@ -1,0 +1,49 @@
+<div class="layer-component wifi-component" ng-controller="wifiPopupController as wifiCtrl">
+    <div class="media-title">
+        <span class="licence-plate">Wi-Fi详情</span>
+        <a class="layui-layer-ico m-layui-close" ng-click="wifiCtrl.closeLayer()"></a>
+    </div>
+    <div class="media-box-con">
+        <div class="wifi-content">
+            <div class="icon-ground-wifi operate">
+                <i class="icon_collect" ng-class="{'active': wifiCtrl.accessRecords.collectStatus}" ng-click="wifiCtrl.clickCollect()">收藏</i>
+                <i class="icon_analysis" ng-click="wifiCtrl.clickAnalysis()">分析</i>
+                <i class="icon_dispatched" ng-class="{'active': wifiCtrl.accessRecords.surveillanceStatus}" ng-click="wifiCtrl.clickSurveillance()">布控</i>
+            </div>
+            <div>
+                <dl class="m-item-wifi">
+                    <div class="m-itemwifi-left">
+                        <div><i class="m-color-l">MAC地址: </i><i class="m-color-h">{{ wifiCtrl.accessRecords.wifiLog.Mac }}</i></div>
+                        <div><i class="m-color-l">采集时间: </i><i class="m-color-h">{{ wifiCtrl.accessRecords.wifiLog.AcqTime }}</i></div>
+                        <div><i class="m-color-l">采集设备: </i><i class="m-color-h">{{ wifiCtrl.accessRecords.deviceInfo.Name }}</i></div>
+                        <div><i class="m-color-l">采集地点: </i><i class="m-color-h">{{ wifiCtrl.accessRecords.deviceInfo.Name }}</i></div>
+                    </div>
+                    <div class="m-itemwifi-right m-color-h">
+                        <div><i class="m-color-l">热点SSID: </i><i class="m-color-h">{{ wifiCtrl.accessRecords.wifiLog.ApSsid }}</i></div>
+                        <div><i class="m-color-l">热点MAC: </i><i class="m-color-h">{{ wifiCtrl.accessRecords.wifiLog.Mac }}</i></div>
+                        <div><i class="m-color-l">信号强度: </i><i class="m-color-h">{{ wifiCtrl.accessRecords.wifiLog.Rssi }}</i></div>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="media-footer" ng-if="!wifiCtrl.showFooter">
+        <div class="m-footer-text">
+            搜周边 :
+            <span class="ambitus-info">
+                <i ng-repeat="item in wifiCtrl.ambitusInfo" ng-click="wifiCtrl.selectAmbitusInfo(item)" ng-class="{'active': item.status}">{{item.value}}</i>
+            </span>
+            <input type="text" class="m-footer-input" ng-model="wifiCtrl.quickSearchAgainText" placeholder="请输入关键字">
+            <i class="search-border" ng-click="wifiCtrl.quickSearchAgain()"></i>
+
+            <span class="m-footer-last">
+                <span class="m-toggle-border" ng-click="wifiCtrl.popupUp()" ng-if="wifiCtrl.activeRank > 1">
+                    <i class="m-left-triangle"></i>
+                </span>
+                <span class="m-toggle-border" ng-click="wifiCtrl.popupDown()" ng-if="wifiCtrl.activeRank < wifiCtrl.totalRank">
+                    <i class="m-right-triangle"></i>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

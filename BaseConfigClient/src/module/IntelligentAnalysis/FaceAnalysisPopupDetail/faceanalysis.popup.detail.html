@@ -1,0 +1,53 @@
+<div class="face-analysis-detail-popup-layer" ng-controller="FaceanalysisPopupDetailController as FaceanalysisPopupDetailCtrl">
+    <div class="face-analysis-detail-popup">
+        <div class="track-detail-img-two" ng-if="FaceanalysisPopupDetailCtrl.baseImage">
+            <img ng-src="{{FaceanalysisPopupDetailCtrl.baseImage}}"/>
+            <img ng-src="{{FaceanalysisPopupDetailCtrl.result.PersonInfo.FacePicPath[0] |imageUrlFilter }}"/>
+        </div>
+        <div class="track-detail-img-one" ng-if="!FaceanalysisPopupDetailCtrl.baseImage">
+            <img ng-src="{{FaceanalysisPopupDetailCtrl.result.PersonInfo.FacePicPath[0]|imageUrlFilter }}"/>
+        </div>
+        <div class="track-detail-content">
+            <div class="action">
+                <span class="sc">收藏</span>
+                <span class="fx">分析</span>
+                <span class="bk">布控</span>
+            </div>
+            <div class="same-scale-sex">
+                <span class="sex man"
+                      ng-class="{man:FaceanalysisPopupDetailCtrl.result.PersonInfo.Gender === 'Men',women:FaceanalysisPopupDetailCtrl.result.PersonInfo.Gender === 'Women'}"></span>
+                <span class="name">{{FaceanalysisPopupDetailCtrl.result.PersonInfo.Name}}</span>
+            </div>
+            <div class="info">
+                <div class="info-cell">
+                    <span class="title">民族:</span>
+                    <span class="text">{{FaceanalysisPopupDetailCtrl.nationMap[FaceanalysisPopupDetailCtrl.result.PersonInfo.Nation]['text']}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">身份证号:</span>
+                    <span class="text">{{FaceanalysisPopupDetailCtrl.result.PersonInfo.IDCardNumber}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">创建事件:</span>
+                    <span class="text">无</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">所在库:</span>
+                    <span class="text">{{FaceanalysisPopupDetailCtrl.result.LibName}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">详细信息:</span>
+                    <span class="text">未知</span>
+                </div>
+            </div>
+        </div>
+        <div class="track-detail-bottom">
+            <p class="count">共<i>{{FaceanalysisPopupDetailCtrl.allResult.length}}</i>条</p>
+            <div class="change-page">
+                <span class="current-index">当前第<i>{{FaceanalysisPopupDetailCtrl.resultIndex +1}}</i>条</span>
+                <span class="prev" ng-click="FaceanalysisPopupDetailCtrl.prevResult()"></span>
+                <span class="next" ng-click="FaceanalysisPopupDetailCtrl.nextResult()"></span>
+            </div>
+        </div>
+    </div>
+</div>

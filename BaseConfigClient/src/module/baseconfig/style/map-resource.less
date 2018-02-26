@@ -1,0 +1,276 @@
+/**
+     * @title 配置管理样式
+     * @update chendm
+     * @time  2017-11-06 16:39:00
+     */
+@import "./base";
+@import "../../../style/common/color.less";
+@import "../../../style/common/button.function.less";
+// 地图资源--地图服务
+.bd-map-resource {
+  width: 100%;
+  height: 100%;
+
+  padding: 15px;
+  .right-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  background-color: @gray-dark-bg;
+  .m-map-left {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    line-height: 28px;
+    margin: 0;
+    .m-route {
+      padding: 0;
+    }
+  }
+  .m-left-tab {
+    position: relative;
+    height: 45px;
+    line-height: 42px;
+    background-color: @gray-shallow-bg;
+    border-radius: 4px 4px 0 0;
+    border-bottom: @border-style;
+    z-index: 99;
+    span {
+      display: inline-block;
+      position: relative;
+      width: 82px;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      padding-top: 3px;
+      cursor: pointer;
+      &.z-select {
+        background-color: #ffffff;
+        border-left: @border-style;
+        border-right: @border-style;
+        height: 45px;
+      }
+      &:first-child {
+        border-left: 0;
+        border-radius: 4px 0 0 0;
+      }
+    }
+  }
+
+  .m-map-wrap {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding-top: 70px;
+    z-index: 9;
+    left:0;
+    top:0;
+    .map-layer-content{
+      background: #fff;
+      width: 100%;
+      height: 100%;
+    }
+    // 地图服务
+    .map-service {
+      background: #fff;
+      padding-top: 10px;
+      .form {
+        padding: 8px 0;
+        .u-select,
+        .u-input {
+          border: @border-style;
+        }
+        .textarea-description {
+          padding: 5px;
+          border-radius: 4px;
+          border: @border-style;
+        }
+        &.form-wrap {
+          .u-button {
+            float: left;
+            &.button-save {
+              margin-left: 81px;
+            }
+          }
+        }
+      }
+      .form-left {
+        width: 80px;
+      }
+    }
+    //  地图布点
+    .map-setPoint {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding-left: 300px;
+      .map-config-map {
+        width: 100%;
+        height: 100%;
+      }
+      .left-layer {
+        position: absolute;
+        background: #fff;
+        z-index: 9999;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        left: 0;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        .device-type {
+          float: left;
+          width: 60px;
+          height: 100%;
+          border-right: 1px solid @form-border-gray;
+          li {
+            width: 60px;
+            height: 55px;
+            text-align: center;
+            line-height: 55px;
+            cursor: pointer;
+            &.active {
+              border-right: 3px solid @color-bg-btn-blue;
+              color: @color-bg-btn-blue;
+              background-color: @bg-low-blue;
+            }
+          }
+        }
+        .tree-layer {
+          width: 240px;
+          height: 100%;
+          float: left;
+          position: relative;
+          .tree-data {
+            width: 100%;
+            height: 100%;
+            padding-top:50px;
+            position: absolute;
+            left:0;
+            top:0;
+          }
+          .search-input {
+            z-index: 99;
+            padding: 10px;
+            input[type='text'] {
+              width: 100%;
+            }
+          }
+          .u-input-search {
+            right: 26px;
+            top: 17px;
+          }
+        }
+      }
+    }
+  }
+
+  .table {
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    left: 0;
+    top: 0;
+    tr {
+      height: 40px;
+      padding-left: 30px;
+    }
+    thead {
+      tr {
+        border-top: none;
+        background-color: #f4f4f4;
+      }
+      th {
+        border-bottom-width: 1px;
+        border-color: #e4e4e4;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+    }
+    tbody {
+      tr {
+        &:nth-of-type(odd) {
+          background-color: #fff;
+        }
+        &:nth-of-type(even) {
+          background-color: #f4f4f4;
+        }
+      }
+      td {
+        &:first-child {
+          width: 54px;
+          text-align: center;
+        }
+        vertical-align: middle;
+        border-color: #e4e4e4;
+      }
+      tr:last-child {
+        border-bottom: 1px solid #e4e4e4;
+      }
+    }
+  }
+
+}
+.olPopup{
+  background-color: transparent !important;
+}
+.mapPopup-set-point{
+  width: 260px;
+  height: 215px;
+  padding:10px;
+  .popup-layer{
+    width: 240px;
+    height: 195px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    border-radius: 5px 5px 0 0;
+    &:after{
+      content: ' ';
+      position: absolute;
+      left: 50%;
+      bottom: 2px;
+      width: 0;
+      margin-left: -8px;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid #fff;
+    }
+  }
+
+  .head-title{
+    height: 34px;
+    width: 100%;
+    background: @bg-low-blue;
+    line-height: 33px;
+    padding-left:20px;
+    border-radius: 5px 5px 0 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .content{
+    padding-top:16px;
+    background: #fff;
+  }
+  .form-bottom{
+    padding:16px 0 20px 0;
+    text-align: center;
+    background: #fff;
+    button{
+
+      &:first-child{
+        .btn(80px,30px);
+        margin-right: 20px;
+      }
+      &:last-child{
+        .btn(80px,30px,@color-btn-low-blue,@color-bg-btn-blue,@color-border-btn-low-blue);
+      }
+
+    }
+  }
+  .pdp-form{
+    input{
+      width: 165px;
+    }
+  }
+}

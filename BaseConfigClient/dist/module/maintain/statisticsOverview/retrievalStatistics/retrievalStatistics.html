@@ -1,0 +1,194 @@
+<div class="container-fluid" id="container-fluid005">
+    <ol class="m-route f-cfb col-sm-12 col-xs-12">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="检索统计"></li>
+    </ol>
+
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height400">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{retrievalStatisticsCtrl.echartNameArr.retrievalStatistic}}"></span>
+                    <span class="m-bar-tool">
+                        <i ng-class="retrievalStatisticsCtrl.retrievalStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="retrievalStatisticsCtrl.retrievalSwitch('retrievalStatisticsHistogram')">柱状图</i>
+                        <i ng-class="retrievalStatisticsCtrl.retrievalStatisticsList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="retrievalStatisticsCtrl.retrievalSwitch('retrievalStatisticsList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="retrievalStatisticsCtrl.exportImage(retrievalStatisticsCtrl.ModuleNameArr.Maintain_StatisOverview_Retrival)">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="retrievalStatisticsCtrl.exportExcel(retrievalStatisticsCtrl.ModuleNameArr.Maintain_StatisOverview_Retrival,retrievalStatisticsCtrl.retrievalStatisticTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                    
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="retrievalStatisticsCtrl.initRetrievalStatistics()"
+                                default-select-by-value="ALL"
+                                ng-model="retrievalStatisticsCtrl.Retrieval_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="retrievalStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="retrievalStatisticsCtrl.Retrieval_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="retrievalStatisticsCtrl.initRetrievalStatistics(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div ng-show="retrievalStatisticsCtrl.retrievalStatisticsList">
+                    <div id="retrievalStatistic"></div>
+                </div>
+                <div class="retrievalStatistic" ng-show="!retrievalStatisticsCtrl.retrievalStatisticsList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="itemth in retrievalStatisticsCtrl.retrievalStatisticTableList.xData track by $index">{{itemth}}</th>
+                        </tr>
+                        <tr>
+                            <td ng-repeat="item in retrievalStatisticsCtrl.retrievalStatisticTableList.seriesData track by $index">{{item}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height400">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{retrievalStatisticsCtrl.echartNameArr.retrievalTrafficTrend}}"></span>
+                    <span class="m-bar-tool">
+                        <i ng-class="retrievalStatisticsCtrl.retrievalTrafficTrendList?'icon-brokenLine-blue':'icon-brokenLine-ddd'"
+                           ng-click="retrievalStatisticsCtrl.retrievalSwitch('retrievalTrafficTrendHistogram')">折线图</i>
+                        <i ng-class="retrievalStatisticsCtrl.retrievalTrafficTrendList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="retrievalStatisticsCtrl.retrievalSwitch('retrievalTrafficTrendList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="retrievalStatisticsCtrl.exportImage(retrievalStatisticsCtrl.ModuleNameArr.Maintain_StatisOverview_Retrival_Trend)">折线图</span>
+                                    <span class="icon-menu-box" ng-click="retrievalStatisticsCtrl.exportExcel(retrievalStatisticsCtrl.ModuleNameArr.Maintain_StatisOverview_Retrival_Trend,retrievalStatisticsCtrl.retrievalTrafficTrendTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="retrievalStatisticsCtrl.initRetrievalTrafficTrend()"
+                                default-select-by-value="ALL"
+                                ng-model="retrievalStatisticsCtrl.Retrieval_Trend_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="retrievalStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="retrievalStatisticsCtrl.Retrieval_Trend_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="retrievalStatisticsCtrl.initRetrievalTrafficTrend(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div ng-show="retrievalStatisticsCtrl.retrievalTrafficTrendList">
+                    <div id="retrievalTrafficTrend"></div>
+                </div>
+                <div class="retrievalTrafficTrend" ng-show="!retrievalStatisticsCtrl.retrievalTrafficTrendList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="item in retrievalStatisticsCtrl.retrievalTrafficTrendTableList.legendData">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in retrievalStatisticsCtrl.retrievalTrafficTrendTableList.xData track by $index" ng-init="outIndex = $index">
+                            <td>{{item}}</td>
+                            <td ng-repeat="itemtd in retrievalStatisticsCtrl.retrievalTrafficTrendTableList.legendData">
+                                {{retrievalStatisticsCtrl.retrievalTrafficTrendTableList.seriesData[$index][outIndex]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top m-bottom-chart">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height840">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{retrievalStatisticsCtrl.echartNameArr.rankStatistics}}"></span>
+                    <span class="m-bar-tool" ng-click="retrievalStatisticsCtrl.exportExcel(retrievalStatisticsCtrl.ModuleNameArr.Maintain_StatisOverview_Retrival_Rank,retrievalStatisticsCtrl.rankStatisticsTableList)">
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="retrievalStatisticsCtrl.rankStatistics()"
+                                default-select-by-value="ALL"
+                                ng-model="retrievalStatisticsCtrl.RankStatistics_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="retrievalStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="retrievalStatisticsCtrl.RankStatistics_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="retrievalStatisticsCtrl.rankStatistics(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div class="rankStatistics">
+                    <div class="container-fluid">
+                        <div class="row row-fluid">
+                            <div class="col-md-3 m-row-col" ng-repeat="keywords in retrievalStatisticsCtrl.RankKeyWords track by $index">
+                                <div class="m-rank-title">
+                                    <span class="{{keywords.class}}"></span>
+                                    <span class="rank-title">{{keywords.name}}</span>
+                                </div>
+                                <table class="table">
+                                    <tr ng-class="{'m-tr-background':outIndex%2}" ng-repeat="rankdata in retrievalStatisticsCtrl.rankStatisticsTableList[keywords.value]" ng-init="outIndex = $index">
+                                        <td>
+                                            <i class="f-csp m-td-height48" ng-class="retrievalStatisticsCtrl.rankClassName[outIndex]"></i>
+                                        </td>
+                                        <td class="m-align-left">
+                                            <i class="m-border-name">{{rankdata.name}}</i>
+                                        </td>
+                                        <td class="m-align-left">
+                                            <i class="m-border-time">{{rankdata.value}} 次</i>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

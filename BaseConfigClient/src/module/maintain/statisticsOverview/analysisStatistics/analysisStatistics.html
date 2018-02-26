@@ -1,0 +1,265 @@
+<div class="container-fluid" id="container-fluid006">
+    <ol class="m-route f-cfb col-sm-12 col-xs-12">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="分析统计"></li>
+    </ol>
+
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height400">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{analysisStatisticsCtrl.echartNameArr.IntelligentAnalysis_Vehicle}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="analysisStatisticsCtrl.carAnalysisStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('carAnalysisHistogram')">柱状图</i>
+                        <i ng-class="analysisStatisticsCtrl.carAnalysisStatisticsList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('carAnalysisList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                        <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportImage('IntelligentAnalysis_Vehicle')">柱状图</span>
+                                        <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportExcel(analysisStatisticsCtrl.ModuleNameArr.IntelligentAnalysis_Vehicle,analysisStatisticsCtrl.VehicleTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+
+                    <span class="newtime">
+                        <unique-button
+                                button-click="analysisStatisticsCtrl.initVehicleAnalysis()"
+                                default-select-by-value="ALL"
+                                ng-model="analysisStatisticsCtrl.Vehicle_Date_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="analysisStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="analysisStatisticsCtrl.Vehicle_Date_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="analysisStatisticsCtrl.initVehicleAnalysis(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div ng-show="analysisStatisticsCtrl.carAnalysisStatisticsList">
+                    <div id="IntelligentAnalysis_Vehicle"></div>
+                </div>
+                <div class="carAnalysisStatistics" ng-show="!analysisStatisticsCtrl.carAnalysisStatisticsList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="item in analysisStatisticsCtrl.VehicleTableList.legendData track by $index">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in analysisStatisticsCtrl.VehicleTableList.xData track by $index">
+                            <td>{{item}}</td>
+                            <td>
+                                {{analysisStatisticsCtrl.VehicleTableList.seriesData[$index]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height400">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{analysisStatisticsCtrl.echartNameArr.IntelligentAnalysis_Face}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="analysisStatisticsCtrl.personAnalysisStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('personAnalysisHistogram')">柱状图</i>
+                        <i ng-class="analysisStatisticsCtrl.personAnalysisStatisticsList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('personAnalysisList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportImage('IntelligentAnalysis_Face')">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportExcel(analysisStatisticsCtrl.ModuleNameArr.IntelligentAnalysis_Face,analysisStatisticsCtrl.FaceTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="analysisStatisticsCtrl.initFaceAnalysis()"
+                                default-select-by-value="ALL"
+                                ng-model="analysisStatisticsCtrl.Face_Date_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="analysisStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="analysisStatisticsCtrl.Face_Date_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="analysisStatisticsCtrl.initFaceAnalysis(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div ng-show="analysisStatisticsCtrl.personAnalysisStatisticsList">
+                    <div id="IntelligentAnalysis_Face"></div>
+                </div>
+                <div class="personAnalysisStatistics" ng-show="!analysisStatisticsCtrl.personAnalysisStatisticsList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="item in analysisStatisticsCtrl.FaceTableList.legendData track by $index">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in analysisStatisticsCtrl.FaceTableList.xData track by $index">
+                            <td>{{item}}</td>
+                            <td>
+                                {{analysisStatisticsCtrl.FaceTableList.seriesData[$index]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height400">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{analysisStatisticsCtrl.echartNameArr.IntelligentAnalysis_Mac}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="analysisStatisticsCtrl.macAnalysisStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('macAnalysisHistogram')">柱状图</i>
+                        <i ng-class="analysisStatisticsCtrl.macAnalysisStatisticsList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('macAnalysisList')">列表视图</i>   
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportImage('IntelligentAnalysis_Mac')">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportExcel(analysisStatisticsCtrl.ModuleNameArr.IntelligentAnalysis_Mac,analysisStatisticsCtrl.MacTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="analysisStatisticsCtrl.initMacAnalysis()"
+                                default-select-by-value="ALL"
+                                ng-model="analysisStatisticsCtrl.Mac_Date_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="analysisStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="analysisStatisticsCtrl.Mac_Date_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="analysisStatisticsCtrl.initMacAnalysis(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div ng-show="analysisStatisticsCtrl.macAnalysisStatisticsList">
+                    <div id="IntelligentAnalysis_Mac"></div>
+                </div>
+                <div class="macAnalysisStatistics" ng-show="!analysisStatisticsCtrl.macAnalysisStatisticsList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="item in analysisStatisticsCtrl.MacTableList.legendData track by $index">{{item}}</th>
+                        </tr>
+                        <tr ng-repeat="item in analysisStatisticsCtrl.MacTableList.xData track by $index">
+                            <td>{{item}}</td>
+                            <td>
+                                {{analysisStatisticsCtrl.MacTableList.seriesData[$index]}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top m-bottom-chart">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height400">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{analysisStatisticsCtrl.echartNameArr.IntelligentAnalysis_Crash}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="analysisStatisticsCtrl.crashAnalysisStatisticsList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('CrashAnalysisHistogram')">柱状图</i>
+                        <i ng-class="analysisStatisticsCtrl.crashAnalysisStatisticsList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="analysisStatisticsCtrl.analysisSwitch('CrashAnalysisList')">列表视图</i>   
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportImage('IntelligentAnalysis_Crash')">柱状图</span>
+                                    <span class="icon-menu-box" ng-click="analysisStatisticsCtrl.exportExcel(analysisStatisticsCtrl.ModuleNameArr.IntelligentAnalysis_Crash, analysisStatisticsCtrl.CrashTableList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="search-list">
+                    <span class="title newTitle">时间：</span>
+                    <span class="newtime">
+                        <unique-button
+                                button-click="analysisStatisticsCtrl.initCrashAnalysis()"
+                                default-select-by-value="ALL"
+                                ng-model="analysisStatisticsCtrl.Crash_Date_Model.module"
+                                is-resize="false"
+                                is-multiple="false"
+                                init-No-Click="true"
+                                items="analysisStatisticsCtrl.timeItem">
+                        </unique-button>
+                    </span>
+                    <span class="m-startTime-endTime m-time-select">
+                        <input ng-model="analysisStatisticsCtrl.Crash_Date_Model.Time"
+                               date-picker
+                               type="text"
+                               placeholder="开始时间          -          结束时间"
+                               range="true"
+                               done="analysisStatisticsCtrl.initCrashAnalysis(value)"
+                               class="m-time"/>
+                    </span>
+                </div>
+                <div ng-show="analysisStatisticsCtrl.crashAnalysisStatisticsList">
+                    <div id="IntelligentAnalysis_Crash"></div>
+                </div>
+                <div class="crashAnalysisStatistics" ng-show="!analysisStatisticsCtrl.crashAnalysisStatisticsList">
+                    <table class="table table-striped">
+                            <tr>
+                                <th ng-repeat="item in analysisStatisticsCtrl.CrashTableList.legendData track by $index">{{item}}</th>
+                            </tr>
+                            <tr ng-repeat="item in analysisStatisticsCtrl.CrashTableList.xData track by $index">
+                                <td>{{item}}</td>
+                                <td>
+                                    {{analysisStatisticsCtrl.CrashTableList.seriesData[$index]}}
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

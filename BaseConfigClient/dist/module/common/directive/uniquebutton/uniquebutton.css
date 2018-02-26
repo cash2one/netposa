@@ -1,0 +1,35 @@
+/*
+    margin 容易造成连带影响，不建议使用
+    alter by ZYH 2017/06/14
+*/
+
+.u-uniquebutton{
+    /*background: #55ccff;*/
+    position: relative;
+}
+.u-uniquebutton .uniquebutton-item{
+    float: left;
+    padding: 10px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    /*color: #8a8a8a;*/
+    color: #666;
+    /*margin: 1px;*/
+    border:1px solid transparent;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/* .u-uniquebutton .uniquebutton-item:hover{ */
+    /*border: 1px solid #dab335;*/
+    /* border-color: #ffa200; */
+    /*margin: 0;*/
+/* } */
+.u-uniquebutton .uniquebutton-item.z-select{
+    /*margin: 0;*/
+    background-color: #ffa200;
+    /*border-radius: 5px;*/
+    /*border: 1px solid #dab335;*/
+    border-color: #ffa200;
+    color: #fff;
+}

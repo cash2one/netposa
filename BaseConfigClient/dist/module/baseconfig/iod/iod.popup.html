@@ -1,0 +1,90 @@
+<div class="u-baseconfig-popup u-baseconfig-iod-popup " ng-controller="iodPopupController as iodPopup">
+    <form name="iodUpdateForm" novalidate>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_IODSERVER_03"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_IODSERVER_03'|translate}}" valid-multiple valid-m-max="30" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_60'|translate}}" ng-model="iodPopup.Iod.Name"/>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_VIDEOSERVER_02"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_VIDEOSERVER_02'|translate}}" valid-multiple valid-m-max="30" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_58'|translate}}" ng-model="iodPopup.Iod.Uid"/>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_VIDEOSERVER_03"></span></span>
+            <input type="password" valid-nonempty = "{{'DP_CONFIG_VIDEOSERVER_03'|translate}}" valid-multiple valid-m-max="30" class="text u-input" ng-model="iodPopup.Iod.Pwd" placeholder="{{'DP_CONFIG_COMMON_59'|translate}}"/>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_PROXYSERVER_03"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_PROXYSERVER_03'|translate}}" valid-multiple valid-m-max="30" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_54'|translate}}" ng-model="iodPopup.Iod.IpAddress"/>
+        </div>
+        <div class="form">
+            <span class="title"><i class="color">*</i><span translate="DP_CONFIG_IODSERVER_07"></span></span>
+            <select ng-model="iodPopup.Iod.ProxyServerID" class="text u-input" valid-nonempty="{{'DP_CONFIG_IODSERVER_14'|translate}}" valid-multiple
+                    ng-options="type.ID as type.Name for type in iodPopup.proxyList" ng-change="iodPopup.changeTypeSelect()">
+                <option value="">{{'DP_CONFIG_IODSERVER_04'|translate}}</option>
+            </select>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_11"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_COMMON_11'|translate}}" valid-multiple valid-m-max="30" class="text u-input" ng-model="iodPopup.Iod.Port" placeholder="{{'DP_CONFIG_COMMON_55'|translate}}"/>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_IODSERVER_05"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_IODSERVER_05'|translate}}" valid-multiple valid-m-max="30" class="text u-input" ng-model="iodPopup.Iod.MessageServerAddress" placeholder="{{'DP_CONFIG_COMMON_61'|translate}}"/>
+        </div>
+
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_IODSERVER_06"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_IODSERVER_06'|translate}}" valid-multiple valid-m-max="30" class="text u-input" ng-model="iodPopup.Iod.MessageTopic" placeholder="{{'DP_CONFIG_COMMON_62'|translate}}"/>
+        </div>
+        <div class="form">
+            <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PROXYSERVER_04"></span></span>
+            <select ng-model="iodPopup.Iod.DeviceType" class="text u-input" valid-nonempty="{{'DP_CONFIG_IODSERVER_14'|translate}}" valid-multiple 
+                    ng-options="type.key as type.value for type in iodPopup.IodTypes">
+                <option value="">{{'DP_CONFIG_IODSERVER_09'|translate}}</option>
+            </select>
+        </div>
+        <div class="form" style="overflow: visible">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_09"></span></span>
+            <input ng-if="!iodPopup.isRootIod" type="hidden" ng-model="iodPopup.Iod.ParentArea.ID"/>
+            <div class="u-select-tree form-select" ng-if="!iodPopup.isRootIod">
+                <input type="text" class="u-input" ng-model="iodPopup.Iod.ParentArea.Name" valid-nonempty="{{'DP_CONFIG_COMMON_09'|translate}}" readonly ng-click="iodPopup.isShowIodTree = !iodPopup.isShowIodTree"/>
+                <i class="tree-toggle-icon" style="left:300px;" ng-class="{'z-open': iodPopup.isShowIodTree}"></i>
+                <div class="tree-cntr" style="position:absolute;margin-left:90px" ng-class="{'z-show': iodPopup.isShowIodTree}">
+                    <util-tree tree-id="{{iodPopup.treeParams.treeId}}"
+                               tree-datas="iodPopup.treeParams.treeDatas"
+                               is-default-selected="true"
+                               check-enable="false"
+                               single-select="true"
+                               is-simple-data="true"
+                               show-icon="true"
+                               show-line="false"
+                               default-no-data-msg=""
+                               search-no-data-msg=""
+                               on-click="iodPopup.treeParams.onClick(event, treeId, treeNode)"
+                               tree-id-key="ID"
+                               tree-pid-key="ParentID"
+                               tree-key-name="Name"
+                               default-select-tree-id="iodPopup.treeParams.defaultSelectTreeId"
+                               default-expand-level="0"
+                    ></util-tree>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_IODSERVER_08"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_IODSERVER_08'|translate}}" valid-multiple valid-m-max="30" class="text u-input" ng-model="iodPopup.Iod.Code" placeholder="{{'DP_CONFIG_IODSERVER_08'|translate}}"/>
+        </div>
+
+        <div class="form">
+            <span class="title" style="text-indent:10px;" translate="DP_CONFIG_COMMON_34"></span>
+            <textarea class="text u-textarea" placeholder="{{'DP_CONFIG_COMMON_34'|translate}}" valid-multiple valid-m-max="300" ng-model="iodPopup.Iod.Description"></textarea>
+        </div>
+
+        <div class="u-border"></div>
+
+        <div class="form">
+            <button class="u-button u-button-blue-2 btnStyle" ng-click="iodPopup.cancelIodPopup()" translate="DP_CONFIG_COMMON_19"></button>
+            <button class="u-button u-button-blue-1 btnStyle" ng-click="iodPopup.submitAction()" ng-disabled="iodUpdateForm.$invalid" translate="DP_CONFIG_COMMON_05"></button>
+        </div>
+    </form>
+</div>

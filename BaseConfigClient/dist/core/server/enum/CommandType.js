@@ -1,0 +1,15 @@
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.CommandType = {
+        Unknow: { value: "Unknow", text: "未知" },
+        ListNodesInfo: { value: "ListNodesInfo", text: "获取pcc节点信息" },
+        CheckFace: { value: "checkFace", text: "检测人脸" },
+        DetectFace: { value: "detectFace", text: "人脸特征提取" },
+        CreateStructTask: { value: "createStructTask", text: "添加结构化任务" },
+        QueryJobs: { value: "queryJobs", text: "查询任务状态" },
+        CancelTask: { value: "cancelTask", text: "删除任务" },
+    };
+});
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb3JlL3NlcnZlci9lbnVtL0NvbW1hbmRUeXBlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztJQU9hLFFBQUEsV0FBVyxHQUFzQjtRQUkxQyxNQUFNLEVBQUUsRUFBQyxLQUFLLEVBQUUsUUFBUSxFQUFFLElBQUksRUFBRSxJQUFJLEVBQUM7UUFJckMsYUFBYSxFQUFFLEVBQUMsS0FBSyxFQUFFLGVBQWUsRUFBRSxJQUFJLEVBQUUsV0FBVyxFQUFDO1FBSTFELFNBQVMsRUFBRSxFQUFDLEtBQUssRUFBRSxXQUFXLEVBQUUsSUFBSSxFQUFFLE1BQU0sRUFBQztRQUk3QyxVQUFVLEVBQUUsRUFBQyxLQUFLLEVBQUUsWUFBWSxFQUFFLElBQUksRUFBRSxRQUFRLEVBQUM7UUFJakQsZ0JBQWdCLEVBQUUsRUFBQyxLQUFLLEVBQUUsa0JBQWtCLEVBQUUsSUFBSSxFQUFFLFNBQVMsRUFBQztRQUk5RCxTQUFTLEVBQUUsRUFBQyxLQUFLLEVBQUUsV0FBVyxFQUFFLElBQUksRUFBRSxRQUFRLEVBQUM7UUFJL0MsVUFBVSxFQUFFLEVBQUMsS0FBSyxFQUFFLFlBQVksRUFBRSxJQUFJLEVBQUUsTUFBTSxFQUFDO0tBQ2xELENBQUEiLCJmaWxlIjoiY29yZS9zZXJ2ZXIvZW51bS9Db21tYW5kVHlwZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7VmFsdWVUZXh0RW51bVR5cGV9IGZyb20gXCIuLi8uLi9lbnVtL0VudW1cIjtcclxuXHJcbi8qKlxyXG4gKiDlkb3ku6TnsbvlnosuXHJcbiAqIGNyZWF0ZSBieSB6bXAuXHJcbiAqIEB0aW1lOiAyMDE3LTA5LTAxXHJcbiAqL1xyXG5leHBvcnQgY29uc3QgQ29tbWFuZFR5cGU6IFZhbHVlVGV4dEVudW1UeXBlID0ge1xyXG4gICAgLyoqXHJcbiAgICAgKiDmnKrnn6UuXHJcbiAgICAgKi9cclxuICAgIFVua25vdzoge3ZhbHVlOiBcIlVua25vd1wiLCB0ZXh0OiBcIuacquefpVwifSwgIFxyXG4gICAgLyoqXHJcbiAgICAgKiDojrflj5ZwY2PoioLngrnkv6Hmga8uXHJcbiAgICAgKi9cclxuICAgIExpc3ROb2Rlc0luZm86IHt2YWx1ZTogXCJMaXN0Tm9kZXNJbmZvXCIsIHRleHQ6IFwi6I635Y+WcGNj6IqC54K55L+h5oGvXCJ9LCAgXHJcbiAgICAvKipcclxuICAgICAqIOajgOa1i+S6uuiEuC5cclxuICAgICAqL1xyXG4gICAgQ2hlY2tGYWNlOiB7dmFsdWU6IFwiY2hlY2tGYWNlXCIsIHRleHQ6IFwi5qOA5rWL5Lq66IS4XCJ9LCAgXHJcbiAgICAvKipcclxuICAgICAqIOS6uuiEuOeJueW+geaPkOWPli5cclxuICAgICAqL1xyXG4gICAgRGV0ZWN0RmFjZToge3ZhbHVlOiBcImRldGVjdEZhY2VcIiwgdGV4dDogXCLkurrohLjnibnlvoHmj5Dlj5ZcIn0sICBcclxuICAgIC8qKlxyXG4gICAgICog5re75Yqg57uT5p6E5YyW5Lu75YqhLlxyXG4gICAgICovXHJcbiAgICBDcmVhdGVTdHJ1Y3RUYXNrOiB7dmFsdWU6IFwiY3JlYXRlU3RydWN0VGFza1wiLCB0ZXh0OiBcIua3u+WKoOe7k+aehOWMluS7u+WKoVwifSwgIFxyXG4gICAgLyoqXHJcbiAgICAgKiDmn6Xor6Lku7vliqHnirbmgIEuXHJcbiAgICAgKi9cclxuICAgIFF1ZXJ5Sm9iczoge3ZhbHVlOiBcInF1ZXJ5Sm9ic1wiLCB0ZXh0OiBcIuafpeivouS7u+WKoeeKtuaAgVwifSwgIFxyXG4gICAgLyoqXHJcbiAgICAgKiDliKDpmaTku7vliqEuXHJcbiAgICAgKi9cclxuICAgIENhbmNlbFRhc2s6IHt2YWx1ZTogXCJjYW5jZWxUYXNrXCIsIHRleHQ6IFwi5Yig6Zmk5Lu75YqhXCJ9LCAgXHJcbn0iXX0=

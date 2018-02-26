@@ -1,0 +1,192 @@
+<div ng-controller="ResourceSearchMapController as MapCtrl">
+    <div id="resources">
+        <div class="resourceSearchMap" id="resourceSearchMap"></div>
+        <div class="toolsContent">
+            <div class="toolCard mapType">
+                <div class="r_f l_m15  r_mapType r_map_stlye"><i class="icon_type icon icon_3131"></i></div>
+                <div class="left_mapType r_f">
+                    <div class="l_f l_m5 l_map_stlye earth" ng-class="{'disabled': MapCtrl.static2D}" ng-click="MapCtrl.changeMapLayer('earth')">
+                        <i class="mt_2D" ng-class="{'active': MapCtrl.static2D}">2D地图</i>
+                    </div>
+                    <div class="l_f l_m5 l_map_stlye normal" ng-class="{'disabled': !MapCtrl.static2D}" ng-click="MapCtrl.changeMapLayer('satellite')">
+                        <i class="sa_li" ng-class="{'active': !MapCtrl.static2D}">卫星</i>
+                    </div>
+                </div>
+            </div>
+            <div class="toolCard mapLayer">
+                <div class="r_f l_m15 r_mapLayer r_map_stlye">
+                    <i class="icon_layer icon icon_3432"></i>
+                </div>
+                <div class="l_mapLayer r_f">
+                    <div class="layer_title">
+                        <div class="l_f">图层管理</div>
+                        <!--<div class="r_f" @click="resetAll">重置</div>-->
+                    </div>
+                    <div class="layer_content">
+
+                        <!--<div class="b_t">-->
+                            <!--<span class="box"  ng-click="MapCtrl.checkLayerItem('showAllDevice')">-->
+                                <!--<i class="icon icon1414  checkItem"  ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showAllDevice]"></i>-->
+                            <!--</span>-->
+                            <!--<span class="name">设备</span>-->
+                        <!--</div>-->
+                        <div class="deviceAll">
+                            <div class="base_style">
+                                <span class="box" ng-click="MapCtrl.checkLayerItem('showVideo')">
+                                    <i class="icon icon1414 checkItem checked" ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showVideo]"></i>
+                                </span>
+                                <i class="icon icon1012 icon-hdvideo"></i>
+                                <span class="name">高清视频</span>
+                            </div>
+                            <div class="base_style">
+                                <span class="box" ng-click="MapCtrl.checkLayerItem('showfacebayonet')">
+                                    <i class="icon icon1414  checkItem checked" ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showfacebayonet]"></i>
+                                </span>
+                                <i class="icon icon1012 icon-face-bayonet"></i>
+                                <span class="name">人脸卡口</span>
+                            </div>
+                            <div class="base_style">
+                                <span class="box" ng-click="MapCtrl.checkLayerItem('showpersonbayonet')">
+                                    <i class="icon icon1414  checkItem checked"  ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showpersonbayonet]"></i>
+                                </span>
+                                <i class="icon icon1012 icon-per-bayonet"></i>
+                                <span class="name">人像卡口</span>
+                            </div>
+                            <div class="base_style">
+                                <span class="box" ng-click="MapCtrl.checkLayerItem('showcarbayonet')">
+                                    <i class="icon icon1414  checkItem checked" ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showcarbayonet]"></i>
+                                </span>
+                                <i class="icon icon1012 icon-car-bayonet"></i>
+                                <span class="name">车辆卡口</span>
+                            </div>
+                            <div class="base_style">
+                                <span class="box" ng-click="MapCtrl.checkLayerItem('showWifi')">
+                                    <i class="icon icon1414  checkItem checked" ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showWifi]"></i>
+                                </span>
+                                <i class="icon icon1012 icon-wifi-bayonet"></i>
+                                <span class="name">Wi-Fi</span>
+                            </div>
+                            <div class="base_style">
+                                <span class="box" ng-click="MapCtrl.checkLayerItem('showLamp')">
+                                    <i class="icon icon1414  checkItem checked" ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showLamp]"></i>
+                                </span>
+                                <i class="icon icon1012 icon-poling-bayonet"></i>
+                                <span class="name">立杆</span>
+                            </div>
+                            <div class="base_style">
+                                <span class="box" ng-click="MapCtrl.checkLayerItem('showElectronicfence')">
+                                    <i class="icon icon1414 checkItem checked" ng-class="{true:'icon-check-on',false:'icon-check-close'}[MapCtrl.showElectronicfence]"></i>
+                                </span>
+                                <i class="icon icon1012 icon-ef-bayonet"></i>
+                                <span class="name">电围</span>
+                            </div>
+                        </div>
+
+                        <!--<div class="b_t">-->
+                            <!--<span class="box" @click="FCcheckItem($event,'placeAll')">-->
+                                <!--<i class="icon icon1414 icon-check-close checkItem" ></i>-->
+                            <!--</span>-->
+                            <!--<span class="name">场所</span>-->
+                        <!--</div>-->
+                        <!--<div class="placeAll">-->
+                            <!--<div class="base_style">-->
+                                <!--<span class="box" @click="FCcheckItem($event)">-->
+                                    <!--<i class="icon icon1414 icon-check-close checkItem" data-index='9'></i>-->
+                                <!--</span>-->
+                                <!--<i class="icon icon1012 icon-hotel"></i>-->
+                                <!--<span class="name">旅馆</span>-->
+                            <!--</div>-->
+                            <!--<div class="base_style">-->
+                                <!--<span class="box" @click="FCcheckItem($event)">-->
+                                    <!--<i class="icon icon1414 icon-check-close checkItem" data-index='10'></i>-->
+                                <!--</span>-->
+                                <!--<i class="icon icon1012 icon-cybercafe"></i>-->
+                                <!--<span class="name">网吧</span>-->
+                            <!--</div>-->
+                            <!--<div class="base_style">-->
+                                <!--<span class="box" @click="FCcheckItem($event)">-->
+                                    <!--<i class="icon icon1414 icon-check-close checkItem" data-index='11'></i>-->
+                                <!--</span>-->
+                                <!--<i class="icon icon1012 icon-keyplace"></i>-->
+                                <!--<span class="name">重点场所</span>-->
+                            <!--</div>-->
+                            <!--<div class="base_style">-->
+                                <!--<span class="box" @click="FCcheckItem($event)">-->
+                                    <!--<i class="icon icon1414 icon-check-close checkItem" data-index='12'></i>-->
+                                <!--</span>-->
+                                <!--<i class="icon icon1012 icon-critical"></i>-->
+                                <!--<span class="name">涉危爆场</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="toolCard mapTools">
+                <div class="r_f l_m15 r_mapTools r_map_stlye">
+                    <i class="icon_tool icon icon_3432"></i>
+                </div>
+                <div class="left_mapTools r_f">
+                    <div class="l_f l_m5 l_map_stlye reset" ng-click="MapCtrl.mapTools('reset')">
+                        <i class="icon-reset">复位</i>
+                    </div>
+                    <!--<div class="l_f l_m5 l_map_stlye move" ng-click="MapCtrl.mapTools('move')">-->
+                        <!--<div class="icon icon88 icon-move mt_10"></div>-->
+                        <!--<div class="mt_20">移动</div>-->
+                    <!--</div>-->
+                    <!--<div class="l_f l_m5 l_map_stlye min" ng-click="MapCtrl.mapTools('min')">-->
+                        <!--<div class="icon icon88 icon-min mt_10"></div>-->
+                        <!--<div class="mt_20">缩小</div>-->
+                    <!--</div>-->
+                    <!--<div class="l_f l_m5 l_map_stlye max" ng-click="MapCtrl.mapTools('max')">-->
+                        <!--<div class="icon icon88 icon-max mt_10"></div>-->
+                        <!--<div class="mt_20">放大</div>-->
+                    <!--</div>-->
+                    <div class="l_f l_m5 l_map_stlye max" ng-click="MapCtrl.mapTools('polyline')">
+                        <i class="icon-tool_choose">线选</i>
+                    </div>
+                    <!--<div class="l_f l_m5 l_map_stlye tool_choose">-->
+                        <!--<div class="icon icon88 icon-tool_choose mt_10"></div>-->
+                        <!--<div class="mt_20">选择</div>-->
+                        <!--<div class="to_line">-->
+                            <!--<div class="square" ng-click="MapCtrl.mapTools('square')"> <i class="icon icon1012 icon-square"></i>框选</div>-->
+                            <!--<div class="circle" ng-click="MapCtrl.mapTools('circle')"><i class="icon icon1012 icon-circle"></i>圈选</div>-->
+                            <!--<div class="polylgon" ng-click="MapCtrl.mapTools('polylgon')"><i class="icon icon1012 icon-polylgon"></i>多边形</div>-->
+                            <!--<div class="polyline" ng-click="MapCtrl.mapTools('polyline')"><i class="icon icon1012 icon-polyline"></i>线选</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="l_f l_m5 l_map_stlye measure" ng-click="MapCtrl.mapTools('measure')">
+                        <i class="icon-measure">测距</i>
+                    </div>
+                    <div class="l_f l_m5 l_map_stlye clear" ng-click="MapCtrl.mapTools('clear')">
+                        <i class="icon-clear">清除</i>
+                    </div>
+                    <!--<div class="l_f l_m5 l_map_stlye save" ng-click="MapCtrl.mapTools('save')">-->
+                        <!--<i class="icon-save">保存</i>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+        <div class="toolsBottom">
+            <div class=" quick-base" ng-click="MapCtrl.mapTools('move')">
+                <div class="icon icon2020 icon-move-quick"></div>
+            </div>
+            <div class=" quick-base" ng-click="MapCtrl.mapTools('square')">
+                <div class="icon icon2020 icon-square-quick"></div>
+            </div>
+            <div class=" quick-base" ng-click="MapCtrl.mapTools('circle')">
+                <div class="icon icon2020 icon-circle-quick"></div>
+            </div>
+            <div class=" quick-base" ng-click="MapCtrl.mapTools('polylgon')">
+                <div class="icon icon2020 icon-polylgon-quick"></div>
+            </div>
+            <div class=" quick-base" ng-click="MapCtrl.mapTools('clear')">
+                <div class="icon icon2020 icon-clear-quick"></div>
+            </div>
+
+            <div class="quick-base back-advanced" ng-if="MapCtrl.selectType!=='All'" ng-click="MapCtrl.backAdvanced()">
+                <div class="icon-back-advanced"></div>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'../module/resourceRetrieval/search/search.html'"></div>
+</div>

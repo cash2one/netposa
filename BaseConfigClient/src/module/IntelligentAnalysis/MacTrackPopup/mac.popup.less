@@ -1,0 +1,65 @@
+@base-image-url: "../../../images";
+@import "../../../style/child-base";
+
+.map-mac-popup {
+  &.mac-popup-layer{
+    width: 170px;
+    height:100px;
+    padding:5px;
+    background: #fff;
+    .mac-popup{
+      width: 160px;
+      height:90px;
+      padding:5px;
+      border-radius:5px;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      &:after{
+        content: ' ';
+        position: absolute;
+        left: 50%;
+        bottom: -5px;
+        width: 0;
+        margin-left: -8px;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 10px solid #fff;
+      }
+      ul {
+        position: relative;
+        width: 100%;
+        li {
+          height: 20px;
+          line-height: 20px;
+          padding-left: 30px;
+          background-position: 5px center;
+          .wordBreak();
+          &.icon-mac {
+            color: #333;
+            font-weight: 700;
+            .icon_mac();
+          }
+          &.icon-imei {
+            color: #333;
+            font-weight: 700;
+            .icon_imei();
+          }
+          &.icon-imsi {
+            color: #333;
+            font-weight: 700;
+            .icon_imsi();
+          }
+          &.icon-time {
+            color: #333;
+            .icon_time();
+          }
+          &.icon-address {
+            color: #333;
+            .icon_address();
+          }
+        }
+      }
+    }
+  }
+}

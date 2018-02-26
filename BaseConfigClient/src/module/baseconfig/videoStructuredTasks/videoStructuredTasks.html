@@ -1,0 +1,184 @@
+<div class="m-task baseconfig-two-column f-cfb" ui-view="videoStructuredTasks" style="height: 100%;">
+    <!--VideoStructuredTasksCtrl-->
+    <div class="g-baseconfig-left">
+            <span class="tree-search">
+                <input class="u-input tree-search"
+                       ng-model="VideoStructuredTasksCtrl.areaTreeSearchInputStr"
+                       placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                       ng-keyup="VideoStructuredTasksCtrl.areaTreeSearchInputKeyUp($event)"
+                />
+                <i class="u-input-search" ng-click="VideoStructuredTasksCtrl.areaTreeSearchInput()"></i>
+             </span>
+
+        <div ng-hide="VideoStructuredTasksCtrl.areaTreeDatas.treeDatas.length == 0" class="m-person-tree-container">
+            <util-tree tree-hide="VideoStructuredTasksCtrl.areaTreeDatas.treeDatas.length == 0"
+                       tree-id="{{VideoStructuredTasksCtrl.areaTreeDatas.treeId}}"
+                       tree-datas="VideoStructuredTasksCtrl.areaTreeDatas.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="VideoStructuredTasksCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon=""
+                       show-line="false"
+                       default-no-data-msg="VideoStructuredTasksCtrl.areaTreeDatas.defaultNoDataMsg"
+                       search-no-data-msg="VideoStructuredTasksCtrl.areaTreeDatas.searchNoDataMsg"
+                       on-click="VideoStructuredTasksCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="VideoStructuredTasksCtrl.areaTreeDatas.defaultSelectTreeId"
+                       default-expand-level="0"></util-tree>
+
+        </div>
+        <div class="u-table-no-data" ng-show="VideoStructuredTasksCtrl.treeDatas.length==0" ng-click="getAreaTreeList()" translate="DP_CONFIG_COMMON_16"></div>
+    </div>
+
+    <div class="g-baseconfig-right">
+
+        <div class="right-content">
+
+            <div class="m-baseconfig-topFixed task-topFixed">
+                <ol class="m-route f-cfb">
+                    <li translate="DP_VIDEOSTRUCTURE_01"></li>
+                    <li class="route-separate">/</li>
+                    <li translate="DP_VIDEOSTRUCTURE_02"></li>
+                </ol>
+                <div class="m-task-tab">
+                    <button ng-repeat="btnItem in VideoStructuredTasksCtrl.taskTypeBtnList" class="u-button u-button-blue-8 f-fl m-right10 "
+                     ng-class="{'u-button-blue-6':btnItem.value === VideoStructuredTasksCtrl.currentType}" 
+                     ng-click="VideoStructuredTasksCtrl.onClickTaskTypeBtn(btnItem)" ng-bind="btnItem.text | translate"></button>
+                </div>
+                <div class="m-task-info m-structure-task-info">
+                    <div class="info-top f-cfb">
+                        <div class="taskBtn tasklistlayer" style="float: left">
+                                <span class="taskBtn-title f-fl m-right10" translate="DP_VIDEOSTRUCTURE_03"></span>
+                                <select class="text u-input" ng-options="item.value as item.text for item in VideoStructuredTasksCtrl.VideoAuditStatusLib" ng-model="VideoStructuredTasksCtrl.searchParams.auditStatus">
+                                    <option value="" translate="DP_CONFIG_COMMON_26"></option>
+                                </select>
+                        </div>
+                        <div class="taskBtn tasklistlayer" style="float: left">
+                            <span class="taskBtn-title f-fl m-right10" translate="DP_VIDEOSTRUCTURE_04"></span>
+                            <select class="text u-input" ng-options="item.value as item.text for item in VideoStructuredTasksCtrl.MonitorStatusLib" ng-model="VideoStructuredTasksCtrl.searchParams.runStatus">
+                                <option value="" translate="DP_CONFIG_COMMON_26"></option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="f-cfb">
+                        <div  class="m-taskForm f-fl m-right15 ">
+                            <span class="taskForm-title taskBtn-title m-right5" translate="DP_CONFIG_TASKCONFUG_12"></span>
+                            <label>
+                                <input  ng-model="VideoStructuredTasksCtrl.searchParams.name"
+                                       placeholder="{{'DP_CONFIG_TASKCONFUG_25'|translate}}">
+                                <i class="iconPosition"></i>
+                            </label>
+                        </div>
+
+                        <div class="m-taskForm f-fl m-right15">
+                            <div class="m-taskForm f-fl m-right15">
+                                <span class="taskForm-title m-right10" translate="DP_CONFIG_COMMON_45"></span>
+                                <label>
+                                    <input class="faceLibForm-input1" name="newTaskEndTime"
+                                           ng-model="VideoStructuredTasksCtrl.searchParams.startTime"
+                                           date-picker
+                                           show-init="false"
+                                           placeholder="{{'DP_CONFIG_TASKCONFUG_30'|translate}}"/>
+                                    <i class="iconPosition i-calendar"></i>
+                                </label>
+                                <span>一</span>
+                                <label>
+                                    <input class="faceLibForm-input1" name="newTaskEndTime"
+                                           ng-model="VideoStructuredTasksCtrl.searchParams.endTime"
+                                           date-picker
+                                           show-init="false"
+                                           placeholder="{{'DP_CONFIG_TASKCONFUG_31'|translate}}"/>
+                                    <i class="iconPosition i-calendar"></i>
+                                </label>
+                            </div>
+                        </div>
+           
+                        <div class="m-taskForm f-fl m-right15 f-cfb">
+                            <button class="u-button f-fl m-right15" ng-click="VideoStructuredTasksCtrl.getFaceListByParams()" translate="DP_CONFIG_COMMON_24"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-task-search-top f-cfb">
+                    <div>
+                        <div class="u-button f-fl m-right15 task-newCtrl" ng-click="VideoStructuredTasksCtrl.goNewMonitor()">
+                            <i class="i-add icon-add"></i>
+                            <i translate="DP_VIDEOSTRUCTURE_05"></i>
+                        </div>
+                        <button class="u-button f-fl m-right15 u-button-blue-4" ng-disabled="!VideoStructuredTasksCtrl.isSelectFaceItems" ng-click="VideoStructuredTasksCtrl.onClickTaskRunStatusBy(true)" translate="DP_VIDEOSTRUCTURE_06"></button>
+                        <button class="u-button f-fl m-right15 u-button-blue-5" ng-disabled="!VideoStructuredTasksCtrl.isSelectFaceItems" ng-click="VideoStructuredTasksCtrl.onClickTaskRunStatusBy(false)" translate="DP_CONFIG_COMMON_69"></button>
+                        <button class="u-button f-fl m-right15 u-button-blue-6" ng-disabled="!VideoStructuredTasksCtrl.isSelectFaceItems" ng-click="VideoStructuredTasksCtrl.onClickDeleteByIds()" translate="DP_CONFIG_COMMON_06"></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed task-centerFixed">
+                <util-table-head table-headers="VideoStructuredTasksCtrl.tFaceHeadList"
+                                 table-has-check='true'
+                                 table-after-check="VideoStructuredTasksCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+                    <util-table-tr ng-repeat="(index,tbody_data) in VideoStructuredTasksCtrl.pageResultFace.data">
+                        <util-table-tr-td>
+                            <!--TODO 蓝色字体-->
+                            <i ng-if="VideoStructuredTasksCtrl.taskAuditingValue === tbody_data.AuditStatus && VideoStructuredTasksCtrl.currentUserId === tbody_data.AuditUser" style="cursor: pointer;" class="c-font-blue" ng-click="VideoStructuredTasksCtrl.changeTaskAuditStatus(tbody_data)">
+                                [{{'DP_VIDEOSTRUCTURE_51'| translate}}]
+                            </i>
+                            <span ng-bind="tbody_data.Name">
+
+                            </span>
+                        </util-table-tr-td>
+
+                        <util-table-tr-td ng-bind="tbody_data.JsonUserData.Area.Name"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.JsonUserData.Person.Name"></util-table-tr-td>
+                        <util-table-tr-td>
+                            <span ng-bind="tbody_data.IsLongEffective?'永久':(tbody_data.ValidTimeStart | limitTo:10) + ' - ' + (tbody_data.ValidTimeEnd | limitTo:10)" title="{{tbody_data.ValidTimeStart + ' - ' + tbody_data.ValidTimeEnd}}">
+                            </span>
+                        </util-table-tr-td>
+                        <util-table-tr-td>
+                            <span ng-bind="tbody_data.AuditStatus|auditStatusFilter"></span>
+                        </util-table-tr-td>
+                        <util-table-tr-td>
+                            <span ng-bind="tbody_data.Status | monitorStatus"></span>
+                        </util-table-tr-td>
+
+                        <util-table-tr-td ng-bind="tbody_data.AuthStatus | authStatus"></util-table-tr-td>
+
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <i class="icon-btn " ng-class="{
+                                    'z-disabled i-task-start A':tbody_data.AuditStatus === 'Verifing' || tbody_data.AuditStatus === 'Refuse',
+                                    'z-disabled i-task-start B':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Overdue'),
+                                    'z-disabled i-task-start C':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Waiting'),
+                                    'i-hover i-task-stop':tbody_data.Status === 'Run' && tbody_data.AuditStatus === 'Verified',
+                                    'i-hover i-task-start':tbody_data.AuditStatus === 'Verified' && tbody_data.Status === 'Stop'
+                                   }" ng-click="VideoStructuredTasksCtrl.changeTaskRunStatus(tbody_data)"></i>
+                                <i class="icon-btn i-edit z-gray" ng-click="VideoStructuredTasksCtrl.goToUpdateTask(tbody_data)" title="{{'DP_CONFIG_COMMON_77'|translate}}"></i>
+
+                                <i class="icon-btn i-delete z-gray" ng-click="VideoStructuredTasksCtrl.onClickDeleteById(tbody_data,'Face')" title="{{'DP_CONFIG_COMMON_78'|translate}}"></i>
+
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                    <div class="u-table-no-data" ng-show="VideoStructuredTasksCtrl.pageResultFace.data.length === 0" translate="DP_CONFIG_COMMON_16">
+                    </div>
+                </util-table-head>
+            </div>
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging page-params="VideoStructuredTasksCtrl.pageResultFace"
+                             prev-page="VideoStructuredTasksCtrl.changePage(num)"
+                             next-page="VideoStructuredTasksCtrl.changePage(num)"
+                             go-page="VideoStructuredTasksCtrl.changePage(num)"
+                             page-size="VideoStructuredTasksCtrl.changePageSize(num)"></util-paging>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.m-technology-stack{
+    padding:0;
+}
+.m-technology-stack .part{
+    padding:20px;
+    border-bottom: 1px solid #e4e4e4;
+    background: #fff;
+}
+
+.m-technology-stack .part h2{
+    font-size: 16px;
+    padding-bottom: 10px;
+    
+}
+.m-technology-stack .part .row{
+    padding:10px 15px;
+}

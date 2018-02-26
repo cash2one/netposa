@@ -1,0 +1,589 @@
+<div class="analysis-layout">
+    <!--表单区域-->
+    <div class="analysis-form" ng-class="{active:FaceMacCrashCtrl.showForm}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title face-mac-crash-title">人脸感知数据碰撞</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="FaceMacCrashCtrl.goBack()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="face-track-form analaysis-body">
+                <div class="tab-list">
+                    <span ng-class="{'active':!FaceMacCrashCtrl.showAnalysisList}" ng-click="FaceMacCrashCtrl.showAnalysisListFn(false)">分析条件</span>
+                    <span ng-class="{'active':FaceMacCrashCtrl.showAnalysisList}" ng-click="FaceMacCrashCtrl.showAnalysisListFn(true)">分析结果</span>
+                </div>
+                <!--分析条件表单-->
+                <div class="analysis-form-con" ng-scrollbars ng-if="!FaceMacCrashCtrl.showAnalysisList">
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>任务名称</span>
+                        <span class="input-layer">
+                            <input ng-model="FaceMacCrashCtrl.queryParams.taskName" type="text" placeholder="请输入任务名称" />
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>任务类型</span>
+                        <div class="input-layer-select">
+                            <util-select
+                                    selected-val="FaceMacCrashCtrl.currentType.text"
+                                    select-data="FaceMacCrashCtrl.typeList"
+                                    select-repeat-by-key="text"
+                                    select-click="FaceMacCrashCtrl.selectType(selected)"
+                                    select-list-height="M"
+                                    select-list-diy-icon="false"
+                                    select-is-tree="false">
+                            </util-select>
+                        </div>
+                    </div>
+                    <div class="upload-img" ng-show="FaceMacCrashCtrl.currentType.key === 'FaceToMac'">
+                        <div class="upload-img-layer">
+                            <div class="image-layer" ng-if="FaceMacCrashCtrl.queryParams.taskId !== ''">
+                                <img ng-src="{{FaceMacCrashCtrl.queryParams.imagePath|imageUrlFilter}}" alt="">
+                                <span class="delete" ng-click="FaceMacCrashCtrl.deleteImage()">
+                                    <i class="pdp-icon-delete"></i>
+                                </span>
+                            </div>
+                            <label class="image-layer" ng-if="FaceMacCrashCtrl.queryParams.taskId === ''">
+                                <div class="file-mask pdp-icon-camera-upload">上传图片</div>
+                                <input type="file" ng-upload-change="FaceMacCrashCtrl.uploadImage($event)" class="file" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input" ng-show="FaceMacCrashCtrl.currentType.key === 'MacToFace'">
+                        <div class="analaysis-form-title">
+                            <util-select
+                                 select-data="FaceMacCrashCtrl.queryPattern"
+                                 select-repeat-by-key="name"
+                                 select-list-height="S"
+                                 selected-val="FaceMacCrashCtrl.queryParams.queryMacType"
+                                 select-click="FaceMacCrashCtrl.selectQueryType(selected)"
+                                 select-list-diy-icon="false"
+                                 select-is-tree="false">
+                            </util-select>
+                        </div>
+                        <span class="input-layer">
+                            <input ng-model="FaceMacCrashCtrl.queryParams.deviceVal" type="text" />
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">时间筛选</span>
+                        <span class="tab-layer">
+                            <span ng-class="{active:item.key==FaceMacCrashCtrl.FastDate.key}" ng-click="FaceMacCrashCtrl.setFastDate(item)" ng-repeat="item in FaceMacCrashCtrl.FastDateList">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                        <label class="input-layer pdp-icon-calendar">
+                            <input ng-model="FaceMacCrashCtrl.queryParams.startTime" date-picker show-init="false" type="text" placeholder="请选择开始时间" />
+                        </label>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                        <label class="input-layer pdp-icon-calendar">
+                            <input ng-model="FaceMacCrashCtrl.queryParams.endTime" date-picker show-init="false" type="text" placeholder="请选择结束时间" />
+                        </label>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>伴随阈值</span>
+                        <span class="input-layer">
+                            <input ng-model="FaceMacCrashCtrl.queryParams.followNum" type="number" min="1" placeholder="请输入伴随次数的最小值" />
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>伴随时间</span>
+                        <span class="accompanying-num">
+                            <i class="radius-left">前</i>
+                            <input type="number" min="1" ng-model="FaceMacCrashCtrl.queryParams.agofollowTime" />
+                            <i class="radius-right">秒</i>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"></span>
+                        <span class="accompanying-num">
+                            <i class="radius-left">后</i>
+                            <input type="number" min="1" ng-model="FaceMacCrashCtrl.queryParams.afterfollowTime" />
+                            <i class="radius-right">秒</i>
+                        </span>
+                    </div>
+                    <div class="face-track-select-camera">
+                        <span class="analaysis-form-title">摄像机</span>
+                        <div class="face-track-camera">
+                            <span ng-click="FaceMacCrashCtrl.selectCamera()" class="action pdp-icon-select-device" title="选择设备">选择设备</span>
+                            <span ng-click="FaceMacCrashCtrl.DrawRect()" class="action pdp-icon-map-square" title="框选"></span>
+                            <span ng-click="FaceMacCrashCtrl.DrawCircle()" class="action pdp-icon-map-round" title="圆选"></span>
+                            <span ng-click="FaceMacCrashCtrl.DrawPolygon()" class="action pdp-icon-map-polygon" title="多边选"></span>
+                            <span ng-click="FaceMacCrashCtrl.ClearDraw()" class="action pdp-icon-map-delete" title="删除"></span>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input threshold-progress">
+                        <span class="analaysis-form-title">相似度</span>
+                        <div class="analaysis-progress">
+                            <progress-drag
+                                    now-value="FaceMacCrashCtrl.queryParams.threshold"
+                                    min-value="FaceMacCrashCtrl.similarityMin"
+                                    max-value="FaceMacCrashCtrl.similarityMax" lengd="200">
+                            </progress-drag>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input" ng-show="FaceMacCrashCtrl.currentType.key === 'FaceToMac'">
+                        <span class="analaysis-form-title">年龄</span>
+                        <div class="input-layer-select">
+                            <util-select
+                                    selected-empty-val="请选择年龄段"
+                                    select-data="FaceMacCrashCtrl.AgeDataList"
+                                    select-repeat-by-key="text"
+                                    select-click="FaceMacCrashCtrl.selectAge(selected)"
+                                    select-list-height="M"
+                                    select-list-diy-icon="false"
+                                    select-is-tree="false">
+                            </util-select>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input" ng-show="FaceMacCrashCtrl.currentType.key === 'FaceToMac'">
+                        <span class="analaysis-form-title">性别</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in FaceMacCrashCtrl.SexDateList" ng-class="{'active':FaceMacCrashCtrl.SexDate.key===item.key}" ng-click="FaceMacCrashCtrl.SexDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input" ng-show="FaceMacCrashCtrl.currentType.key === 'FaceToMac'">
+                        <span class="analaysis-form-title">戴眼镜</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in FaceMacCrashCtrl.GlassDateList" ng-class="{'active':FaceMacCrashCtrl.GlassDate.key===item.key}" ng-click="FaceMacCrashCtrl.GlassDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input" ng-show="FaceMacCrashCtrl.currentType.key === 'FaceToMac'">
+                        <span class="analaysis-form-title">戴口罩</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in FaceMacCrashCtrl.MaskDateList" ng-class="{'active':FaceMacCrashCtrl.MaskDate.key===item.key}" ng-click="FaceMacCrashCtrl.MaskDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="searh-submit">
+                        <button ng-click="FaceMacCrashCtrl.submitSearch()">查询</button>
+                    </div>
+                </div>
+                <!--离线任务列表-->
+                <div class="analysis-task-list" ng-scrollbars ng-if="FaceMacCrashCtrl.showAnalysisList">
+                    <div class="task-item" ng-repeat="item in FaceMacCrashCtrl.AccompOffLine">
+                        <div class="task-content">
+                            <div class="task-name">
+                                {{item.TaskName}}
+                                <span ng-click="FaceMacCrashCtrl.deleteAccompOffLine(item)" class="delete-task pdp-icon-delete-area"></span>
+                            </div>
+                            <div class="task-info">
+                                <ul>
+                                    <li>
+                                        <span class="info-key">创建时间：</span>
+                                        <span class="info-value">{{item.CreateTime}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="info-key">任务状态：</span>
+                                        <span class="info-value">{{(item.CompletePercent==="100")?"运行完成":"运行中"}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="task-result-btn">
+                                <button ng-click="FaceMacCrashCtrl.showAnalysisResult(item)" ng-disabled="(item.TaskStatus!=='200'||item.CompletePercent!=='100')">查看结果</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analysis-no-data pdp-icon-no-analysis" ng-show="FaceMacCrashCtrl.AccompOffLine.length === 0">暂无数据
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--碰撞轨迹-->
+    <div class="analysis-res result-left" ng-class="{'active':FaceMacCrashCtrl.showResult}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title face-mac-crash-title">人脸Mac碰撞</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="FaceMacCrashCtrl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="head-title">
+                            <span class="head-left">
+                                <button ng-click="FaceMacCrashCtrl.setReultTrack()">查看轨迹</button>
+                            </span>
+                            <span class="head-right">共 <i>{{FaceMacCrashCtrl.resultParams.totalCount}}</i> 条记录</span>
+                        </div>
+                    </div>
+                    <div class="sort-box">
+                        <span ng-class="{'active':FaceMacCrashCtrl.resultSort}" ng-click="FaceMacCrashCtrl.sortReult('score')">按相似度</span>
+                        <span ng-class="{'active':!FaceMacCrashCtrl.resultSort}" ng-click="FaceMacCrashCtrl.sortReult('time')">按时间</span>
+                    </div>
+                    <div class="before-layer add-sort">
+                        <div class="capture-layer" ng-scrollbars>
+                            <!--人员轨迹-->
+                            <div class="item-group" ng-if="FaceMacCrashCtrl.resultLeftType === 'Face'">
+                                <div class="capture-children face active">
+                                    <div class="children-item"
+                                        ng-repeat="item in FaceMacCrashCtrl.resultParams.data"
+                                        ng-click="FaceMacCrashCtrl.openDetailPopup(item,$index,'Face')"
+                                        ng-mouseenter="FaceMacCrashCtrl.resultToMap(item,$index)"
+                                        ng-mouseleave="FaceMacCrashCtrl.unResultToMap(item,$index)">
+                                        <div class="item-info">
+                                            <span class="location" ng-click="FaceMacCrashCtrl.showMapPoint($index)" ng-class="{true: 'pdp-icon-positon-letter', false: 'pdp-icon-positon-num'}[FaceMacCrashCtrl.isSortLetter]">{{FaceMacCrashCtrl.isSortLetter?(FaceMacCrashCtrl.sortLetter[$index]):((FaceMacCrashCtrl.resultParams.currentPage-1)*FaceMacCrashCtrl.resultParams.pageSize)+$index+1}}</span>
+                                            <span class="same-scale">{{item.Score | roundNumber}}%</span>
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="FaceMacCrashCtrl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis">
+                                                    <ul class="analysis-ul">
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Track.key)">{{FaceMacCrashCtrl.analysisGoTo.Track.name}}</li>
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Accompanying.key)">{{FaceMacCrashCtrl.analysisGoTo.Accompanying.name}}</li>
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Frequency.key)">{{FaceMacCrashCtrl.analysisGoTo.Frequency.name}}</li>
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.More.key)">{{FaceMacCrashCtrl.analysisGoTo.More.name}}</li>
+                                                    </ul>
+                                                </i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="FaceMacCrashCtrl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                        <div class="head-img" ng-click="FaceMacCrashCtrl.fullScreen($event, (item.AccessLog.ScenePath | imageUrlFilter))">
+                                            <img ng-src="{{item.AccessLog.FacePath | imageUrlFilter}}">
+                                        </div>
+                                        <div class="desc">
+                                            <p><i class="pdp-icon-time"></i>{{item.AccessLog.LogTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="relsut-delete">
+                                            <i class="pdp-icon-relsut-delete"></i>
+                                            删除
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--感知数据轨迹-->
+                            <div class="capture-item capture-item-mac"
+                                 ng-if="FaceMacCrashCtrl.resultLeftType === 'Mac'"
+                                 ng-repeat="item in FaceMacCrashCtrl.resultParams.data"
+                                 ng-click="FaceMacCrashCtrl.openDetailPopup(item,$index,'MapForResultGroup')"
+                                 ng-mouseenter="FaceMacCrashCtrl.resultToMap(item,$index,'Mac')"
+                                 ng-mouseleave="FaceMacCrashCtrl.unResultToMap(item,$index,'Mac')">
+                                <div class="img-info">
+                                    <span ng-click="FaceMacCrashCtrl.showMapPoint($index)" class="location">
+                                          {{FaceMacCrashCtrl.isSortLetter?(FaceMacCrashCtrl.sortLetter[$index]):((FaceMacCrashCtrl.resultParams.currentPage-1)*FaceMacCrashCtrl.resultParams.pageSize)+$index+1}}
+                                    </span>
+                                    <div class="action">
+                                        <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                        <span class="fx"></span>
+                                        <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                    </div>
+                                </div>
+                                <div class="desc">
+                                    <div class="icon-mac" ng-if="item.Mac">{{item.Mac}}</div>
+                                    <div class="icon-imei" ng-if="item.IMEI">{{item.IMEI}}</div>
+                                    <div class="icon-imsi" ng-if="item.IMSI">{{item.IMSI}}</div>
+                                    <div class="icon-time" ng-if="item.AcqTime">{{item.AcqTime}}</div>
+                                    <div class="icon-address" ng-if="item.address">{{item.address}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <util-paging
+                                hide-size="true"
+                                page-params="FaceMacCrashCtrl.resultParams"
+                                prev-page="FaceMacCrashCtrl.changeResultPage(num)"
+                                next-page="FaceMacCrashCtrl.changeResultPage(num)"
+                                go-page="FaceMacCrashCtrl.changeResultPage(num)"
+                                show-type="small"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--碰撞伴随-->
+    <div class="analysis-res result-right" ng-class="{'active':FaceMacCrashCtrl.showResult}" ng-style="{'left':!FaceMacCrashCtrl.showResult?FaceMacCrashCtrl.windowWidth+'px':(FaceMacCrashCtrl.windowWidth-300-60)+'px'}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title face-mac-crash-title">人脸Mac碰撞</div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="head-title">
+                            <span class="head-right">共 <i>{{FaceMacCrashCtrl.accpResultParams.totalCount}}</i> 条记录</span>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="capture-layer" ng-scrollbars>
+                            <div class="item-group" ng-if="FaceMacCrashCtrl.resultRightType === 'Face'" ng-repeat="group in FaceMacCrashCtrl.resultParams.data">
+                                <div class="capture-item capture-item-main">
+                                    <div class="item-group-head">
+                                        <span class="head-left">
+                                            <span class="left">伴随次数:</span>
+                                            <span class="right"><i class="timer">{{group.accessLog.AccompanyingRes.length}}</i>次</span></span>
+                                        <span class="head-right"
+                                              ng-class="{active:FaceMacCrashCtrl.checkRightResult[$index]}"
+                                              ng-click="FaceMacCrashCtrl.slideRightResult($index)">
+                                            {{FaceMacCrashCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                        </span>
+                                    </div>
+                                    <div class="item-group-cnt">
+                                        <div class="head-img">
+                                            <img width="80" height="80" ng-src="{{group.accessLog.FacePath}}">
+                                        </div>
+                                        <div class="desc">
+                                            <div class="sex"><span>性别：</span>男</div>
+                                            <div class="age"><span>年龄：</span>青年</div>
+                                            <div class="msg"><span>特征：</span>长发，长袖</div>
+                                            <div class="show-track">
+                                                <button ng-click="FaceMacCrashCtrl.setAccpTrack($index)">查看轨迹</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-repeat-group"
+                                     ng-class="{active:FaceMacCrashCtrl.checkRightResult[$index]}">
+                                    <div class="capture-item" ng-repeat="(i,item) in group.accessLog.AccompanyingRes"
+                                         ng-click="FaceMacCrashCtrl.openDetailPopup(item,i,'Face')"
+                                         ng-mouseenter="FaceMacCrashCtrl.resultToMap(item,i,'Accp')"
+                                         ng-mouseleave="FaceMacCrashCtrl.unResultToMap(item,i,'Accp')">
+                                        <div class="img-info">
+                                            <span class="location">{{$index+1}}</span><span class="same-scale">{{item.similar}}</span>
+                                            <div class="action">
+                                                <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                                <span class="fx"></span>
+                                                <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                                <span class="sp"></span>
+                                            </div>
+                                        </div>
+                                        <div class="head-img">
+                                            <img width="80" height="80" ng-src="{{item.accessLog.FacePath}}">
+                                        </div>
+                                        <div class="desc">
+                                            <div class="time">{{item.accessLog.LogTime}}</div>
+                                            <div class="info"></div>
+                                        </div>
+                                        <!--<span class="delete">删除</span>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-group" ng-if="FaceMacCrashCtrl.resultRightType === 'Mac'" ng-repeat="group in FaceMacCrashCtrl.accpResultParams.data">
+                                <div class="capture-item mac">
+                                    <div class="capture-item-name">
+                                        <span>碰撞次数:</span>
+                                        <i>{{group.Num}}</i>次
+                                    </div>
+                                    <div class="set-track">
+                                        <button ng-click="FaceMacCrashCtrl.setAccpTrack($index)">查看轨迹</button>
+                                    </div>
+                                    <span
+                                        class="show-more"
+                                        ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[FaceMacCrashCtrl.checkRightResult[$index]]"
+                                        ng-click="FaceMacCrashCtrl.slideRightResult($index)">
+                                        {{FaceMacCrashCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="capture-children mac" ng-class="{active:FaceMacCrashCtrl.checkRightResult[$index]}">
+                                    <div class="children-item"
+                                         ng-repeat="(i,item) in group.PerceiveAccompanyLogs"
+                                         ng-click="FaceMacCrashCtrl.openDetailPopup(item,i,'Mac')"
+                                         ng-mouseenter="FaceMacCrashCtrl.resultToMap(item,i,'Mac')"
+                                         ng-mouseleave="FaceMacCrashCtrl.unResultToMap(item,i,'Mac')">
+                                        <div class="item-info">
+                                            <span class="location pdp-icon-positon-num">{{$index+1}}</span>
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="FaceMacCrashCtrl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis">
+                                                    <!--<ul class="analysis-ul">-->
+                                                        <!--<li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Track.key)">{{FaceMacCrashCtrl.analysisGoTo.Track.name}}</li>-->
+                                                        <!--<li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Accompanying.key)">{{FaceMacCrashCtrl.analysisGoTo.Accompanying.name}}</li>-->
+                                                        <!--<li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Frequency.key)">{{FaceMacCrashCtrl.analysisGoTo.Frequency.name}}</li>-->
+                                                        <!--<li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.More.key)">{{FaceMacCrashCtrl.analysisGoTo.More.name}}</li>-->
+                                                    <!--</ul>-->
+                                                </i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="FaceMacCrashCtrl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <p><i class="pdp-icon-mac"></i>{{item.Mac}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.AcqTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <util-paging
+                                hide-size="true"
+                                page-params="FaceMacCrashCtrl.accpResultParams"
+                                prev-page="FaceMacCrashCtrl.changeAccpResultPage(num)"
+                                next-page="FaceMacCrashCtrl.changeAccpResultPage(num)"
+                                go-page="FaceMacCrashCtrl.changeAccpResultPage(num)"
+                                show-type="small"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--碰撞轨迹更多结果-->
+    <div class="analysis-more-res" ng-class="{'active':FaceMacCrashCtrl.showAllResult}" ng-style="{'width':FaceMacCrashCtrl.windowWidth-60 + 'px'}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title face-mac-crash-title">人脸感知数据碰撞</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="FaceMacCrashCtrl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="sort-box head-left" ng-if="FaceMacCrashCtrl.resultLeftType==='Face'">
+                            <span ng-class="{'active':FaceMacCrashCtrl.resultSort}" ng-click="FaceMacCrashCtrl.sortReult('score')">按相似度</span>
+                            <span ng-class="{'active':!FaceMacCrashCtrl.resultSort}" ng-click="FaceMacCrashCtrl.sortReult('time')">按时间</span>
+                        </div>
+                        <div class="result-operate">
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="analysis-more-result-group" ng-scrollbars>
+                            <div class="result-item">
+                                <div class="item-row-table active" ng-if="FaceMacCrashCtrl.resultLeftType==='Face'">
+                                    <div class="table-item face"
+                                         ng-repeat="(i,item) in FaceMacCrashCtrl.resultParams.data"
+                                         ng-click="FaceMacCrashCtrl.openDetailPopup(item,i,'Face')">
+                                        <div class="item-picture">
+                                            <div class="picture-box" ng-click="FaceMacCrashCtrl.fullScreen($event, (item.AccessLog.ScenePath|imageUrlFilter))">
+                                                <img ng-src="{{item.AccessLog.FacePath | imageUrlFilter}}"  alt="">
+                                            </div>
+                                            <div class="item-similarity" ng-if="item.Score">{{item.Score|roundNumber}}%</div>
+                                            <input class="item-checkbox" type="checkbox" />
+                                            <div class="mask">
+                                                <div class="fast-operate">
+                                                    <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="FaceMacCrashCtrl.clickCollect($event , item)"></i>
+                                                    <i class="pdp-icon-analysis">
+                                                        <ul class="analysis-ul">
+                                                            <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Track.key)">{{FaceMacCrashCtrl.analysisGoTo.Track.name}}</li>
+                                                            <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Accompanying.key)">{{FaceMacCrashCtrl.analysisGoTo.Accompanying.name}}</li>
+                                                            <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Frequency.key)">{{FaceMacCrashCtrl.analysisGoTo.Frequency.name}}</li>
+                                                            <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.More.key)">{{FaceMacCrashCtrl.analysisGoTo.More.name}}</li>
+                                                        </ul>
+                                                    </i>
+                                                    <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="FaceMacCrashCtrl.clickSurveillance($event , item)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-desc">
+                                            <p>{{item.AccessLog.LogTime}}</p>
+                                            <p>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <div class="page-total">
+                            共
+                            <i>{{FaceMacCrashCtrl.resultParams.totalCount}}</i>
+                            条记录
+                        </div>
+                        <util-paging
+                                hide-size="true"
+                                hide-gopage="true"
+                                page-params="FaceMacCrashCtrl.resultParams"
+                                prev-page="FaceMacCrashCtrl.changeResultPage(num)"
+                                next-page="FaceMacCrashCtrl.changeResultPage(num)"
+                                go-page="FaceMacCrashCtrl.changeResultPage(num)">
+                        </util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--碰撞伴随更多结果-->
+    <div class="analysis-more-res" ng-class="{'active':FaceMacCrashCtrl.showAllAccompanyResult}" ng-style="{'width':FaceMacCrashCtrl.windowWidth-60 + 'px'}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title face-mac-crash-title">人脸感知数据碰撞</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="FaceMacCrashCtrl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="result-operate">
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="analysis-more-result-group" ng-scrollbars>
+                            <div class="result-item" ng-repeat="group in FaceMacCrashCtrl.accpResultParams.data">
+                                <div class="item-head">
+                                    <div class="head-left">
+                                        <span>碰撞次数：</span>
+                                        <span class="num">{{group.Num}}</span>
+                                        <span>次</span>
+                                    </div>
+                                    <span
+                                            class="show-more"
+                                            ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[FaceMacCrashCtrl.checkRightResult[$index]]"
+                                            ng-click="FaceMacCrashCtrl.slideRightResult($index)">
+                                        {{FaceMacCrashCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="item-row-table" ng-class="{active:FaceMacCrashCtrl.checkRightResult[$index]}">
+                                    <div class="table-item mac" ng-repeat="(i,item) in group.PerceiveAccompanyLogs" ng-click="FaceMacCrashCtrl.openDetailPopup(item,i,'Mac')">
+                                        <div class="desc">
+                                            <p><i class="pdp-icon-mac"></i>{{item.Mac}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.AcqTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="item-info">
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="FaceMacCrashCtrl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis">
+                                                    <ul class="analysis-ul">
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Track.key)">{{FaceMacCrashCtrl.analysisGoTo.Track.name}}</li>
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Accompanying.key)">{{FaceMacCrashCtrl.analysisGoTo.Accompanying.name}}</li>
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.Frequency.key)">{{FaceMacCrashCtrl.analysisGoTo.Frequency.name}}</li>
+                                                        <li class="analysis-li" ng-click="FaceMacCrashCtrl.clickAnalysis($event , item, FaceMacCrashCtrl.analysisGoTo.More.key)">{{FaceMacCrashCtrl.analysisGoTo.More.name}}</li>
+                                                    </ul>
+                                                </i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="FaceMacCrashCtrl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <div class="page-total">
+                            共
+                            <i>{{FaceMacCrashCtrl.accpResultParams.totalCount}}</i>
+                            条记录
+                        </div>
+                        <util-paging
+                                hide-size="true"
+                                page-params="FaceMacCrashCtrl.accpResultParams"
+                                prev-page="FaceMacCrashCtrl.changeAccpResultPage(num)"
+                                next-page="FaceMacCrashCtrl.changeAccpResultPage(num)"
+                                go-page="FaceMacCrashCtrl.changeAccpResultPage(num)"
+                                show-type="small"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taggle-result taggle-result-open pdp-icon-forward" ng-class="{'active':FaceMacCrashCtrl.showResult}" ng-click="FaceMacCrashCtrl.goAllResult()"></div>
+    <div class="taggle-result taggle-result-close pdp-icon-back" ng-class="{'active':FaceMacCrashCtrl.showAllResult}" ng-show="FaceMacCrashCtrl.showAllResult" ng-click="FaceMacCrashCtrl.closeAllResult()"></div>
+    <div class="taggle-result taggle-result-close-right pdp-icon-back" ng-class="{'active':FaceMacCrashCtrl.showAllAccompanyResult}" ng-show="FaceMacCrashCtrl.showAllAccompanyResult" ng-click="FaceMacCrashCtrl.closeAccompanyAllResult()"></div>
+    <div class="taggle-result taggle-result-open-right pdp-icon-back" ng-class="{'active':FaceMacCrashCtrl.showResult}" ng-style="{'left':!FaceMacCrashCtrl.showResult?FaceMacCrashCtrl.windowWidth+'px':(FaceMacCrashCtrl.windowWidth-300-60-30)+'px'}" ng-click="FaceMacCrashCtrl.goAccompanyAllResult()"></div>
+</div>

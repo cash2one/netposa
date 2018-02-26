@@ -1,0 +1,49 @@
+<div class="layer-component wifi-component" ng-controller="efPopupController as efPopupCtrl">
+    <div class="media-title">
+        <span class="licence-plate">电子围栏详情</span>
+        <a class="layui-layer-ico m-layui-close" ng-click="efPopupCtrl.closeLayer()"></a>
+    </div>
+    <div class="media-box-con">
+        <div class="wifi-content">
+            <div class="icon-ground-wifi operate">
+                <i class="icon_collect" ng-class="{'active': efPopupCtrl.accessRecords.collectStatus}" ng-click="efPopupCtrl.clickCollect()">收藏</i>
+                <i class="icon_analysis" ng-click="efPopupCtrl.clickAnalysis()">分析</i>
+                <i class="icon_dispatched" ng-class="{'active': efPopupCtrl.accessRecords.surveillanceStatus}" ng-click="efPopupCtrl.clickSurveillance()">布控</i>
+            </div>
+            <div>
+                <dl class="m-item-wifi">
+                    <div class="m-itemwifi-left ef">
+                        <div><i class="m-color-l">用户识别码(IMSI): </i><i class="m-color-h">{{ efPopupCtrl.accessRecords.eFenceLog.IMSI || efPopupCtrl.accessRecords.eFenceLog.IMSI2 }}</i></div>
+                        <div><i class="m-color-l">设备身份码(IMEI): </i><i class="m-color-h">{{ efPopupCtrl.accessRecords.eFenceLog.IMEI }}</i></div>
+                        <div><i class="m-color-l">临时识别码(TMSI): </i><i class="m-color-h">{{ efPopupCtrl.accessRecords.eFenceLog.TMSI }}</i></div>
+                        <!--<div><i class="m-color-l">终端品牌: </i><i class="m-color-h">{{  }}</i></div>-->
+                    </div>
+                    <div class="m-itemwifi-right m-color-h">
+                        <div><i class="m-color-l">采集时间: </i><i class="m-color-h">{{ efPopupCtrl.accessRecords.eFenceLog.AcqTime }}</i></div>
+                        <div><i class="m-color-l">采集地点: </i><i class="m-color-h">{{ efPopupCtrl.accessRecords.deviceInfo.Name }}</i></div>
+                        <div><i class="m-color-l">采集设备: </i><i class="m-color-h">{{ efPopupCtrl.accessRecords.deviceInfo.Name }}</i></div>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="media-footer" ng-if="!efPopupCtrl.showFooter">
+        <div class="m-footer-text">
+            搜周边 :
+            <span class="ambitus-info">
+                <i ng-repeat="item in efPopupCtrl.ambitusInfo" ng-click="efPopupCtrl.selectAmbitusInfo(item)" ng-class="{'active': item.status}">{{item.value}}</i>
+            </span>
+            <input type="text" class="m-footer-input" ng-model="efPopupCtrl.quickSearchAgainText" placeholder="请输入关键字">
+            <i class="search-border" ng-click="efPopupCtrl.quickSearchAgain()"></i>
+
+            <span class="m-footer-last">
+                <span class="m-toggle-border" ng-click="efPopupCtrl.popupUp()" ng-if="efPopupCtrl.activeRank > 1">
+                    <i class="m-left-triangle"></i>
+                </span>
+                <span class="m-toggle-border" ng-click="efPopupCtrl.popupDown()" ng-if="efPopupCtrl.activeRank < efPopupCtrl.totalRank">
+                    <i class="m-right-triangle"></i>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

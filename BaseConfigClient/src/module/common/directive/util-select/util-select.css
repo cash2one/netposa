@@ -1,0 +1,172 @@
+/*
+    下拉框指令
+    created by zyh on 2017/07/04
+*/
+
+.u-util-select {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-indent: 0;
+    border-radius: 2px;
+}
+.u-util-select > .empty{
+    color: #ccc;
+}
+.u-util-select > a.text {
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+    position: absolute;
+    right: 29px;
+    left: 0;
+    padding: 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.u-util-select.option-show {
+    border-color: #3fa9fe;
+   /* border-bottom-color: #eee*/
+}
+
+.u-util-select > a.text {
+    height: 28px;
+    line-height: 28px;
+    position: absolute;
+    right: 28px;
+    left: 0;
+    padding-right: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.u-util-select .mask{position: absolute;width:100%;height:100%;z-index: 10}
+
+
+.u-util-select .context ul.list{margin:0;padding:0}
+
+.u-util-select .context{
+    position:absolute;
+    right:-1px;
+    left:-1px;
+    top:29px;
+    border:1px solid  #E1E4E7;
+    /*border-top:none;*/
+    background-color:#fff;
+    /*box-shadow:0 3px 5px 0 rgba(50,50,50,.1);*/
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+/*兼容视图显示区域*/
+.u-util-select .context.top{
+     top:29px;
+     box-shadow:0 3px 5px 0 rgba(50,50,50,.1);
+}
+.u-util-select .context.bottom{
+    bottom:29px;
+    box-shadow:0 -3px 5px 0 rgba(50,50,50,.1);
+}
+
+.u-util-select .context.is-tree{overflow-x: auto}
+
+.u-util-select .context>ul.list,.u-util-select .context>div.tree{margin-top:1px;cursor: default}
+.u-util-select .context >ul.list>li.first{color:#999}
+
+.u-util-select .context > ul.list > li {
+    position: relative;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+}
+
+.u-util-select .context >ul.list>li:hover{
+    background-color:#ecf6fd;
+}
+
+.u-util-select .context >ul.list>li.option-selected{
+    color:#3fa9fe
+}
+
+.u-util-select .context>ul.list .diy-icon{position: absolute;width:24px;height:24px;right:0;top:0px;}
+.u-util-select .context>ul.list  .diy-icon>i{float: left;margin:5px 0 0 5px;}
+.u-util-select .context >ul.has-icon>li{padding-right:20px}
+
+
+/*样式修改*/
+.u-util-select:hover{
+    border-color:#3fa9fe
+}
+
+.u-util-select:hover.select-disabled{
+    border-color:#ccc;
+    cursor: not-allowed;
+}
+.u-util-select .selected-line{
+    height: 28px;
+    line-height: 28px;
+}
+.u-util-select .selected-text{
+    position: absolute;
+    right: 0px;
+    left: 0;
+    text-indent: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.u-util-select .show-check .selected-text{
+    left: 22px;
+}
+.u-util-select .show-icon .selected-text{
+    right: 22px;
+}
+.u-util-select .default-empty{
+    color:#999
+}
+
+.u-util-select .right-icon{
+    position: absolute;
+    right: 0;
+    padding: 0 4px;
+}
+.u-util-select .right-icon i{
+    display: inline-block;
+    vertical-align: -3px;
+}
+.u-util-select i.check-btn{
+    display: inline-block;
+    vertical-align: sub;
+}
+
+
+.u-util-select.style-blue .default-empty{
+    color:#fff;
+    background-color: #4394ff;
+}
+
+.u-util-select.no-border{
+    border: none;
+}
+
+.u-util-select .icon{
+    position: absolute;
+    right:5px;
+    top:10px;
+    width: 8px;
+    height: 8px;
+    background:#fff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA4klEQVQ4T61Sy43CMBB9o/i+lJASYmVyXyoBKoBS2AqWrYS9Z6KhhJQAd1tGjpJVNoQAIj6/n988wpuP3uRjHoGyLD+NMbW1tn4mkaqmzrm0KIrfJoGIROJHkiRLa+1pSkRVM+/9EcCFmdNGoKqqdQjhG8B5SqRHXhDRJs/zw18Hj0TGyNH8X4mdSAjhZIyJ3zlHkKouvPcKIO2cu2/eXGEoEoHOuSMRZUPyTYJOVUT2ALYxSQMiygB8MfNuWPDdHYjIAcCqJfww83rsOpNDapNgzPluB88MqY+ZZ8qvus6a4ArXbnERqwD3OwAAAABJRU5ErkJggg==") no-repeat center center;
+    background-size: 8px 8px;
+}

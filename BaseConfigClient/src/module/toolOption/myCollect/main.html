@@ -1,0 +1,27 @@
+<div class="m-mycollect">
+    <div class="report-head">
+        <div class="report-left">
+            <span class="report-text">我的收藏</span>
+            <span class="report-report-icon"></span>
+        </div>
+        <ul class="report-list">
+            <li class="collect-list"
+                ng-repeat="item in myCollectCtrl.ButtonList track by $index"
+                ng-class="{'active': item.index == myCollectCtrl.selectedIndex}"
+                ng-click="myCollectCtrl.changeIndex(item)"
+                ng-bind="item.text"
+            ></li>
+        </ul>
+    </div>
+    <div class="report-inline">
+        <div class="form-label">
+            <input class="input-t1" type="text" placeholder="开始时间" date-picker range="false" date-type="date" format="yyyy-MM-dd"
+                   ng-model="myCollectCtrl.startTime"/>
+            <span> - </span>
+            <input class="input-t2" type="text" placeholder="结束时间" date-picker range="false" date-type="date" format="yyyy-MM-dd"
+                   ng-model="myCollectCtrl.endTime"/>
+        </div>
+        <button class="pdp-btn" ng-click="myCollectCtrl.search()">搜索</button>
+    </div>
+    <div class="report-collect-all" ng-include="myCollectCtrl.allCollectPage"></div>
+</div>

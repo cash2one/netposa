@@ -1,0 +1,58 @@
+<div class="m-downCenter" ui-view="toolOption">
+    <ol class="m-route f-cfb">
+        <li>选项</li>
+        <li class="route-separate">/</li>
+        <li>下载中心</li>
+    </ol>
+
+    <div class="downCenter-wrap">
+
+        <div class="down-top">
+            <div class="f-fl f-cfb">
+                <span class="f-fl">共下载</span>
+                <span class="m-right5 m-left5 c-font-cyan f-fl">1231</span>
+                <span class="f-fl">个文件</span>
+            </div>
+
+            <div class="f-fr">
+                <button class="u-button u-button-blue-2">清除所有记录</button>
+            </div>
+        </div>
+
+        <div class="down-bottom">
+
+           <div class="down-table">
+               <div class="one-file f-cfb">
+                   <div class="file-name f-fl">
+                       <span>报警管理</span>
+                       <span>3.35</span>
+                       <span>MB</span>
+                   </div>
+
+                   <div class="down-date f-fl">
+                       2017-02-22
+                   </div>
+
+                   <div class="down-status f-fl">
+                       下载完成
+                   </div>
+
+                   <div class="down-handle f-fl">
+                       操作
+                   </div>
+               </div>
+           </div>
+
+            <div class="table-paging">
+                <util-paging
+                        page-params="downCenterCtrl.pageParams"
+                        prev-page="downCenterCtrl.changePage(num)"
+                        next-page="downCenterCtrl.changePage(num)"
+                        go-page="downCenterCtrl.changePage(num)"
+                        page-size="downCenterCtrl.changePageSize(num)"
+                ></util-paging>
+            </div>
+        </div>
+
+    </div>
+</div>

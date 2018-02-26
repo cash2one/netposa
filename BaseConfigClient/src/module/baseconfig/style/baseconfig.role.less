@@ -1,0 +1,73 @@
+.m-baseconfig-role{
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  .right-content{
+    height: 100%;
+  }
+  .content{
+    height: 92%;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  .menu-layer{
+    height: 60px;
+    padding-left: 20px;
+    line-height: 60px;
+    position: relative;
+    z-index: 99;
+  }
+  .table-list{
+    position: absolute;
+    padding-top:60px;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    left:0;
+    top:0;
+    tr{
+      height: 40px;
+      padding-left:30px;
+    }
+    thead{
+      tr{
+        border-top:1px solid #e4e4e4;
+        background-color: #f4f4f4;
+      }
+      th{
+        border-bottom-width: 1px;
+        border-color:#e4e4e4;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+    }
+    tbody{
+      tr{
+        &:nth-of-type(odd) {
+          background-color: #fff;
+        }
+        &:nth-of-type(even) {
+          background-color: #f4f4f4;
+        }
+      }
+      td{
+        &:first-child{
+          width: 54px;
+          text-align: center;
+        }
+        vertical-align: middle;
+        border-color:#e4e4e4;
+        .slide{
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background: url("../../../images/baseconfig/role-table-false.png") no-repeat center center;
+        }
+      }
+      tr:last-child{
+        border-bottom: 1px solid #e4e4e4;
+      }
+    }
+  }
+}

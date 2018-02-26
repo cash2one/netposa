@@ -1,0 +1,66 @@
+<div>
+    <p style="font-size:36px">下拉框指令测试</p>
+
+    <div style="width:100%;height:10px;background:#ccc"></div>
+
+    <p style="font-size:24px;padding:10px">
+        注：高度固定30px,宽度未固定；使用时需要自己创建一个父容器（宽度自定义，高度30px）
+    </p>
+
+    <p style="font-size:18px;padding:10px">
+        1、（点击必选）select-click = "function(selected)"  selected同名填写，为选中返回值
+    </p>
+    <p style="font-size:18px;padding:10px">
+        2、（可选）option-list-height = " S M L XL " 分别对应最大高度 200 300 400 500 不填默认200
+    </p>
+
+    <p style="font-size:18px;padding:10px">
+        3、(可选)selected-val = " @ " 初始选中值
+    </p>
+
+    <p style="font-size:18px;padding:10px">
+        4、(选项列表必选)select-data = " Array "  ; 配合（必选）  select-repeat-by-key=" keyword " ；keyword 为传入参数展示值的对应 key
+    </p>
+
+    <p style="font-size:18px;padding:10px">
+        5、选择tree结构,嵌套树指令于标签内，配和 select-is-tree=“ true || false ” ，把树回调选中值赋值到 selected-val
+    </p>
+
+    <p style="font-size:18px;padding:10px">
+        6、（可选）select-list-diy-icon=“ true || false ” ，select-list-icon-fun = function  列表形式自定义图标及回调
+    </p>
+
+    <div style="width:200px;height:30px;margin:100px 0 0 100px">
+
+        <util-select
+                select-data="technologyStackSelectCtrl.testData"
+                select-repeat-by-key="level"
+                select-click="technologyStackSelectCtrl.testClick(selected)"
+                selected-val="technologyStackSelectCtrl.initVal"
+                select-list-height="M"
+                select-list-diy-icon="true"
+                select-list-icon-fun="technologyStackSelectCtrl.listDiyIconFun(selected)"
+                select-is-tree="false">
+
+           <util-tree
+                       tree-id="{{technologyStackSelectCtrl.camerasId}}"
+                       tree-datas="technologyStackSelectCtrl.camerasData"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-expand-level="0"
+                       on-click="technologyStackSelectCtrl.treeClick(event, treeId, treeNode)"
+                       on-dbl-click="technologyStackSelectCtrl.treeDblClick(event, treeId, treeNode)"
+                       show-locate-and-attention-btn="true"
+                       diy-dom-func1="technologyStackSelectCtrl.diyLocation(treeId, treeNode)"
+                       diy-dom-func2="technologyStackSelectCtrl.diyAttention(treeId, treeNode)">
+            </util-tree>
+        </util-select>
+
+    </div>
+    <hr>
+    <hr>
+</div>

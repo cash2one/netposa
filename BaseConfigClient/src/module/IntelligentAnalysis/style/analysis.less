@@ -1,0 +1,230 @@
+.AnalysisMapLayer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .map-layer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-left: 60px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #fff;
+    z-index: 1
+  }
+  .car-content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-left: 60px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #fff;
+    z-index: 1
+  }
+  .leftToolsBar {
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    z-index: 999;
+    background: #333743;
+    .toolsBar {
+      cursor: pointer;
+      width: 60px;
+      height: 60px;
+      background-repeat: no-repeat;
+      background-position: center;
+      &:hover, &.active {
+        background-color: #2A4D80;
+      }
+    }
+    .toolsBar.active {
+      position: relative;
+      background-color: #2A4D80;
+      &:after{
+        position: absolute;
+        content: ' ';
+        right:0;
+        top:50%;
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-right: 6px solid #fff;
+        border-bottom: 6px solid transparent;
+        margin-top: -6px;
+      }
+    }
+    .car {
+      background-image: url("../../../images/analysis/icon/car.png");
+      &.active{
+        background-image: url("../../../images/analysis/icon/car-active.png");
+      }
+    }
+    .face {
+      background-image: url("../../../images/analysis/icon/face.png");
+      &.active{
+        background-image: url("../../../images/analysis/icon/face-active.png");
+      }
+    }
+    .mac {
+      background-image:url("../../../images/analysis/icon/rfid.png");
+      &.active{
+        background-image: url("../../../images/analysis/icon/rfid-active.png");
+      }
+    }
+    .multi {
+      background-image:url("../../../images/analysis/icon/multi.png");
+      &.active{
+        background-image: url("../../../images/analysis/icon/multi-active.png");
+      }
+    }
+  }
+  .leftToolsMenu {
+    width: 0;
+    position: absolute;
+    left: 60px;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: width .5s, opacity .6s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    &.active {
+      width: 280px;
+      opacity: 1;
+    }
+    .groupMenu {
+      width: 280px;
+      padding-left: 20px;
+      height: 100%;
+      user-select:none;
+      .item {
+        text-align: center;
+        overflow: hidden;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        float: left;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: scale(1);
+        transition: all 0.3s;
+        .img{
+          width: 100%;
+          height:58px;
+          padding-top:10px;
+          img{
+            display: inline-block;
+            border-radius: 20px;
+          }
+        }
+        &:hover{
+          transform: scale(1.1);
+        }
+
+        span {
+          display: inline-block;
+          padding-top:5px;
+        }
+      }
+      .red:hover .img img{
+        box-shadow: 0 0 15px rgba(255,94,82,0.8);
+      }
+      .darkred:hover .img img{
+        box-shadow: 0 0 15px rgba(223,87,111,0.8);
+      }
+      .green:hover .img img{
+        box-shadow: 0 0 15px rgba(127,190,87,0.8);
+      }
+      .blue:hover .img img{
+        box-shadow: 0 0 15px rgba(28,188,225,0.8);
+      }
+      .lightblue:hover .img img{
+        box-shadow: 0 0 15px rgba(76,197,205,0.8);
+      }
+      .yellow:hover .img img{
+        box-shadow: 0 0 15px rgba(255,184,48,0.8);
+      }
+    }
+  }
+  .left-menu-content{
+    width: 0;
+    position: absolute;
+    left: -280px;
+    height: 100%;
+    opacity: 0;
+    box-sizing: border-box;
+    transition: width .5s, opacity .6s;
+    z-index: 3;
+    &.active {
+      width: 280px;
+      left: 60px;
+      opacity: 1;
+    }
+    &.showDetail{
+      width:500px;
+      opacity:1;
+    }
+  }
+  .toolsBottom {
+    position: absolute;
+    bottom: 20px;
+    z-index: 9999;
+    left: 50%;
+    margin-left: -150px;
+    width: 300px;
+    height: 40px;
+    overflow: hidden;
+    background: #4d4e4b;
+    .quick-base {
+      float: left;
+      width: 60px;
+      line-height: 50px;
+      text-align: center;
+    }
+    .icon {
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    .icon-move-quick {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABdElEQVQ4y6WUvU4CQRSFz/AnGgt/goFYgQmF0liaGAsTS+MjEH0BLbTQRGJHQYHIG1AZGt/D2oew1WjjIp/NEIfLooueZLIzc+499+7Z2ZESALgGuklik4id843Wf8UumET7L0IOOAOGwGcgNvDPJpCJy3VTBFOStiQNJVUkPUhKSzqR9CgpJ+nJORcl6s6sN4DId7b7U6wkpUzAqaSaiVmQlAnmIYrA1W8foGr2C0ADuAHKhlv0vnas2OhoDIFDYNOPQkzhpYDfAV7HjpQ/tCEG3rMIaMQI1gM+MrndjKQ1k5MO5nMx7uQCTy0Ko6otX+ETOAb2/SjbDKAU8EfBK/eAbBjY9kQlxrO6L1QyXN430QfSiqneBLbNXi3w6MBw68DtWGcxolmzrgbm7xluwsuJDedc5P+AoqQPSasBvQysSJqX9OycGygJgBRwCbwBL8ErvwLv3u9cIjEj2om5vvpAfiYxI9wKxHrTrq1ZRe+A+yRiX6aR+iCVehk6AAAAAElFTkSuQmCC);
+    }
+    .icon-square-quick {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAAALUlEQVQ4y+3VMREAAAzCQFr/ntOhFhgTAX9sDECaNUGAra5LIigoKCj4TfsCDoeAEBWMciyzAAAAAElFTkSuQmCC);
+    }
+    .icon-circle-quick {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABOElEQVQ4y62VMU7DQBBFv2zhNM4BUsUlFRUXiIHegI2EwoWcFm6AhQQJKAehoqGgSCSQcgAakuZRMJEsy0RrxyOttJqZ/3ZXOzsr1RgQAFfAA7AA1sA38G6+DAjkYsA58AE8AtdAZAuEwKH5niznYhfIB3LgBThzWPgUeDaNX5eQA7dA3+kof5q+afJqIAWmTWAV6BRIyxfwCcRNYSVoDHwBgYAxULSFlaD3wI0nKZE03xdojETAEhh2sMMhsBTwA/Q6AAbA2pO0keRW9Q7mSVpJGnTAGkhaeZLeJB11ADyW9Oppezv7WyJpXi7sUVsSMLLC7m0dmXWQsAUsNG1WDUzsofsNYJ5pJnVB34Iz4MQBFltTuNu5CeDSmmdh8wg4sBGZr7Cc1PUogTWNmX0BGxsL843/+wJ+AXZtef+ThyE6AAAAAElFTkSuQmCC);
+    }
+    .icon-polylgon-quick {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABRklEQVQ4y6XRMWtUYRCF4TMbUBDRSoKChUhASBMEtbIQrU0MpLCzirWF/0FEsLBRLGwkhYUa/4BgJ2ksAoFoK3bKFiIR5bHZxRvdJPfeHfiKOQzvnDlf0qJwDsfazLaB3cJ3bGNhGtARPBu9i1jFD6z2gc3hAx78oy/gCdZaR4AVDHFnn5l7B0aAw3iEF7jSYvHeEeAMNvAQMx2iGUfwHEfH4jV8w93OYf8F38cWTgc3sdYXNgLO4BdOBMexg0NTAC/jXZIMqmqY5G2SAz9in1pMst7ccBuPp3D4CWebwkn8xqAHbB6b436QJFX1Jcn7JJd6GFxK8noXcFSvktzoAbye5M0k63PY7njuKXxG/eewqj4m+Yn5DszFJOtVZdLJSfIyyXJXYFOoZoPzSZ4m+doSeCHJbFXtTASOoFcn6XvUsKo2msIf0CMP3Z/3I1QAAAAASUVORK5CYII=);
+    }
+    .icon-clear-quick {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABf0lEQVQ4y53TvWsUURjF4TPZGBUkgjaCjVhYaGWviIhosBAtBYMbUBDBwq/GysbKf8FCMAExayEbm2DlF2ipoCIWWtlJiviJPBaZlSHsbGZ8u/uee34z99z7Jg0LV/AeH3Cwqa8Odg2PsQcX8Q1T/wu7imfYUOnN4DsOt4XdwCImh2hdLONIm8wWsXXEnnP4gUNrwS7jFTY1+PAMftdCK5ltaRHNBXzFgdXCWbzBjlZhr3gv4XW1cd5K7W4LK/3b8KkY0JOcSPIuyc4kJ4uiWGoBm0jyIMnHYBovBpmhh6flpqbABcwPFm+xqyJ2MIuX2LgGaBx93EEnScaSLCf5N5tFUfxJMp3kc5KHwx515ZizSX4mOVP6Euwvx6g7xNTHE6wfovXQq/v1o+XAd1f1xzCH51hX6fXLWDqj8jiGXzhVk9NC+TRul+vxJrc1Vc7m6SHaHJZwr+ntD4zH8QXXsR2bsQ+PcHdw9LoqaqB7k9xKMplEkokk95PcLIrCKOBfqPOjKuqLV6YAAAAASUVORK5CYII=);
+    }
+  }
+}
+
+#AnalysisMap {
+  width: 100%;
+  height: 100%;
+  cursor: hand;
+}
+.analysis-no-data{
+  width: 100%;
+  background: url(../../../images/resource/noMessage.png) no-repeat center 30px;
+  padding-top:200px;
+  font-size: 16px;
+  text-align: center;
+}

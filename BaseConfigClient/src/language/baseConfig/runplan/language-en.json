@@ -1,0 +1,22 @@
+{
+    "note": "/** 编码规则**/",
+    "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+    "note": "/***************************************** 基础控件  start ****************************************************/",
+  
+    "note": "/*******时间模板*********/",
+    "DP_CONFIG_RUNPLAN_01": "Business configuration",
+    "DP_CONFIG_RUNPLAN_02": "Run Planning",
+    "DP_CONFIG_RUNPLAN_03": "New Planning",
+    
+    "note": "/*******新增*********/",
+
+    "DP_CONFIG_RUNPLAN_04": "Plan name",
+    "DP_CONFIG_RUNPLAN_05": "customize",
+    "DP_CONFIG_RUNPLAN_06": "to",
+
+    "note": "/*******删除*********/",
+    "DP_CONFIG_RUNPLAN_07": "Are you sure to delete the all-weather run plan this time template?",
+    "DP_CONFIG_RUNPLAN_08": "Are you sure to delete those {{value}} selected operation plans?",
+    "DP_CONFIG_RUNPLAN_09": "Please enter the name of the plan",
+    "DP_CONFIG_RUNPLAN_10": "Please enter relevant plan description"
+  }

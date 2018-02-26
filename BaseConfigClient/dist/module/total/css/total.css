@@ -1,0 +1,106 @@
+@import "total-general.css";
+@import "total-task.css";
+@import "total-alarm.css";
+@import "total-flow.css";
+@import "total-user.css";
+@import "total-search.css";
+
+
+.g-total-nav,
+.g-total-mn{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom:0;
+    _height: 100%;
+}
+.g-total-nav{
+
+}
+.g-total-mn{
+    _position: absolute;
+    left: 160px;
+    right: 0;
+    _top: 0;
+    _left: 0;
+    _margin-left: 160px;
+}
+
+.m-total-nav{
+    background-color: #383e4c;
+}
+
+.m-total-mn{
+    min-width: 1206px;
+    overflow: auto;
+}
+.m-total-mn.z-nav-putway{
+    left: 40px;
+}
+
+.m-total-box{
+    height: 100%;
+}
+
+
+/*统计页面下各子页面公用*/
+.g-total{
+    height: 100%;
+    overflow: auto;
+}
+
+.g-total-block{
+    margin: 15px;
+}
+
+.g-total-block .wrap-content{
+    width: 100%;
+    height: 380px;
+    background: #fff;
+    border-radius:5px;
+    margin-bottom: 15px;
+}
+
+.g-total-block .wrap-last-content{
+    margin-bottom: 0;
+}
+
+/*每一块上面部分*/
+.g-total-block .wrap-cont-head{
+    width: 100%;
+    height:40px;
+    border-bottom: 1px solid #ebeef1;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.g-total-block .cont-head-title{
+    float: left;
+    line-height: 39px;
+    margin-left: 15px;
+    font-size: 12px;
+    color: #666;
+}
+
+.g-total-block .cont-head-detail{
+    float: right;
+    line-height: 40px;
+    margin-right: 15px;
+    color: #45a2ff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.g-total-block .wrap-cont-table{
+
+}
+
+/*无数据时展示*/
+.m-echart-no-data{
+    height: 240px;
+    line-height: 240px;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    background: #fff;
+}

@@ -1,0 +1,21 @@
+<div class="check-area" ng-controller="CheckAreaPopupController as CheckAreaPopupCtrl">
+
+    <div class="title">
+        <span class="left">已选设备: <i>{{CheckAreaPopupCtrl.deviceList.length}}</i></span>
+        <span class="layui-layer-setwin">
+            <a ng-click="CheckAreaPopupCtrl.cancel()" class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a>
+        </span>
+    </div>
+    <div class="list" ng-scrollbars>
+        <ul>
+            <li ng-repeat="item in CheckAreaPopupCtrl.deviceList">
+                <span>{{item.ObjectName}}</span>
+                <span ng-click="CheckAreaPopupCtrl.deleteDevice($index)" class="delete-device" title="删除"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="action-group">
+        <button class="sub-check" ng-click="CheckAreaPopupCtrl.submitCheck()">确定</button>
+        <button class="cancle" ng-click="CheckAreaPopupCtrl.cancel()">取消</button>
+    </div>
+</div>

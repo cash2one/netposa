@@ -1,0 +1,24 @@
+<div ng-controller="maplayerController as maplayerCtrl">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>图层名称</th>
+            <th>图层类型</th>
+            <th>图层图标</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="($index,item) in maplayerCtrl.layerList">
+            <td>{{$index + 1}}</td>
+            <td>{{item.Text}}</td>
+            <td>{{item.LayerTypeText}}</td>
+            <td>
+                <span ng-repeat="icon in item.LayerIconURL">
+                    <img ng-src="{{icon}}" alt="">
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.AuditStatus = {
+        Verifing: { value: "Verifing", text: "审核中" },
+        Verified: { value: "Verified", text: "已审核" },
+        Refuse: { value: "Refuse", text: "未通过" },
+    };
+});
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb3JlL3NlcnZlci9lbnVtL0F1ZGl0U3RhdHVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztJQWFhLFFBQUEsV0FBVyxHQUFnRTtRQUNwRixRQUFRLEVBQUUsRUFBQyxLQUFLLEVBQUUsVUFBVSxFQUFFLElBQUksRUFBRSxLQUFLLEVBQUM7UUFDMUMsUUFBUSxFQUFFLEVBQUMsS0FBSyxFQUFFLFVBQVUsRUFBRSxJQUFJLEVBQUUsS0FBSyxFQUFDO1FBQzFDLE1BQU0sRUFBRSxFQUFDLEtBQUssRUFBRSxRQUFRLEVBQUUsSUFBSSxFQUFFLEtBQUssRUFBQztLQUN6QyxDQUFDIiwiZmlsZSI6ImNvcmUvc2VydmVyL2VudW0vQXVkaXRTdGF0dXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICog5Lu75YqhIOWuoeaguOeKtuaAgVxyXG4gKiBAdGltZTogMjAxNy0wNi0wNSAxMTo1MzoxN1xyXG4gKiBAcGFyYW1zOlxyXG4gKiBAcmV0dXJuOlxyXG4gKi9cclxuXHJcbmludGVyZmFjZSBJQXVkaXRTdGF0dXN7XHJcbiAgICBWZXJpZmluZzoge3ZhbHVlOnN0cmluZywgdGV4dDpzdHJpbmd9O1xyXG4gICAgVmVyaWZpZWQ6IHt2YWx1ZTpzdHJpbmcsIHRleHQ6c3RyaW5nfTtcclxuICAgIFJlZnVzZToge3ZhbHVlOnN0cmluZywgdGV4dDpzdHJpbmd9O1xyXG59XHJcblxyXG5leHBvcnQgY29uc3QgQXVkaXRTdGF0dXMgOntba2V5OiBzdHJpbmddOiB7dmFsdWU6c3RyaW5nLCB0ZXh0OnN0cmluZ319ICYgSUF1ZGl0U3RhdHVzID0ge1xyXG4gICAgVmVyaWZpbmc6IHt2YWx1ZTogXCJWZXJpZmluZ1wiLCB0ZXh0OiBcIuWuoeaguOS4rVwifSxcclxuICAgIFZlcmlmaWVkOiB7dmFsdWU6IFwiVmVyaWZpZWRcIiwgdGV4dDogXCLlt7LlrqHmoLhcIn0sXHJcbiAgICBSZWZ1c2U6IHt2YWx1ZTogXCJSZWZ1c2VcIiwgdGV4dDogXCLmnKrpgJrov4dcIn0sXHJcbn07XHJcbiJdfQ==

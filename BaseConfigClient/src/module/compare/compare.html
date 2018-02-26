@@ -1,0 +1,137 @@
+<div class="compare-one-point" ng-controller="compareController as compareCtrl">
+    <div class="compare-title">
+        <span class="compare-title-analyze">人脸相似度分析</span>
+        <span class="compare-title-icon" ng-click="compareCtrl.closePage()"></span>
+    </div>
+
+    <div class="compare-content">
+        <div class="compare-middle">
+            <div class="compare-input-one">
+                <input type="text" 
+                    class="compare-input-text-one" 
+                    placeholder="请输入身份证号" 
+                    ng-model="IdValueLeft" 
+                    ng-maxlength="18"
+                    ng-click="compareCtrl.layerPopup()"
+                />
+                <img src="../../images/compare/1.png" class="compare-input-img-one" ng-click="compareCtrl.imgUploadById(IdValueLeft,'left')">
+            </div>
+            <div class="compare-input-two">
+
+            <input type="text" 
+                class="compare-input-text-two" 
+                placeholder="请输入身份证号" 
+                ng-model="IdValueRight" 
+                ng-maxlength="18"
+                ng-click="compareCtrl.layerPopup()"
+            />
+                <img src="../../images/compare/1.png" class="compare-input-img-two"  ng-click="compareCtrl.imgUploadById(IdValueRight,'right')">
+            </div>
+        </div>
+
+        <div class="compare-footer">
+
+            <div class="footer-picture-left">
+                <input type="file" class=" left-file" id="faceLeft" ng-disabled="compareCtrl.leftQueryList.length>0" ng-upload-change="compareCtrl.imgUploading($event,'left')" accept="image/png,image/jpg,image/jpeg">
+                <label class="picture-left-photo" for="faceLeft">
+                    <div class="picture-left-inner">
+                        <div class="picture-left-outside"  >
+                            <div class="picture-left-inside">
+                            </div>
+                        </div>
+                        <div class="picture-left-text">
+                            <span class="picture-left-text-or">或者</span>
+                            <span class="picture-left-text-other">上传人脸图片</span>
+                        </div>
+                        <div class="picture-left-show"  ng-show="compareCtrl.leftQueryList.length>0">
+                           
+                            <div class="left-query-list" ng-repeat="item in compareCtrl.leftQueryList">
+                                <img id="img" ng-src="{{item.imageUrl|imageUrlFilter}}" alt="">
+                                    <span class="previous" ng-show="compareCtrl.leftQueryList.length>1" 
+                                        ng-click="compareCtrl.fipePage('previous')" 
+                                        ng-class="{'goPrevious':compareCtrl.previous}">
+                                    </span>
+                                    <span class="next" ng-show="compareCtrl.leftQueryList.length>1" 
+                                        ng-click="compareCtrl.fipePage('next')"  
+                                        ng-class="{'goNext':compareCtrl.next}">
+                                    </span>
+                                
+                            </div>
+                            <label class="picture-left-change" for="pictureL" >更换照片
+                                <input  id="pictureL" type="file" class="picture-Lt" ng-upload-change="compareCtrl.imgUploading($event,'left')" accept="image/png,image/jpg,image/jpeg">
+                            </label>
+                        </div>
+                    </div>
+                </label>
+
+            </div>
+            <div class="footer-picture-middle">
+                <div class="picture-middle-img-outside"  ng-class="{'picture-outAnimate': compareCtrl.comparAnimate}">
+                    <div class="picture-middle-img-inside" ng-show="!compareCtrl.comparAnimate">
+                        <span  class="picture-middle-compare" ng-if="!compareCtrl.score">人脸识别</span>
+                        <span  class="picture-middle-compare-result" ng-if="compareCtrl.score">{{compareCtrl.score}}%</span>
+                    </div>  
+                </div> 
+                <div class="picture-middle-animate" ng-show="compareCtrl.comparAnimate" >
+                </div>
+            </div>
+            <div class="footer-picture-left">
+                <input type="file" class=" left-file" id="faceLeft1"  ng-disabled="compareCtrl.rightQueryList.length>0" ng-upload-change="compareCtrl.imgUploading($event,'right')" accept="image/png,image/jpg,image/jpeg">
+                <label class="picture-left-photo" for="faceLeft1" >
+                    <div class="picture-left-inner">
+                        <div class="picture-left-outside">
+                            <div class="picture-left-inside">
+                            </div>
+                        </div>
+                        <div class="picture-left-text">
+                            <span class="picture-left-text-or">或者</span>
+                            <span class="picture-left-text-other">上传人脸图片</span>
+                        </div>
+                        <div class="picture-left-show" ng-show="compareCtrl.rightQueryList.length>0">
+                            <div class="left-query-list" ng-repeat="item in compareCtrl.rightQueryList">
+                                <img id="img" ng-src="{{item.imageUrl|imageUrlFilter}}" alt="">
+                                <span class="previous" ng-show="compareCtrl.rightQueryList.length>1" ng-click=""></span>
+                                <span class="next" ng-show="compareCtrl.rightQueryList.length>1" ng-click=" " ></span>
+                            </div>
+                            <label class="picture-left-change" for="pictureR">更换照片
+                                <input id="pictureR" type="file" class="picture-Lt" ng-upload-change="compareCtrl.imgUploading($event,'right')" accept="image/png,image/jpg,image/jpeg">
+                            </label>
+                        </div>
+                    </div>
+                </label>
+
+                
+            </div>
+
+            <!-- <div class="footer-picture-right">
+                <input type="file" class="right-file" id="faceRight" 
+                ng-model="num" 
+                ng-disabled="compareCtrl.imgPathRight" 
+                ng-class="{'active': compareCtrl}"
+                ng-upload-change="compareCtrl.imgUploading($event,'right')" accept="image/png,image/jpg,image/jpeg">
+                <label class="picture-right-photo" for="faceRight">
+                    <div class="picture-right-inner">
+                        <div class="picture-right-outside">
+                            <div class="picture-right-inside">
+                            </div>
+                        </div>
+
+                        <div class="picture-right-text">
+                            <span class="picture-right-text-or">或者</span>
+                            <span class="picture-right-text-other">上传人脸图片</span>
+                        </div>
+                        <div class="picture-right-show" ng-show="compareCtrl.imgPathRight">
+
+                            <label class="picture-right-change" for="pictureR">更换照片
+                                <input id="pictureR" type="file" class="picture-Rt" ng-upload-change="compareCtrl.imgUploading($event,'right')" accept="image/png,image/jpg,image/jpeg">
+                            </label>
+                        </div>
+                        <div class="right-query-list" ng-repeat="item in compareCtrl.rightQueryList">
+                            <img ng-src="{{item.value|imageUrlFilter}}" alt="">
+                        </div>
+                    </div>
+                </label>
+            </div> -->
+        </div>
+    </div>
+    <div>

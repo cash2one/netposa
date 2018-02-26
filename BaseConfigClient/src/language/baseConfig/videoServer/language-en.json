@@ -1,0 +1,10 @@
+{
+     
+    "note": "/*******视频服务器*********/",
+    "DP_CONFIG_VIDEOSERVER_01": "Are you sure you want to delete the video server configuration??",
+    "DP_CONFIG_VIDEOSERVER_02": "username",
+    "DP_CONFIG_VIDEOSERVER_03": "password",
+    "DP_CONFIG_VIDEOSERVER_04": "Proxy service",
+    "DP_CONFIG_VIDEOSERVER_05": "Please select the server type"
+    
+  }

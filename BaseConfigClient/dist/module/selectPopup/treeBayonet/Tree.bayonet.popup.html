@@ -1,0 +1,47 @@
+<div class="tree-camera-popup g-pop f-cb "  ng-controller="treeBayonetPopupController as treeBayonetPopupCtl">
+    <div class="camera-tree-area f-fl">
+        <div class="tree-search f-pr">
+            <input type="text" class="ipt" ng-model="treeBayonetPopupCtl.searchStr"  ng-change="treeBayonetPopupCtl.onChangeSearch()">
+            <a href="javascript:" class="u-input-search tree-search-btn"></a>
+        </div>
+        <div class="tree-area-content" ng-scrollbars>
+            <util-tree tree-id="{{treeBayonetPopupCtl.treeParams.treeId}}"
+                       tree-datas="treeBayonetPopupCtl.treeParams.treeDatas"
+                       check-enable="true"
+                       on-check="treeBayonetPopupCtl.treeParams.onCheck(event, treeId, treeNode)"
+                       single-select="true"
+                       edit-enable="false"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg=""
+                       search-no-data-msg=""
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-expand-level="0"
+                       tree-init-complete = "treeBayonetPopupCtl.addCache()"
+            ></util-tree>
+        </div>
+    </div>
+    <div class="sel-area f-fl">
+        <div class="area-header f-cb">
+            <span>已选 <span>{{treeBayonetPopupCtl.selNum}}</span></span>
+            <span class="f-fr c-font-blue f-csp" ng-click="treeBayonetPopupCtl.clearAll()">清除所有</span>
+        </div>
+        <div class="sel-content f-cb" ng-scrollbars>
+            <div class="camera-item f-fl f-pr" ng-repeat="node in treeBayonetPopupCtl.cacheSelCam">{{node.Name}}
+                <i class="u-close f-abs f-csp" ng-click="treeBayonetPopupCtl.removeChecked(node)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="tree-camera-popup-action">
+        <a href="javascript:" class="u-button u-button-blue-1  pop-btn-sty" ng-click="treeBayonetPopupCtl.saveCamera()">
+            保存
+        </a>
+        <a href="javascript:" class="u-button u-button-blue-2  pop-btn-sty" ng-click="treeBayonetPopupCtl.cancelCamPop()">
+            取消
+        </a>
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="u-baseconfig-popup m-device-popup" ng-controller="baseConfigCameraPopup as cameraPopup">
+    <div class="f-cfb d-tree-content" style="padding: 10px 20px;">
+
+        <div class="box-cntr">
+            <div class="box-head" translate="DP_CONFIG_CAMERA_01"></div>
+            <div class="box-center">
+                <input class="u-input box-center-input" ng-model="cameraPopup.searchLeftTreeInput" ng-keyup="cameraPopup.searchLeftTreeInputKeyUp($event,cameraPopup.searchLeftTreeInput)" type="text" placeholder="{{'DP_CONFIG_CAMERA_09'|translate}}">
+                <i class="u-input-search" ng-click="cameraPopup.searchLeftTree(cameraPopup.searchLeftTreeInput)"></i>
+            </div>
+            <div class="box-bottom" style="height:290px" ng-scrollbars>
+                <util-tree tree-id="{{cameraPopup.leftTreeParams.treeId}}"
+                           tree-datas="cameraPopup.leftTreeParams.treeDatas"
+                           check-enable="{{cameraPopup.leftTreeParams.checkEnable}}"
+                           single-select="{{cameraPopup.leftTreeParams.isSingleSelect}}"
+                           is-simple-data="{{cameraPopup.leftTreeParams.isSimpleData}}"
+                           show-icon="{{cameraPopup.leftTreeParams.isShowIcon}}"
+                           show-line="{{cameraPopup.leftTreeParams.isShowLine}}"
+                           default-no-data-msg="{{cameraPopup.leftTreeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{cameraPopup.leftTreeParams.searchNoDataMsg}}"
+                           on-click="cameraPopup.leftTreeParams.onClick(event, treeId, treeNode)" 
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           edit-enable="{{cameraPopup.leftTreeParams.editEnable}}"
+                           show-remove-btn="{{cameraPopup.leftTreeParams.showRemoveBtn}}"
+                           show-rename-btn="{{cameraPopup.leftTreeParams.showRenameBtn}}"
+                           add-diy-dom="cameraPopup.leftTreeParams.addDiyDom(treeId,treeNode)"
+                           is-prev="false"
+                           is-next="false"
+                           is-inner="false"
+                           is-copy="true"
+                           is-move="false"
+                           before-drag="cameraPopup.leftTreeParams.beforeDrag(treeId, treeNodes)"
+                           before-drop="cameraPopup.leftTreeParams.beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy)"
+                           default-expand-level="0"></util-tree>
+            </div>
+        </div>
+
+        <div class="center-btns">
+            <div class="center-btn">
+                <button class="center-btn-right u-button" ng-class="{'z-hide': cameraPopup.rightSelectTreeNodeId == null}" ng-disabled="cameraPopup.rightSelectTreeNodeId == null" ng-click="cameraPopup.moveLeftNode2RightNode()"></button>
+            </div>
+        </div>
+
+        <div class="box-cntr f-fr">
+            <div class="box-head">
+                {{cameraPopup.type == 'lamp'? '立杆': '行政区域'}}
+            </div>
+
+            <div class="box-bottom" style="height:335px" ng-scrollbars>
+                <util-tree tree-id="{{cameraPopup.rightTreeParams.treeId}}"
+                           tree-datas="cameraPopup.rightTreeParams.treeDatas"
+                           check-enable="{{cameraPopup.rightTreeParams.checkEnable}}"
+                           single-select="{{cameraPopup.rightTreeParams.isSingleSelect}}"
+                           is-simple-data="{{cameraPopup.rightTreeParams.isSimpleData}}"
+                           show-icon="{{cameraPopup.rightTreeParams.isShowIcon}}"
+                           show-line="{{cameraPopup.rightTreeParams.isShowLine}}"
+                           default-no-data-msg="{{cameraPopup.rightTreeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{cameraPopup.rightTreeParams.searchNoDataMsg}}"
+                           on-click="cameraPopup.rightTreeParams.onClick(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           edit-enable="{{cameraPopup.rightTreeParams.editEnable}}"
+                           show-remove-btn="{{cameraPopup.rightTreeParams.showRemoveBtn}}"
+                           show-rename-btn="{{cameraPopup.rightTreeParams.showRenameBtn}}"
+                           is-prev="true"
+                           is-next="true"
+                           is-inner="true"
+                           is-copy="false"
+                           is-move="true"
+                           before-drag="cameraPopup.rightTreeParams.beforeDrag(treeId, treeNodes)"
+                           before-drop="cameraPopup.rightTreeParams.beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy)"
+                           default-expand-level="0"></util-tree>
+            </div>
+        </div>
+
+    </div>
+    <div class="form f-cfb" style="padding:10px 15px;border-top:1px solid #e4e4e4;margin-top:10px;">
+        <img src="../../../images/common/alerm-Icon.png"/>
+        <label style="color: gray;font-weight: 400;position: relative;top: 1px;" translate="DP_CONFIG_COMMON_87"></label>
+        <button class="u-button f-fr m-right15 u-button-blue-2" ng-click="cameraPopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+        <button class="u-button f-fr m-right15 u-button-blue-1" ng-click="cameraPopup.submit()" translate="DP_CONFIG_COMMON_05"></button>
+    </div>
+</div>

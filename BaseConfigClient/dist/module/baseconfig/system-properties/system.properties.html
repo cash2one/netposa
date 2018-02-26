@@ -1,0 +1,84 @@
+<!-- 系统参数页面 -->
+
+<div class="m-system-properties f-cfb">
+	<ol class="m-route f-cfb">
+        <li translate="DP_CONFIG_COMMON_30"></li>
+        <li class="route-separate">/</li>
+        <li translate="DP_CONFIG_SYSTEMPROPERTIES_01"></li>
+    </ol>
+
+
+    <div class="m-systemProperties-info">
+        <div class="f-cfb m-systemProperties-info-top">
+			 <div class="form-group">
+				 <span translate="任务审核"></span>
+				 <switch-button class="m-switch-button" name="enabled" ng-model="enabled" ng-change="changeCallback" ng-click="enabled=!enabled"></switch-button>
+			 </div>
+
+			<!--<div class="form-group">-->
+				<!--<span translate="系统语言"></span>-->
+				<!--<select class="form-control" ng-model="systemPropertiesCtrl.sysLanguage">-->
+					<!--<option>中文</option>-->
+					<!--<option>英文</option>-->
+				<!--</select>-->
+			<!--</div>-->
+
+			<div class="form-group">
+				<span translate="报警处理"></span>
+				<span translate="比中照片数">:</span>
+				<select class="form-control" ng-model="systemPropertiesCtrl.systemData.AlarmPhotoNum">
+					<option ng-repeat="item in [1,2,3,4,5]">{{item}}</option>
+				</select>
+			</div>
+
+            <div class="form-group">
+            	<span translate="以图搜图"></span>
+            	<span translate="上传照片数">:</span>
+				<select class="form-control" ng-model="systemPropertiesCtrl.systemData.PhotoFind">
+					<option ng-repeat="item in [1,2,3,4,5]">{{item}}</option>
+				</select>
+            </div>
+
+            <div class="form-group">
+            	<span translate="身份确认"></span>
+            	<span translate="比中照片数">:</span>
+				<select class="form-control" ng-model="systemPropertiesCtrl.systemData.Identity">
+					<option ng-repeat="item in [1,2,3,4,5]">{{item}}</option>
+				</select>
+				<span translate="阀值: "></span>
+				<input type="number"  class="form-control number" ng-model="systemPropertiesCtrl.systemData.IdentityValue">
+				<!--<select>-->
+					<!--<option value="">5</option>-->
+				<!--</select>-->
+            </div>
+
+            <div class="form-group">
+            	<span translate="DP_CONFIG_SYSTEMPROPERTIES_05"></span>
+            	<span translate="DP_CONFIG_SYSTEMPROPERTIES_06"></span>
+            	<select class="form-control" ng-model="systemPropertiesCtrl.systemData.StoreTime">
+            		<option>6个月</option>
+            	</select>
+            	<span translate="DP_CONFIG_SYSTEMPROPERTIES_07"></span>
+            	<!-- 下面两个span是进度条 -->
+            	<span></span>
+            	<span></span>
+
+            	<span translate="DP_CONFIG_SYSTEMPROPERTIES_08"></span>
+            	<span>971.9GB</span>
+            	<span translate="DP_CONFIG_SYSTEMPROPERTIES_09"></span>
+            	<span>1948.0GB</span>
+
+            </div>
+			<div class="form-group">
+				<span translate="视频回放时长"></span>
+				<span translate="前"></span>
+				<input type="number"  class="form-control number" ng-model="systemPropertiesCtrl.systemData.videoBeforeTime">
+				<span translate="后"></span>
+				<input type="number"  class="form-control number" ng-model="systemPropertiesCtrl.systemData.videoAfterTime">
+			</div>
+        </div>
+    </div>
+	<div class="f-cfb m-systemProperties-bottom">
+		<button class="m-systemProperties-btn" translate="DP_CONFIG_COMMON_05" ng-click="systemPropertiesCtrl.submitList()"></button>
+	</div>
+</div>

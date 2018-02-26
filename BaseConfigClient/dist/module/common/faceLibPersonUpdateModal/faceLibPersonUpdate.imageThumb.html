@@ -1,0 +1,23 @@
+<div class="u-imageupload-thumb" ng-controller="imageUploadThumbController as imageUploadThumbCtrl">
+    <ul class=" image-list " ng-if="imageUploadThumbCtrl.imageThumbList.length>0">
+        <li class="image-cntr" ng-repeat="item in imageUploadThumbCtrl.imageThumbList">
+            <div class="fn-ic">
+                <div class="image-content">
+                     <img  util-img-ctrl-size ng-src="{{(item.imageurl?item.imageurl:item) | toFiltImgUrl}}" />
+                </div>
+            </div>
+            <i class="remove-image i-close-red"
+               title="{{'FDS_01_06_67'|translate}}"
+               ng-click="imageUploadThumbCtrl.removeImage(item)"></i>
+        </li>
+    </ul>
+
+    <p class="bottom-cancel-btn">
+        <button class="u-button u-button-blue-5"
+                translate="FDS_00_07_02"
+                ng-click="imageUploadThumbCtrl.closeModal()"
+        >
+
+        </button>
+    </p>
+</div>

@@ -1,0 +1,145 @@
+.m-suggestions{
+    position: absolute;
+    top:0;
+    left: 15px;
+    right:15px;
+    bottom:15px;
+}
+
+.m-suggestions .sug-problem{
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+}
+
+.m-suggestions .sug-pro-title{
+    width: 100%;
+    height:48px;
+    line-height: 48px;
+    padding: 0 25px 0 14px;
+}
+
+.m-suggestions .sug-pro-area{
+    width: 100%;
+    height: 84px;
+    padding: 0 25px;
+}
+
+.m-suggestions .sug-pro-textarea{
+    width: 720px;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.m-suggestions .sug-pro-btn{
+    width: 100%;
+    padding: 0 25px;
+    height: 54px;
+    line-height: 54px;
+}
+
+.m-suggestions .sug-list-wrap{
+    position: absolute;
+    top: 225px;
+    left: 0;
+    right: 0;
+    bottom:0;
+    background: #fff;
+}
+
+.m-suggestions .sug-list-title{
+    height:46px;
+    line-height: 46px;
+    padding: 0 25px;
+}
+
+.m-suggestions .sug-list-border{
+    height:100%;
+    border-bottom:1px solid #eee;
+}
+
+/*表格*/
+.m-suggestions .feedBack-lists{
+    position: absolute;
+    top: 46px;
+    left:0;
+    right:0;
+    bottom: 0;
+    overflow: auto;
+    margin: 0 25px;
+    border-top:1px solid #eee;
+    background: #fff;
+    border-radius:0 0 5px 5px;
+}
+
+.m-suggestions .feedBack-list{
+    padding-bottom:15px;
+    border-bottom: 1px solid #eee;
+}
+
+.m-suggestions .feedBack-list-top{
+    margin-bottom: 10px;
+}
+
+.m-suggestions .list-top-title{
+    width: 100px;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.m-suggestions .list-top-txt{
+    color: #999;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.m-suggestions .list-bottom-txt{
+    width: 95%;
+    color: #333;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.m-suggestions .list-bottom-btn{
+    color: #45a2ff;
+    font-size: 14px;
+    width: 5%;
+    text-align: right;
+    line-height: 20px;
+}
+
+.m-suggestions .feedBack-list-input{
+    padding: 15px;
+    background: #f6f7fb;
+    margin-top: 15px;
+}
+
+.m-suggestions .list-input-size{
+    width: 95%;
+    margin-right: 1%;
+}
+
+.m-suggestions .list-btn-size{
+    width:4%;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    cursor: pointer;
+    background-color: #4394ff;
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.m-suggestions .have-reply-btn{
+    padding:15px;
+    background: #f6f7fb;
+}

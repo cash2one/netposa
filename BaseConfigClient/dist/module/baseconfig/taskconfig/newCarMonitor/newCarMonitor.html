@@ -1,0 +1,116 @@
+<div class="m-car-monitor">
+    <div class="car-monitor-route">
+        <ol class="m-route f-cfb">
+            <li translate="DP_VIDEOSTRUCTURE_13"></li>
+            <li class="route-separate">/</li>
+            <li translate="布控任务"></li>
+            <li class="route-separate">/</li>
+            <li translate="新建车辆布控任务"></li>
+        </ol>
+    </div>
+    <div class="car-monitor">
+        <div class="car-monitor-content">
+            <div class="content-head">基本信息</div>
+            <div class="content-center" style=" padding-top:8px;">
+                <div class="car-monitor-left-form">
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i>布控类型</span>
+                        <select ng-change="newCarMonitorCtrl.changeMonitorType(newCarMonitorCtrl.TaskModel.ListType)"
+                                ng-options="item.value as item.text for item in newCarMonitorCtrl.CarTaskType"
+                                ng-model="newCarMonitorCtrl.TaskModel.ListType">
+                            <option value="">{{'请选择布控类型'|translate}}</option>
+                        </select>
+                    </div>
+                    <div class="pdp-form">
+                        <span class="form-title"><i class="c-font-red">*</i>车牌号码</span>
+                        <input placeholder="请填写车牌号码" ng-model="newCarMonitorCtrl.TaskModel.PlateNumber" type="text"/>
+                        </select>
+                    </div>
+
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i>车牌颜色</span>
+                        <select
+                                ng-options="item.value as item.text for item in newCarMonitorCtrl.CarForColor"
+                                ng-model="newCarMonitorCtrl.TaskModel.PlateColor">
+                            <option value="">{{'DP_CONFIG_TASKCONFUG_75'|translate}}</option>
+                        </select>
+                    </div>
+
+                    <div class="pdp-form pdp-form-time-picker">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'有效时间'|translate}}</span>
+                        <span>
+                                <input type="text"
+                                       name="newTaskStartTime"
+                                       ng-model="newCarMonitorCtrl.TaskModel.ValidTimeStart"
+                                       date-picker
+                                       placeholder="请选择开始时间"
+                                       show-init="false"
+                                /><i>-</i>
+                                <input type="text"
+                                       name="newTaskEndTime"
+                                       ng-model="newCarMonitorCtrl.TaskModel.ValidTimeEnd"
+                                       date-picker
+                                       placeholder="请选择结束时间"
+                                       show-init="false"
+                                />
+                            </span>
+                    </div>
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i> 审核人员</span>
+                        <select
+                                ng-model="newCarMonitorCtrl.TaskModel.AuditUser"
+                                ng-options="userAudit.ID as userAudit.JsonUserData.Person.Name for userAudit in newCarMonitorCtrl.userAuditList"
+                        >
+                            <option value="">{{'DP_CONFIG_TASKCONFUG_80'|translate}}</option>
+                        </select>
+                    </div>
+
+                    <div class="pdp-form pdp-form-textarea">
+                        <span class="form-title">{{'描述'|translate}}</span>
+                        <span class="text-area-layer">
+                            <textarea
+                                    placeholder="请输入任务描述"
+                                    ng-model="newCarMonitorCtrl.TaskModel.Description"
+                                    class="taskForm-input1"></textarea>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="car-monitor-right-form" ng-show="!newCarMonitorCtrl.isWhiteList">
+                    <div class="upload-car">
+                        <div class="upload-img">
+                            <img width="100%" height="100%" ng-show="newCarMonitorCtrl.TaskModel.CarPhoto"
+                                 ng-src="{{newCarMonitorCtrl.TaskModel.CarPhoto}}" alt="">
+                        </div>
+                        <div class="upload-btn">
+                            <span>添加图片</span>
+                            <input type="file" ng-upload-change="newCarMonitorCtrl.uploadImage($event)" class="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!newCarMonitorCtrl.isWhiteList">
+                <div class="content-head">联动策略</div>
+                <div class="content-center" style="padding-top: 20px;">
+                    <div class="car-monitor-form">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'联动策略'|translate}}</span>
+                        <input valid-nonempty="{{'联动策略'|translate}}"
+                               placeholder="{{'请选择联动策略' | translate}}"
+                               type="text"
+                               readonly
+                               ng-model="newCarMonitorCtrl.TaskModel.EventRule.Name">
+                        <button class="add-tpl" ng-click="newCarMonitorCtrl.addEventRule()">选择联动策略</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form" style="padding:10px 20px">
+                <button class="u-button u-button-blue-1 btnStyle" ng-click="newCarMonitorCtrl.newTaskSubmit()"
+                        ng-disabled="!newCarMonitorCtrl.TaskModel.PlateNumber.length"
+                        translate="确定"></button>
+                <button class="u-button u-button-blue-2 btnStyle" ng-click="newCarMonitorCtrl.newTaskCancel()"
+                        translate="DP_CONFIG_COMMON_19"></button>
+            </div>
+        </div>
+
+    </div>
+</div>

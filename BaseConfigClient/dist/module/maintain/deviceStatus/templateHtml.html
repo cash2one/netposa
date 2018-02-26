@@ -1,0 +1,120 @@
+<div class="operateLog-info-bottom f-cfb">
+
+    <div class="f-fl m-right15 f-cfb">
+        <span class="f-fl slideTitle m-right5" translate="FDS_02_02_25"></span>
+        <div class="f-fl f-pr">
+            <input class="u-select user-select-width m-area-width" type="text" readonly
+                   ng-click="deviceStatusCtrl.isShowAreaTree = !deviceStatusCtrl.isShowAreaTree"
+                   ng-model="deviceStatusCtrl.areaName">
+
+            <div class="tree-container" ng-show="deviceStatusCtrl.isShowAreaTree" ng-scrollbars>
+                <util-tree tree-hide="deviceStatusCtrl.areaTreeDataParams.treeDatas.length == 0"
+                           tree-id="{{deviceStatusCtrl.areaTreeDataParams.treeId}}"
+                           tree-datas="deviceStatusCtrl.areaTreeDataParams.treeDatas"
+                           is-default-selected="false"
+                           tree-init-complete="deviceStatusCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                           check-enable="false"
+                           single-select="true"
+                           is-simple-data="true"
+                           show-icon="true"
+                           show-line="false"
+                           default-no-data-msg="deviceStatusCtrl.areaTreeDataParams.defaultNoDataMsg"
+                           search-no-data-msg="deviceStatusCtrl.areaTreeDataParams.searchNoDataMsg"
+                           on-click="deviceStatusCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           default-select-tree-id="deviceStatusCtrl.areaTreeDataParams.defaultSelectTreeId"
+                           default-expand-level="0"
+                ></util-tree>
+            </div>
+        </div>
+    </div>
+    <!--用户名称-->
+    <div class="f-fl m-right15">
+        <span class="m-right5" translate="FDS_02_00_03"></span>
+        <input class="u-input u-input-width" type="text" placeholder="{{'FDS_02_02_04'|translate}}"
+               ng-model="deviceStatusCtrl.keyValueInput"/>
+    </div>
+
+    <!--状态-->
+    <div class="f-fl m-right15">
+        <span class="m-right5" translate="FDS_02_02_24"></span>
+        <select class="u-select u-select-width"
+                ng-change="deviceStatusCtrl.changeOperatorStatus(value)"
+                ng-model="deviceStatusCtrl.operatorStatus"
+                placeholder="{{'FDS_00_08_02'|translate}}"
+                ng-init="value='All'">
+
+            <option value="" translate="FDS_00_08_02"></option>
+
+            <option value="{{item.type}}"
+                    ng-repeat="item in deviceStatusCtrl.checkLine"
+                    ng-bind="item.name"></option>
+        </select>
+    </div>
+
+    <div class="f-fl f-cfb">
+        <button class="u-button f-fl m-right15" ng-click="deviceStatusCtrl.operatorSearch()" translate="FDS_02_00_11"></button>
+        <button class="u-button u-button-blue-4 f-fl" ng-click="deviceStatusCtrl.operatorExport()" translate="FDS_02_06_12"></button>
+    </div>
+
+</div>
+
+<div class="table-container">
+    <!--服务器-->
+    <div class="table-box"  ng-if="deviceStatusCtrl.pageType=='IvsServer'">
+        <util-table-head table-headers="deviceStatusCtrl.tHeadList"
+                         table-has-check='false'>
+            <util-table-tr ng-repeat="(index,tbody_data) in deviceStatusCtrl.pageParams.data">
+                <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.AreaName"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.ServerType"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.IpAddress"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.State=='1' ? '在线':'离线'" ng-class= "tbody_data.State=='1'?'m-circle-green':'m-circle-ddd'">
+                </util-table-tr-td>
+            </util-table-tr>
+            <div class="u-table-no-data" ng-show="deviceStatusCtrl.tableNoData" ng-cloak translate="FDS_00_01_18"></div>
+        </util-table-head>
+    </div>
+    <!--摄像机-->
+    <div class="table-box" ng-if="deviceStatusCtrl.pageType=='Camera'">
+        <util-table-head table-headers="deviceStatusCtrl.tHeadList"
+                         table-has-check='false'>
+            <util-table-tr ng-repeat="(index,tbody_data) in deviceStatusCtrl.pageParams.data">
+                <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.AreaName"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.Type"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.AlarmNumy"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.ServerIp"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.State=='1' ? '在线':'离线'" ng-class= "tbody_data.State=='1'?'m-circle-green':'m-circle-ddd'">
+                </util-table-tr-td>
+            </util-table-tr>
+            <div class="u-table-no-data" ng-show="deviceStatusCtrl.tableNoData" ng-cloak translate="FDS_00_01_18"></div>
+        </util-table-head>
+    </div>
+    <!--其他-->
+    <div class="table-box"  ng-if="deviceStatusCtrl.pageType=='WiFi'||deviceStatusCtrl.pageType=='RmpGate'||deviceStatusCtrl.pageType=='EFENCE'">
+        <util-table-head table-headers="deviceStatusCtrl.tHeadList"
+                         table-has-check='false'>
+            <util-table-tr ng-repeat="(index,tbody_data) in deviceStatusCtrl.pageParams.data">
+                <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.AreaName||tbody_data.areaName"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.AlarmNumy"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.IpAddress"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.State=='1' ? '在线':'离线'" ng-class= "tbody_data.State=='1'?'m-circle-green':'m-circle-ddd'">
+                </util-table-tr-td>
+            </util-table-tr>
+            <div class="u-table-no-data" ng-show="deviceStatusCtrl.tableNoData" ng-cloak translate="FDS_00_01_18"></div>
+        </util-table-head>
+    </div>
+    <div class="table-paging">
+        <util-paging
+                page-params="deviceStatusCtrl.pageParams"
+                prev-page="deviceStatusCtrl.changePage(num)"
+                next-page="deviceStatusCtrl.changePage(num)"
+                go-page="deviceStatusCtrl.changePage(num)"
+                hide-size="true"
+        ></util-paging>
+    </div>
+</div>

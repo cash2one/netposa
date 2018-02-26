@@ -1,0 +1,138 @@
+<div class="m-face-struct f-cfb">
+    <!--第一步-->
+    <div class="face-struct-head">
+        <div class="face-struct-route">
+            <ol class="m-route f-cfb">
+                <li translate="DP_VIDEOSTRUCTURE_13"></li>
+                <li class="route-separate">/</li>
+                <li translate="视频结构化任务"></li>
+                <li class="route-separate">/</li>
+                <li translate="新建视频结构化任务"></li>
+            </ol>
+        </div>
+
+        <div class="face-struct-content">
+            <div class="content-head">
+                基本信息
+            </div>
+            <div class="content-center"  style=" padding-top:8px;">
+                <div class="face-struct-left-form">
+                    <div class="face-struct-form">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'任务名称'|translate}}</span>
+                        <input valid-nonempty="{{'任务名称'|translate}}"
+                               placeholder="{{'请填写任务名称' | translate}}"
+                               type="text"
+                               ng-model="videoNewTaskCtrl.taskModel.Name">
+                    </div>
+                    <div class="face-struct-form face-struct-form-radio">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'权限设置'|translate}}</span>
+                        <div class="radio-group">
+                            <span>
+                                <input id="everybody" value="EveryBody" ng-model="videoNewTaskCtrl.taskModel.AuthStatus" name="authUser" type="radio">
+                                <label for="everybody"> 所有人可见 </label>
+                            </span>
+                            <span>
+                                <input id="self" value="Self" ng-model="videoNewTaskCtrl.taskModel.AuthStatus" name="authUser" type="radio">
+                                <label for="self">仅自己可见</label>
+                            </span>
+                            <span>
+                                <input id="partbody" value="Part" ng-model="videoNewTaskCtrl.taskModel.AuthStatus" name="authUser" type="radio">
+                                <label for="partbody"> 部分用户可见 </label>
+                                <button ng-show="videoNewTaskCtrl.taskModel.AuthStatus==='Part'" class="open-person-btn"
+                                        ng-click="videoNewTaskCtrl.openPersonSelectModel()"
+                                        translate="DP_VIDEOSTRUCTURE_20"></button>
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="face-struct-right-form">
+                    <div class="face-struct-form face-struct-form-time-picker">
+                        <span class="form-title">{{'有效时间'|translate}}</span>
+                        <span>
+                                <input  type="text"
+                                       name="newTaskStartTime"
+                                       ng-model="videoNewTaskCtrl.taskModel.ValidTimeStart"
+                                       date-picker
+                                       placeholder="请选择开始时间"
+                                       show-init="false"
+                                /><i>-</i>
+                                <input  type="text"
+                                       name="newTaskEndTime"
+                                       ng-model="videoNewTaskCtrl.taskModel.ValidTimeEnd"
+                                       date-picker
+                                       placeholder="请选择结束时间"
+                                       show-init="false"
+                                />
+                            </span>
+                    </div>
+                    <div class="face-struct-form face-struct-form-textarea">
+                        <span class="form-title">{{'描述'|translate}}</span>
+                        <span class="text-area-layer">
+                            <textarea
+                                    placeholder="请输入任务描述"
+                                   ng-model="videoNewTaskCtrl.taskModel.Description"
+                                      class="taskForm-input1"></textarea>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-head">
+                选择设备
+            </div>
+
+            <div class="content-center" style=" padding-top:12px;">
+                <div class="face-struct-left-form">
+                    <div class="face-struct-form face-struct-form-radio"  style="padding-top:10px">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'报警规则'|translate}}</span>
+                        <div class="radio-group radio-group-and-input">
+                            <span>
+                                <input id="highalarm" ng-change="videoNewTaskCtrl.changeThresholdType('Hight')" value="Hight" ng-model="videoNewTaskCtrl.thresholdType" name="ThresholdType" type="radio">
+                                <label for="highalarm"> 高阈值 </label>
+                                <input type="text" ng-disabled="videoNewTaskCtrl.thresholdType != 'Hight'" placeholder="请输入高阈值" ng-model="videoNewTaskCtrl.taskModel.HighThreshold" />
+                            </span>
+                            <span>
+                                <input id="lowalarm" value="Low" ng-change="videoNewTaskCtrl.changeThresholdType('Low')" ng-model="videoNewTaskCtrl.thresholdType" name="ThresholdType" type="radio">
+                                <label for="lowalarm">低阈值</label>
+                                <input type="text" ng-disabled="videoNewTaskCtrl.thresholdType != 'Low'" placeholder="请输入低阈值" ng-model="videoNewTaskCtrl.taskModel.LowThreshold" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="face-struct-right-form">
+                    <div class="face-struct-form face-struct-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'审核人员'|translate}}</span>
+                        <select name="auditUser" ng-model="videoNewTaskCtrl.taskModel.AuditUser"
+                            ng-options="userAudit.ID as userAudit.JsonUserData.Person.Name for userAudit in videoNewTaskCtrl.userAuditList"
+                        >
+                            <option value="">请选择审核人员</option>
+                        </select>
+                    </div>
+                    <div class="face-struct-form face-struct-form-select">
+                        <span class="form-title"><i class="c-font-red">*</i>{{'运行计划'|translate}}</span>
+                        <select name="auditUser" ng-model="videoNewTaskCtrl.taskModel.TimeTemplateID"
+                                ng-options="tpl.ID as tpl.Name for tpl in videoNewTaskCtrl.timeTemplateList"
+                        >
+                            <option value="">请选择运行计划</option>
+                        </select>
+                        <button class="add-tpl" ng-click="videoNewTaskCtrl.addTimeTemplate()">新建时间模版</button>
+                    </div>
+                </div>
+            </div>
+            <div class="face-struct-form face-struct-form-tree" style="margin-bottom: 20px;">
+                <span class="form-title"><i class="c-font-red">*</i>{{'选择资源'|translate}}</span>
+                <div class="camera-layer"
+                     ng-include="videoNewTaskCtrl.treeModelTpl"></div>
+
+            </div>
+            <div class="form" style="padding:10px 20px;border-top:1px solid #ededed">
+                <button class="u-button u-button-blue-1 btnStyle" ng-click="videoNewTaskCtrl.submitStruct()"
+                        ng-disabled="!videoNewTaskCtrl.taskModel.Name.length"
+                        translate="确定"></button>
+                <button class="u-button u-button-blue-2 btnStyle" ng-click="videoNewTaskCtrl.cancelAddStruct()"
+                        translate="DP_CONFIG_COMMON_19"></button>
+            </div>
+        </div>
+    </div>
+</div>

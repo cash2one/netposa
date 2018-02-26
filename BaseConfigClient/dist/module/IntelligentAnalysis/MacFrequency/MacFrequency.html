@@ -1,0 +1,262 @@
+<div class="face-track mac-frequency-analysis">
+    <div class="face-track-left" ng-class="{active:MacFrequencyCtrl.showForm}">
+        <div class="face-track-left-layer">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">Mac频次</div>
+                <div class="back-btn">
+                    <button ng-click="MacFrequencyCtrl.goBack()">返回上级</button>
+                </div>
+            </div>
+            <div class="face-track-form">
+                <div class="tab-list">
+                    <span ng-class="{'active':!MacFrequencyCtrl.showAnalysisList}"
+                          ng-click="MacFrequencyCtrl.setShowAnalysisList(false)">分析条件</span>
+                    <span ng-class="{'active':MacFrequencyCtrl.showAnalysisList}"
+                          ng-click="MacFrequencyCtrl.setShowAnalysisList(true)">分析结果</span>
+                </div>
+                <!--查询表单-->
+                <div class="analysis-from" ng-show="!MacFrequencyCtrl.showAnalysisList">
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>任务名称</span>
+                        <span class="input-layer">
+                            <input ng-model="MacFrequencyCtrl.FrequencyAnalysisParams.taskName" type="text" placeholder="请输入任务名称">
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <util-select class="analaysis-form-title" select-data="MacFrequencyCtrl.queryPattern"
+                                     select-repeat-by-key="name"
+                                     select-list-height="S"
+                                     selected-val="MacFrequencyCtrl.FrequencyAnalysisParams.type"
+                                     select-click="MacFrequencyCtrl.selectQueryType(selected)"
+                                     select-list-diy-icon="false"
+                                     select-is-tree="false">
+                        </util-select>
+                        <span class="input-layer" style="width: 177px;">
+                                <input ng-model="MacFrequencyCtrl.FrequencyAnalysisParams.value" show-init="false" type="text">
+                            </span>
+                    </div>
+                    <div class="track-form">
+                        <div class="analaysis-form-input">
+                            <span class="analaysis-form-title">时间筛选</span>
+                            <span class="fast-date">
+                    <span
+                            ng-repeat="item in MacFrequencyCtrl.FastDateList"
+                            ng-class="{'active':item.key === MacFrequencyCtrl.FastDate.key}"
+                            ng-click="MacFrequencyCtrl.setFastDate(item)">{{item.text}}</span>
+                    </span>
+                        </div>
+                        <div class="analaysis-form-input analaysis-form-input-date">
+                            <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                            <span class="input-layer">
+                                <input ng-model="MacFrequencyCtrl.FrequencyAnalysisParams.startTime"
+                                       date-picker
+                                       show-init="false" type="text" placeholder="请选择开始时间">
+                            </span>
+                        </div>
+                        <div class="analaysis-form-input analaysis-form-input-date">
+                            <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                            <span class="input-layer">
+                                <input ng-model="MacFrequencyCtrl.FrequencyAnalysisParams.endTime"
+                                       date-picker
+                                       show-init="false" type="text" placeholder="请选择结束时间">
+                            </span>
+                        </div>
+                        <div class="searh-submit">
+                            <button ng-click="MacFrequencyCtrl.submitSearch()">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <!--离线任务列表-->
+                <div class="analysis-result-table" ng-show="MacFrequencyCtrl.showAnalysisList">
+                    <div class="task-item" ng-repeat="item in MacFrequencyCtrl.FrequencyOffLine">
+                        <div class="task-name">{{item.TaskName}}
+                            <span ng-click="MacFrequencyCtrl.deleteAccompOffLine(item)" class="delete-task"></span></div>
+                        <div class="task-info">
+                            <ul>
+                                <li>
+                                    <span class="info-key">创建时间：</span>
+                                    <span class="info-value">{{item.CreateTime}}</span>
+                                </li>
+                                <li>
+                                    <span class="info-key">任务状态：</span>
+                                    <span class="info-value">{{(item.TaskStatus==="200"&&item.CompletePercent==="100")?"Over":"Run"}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="task-result-btn">
+                            <button ng-click="MacFrequencyCtrl.showAnalysisResult(item)" class="find-result" ng-class="{'active':(item.TaskStatus==='200'&&item.CompletePercent==='100')}">{{(item.TaskStatus==="200"&&item.CompletePercent==="100")?"查看结果":"分析中"}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--频次分析缩略结果-->
+    <div class="face-track-res face-track-result-res" ng-class="{'active':MacFrequencyCtrl.showResult}">
+        <div class="image-result">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">频次分析</div>
+                <div class="back-btn">
+                    <button ng-click="MacFrequencyCtrl.goBackForm()">返回上级</button>
+                </div>
+            </div>
+            <div class="track-result-content">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="head-title">
+                            <span class="head-right">共 <i>{{MacFrequencyCtrl.accpResultParams.totalCount}}</i> 条记录</span>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="capture-layer" ng-scrollbars>
+                            <div class="item-group" ng-repeat="group in MacFrequencyCtrl.accpResultParams.data track by MacFrequencyCtrl.getKey(item)">
+                                <div class="capture-item capture-item-main">
+                                    <div class="item-group-cnt">
+                                        <div class="desc">
+                                            <div class="icon-number">
+                                                <span>出现次数：</span>
+                                                <span>{{group.PerceiveInfos.length}}</span>
+                                            </div>
+                                            <div class="icon-address">
+                                                <span>武汉市保利国际中心</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-group-more"
+                                         ng-class="{active:MacFrequencyCtrl.checkRightResult[$index]}"
+                                         ng-click="MacFrequencyCtrl.slideRightResult($index)"
+                                    ></div>
+                                </div>
+                                <div class="item-repeat-group"  ng-class="{active:MacFrequencyCtrl.checkRightResult[$index]}">
+                                    <div class="capture-item"
+                                         ng-repeat="(i,item) in group.PerceiveInfos"
+                                         ng-click="MacFrequencyCtrl.openDetailPopup(item,i,'MapForAccpGroup')"
+                                         ng-mouseenter="MacFrequencyCtrl.resultToMap(item,i,'Accp')"
+                                         ng-mouseleave="MacFrequencyCtrl.unResultToMap(item,i,'Accp')"
+                                    >
+                                        <div class="img-info">
+                                            <span class="location">{{$index+1}}</span>
+                                        </div>
+                                        <div class="desc">
+                                            <div class="desc-item" ng-if="item.Mac">
+                                                <i class="mac"></i>
+                                                {{item.Mac}}
+                                            </div>
+                                            <div class="desc-item" ng-if="item.Imsi">
+                                                <i class="imsi"></i>
+                                                {{item.Imsi}}
+                                            </div>
+                                            <div class="desc-item" ng-if="item.Imei">
+                                                <i class="imei"></i>
+                                                {{item.Imei}}
+                                            </div>
+                                            <div class="desc-item">
+                                                <i class="time"></i>
+                                                {{item.AcqTime}}
+                                            </div>
+                                            <div class="desc-item">
+                                                <i class="address"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <util-paging
+                                hide-size="true"
+                                page-params="MacFrequencyCtrl.accpResultParams"
+                                prev-page="MacFrequencyCtrl.changeAccpResultPage(num)"
+                                next-page="MacFrequencyCtrl.changeAccpResultPage(num)"
+                                go-page="MacFrequencyCtrl.changeAccpResultPage(num)"
+                                show-type="small"
+                        ></util-paging>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taggle-result taggle-result-open" ng-class="{'active':MacFrequencyCtrl.showResult}"
+         ng-click="MacFrequencyCtrl.goAllResult()"></div>
+    <div class="taggle-result taggle-result-close" ng-class="{'active':MacFrequencyCtrl.showAllResult}"
+         ng-show="MacFrequencyCtrl.showAllResult" ng-click="MacFrequencyCtrl.closeAllResult()"></div>
+
+    <!--频次分析全部结果-->
+    <div class="face-track-all-res" ng-class="{'active':MacFrequencyCtrl.showAllResult}"
+         ng-style="{'width':MacFrequencyCtrl.windowWidth + 'px'}">
+        <div class="analaysis-head">
+            <div class="analaysis-head-title">频次分析</div>
+            <div class="back-btn">
+                <button ng-click="MacFrequencyCtrl.goBackForm()">返回上级</button>
+            </div>
+        </div>
+
+        <div class="all-result-layer">
+            <div class="all-result">
+                <div class="all-result-head">
+                    <div class="result-sort">
+                        <span class="ft active">按相似度</span><span class="mid">按时间</span><span class="lt">按频率</span>
+                    </div>
+                    <div class="result-operate">
+                    <span class="select-all checkbox">
+                        <input type="checkbox">
+                        <i>全选</i>
+                    </span>
+                        <button class="export">导出</button>
+                    </div>
+                </div>
+                <div class="all-res-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-2 col-lg-1-10"
+                                 ng-repeat="item in MacFrequencyCtrl.resultParams.data.result track by MacFrequencyCtrl.getKey(item)">
+                                <div class="result-item">
+                                    <div class="item-picture">
+                                        <img ng-src="{{item.accessLog.FacePath}}" alt="">
+                                    </div>
+
+                                    <div class="item-similarity">{{item.accessLog.similar}}</div>
+                                    <div class="item-time">{{item.accessLog.LogTime}}</div>
+                                    <div class="item-address">{{item.accessLog.address}}</div>
+                                    <div class="mask">
+                                        <span class="action">
+                                            <i class="sc"></i>
+                                            <i class="fx"></i>
+                                            <i class="bk"></i>
+                                            <i class="sp"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="all-result-footer container-fluid">
+                    <div class="row">
+                        <div class="col-md-3" style="padding:30px;">共 <i class="blue-font">{{MacFrequencyCtrl.resultParams.totalCount}}</i>
+                            条记录
+                        </div>
+
+                        <div class="page-bottom col-md-9">
+                            <util-paging
+                                    hide-size="true"
+                                    hide-gopage="true"
+                                    page-params="MacFrequencyCtrl.resultParams"
+                                    prev-page="MacFrequencyCtrl.changeResultPage(num)"
+                                    next-page="MacFrequencyCtrl.changeResultPage(num)"
+                                    go-page="MacFrequencyCtrl.changeResultPage(num)"
+                            ></util-paging>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

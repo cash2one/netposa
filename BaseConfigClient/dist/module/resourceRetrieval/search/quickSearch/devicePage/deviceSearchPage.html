@@ -1,0 +1,169 @@
+<div class="search-device-con" ng-controller="deviceSearchPageController as deviceSearchPageCtrl" ng-show="quickSearchCtrl.deviceStatus&&!QuickCtrl.queryStatus">
+    <div class="btn-group m-btn-group" role="group" aria-label="First group">
+        <button type="button"
+                class="btn btn-default m-btn-size"
+                ng-class="item.active?'active':''"
+                ng-repeat="item in deviceSearchPageCtrl.deviceButton"
+                ng-click="deviceSearchPageCtrl.deviceSwitch(item.name)"
+        >{{ item.title }}</button>
+    </div>
+    <ul class="media-list device" ng-scrollbars>
+
+        <li class="media media-list-ef" ng-repeat="item in quickSearchCtrl.deviceCameraResult.data" ng-if="deviceSearchPageCtrl.activeType === 'camera'">
+            <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                </span>
+            </div>
+            <div class="media-next">
+                <div class="media-right" ng-click="deviceSearchPageCtrl.devicePopup(item, 'Camera')">
+                    <ul>
+                        <li>
+                            <div class="name">设备名称：</div>
+                            <div class="text">{{item.Name}}</div>
+                        </li>
+                        <li>
+                            <div class="name">设备类型：</div>
+                            <div class="text" ng-if="item.DeviceType==='NormalCamera'">普通摄像机</div>
+                            <div class="text" ng-if="item.DeviceType==='HighCamera'">高清摄像机</div>
+                            <div class="text" ng-if="item.DeviceType==='FaceCamera'">人脸摄像机</div>
+                            <div class="text" ng-if="item.DeviceType==='PortraitCamera'">人像摄像机</div>
+                        </li>
+                        <li>
+                            <div class="name">坐标位置：</div>
+                            <div class="text">{{item.Lat+','+item.Lon}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="media media-list-ef" ng-repeat="item in quickSearchCtrl.deviceRmpGateResult.data" ng-if="deviceSearchPageCtrl.activeType === 'rmpgate'">
+            <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                </span>
+            </div>
+            <div class="media-next">
+                <div class="media-right" ng-click="deviceSearchPageCtrl.devicePopup(item, 'RmpGate')">
+                    <ul>
+                        <li>
+                            <div class="name">设备名称：</div>
+                            <div class="text">{{item.Name}}</div>
+                        </li>
+                        <li>
+                            <div class="name">坐标位置：</div>
+                            <div class="text">{{item.Lat+','+item.Lon}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="media media-list-ef" ng-repeat="item in quickSearchCtrl.deviceWifiResult.data" ng-if="deviceSearchPageCtrl.activeType === 'wifi'">
+            <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                </span>
+            </div>
+            <div class="media-next">
+                <div class="media-right" ng-click="deviceSearchPageCtrl.devicePopup(item, 'WiFi')">
+                    <ul>
+                        <li>
+                            <div class="name">设备名称：</div>
+                            <div class="text">{{item.Name}}</div>
+                        </li>
+                        <li>
+                            <div class="name">坐标位置：</div>
+                            <div class="text">{{item.Lat+','+item.Lon}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="media media-list-ef" ng-repeat="item in quickSearchCtrl.deviceElectronicResult.data" ng-if="deviceSearchPageCtrl.activeType === 'electronicfence'">
+            <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                </span>
+            </div>
+            <div class="media-next">
+                <div class="media-right" ng-click="deviceSearchPageCtrl.devicePopup(item, 'EFENCE')">
+                    <ul>
+                        <li>
+                            <div class="name">设备名称：</div>
+                            <div class="text">{{item.Name}}</div>
+                        </li>
+                        <li>
+                            <div class="name">坐标位置：</div>
+                            <div class="text">{{item.Lat+','+item.Lon}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="footer-page" ng-show="deviceSearchPageCtrl.activeType === 'camera'">
+        <div class="footer-page-con">
+            <div class="total">
+                共<i class="m-mark-num"> {{quickSearchCtrl.deviceCameraResult.totalCount}} </i>条记录
+            </div>
+            <util-paging
+                    page-params="quickSearchCtrl.deviceCameraResult"
+                    prev-page="quickSearchCtrl.changePageDevice(num, 'deviceCameraResult')"
+                    next-page="quickSearchCtrl.changePageDevice(num, 'deviceCameraResult')"
+                    go-page="quickSearchCtrl.changePageDevice(num, 'deviceCameraResult')"
+                    hide-size="quickSearchCtrl.hideSize"
+                    hide-gopage="quickSearchCtrl.hideGopage"
+            ></util-paging>
+        </div>
+    </div>
+    <div class="footer-page" ng-show="deviceSearchPageCtrl.activeType === 'rmpgate'">
+        <div class="footer-page-con">
+            <div class="total">
+                共<i class="m-mark-num"> {{quickSearchCtrl.deviceRmpGateResult.totalCount}} </i>条记录
+            </div>
+            <util-paging
+                    page-params="quickSearchCtrl.deviceRmpGateResult"
+                    prev-page="quickSearchCtrl.changePageDevice(num, 'deviceRmpGateResult')"
+                    next-page="quickSearchCtrl.changePageDevice(num, 'deviceRmpGateResult')"
+                    go-page="quickSearchCtrl.changePageDevice(num, 'deviceRmpGateResult')"
+                    hide-size="quickSearchCtrl.hideSize"
+                    hide-gopage="quickSearchCtrl.hideGopage"
+            ></util-paging>
+        </div>
+    </div>
+    <div class="footer-page" ng-show="deviceSearchPageCtrl.activeType === 'wifi'">
+        <div class="footer-page-con">
+            <div class="total">
+                共<i class="m-mark-num"> {{quickSearchCtrl.deviceWifiResult.totalCount}} </i>条记录
+            </div>
+            <util-paging
+                    page-params="quickSearchCtrl.deviceWifiResult"
+                    prev-page="quickSearchCtrl.changePageDevice(num, 'deviceWifiResult')"
+                    next-page="quickSearchCtrl.changePageDevice(num, 'deviceWifiResult')"
+                    go-page="quickSearchCtrl.changePageDevice(num, 'deviceWifiResult')"
+                    hide-size="quickSearchCtrl.hideSize"
+                    hide-gopage="quickSearchCtrl.hideGopage"
+            ></util-paging>
+        </div>
+    </div>
+    <div class="footer-page" ng-show="deviceSearchPageCtrl.activeType === 'electronicfence'">
+        <div class="footer-page-con">
+            <div class="total">
+                共<i class="m-mark-num"> {{quickSearchCtrl.deviceElectronicResult.totalCount}} </i>条记录
+            </div>
+            <util-paging
+                    page-params="quickSearchCtrl.deviceElectronicResult"
+                    prev-page="quickSearchCtrl.changePageDevice(num, 'deviceElectronicResult')"
+                    next-page="quickSearchCtrl.changePageDevice(num, 'deviceElectronicResult')"
+                    go-page="quickSearchCtrl.changePageDevice(num, 'deviceElectronicResult')"
+                    hide-size="quickSearchCtrl.hideSize"
+                    hide-gopage="quickSearchCtrl.hideGopage"
+            ></util-paging>
+        </div>
+    </div>
+</div>
+<div class="m-noMessage" ng-show="!quickSearchCtrl.deviceStatus&&!QuickCtrl.queryStatus">暂无数据</div>
+<div class="loading" ng-if="QuickCtrl.queryStatus"></div>

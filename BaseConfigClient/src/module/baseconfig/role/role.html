@@ -1,0 +1,46 @@
+<div ui-view="roleconfig" class="m-baseconfig-role">
+    <div class="right-content">
+        <div class="header-tips">
+            <span>基础配置</span> /
+            <span>角色管理</span> /
+            <span class="active">新建角色</span>
+        </div>
+        <div class="content">
+            <div class="menu-layer">
+                <button ng-click="bcRoleCtrl.addRole()" class="pdp-btn-icon btn-add"><i></i>新建角色</button>
+            </div>
+            <div class="table-list" ng-scrollbars>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>角色名称</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>描述</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in bcRoleCtrl.roleList">
+                        <td><span class="slide"></span></td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.JsonUserData.Person.Name}}</td>
+                        <td>{{item.CreateDate}}</td>
+                        <td>{{item.Description}}</td>
+                        <td>
+                            <i style="display: inline-block;margin-right: 10px"
+                               ng-click="bcRoleCtrl.updateRole(item.ID)"
+                               class="icon-btn i-edit z-gray" title="{{'编辑'|translate}}"></i>
+                            <i style="display: inline-block;"
+                               ng-click="bcRoleCtrl.deleteById(item)"
+                               class="icon-btn i-delete z-gray" title="{{'删除'|translate}}"></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

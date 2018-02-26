@@ -1,0 +1,113 @@
+<div class="m-lamp f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+        <span class="tree-search">
+            <input type="text" class="u-input tree-search" ng-model="lampCtrl.treeSearchInput" placeholder="{{'DP_CONFIG_COMMON_28'|translate}}" ng-keyup="lampCtrl.treeSearchInputKeyUp($event)"/>
+            <i class="u-input-search" ng-click="lampCtrl.treeSearchInputFunc()"></i>
+        </span>
+
+        <div ng-hide="lampCtrl.treeNoData" class="m-lamp-tree-container">
+            <util-tree tree-hide="lampCtrl.AreaTreeDataParams.treeDatas.length == 0"
+                       tree-id="{{lampCtrl.AreaTreeDataParams.treeId}}"
+                       tree-datas="lampCtrl.AreaTreeDataParams.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="lampCtrl.AreaTreeDataParams.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg="lampCtrl.AreaTreeDataParams.defaultNoDataMsg"
+                       search-no-data-msg="lampCtrl.AreaTreeDataParams.searchNoDataMsg"
+                       on-click="lampCtrl.AreaTreeDataParams.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="lampCtrl.AreaTreeDataParams.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div ng-show="lampCtrl.treeNoData" class="u-table-no-data" translate="DP_CONFIG_COMMON_16"></div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+
+            <div class="m-baseconfig-topFixed lamp-topFixed">
+                <ol class="m-route f-cfb">
+                    <li translate="DP_CONFIG_COMMON_71"></li>
+                    <li class="route-separate">/</li>
+                    <li translate="DP_CONFIG_COMMON_18"></li>
+                </ol>
+
+                <!--基本信息-->
+                <div class="m-lamp-info">
+                    <div class="f-cfb m-lamp-info-top">
+                        <!--搜索框-->
+                        <div class="m-taskForm f-fl m-right15">
+                            <span class="search-lamp-input">
+                                <input type="text" class="u-input" placeholder="{{'DP_CONFIG_COMMON_53' | translate}}" ng-model="lampCtrl.tableSearchInput" ng-keyup="lampCtrl.tableSearchInputKeyUp($event)"/>
+                                <i class="u-input-search" ng-click="lampCtrl.tableSearchInputFunc()"></i>
+                            </span>
+                        </div>
+
+                        <div class="m-taskForm f-fl m-right15 f-cfb">
+                            <button class="u-button f-fl m-right15"
+                                    ng-click="lampCtrl.tableSearchInputFunc()"
+                                    translate="DP_CONFIG_COMMON_24"
+                            ></button>
+                        </div>
+
+                    </div>
+                    <!--新增-->
+                    <div class="f-cfb m-lamp-info-bottom">
+                        <button class="u-button f-usn f-fl m-right15" ng-click="lampCtrl.addLamp(lampCtrl.currentArea)"  translate="DP_CONFIG_LAMP_06"></button>
+                        <button class="u-button f-usn f-fl u-button-blue-6" ng-click="lampCtrl.deleteByIds()" ng-disabled="!lampCtrl.isSelectItems" translate="DP_CONFIG_COMMON_37"></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="m-baseconfig-centerFixed lamp-centerFixed">
+                <!--表格-->
+                <util-table-head table-headers="lampCtrl.tHeadList"
+                                 table-has-check='true'
+                                 table-sort-fun="lampCtrl.sortByField(index,fieldName,sortStatus)"
+                                 table-after-check = "lampCtrl.afterChangeCheck(checkList,isCheckAll)"
+                >
+                    <util-table-tr ng-repeat="(index,tbody_data) in lampCtrl.tBodyList">
+
+                        <util-table-tr-td ng-bind="tbody_data.Name||('未知'|translate)"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.Code||('未知'|translate)"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.JsonUserData.Area.Name||('未知'|translate)"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.JsonUserData.DiviceCount||('未知'|translate)"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.JsonUserData.Point.Lon|number:6||('未知'|translate)"></util-table-tr-td>
+                        <util-table-tr-td ng-bind="tbody_data.JsonUserData.Point.Lat|number:6||('未知'|translate)"></util-table-tr-td>
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <i ng-class="tbody_data.JsonUserData.DiviceCount?'i-lamp-DevicePopul':'i-lamp-unDevicePopul'" class="icon-btn z-gray f-csp" title="{{'DP_CONFIG_COMMON_89'|translate}}" ng-click="lampCtrl.DevicePopup(tbody_data)"></i>
+                                <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="lampCtrl.editLamp(tbody_data.JsonUserData.Area, tbody_data)"></i>
+                                <i class="icon-btn i-delete z-gray f-csp" title="{{'DP_CONFIG_COMMON_78'|translate}}" ng-click="lampCtrl.deleteLamp(tbody_data)"></i>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                    <div class="u-table-no-data" ng-show="lampCtrl.tableNoData" ng-cloak translate="DP_CONFIG_COMMON_16">
+
+                    </div>
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging
+                        page-params="lampCtrl.pageParams"
+                        prev-page="lampCtrl.changePage(num)"
+                        next-page="lampCtrl.changePage(num)"
+                        go-page="lampCtrl.changePage(num)"
+                        page-size="lampCtrl.changePageSize(num)"
+                ></util-paging>
+            </div>
+
+        </div>
+    </div>
+</div>

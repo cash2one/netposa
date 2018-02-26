@@ -1,0 +1,91 @@
+<!--批量配置立杆-->
+<div class="u-baseconfig-popup m-device-popup" ng-controller="baseConfigElePopup as elePopup">
+    <div class="f-cfb d-tree-content" style="padding: 10px 20px;">
+
+        <div class="box-cntr">
+            <div class="box-head" translate="DP_CONFIG_COMMON_23"></div>
+
+            <div class="box-center">
+                <input class="u-input box-center-input" ng-model="elePopup.searchLeftTreeInput"
+                       ng-keyup="elePopup.searchLeftTreeInputKeyUp($event,elePopup.searchLeftTreeInput)" type="text"
+                       placeholder="{{'DP_CONFIG_COMMON_28'|translate}}">
+                <i class="u-input-search" ng-click="elePopup.searchLeftTree(elePopup.searchLeftTreeInput)"></i>
+            </div>
+            <div class="box-bottom" style="height:290px" ng-scrollbars>
+                <util-tree tree-id="{{elePopup.leftTreeParams.treeId}}"
+                           tree-datas="elePopup.leftTreeParams.treeDatas"
+                           check-enable="{{elePopup.leftTreeParams.checkEnable}}"
+                           single-select="{{elePopup.leftTreeParams.isSingleSelect}}"
+                           is-simple-data="{{elePopup.leftTreeParams.isSimpleData}}"
+                           show-icon="{{elePopup.leftTreeParams.isShowIcon}}"
+                           show-line="{{elePopup.leftTreeParams.isShowLine}}"
+                           default-no-data-msg="{{elePopup.leftTreeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{elePopup.leftTreeParams.searchNoDataMsg}}"
+                           on-click="elePopup.leftTreeParams.onClick(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           edit-enable="{{elePopup.leftTreeParams.editEnable}}"
+                           show-remove-btn="{{elePopup.leftTreeParams.showRemoveBtn}}"
+                           show-rename-btn="{{elePopup.leftTreeParams.showRenameBtn}}"
+                           add-diy-dom="elePopup.leftTreeParams.addDiyDom(treeId,treeNode)"
+                           is-prev="false"
+                           is-next="false"
+                           is-inner="false"
+                           is-copy="true"
+                           is-move="false"
+                           before-drag="elePopup.leftTreeParams.beforeDrag(treeId, treeNodes)"
+                           before-drop="elePopup.leftTreeParams.beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy)"
+                           default-expand-level="0"></util-tree>
+            </div>
+        </div>
+
+        <div class="center-btns">
+            <div class="center-btn">
+                <button class="center-btn-right u-button" ng-class="{'z-hide': elePopup.rightSelectTreeNodeId == null}"
+                        ng-disabled="elePopup.rightSelectTreeNodeId == null"
+                        ng-click="elePopup.moveLeftNode2RightNode()"></button>
+            </div>
+        </div>
+
+        <div class="box-cntr f-fr">
+            <div class="box-head">{{elePopup.type == 'lamp'? '立杆': '行政区域'}}</div>
+            <div class="box-bottom" style="height:335px" ng-scrollbars>
+                <util-tree tree-id="{{elePopup.rightTreeParams.treeId}}"
+                           tree-datas="elePopup.rightTreeParams.treeDatas"
+                           check-enable="{{elePopup.rightTreeParams.checkEnable}}"
+                           single-select="{{elePopup.rightTreeParams.isSingleSelect}}"
+                           is-simple-data="{{elePopup.rightTreeParams.isSimpleData}}"
+                           show-icon="{{elePopup.rightTreeParams.isShowIcon}}"
+                           show-line="{{elePopup.rightTreeParams.isShowLine}}"
+                           default-no-data-msg="{{elePopup.rightTreeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{elePopup.rightTreeParams.searchNoDataMsg}}"
+                           on-click="elePopup.rightTreeParams.onClick(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           edit-enable="{{elePopup.rightTreeParams.editEnable}}"
+                           show-remove-btn="{{elePopup.rightTreeParams.showRemoveBtn}}"
+                           show-rename-btn="{{elePopup.rightTreeParams.showRenameBtn}}"
+                           is-prev="true"
+                           is-next="true"
+                           is-inner="true"
+                           is-copy="false"
+                           is-move="true"
+                           before-drag="elePopup.rightTreeParams.beforeDrag(treeId, treeNodes)"
+                           before-drop="elePopup.rightTreeParams.beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy)"
+                           default-expand-level="0"></util-tree>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form f-cfb"  style="padding:10px 15px;border-top:1px solid #e4e4e4;margin-top:10px;">
+        <img src="../../../images/common/alerm-Icon.png"/>
+        <label style="color: gray;font-weight: 400;position: relative;top: 1px;" translate="DP_CONFIG_COMMON_87"></label>
+        <button class="u-button f-fr m-right15 u-button-blue-2" ng-click="elePopup.cancel()"
+                translate="DP_CONFIG_COMMON_19"></button>
+        <button class="u-button f-fr m-right15 u-button-blue-1" ng-click="elePopup.submit()"
+                translate="DP_CONFIG_COMMON_05"></button>
+    </div>
+</div>

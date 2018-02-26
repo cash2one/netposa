@@ -1,0 +1,114 @@
+<div class="m-area f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+        <span class="tree-search">
+            <input type="text" class="u-input tree-search" ng-model="areaCtrl.treeSearchInput" placeholder="{{'DP_CONFIG_COMMON_28'|translate}}" ng-keyup="areaCtrl.treeSearchInputKeyUp($event)"/>
+            <i class="u-input-search" ng-click="areaCtrl.treeSearchInputFunc()"></i>
+        </span>
+
+        <div ng-hide="areaCtrl.treeNoData" class="m-area-tree-container" ng-scrollbars>
+            <util-tree tree-hide="areaCtrl.areaTreeDataParams.treeDatas.length == 0"
+                       tree-id="{{areaCtrl.areaTreeDataParams.treeId}}"
+                       tree-datas="areaCtrl.areaTreeDataParams.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="areaCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg="areaCtrl.areaTreeDataParams.defaultNoDataMsg"
+                       search-no-data-msg="areaCtrl.areaTreeDataParams.searchNoDataMsg"
+                       on-click="areaCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="areaCtrl.areaTreeDataParams.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div ng-show="areaCtrl.treeNoData" class="u-table-no-data" translate="DP_CONFIG_COMMON_16"></div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+
+            <div class="m-baseconfig-topFixed area-topFixed">
+                <ol class="m-route f-cfb">
+                    <li translate="DP_CONFIG_COMMON_30"></li>
+                    <li class="route-separate">/</li>
+                    <li translate="DP_CONFIG_AREA_01"></li>
+                </ol>
+
+                <div class="m-area-info">
+                    <div class="f-cfb m-area-info-top">
+                        <h3 translate="DP_CONFIG_COMMON_31"></h3>
+                        <div class="m-area-tool f-cfb">
+                            <span class="tool-icon z-icon"><i class="i-edit f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="areaCtrl.editArea(areaCtrl.currentArea)"></i></span>
+                            <!--<span class="tool-icon z-icon"><i class="i-locate f-csp" title="{{'FDS_01_01_20'|translate}}" ng-click="areaCtrl.editArea(areaCtrl.currentArea)"></i></span>-->
+                            <span class="tool-icon z-icon"><i class="i-delete f-csp" title="{{'DP_CONFIG_COMMON_78'|translate}}" ng-click="areaCtrl.deleteArea(areaCtrl.currentArea)"></i></span>
+                        </div>
+                    </div>
+                    <div class="f-cfb m-area-info-bottom">
+                        <div class="area-info"><span class="c-font-gray m-right5" translate="DP_CONFIG_COMMON_32"></span><span ng-bind="areaCtrl.currentArea.Name"></span></div>
+                        <div class="area-info"><span class="c-font-gray m-right5" translate="DP_CONFIG_COMMON_33"></span><span ng-bind="areaCtrl.currentArea.Code"></span></div>
+                        <div class="area-info"><span class="c-font-gray m-right5" translate="DP_CONFIG_COMMON_34"></span><span ng-bind="areaCtrl.currentArea.Description"></span></div>
+                    </div>
+                </div>
+
+                <div class="m-area-search-top f-cfb">
+                    <button class="u-button f-usn f-fl m-right15" ng-click="areaCtrl.addArea(areaCtrl.currentArea)"  translate="DP_CONFIG_COMMON_36"></button>
+                    <button class="u-button f-usn f-fl u-button-blue-6" ng-click="areaCtrl.deleteByIds()" ng-disabled="!areaCtrl.isSelectItems" translate="DP_CONFIG_COMMON_37"></button>
+                    <span class="search-area-input">
+                        <input type="text" class="u-input" placeholder="{{'DP_CONFIG_COMMON_28' | translate}}" ng-model="areaCtrl.tableSearchInput" ng-keyup="areaCtrl.tableSearchInputKeyUp($event)"/>
+                        <i class="u-input-search" ng-click="areaCtrl.tableSearchInputFunc()"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed area-centerFixed">
+                <!--表格-->
+                <util-table-head table-headers="areaCtrl.tHeadList"
+                                 table-has-check='true'
+                                 table-sort-fun="areaCtrl.sortByField(index,fieldName,sortStatus)"
+                                 table-after-check = "areaCtrl.afterChangeCheck(checkList,isCheckAll)"
+                >
+                    <util-table-tr ng-repeat="(index,tbody_data) in areaCtrl.tBodyList">
+
+                        <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+
+                        <util-table-tr-td ng-bind="tbody_data.Code"></util-table-tr-td>
+
+                        <!--<util-table-tr-td ng-bind="tbody_data.Name+'派出所'"></util-table-tr-td>-->
+                        <!--<util-table-tr-td ng-bind="Match.random(1)"></util-table-tr-td>-->
+                        <!--<util-table-tr-td ng-bind="Math.ceil(Math.random(1)*100000000000)"></util-table-tr-td>-->
+
+                        <util-table-tr-td ng-bind="tbody_data.Description"></util-table-tr-td>
+
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="areaCtrl.editAreaTd(tbody_data)"></i>
+                                <i class="icon-btn i-delete z-gray f-csp" title="{{'DP_CONFIG_COMMON_78'|translate}}" ng-click="areaCtrl.deleteAreaTd(tbody_data)"></i>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                    <div class="u-table-no-data" ng-show="areaCtrl.tableNoData" ng-cloak translate="DP_CONFIG_COMMON_16">
+
+                    </div>
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging
+                        page-params="areaCtrl.pageParams"
+                        prev-page="areaCtrl.changePage(num)"
+                        next-page="areaCtrl.changePage(num)"
+                        go-page="areaCtrl.changePage(num)"
+                        page-size="areaCtrl.changePageSize(num)"
+                ></util-paging>
+            </div>
+
+        </div>
+    </div>
+</div>

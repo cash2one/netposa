@@ -1,0 +1,74 @@
+.m-layout{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.m-layout .left-layout{
+    position: absolute;
+    width: 280px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    border: 1px solid dimgray;
+    background: #66ccff;
+}
+.m-layout .right-layout{
+    position: absolute;
+    width: 280px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border: 1px solid dimgray;
+    background: #9f4dff;
+}
+.m-layout .middle-layout{
+    position: absolute;
+    left: 280px;
+    right: 280px;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    border: 1px solid dimgray;
+    background: #38ff87;
+}
+.m-layout .left-layout .left-cursor{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-right: -40px;
+    z-index: 1000;
+    cursor: pointer;
+}
+.m-layout .right-layout .right-cursor{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-left: -40px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.m-inner-layout{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.m-inner-layout .inner-top-layout{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 200px;
+}
+.m-inner-layout .inner-bottom-layout{
+    position: absolute;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #2b542c;
+}

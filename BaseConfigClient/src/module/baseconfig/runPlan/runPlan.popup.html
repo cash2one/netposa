@@ -1,0 +1,165 @@
+<div class="u-runplan-popup" ng-controller="runPlanPopupController as runPlanPopupCtrl">
+    <form name="taskconfigRunPlanForm" style="padding: 15px 0;" novalidate>
+        <div class="runPlan-modal-content" style="margin-left: 0;
+overflow: hidden;margin-bottom: 0">
+            <div class="pdp-form">
+                <span class="form-title" ><i style="color:#ff3e3e;">*</i><span translate="DP_CONFIG_TASKCONFUG_12"></span></span>
+                <input ng-model="runPlanPopupCtrl.currentModel.Name"
+                       type="text"
+                       valid-nonempty="{{'DP_CONFIG_TASKCONFUG_12'|translate}}"
+                       placeholder="{{'DP_CONFIG_TASKCONFUG_12'|translate}}"
+                >
+            </div>
+            <div class="pdp-form pdp-form-select">
+                <span class="form-title" ><span translate="应用模版"></span></span>
+                <select ng-change="runPlanPopupCtrl.changeTempaltelayer(runPlanPopupCtrl.currentModelID)"
+                        ng-model="runPlanPopupCtrl.currentModelID"
+                        ng-options="item.ID as item.Name for item in runPlanPopupCtrl.listTemplateModel">
+                    <option value="">请选择时间模版</option>
+                </select>
+            </div>
+            <div class="pdp-form pdp-form-textarea" style="clear: both">
+                <span  class="form-title" translate="DP_CONFIG_COMMON_34"></span>
+                <span class="text-area-layer">
+                    <textarea ng-model="runPlanPopupCtrl.currentModel.Description"
+                              placeholder="{{'DP_CONFIG_COMMON_34'|translate}}"
+                    ></textarea>
+                </span>
+
+            </div>
+        </div>
+        <div class="runPlan-timeTable  f-cfb" ng-scrollbars
+             style="
+                height:272px;
+                position:relative;
+                border-top:1px solid #ededed;
+                padding-top:15px;
+                padding-left:38px;
+                overflow-y: scroll;
+                overflow-x: hidden;">
+
+
+            <div id="timeTable" class="f-cfb position-r">
+                <!--星期-->
+                <ul class="floatL week position-a">
+                    <li>星期一</li>
+                    <li>星期二</li>
+                    <li>星期三</li>
+                    <li>星期四</li>
+                    <li>星期五</li>
+                    <li>星期六</li>
+                    <li>星期七</li>
+                </ul>
+                <!-- 鼠标操作绘制范围条 -->
+                <div onselectstart="return false" class="time-bg-grid position-r ">
+                    <!--条纹背景-->
+                    <div class="grids-rect position-a"></div>
+                    <!--竖向网格-->
+                    <div class="grids-line position-a"></div>
+                    <!--绘图区域-->
+                    <div id="draw" class="position-a">
+                        <!--设置-编辑控件-->
+                        <p class="time-range  position-a time-range-hide">
+                        <span class="position-r">
+                            <input type="text" maxlength="2">
+                            <a class="position-a">：</a>
+                            <input type="text" maxlength="2">
+                        </span>
+                            <i>-</i>
+                            <span class="position-r">
+                            <input type="text" maxlength="2">
+                            <a class="position-a">：</a>
+                            <input type="text" maxlength="2">
+                        </span>
+                            <input id="timeDel" type="button" value='删除' class="btn-del f-fr border-0 pointer">
+                            <input id="timeSet" type="button" value="设置"
+                                   class="btn-set border-0 f-fr btn-blue1 font-fff fontSize-12">
+                        </p>
+
+                        <!--鼠标悬浮点时间显示-->
+                        <p class="time-dot time-range-hide position-a text-center box-sizing bg-fff"></p>
+                        <!--鼠标框选透明框-->
+                        <div class="position-a time-range-hide box-sizing" id="drawBox"></div>
+                        <!--有效框选区域-->
+                        <div class="position-a  box-sizing" id="drawArea"></div>
+                        <!--显示图形区域-->
+                        <ol class="position-a box-sizing" id="drawShow">
+                            <li value="0"></li>
+                            <li value="1"></li>
+                            <li value="2"></li>
+                            <li value="3"></li>
+                            <li value="4"></li>
+                            <li value="5"></li>
+                            <li value="6"></li>
+                        </ol>
+                        <div class="border-rect position-a box-sizing"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="m-runPlanForm" style="height:60px;padding:15px;overflow: hidden;padding-left: 30px;">
+            <span translate="开始"></span>
+            <input class="u-input"
+                   type="text"
+                   name="customStartDate"
+                   placeholder="{{'请选择自定义开始时间'|translate}}"
+                   ng-model="runPlanPopupCtrl.customStartDate"
+                   date-picker
+                   done="runPlanPopupCtrl.changeDate(false)"
+                   max="{{runPlanPopupCtrl.maxDate}}"
+                   format="yyyy-MM-dd"
+                   date-type="date"
+            />
+            <span translate="结束"></span>
+
+            <input class="u-input"
+                   type="text"
+                   name="customendDate"
+                   placeholder="{{'请选择自定义结束时间'|translate}}"
+                   ng-model="runPlanPopupCtrl.customEndDate"
+                   date-picker
+                   min="{{runPlanPopupCtrl.minDate}}"
+                   done="runPlanPopupCtrl.changeDate(true)"
+                   format="yyyy-MM-dd"
+                   date-type="date"
+            />
+
+            <span class="runPlanForm-title" style="padding-left:15px"
+                  translate="描述"
+            ></span>
+            <input style="width: 232px;" class="u-input"
+                   ng-model="runPlanPopupCtrl.customInfo"
+                   type="text"
+                   placeholder="{{'FDS_01_13_21'|translate}}"
+            >
+            <button style="position: relative;left: 10px" class="u-button"
+                    type="submit"
+                    translate="DP_CONFIG_COMMON_42"
+                    ng-click="runPlanPopupCtrl.addCustomDayLine()"
+            >
+            </button>
+        </div>
+
+        <div style="background: #fff;padding-right: 20px">
+            <div class="u-border "></div>
+            <div style="padding-top:15px;" class="f-cfb runPlan-modal-bottom-btns">
+                <button class="u-button
+                                u-button-blue-2
+                                f-fr"
+                        translate="DP_CONFIG_COMMON_19"
+                        ng-click="runPlanPopupCtrl.closeUpdateModel()"
+                >
+                </button>
+
+                <button class="u-button u-button-blue-1 f-fr m-right15"
+                        ng-disabled="taskconfigRunPlanForm.$invalid"
+                        translate="DP_CONFIG_COMMON_42"
+                        ng-click="runPlanPopupCtrl.commitSaveOrUpdate()"
+                >
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

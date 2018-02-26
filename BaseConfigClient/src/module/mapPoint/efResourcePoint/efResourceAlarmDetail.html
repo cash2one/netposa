@@ -1,0 +1,58 @@
+<div ng-controller="efResourceAlarmDetailController as efResourceAlarmDetailCtrl" class="pop-up-common ef-resource-alarm-detail">
+    <!--     <div class="title">
+        <div class="name">电子围栏报警详情</div>
+        <div class="close" ng-click="efResourceAlarmDetailCtrl.closePopup()"></div>
+    </div> -->
+    <div class="con">
+        <div class="top">
+            <div class="surveillance" ng-class="{'active': efResourceAlarmDetailCtrl.renderData.surveillanceStatus}" ng-click="efResourceAlarmDetailCtrl.clickSurveillance(efResourceAlarmDetailCtrl.renderData)">布控</div>
+            <div class="analyze" ng-click="efResourceAlarmDetailCtrl.clickAnalysis(efResourceAlarmDetailCtrl.renderData)">分析</div>
+            <div class="collect" ng-class="{'active': efResourceAlarmDetailCtrl.renderData.collectStatus}" ng-click="efResourceAlarmDetailCtrl.clickCollect(efResourceAlarmDetailCtrl.renderData)">收藏</div>
+        </div>
+        <div class="table-ul">
+            <div class="table-li">
+                <div class="name">用户识别码(IMSI)：</div>
+                <div class="text">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">状态：</div>
+                <div class="text s3">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">设备身份码(IMEI)：</div>
+                <div class="text">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">报警时间：</div>
+                <div class="text">{{efResourceAlarmDetailCtrl.renderData.AlarmLog.AlarmTime}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">临时识别码(IMSI)：</div>
+                <div class="text">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">报警设备：</div>
+                <div class="text">{{efResourceAlarmDetailCtrl.name}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">终端品牌：</div>
+                <div class="text">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">报警地点：</div>
+                <div class="text">{{efResourceAlarmDetailCtrl.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-con">
+            <div class="last-page" ng-click="efResourceCollectDetailCtrl.propeUp()"></div>
+            <div class="next-page" ng-click="efResourceCollectDetailCtrl.propeDown(true)"></div>
+            <div class="operate">
+                <button class="invalid">无效</button>
+                <button class="undetermined">待定</button>
+                <button class="effectivity">有效</button>
+            </div>
+        </div>
+    </div>
+</div>

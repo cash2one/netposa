@@ -1,0 +1,80 @@
+<div class="m-wifiChart">
+    <ul class="m-resource-left" ng-class="wifiResourceCtrl.leftChartHidden?'switch-button3':'switch-button2'">
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{wifiResourceCtrl.ResourceNameArr.WifiStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button"  ng-click="wifiResourceCtrl.enlarge('wifiStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !wifiResourceCtrl.noMessage.WifiStatistics}" translate="{{wifiResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': wifiResourceCtrl.noMessage.WifiStatistics}">
+                <div id="WifiStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{wifiResourceCtrl.ResourceNameArr.AreaWifiStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button"  ng-click="wifiResourceCtrl.enlarge('areaWifiStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !wifiResourceCtrl.noMessage.AreaWifiStatistics}" translate="{{wifiResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': wifiResourceCtrl.noMessage.AreaWifiStatistics}">
+                <div id="AreaWifiStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{wifiResourceCtrl.ResourceNameArr.AreaWifiAlarmStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="wifiResourceCtrl.enlarge('areaWifiAlarmStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !wifiResourceCtrl.noMessage.AreaWifiAlarmStatistics}" translate="{{wifiResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': wifiResourceCtrl.noMessage.AreaWifiAlarmStatistics}">
+                <div id="AreaWifiAlarmStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+
+    </ul>
+    <i class="i-right-hide f-csp m-hidden-static" ng-class="wifiResourceCtrl.leftChartHidden?'i-left-display':'i-right-hide'" ng-click="wifiResourceCtrl.hiddenLeftRightChart('left')"></i>
+      <!--ng-show="resourceCtrl.wifiRight"-->
+    <ul class="m-resource-right" ng-class="resourceCtrl.switchButton.switch||wifiResourceCtrl.rightChartHidden?'switch-button1':'switch-button2'">
+    <!--<ul class="m-resource-right">-->
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{wifiResourceCtrl.ResourceNameArr.WifiTypeStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="wifiResourceCtrl.enlarge('wifiTypeStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !wifiResourceCtrl.noMessage.WifiTypeStatistics}" translate="{{wifiResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': wifiResourceCtrl.noMessage.WifiTypeStatistics}">
+                <div id="WifiTypeStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{wifiResourceCtrl.ResourceNameArr.WifiColorStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="wifiResourceCtrl.enlarge('wifiColorStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !wifiResourceCtrl.noMessage.WifiColorStatistics}" translate="{{wifiResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': wifiResourceCtrl.noMessage.WifiColorStatistics}">
+                <div id="WifiColorStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{wifiResourceCtrl.ResourceNameArr.WifiAllRankList}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="wifiResourceCtrl.enlarge('WifiAllRankList')"></i>
+            </span>
+            <div id="ResourcebKeywordSearch" class="m-resource-eContent m-float-im">
+                <table class="table" ng-if="wifiResourceCtrl.AllRankListConfig.config.length">
+                    <tr ng-repeat="rankdata in wifiResourceCtrl.AllRankListConfig.config">
+                        <td>
+                            <i class="f-csp" ng-class="wifiResourceCtrl.rankClassName[$index]"></i>
+                        </td>
+                        <td>{{ rankdata.name }}</td>
+                        <td>{{ rankdata.value }}</td>
+                    </tr>
+                </table>
+                <i class='resource-no-message' ng-if="!wifiResourceCtrl.AllRankListConfig.config.length" translate="{{wifiResourceCtrl.ResourceNameArr.NOData}}">
+                </i>
+            </div>
+        </li>
+    </ul>
+    <i class="f-csp rightStatic" ng-class="wifiResourceCtrl.rightChartHidden?'i-left-display':'i-right-hide'" ng-click="wifiResourceCtrl.hiddenLeftRightChart('right')"></i>
+</div>

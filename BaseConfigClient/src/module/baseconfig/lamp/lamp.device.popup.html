@@ -1,0 +1,23 @@
+<div class="u-baseconfig-popup" ng-controller="DevicePopupController as DevicePopup">
+    <!--表格-->
+    <div class="m-table-width" >
+        <util-table-head table-headers="DevicePopup.tHeadDevice">
+            <util-table-tr ng-repeat="(index,tbody_data) in DevicePopup.tBodyDevice">
+                <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+                <util-table-tr-td ng-bind="(tbody_data.CameraType||tbody_data.Type||'RmpGate') | toEntryTypeFilter"></util-table-tr-td>
+                <util-table-tr-td ng-bind="tbody_data.JsonUserData.Area.Name||tbody_data.JsonUserData.area.Name"></util-table-tr-td>
+                <!--<util-table-tr-td ng-bind="tbody_data.ID"></util-table-tr-td>-->
+                <!--<util-table-tr-td ng-bind="tbody_data.IpAddress"></util-table-tr-td>-->
+                <util-table-tr-td>
+                    <div class="table-icon-cntr f-cfb">
+                        <i class="icon-btn z-gray f-csp" ng-class="(DevicePopup.currentEx.deviceID==tbody_data.ID)?'i-lamp-positionGreen':'i-lamp-position333'" title="{{'DP_CONFIG_COMMON_89'|translate}}" ng-click="DevicePopup.lampPositon(tbody_data)"></i>
+                        <i class="icon-btn i-delete z-gray f-csp" title="{{'DP_CONFIG_COMMON_78'|translate}}" ng-click="DevicePopup.deleteLampAndDeviceRalation(tbody_data)"></i>
+                    </div>
+                </util-table-tr-td>
+            </util-table-tr>
+        </util-table-head>
+    </div>
+    <div class="m-bottom-button">
+        <button class="u-button u-button-blue-1 btnStyle m-right-footer" ng-click="DevicePopup.submit()" translate="关闭"></button>
+    </div>
+</div>

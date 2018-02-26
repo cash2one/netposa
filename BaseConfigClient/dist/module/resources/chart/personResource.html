@@ -1,0 +1,77 @@
+<div class="m-personChart">
+    <ul class="m-resource-left" ng-class="personResourceCtrl.leftChartHidden?'switch-button3':'switch-button2'">
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <!-- <span class="m-resource-parse" ng-click="personResourceCtrl.onAnalysis()">同比分析</span> -->
+                <i class="m-font-size14" translate="{{personResourceCtrl.ResourceNameArr.PersonStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="personResourceCtrl.enlarge(personResourceCtrl.parseSwitch?'personStatisticsConfig':'resourceParseConfig')"></i>
+            </span>
+            <div id="PersonStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="personResourceCtrl.noMessage.PersonStatistics" translate="{{personResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{personResourceCtrl.ResourceNameArr.AreaPersonStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="personResourceCtrl.enlarge('areaPersonStatisticsConfig')"></i>
+            </span>
+            <div id="AreaPersonStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="personResourceCtrl.noMessage.AreaPersonStatistics" translate="{{personResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{personResourceCtrl.ResourceNameArr.AreaPersonAlarmStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="personResourceCtrl.enlarge('areaPersonAlarmStatisticsConfig')"></i>
+            </span>
+            <div id="AreaPersonAlarmStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="personResourceCtrl.noMessage.AreaPersonAlarmStatistics" translate="{{personResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+    </ul>
+    <i class="i-right-hide f-csp m-hidden-static" ng-class="personResourceCtrl.leftChartHidden?'i-left-display':'i-right-hide'"
+        ng-click="personResourceCtrl.hiddenLeftRightChart('left')"></i>
+    <!--ng-show="resourceCtrl.personRight"-->
+    <ul class="m-resource-right" ng-class="resourceCtrl.switchButton.switch||personResourceCtrl.rightChartHidden?'switch-button1':'switch-button2'">
+        <!--<ul class="m-resource-right">-->
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{personResourceCtrl.ResourceNameArr.PersonTypeStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="personResourceCtrl.enlarge('personTypeStatisticsConfig')"></i>
+            </span>
+            <div id="PersonTypeStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="personResourceCtrl.noMessage.PersonTypeStatistics" translate="{{personResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{personResourceCtrl.ResourceNameArr.PersonColorStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="personResourceCtrl.enlarge('personColorStatisticsConfig')"></i>
+            </span>
+            <div id="PersonColorStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="personResourceCtrl.noMessage.PersonColorStatistics" translate="{{personResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{personResourceCtrl.ResourceNameArr.PersonRankList}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="personResourceCtrl.enlarge('AllRankListConfig')"></i>
+            </span>
+            <div id="ResourcebKeywordSearch" class="m-resource-eContent m-float-im">
+                <table class="table" ng-if="personResourceCtrl.AllRankListConfig.config.length">
+                    <tr ng-repeat="rankdata in personResourceCtrl.AllRankListConfig.config">
+                        <td>
+                            <i class="f-csp" ng-class="personResourceCtrl.rankClassName[$index]"></i>
+                        </td>
+                        <td>{{ rankdata.name }}</td>
+                        <td>{{ rankdata.value }}</td>
+                    </tr>
+                </table>
+                <i class='resource-no-message' ng-if="!personResourceCtrl.AllRankListConfig.config.length" translate="{{personResourceCtrl.ResourceNameArr.NOData}}">
+
+                </i>
+            </div>
+        </li>
+    </ul>
+    <i class="f-csp rightStatic" ng-class="personResourceCtrl.rightChartHidden?'i-left-display':'i-right-hide'" ng-click="personResourceCtrl.hiddenLeftRightChart('right')"></i>
+</div>

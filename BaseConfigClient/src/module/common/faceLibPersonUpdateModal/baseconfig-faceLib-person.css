@@ -1,0 +1,165 @@
+.m-face-person-modal{
+    position: relative;
+    /* height: 100%;
+     width: 100%;*/
+    overflow: hidden;
+    margin: 0;
+}
+.m-face-person-modal .person-modal-content{
+    min-width: 450px;
+    padding: 10px 0 0px 12px;
+    height: 380px;
+    margin-bottom: 5px;
+}
+.z-language.en .m-face-person-modal .person-modal-content{
+    min-width: 480px;
+}
+.m-face-person-modal .person-modal-content.has-lib-content{
+    min-width: 810px;
+}
+.z-language.en .m-face-person-modal .person-modal-content.has-lib-content{
+    min-width: 840px;
+}
+.m-face-person-modal .person-modal-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.m-face-person-modal .person-modal-content-left{
+    position: relative;
+    width: 225px;
+    height: 360px;
+}
+.m-face-person-modal .person-modal-content-right{
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    padding-right:5px
+}
+
+/*.m-face-person-modal .form-item{
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.m-face-person-modal .form-title{
+    float: left;
+    padding-left: 10px;
+    width: 68px;
+    margin-right: 10px;
+    line-height: 30px;
+}
+.m-face-person-modal .form-input{
+    float: left;
+    width: 224px;
+}*/
+
+.u-upload-image-cntr{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    /*  border: 1px solid #ccc;*/
+}
+.u-upload-image-cntr .img-content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+}
+.u-upload-image-cntr .img-content .upload-image{
+    position: relative;
+    height: 320px;
+    width: 224px;
+    border: 1px solid #ccc;
+}
+
+.u-upload-image-cntr .img-content .image-num{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    padding: 0 5px;
+    background-color: rgba(0,0,0,.3);
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    letter-spacing: 2px;
+    height: 24px;
+    line-height: 24px;
+    z-index: 101;
+    cursor: pointer;
+}
+
+.u-upload-image-cntr .image-btn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    line-height: 40px;
+    right: 0;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+.u-upload-image-cntr .image-btn .webuploader-pick{
+    padding: 0;
+    width: 100%;
+}
+
+.m-face-person-modal .person-modal-bottom .form{
+    padding: 10px 15px;
+    zoom: 1;
+    position: relative;
+}
+
+.storage-list{
+    width:230px;
+    height:360px;
+    border:#bad3f6 1px solid;
+    margin-right: 10px;
+}
+
+.storage-list .storage-list-head{
+    width:100%;
+    height:40px;
+    background-color: #e2ecfa;
+}
+
+.storage-list-head span{
+    line-height: 40px;
+    margin-left: 15px;
+}
+
+.storage-list .query-storage-ipt{
+    margin-top: 10px;
+    margin-left: 14px;
+    display:inline-block;
+    width: 200px;
+    height:30px;
+    border:#ccc 1px solid;
+    border-radius: 2px;
+    text-indent: 5px;
+}
+
+.storage-list .storage-tree-area{
+    width: 100%;
+    height:263px;
+    margin-top:15px;
+    overflow:auto;
+}
+
+.storage-list-head .i-circle-add{
+    margin: 12px 15px 0 0;
+}
+
+.storage-list .u-input-search{
+    right: 22px;
+    top: 57px;
+}
+
+
+
+
+

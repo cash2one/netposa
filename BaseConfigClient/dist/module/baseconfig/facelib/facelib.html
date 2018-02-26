@@ -1,0 +1,40 @@
+<!--faceLibCtrl html-->
+<div class="m-facelib baseconfig-two-column f-cfb" >
+    <div class="g-baseconfig-left">
+             <span class="tree-search">
+                <input type="text" class="u-input tree-search"
+                       ng-model="faceLibCtrl.areaTreeSearchInputStr"
+                       placeholder="请输入信息进行搜索"
+                       ng-keyup="faceLibCtrl.areaTreeSearchInputKeyUp($event)"
+                />
+                <i class="u-input-search" ng-click="faceLibCtrl.areaTreeSearchInput()"></i>
+             </span>
+        <div ng-show="faceLibCtrl.areaTreeDatas.treeDatas.length > 0" class="m-ivsServer-tree-container">
+            <util-tree tree-hide="faceLibCtrl.areaTreeDatas.treeDatas.length == 0"
+                       tree-id="{{faceLibCtrl.areaTreeDatas.treeId}}"
+                       tree-datas="faceLibCtrl.areaTreeDatas.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="faceLibCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg="faceLibCtrl.areaTreeDatas.defaultNoDataMsg"
+                       search-no-data-msg="faceLibCtrl.areaTreeDatas.searchNoDataMsg"
+                       on-click="faceLibCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="faceLibCtrl.areaTreeDatas.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div class="u-table-no-data" ng-show="faceLibCtrl.areaTreeDatas.finishedNoData"
+             translate="DP_CONFIG_COMMON_16">
+        >
+        </div>
+    </div>
+
+    <div class="g-baseconfig-right" ui-view="faceLibChildView"></div>
+</div>

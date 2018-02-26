@@ -1,0 +1,646 @@
+<!--ng-controller="MacCarCrashController as MacCarCrashCtrl"-->
+
+<div class="face-track car-mac-analysis">
+        <div class="face-track-left" ng-class="{active:MacCarCrashCtrl.showForm}">
+            <div class="face-track-left-layer">
+                <div class="analaysis-head">
+                    <div class="analaysis-head-title">车辆Mac碰撞</div>
+                    <div class="back-btn">
+                        <button ng-click="MacCarCrashCtrl.goBack()">返回上级</button>
+                    </div>
+                </div>
+                <div class="face-track-form">
+                    <div class="form-layer">
+                        <div class="tab-list">
+                            <span ng-class="{'active':!MacCarCrashCtrl.showAnalysisList}"
+                                  ng-click="MacCarCrashCtrl.showAnalysisList = false">分析条件</span>
+                            <span ng-class="{'active':MacCarCrashCtrl.showAnalysisList}"
+                                  ng-click="MacCarCrashCtrl.showAnalysisList = true">分析结果</span>
+                        </div>
+                        <div class="analysis-from" ng-show="!MacCarCrashCtrl.showAnalysisList">
+                            <div class="analaysis-form-input">
+                                <span class="analaysis-form-title"><i class="required">*</i>任务名称</span>
+                                <span class="input-layer">
+                                    <input ng-model="MacCarCrashCtrl.AccompanyingAnalysisParams.taskName"
+                                           show-init="false" type="text" placeholder="请输入任务名称">
+                                </span>
+                            </div>
+                            <div class="analaysis-form-input input-layer-input-select">
+                                <span class="analaysis-form-title"><i class="required">*</i>任务类型</span>
+                                <div class="input-layer-select">
+                                    <util-select
+                                            selected-val="MacCarCrashCtrl.currentType.text"
+                                            select-data="MacCarCrashCtrl.taskNameList"
+                                            select-repeat-by-key="text"
+                                            selected-empty-val="请选择任务类型"
+                                            select-click="MacCarCrashCtrl.selectType(selected)"
+                                            select-list-height="M"
+                                            select-list-diy-icon="false"
+                                            select-is-tree="false">
+                                    </util-select>
+                                </div>
+                            </div>
+                            <div class="analaysis-form-input">
+                                <span class="analaysis-form-title"><i class="required">*</i>车牌号码</span>
+                                <span class="input-layer">
+                                    <input ng-model="MacCarCrashCtrl.AccompanyingAnalysisParams.licencePlate"
+                                           show-init="false" type="text" placeholder="请输入车牌号码">
+                                </span>
+                            </div>
+                            <div class="track-form">
+                                <div class="analaysis-form-input">
+                                    <span class="analaysis-form-title">时间筛选</span>
+                                    <span class="fast-date">
+                                        <span ng-repeat="item in MacCarCrashCtrl.FastDateList"
+                                              ng-class="{'active':item.key === MacCarCrashCtrl.FastDate.key}"
+                                              ng-click="MacCarCrashCtrl.setFastDate(item)">{{item.text}}
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="analaysis-form-input analaysis-form-input-date">
+                                    <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                                    <span class="input-layer">
+                                        <input ng-model="MacCarCrashCtrl.AccompanyingAnalysisParams.startTime"
+                                               date-picker
+                                               show-init="false" type="text" placeholder="请选择开始时间">
+                                    </span>
+                                </div>
+                                <div class="analaysis-form-input analaysis-form-input-date">
+                                    <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                                    <span class="input-layer">
+                                        <input ng-model="MacCarCrashCtrl.AccompanyingAnalysisParams.endTime"
+                                               date-picker
+                                               show-init="false" type="text" placeholder="请选择结束时间">
+                                    </span>
+                                </div>
+                                <div class="analaysis-form-input">
+                                    <span class="analaysis-form-title"><i class="required">*</i>伴随次数</span>
+                                    <span class="input-layer">
+                                        <input ng-model="MacCarCrashCtrl.AccompanyingAnalysisParams.age" type="text"
+                                               placeholder="请输入伴随次数的最小值">
+                                    </span>
+                                </div>
+                                <div class="analaysis-form-input accompanying-num">
+                                    <span class="analaysis-form-title"><i class="required">*</i>伴随时间</span>
+                                    <span class="input-group">
+                                        <span><i class="radius-left">前</i><input type="text"><i class="radius-right">分钟</i></span>
+                                    </span>
+                                </div>
+
+                                <div class="analaysis-form-input accompanying-num">
+                                    <span class="analaysis-form-title"></span>
+                                    <span class="input-group">
+                                        <span><i class="radius-left">后</i><input type="text"><i class="radius-right">分钟</i></span>
+                                    </span>
+                                </div>
+                                <div class="face-track-select-camera">
+                                    <span class="form-title">摄像机</span>
+                                    <div class="face-track-camera">
+                                        <span class="action choose-camera">选择摄像机</span>
+                                        <span ng-click="MacCarCrashCtrl.DrawRect()" class="action square"></span>
+                                        <span ng-click="MacCarCrashCtrl.DrawCircle()" class="action round"></span>
+                                        <span ng-click="MacCarCrashCtrl.DrawPolygon()" class="action polygon"></span>
+                                    </div>
+                                </div>
+
+                                <div class="analaysis-form-input input-layer-input-select input-margin10">
+                                    <span class="analaysis-form-title">车牌颜色</span>
+                                    <div class="input-layer-select">
+                                        <util-select
+                                                selected-empty-val="请选择车牌颜色"
+                                                select-data="MacCarCrashCtrl.carColorList"
+                                                select-repeat-by-key="text"
+                                                select-click="MacCarCrashCtrl.selectData(selected)"
+                                                select-list-height="M"
+                                                select-list-diy-icon="false"
+                                                select-is-tree="false">
+                                        </util-select>
+                                    </div>
+                                </div>
+                                <div class="analaysis-form-input input-layer-input-select input-margin10">
+                                    <span class="analaysis-form-title">车辆颜色</span>
+                                    <div class="input-layer-select">
+                                        <util-select
+                                                selected-empty-val="车辆颜色"
+                                                select-data="MacCarCrashCtrl.carColorList"
+                                                select-repeat-by-key="text"
+                                                select-click="MacCarCrashCtrl.selectData(selected)"
+                                                select-list-height="M"
+                                                select-list-diy-icon="false"
+                                                select-is-tree="false">
+                                        </util-select>
+                                    </div>
+                                </div>
+                                <div class="analaysis-form-input input-layer-input-select input-margin10">
+                                    <span class="analaysis-form-title">车辆类型</span>
+                                    <div class="input-layer-select">
+                                        <util-select
+                                                selected-empty-val="车辆类型"
+                                                select-data="MacCarCrashCtrl.carTypeList"
+                                                select-repeat-by-key="text"
+                                                select-click="MacCarCrashCtrl.selectData(selected)"
+                                                select-list-height="M"
+                                                select-list-diy-icon="false"
+                                                select-is-tree="false">
+                                        </util-select>
+                                    </div>
+                                </div>
+                                <div class="analaysis-form-input input-layer-input-select input-margin10">
+                                    <span class="analaysis-form-title">车辆品牌</span>
+                                    <div class="input-layer-select">
+                                        <util-select
+                                                selected-empty-val="车辆品牌"
+                                                select-data="MacCarCrashCtrl.carBrandList"
+                                                select-repeat-by-key="text"
+                                                select-click="MacCarCrashCtrl.selectData(selected)"
+                                                select-list-height="M"
+                                                select-list-diy-icon="false"
+                                                select-is-tree="false">
+                                        </util-select>
+                                    </div>
+                                </div>
+                                <div class="searh-submit">
+                                    <button ng-click="MacCarCrashCtrl.submitSearch()">查询</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="analysis-result-table" ng-show="MacCarCrashCtrl.showAnalysisList">
+                            <div class="task-item" ng-repeat="item in MacCarCrashCtrl.AccompOffLine">
+                                <div class="task-name">{{item.Name}}<span class="delete-task" ng-click="MacCarCrashCtrl.delArea()"></span></div>
+                                <div class="task-info">
+                                    <ul>
+                                        <li><span class="info-key">创建时间：</span><span
+                                                class="info-value">{{item.CreateTime}}</span></li>
+                                        <li><span class="info-key">伴随次数：</span><span
+                                                class="info-value">{{item.AccompNum}}</span></li>
+                                        <li><span class="info-key">任务状态：</span><span
+                                                class="info-value">{{item.Status}}</span></li>
+                                    </ul>
+
+                                </div>
+                                <div class="task-result-btn">
+                                    <button ng-click="MacCarCrashCtrl.showAnalysisResult(item)" class="find-result">查看结果
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="face-track-res face-track-result-res" ng-class="{'active':MacCarCrashCtrl.showResult}">
+            <div class="image-result">
+                <div class="analaysis-head">
+                    <div class="analaysis-head-title">车辆Mac碰撞</div>
+                    <div class="back-btn">
+                        <button ng-click="MacCarCrashCtrl.goBackForm()">返回上级</button>
+                    </div>
+                </div>
+                <div class="track-result-content">
+                    <div class="content-layer">
+                        <div class="head-layer">
+                            <div class="head-title">
+                                <span class="head-left">
+                                    <button ng-click="MacCarCrashCtrl.setFaceTrack()">查看轨迹</button>
+                                </span>
+                                <span class="head-right">共 <i>{{MacCarCrashCtrl.resultParams.data.totalCount}}</i> 条记录</span>
+                            </div>
+                            <div class="result-sort">
+                                <span class="ft active">按相似度</span><span class="mid">按时间</span><span class="lt">按频率</span>
+                            </div>
+                        </div>
+                        <div class="before-layer">
+                            <div class="capture-layer" ng-scrollbars>
+                                <div class="capture-item"
+                                     ng-if="MacCarCrashCtrl.resultLeftType === 'macCarCrash'"
+                                     ng-repeat="item in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)"
+                                     ng-click="MacCarCrashCtrl.resultToMap()">
+                                    <div class="img-info">
+                                    <span ng-click="MacCarCrashCtrl.showMapPoint($index)"
+                                          class="location">{{$index+1}}</span><span class="licence">{{item.accessLog.licencePlate}}</span>
+                                        <div class="action">
+                                            <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                            <span class="fx"></span>
+                                            <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                            <span class="sp"></span>
+                                        </div>
+                                    </div>
+                                    <div class="head-img">
+                                        <img width="80" height="80" ng-src="{{item.accessLog.FacePath}}">
+                                    </div>
+                                    <div class="desc">
+                                        <div class="time">{{item.accessLog.speed}}</div>
+                                        <div class="time">{{item.accessLog.LogTime}}</div>
+                                        <div class="info">{{item.accessLog.address}}</div>
+                                    </div>
+                                    <span class="delete"
+                                          ng-click="MacCarCrashCtrl.delResult(item.accessLog.CameraID)">删除</span>
+                                </div>
+                                <div class="capture-item capture-item-mac"
+                                     ng-if="MacCarCrashCtrl.resultLeftType === 'carMacCrash'"
+                                     ng-repeat="item in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)"
+                                     ng-click="MacCarCrashCtrl.resultToMap()">
+                                    <div class="img-info">
+                                    <span ng-click="MacCarCrashCtrl.showMapPoint($index)"
+                                          class="location">{{$index+1}}</span>
+                                        <div class="action">
+                                            <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                            <span class="fx"></span>
+                                            <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                        </div>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                        <div class="time">{{item.accessLog.LogTime}}</div>
+                                        <div class="info">{{item.accessLog.address}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-bottom">
+                            <util-paging
+                                    hide-size="true"
+                                    page-params="MacCarCrashCtrl.resultParams"
+                                    prev-page="MacCarCrashCtrl.changeResultPage(num)"
+                                    next-page="MacCarCrashCtrl.changeResultPage(num)"
+                                    go-page="MacCarCrashCtrl.changeResultPage(num)"
+                                    show-type="small"
+                            ></util-paging>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="face-track-res face-track-result-res face-mac-right-result-res"
+             ng-class="{'active':MacCarCrashCtrl.showResult}"
+             ng-style="{'left':!MacCarCrashCtrl.showResult?MacCarCrashCtrl.windowWidth+'px':(MacCarCrashCtrl.windowWidth-280-60)+'px'}">
+            <div class="image-result">
+                <div class="analaysis-head">
+                    <div class="analaysis-head-title">车辆Mac碰撞</div>
+
+                </div>
+                <div class="track-result-content">
+                    <div class="content-layer">
+                        <div class="head-layer">
+                            <div class="head-title">
+                                <span class="head-right">共 <i>{{MacCarCrashCtrl.resultParams.data.totalCount}}</i> 条记录</span>
+                            </div>
+
+                        </div>
+                        <div class="before-layer">
+                            <div class="capture-layer" ng-scrollbars>
+                                <div class="item-group"
+                                     ng-if="MacCarCrashCtrl.resultRightType === 'macCarCrash'"
+                                     ng-repeat="group in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)">
+                                    <div class="capture-item capture-item-main">
+                                        <div class="item-group-head">
+                                            <span class="head-left">
+                                                <span class="left">碰撞次数:</span>
+                                                <span class="right"><i class="timer">{{group.accessLog.AccompanyingRes.length}}</i>次</span></span>
+                                            <span class="head-right"
+                                                  ng-class="{active:MacCarCrashCtrl.checkRightResult[$index]}"
+                                                  ng-click="MacCarCrashCtrl.slideRightResult($index)">
+                                                {{MacCarCrashCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                            </span>
+                                        </div>
+                                        <div class="item-group-cnt">
+                                            <div class="head-img">
+                                                <img width="80" height="80" ng-src="{{group.accessLog.FacePath}}">
+                                            </div>
+                                            <div class="desc">
+                                                <div class="time">{{group.accessLog.LogTime}}</div>
+                                                <div class="info">{{group.accessLog.address}}</div>
+                                                <div class="show-track" style="margin-left: 84px;">
+                                                    <button ng-click="MacCarCrashCtrl.setAccpTrack($index)">查看轨迹</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-repeat-group"
+                                         ng-class="{active:MacCarCrashCtrl.checkRightResult[$index]}">
+                                        <div class="capture-item" ng-repeat="(i,item) in group.accessLog.AccompanyingRes"
+                                             ng-click="MacCarCrashCtrl.openDetailPopup(item,i,'MapForAccpGroup')"
+                                             ng-mouseenter="MacCarCrashCtrl.resultToMap(item,i,'Accp')"
+                                             ng-mouseleave="MacCarCrashCtrl.unResultToMap(item,i,'Accp')">
+                                            <div class="img-info">
+                                                <span class="location">{{$index+1}}</span><span class="same-scale">{{item.similar}}</span>
+                                                <div class="action">
+                                                    <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                                    <span class="fx"></span>
+                                                    <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                                    <span class="sp"></span>
+                                                </div>
+                                            </div>
+                                            <div class="head-img">
+                                                <img width="80" height="80" ng-src="{{item.accessLog.FacePath}}">
+                                            </div>
+                                            <div class="desc">
+                                                <div class="time">{{item.accessLog.LogTime}}</div>
+                                                <div class="info">{{item.accessLog.address}}</div>
+                                            </div>
+                                            <!--<span class="delete">删除</span>-->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="item-group item-group-mac"
+                                     ng-if="MacCarCrashCtrl.resultRightType === 'carMacCrash'"
+                                     ng-repeat="group in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)">
+                                    <div class="capture-item capture-item-main">
+                                        <div class="macaddress"><span class="gray">Mac地址:</span>AC-5S-A8-98-AS-DS</div>
+                                        <div class="timer">
+                                            <span class="gray">伴随次数:</span><i>{{group.accessLog.AccompanyingRes.length}}</i>次
+                                        </div>
+                                        <div class="set-track">
+                                            <button ng-click="MacCarCrashCtrl.setAccpTrack($index)">查看轨迹</button>
+                                        </div>
+                                        <span class="slide-icon"
+                                              ng-class="{active:MacCarCrashCtrl.checkRightResult[$index]}"
+                                              ng-click="MacCarCrashCtrl.slideRightResult($index)">
+                                                {{MacCarCrashCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                            </span>
+                                    </div>
+                                    <div class="item-repeat-group"
+                                         ng-class="{active:MacCarCrashCtrl.checkRightResult[$index]}">
+                                        <div class="capture-item" ng-repeat="(i,item) in group.accessLog.AccompanyingRes"
+                                             ng-click="MacCarCrashCtrl.openDetailPopup(item,i,'MapForAccpGroup')"
+                                             ng-mouseenter="MacCarCrashCtrl.resultToMap(item,i,'Accp','Mac')"
+                                             ng-mouseleave="MacCarCrashCtrl.unResultToMap(item,i,'Accp','Mac')"
+                                        >
+                                            <div class="img-info">
+                                                <span class="location">{{$index+1}}</span>
+                                                <div class="action">
+                                                    <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                                    <span class="fx"></span>
+                                                    <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                                </div>
+                                            </div>
+                                            <div class="desc">
+                                                <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                                <div class="time">{{item.accessLog.LogTime}}</div>
+                                                <div class="info">{{item.accessLog.address}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-bottom">
+                            <util-paging
+                                    hide-size="true"
+                                    page-params="MacCarCrashCtrl.resultParams"
+                                    prev-page="MacCarCrashCtrl.changeResultPage(num)"
+                                    next-page="MacCarCrashCtrl.changeResultPage(num)"
+                                    go-page="MacCarCrashCtrl.changeResultPage(num)"
+                                    show-type="small"
+                            ></util-paging>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="taggle-result taggle-result-open" ng-class="{'active':MacCarCrashCtrl.showResult}"
+             ng-click="MacCarCrashCtrl.goAllResult()"></div>
+        <div class="taggle-result taggle-result-close" ng-class="{'active':MacCarCrashCtrl.showAllResult}"
+             ng-show="MacCarCrashCtrl.showAllResult" ng-click="MacCarCrashCtrl.closeAllResult()"></div>
+        <div class="taggle-result taggle-result-close-right" ng-class="{'active':MacCarCrashCtrl.showAllAccompanyResult}"
+             ng-show="MacCarCrashCtrl.showAllAccompanyResult" ng-click="MacCarCrashCtrl.closeAllResult()"></div>
+        <div class="taggle-result taggle-result-open-right"
+             ng-class="{'active':MacCarCrashCtrl.showResult}"
+             ng-style="{'left':!MacCarCrashCtrl.showResult?MacCarCrashCtrl.windowWidth+'px':(MacCarCrashCtrl.windowWidth-280-60-30)+'px'}"
+             ng-click="MacCarCrashCtrl.goAccompanyAllResult()"></div>
+
+
+        <div class="face-track-all-res"
+             ng-class="{'active':MacCarCrashCtrl.showAllResult}"
+             ng-style="{'width':MacCarCrashCtrl.windowWidth-60 + 'px'}">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">车辆Mac碰撞</div>
+                <div class="back-btn">
+                    <button ng-click="MacCarCrashCtrl.goBackForm()">返回上级</button>
+                </div>
+            </div>
+
+            <div class="all-result-layer">
+                <div class="all-result">
+                    <div class="all-result-head">
+                        <div class="result-sort" ng-if="MacCarCrashCtrl.resultLeftType==='carMacCrash'">
+                            <span class="ft active">按相似度</span><span class="mid">按时间</span><span class="lt">按频率</span>
+                        </div>
+                        <div class="result-operate">
+                        <span class="select-all checkbox">
+                            <input type="checkbox">
+                            <i>全选</i>
+                        </span>
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="all-res-content">
+                        <div class="container-fluid">
+                            <div class="row" ng-if="MacCarCrashCtrl.resultLeftType==='macCarCrash'">
+                                <div class="col-sm-3 col-md-2 col-lg-1-10"
+                                     ng-repeat="item in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)">
+                                    <div class="result-item">
+                                        <div class="item-picture">
+                                            <img ng-src="{{item.accessLog.FacePath}}" alt="">
+                                        </div>
+
+                                        <div class="item-similarity">{{item.accessLog.similar}}</div>
+                                        <div class="item-time">{{item.accessLog.LogTime}}</div>
+                                        <div class="item-address">{{item.accessLog.address}}</div>
+                                        <div class="mask">
+                                            <span class="action">
+                                                <i class="sc"></i>
+                                                <i class="fx"></i>
+                                                <i class="bk"></i>
+                                                <i class="sp"></i>
+                                            </span>
+                                            <span class="del"
+                                                  ng-click="MacCarCrashCtrl.delResult(item.accessLog.CameraID)">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="MacCarCrashCtrl.resultLeftType==='carMacCrash'">
+                                <div class="col-sm-3 col-md-2 col-xs-1-8"
+                                     ng-repeat="item in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)">
+                                    <div class="result-item result-item-mac">
+                                        <div class="desc">
+                                            <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                            <div class="time">{{item.accessLog.LogTime}}</div>
+                                            <div class="info">{{item.accessLog.address}}</div>
+                                        </div>
+                                        <div class="action">
+                                            <i class="sc"></i>
+                                            <i class="fx"></i>
+                                            <i class="bk"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="all-result-footer container-fluid">
+                        <div class="row">
+                            <div class="col-md-3" style="padding:30px;">共 <i class="blue-font">{{MacCarCrashCtrl.resultParams.totalCount}}</i>
+                                条记录
+                            </div>
+
+                            <div class="page-bottom col-md-9">
+                                <util-paging
+                                        hide-size="true"
+                                        hide-gopage="true"
+                                        page-params="MacCarCrashCtrl.resultParams"
+                                        prev-page="MacCarCrashCtrl.changeResultPage(num)"
+                                        next-page="MacCarCrashCtrl.changeResultPage(num)"
+                                        go-page="MacCarCrashCtrl.changeResultPage(num)"
+                                ></util-paging>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="face-track-all-res face-mac-analysis-right-all-res"
+             ng-class="{'active':MacCarCrashCtrl.showAllAccompanyResult}"
+             ng-style="{'width':MacCarCrashCtrl.windowWidth-60 + 'px'}">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">车辆Mac碰撞</div>
+                <div class="back-btn">
+                    <button ng-click="MacCarCrashCtrl.goBackForm()">返回上级</button>
+                </div>
+            </div>
+
+            <div class="all-result-layer">
+                <div class="all-result">
+                    <div class="all-result-head">
+                        <div class="result-sort">
+                            <span class="ft active">按相似度</span><span class="mid">按时间</span><span class="lt">按频率</span>
+                        </div>
+                        <div class="result-operate">
+                        <span class="select-all checkbox">
+                            <input type="checkbox">
+                            <i>全选</i>
+                        </span>
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="all-res-content" ng-scrollbars>
+                        <div class="container-fluid">
+                            <div ng-if="MacCarCrashCtrl.resultRightType==='carMacCrash'" class="row">
+                                <div class="col-md-12 group-layer"
+                                     ng-repeat="group in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)">
+                                    <div class="result-item-group">
+                                        <div class="item-group-head">
+                                            <span class="head-left">
+                                                <span class="left">伴随次数:</span>
+                                                <span class="right"><i class="timer">{{group.accessLog.AccompanyingRes.length}}</i>次</span></span>
+                                            <span class="head-right"
+                                                  ng-class="{active:MacCarCrashCtrl.checkRightResult[$index]}"
+                                                  ng-click="MacCarCrashCtrl.slideRightResult($index)">
+                                                {{MacCarCrashCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                            </span>
+                                        </div>
+                                        <div class="item-group row" >
+                                            <div ng-repeat="(i,item) in group.accessLog.AccompanyingRes"  class="col-sm-3 col-md-2 col-lg-1-10" >
+                                                <div class="result-item">
+                                                    <div class="item-picture">
+                                                        <img ng-src="{{item.FacePath}}" alt="">
+                                                    </div>
+
+                                                    <div class="item-similarity">{{item.similar}}</div>
+                                                    <div class="item-time">{{item.LogTime}}</div>
+                                                    <div class="item-address">{{item.address}}</div>
+                                                    <div class="mask">
+                                                        <span class="action">
+                                                            <i class="sc"></i>
+                                                            <i class="fx"></i>
+                                                            <i class="bk"></i>
+                                                            <i class="sp"></i>
+                                                        </span>
+                                                        <span class="del"
+                                                              ng-click="MacCarCrashCtrl.delResult(item)">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div ng-if="MacCarCrashCtrl.resultRightType==='macCarCrash'" class="row">
+                                <div class="col-md-12 group-layer"
+                                     ng-repeat="group in MacCarCrashCtrl.resultParams.data.result track by MacCarCrashCtrl.getKey(item)">
+                                    <div class="result-item-group">
+                                        <div class="item-group-head">
+                                            <span class="head-left">
+                                                <span class="left">伴随次数:</span>
+                                                <span class="right"><i class="timer">{{group.accessLog.AccompanyingRes.length}}</i>次</span></span>
+                                            <span class="head-right"
+                                                  ng-class="{active:MacCarCrashCtrl.checkRightResult[$index]}"
+                                                  ng-click="MacCarCrashCtrl.slideRightResult($index)">
+                                                {{MacCarCrashCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                            </span>
+                                        </div>
+                                        <div class="item-group row" >
+                                            <div class="col-sm-3 col-md-2 col-xs-1-8"
+                                                 ng-repeat="item in group.accessLog.AccompanyingRes track by MacCarCrashCtrl.getKey(item)">
+                                                <div class="result-item result-item-mac">
+                                                    <div class="desc">
+                                                        <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                                        <div class="time">{{item.LogTime}}</div>
+                                                        <div class="info">{{item.address}}</div>
+                                                    </div>
+                                                    <div class="action">
+                                                        <i class="sc"></i>
+                                                        <i class="fx"></i>
+                                                        <i class="bk"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="all-result-footer container-fluid">
+                        <div class="row">
+                            <div class="col-md-3" style="padding:30px;">共 <i class="blue-font">{{MacCarCrashCtrl.resultParams.totalCount}}</i>
+                                条记录
+                            </div>
+
+                            <div class="page-bottom col-md-9">
+                                <util-paging
+                                        hide-size="true"
+                                        hide-gopage="true"
+                                        page-params="MacCarCrashCtrl.resultParams"
+                                        prev-page="MacCarCrashCtrl.changeResultPage(num)"
+                                        next-page="MacCarCrashCtrl.changeResultPage(num)"
+                                        go-page="MacCarCrashCtrl.changeResultPage(num)"
+                                ></util-paging>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>

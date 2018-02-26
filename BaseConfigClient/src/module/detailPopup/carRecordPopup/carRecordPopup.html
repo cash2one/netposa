@@ -1,0 +1,89 @@
+<div class="layer-component car-record-popup" ng-controller="carRecordController as carRecordCtrl">
+    <!-- 弹框 -->
+    <div class="media-title">
+        <span class="licence-plate">档案详情</span>
+        <a class="layui-layer-ico m-layui-close" ng-click="carRecordCtrl.closeLayer()"></a>
+    </div>
+    <div class="media-con">
+        <div class="media media-fix-margin">
+            <div class="car-info">
+                <div class="car-picture">
+                    <img ng-src="{{carRecordCtrl.carDetailArchives.carPicture}}" alt="">
+                </div>
+                <div class="info-ul">
+                    <div class="info-li">
+                        <div class="name">车牌号码：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.carLicense}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">车牌颜色：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.licenseColor}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">车俩类型：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.type}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">车辆品牌：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.brand}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">车辆颜色：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.color}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">使用性质：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.useNature}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">发动机号：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.engineNum}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">出厂日期：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.releaseDate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="owner-info">
+                <div class="owner-picture">
+                    <img ng-src="{{carRecordCtrl.carDetailArchives.ownerPicture}}" alt="">
+                </div>
+                <div class="info-ul">
+                    <div class="info-li">
+                        <div class="name">车主：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.owner}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">性别：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.sex}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">名族：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.nationality}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">出生日期：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.birthday}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">身份证号：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.personID}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">联系电话：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.phone}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">驾照信息：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.violation}}</div>
+                    </div>
+                    <div class="info-li">
+                        <div class="name">违章记录：</div>
+                        <div class="text">{{carRecordCtrl.carDetailArchives.violation}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

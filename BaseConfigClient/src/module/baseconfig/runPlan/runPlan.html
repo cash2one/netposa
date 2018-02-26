@@ -1,0 +1,121 @@
+<div class="m-runPlan">
+    <div class="right-content">
+        <div class="m-baseconfig-topFixed runPlan-topFixed">
+            <ol class="m-route f-cfb">
+                <li translate="DP_CONFIG_RUNPLAN_01"></li>
+                <li class="route-separate">/</li>
+                <li translate="DP_CONFIG_RUNPLAN_02"></li>
+            </ol>
+
+            <div class="m-facelib-top f-cfb">
+                <div class="m-faceLibForm f-fl m-right15">
+                    <span class="faceLibForm-title" translate="DP_CONFIG_COMMON_44"></span>
+                    <label>
+                        <input type="text" placeholder="{{'DP_CONFIG_RUNPLAN_09'|translate}}"
+                               ng-model="runPlanCtrl.findListParams.keyword">
+                        <i class="iconPosition"></i>
+                    </label>
+                </div>
+
+                <div class="m-faceLibForm f-fl m-right15">
+                    <span class="faceLibForm-title" translate="DP_CONFIG_COMMON_45"></span>
+                    <label>
+
+                        <input class="faceLibForm-input1"
+                               type="text"
+                               name="newTaskStartTime"
+                               ng-model="runPlanCtrl.findListParams.startTime"
+                               placeholder="请选择开始时间"
+                               date-picker />
+
+                        <i class="iconPosition i-calendar"></i>
+                    </label>
+                    <span class="faceLibForm-title">—</span>
+                    <label>
+                        <input class="faceLibForm-input1"
+                               type="text"
+                               name="newTaskEndTime"
+                               ng-model="runPlanCtrl.findListParams.endTime"
+                               placeholder="请选择结束时间"
+                               date-picker />
+                        <i class="iconPosition i-calendar"></i>
+                    </label>
+                </div>
+
+                <div class="m-faceLibForm f-fl m-right15 f-cfb">
+                    <button class="u-button" ng-click="runPlanCtrl.getListBySearch()"
+                            translate="DP_CONFIG_COMMON_24"></button>
+                </div>
+
+            </div>
+
+            <!-- 操作块 -->
+            <div class="m-runPlan-oper f-cfb">
+                <!--新增-->
+                <i class="u-button f-usn f-fl m-right15"
+                   translate="DP_CONFIG_RUNPLAN_03"
+                   ng-click="runPlanCtrl.addModel()"
+                ></i>
+                <!--删除-->
+                <i class="u-button f-usn f-fl"
+                   translate="DP_CONFIG_COMMON_06"
+                   ng-click="runPlanCtrl.deleteByIds()"
+                ></i>
+            </div>
+
+        </div>
+
+        <div class="m-baseconfig-centerFixed runPlan-centerFixed">
+            <!--
+                    <div>
+                        <canvas id="dateRange"
+                                width="400" height="300"
+                        ></canvas>
+                    </div>-->
+
+            <util-table-head table-headers="runPlanCtrl.tHeadList"
+                             table-has-check='true'
+                             class="table-content"
+                             table-after-check="runPlanCtrl.afterChangeCheck(checkList,isCheckAll)"
+            >
+                <util-table-tr ng-repeat="(index,tbody_data) in runPlanCtrl.tBodyList">
+
+                    <util-table-tr-td ng-bind="tbody_data.Name">
+
+                    </util-table-tr-td>
+
+                    <util-table-tr-td>{{tbody_data.CreateTime}}</util-table-tr-td>
+
+                    <util-table-tr-td>{{tbody_data.Description}}</util-table-tr-td>
+
+                    <util-table-tr-td>
+                        <div class="table-icon-cntr f-cfb">
+                            <i class="icon-btn i-edit z-gray" ng-click="runPlanCtrl.updateModel(tbody_data)"></i>
+                            <i class="icon-btn i-delete z-gray" ng-click="runPlanCtrl.deleteById(tbody_data)"></i>
+                        </div>
+                    </util-table-tr-td>
+
+                </util-table-tr>
+                <div class="u-table-no-data"
+                     ng-show="runPlanCtrl.tableNoData"
+                     ng-cloak
+                     translate="DP_CONFIG_COMMON_16">
+                    >
+                </div>
+
+            </util-table-head>
+        </div>
+
+        <div class="m-baseconfig-bottomFixed">
+            <util-paging
+                    page-params="runPlanCtrl.pageParams"
+                    prev-page="runPlanCtrl.changePage(num)"
+                    next-page="runPlanCtrl.changePage(num)"
+                    go-page="runPlanCtrl.changePage(num)"
+                    page-size="runPlanCtrl.changePageSize(num)"
+            ></util-paging>
+        </div>
+    </div>
+
+
+</div>

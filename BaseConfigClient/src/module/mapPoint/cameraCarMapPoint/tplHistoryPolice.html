@@ -1,0 +1,84 @@
+<div ng-controller="cameraPointHistoryPolice as historyPolice" class="maplayer layer-max ">
+    <div class="head">
+        <div class="maplayer-title">摄像机IOS-0060</div>
+        <div class="maplayer-close mylayer-close"></div>
+    </div>
+    <div class="maplayer-cntlayer">
+        <div class="maplayer-right-content-history">
+            <div class="time-pick">
+                <div class="time-pick-input">
+                    <div class="start-time-pick pick">
+                        <input placeholder="开始时间" readonly type="text" ng-model="historyPolice.startTime" date-picker
+                               show-init="false">
+                    </div>
+                    <div class="pick hen"></div>
+                    <div class="end-time-pick pick">
+                        <input placeholder="结束时间" readonly type="text" ng-model="historyPolice.endTime" date-picker
+                               show-init="false">
+                    </div>
+                </div>
+                <div class="searchbtn"></div>
+            </div>
+            <div class="gjlayer">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>抓拍人脸</th>
+                        <th>相似度</th>
+                        <th>比中人脸</th>
+                        <th>报警时间</th>
+                        <th>报警摄像机</th>
+                        <th>布控人</th>
+                        <th>所在库</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in historyPolice.SubcribeAlarmList">
+                        <td width="80">
+                            <div style="width: 40px;height: 40px;">
+                                <img style="width: auto;height: auto;max-width: 100%;max-height: 100%;" src="{{item.AlarmLog.CapFacePicUrl}}" alt="">
+                            </div>
+                        </td>
+                        <td width="70">
+                            <span class="num">{{item.AlarmLogInfoArr.}}</span>
+                        </td>
+                        <td width="100">
+                            <span style="display: block;width: 80px;height: 30px;background: #53aef4;color: #fff;line-height: 30px;text-align: center;border-radius: 2px;">{{item.matchNum}}</span>
+                        </td>
+                        <td width="70">
+                            <img src="{{item.alarmImage}}" alt="">
+                        </td>
+                        <td width="136">
+                            {{item.alarmTime}}
+                        </td>
+                        <td width="146">
+                            {{item.cameraAddress}}
+                        </td>
+                        <td>
+                            {{item.createUserName}}
+                        </td>
+                        <td>
+                            未知
+                        </td>
+                        <td>{{item.status === 0?'有效':'无效'}}</td>
+                        <td width="78" class="action">
+                            <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                            <span class="fx"></span>
+                            <span class="lx"></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <util-paging
+                    page-params="historyPolice.historyCaptrueParams"
+                    prev-page="historyPolice.changePage(num)"
+                    next-page="historyPolice.changePage(num)"
+                    go-page="historyPolice.changePage(num)"
+                    page-size="historyPolice.changePageSize(num)"
+            ></util-paging>
+        </div>
+    </div>
+</div>

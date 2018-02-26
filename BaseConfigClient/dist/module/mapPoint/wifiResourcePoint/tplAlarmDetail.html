@@ -1,0 +1,58 @@
+<div ng-controller="alarmDetailController as alarmDetailCtrl" class="alarm-detail wifi-pop-up">
+    <!-- <div class="title">
+        <div class="name">Wi-Fi报警详情</div>
+        <div class="close" ng-click="alarmDetailCtrl.closePopup()"></div>
+    </div> -->
+    <div class="con">
+        <div class="top">
+            <div class="surveillance" ng-class="{'active': alarmDetailCtrl.renderData.surveillanceStatus}" ng-click="alarmDetailCtrl.clickSurveillance(alarmDetailCtrl.renderData)">布控</div>
+            <div class="analyze" ng-click="alarmDetailCtrl.clickAnalysis(alarmDetailCtrl.renderData)">分析</div>
+            <div class="collect" ng-class="{'active': alarmDetailCtrl.renderData.collectStatus}" ng-click="alarmDetailCtrl.clickCollect(alarmDetailCtrl.renderData)">已收藏</div>
+        </div>
+        <div class="table-ul">
+            <div class="table-li">
+                <div class="name">MAC地址：</div>
+                <div class="text">{{alarmDetailCtrl.renderData.AlarmLog.Notes}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">状态：</div>
+                <div class="text s3">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">报警时间：</div>
+                <div class="text">{{alarmDetailCtrl.renderData.AlarmLog.AlarmTime}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">热点SSID：</div>
+                <div class="text">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">报警设备：</div>
+                <div class="text">{{alarmDetailCtrl.name}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">热点MAC：</div>
+                <div class="text">{{}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">采集地点：</div>
+                <div class="text">{{alarmDetailCtrl.name}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">信号强度：</div>
+                <div class="text">{{}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-con">
+            <div class="last-page" ng-click="alarmDetailCtrl.lastClick()"></div>
+            <div class="next-page" ng-click="alarmDetailCtrl.nextClick()"></div>
+            <!-- <div class="operate">
+                <button class="invalid">无效</button>
+                <button class="undetermined">待定</button>
+                <button class="effectivity">有效</button>
+            </div> -->
+        </div>
+    </div>
+</div>

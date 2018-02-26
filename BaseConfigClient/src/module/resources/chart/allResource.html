@@ -1,0 +1,78 @@
+<div class="m-pieChart">
+    <ul class="m-resource-left" ng-class="allResourceCtrl.leftChartHidden?'switch-button3':'switch-button2'">
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{allResourceCtrl.ResourceNameArr.ResourceStatisticalTotal}}"></i>
+                <!--<i class="i-fullScreen f-csp m-fullScreen-button" ng-click="allResourceCtrl.enlarge('ResourceStatisticalTotalConfig')"></i>-->
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !allResourceCtrl.noMessage.ResourceStatisticalTotal}" translate="{{allResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': allResourceCtrl.noMessage.ResourceStatisticalTotal}">
+                <div id="ResourceStatisticalTotal" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{allResourceCtrl.ResourceNameArr.AreaTotalCollection}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="allResourceCtrl.enlarge('AreaTotalCollectionConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !allResourceCtrl.noMessage.AreaTotalCollection}" translate="{{allResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': allResourceCtrl.noMessage.AreaTotalCollection}">
+                <div id="AreaTotalCollection" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{allResourceCtrl.ResourceNameArr.AlarmStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="allResourceCtrl.enlarge('AlarmStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !allResourceCtrl.noMessage.AlarmStatistics}" translate="{{allResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': allResourceCtrl.noMessage.AlarmStatistics}">
+                <div id="AlarmStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+    </ul>
+    <i class="i-right-hide f-csp m-hidden-static" ng-class="allResourceCtrl.leftChartHidden?'i-left-display':'i-right-hide'" ng-click="allResourceCtrl.hiddenLeftRightChart('left')"></i>
+    <!--ng-show="resourceCtrl.allRight"-->
+    <ul class="m-resource-right" ng-class="resourceCtrl.switchButton.switch||allResourceCtrl.rightChartHidden?'switch-button1':'switch-button2'">
+    <!--<ul class="m-resource-right">-->
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{allResourceCtrl.ResourceNameArr.DataServiceStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="allResourceCtrl.enlarge('DataServiceStatisticsConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !allResourceCtrl.noMessage.DataServiceStatistics}" translate="{{allResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': allResourceCtrl.noMessage.DataServiceStatistics}">
+                <div id="DataServiceStatistics" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{allResourceCtrl.ResourceNameArr.ResourcebRetrievalTrend}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="allResourceCtrl.enlarge('ResourcebRetrievalTrendConfig')"></i>
+            </span>
+            <div class='m-no-message' ng-class="{'m-no-display': !allResourceCtrl.noMessage.ResourcebRetrievalTrend}" translate="{{allResourceCtrl.ResourceNameArr.NOData}}"></div>
+            <div ng-class="{'m-no-display': allResourceCtrl.noMessage.ResourcebRetrievalTrend}">
+                <div id="ResourcebRetrievalTrend" class="m-resource-eContent m-float-im"></div>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{allResourceCtrl.ResourceNameArr.AllRankList}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="allResourceCtrl.enlarge('AllRankListForEnlarge')"></i>
+            </span>
+            <div id="ResourcebKeywordSearch" class="m-resource-eContent m-float-im">
+                <table class="table" ng-if="allResourceCtrl.AllRankListConfig.config.length">
+                    <tr ng-repeat="rankdata in allResourceCtrl.AllRankListConfig.config">
+                        <td>
+                            <i class="f-csp" ng-class="allResourceCtrl.rankClassName[$index]"></i>
+                        </td>
+                        <td class="m-RankWidth">{{ rankdata.name }}</td>
+                        <td>{{ rankdata.value }}</td>
+                    </tr>
+                </table>
+                <i class='resource-no-message' ng-if="!allResourceCtrl.AllRankListConfig.config.length" translate="{{allResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+    </ul>
+    <i class="f-csp rightStatic" ng-class="allResourceCtrl.rightChartHidden?'i-left-display':'i-right-hide'" ng-click="allResourceCtrl.hiddenLeftRightChart('right')"></i>
+</div>

@@ -1,0 +1,92 @@
+<!--bcElectronicFenceCtrl html-->
+<div class="m-device f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+        <span class="tree-search">
+                <input type="text" class="u-input tree-search"
+                       ng-model="bcElectronicFenceCtrl.areaTreeSearchInputStr"
+                       placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                       ng-keyup="bcElectronicFenceCtrl.areaTreeSearchInputKeyUp($event)"
+                />
+                <i class="u-input-search" ng-click="bcElectronicFenceCtrl.areaTreeSearchInput()"></i>
+             </span>
+        <div ng-show="bcElectronicFenceCtrl.areaTreeDatas.treeDatas.length > 0" class="m-device-tree-container" ng-scrollbars style="overflow:auto;height:100%">
+            <util-tree tree-hide="bcElectronicFenceCtrl.areaTreeDatas.treeDatas.length == 0" tree-id="{{bcElectronicFenceCtrl.areaTreeDatas.treeId}}" tree-datas="bcElectronicFenceCtrl.areaTreeDatas.treeDatas" is-default-selected="true" tree-init-complete="bcElectronicFenceCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                check-enable="false" single-select="true" is-simple-data="true" show-icon="true" show-line="false" default-no-data-msg="bcElectronicFenceCtrl.areaTreeDatas.defaultNoDataMsg" search-no-data-msg="bcElectronicFenceCtrl.areaTreeDatas.searchNoDataMsg"
+                on-click="bcElectronicFenceCtrl.areaTreeDatas.onClick(event, treeId, treeNode)" tree-id-key="ID" tree-pid-key="ParentID" tree-key-name="Name" default-select-tree-id="bcElectronicFenceCtrl.areaTreeDatas.defaultSelectTreeId" default-expand-level="0"></util-tree>
+        </div>
+        <div class="u-table-no-data" ng-show="bcElectronicFenceCtrl.areaTreeDatas.finishedNoData" translate="DP_CONFIG_COMMON_16"> 
+        </div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+
+            <div class="m-baseconfig-topFixed device-topFixed">
+
+                <ol class="m-route f-cfb">
+                    <li translate='DP_CONFIG_COMMON_01'></li>
+                    <li class="route-separate">/</li>
+                    <li translate='DP_CONFIG_ELECTRONICFENCE_01'></li>
+                </ol>
+                <div class="m-device-menu">
+                    <div class="taskBtn f-cfb">
+                        <div>
+                            <span class="device-label" translate="DP_CONFIG_COMMON_03"></span>
+                            <input type="text" class="u-input device-input" ng-model="bcElectronicFenceCtrl.SearchParams.Name"  placeholder="{{'DP_CONFIG_COMMON_51'|translate}}">
+                            <button class="u-button" translate="DP_CONFIG_COMMON_05" ng-click="bcElectronicFenceCtrl.search()"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-device-info">
+                    <div class="info-top f-cfb">
+
+                        <div>
+                            <button class="u-button" ng-click="bcElectronicFenceCtrl.configDevices('area')" translate='DP_CONFIG_COMMON_08'></button>
+                            <button class="u-button" ng-click="bcElectronicFenceCtrl.configDevices('lamp')" translate='DP_CONFIG_COMMON_07'></button>
+                            <!--<button class="u-button" ng-disabled="!rmBtn" translate="DP_CONFIG_ELECTRONICFENCE_06"></button>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="m-task-search-top f-cfb">
+
+
+                </div>
+            </div>
+
+            <div class="m-baseconfig-centerFixed device-centerFixed">
+
+                <util-table-head table-headers="bcElectronicFenceCtrl.tHeadList" table-has-check='true' class="table-content" table-sort-fun="bcElectronicFenceCtrl.sortByField(index,fieldName,sortStatus)" table-after-check="bcElectronicFenceCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+                    <util-table-tr ng-repeat="(index,tbody_data) in bcElectronicFenceCtrl.tBodyList">
+
+                        <util-table-tr-td>{{tbody_data.Name}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.Code || ('未知'|translate)}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.JsonUserData.Area.Name || ('未知'|translate)}}</util-table-tr-td>
+                        <!--<util-table-tr-td>{{tbody_data.IodServerID || ('未知'|translate)}}</util-table-tr-td>-->
+                        <util-table-tr-td>{{tbody_data.JsonUserData.Point.Lon|number:6 || ('未知'|translate)}}</util-table-tr-td>
+                        <util-table-tr-td>{{tbody_data.JsonUserData.Point.Lat|number:6 || ('未知'|translate)}}</util-table-tr-td>
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="bcElectronicFenceCtrl.editAreaTd(tbody_data)"></i>
+                                <i class="icon-btn i-lamp z-gray f-csp" title="{{'DP_CONFIG_COMMON_83'|translate}}" ng-click="bcElectronicFenceCtrl.setLamp(tbody_data)"></i>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                    <div class="u-table-no-data" ng-show="bcElectronicFenceCtrl.tableNoData" translate="DP_CONFIG_COMMON_16">
+
+                    </div>
+
+                </util-table-head>
+
+
+
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging page-params="bcElectronicFenceCtrl.pageParams" prev-page="bcElectronicFenceCtrl.changePage(num)" next-page="bcElectronicFenceCtrl.changePage(num)" go-page="bcElectronicFenceCtrl.changePage(num)" page-size="bcElectronicFenceCtrl.changePageSize(num)"></util-paging>
+            </div>
+        </div>
+    </div>
+
+</div>

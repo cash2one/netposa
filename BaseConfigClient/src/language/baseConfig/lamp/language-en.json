@@ -1,0 +1,27 @@
+{
+    "note": "/** 编码规则**/",
+    "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+    "note": "/***************************************** 基础控件  start ****************************************************/",
+  
+    "note": "/*******公共操作*********/",
+    "DP_CONFIG_LAMP_01": "Data resources",
+    "DP_CONFIG_LAMP_02": "Pole configuration",
+    "DP_CONFIG_LAMP_03": "Keywords",
+    "DP_CONFIG_LAMP_04": "Enter the pole number or name", 
+    "DP_CONFIG_LAMP_05": "Inquire",
+    "DP_CONFIG_LAMP_06": "Add pole", 
+   
+    "note": "/*******列表字段*********/",
+    "DP_CONFIG_LAMP_07": "Include device",
+
+    "note": "/******编辑功能*********/",
+    "DP_CONFIG_LAMP_08": "Edit pole",
+    "DP_CONFIG_LAMP_09": "Configure the device",
+    "DP_CONFIG_LAMP_10": "Click Add image",
+    "DP_CONFIG_LAMP_13": "Configure the device",
+
+    "note": "/******删除*********/",
+    "DP_CONFIG_LAMP_11": "Are you sure you want to delete this pole?",
+    "DP_CONFIG_LAMP_12": "Are you sure you want to delete the currently selected administrative area data?",
+    "DP_CONFIG_LAMP_14": "Synchronous coordinate"
+  }

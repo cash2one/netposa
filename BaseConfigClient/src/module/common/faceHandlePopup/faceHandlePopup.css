@@ -1,0 +1,60 @@
+/*标定图片弹出框样式*/
+.m-demarcate-wrap{
+    width: 100%;
+    height:100%;
+}
+
+.m-demarcate-wrap .imgWidth{
+    width: 100%;
+}
+
+.m-demarcate-wrap .demarcate-wrap-center{
+    width: 100%;
+    height:466px;
+}
+
+.m-demarcate-wrap .dem-cen-top{
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    text-indent: 20px;
+    color: #444;
+}
+
+.m-demarcate-wrap .dem-cen-bottom{
+    padding: 0 20px;
+}
+
+.m-demarcate-wrap .dem-cen-bottom-img{
+    width: 300px;
+    height:400px;
+    border:1px solid #c4cbcf;
+}
+
+.m-demarcate-wrap .demarcate-img{
+    position: relative;
+    cursor:pointer;
+}
+
+.m-demarcate-wrap .demarcate-wrap-bottom{
+    width: 100%;
+    height: 58px;
+    border-top: 1px solid #f1f1f1;
+}
+
+.m-demarcate-wrap .dem-bom-btns{
+    margin: 14px 20px;
+}
+
+/*选择人脸弹出框*/
+.m-screenshot-wrap{
+    width: 100%;
+    background: rgb(238, 238, 238);
+    border: 1px solid rgb(245, 166, 0);
+    height: 400px;
+    overflow: hidden;
+}
+
+.m-screenshot-wrap .imgWidth{
+    width: 100%;
+}

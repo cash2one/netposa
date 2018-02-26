@@ -1,0 +1,30 @@
+<div class="report-container">
+    <div class="report-ctn">
+        <div class="report-ctn-list" ng-repeat="alarmData in myReportCtrl.alarmDatas track by $index"
+             ng-class="{'z-gray-color': $odd}">
+            <div class="list-content">
+                <div class="time-box">
+                    <div class="time">{{myReportCtrl.getValueByTimeKey(alarmData.timeKey,"MM")}}月{{myReportCtrl.getValueByTimeKey(alarmData.timeKey, "dd")}}日
+                    </div>
+                    <div class="year">{{myReportCtrl.getValueByTimeKey(alarmData.timeKey, "yyyy")}}</div>
+                    <div class="count">总共<span>{{alarmData.alarmLogResultCount}}</span>条</div>
+                    <div class="more f-csp" ng-click="myReportCtrl.expanderMore(alarmData)"
+                         ng-hide="alarmData.isExpand">
+                        <span>展开更多</span>
+                        <i class="more-icon"></i>
+                    </div>
+                </div>
+                <div class="list-box-ctn f-cfb" ng-class="{'z-expand': alarmData.isExpand}">
+                    <div class="list-box" ng-repeat="alarmLogResult in alarmData.alarmLogResultArr track by $index">
+                        <!-- 人脸抓拍 -->
+                        <div ng-include="'../module/toolOption/myReport/myReportPage/FaceReportPage.html'" ng-if="myReportCtrl.isFaceType(alarmLogResult.AlarmLog.ObjectType)"></div>
+                        <div ng-include="'../module/toolOption/myReport/myReportPage/VehicleReportPage.html'" ng-if="myReportCtrl.isVehicleType(alarmLogResult.AlarmLog.ObjectType)"></div>
+                        <div ng-include="'../module/toolOption/myReport/myReportPage/MacReportPage.html'" ng-if="myReportCtrl.isMacType(alarmLogResult.AlarmLog.ObjectType)"></div>
+                    </div>
+                </div>
+            </div>
+            <img class="circle" src="../../../images/common/circle.png"/>
+        </div>
+    </div>
+    <div class="report-more-btn f-csp" ng-show="myReportCtrl.moreBtn" ng-click="myReportCtrl.getMoreAlarm()">加载更多</div>
+</div>

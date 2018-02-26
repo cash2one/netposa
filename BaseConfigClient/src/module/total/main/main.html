@@ -1,0 +1,18 @@
+<!--<div class="g-total" ui-view="total">
+
+</div>-->
+
+<div class="m-total-cntr f-cfb">
+    <div class="g-total-nav m-total-nav">
+        <util-nav-container class="u-nav-container" is-collapse="totalMainCtrl.isCollapse" ng-transclude>
+            <util-nav-tool></util-nav-tool>
+            <util-nav-single ng-repeat="item in totalMainCtrl.moduleItems" content-icon="{{item.icon}}"
+                             content-key="{{item.key}}" content-name="{{item.moduleName | translate}}"></util-nav-single>
+        </util-nav-container>
+    </div>
+
+    <div class="g-total-mn m-total-mn" ng-class="{'z-nav-putway': totalMainCtrl.isCollapse}" ui-view="total">
+        内容
+    </div>
+
+</div>

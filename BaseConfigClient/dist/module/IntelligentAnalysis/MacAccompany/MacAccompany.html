@@ -1,0 +1,414 @@
+<!--<div ng-controller="MacAccompanyController as MacAccompanyCtrl" class="face-mac-crash-group mac-wrap-box">-->
+<div class="macAccompany">
+    <div class="face-track macAccompanying-analysis">
+        <div class="face-track-left macAccompanying-left" ng-class="{'active':MacAccompanyCtrl.showForm}">
+            <div class="face-track-left-layer">
+                <div class="analaysis-head">
+                    <div class="analaysis-head-title">感知数据伴随</div>
+                    <div class="back-btn">
+                        <button ng-click="MacAccompanyCtrl.goBack()">返回上级</button>
+                    </div>
+                </div>
+                <div class="face-track-form">
+                    <div class="tab-list">
+                        <span ng-class="{'active':!MacAccompanyCtrl.showAnalysisList}" ng-click="MacAccompanyCtrl.showAnalysisList = false">分析条件</span>
+                        <span ng-class="{'active':MacAccompanyCtrl.showAnalysisList}" ng-click="MacAccompanyCtrl.showAnalysisList = true">分析结果</span>
+                    </div>
+                    <div class="analysis-from" ng-show="!MacAccompanyCtrl.showAnalysisList">
+                        <div class="analaysis-form-input">
+                            <span class="analaysis-form-title"><i class="required">*</i>任务名称</span>
+                            <span class="input-layer">
+                                <input ng-model="MacAccompanyCtrl.AccompanyingAnalysisParams.taskName"
+                                       show-init="false" type="text" placeholder="请输入任务名称">
+                            </span>
+                        </div>
+                        <div class="analaysis-form-input">
+                        <util-select class="analaysis-form-title" select-data="MacAccompanyCtrl.queryPattern"
+                                     select-repeat-by-key="name"
+                                     select-list-height="S"
+                                     selected-val="MacAccompanyCtrl.AccompanyingAnalysisParams.type"
+                                     select-click="MacAccompanyCtrl.selectQueryType(selected)"
+                                     select-list-diy-icon="false"
+                                     select-is-tree="false">
+                        </util-select>
+                        <span class="input-layer" style="width: 177px;">
+                                <input ng-model="MacAccompanyCtrl.AccompanyingAnalysisParams.value"
+                                       show-init="false" type="text">
+                            </span>
+                    </div>
+                        <div class="track-form">
+                            <div class="analaysis-form-input">
+                                <span class="analaysis-form-title">时间筛选</span>
+                                <span class="fast-date">
+                                    <span ng-repeat="item in MacAccompanyCtrl.FastDateList"
+                                          ng-class="{'active':item.key === MacAccompanyCtrl.FastDate.key}"
+                                          ng-click="MacAccompanyCtrl.setFastDate(item)">{{item.text}}
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="analaysis-form-input analaysis-form-input-date">
+                                <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                                <span class="input-layer">
+                                    <input ng-model="MacAccompanyCtrl.AccompanyingAnalysisParams.startTime"
+                                           date-picker
+                                           show-init="false" type="text" placeholder="请选择开始时间">
+                                </span>
+                            </div>
+                            <div class="analaysis-form-input analaysis-form-input-date">
+                                <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                                <span class="input-layer">
+                                    <input ng-model="MacAccompanyCtrl.AccompanyingAnalysisParams.endTime"
+                                           date-picker
+                                           show-init="false" type="text" placeholder="请选择结束时间">
+                                </span>
+                            </div>
+                            <div class="analaysis-form-input">
+                                <span class="analaysis-form-title"><i class="required">*</i>伴随次数</span>
+                                <span class="input-layer">
+                                    <input ng-model="MacAccompanyCtrl.AccompanyingAnalysisParams.followNum" type="text" placeholder="请输入伴随次数的最小值">
+                                </span>
+                            </div>
+                            <div class="analaysis-form-input accompanying-num">
+                                <span class="analaysis-form-title"><i class="required">*</i>伴随时间</span>
+                                <span class="input-group">
+                                    <span><i class="radius-left">前</i><input type="text" ng-model="MacAccompanyCtrl.AccompanyingAnalysisParams.agofollowTime"><i class="radius-right">秒</i></span>
+                                </span>
+                            </div>
+
+                            <div class="analaysis-form-input accompanying-num">
+                                <span class="analaysis-form-title"></span>
+                                <span class="input-group">
+                                <span><i class="radius-left">后</i><input type="text" ng-model="MacAccompanyCtrl.AccompanyingAnalysisParams.afterfollowTime"><i class="radius-right">秒</i></span>
+                                </span>
+                            </div>
+                            <div class="face-track-select-camera">
+                                <span class="form-title">摄像机</span>
+                                <div class="face-track-camera">
+                                    <span class="action choose-camera">选择摄像机</span>
+                                    <span ng-click="MacAccompanyCtrl.DrawRect()" class="action square"></span>
+                                    <span ng-click="MacAccompanyCtrl.DrawCircle()" class="action round"></span>
+                                    <span ng-click="MacAccompanyCtrl.DrawPolygon()" class="action polygon"></span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="searh-submit">
+                                <button ng-click="MacAccompanyCtrl.submitSearch()">查询</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-result-table" ng-show="MacAccompanyCtrl.showAnalysisList">
+                        <div class="task-item" ng-repeat="item in MacAccompanyCtrl.AccompOffLine">
+                            <div class="task-name">{{item.TaskName}}<span class="delete-task" ng-click="MacAccompanyCtrl.deleteAccompOffLine(item)"></span></div>
+                            <div class="task-info">
+                                <ul>
+                                    <li><span class="info-key">创建时间：</span><span class="info-value">{{item.CreateTime}}</span></li>
+                                    <li><span class="info-key">伴随次数：</span><span class="info-value">{{item.Ext.followNum}}</span></li>
+                                    <li><span class="info-key">任务状态：</span><span class="info-value">{{(item.TaskStatus==="200"&&item.CompletePercent==="100")?"Over":"Run"}}</span></li>
+                                </ul>
+
+                            </div>
+                            <div class="task-result-btn">
+                                <button ng-click="MacAccompanyCtrl.getAccompOffLineDetail(item)" class="find-result" ng-class="{'active':(item.TaskStatus==='200'&&item.CompletePercent==='100')}">{{(item.TaskStatus==="200"&&item.CompletePercent==="100")?"查看结果":"分析中"}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="face-track-res mac-track-result-res" ng-class="{'active':MacAccompanyCtrl.showResult}">
+            <div class="image-result">
+                <div class="analaysis-head">
+                    <div class="analaysis-head-title">伴随分析</div>
+                    <div class="back-btn">
+                        <button ng-click="MacAccompanyCtrl.goBackForm()">返回上级</button>
+                    </div>
+                </div>
+                <div class="track-result-content">
+                    <div class="content-layer">
+                        <div class="head-layer">
+                            <div class="head-title">
+                                <span class="head-left">
+                                    被伴随MAC
+                                </span>
+                                <span class="head-right"><button ng-click="MacAccompanyCtrl.setReultTrack()">查看轨迹</button></span>
+                            </div>
+                            <div class="count">
+                                共 <i>{{MacAccompanyCtrl.resultParams.totalCount}}</i> 条结果
+                            </div>
+                        </div>
+
+                        <div class="before-layer mac-before-layer">
+                            <div class="capture-layer" ng-scrollbars>
+                                <div class="capture-item"
+                                     ng-repeat="item in MacAccompanyCtrl.resultParams.data.result track by MacAccompanyCtrl.getKey(item)"
+                                     ng-click="MacAccompanyCtrl.openDetailPopup(item,$index,'MapForResultGroup')"
+                                     ng-mouseenter="MacAccompanyCtrl.resultToMap(item,$index)"
+                                     ng-mouseleave="MacAccompanyCtrl.unResultToMap(item,$index)"
+                                >
+                                    <div class="img-info">
+                                        <span ng-click="MacAccompanyCtrl.showMapPoint($index)"
+                                              class="location">
+                                             {{MacAccompanyCtrl.isSortLetter?(MacAccompanyCtrl.sortLetter[$index]):((MacAccompanyCtrl.resultParams.currentPage-1)*MacAccompanyCtrl.resultParams.pageSize)+$index+1}}</span>
+
+                                        </span>
+                                        <div class="action">
+                                            <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                            <span class="fx"></span>
+                                            <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                            <span  class="sp"></span>
+                                        </div>
+                                    </div>
+                                    <div class="desc mac-desc">
+                                        <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                        <div class="time">{{item.accessLog.LogTime}}</div>
+                                        <div class="info">{{item.accessLog.address}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-bottom">
+                            <util-paging
+                                    hide-size="true"
+                                    page-params="MacAccompanyCtrl.resultParams"
+                                    prev-page="MacAccompanyCtrl.changeResultPage(num)"
+                                    next-page="MacAccompanyCtrl.changeResultPage(num)"
+                                    go-page="MacAccompanyCtrl.changeResultPage(num)"
+                                    show-type="small"
+                            ></util-paging>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="face-track-res mac-track-result-res accompanying-analysis-right-result-res"
+             ng-class="{'active':MacAccompanyCtrl.showResult}"
+             ng-style="{'left':!MacAccompanyCtrl.showResult?MacAccompanyCtrl.windowWidth+'px':(MacAccompanyCtrl.windowWidth-280-60)+'px'}">
+            <div class="image-result">
+                <div class="analaysis-head">
+                    <div class="analaysis-head-title">伴随分析</div>
+
+                </div>
+                <div class="track-result-content">
+                    <div class="content-layer">
+                        <div class="head-layer">
+                            <div class="head-title">
+                                伴随MAC
+                            </div>
+                        </div>
+                        <div class="before-layer">
+                            <div class="capture-layer" ng-scrollbars>
+                                <div class="item-group" ng-repeat="group in MacAccompanyCtrl.accpResultParams.data.result track by MacAccompanyCtrl.getKey(item)">
+                                    <div class="item-group-mac">
+                                        <div class="capture-item capture-item-main">
+                                            <div class="mac-address"><span class="gray">Mac地址:</span>AC-5S-A8-98-AS-DS</div>
+                                            <div class="timer">
+                                                <span class="gray">伴随次数:</span><i>{{group.accessLog.AccompanyingRes.length}}</i>次
+                                            </div>
+                                            <div class="set-track">
+                                                <button ng-click="MacAccompanyCtrl.setAccpTrack($index)">查看轨迹</button>
+                                            </div>
+                                            <span class="slide-icon"
+                                                  ng-class="{active:MacAccompanyCtrl.checkRightResult[$index]}"
+                                                  ng-click="MacAccompanyCtrl.slideRightResult($index)">
+                                                {{MacAccompanyCtrl.checkRightResult[$index]?'收起':'更多'}}
+                                            </span>
+                                        </div>
+                                        <div class="item-repeat-group"
+                                             ng-class="{active:MacAccompanyCtrl.checkRightResult[$index]}">
+                                            <div class="capture-item" ng-repeat="(i,item) in group.accessLog.AccompanyingRes"
+                                                 ng-click="MacAccompanyCtrl.openDetailPopup(item,i,'MapForAccpGroup')"
+                                                 ng-mouseenter="MacAccompanyCtrl.resultToMap(item,i,'Accp','Mac')"
+                                                 ng-mouseleave="MacAccompanyCtrl.unResultToMap(item,i,'Accp','Mac')"
+                                            >
+                                                <div class="img-info">
+                                                    <span class="location">{{$index+1}}</span>
+                                                    <div class="action">
+                                                        <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                                        <span class="fx"></span>
+                                                        <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="desc">
+                                                    <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                                    <div class="time">{{item.accessLog.LogTime}}</div>
+                                                    <div class="info">{{item.accessLog.address}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-bottom">
+                            <util-paging
+                                    hide-size="true"
+                                    page-params="MacAccompanyCtrl.accpResultParams"
+                                    prev-page="MacAccompanyCtrl.changeAccpResultPage(num)"
+                                    next-page="MacAccompanyCtrl.changeAccpResultPage(num)"
+                                    go-page="MacAccompanyCtrl.changeAccpResultPage(num)"
+                                    show-type="small"
+                            ></util-paging>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="taggle-result taggle-result-open"  ng-class="{'active':MacAccompanyCtrl.showResult}" ng-click="MacAccompanyCtrl.goAllResult()"></div>
+        <div class="taggle-result taggle-result-close" ng-class="{'active':MacAccompanyCtrl.showAllResult}" ng-show="MacAccompanyCtrl.showAllResult" ng-click="MacAccompanyCtrl.closeAllResult()"></div>
+        <div class="taggle-result taggle-result-close-right"  ng-class="{'active':MacAccompanyCtrl.showAllAccompanyResult}" ng-show="MacAccompanyCtrl.showAllAccompanyResult" ng-click="MacAccompanyCtrl.closeAllResult()"></div>
+        <div class="taggle-result taggle-result-open-right"
+             ng-class="{'active':MacAccompanyCtrl.showResult}"
+             ng-style="{'left':!MacAccompanyCtrl.showResult?MacAccompanyCtrl.windowWidth+'px':(MacAccompanyCtrl.windowWidth-280-60-30)+'px'}"
+             ng-click="MacAccompanyCtrl.goAccompanyAllResult()"></div>
+
+
+        <div class="face-track-all-res"
+             ng-class="{'active':MacAccompanyCtrl.showAllResult}"
+             ng-style="{'width':MacAccompanyCtrl.windowWidth-60 + 'px'}">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">MAC轨迹</div>
+                <div class="back-btn">
+                    <button ng-click="MacAccompanyCtrl.goBackForm()">返回上级</button>
+                </div>
+            </div>
+
+            <div class="all-result-layer">
+                <div class="all-result">
+                    <div class="all-result-head">
+                        <div class="result-sort">
+                            <span class="ft active">按相似度</span><span class="mid">按时间</span><span class="lt">按频率</span>
+                        </div>
+                        <div class="result-operate">
+                    <span class="select-all checkbox">
+                        <input type="checkbox" >
+                        <i>全选</i>
+                    </span>
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="all-res-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-3 col-md-2 col-lg-1-10" ng-repeat="item in MacAccompanyCtrl.resultParams.data.result track by MacAccompanyCtrl.getKey(item)">
+                                    <div class="result-item">
+                                        <div class="item-picture">
+                                            <img ng-src="{{item.accessLog.FacePath}}"  alt="">
+                                        </div>
+
+                                        <div class="item-similarity">{{item.accessLog.similar}}</div>
+                                        <div class="item-time">{{item.accessLog.LogTime}}</div>
+                                        <div class="item-address">{{item.accessLog.address}}</div>
+                                        <div class="mask">
+                                        <span class="action">
+                                            <i class="sc"></i>
+                                            <i class="fx"></i>
+                                            <i class="bk"></i>
+                                            <i class="sp"></i>
+                                        </span>
+                                            <span class="del" ng-click="MacAccompanyCtrl.delResult(item.accessLog.CameraID)">
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="all-result-footer container-fluid">
+                        <div class="row">
+                            <div class="col-md-3" style="padding:30px;">共 <i class="blue-font">{{MacAccompanyCtrl.resultParams.totalCount}}</i> 条记录</div>
+
+                            <div class="page-bottom col-md-9">
+                                <util-paging
+                                        hide-size="true"
+                                        hide-gopage="true"
+                                        page-params="MacAccompanyCtrl.resultParams"
+                                        prev-page="MacAccompanyCtrl.changeResultPage(num)"
+                                        next-page="MacAccompanyCtrl.changeResultPage(num)"
+                                        go-page="MacAccompanyCtrl.changeResultPage(num)"
+                                ></util-paging>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="face-track-all-res accompanying-analysis-right-all-res"
+             ng-class="{'active':MacAccompanyCtrl.showAllAccompanyResult}"
+             ng-style="{'width':MacAccompanyCtrl.windowWidth-60 + 'px'}">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">MAC轨迹</div>
+                <div class="back-btn">
+                    <button ng-click="MacAccompanyCtrl.goBackForm()">返回上级</button>
+                </div>
+            </div>
+
+            <div class="all-result-layer">
+                <div class="all-result">
+                    <div class="all-result-head">
+                        <div class="result-sort">
+                            <span class="ft active">按相似度</span><span class="mid">按时间</span><span class="lt">按频率</span>
+                        </div>
+                        <div class="result-operate">
+                    <span class="select-all checkbox">
+                        <input type="checkbox" >
+                        <i>全选</i>
+                    </span>
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="all-res-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-3 col-md-2 col-lg-1-10" ng-repeat="item in MacAccompanyCtrl.resultParams.data.result track by MacAccompanyCtrl.getKey(item)">
+                                    <div class="result-item">
+                                        <div class="item-picture">
+                                            <img ng-src="{{item.accessLog.FacePath}}"  alt="">
+                                        </div>
+
+                                        <div class="item-similarity">{{item.accessLog.similar}}</div>
+                                        <div class="item-time">{{item.accessLog.LogTime}}</div>
+                                        <div class="item-address">{{item.accessLog.address}}</div>
+                                        <div class="mask">
+                                        <span class="action">
+                                            <i class="sc"></i>
+                                            <i class="fx"></i>
+                                            <i class="bk"></i>
+                                            <i class="sp"></i>
+                                        </span>
+                                            <span class="del" ng-click="MacAccompanyCtrl.delResult(item.accessLog.CameraID)">
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="all-result-footer container-fluid">
+                        <div class="row">
+                            <div class="col-md-3" style="padding:30px;">共 <i class="blue-font">{{MacAccompanyCtrl.resultParams.totalCount}}</i> 条记录</div>
+
+                            <div class="page-bottom col-md-9">
+                                <util-paging
+                                        hide-size="true"
+                                        hide-gopage="true"
+                                        page-params="MacAccompanyCtrl.resultParams"
+                                        prev-page="MacAccompanyCtrl.changeResultPage(num)"
+                                        next-page="MacAccompanyCtrl.changeResultPage(num)"
+                                        go-page="MacAccompanyCtrl.changeResultPage(num)"
+                                ></util-paging>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+<!--</div>-->

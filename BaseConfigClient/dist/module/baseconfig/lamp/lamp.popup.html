@@ -1,0 +1,161 @@
+<div class="u-baseconfig-popup" ng-controller="lampPopupController as lampPopup">
+    <form name="lampUpdateForm" novalidate>
+        <!--tab切换栏-->
+        <div class="m-tabs-checkout">
+            <div class="group-button">
+                <span class="btn-span" ng-class = "{'m-tabs-active': lampPopup.isNgShowStepBase}" ng-click="lampPopup.toggleStep('isNgShowStepBase')" translate="DP_CONFIG_LAMP_13"></span>
+                <span class="btn-span" ng-class = "{'m-tabs-active': !lampPopup.isNgShowStepBase}" ng-click="lampPopup.toggleStep()" translate="DP_CONFIG_LAMP_09"></span>
+            </div>
+        </div>
+        <!--新增立杆-->
+        <div ng-show="lampPopup.isNgShowStepBase" class="m-lamp-create">
+            <!--照片上传-->
+            <div class="m-form-upload">
+                <img id='preview' class="m-upload-image" ng-model="lampPopup.Lamp.Img_Url" ng-src="{{lampPopup.Img_Url}}"/>
+
+                <div id="filePicker" class="m-uploadImg add" translate="DP_CONFIG_MAPRESOURCE_53"></div>
+            </div>
+            <!--表格栏-->
+            <div class="m-float-right">
+                <div class="form">
+                    <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_04"></span></span>
+                    <input type="text" valid-nonempty = "{{'DP_CONFIG_COMMON_04'|translate}}" valid-multiple valid-m-max="30" class="text m-input" placeholder="{{'DP_CONFIG_COMMON_52'|translate}}" ng-model="lampPopup.Lamp.Code"/>
+                </div>
+                <div class="form">
+                    <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_03"></span></span>
+                    <input type="text" valid-nonempty = "{{'DP_CONFIG_COMMON_03'|translate}}" valid-multiple valid-m-max="30" class="text m-input" placeholder="{{'DP_CONFIG_COMMON_51'|translate}}" ng-model="lampPopup.Lamp.Name"/>
+                </div>
+                <div class="form m-form">
+                    <span class="title"><span class="color">*</span><span translate="DP_CONFIG_AREA_01"></span></span>
+                    <input ng-if="!lampPopup.isRootLamp" type="hidden" ng-model="lampPopup.Lamp.ParentArea.ID"/>
+                    <div class="u-select-tree form-select" ng-if="!lampPopup.isRootLamp">
+                        <input type="text" class="m-input" ng-model="lampPopup.Lamp.ParentArea.Name" valid-nonempty="{{'DP_CONFIG_COMMON_18'|translate}}" readonly ng-click="lampPopup.isShowAreaTree = !lampPopup.isShowAreaTree"/>
+                        <i class="tree-toggle-icon m-toggle-icon" ng-class="{'z-open': lampPopup.isShowAreaTree}"></i>
+                        <div class="tree-cntr m-show-area" ng-class="{'z-show': lampPopup.isShowAreaTree}">
+                            <util-tree tree-hide="lampPopup.treeParams.treeDatas.length == 0"
+                                    tree-id="{{lampPopup.treeParams.treeId}}"
+                                    tree-datas="lampPopup.treeParams.treeDatas"
+                                    is-default-selected="true"
+                                    check-enable="false"
+                                    single-select="true"
+                                    is-simple-data="true"
+                                    show-icon="true"
+                                    show-line="false"
+                                    default-no-data-msg="lampPopup.treeParams.defaultNoDataMsg"
+                                    search-no-data-msg="lampPopup.treeParams.searchNoDataMsg"
+                                    on-click="lampPopup.treeParams.onClick(event, treeId, treeNode)"
+                                    tree-id-key="ID"
+                                    tree-pid-key="ParentID"
+                                    tree-key-name="Name"
+                                    default-select-tree-id="lampPopup.treeParams.defaultSelectTreeId"
+                                    default-expand-level="0"
+                            ></util-tree>
+                        </div>
+                    </div>
+                    <div style="display: none;" ng-class="{'f-db': lampPopup.isRootLamp}" class="u-select-tree form-select" ng-if="lampPopup.isRootLamp">
+                        <input type="text" disabled readonly class="m-input"/>
+                    </div>
+                </div>
+                <div class="form">
+                    <span class="title"><span translate="DP_CONFIG_COMMON_34"></span></span>
+                    <textarea type="text" valid-m-max="30" class="text m-input m-height90" ng-model="lampPopup.Lamp.Description"></textarea>
+                </div>
+            </div>
+        </div>
+        <!--确认以及关闭按钮-->
+        <div class="m-bottom-footer" >
+            <button class="u-button u-button-blue-2 btnStyle m-right-footer" ng-click="lampPopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+            <button class="u-button u-button-blue-1 btnStyle m-right-footer" ng-click="lampPopup.submit()" ng-disabled="lampUpdateForm.$invalid" translate="DP_CONFIG_COMMON_05"></button>
+        </div>
+        <!--连接设备栏-->
+        <div class="btn-group" role="group" ng-show="lampPopup.isNgShowStepDevice">
+            <div class="m-device-border">
+                <ul class="m-device-head" style="z-index: 1;">
+                    <li ng-repeat="btn in lampPopup.tabList"
+                            class="btn-device"
+                            ng-click="lampPopup.toggleCamera(btn.value)"
+                            ng-class="{'m-device-active':lampPopup.CurrentDevice== btn.value}"
+                            ng-bind="btn.text | translate" >
+
+                    </li>
+                </ul>
+                <div class="m-device-content">
+                    <div ng-include="'../module/baseconfig/lamp/devices/camera.html'"></div>
+                    <div ng-include="'../module/baseconfig/lamp/devices/wifi.html'"></div>
+                    <div ng-include="'../module/baseconfig/lamp/devices/rmpgate.html'"></div>
+                    <div ng-include="'../module/baseconfig/lamp/devices/electronicfence.html'"></div>
+                </div>
+                <div class="m-device-right">
+                    <div class="m-camera-header f-cb"> 
+                        <div class="space-color">
+                            <span class="select-camera">摄像机
+                                <!--<span>{{lampPopup.CameraSelectedListForLamp.length}}</span>-->
+                            </span>
+                            <!--<i class="m-device-popul" ng-click="lampPopup.removeAllSelected(lampPopup.AlarmTypes.CameraTreeId.key)">清除所有 </i>-->
+                        </div>
+                    </div>
+                    <div class="m-camera-pop m-camera-content f-cb"  hover="hover">
+                        <div class="camera-item f-fl f-pr" ng-repeat="node in lampPopup.CameraSelectedListForLamp">
+                            <span class="m-camera-ico"></span>
+                            <span class="m-camera-text">
+                                {{node.Name}}
+                            </span>
+                            <i class="m-close f-abs f-csp" ng-click="lampPopup.removeSelected(node, lampPopup.AlarmTypes.CameraTreeId.key)" ng-show="hover"></i>
+                        </div>
+                    </div>
+                    <!--wifi-->
+                    <div class="m-camera-header f-cb">
+                        <div class="space-color">
+                            <span class="select-camera">WIFI 
+                                <!--<span>{{lampPopup.WifiSelectedListForLamp.length}}</span>-->
+                            </span>
+                        </div>
+                    </div>
+                    <div class="m-camera-pop m-camera-content f-cb" mouse-over-leave hover="hover">
+                        <div class="camera-item f-fl f-pr" ng-repeat="node in lampPopup.WifiSelectedListForLamp">
+                            <span class="m-wifi-ico"></span>
+                            <span class="m-camera-text">
+                                {{node.Name}}
+                            </span>
+                            <i class="m-close f-abs f-csp" ng-click="lampPopup.removeSelected(node, lampPopup.AlarmTypes.WifiTreeId.key)" ng-show="hover"></i>
+                        </div>
+                    </div>
+                    <!--卡口-->
+                    <div class="m-camera-header f-cb">
+                        <div class="space-color">
+                            <span class="select-camera">卡口
+                                <!--<span>{{lampPopup.RmpGateSelectedListForLamp.length}}</span>-->
+                            </span>
+                        </div>
+                    </div>
+                    <div class="m-camera-pop m-camera-content f-cb" mouse-over-leave hover="hover">
+                        <div class="camera-item f-fl f-pr" ng-repeat="node in lampPopup.RmpGateSelectedListForLamp">
+                            <span class="m-rmpgate-ico"></span>
+                            <span class="m-camera-text">
+                                {{node.Name}}
+                            </span>
+                            <i class="m-close f-abs f-csp" ng-click="lampPopup.removeSelected(node, lampPopup.AlarmTypes.RmpGateTreeId.key)" ng-show="hover"></i>
+                        </div>
+                    </div>
+                    <!--电围-->
+                    <div class="m-camera-header f-cb">
+                        <div class="space-color">
+                            <span class="select-camera">电围
+                                <!--<span>{{lampPopup.ElectronicFenceSelectedListForLamp.length}}</span>-->
+                            </span>
+                        </div>
+                    </div>
+                    <div class="m-camera-pop m-camera-content f-cb" mouse-over-leave hover="hover">
+                        <div class="camera-item f-fl f-pr" ng-repeat="node in lampPopup.ElectronicFenceSelectedListForLamp">
+                            <span class="m-ele-ico"></span>
+                            <span class="m-camera-text">
+                                {{node.Name}}
+                            </span>
+                            <i class="m-close f-abs f-csp" ng-click="lampPopup.removeSelected(node, lampPopup.AlarmTypes.ElectronicFenceTreeId.key)" ng-show="hover"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

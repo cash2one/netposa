@@ -1,0 +1,30 @@
+<div class="u-util-select z-gray"
+     onselectstart="return false"
+     ng-mouseleave="utilTreeSelectDirCtrl.mouseLeave()"
+     ng-class="{'option-show' : utilTreeSelectDirCtrl.optionListIsShow}"
+     title="{{ utilTreeSelectDirCtrl.selectedVal | translate}}">
+
+
+
+    <p class="f-cfb  selected-line"
+       ng-click="utilTreeSelectDirCtrl.normalClick($event)"
+    >
+        <a class="selected-text"
+           ng-class="{'empty' :  utilTreeSelectDirCtrl.selectedVal == utilTreeSelectDirCtrl.selectDefaultText}"
+           ng-bind="utilTreeSelectDirCtrl.selectedVal | translate"
+           title="{{utilTreeSelectDirCtrl.selectedVal | translate}}"
+        >
+        </a>
+
+        <span class="right-icon ">
+            <i class="i-turn-down " ></i>
+        </span>
+    </p>
+
+    <div class="context  {{ utilTreeSelectDirCtrl.showPosition }}"
+         style="max-height:{{ utilTreeSelectDirCtrl.selectListHeight }}"
+         ng-show="utilTreeSelectDirCtrl.optionListIsShow">
+        <!--树结构模式-->
+        <div class="tree" ng-transclude></div>
+    </div>
+</div>

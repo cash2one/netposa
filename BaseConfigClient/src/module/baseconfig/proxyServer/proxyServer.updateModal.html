@@ -1,0 +1,57 @@
+<div ng-controller="proxyServerUpdateModalController as psupCtrl" >
+        <form name="psUpdateFrom" novalidate class="form-horizontal u-baseconfig-popup">
+            <div class="form">
+                <span style="min-width: 100px;" class="title" ng-click="psupCtrl.changeShowTooltip()"><i class="color">*</i><span translate="DP_CONFIG_COMMON_03"></span></span>
+                <input type="text" class="text u-input"
+                       valid-m-nonempty="名称"
+                       ng-model="psupCtrl.currentServe.Name" placeholder="{{'DP_CONFIG_COMMON_51'|translate}}">
+            </div>
+            <div class="form">
+                <span style="min-width: 100px;"  class="title"><i class="color">*</i><span translate="DP_CONFIG_PROXYSERVER_03"></span></span>
+                <input type="text"
+                       valid-m-nonempty="Ip地址"
+                       ng-model="psupCtrl.currentServe.IpAddress"
+                       class="text u-input" placeholder="{{'DP_CONFIG_COMMON_54'|translate}}">
+            </div>
+            <div class="form">
+                <span style="min-width: 100px;"  class="title"><i class="color">*</i><span translate="DP_CONFIG_COMMON_11"></span></span>
+                <input type="number"
+                       ng-model="psupCtrl.currentServe.Port"
+                       valid-m-nonempty="端口"
+                       maxlength="11" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_55'|translate}}">
+            </div>
+            <div class="form">
+                <span style="min-width: 100px;"  class="title"><i class="color">*</i><span translate="DP_CONFIG_PROXYSERVER_04"></span></span>
+                <select ng-model="psupCtrl.currentServe.ProxyServerType"
+                        class="text u-input"
+                        valid-m-nonempty="服务器类型"
+                        ng-change="psupCtrl.changeTypeSelect()"
+                        ng-options=" serverType.value as serverType.text | translate for serverType in psupCtrl.proxyServerTypeList"
+                >
+                    <option value="" translate="DP_CONFIG_PROXYSERVER_04"></option>
+                    </option>
+                </select>
+            </div>
+            <div class="form">
+                <span style="min-width: 100px;"  class="title"><i class="color">*</i><span translate="DP_CONFIG_COMMON_04"></span></span>
+                <input type="text"
+                       ng-model="psupCtrl.currentServe.Code"
+                       class="text u-input"
+                       placeholder="{{'DP_CONFIG_COMMON_56'|translate}}"
+                       valid-m-nonempty='编码'
+                >
+            </div>
+            <div class="form">
+                <span style="min-width: 100px;"  class="title f-ti3"><span translate="DP_CONFIG_COMMON_34"></span></span>
+                <textarea class="text u-textarea"
+                          valid-m-max="150"
+                          ng-model="psupCtrl.currentServe.Description" placeholder="{{'DP_CONFIG_COMMON_57'|translate}}"
+                          rows="3"></textarea>
+            </div>
+            <div class="u-border"></div>
+            <div class="form f-cfb">
+                <button class="u-button u-button-blue-2 f-fr m-right15" type="submit" ng-click="psupCtrl.closeUpdateModel()" translate="DP_CONFIG_COMMON_19"></button>
+                <button class="u-button u-button-blue-1 f-fr m-right15" type="submit" ng-click="psupCtrl.commitSaveOrUpdate(false)" ng-disabled="psUpdateFrom.$invalid" translate="DP_CONFIG_COMMON_05"></button>
+            </div>
+    </form>
+</div>

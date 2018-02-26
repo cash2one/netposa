@@ -1,0 +1,165 @@
+input::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #ccc;
+}
+
+input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+}
+
+input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #ccc;
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #ccc;
+}
+
+textarea::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #ccc;
+}
+
+textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+}
+
+textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #ccc;
+}
+
+textarea:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #ccc;
+}
+
+.u-input {
+    height: 30px;
+    /*line-height: 30px;  !* 光标异常,勿启用,有需求的特殊情况覆盖处理 *!*/
+    width: 224px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    color: #666;
+    font-size: 12px;
+    text-indent: 5px;
+}
+
+.half-input {
+    width: 80px!important
+}
+
+.half-select {
+    width: 224px!important
+}
+
+.input-width {
+    width: 160px;
+}
+
+.u-textarea {
+    padding: 1px 3px 0 0;
+    overflow: auto;
+    /*font-family: Arial;*/
+    /*wyr:这里不止为何被写成Arial字体*/
+    height: 90px;
+    line-height: 28px;
+    width: 224px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #666;
+    font-size: 12px;
+    text-indent: 5px;
+}
+
+.u-input-search {
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    background-image: url("../../images/common/input_search_ico.png");
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.u-select {
+    width: 90px;
+    height: 30px;
+    color: #666;
+    font-size: 12px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    line-height: 30px;
+    text-indent: 5px;
+}
+
+.u-select[disabled] {
+    opacity: 0.5;
+    background: #f6f7fb;
+}
+
+.u-select.z-translate {
+    background: transparent;
+}
+
+.u-select.z-no-border {
+    border: none;
+}
+
+.u-select-width {
+    width: 160px;
+}
+
+.u-input:hover,
+.u-textarea:hover,
+.u-input-hover {
+    box-shadow: none;
+}
+
+.u-input:focus,
+.u-textarea:focus,
+.u-input-focus {
+    border: 1px solid #3fa9fe;
+    box-shadow: none;
+}
+
+.u-input[disabled],
+.u-textarea[disabled] {
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+}
+
+.u-input:disabled,
+.u-textarea:disabled {
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+}
+
+.placeholder {
+    color: #ccc;
+}
+
+
+/*验证错误时的样式*/
+
+.errorColor {
+    border-color: #ea2e2e !important;
+    background: #fffbfb !important;
+}
+
+.errorText {
+    color: #ff3a3e;
+    line-height: 28px;
+    /*   margin-left: 5px;*/
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: normal;
+    display: inline;
+    /*省略号生效*/
+}

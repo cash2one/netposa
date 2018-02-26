@@ -1,0 +1,162 @@
+<div class="m-person f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+           <span class="tree-search">
+                <input type="text" class="u-input tree-search"
+                       ng-model="bcPersonCtrl.areaTreeSearchInputStr"
+                       placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                       ng-keyup="bcPersonCtrl.areaTreeSearchInputKeyUp($event)"
+                />
+                <i class="u-input-search" ng-click="bcPersonCtrl.areaTreeSearchInput()"></i>
+             </span>
+
+        <div ng-hide="bcPersonCtrl.areaTreeDatas.treeDatas.length == 0" class="m-person-tree-container" ng-scrollbars>
+            <util-tree tree-hide="bcPersonCtrl.areaTreeDatas.treeDatas.length == 0"
+                       tree-id="{{bcPersonCtrl.areaTreeDatas.treeId}}"
+                       tree-datas="bcPersonCtrl.areaTreeDatas.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="bcPersonCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon=""
+                       show-line="false"
+                       default-no-data-msg="bcPersonCtrl.areaTreeDatas.defaultNoDataMsg"
+                       search-no-data-msg="bcPersonCtrl.areaTreeDatas.searchNoDataMsg"
+                       on-click="bcPersonCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="bcPersonCtrl.areaTreeDatas.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div class="u-table-no-data" ng-show="bcPersonCtrl.treeDatas.length==0" ng-click="getAreaTreeList()" translate="DP_CONFIG_COMMON_16"></div>
+    </div>
+
+    <div class="g-baseconfig-right">
+        <div class="right-content">
+                <div class="m-baseconfig-topFixed person-topFixed">
+                    <ol class="m-route f-cfb">
+                        <li translate="DP_CONFIG_COMMON_30"></li>
+                        <li class="route-separate">/</li>
+                        <li translate="DP_CONFIG_PERSON_01"></li>
+                    </ol>
+
+                    <div class="m-person-info">
+                                         <!-- 搜索小块 -->
+                        <div class="form-inline f-cfb">
+                            <div class="form f-fl">
+                                <label class="title" translate="DP_CONFIG_PERSON_02"></label>
+                                <input type="text"  ng-model="bcPersonCtrl.searchParams.name" class="u-input" placeholder="{{'DP_CONFIG_COMMON_29'|translate}}" >
+                            </div>
+
+                            <div class="form f-fl" ng-click="bcPersonCtrl.clickRoleList()">
+                                <label class="title" translate="DP_CONFIG_PERSON_03"></label>
+                                <select class="u-input text"
+                                        ng-model="bcPersonCtrl.searchParams.roleId"
+                                        ng-options="roleType.ID as roleType.Name for roleType in bcPersonCtrl.roleList">
+                                    <option value="" translate="DP_CONFIG_COMMON_26"></option>
+                                </select>
+                            </div>
+
+                            <div class="form f-fl" >
+                                <label class="title" translate="DP_CONFIG_UNIT_01"></label>
+                                <select class="u-input text"
+                                        ng-model="bcPersonCtrl.searchParams.unitId"
+                                        ng-options="unit.ID as unit.Name for unit in bcPersonCtrl.unitList">
+                                    <option value="" translate="DP_CONFIG_COMMON_26"></option>
+                                </select>
+                            </div>
+
+                            <button class="u-button f-fl"  ng-click="bcPersonCtrl.getListBySearch()"  translate="DP_CONFIG_COMMON_24">
+
+                            </button>
+                        </div>
+                    </div>
+                    <div class="m-person-search-top f-cfb">
+                        <ul class="f-cfb">
+                            <li>
+                                <button class="u-button"  ng-click="bcPersonCtrl.openSaveOrUpdateModal()" translate="DP_CONFIG_PERSON_04"></button>
+                            </li>
+                            <li>
+                                <button class="u-button"  ng-click="bcPersonCtrl.batchAdd()" translate="DP_CONFIG_PERSON_05"></button>
+                            </li>
+
+                            <li>
+                                <button class="u-button"  ng-click="bcPersonCtrl.exportTempalte()" translate="DP_CONFIG_PERSON_06"></button>
+                            </li>
+
+                            <li>
+                                <button class="u-button u-button-blue-4" ng-disabled="!bcPersonCtrl.isSelectItems" ng-click="bcPersonCtrl.changeUserStatus(true)" translate="DP_CONFIG_PERSON_07"></button>
+                            </li>
+                            <li>
+                                <button class="u-button u-button-blue-5" ng-disabled="!bcPersonCtrl.isSelectItems" ng-click="bcPersonCtrl.changeUserStatus(false)" translate="DP_CONFIG_PERSON_08"></button>
+                            </li>
+                            <li>
+                                <button class="u-button u-button-blue-6" ng-disabled="!bcPersonCtrl.isSelectItems" ng-click="bcPersonCtrl.deleteByIds()" translate="DP_CONFIG_PERSON_09"></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="m-baseconfig-centerFixed person-centerFixed">
+                    <util-table-head table-headers="bcPersonCtrl.tHeadList"
+                                     table-has-check='true'
+                                     table-sort-fun="deviceStatusCtrl.sortByField(index,fieldName,sortStatus)"
+                                     table-after-check = "bcPersonCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+                        <util-table-tr ng-repeat="(index,tbody_data) in bcPersonCtrl.tBodyList">
+                            <util-table-tr-td ng-bind="tbody_data.Uid"></util-table-tr-td>
+
+                            <util-table-tr-td ng-bind="tbody_data.JsonUserData.unit.Name"></util-table-tr-td>
+
+                            <util-table-tr-td ng-bind="tbody_data.JsonUserData.ListRole[0].Name"></util-table-tr-td>
+
+                            <util-table-tr-td ng-bind="tbody_data.JsonUserData.Person.Name"></util-table-tr-td>
+
+                            <util-table-tr-td ng-bind="tbody_data.JsonUserData.Person.Gender | genderFilter"></util-table-tr-td>
+
+                            <util-table-tr-td>
+
+                                <span style="position: relative">
+                                    <switch-button class="m-switch-button" name="tbody_data.IsDisable"
+                                                   ng-model="tbody_data.IsDisable"
+                                                   change-status="bcPersonCtrl.changeUserStatusTd(checked,tbody_data)"></switch-button>
+                                </span>
+                            </util-table-tr-td>
+                            <util-table-tr-td ng-bind="tbody_data.LastLoginTime">
+
+                            </util-table-tr-td>
+                            <util-table-tr-td>
+                                <div class="table-icon-cntr f-cfb" ng-if="tbody_data.Uid !=bcPersonCtrl.currentUid">
+                                    <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="bcPersonCtrl.update(tbody_data)"
+                                       class="btn btn-default"></i>
+                                    <i class="icon-btn i-delete z-gray f-csp" title="{{'DP_CONFIG_COMMON_78'|translate}}" ng-click="bcPersonCtrl.delete(tbody_data.ID)"
+                                       class="btn btn-default"></i>
+
+                                </div>
+                            </util-table-tr-td>
+                        </util-table-tr>
+
+                        <div class="u-table-no-data" ng-show="bcPersonCtrl.tableNoData" ng-cloak translate="DP_CONFIG_COMMON_16">
+                        </div>
+
+                    </util-table-head>
+                </div>
+
+                <div class="m-baseconfig-bottomFixed">
+                    <util-paging
+                            page-params="bcPersonCtrl.pageParams"
+                            prev-page="bcPersonCtrl.changePage(num)"
+                            next-page="bcPersonCtrl.changePage(num)"
+                            go-page="bcPersonCtrl.changePage(num)"
+                            page-size="bcPersonCtrl.changePageSize(num)"
+                    ></util-paging>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+
+

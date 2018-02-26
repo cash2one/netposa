@@ -1,0 +1,66 @@
+<div class="u-baseconfig-popup m-device-popup" ng-controller="DeviceRmpGateCreateController as rmpgateCreatePopup">
+    <form name="rmpgateForm" novalidate>
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_03"></span>
+            </span>
+            <input type="text" valid-nonempty="名称" valid-multiple valid-m-max="30" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_51'|translate}}"
+                ng-model="rmpgateCreatePopup.Rmpgate.Name" />
+        </div>
+        <div class="form" style="overflow:visible">
+            <span class="title">
+                <span translate="DP_CONFIG_COMMON_18"></span>
+            </span>
+            <!--<input type="text" valid-nonempty = "立杆必选" valid-multiple valid-m-max="30" class="text u-input" placeholder="{{'FDS_01_01_15'|translate}}" ng-model="rmpgateCreatePopup.Rmpgate.LampID"/>-->
+            <input ng-if="!rmpgateCreatePopup.isRootArea" type="hidden" ng-model="rmpgateCreatePopup.Rmpgate.JsonUserData.lampPost.ID"
+            />
+            <div class="u-select-tree form-select" ng-if="!rmpgateCreatePopup.isRootArea">
+                <input type="text" class="u-input" ng-model="rmpgateCreatePopup.Rmpgate.JsonUserData.lampPost.Name" readonly ng-click="rmpgateCreatePopup.isShowAreaTree = !rmpgateCreatePopup.isShowAreaTree"
+                />
+                <i class="tree-toggle-icon" ng-class="{'z-open': rmpgateCreatePopup.isShowAreaTree}"></i>
+                <div style="position:absolute" class="tree-cntr" ng-class="{'z-show': rmpgateCreatePopup.isShowAreaTree}">
+                    <util-tree tree-id="{{rmpgateCreatePopup.treeParams.treeId}}" tree-datas="rmpgateCreatePopup.treeParams.treeDatas" is-default-selected="true"
+                        check-enable="false" single-select="true" is-simple-data="true" show-icon="true" show-line="false" default-no-data-msg=""
+                        search-no-data-msg="" on-click="rmpgateCreatePopup.treeParams.onClick(event, treeId, treeNode)" tree-id-key="ID"
+                        tree-pid-key="ParentID" tree-key-name="Name" default-select-tree-id="rmpgateCreatePopup.Rmpgate.JsonUserData.lampPost.ID"
+                        default-expand-level="0"></util-tree>
+                </div>
+            </div>
+            <div style="display: none;" ng-class="{'f-db': rmpgateCreatePopup.isRootArea}" class="u-select-tree form-select" ng-if="rmpgateCreatePopup.isRootArea">
+                <input type="text" disabled readonly class="u-input" placeholder="{{'DP_CONFIG_COMMON_79'|translate}}" />
+            </div>
+        </div>
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_04"></span>
+            </span>
+            <input type="text" valid-nonempty="编码" valid-multiple valid-m-max="30" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_52'|translate}}"
+                ng-model="rmpgateCreatePopup.Rmpgate.Code" />
+        </div>
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_13"></span>
+            </span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_13'|translate}}" valid-multiple valid-m-max="20" class="text u-input"
+                ng-model="rmpgateCreatePopup.Rmpgate.JsonUserData.Point.Lon" placeholder="{{'DP_CONFIG_CAMERA_07'|translate}}"
+            />
+        </div>
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_14"></span>
+            </span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_14'|translate}}" valid-multiple valid-m-max="20" class="text u-input"
+                ng-model="rmpgateCreatePopup.Rmpgate.JsonUserData.Point.Lat" placeholder="{{'DP_CONFIG_CAMERA_07'|translate}}"
+            />
+        </div>
+        <div class="form" style="padding-top:15px">
+            <button class="u-button u-button-blue-2 btnStyle" ng-click="rmpgateCreatePopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+            <button class="u-button u-button-blue-1 btnStyle" ng-click="rmpgateCreatePopup.submit()" ng-disabled="rmpgateForm.$invalid"
+                translate="DP_CONFIG_COMMON_05"></button>
+        </div>
+    </form>
+</div>

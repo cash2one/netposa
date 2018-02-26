@@ -1,0 +1,26 @@
+.m-msgCenterPopup{
+    margin-top: 30px;
+    margin-left: 35px;
+    cursor: pointer;
+}
+
+.m-msgCenterPopup .msg-icon{
+    width: 30px;
+    height:30px;
+    line-height: 30px;
+    background: url(../../../images/prompt.png) center no-repeat;
+    background-size: 30px 30px;
+}
+
+.m-msgCenterPopup .msg-file{
+    height:30px;
+    line-height: 30px;
+    color: #37adff;
+    margin: 0 5px;
+}
+
+.m-msgCenterPopup .msg-complete{
+    height:30px;
+    line-height: 30px;
+    color: #333;
+}

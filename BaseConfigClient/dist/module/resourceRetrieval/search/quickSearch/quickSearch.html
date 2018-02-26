@@ -1,0 +1,67 @@
+<div class="search-list-box" ng-controller="quickSearchController as quickSearchCtrl">
+    <!--搜索工具以及高级搜索-->
+    <div class="search-attr">
+        <div class="search-mask">
+            <div ng-class="quickSearchCtrl.searchBar?'lastActive':'nextActive'">
+                <div class="search-tool-conter">
+                    <i class="icon_return icon-padding-position" ng-click="quickSearchCtrl.lastQuery()"></i>
+                    <span class="search-tool-num">
+                        共检索到
+                        <i class="m-mark-num"> {{ quickSearchCtrl.attributeFactory.numTransform(quickSearchCtrl.queryTotal)}} </i>
+                        条记录，耗时
+                        <span ng-if="quickSearchCtrl.queryEndTime&&quickSearchCtrl.queryStartTime">
+                            {{ quickSearchCtrl.attributeFactory.numTransform(quickSearchCtrl.queryEndTime - quickSearchCtrl.queryStartTime)}}
+                        </span>
+                        毫秒
+                    </span>
+                    <span class="search-tool-right">
+                        <i class="icon_search_tool icon-padding-position" ng-click="quickSearchCtrl.searchSwitch()">搜索工具</i>
+                    </span>
+                </div>
+                <div class="search-tool-conter">
+                    <i class="icon_return icon-single-block" ng-click="quickSearchCtrl.lastQuery()"></i>
+                    <select class="select-time" ng-model="quickSearchCtrl.selectTime"  ng-options=" x.id as x.name for x in quickSearchCtrl.timeList">
+                    </select>
+                    <!--<span class="select-time" ng-click="quickSearchCtrl.selectArea()">区域</span>-->
+                    <span class="search-tool-right">
+                    <i class="icon_search_empty" ng-click="quickSearchCtrl.searchClearParams()">重置参数</i>
+                    <i class="icon_search_tool icon-padding-position" ng-click="quickSearchCtrl.searchSwitch()">收起工具</i>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--按钮切换-->
+    <div class="m-device-content">
+        <div class="search-device-switch">
+            <div class="search-borde-bottom">
+                <div class="search-device-button"
+                     ng-repeat="item in quickSearchCtrl.switchButton"
+                     ng-click="quickSearchCtrl.navigationSwitch(item.name)"
+                     ng-class="item.name===quickSearchCtrl.switchPage.name?'icon-background':''">
+                    <div class="search-device-one">
+                            <span class="search-image-radius">
+                                <img ng-src="{{ item.iconPath }}" class="search-device-icon">
+                            </span>
+                        <span class="search-device-text">
+                                {{ item.title }}
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="background-icon" >
+                <img src="../../../images/resourceRetrieval/background-icon.png">
+            </div>
+        </div>
+        <div class="search-device-container">
+            <div class="search-device-box search-device-car" ng-include="'../module/resourceRetrieval/search/quickSearch/devicePage/carSearchPage.html'" ng-show="quickSearchCtrl.switchPage.name=='car'"></div>
+            <div class="search-device-box" ng-include="'../module/resourceRetrieval/search/quickSearch/devicePage/personSearchPage.html'" ng-show="quickSearchCtrl.switchPage.name=='person'"></div>
+            <div class="search-device-box search-device-wifi" ng-include="'../module/resourceRetrieval/search/quickSearch/devicePage/wifiSearchPage.html'" ng-show="quickSearchCtrl.switchPage.name=='wifi'"></div>
+            <div class="search-device-box search-device-rfid" ng-include="'../module/resourceRetrieval/search/quickSearch/devicePage/rfidSearchPage.html'" ng-show="quickSearchCtrl.switchPage.name=='rfid'"></div>
+            <div class="search-device-box search-device-electronicfence" ng-include="'../module/resourceRetrieval/search/quickSearch/devicePage/EFSearchPage.html'" ng-show="quickSearchCtrl.switchPage.name=='electronicfence'"></div>
+            <div class="search-device-box search-device-device" ng-include="'../module/resourceRetrieval/search/quickSearch/devicePage/deviceSearchPage.html'" ng-show="quickSearchCtrl.switchPage.name=='device'"></div>
+            <div class="search-device-box search-device-position" ng-include="'../module/resourceRetrieval/search/quickSearch/devicePage/positionSearchPage.html'" ng-show="quickSearchCtrl.switchPage.name=='position'"></div>
+        </div>
+    </div>
+</div>

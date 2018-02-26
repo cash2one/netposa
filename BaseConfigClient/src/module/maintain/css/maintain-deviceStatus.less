@@ -1,0 +1,124 @@
+@color_1: #333;
+@color_2: #45a2ff;
+@border_bottom_color_1: #45a2ff;
+
+/*摄像机*/
+/*服务器*/
+
+/*区域树容器*/
+.m-deviceStatus-container {
+    width: 98%;
+    background: #fff;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    .dev-status-info-top {
+        padding-left: 15px;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+        border-radius: 5px 5px 0 0;
+    }
+    .info-top-btn {
+        padding: 15px;
+        border-bottom: 2px solid transparent;
+        color: @color_1;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 15px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .info-top-btn-selected {
+        color: @color_2;
+        border-bottom-color: @border_bottom_color_1;
+    }
+    .dev-status-bottomFixed {
+        top: 48px;
+    }
+    .dev-status-info-bottom {
+        padding: 15px;
+        background: #fff;
+    }
+    .table-container {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+    }
+    .left-table {
+        height: 100%;
+        position: relative;
+    }
+    .table-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 70px;
+        overflow: auto;
+    }
+    .table-paging {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .right-count {
+        width: 200px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 1px solid #ccc;
+        background: #fff;
+    }
+    .right-count-title {
+        padding: 10px 0;
+        background: #f6f7fb;
+        text-align: center;
+    }
+    .r-cemeraName {
+        width: 60px;
+        text-align: right;
+    }
+    .right-count-num {
+        padding: 25px;
+        line-height: 20px;
+    }
+    .count-num-text {
+        width: 76px;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .tree-container {
+        position: absolute;
+        top: 30px;
+        z-index: 99;
+        background: #fff;
+        left: 0;
+        width: 100%;
+        max-height: 200px;
+        border: 1px solid #ccc;
+        border-top: none;
+        overflow: auto;
+    }
+    .slideTitle {
+        line-height: 30px;
+    }
+    .devStatus-select-width {
+        width: 240px;
+    }
+    .operateLog-info-bottom {
+        padding: 15px;
+        background: #fff;
+    }
+    .info-bottom-txt{
+        line-height: 30px;
+    }
+    .m-area-width{
+        width: 150px;
+    }
+}

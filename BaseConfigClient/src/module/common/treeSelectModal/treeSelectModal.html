@@ -1,0 +1,95 @@
+<div  class="m-tree-select-modal"
+      ng-controller="treeSelectModalController as treeSelectModalCtrl">
+    <div class="tree-select-modal-content f-cfb"
+    >
+        <div class="modal-content-left"
+        >
+            <div class="u-tree-box">
+                <div class="tree-box-subhead">
+                    <input class="u-input"
+                           type="text"
+                           ng-model="treeSelectModalCtrl.searchTreeNodeStr"
+                           placeholder="{{'FDS_01_12_37'|translate}}"
+                           ng-change="treeSelectModalCtrl.onChangeSearch(treeSelectModalCtrl.currentTreeId,treeSelectModalCtrl.searchTreeNodeStr)"
+                    />
+                    <i class="u-input-search" ng-click="treeSelectModalCtrl.onChangeSearch(treeSelectModalCtrl.currentTreeId,treeSelectModalCtrl.searchTreeNodeStr)"></i>
+                </div>
+                <div class="tree-box-content">
+                    <util-tree tree-id="{{treeSelectModalCtrl.baseTreeParams.treeId}}"
+                               tree-init-complete="treeSelectModalCtrl.baseTreeParams.treeInitComplete(treeId)"
+                               tree-datas="treeSelectModalCtrl.baseTreeParams.treeDatas"
+
+                               check-enable="{{treeSelectModalCtrl.baseTreeParams.checkEnable}}"
+
+                               single-select="{{treeSelectModalCtrl.baseTreeParams.isSingleSelect}}"
+                               is-simple-data="{{treeSelectModalCtrl.baseTreeParams.isSimpleData}}"
+                               show-icon="{{treeSelectModalCtrl.baseTreeParams.isShowIcon}}"
+                               show-line="{{treeSelectModalCtrl.baseTreeParams.isShowLine}}"
+                               default-no-data-msg="{{treeSelectModalCtrl.baseTreeParams.defaultNoDataMsg}}"
+                               search-no-data-msg="{{treeSelectModalCtrl.baseTreeParams.searchNoDataMsg}}"
+
+                               on-click="treeSelectModalCtrl.baseTreeParams.onClick(event, treeId, treeNode)"
+                               on-check="treeSelectModalCtrl.baseTreeParams.onCheck(event, treeId, treeNode)"
+
+                               tree-id-key="{{treeSelectModalCtrl.baseTreeParams.treeIdKey}}"
+                               tree-pid-key="{{treeSelectModalCtrl.baseTreeParams.treePidKey}}"
+                               tree-key-name="Name"
+                               edit-enable="{{treeSelectModalCtrl.baseTreeParams.editEnable}}"
+                               is-prev="false"
+                               is-next="false"
+                               is-inner="false"
+                               is-copy="false"
+                               is-move="false"
+                               default-expand-level="0"
+                    ></util-tree>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content-right"
+        >
+            <div class="u-tree-selected-box">
+                <div class="tree-selected-box-head f-cb">
+                        <div class="box-head-left">
+                            {{'FDS_01_12_36'|translate}}
+                            ({{treeSelectModalCtrl.treeSelectedNodeList.length}})
+                        </div>
+
+                        <a href="javascript:;"
+                           class="box-head-right f-cfb"
+                             ng-click="treeSelectModalCtrl.removeAllSelected()"
+                             translate="FDS_00_07_09"
+                        >
+                        </a>
+                </div>
+                <ul class="tree-selected-box-content f-cb" >
+                    <li class="selected-list u-button-blue-2 f-cfb f-fl"
+                        ng-repeat="selectedItem in treeSelectModalCtrl.treeSelectedNodeList"
+                        ng-click="treeSelectModalCtrl.removeSelected(selectedItem)"
+                    >
+
+                        <span class="bom-txt"
+                              ng-bind="selectedItem.Name"
+                        ></span>
+                        <i class="icon-btn i-btn-close"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tree-select-modal-bottom f-cfb"
+    >
+        <button class="u-button u-button-blue-2 f-fr m-right15" type="submit"
+                ng-click="treeSelectModalCtrl.cancelCommit()"
+                translate="FDS_00_07_02"
+        >
+        </button>
+
+        <button class="u-button u-button-blue-1 f-fr m-right15" type="submit"
+                ng-click="treeSelectModalCtrl.commitCloseModal()"
+                translate="FDS_00_07_01"
+        >
+        </button>
+    </div>
+</div>

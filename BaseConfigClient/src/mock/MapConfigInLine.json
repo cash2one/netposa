@@ -1,0 +1,63 @@
+ {
+     "mapOpts": {
+         "minZoom": 8,
+         "defaultZoom": 11,
+         "maxZoom": 18,
+         "isBaseLayer": true,
+         "centerPoint": [
+          114.2827253,30.5522454
+         ],
+         "restrictedExtent": [
+           1.2654523751459E7,
+           3498220.0836328,
+           1.2813512770292E7,
+           3681668.9515173
+         ],
+         "projection": "EPSG:900913"
+     },
+     "vectorLayer": [{
+       "layerName": "baseMap2D",
+       "layerType": "NPMapLib.Layers.NPLayer",
+       "layerOpt": {
+         "url": "http://172.16.90.218:8888/netposa/NPGIS/services/wuhandaode/MapServer",
+         "layerInfo": {
+             "centerPoint": [
+              114.2827253,30.5522454
+             ],
+             "defaultZoom": 11,
+             "fullExtent": [
+               -2.003750834E7,
+               -2.003750834E7,
+               2.003750834E7,
+               2.003750834E7
+             ],
+             "layerType": "gaode",
+             "maxZoom": 18,
+             "minZoom": 8,
+             "projection": "900913",
+             "restrictedExtent": [
+               1.2654523751459E7,
+               3498220.0836328,
+               1.2813512770292E7,
+               3681668.9515173
+             ],
+             "type": "png",
+             "zoomLevelSequence": "2",
+             "isBaseLayer": true
+         }
+       }
+     }],
+     "sattilateLayer": [{
+       "layerName": "baseMapSatellite",
+       "layerType": "NPMapLib.Layers.GaoDeLayer",
+       "layerOpt": {
+         "url": ["http://webst01.is.autonavi.com/appmaptile?style=6"],
+         "centerPoint": [114.2827253,30.5522454],
+         "isBaseLayer": true,
+         "maxZoom": 18,
+         "minZoom": 8
+       }
+     }]
+ }
+
+

@@ -1,0 +1,55 @@
+ <div class="search-device-con" ng-controller="carSearchPageController as carSearchPageCtrl" ng-show="quickSearchCtrl.carResult.data.length&&!QuickCtrl.queryStatus">
+     <ul class="media-list car" ng-scrollbars>
+         <li class="media" ng-repeat="item in quickSearchCtrl.carResult.data">
+             <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                    <i class="icon-car-board">{{item.plateNumber}}</i>
+                    <span class="operate">
+                        <i class="icon_collect" ng-class="{'active': item.collectStatus}" ng-click="carSearchPageCtrl.clickCollect(item)">收藏</i>
+                        <i class="icon_analysis" ng-click="carSearchPageCtrl.clickAnalysis(item)">分析</i>
+                        <i class="icon_dispatched" ng-class="{'active': item.surveillanceStatus}" ng-click="carSearchPageCtrl.clickSurveillance(item)">布控</i>
+                    </span>
+                </span>
+             </div>
+             <div class="media-next">
+                 <div class="media-left" ng-click="carSearchPageCtrl.fullScreen((item.panoramaImage|imageUrlFilter))"  ng-drag="true" ng-drag-data="item" data-allow-transform="false">
+                     <img class="media-image" layer-src="{{item.panoramaImage|imageUrlFilter }}" ng-src="{{ item.panoramaImage|imageUrlFilter}}" />
+                 </div>
+                 <div class="media-right" ng-click="carSearchPageCtrl.detailPopup($index, quickSearchCtrl.carResult.data)">
+                     <ul>
+                         <li class="car-speed">
+                             <div class="name"></div>
+                             <div class="text">{{item.speed+'km/h'}}</div>
+                         </li>
+                         <li class="time">
+                             <div class="name"></div>
+                             <div class="text">{{item.storageTime}}</div>
+                         </li>
+                         <li class="address">
+                             <div class="name"></div>
+                             <div class="text">{{item.monitorName}}</div>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+         </li>
+     </ul>
+     <div class="footer-page">
+         <div class="footer-page-con">
+             <div class="total">
+                 共<i class="m-mark-num"> {{quickSearchCtrl.carResult.pageParams.totalCount}} </i>条记录
+             </div>
+             <util-paging
+                     page-params="quickSearchCtrl.carResult.pageParams"
+                     prev-page="quickSearchCtrl.changePage(num, 'carResult')"
+                     next-page="quickSearchCtrl.changePage(num, 'carResult')"
+                     go-page="quickSearchCtrl.changePage(num, 'carResult')"
+                     hide-size="quickSearchCtrl.hideSize"
+                     hide-gopage="quickSearchCtrl.hideGopage"
+             ></util-paging>
+         </div>
+     </div>
+ </div>
+<div class="m-noMessage" ng-show="!quickSearchCtrl.carResult.data.length&&!QuickCtrl.queryStatus">暂无数据</div>
+<div class="loading" ng-if="QuickCtrl.queryStatus"></div>

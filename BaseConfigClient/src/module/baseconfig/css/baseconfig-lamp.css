@@ -1,0 +1,742 @@
+/*--------灯杆配置----------*/
+/*.m-lamp .right-content{
+    min-width: 926px;
+}*/
+/*图片上传插件样式修改*/
+.webuploader-pick{
+    background:#fff!important;
+    color:#222!important;
+    padding:0!important
+}
+.m-lamp-tree-container{
+    position: absolute;
+    top: 43px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+
+.m-lamp-info{
+    background-color: #fff;
+    height: 53px;
+}
+
+.m-lamp-info-top{
+    padding: 11px 15px 12px 15px;
+    border-bottom: 1px solid #e8ebec;
+}
+
+.m-lamp-info-top h3{
+    float: left;
+    line-height: 28px;
+    font-weight: normal;
+    color: #333;
+}
+
+.m-lamp-tool{
+    float: right;
+}
+
+.m-lamp-tool .tool-icon{
+    float: left;
+    cursor: pointer;
+}
+
+.m-lamp-tool .tool-icon.z-icon{
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    margin: 0 5px;
+    background-color: #eaf6fe;
+}
+
+.m-lamp-info-bottom{
+    padding: 9px 15px;
+    background: white;
+    margin-top: 7px;
+}
+
+.m-lamp-info-bottom .lamp-info{
+    float: left;
+    width: 30%;
+    overflow:hidden;
+    word-wrap:normal;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.m-lamp-search-top{
+    padding: 11px 15px;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+    margin-top: 15px;
+}
+
+.m-lamp-search-top .u-input-search{
+    position: absolute;
+    left: 22px;
+    right: 8px;
+}
+
+.m-lamp-search-top h3{
+    float: left;
+    padding-top: 7px;
+    font-weight: normal;
+}
+
+.m-lamp-search-top .search-lamp-input{
+    float: right;
+    position: relative;
+}
+
+.m-lamp .lamp-centerFixed{
+    top: 146px;
+}
+
+/*时间过滤*/
+
+.m-taskForm{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.m-taskForm .taskForm-title{
+    font-size: 14px;
+    color: #767f8f;
+  /*  display: inline-block;*/
+    max-width: 100%;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+.m-taskForm input{
+    height: 30px;
+    line-height: 30px;
+    width: 158px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #333;
+    font-size: 12px;
+    text-indent: 5px;
+    padding:0 28px 0 5px;
+}
+
+.m-taskForm .taskForm-input1{
+    width: 336px;
+}
+
+.m-taskForm .taskForm-input3{
+    width: 126px;
+}
+
+.m-taskForm .taskForm-select{
+    height: 30px;
+    line-height: 30px;
+    width: 126px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #666;
+    font-size: 12px;
+    display:inline-block;
+    position: relative;
+    padding: 0 30px 0 3px;
+}
+
+.m-taskForm .taskForm-select ul{
+    position: absolute;
+    z-index: 2;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    width: 100%;
+    border-top: none;
+    text-align: left;
+    left:0;
+    top:29px;
+    display: none;
+}
+
+.m-taskForm .taskForm-select ul li{
+    padding: 0 30px 0 3px;
+    position: relative;
+}
+
+.m-taskForm .taskForm-select ul li:hover{
+    background: #ecf6fd;
+    color:#269dfa;
+}
+
+.m-taskForm .taskForm-select:hover ul{
+    display: block;
+}
+
+.m-taskForm .iconSelect{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 28px;
+    height: 28px;
+}
+
+.m-taskForm .iconAddition{
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.m-taskForm label{
+    position: relative;
+    margin: 0;
+}
+
+.m-taskForm .iconPosition{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.m-taskForm .timePrompt{
+    margin-left: 5px;
+    color: #ffad33;
+    display:inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+
+.m-taskForm .taskForm-checkbox{
+    display: inline-block;
+    width: 14px;
+    height:14px;
+    border:1px solid #959596;
+    background: #fff;
+    text-align: center;
+    line-height: 12px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.m-taskForm .taskForm-checkbox .taskForm-btn{
+    padding:9px 11px;
+    font-size:12px;
+}
+
+.m-taskForm .taskForm-btn{
+    padding: 9px 11px;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    margin-left:5px;
+}
+
+/*选中时添加的类名*/
+.m-taskForm .taskForm-checkbox-color{
+    color: #fff;
+    background: #45a2ff;
+    border-color: #45a2ff;
+}
+
+.m-taskForm .taskForm-title-color{
+    color:#51b1fb;
+}
+
+.m-taskForm .taskForm-btn-color{
+    background: #51b1fb;
+    color:#fff;
+}
+
+
+/*新增立杆*/
+.m-tabs-active{
+    background-color: white;
+    color: #4394ff;
+    border:solid 1px #dee3e5;
+    border-bottom: 0;
+    border-top: 0; 
+}
+.m-tabs-checkout{
+    position: relative;
+    top: -5px;
+    background-color: #F5F5F5;
+    border: solid 1px #dee3e5;
+}
+
+.m-tabs-checkout .group-button{
+    padding: 0px 0px 0px 20px;
+}
+
+.m-tabs-checkout .btn-span{
+    display: inline-block;
+    padding: 16px 30px 16px 30px;
+    /* margin-bottom: 0; */
+    font-size: 14px;
+    font-weight: 400;
+    /* line-height: 1.42857143; */
+    /* text-align: center; */
+    /* white-space: nowrap; */
+    /* vertical-align: middle; */
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    /*border: 1px solid #ccc;*/
+    /* height: 44px; */
+     position: relative; 
+     top: 1px; 
+    /* left: 10px; */
+}
+
+.m-tabs-checkout .btn:focus{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #e6e6e6;
+}
+
+.m-tabs-checkout .btn:visited, .btn-device:hover, .btn-device:active {
+    background-color: #e6e6e6;
+    outline: none;
+}
+
+
+.m-form-hw.m-float-left{
+    height: 152px;
+    width: 142px;
+    position: relative;
+    left: 126px;
+    top: 31px;
+}
+
+.m-float-right{
+    position: relative;
+    left: 260px;
+    width: 350px;
+}
+
+.m-float-right .errorText{
+    position: absolute;
+    left: 220px;
+}
+
+.m-uploadImg {
+    width:160px;
+    text-align:center;
+    font-size: 12px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 159px;
+    padding: 13px 43px;
+    left: 50px;
+}
+
+.m-uploadfile {
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.m-upload-image{   
+    height: 160px;
+    width: 160px;
+    position: absolute;
+    border-width: 0px;
+    left: 50px;
+}
+
+/*连接设备*/
+.m-bottem-div .m-bottom-title{
+    padding: 0px 80px 0 21px;
+    height: 33px;
+    width: 509px;
+    line-height: 33px;
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    background-color: #F8F8F8;
+    border-radius: 2px 2px 0 0;
+}
+
+.m-bottem-left{
+    border: 1px solid #ccc;
+    width: 240px;
+    position: absolute;
+    height: 232px;
+    left: 253px;
+    top: 213px;
+}
+
+.m-bottom-footer{
+    position: absolute;
+    left: 310px;
+    bottom:20px
+}
+
+.m-right-footer{
+    position: relative;
+    left: 158px;
+}
+
+.m-input{
+    background-color: white;
+    height: 30px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #666;
+    font-size: 12px;
+    text-indent: 5px;
+}
+.m-height90{
+    height: 90px;
+}
+
+.m-toggle-icon{
+    left: 300px!important;
+}
+.m-form{
+    overflow: visible!important;
+}
+/********************摄像机弹框***********************/
+.m-camera-pop {
+    /*position: fixed;
+    top: 310px;
+    left: 34px;*/
+}
+
+.m-camera-pop .m-camera-content{
+    overflow-x:hidden
+}
+
+.m-camera-pop .camera-tree-area{
+    width: 230px;
+    height:515px;
+    border-right:1px solid #e7e7e7;
+    border-bottom:1px solid #e7e7e7;
+}
+
+.m-camera-pop .sel-area{
+    width:405px;
+    height:515px;
+    border-bottom:1px solid #e7e7e7;
+}
+
+.m-camera-pop .camera-tree-area .tree-search{
+    width: 100%;
+    padding: 15px;
+}
+
+.m-camera-pop .camera-tree-area input{
+    width: 177px;
+    height: 25px;
+}
+
+.m-camera-pop .camera-tree-area .tree-search-btn{
+    top:22px;
+}
+
+.m-camera-pop .camera-tree-area .tree-area-content{
+    width: 100%;
+    height:454px;
+    overflow-y:auto;
+}
+
+.m-camera-pop .area-header{
+    position: absolute;
+    top: -201px;
+    left: 329px;
+}
+
+.m-camera-pop .camera-item{
+    padding: 9px 29px 7px 10px;
+    left: -13px;
+    margin: -2px 0px 0px 0px;
+    width: 262px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.m-camera-pop .camera-item .m-camera-text{
+    position: relative;
+    left: 22px;
+}
+.m-camera-pop .camera-item:visited, .camera-item:hover, .camera-item:active{
+    background-color: #e2ecfa  !important;
+}
+.m-camera-pop .camera-item:visited i, .camera-item:hover i, .camera-item:active i{
+    display: block !important;
+}
+
+.m-camera-pop .camera-item .m-camera-ico{
+    position: absolute;
+    background-image: url(../../../images/baseconfig/lamp/camera.png);
+    width: 16px;
+    height: 16px;
+    bottom: 7px;
+}
+
+.m-camera-pop .camera-item .m-wifi-ico{
+    position: absolute;
+    background-image: url(../../../images/baseconfig/lamp/wifi.png);
+    width: 16px;
+    height: 16px;
+    bottom: 7px;
+}
+
+.m-camera-pop .camera-item .m-rmpgate-ico{
+    position: absolute;
+    background-image: url(../../../images/baseconfig/lamp/rmpgate.png);
+    width: 16px;
+    height: 16px;
+    bottom: 6px;
+}
+
+.m-camera-pop .camera-item .m-ele-ico{
+    position: absolute;
+    background-image: url(../../../images/baseconfig/lamp/ele.png);
+    width: 16px;
+    height: 16px;
+    bottom: 7px;
+}
+
+.m-camera-pop .camera-item .m-close{
+    top: 10px;
+    right: 13px;
+    width: 11px;
+    height: 12px;
+    left: 222px;
+    background-image: url(../../../images/baseconfig/lamp/close.png);
+}
+
+.m-camera-cleanAll {
+    position: absolute;
+}
+
+.m-device-popul{
+    display: block;
+    width: 100%;
+    text-align: right;
+    color: red !important;
+    cursor: default;
+    height: 24px;
+    line-height: 24px;
+    padding-right: 20px;
+    background: #F5F5F5;
+}
+/*设备关联*/
+.m-device-border{
+    position: absolute;
+    width: 592px;
+    height: 340px;
+    top: 5px;
+    left: 28px;
+    border: 1px solid #ECEBEA;
+    /*box-shadow: 0 0 3px rgba(0,0,0,.5);*/
+}
+
+.m-device-head{
+    border: 1px solid #eee;
+    height: 340px;
+    width: 66px;
+    background: #F5F5F5;
+}
+
+.m-device-head .btn-device{
+    background-color: #F5F5F5;
+    display: inline-block;
+    padding: 13px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 0px;
+    word-wrap: break-word;
+    width: 64px;
+    height: 50px;
+}
+
+.m-device-head .btn-device:focus{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #e6e6e6;
+}
+
+.m-device-head .btn-device:visited, .btn-device:hover, .btn-device:active {
+    background-color: #e6e6e6;
+    outline: none;
+}
+
+.m-device-head .btn-device.m-device-active {
+    background: #e2ecfa !important;
+    border-right: 5px solid #4394ff;
+}
+
+.m-popul-right{
+    width: 266px;
+    height: 340px;
+    overflow-y: hidden;
+    position: absolute;
+    left: 63px;
+    /*border: 1px solid #eee;*/
+    overflow-x: hidden;
+}
+/*搜索*/
+.sel-area{
+    width:405px;
+    height:515px;
+    border-bottom:1px solid #e7e7e7;
+}
+
+.camera-tree-area .tree-search{
+    width: 100%;
+    padding: 15px;
+}
+.m-search-size{
+    position: relative;
+    left: 11px;
+    top: 10px;
+    width: 243px;
+    height: 27px;
+    border: 1px solid #ccc;
+}
+.m-search-btn{
+    top: 15px;
+}
+.tree-area-content{
+    left: -1px;
+    top: 16px;
+    position: relative;
+    width: 282px;
+    height: 290px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.u-select-tree .m-show-area {
+    height: 181px;
+    width: 250px;
+    overflow-y: auto;
+    position: absolute;
+    /*left: 70px;*/
+}
+
+.m-dropbox-select{
+    width: 75px;
+    height: 22px;
+}
+
+.m-common-header{
+    position: relative;
+    left: 313px;
+    width: 168px;
+    height: 36px;
+    background: #eee;
+    border: 1px solid #ccc;
+}
+
+/*右边框*/
+.m-device-right{
+    border: 1px solid #eee;
+    width: 262px;
+    height: 340px;
+    position: absolute;
+    top: -1px;
+    left: 330px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+/*camera*/
+.m-camera-content{
+    overflow-y: auto;
+    padding-left: 11px;
+    overflow-x: hidden;
+}
+
+.m-camera-header .select-camera{
+    top: 12px;
+    left: 12px;
+    position: relative;
+}
+.m-camera-header .space-color{
+    border-bottom: 1px solid #EDECEB;
+    height: 36px;
+    width: 260px;
+    background: #F5F5F5;
+}
+
+/*wifi*/
+.m-height{
+    top: -1px;
+    left: 65px;
+}
+
+.m-RmpGate-header{
+    top: 5px;
+}
+
+.m-RmpGate-header .select-device{
+    top: 12px;
+    left: 12px;
+    position: absolute;
+}
+.m-RmpGate-content{
+    border: 1px solid #ccc;
+    width: 168px;
+    height: 99px;
+    position: absolute;
+    left: 328px;
+    top: 45px;
+}
+
+/*关联设备弹窗*/
+.m-add-device{
+    height: 41px;
+}
+.m-add-device button{
+    position: relative;
+    left: 18px;
+    top: 3px;
+}
+.m-device-tabs{
+    border: 1px solid #ccc;
+    height: 50px;
+}
+.m-table-width{
+    position: relative;
+    width: 617px;
+    left: 16px;
+    height: 430px;
+    overflow: auto;
+}
+.m-table-bottom{
+    position: relative;
+    top: -5px;
+    left: -232px;
+}
+.m-bottom-button{
+    position: relative;
+    height: 74px;
+    left: -175px;
+    top: 21px;
+}
+.m-form-upload{
+    height: 240px;
+    width: 220px;
+    position: absolute;
+}
+.m-lamp-create{
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}

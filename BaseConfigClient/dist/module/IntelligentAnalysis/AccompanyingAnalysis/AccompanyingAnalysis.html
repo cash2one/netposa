@@ -1,0 +1,502 @@
+<div class="analysis-layout">
+    <!--表单区域-->
+    <div class="analysis-form" ng-class="{active:AccompanyingAnalysisCrtl.showForm}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title accompanying-analysis-title">伴随分析</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="AccompanyingAnalysisCrtl.goBack()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="face-track-form analaysis-body">
+                <div class="tab-list">
+                    <span ng-class="{'active':!AccompanyingAnalysisCrtl.showAnalysisList}" ng-click="AccompanyingAnalysisCrtl.showAnalysisListFn(false)">分析条件</span>
+                    <span ng-class="{'active':AccompanyingAnalysisCrtl.showAnalysisList}" ng-click="AccompanyingAnalysisCrtl.showAnalysisListFn(true)">分析结果</span>
+                </div>
+                <!--分析条件表单-->
+                <div class="analysis-form-con" ng-scrollbars ng-if="!AccompanyingAnalysisCrtl.showAnalysisList">
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>任务名称</span>
+                        <span class="input-layer">
+                            <input ng-model="AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.taskName" type="text" placeholder="请输入任务名称">
+                        </span>
+                    </div>
+                    <div class="upload-img">
+                        <div class="upload-img-layer">
+                            <div class="image-layer" ng-if="!!AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.imagePath">
+                                <img ng-src="{{AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.imagePath|imageUrlFilter}}" alt="">
+                                <span class="delete" ng-click="AccompanyingAnalysisCrtl.deleteImage()">
+                                    <i class="pdp-icon-delete"></i>
+                                </span>
+                            </div>
+                            <label class="image-layer" ng-if="!AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.imagePath">
+                                <div class="file-mask pdp-icon-camera-upload">上传图片</div>
+                                <input type="file" ng-upload-change="AccompanyingAnalysisCrtl.uploadImage($event)" class="file" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">时间筛选</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in AccompanyingAnalysisCrtl.FastDateList" ng-class="{'active':item.key === AccompanyingAnalysisCrtl.FastDate.key}" ng-click="AccompanyingAnalysisCrtl.setFastDate(item)">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                        <span class="input-layer pdp-icon-calendar">
+                            <input ng-model="AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.startTime" date-picker show-init="false" type="text" placeholder="请选择开始时间">
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                        <span class="input-layer pdp-icon-calendar">
+                        <input ng-model="AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.endTime" date-picker show-init="false" type="text" placeholder="请选择结束时间">
+                    </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>伴随阈值</span>
+                        <span class="input-layer">
+                            <input ng-model="AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.followNum" type="number" min="1" placeholder="请输入伴随次数的最小值">
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input ">
+                        <span class="analaysis-form-title"><i class="required">*</i>伴随时间</span>
+                        <span class="accompanying-num">
+                            <i class="radius-left">前</i>
+                            <input type="number" min="1" ng-model="AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.agofollowTime">
+                            <i class="radius-right">秒</i>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"></span>
+                        <span class="accompanying-num">
+                            <i class="radius-left">后</i>
+                            <input type="number" min="1" ng-model="AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.afterfollowTime">
+                            <i class="radius-right">秒</i>
+                        </span>
+                    </div>
+                    <div class="face-track-select-camera">
+                        <span class="analaysis-form-title">摄像机</span>
+                        <div class="face-track-camera">
+                            <span ng-click="AccompanyingAnalysisCrtl.selectCamera()" class="action pdp-icon-select-device" title="选择设备">选择设备</span>
+                            <span ng-click="AccompanyingAnalysisCrtl.DrawRect()" class="action pdp-icon-map-square" title="框选"></span>
+                            <span ng-click="AccompanyingAnalysisCrtl.DrawCircle()" class="action pdp-icon-map-round" title="圆选"></span>
+                            <span ng-click="AccompanyingAnalysisCrtl.DrawPolygon()" class="action pdp-icon-map-polygon" title="多边选"></span>
+                            <span ng-click="AccompanyingAnalysisCrtl.ClearDraw()" class="action pdp-icon-map-delete" title="删除"></span>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input threshold-progress">
+                        <span class="analaysis-form-title">相似度</span>
+                        <div class="analaysis-progress">
+                            <progress-drag
+                                    now-value="AccompanyingAnalysisCrtl.AccompanyingAnalysisParams.threshold"
+                                    min-value="AccompanyingAnalysisCrtl.similarityMin"
+                                    max-value="AccompanyingAnalysisCrtl.similarityMax" lengd="200">
+                            </progress-drag>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">年龄</span>
+                        <div class="input-layer-select">
+                            <util-select
+                                selected-empty-val="请选择年龄段"
+                                select-data="AccompanyingAnalysisCrtl.AgeDataList"
+                                select-repeat-by-key="text"
+                                select-click="AccompanyingAnalysisCrtl.selectAge(selected)"
+                                select-list-height="M"
+                                select-list-diy-icon="false"
+                                select-is-tree="false">
+                            </util-select>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">性别</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in AccompanyingAnalysisCrtl.SexDateList" ng-class="{'active':AccompanyingAnalysisCrtl.SexDate.key===item.key}" ng-click="AccompanyingAnalysisCrtl.SexDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">戴眼镜</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in AccompanyingAnalysisCrtl.GlassDateList" ng-class="{'active':AccompanyingAnalysisCrtl.GlassDate.key===item.key}" ng-click="AccompanyingAnalysisCrtl.GlassDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">戴口罩</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in AccompanyingAnalysisCrtl.MaskDateList" ng-class="{'active':AccompanyingAnalysisCrtl.MaskDate.key===item.key}" ng-click="AccompanyingAnalysisCrtl.MaskDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="searh-submit">
+                        <button ng-click="AccompanyingAnalysisCrtl.submitSearch()">查询</button>
+                    </div>
+                </div>
+                <!--离线任务列表-->
+                <div class="analysis-task-list" ng-scrollbars ng-if="AccompanyingAnalysisCrtl.showAnalysisList">
+                    <div class="task-item" ng-repeat="item in AccompanyingAnalysisCrtl.AccompOffLine">
+                        <div class="task-content">
+                            <div class="task-name">
+                                {{item.TaskName}}
+                                <span ng-click="AccompanyingAnalysisCrtl.deleteAccompOffLine(item)" class="delete-task pdp-icon-delete-area"></span>
+                            </div>
+                            <div class="task-info">
+                                <ul>
+                                    <li>
+                                        <span class="info-key">创建时间：</span>
+                                        <span class="info-value">{{item.CreateTime}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="info-key">任务状态：</span>
+                                        <span class="info-value">{{(item.CompletePercent==="100")?"运行完成":"运行中"}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="task-result-btn">
+                                <button ng-disabled="(item.TaskStatus!=='200'||item.CompletePercent!=='100')" ng-click="AccompanyingAnalysisCrtl.showAnalysisResult(item)">查看结果</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analysis-no-data pdp-icon-no-analysis" ng-show="AccompanyingAnalysisCrtl.AccompOffLine.length === 0">暂无数据
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--被伴随人员-->
+    <div class="analysis-res result-left" ng-class="{'active':AccompanyingAnalysisCrtl.showResult}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title accompanying-analysis-title">伴随分析</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="AccompanyingAnalysisCrtl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="head-title">
+                            <span class="head-left">
+                                被伴随人员
+                            </span>
+                            <span class="head-left">
+                                <button ng-click="AccompanyingAnalysisCrtl.setReultTrack()">查看轨迹</button>
+                            </span>
+                            <span class="head-right">共 <i>{{AccompanyingAnalysisCrtl.resultParams.totalCount}}</i> 条记录</span>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="capture-layer" ng-scrollbars>
+                            <div class="item-group">
+                                <div class="capture-children face active">
+                                    <div class="children-item"
+                                         ng-repeat="(i,item) in AccompanyingAnalysisCrtl.resultParams.data"
+                                         ng-click="AccompanyingAnalysisCrtl.openDetailPopup(item,i)"
+                                         ng-mouseenter="AccompanyingAnalysisCrtl.resultToMap(item,i)"
+                                         ng-mouseleave="AccompanyingAnalysisCrtl.unResultToMap(item,i)">
+                                        <div class="item-info">
+                                            <span class="location" ng-click="AccompanyingAnalysisCrtl.showMapPoint(i)" ng-class="{true: 'pdp-icon-positon-letter', false: 'pdp-icon-positon-num'}[AccompanyingAnalysisCrtl.isSortLetter]">{{AccompanyingAnalysisCrtl.isSortLetter?(AccompanyingAnalysisCrtl.sortLetter[i]):((AccompanyingAnalysisCrtl.resultParams.currentPage-1)*AccompanyingAnalysisCrtl.resultParams.pageSize)+i+1}}</span>
+                                            <span class="same-scale">{{item.Score | roundNumber}}%</span>
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="AccompanyingAnalysisCrtl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis">
+                                                    <ul class="analysis-ul">
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Track.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Track.name}}</li>
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.name}}</li>
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Frequency.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Frequency.name}}</li>
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.More.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.More.name}}</li>
+                                                    </ul>
+                                                </i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="AccompanyingAnalysisCrtl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                        <div class="head-img" ng-click="AccompanyingAnalysisCrtl.fullScreen($event, (item.AccessLog.ScenePath | imageUrlFilter))">
+                                            <img ng-src="{{item.AccessLog.FacePath | imageUrlFilter}}">
+                                        </div>
+                                        <div class="desc">
+                                            <p><i class="pdp-icon-time"></i>{{item.AccessLog.LogTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="relsut-delete">
+                                            <i class="pdp-icon-relsut-delete"></i>
+                                            删除
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <util-paging
+                            hide-size="true"
+                            page-params="AccompanyingAnalysisCrtl.resultParams"
+                            prev-page="AccompanyingAnalysisCrtl.changeResultPage(num)"
+                            next-page="AccompanyingAnalysisCrtl.changeResultPage(num)"
+                            go-page="AccompanyingAnalysisCrtl.changeResultPage(num)"
+                            show-type="small">
+                        </util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--伴随人员-->
+    <div class="analysis-res result-right" ng-class="{'active':AccompanyingAnalysisCrtl.showResult}" ng-style="{'left':!AccompanyingAnalysisCrtl.showResult?AccompanyingAnalysisCrtl.windowWidth+'px':(AccompanyingAnalysisCrtl.windowWidth-300-60)+'px'}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title accompanying-analysis-title">伴随分析</div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="head-title">
+                            <span class="head-left">
+                                伴随人员
+                            </span>
+                            <span class="head-right">共 <i>{{AccompanyingAnalysisCrtl.accpResultParams.totalCount}}</i> 条记录</span>
+                        </div>
+                    </div>v
+                    <div class="before-layer">
+                        <div class="capture-layer" ng-scrollbars>
+                            <div class="item-group" ng-repeat="group in AccompanyingAnalysisCrtl.accpResultParams.data">
+                                <div class="capture-item face">
+                                    <div class="item-group-cnt">
+                                        <div class="head-img">
+                                            <img ng-src="{{group.AccessLog.FacePath | imageUrlFilter}}">
+                                        </div>
+                                        <div class="desc">
+                                            <p ><span>伴随次数：</span><span>{{group.Num}}次</span></p>
+                                            <p><span>性别：</span>{{group.AccessLog.Gender | genderFilter}}</p>
+                                            <p><span>年龄段：</span>{{group.AccessLog.Age | ageToGroupAge}}</p>
+                                            <div class="show-track">
+                                                <button ng-click="AccompanyingAnalysisCrtl.setAccpTrack($index)">查看轨迹</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span
+                                            class="show-more"
+                                            ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[AccompanyingAnalysisCrtl.checkRightResult[$index]]"
+                                            ng-click="AccompanyingAnalysisCrtl.slideRightResult($index)">
+                                        {{AccompanyingAnalysisCrtl.checkRightResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="capture-children face" ng-class="{active:AccompanyingAnalysisCrtl.checkRightResult[$index]}">
+                                    <div class="children-item"
+                                         ng-repeat="(i,item) in group.SearchAccessResults"
+                                         ng-click="AccompanyingAnalysisCrtl.openDetailPopup(item,i,'MapForAccpGroup')"
+                                         ng-mouseenter="AccompanyingAnalysisCrtl.resultToMap(item,i,'Accp')"
+                                         ng-mouseleave="AccompanyingAnalysisCrtl.unResultToMap(item,i,'Accp')"
+                                    >
+                                        <div class="item-info">
+                                            <span class="location pdp-icon-positon-num">{{$index+1}}</span>
+                                            <span class="same-scale">{{item.Score | roundNumber}}%</span>
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="AccompanyingAnalysisCrtl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis">
+                                                    <ul class="analysis-ul">
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Track.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Track.name}}</li>
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.name}}</li>
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Frequency.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Frequency.name}}</li>
+                                                        <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.More.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.More.name}}</li>
+                                                    </ul>
+                                                </i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="AccompanyingAnalysisCrtl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                        <div class="head-img" ng-click="FaceCollisionAnalysisCtrl.fullScreen($event, (item.AccessLog.ScenePath | imageUrlFilter))">
+                                            <img ng-src="{{item.AccessLog.FacePath | imageUrlFilter}}">
+                                        </div>
+                                        <div class="desc">
+                                            <p><i class="pdp-icon-time"></i>{{item.AccessLog.LogTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="relsut-delete">
+                                            <i class="pdp-icon-relsut-delete"></i>
+                                            删除
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <util-paging
+                                hide-size="true"
+                                page-params="AccompanyingAnalysisCrtl.accpResultParams"
+                                prev-page="AccompanyingAnalysisCrtl.changeAccpResultPage(num)"
+                                next-page="AccompanyingAnalysisCrtl.changeAccpResultPage(num)"
+                                go-page="AccompanyingAnalysisCrtl.changeAccpResultPage(num)"
+                                show-type="small"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--查看更多被伴随人员-->
+    <div class="analysis-more-res" ng-class="{'active':AccompanyingAnalysisCrtl.showAllResult}" ng-style="{'width':AccompanyingAnalysisCrtl.windowWidth-60 + 'px'}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title accompanying-analysis-title">被伴随人员</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="AccompanyingAnalysisCrtl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="result-operate">
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="analysis-more-result-group" ng-scrollbars>
+                            <div class="result-item">
+                                <div class="item-row-table active">
+                                    <div class="table-item face"
+                                         ng-repeat="(i,item) in AccompanyingAnalysisCrtl.resultParams.data"
+                                         ng-click="AccompanyingAnalysisCrtl.openDetailPopup(item,i)">
+                                        <div class="item-picture">
+                                            <div class="picture-box" ng-click="AccompanyingAnalysisCrtl.fullScreen($event, (item.AccessLog.ScenePath|imageUrlFilter))">
+                                                <img ng-src="{{item.AccessLog.FacePath | imageUrlFilter}}"  alt="">
+                                            </div>
+                                            <div class="item-similarity" ng-if="item.Score">{{item.Score|roundNumber}}%</div>
+                                            <input class="item-checkbox" type="checkbox" />
+                                            <div class="mask">
+                                                <div class="fast-operate">
+                                                    <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="AccompanyingAnalysisCrtl.clickCollect($event , item)"></i>
+                                                    <i class="pdp-icon-analysis">
+                                                        <ul class="analysis-ul">
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Track.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Track.name}}</li>
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.name}}</li>
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Frequency.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Frequency.name}}</li>
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.More.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.More.name}}</li>
+                                                        </ul>
+                                                    </i>
+                                                    <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="AccompanyingAnalysisCrtl.clickSurveillance($event , item)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-desc">
+                                            <p>{{item.AccessLog.LogTime}}</p>
+                                            <p>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <div class="page-total">
+                            共
+                            <i>{{AccompanyingAnalysisCrtl.resultParams.totalCount}}</i>
+                            条记录
+                        </div>
+                        <util-paging
+                            hide-size="true"
+                            hide-gopage="true"
+                            page-params="AccompanyingAnalysisCrtl.resultParams"
+                            prev-page="AccompanyingAnalysisCrtl.changeResultPage(num)"
+                            next-page="AccompanyingAnalysisCrtl.changeResultPage(num)"
+                            go-page="AccompanyingAnalysisCrtl.changeResultPage(num)">
+                        </util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--查看更多 伴随人员-->
+    <div class="analysis-more-res" ng-class="{'active':AccompanyingAnalysisCrtl.showAllAccompanyResult}" ng-style="{'width':AccompanyingAnalysisCrtl.windowWidth-60 + 'px'}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title accompanying-analysis-title">伴随人员</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="AccompanyingAnalysisCrtl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="result-operate">
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="analysis-more-result-group" ng-scrollbars>
+                            <div class="result-item" ng-repeat="group in AccompanyingAnalysisCrtl.accpResultParams.data">
+                                <div class="item-head">
+                                    <div class="head-left">
+                                        <span>伴随次数：</span>
+                                        <span class="num">{{group.Num}}</span>
+                                        <span>次</span>
+                                    </div>
+                                    <span
+                                            class="show-more"
+                                            ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[AccompanyingAnalysisCrtl.checkRightResult[$index]]"
+                                            ng-click="AccompanyingAnalysisCrtl.slideRightResult($index)">
+                                        {{AccompanyingAnalysisCrtl.checkRightResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="item-row-table" ng-class="{active:AccompanyingAnalysisCrtl.checkRightResult[$index]}">
+                                    <div class="table-item face"
+                                         ng-repeat="(i,item) in group.SearchAccessResults"
+                                         ng-click="AccompanyingAnalysisCrtl.openDetailPopup(item,i,'MapForAccpGroup')">
+                                        <div class="item-picture">
+                                            <div class="picture-box" ng-click="AccompanyingAnalysisCrtl.fullScreen($event, (item.AccessLog.ScenePath|imageUrlFilter))">
+                                                <img ng-src="{{item.AccessLog.FacePath|imageUrlFilter}}"  alt="">
+                                            </div>
+                                            <div class="item-similarity" ng-if="item.Score">{{item.Score|roundNumber}}%</div>
+                                            <input class="item-checkbox" type="checkbox" />
+                                            <div class="mask">
+                                                <div class="fast-operate">
+                                                    <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="AccompanyingAnalysisCrtl.clickCollect($event , item)"></i>
+                                                    <i class="pdp-icon-analysis">
+                                                        <ul class="analysis-ul">
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Track.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Track.name}}</li>
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Accompanying.name}}</li>
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.Frequency.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.Frequency.name}}</li>
+                                                            <li class="analysis-li" ng-click="AccompanyingAnalysisCrtl.clickAnalysis($event , item, AccompanyingAnalysisCrtl.analysisGoTo.More.key)">{{AccompanyingAnalysisCrtl.analysisGoTo.More.name}}</li>
+                                                        </ul>
+                                                    </i>
+                                                    <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="AccompanyingAnalysisCrtl.clickSurveillance($event , item)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-desc">
+                                            <p>{{item.AccessLog.LogTime}}</p>
+                                            <p>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <div class="page-total">
+                            共
+                            <i>{{AccompanyingAnalysisCrtl.accpResultParams.totalCount}}</i>
+                            条记录
+                        </div>
+                        <util-paging
+                            hide-size="true"
+                            hide-gopage="true"
+                            page-params="AccompanyingAnalysisCrtl.accpResultParams"
+                            prev-page="AccompanyingAnalysisCrtl.changeAccpResultPage(num)"
+                            next-page="AccompanyingAnalysisCrtl.changeAccpResultPage(num)"
+                            go-page="AccompanyingAnalysisCrtl.changeAccpResultPage(num)">
+                        </util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taggle-result taggle-result-open pdp-icon-forward"  ng-class="{'active':AccompanyingAnalysisCrtl.showResult}" ng-click="AccompanyingAnalysisCrtl.goAllResult()"></div>
+    <div class="taggle-result taggle-result-close pdp-icon-back" ng-class="{'active':AccompanyingAnalysisCrtl.showAllResult}" ng-click="AccompanyingAnalysisCrtl.closeAllResult()" ng-show="AccompanyingAnalysisCrtl.showAllResult"></div>
+    <div class="taggle-result taggle-result-open-right pdp-icon-back" ng-class="{'active':AccompanyingAnalysisCrtl.showResult}" ng-click="AccompanyingAnalysisCrtl.goAccompanyAllResult()" ng-style="{'left':!AccompanyingAnalysisCrtl.showResult?AccompanyingAnalysisCrtl.windowWidth+'px':(AccompanyingAnalysisCrtl.windowWidth-300-60-30)+'px'}"></div>
+    <div class="taggle-result taggle-result-close-right pdp-icon-back"  ng-class="{'active':AccompanyingAnalysisCrtl.showAllAccompanyResult}" ng-click="AccompanyingAnalysisCrtl.closeAllAccompanyResult()" ng-show="AccompanyingAnalysisCrtl.showAllAccompanyResult"></div>
+</div>
+

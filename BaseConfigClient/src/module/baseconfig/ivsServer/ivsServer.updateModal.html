@@ -1,0 +1,147 @@
+<div ng-controller="ivsServerUpdateModalController as isupCtrl">
+
+    <form name="ivsUpdateForm" class="form-horizontal u-baseconfig-popup">
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_COMMON_03"></span>
+            </span>
+
+            <input type="text" valid-nonempty="名称" ng-model="isupCtrl.currentServe.Name" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_51'|translate}}"
+                valid-m-nonempty="{{'DP_CONFIG_COMMON_51'|translate}}" valid-m-max="32" valid-multiple>
+        </div>
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_IVSSERVER_04"></span>
+            </span>
+
+            <input type="text" ng-model="isupCtrl.currentServe.Uid" class="text u-input" placeholder="{{'DP_CONFIG_IVSSERVER_05'|translate}}"
+                valid-m-nonempty="用户" valid-m-max="32" valid-multiple>
+
+
+        </div>
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_VIDEOSERVER_03"></span>
+            </span>
+
+            <input type="password" ng-model="isupCtrl.currentServe.Pwd" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_59'|translate}}"
+                valid-m-nonempty="密码" valid-m-max="32" valid-multiple>
+
+        </div>
+
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_PROXYSERVER_03"></span>
+            </span>
+
+            <input type="text" ng-model="isupCtrl.currentServe.IpAddress" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_54'|translate}}"
+                valid-m-nonempty="Ip地址" valid-m-max="32" valid-M-Ip valid-multiple>
+
+        </div>
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_IVSSERVER_06"></span>
+            </span>
+
+            <select ng-model="isupCtrl.currentServe.ProxyServerID" class="text u-input" valid-m-nonempty="接入服务"  valid-multiple ng-options=" serverType.ID as serverType.Name for serverType in isupCtrl.proxyServerList">
+                <option value="" translate="DP_CONFIG_PROXYSERVER_06"></option>
+
+                </option>
+            </select>
+        </div>
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_COMMON_11"></span>
+            </span>
+
+            <input type="number" ng-model="isupCtrl.currentServe.Port" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_55'|translate}}"
+                valid-m-nonempty="端口" valid-m-max="11" valid-m-port valid-multiple>
+
+        </div>
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_COMMON_04"></span>
+            </span>
+
+            <input type="text" ng-model="isupCtrl.currentServe.Code" class="text u-input" placeholder="{{'DP_CONFIG_COMMON_52'|translate}}"
+                valid-m-max="11" valid-m-code valid-m-nonempty='编码' valid-multiple>
+        </div>
+
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_PROXYSERVER_04"></span>
+            </span>
+
+            <select ng-model="isupCtrl.currentServe.ServerType" class="text u-input" valid-m-nonempty="服务器类型" valid-multiple ng-options=" serverType.value as serverType.text for serverType in isupCtrl.ivsServerTypeList">
+                <option value="" translate="DP_CONFIG_PROXYSERVER_06"></option>
+
+                </option>
+            </select>
+        </div>
+
+        <div class="form" style="overflow: visible;">
+            <span style="min-width: 100px;" class="title">
+                <i class="color">*</i>
+                <span translate="DP_CONFIG_AREA_01"></span>
+            </span>
+            <div class="text u-select-tree">
+                    <input class="text u-input" valid-m-nonempty="接入服务" valid-multiple ng-model="isupCtrl.currentServe.AreaModel.Name" placeholder="{{'DP_CONFIG_COMMON_70'|translate}}"
+                    ng-click="isupCtrl.changeIsShowAreaTree()" readonly required="required" />
+                <i class="tree-toggle-icon" style="left:310px" ng-class="{'z-open': isupCtrl.areaTreeDatas.isShow}"></i>
+                <div style="left: 100px;" class="m-vserver-input-tree" ng-show="isupCtrl.areaTreeDatas.isShow">
+                    <div class="m-vserver-area-list" ng-if="isupCtrl.areaTreeDatas.treeDatas.length != 0">
+                        <util-tree tree-hide="isupCtrl.areaTreeDatas.length == 0" tree-id="{{isupCtrl.areaTreeDatas.treeId}}" tree-datas="isupCtrl.areaTreeDatas.treeDatas"
+                            is-default-selected="isupCtrl.areaTreeDatas.isDefaultSelected" tree-init-complete="isupCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                            check-enable="false" single-select="true" is-simple-data="true" show-icon="true" show-line="false" default-no-data-msg="isupCtrl.areaTreeDatas.defaultNoDataMsg"
+                            search-no-data-msg="isupCtrl.areaTreeDatas.searchNoDataMsg" on-click="isupCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                            tree-id-key="ID" tree-pid-key="ParentID" tree-key-name="Name" default-select-tree-id="isupCtrl.areaTreeDatas.defaultSelectTreeId"
+                            default-expand-level="0"></util-tree>
+                    </div>
+                    <div ng-if="isupCtrl.treeDatas.length==0 && isupCtrl.areaTreeDatas.isShow" class="u-table-no-data" translate="DP_CONFIG_COMMON_16">
+                    </div>
+                </div>
+            </div>
+            
+
+            <!--   <span class='errorText'>未选择行政区域</span>-->
+        </div>
+
+
+        <div class="form">
+            <span style="min-width: 100px;" class="title">
+                <span style="text-indent: 10px" translate="DP_CONFIG_COMMON_34"></span>
+            </span>
+
+            <textarea class="text u-textarea" ng-model="isupCtrl.currentServe.Description" placeholder="{{'DP_CONFIG_COMMON_34'|translate}}"
+                rows="3" valid-m-max="150" valid-multiple></textarea>
+
+        </div>
+
+        <div class="u-border"></div>
+
+        <div class="form f-cfb">
+            <button class="u-button u-button-blue-2 f-fr m-right15" type="submit" ng-click="isupCtrl.closeUpdateModel(false)" translate="DP_CONFIG_COMMON_19">
+            </button>
+            <button class="u-button u-button-blue-1 f-fr m-right15" type="submit" ng-click="isupCtrl.commitSaveOrUpdate()" ng-disabled="ivsUpdateForm.$invalid"
+                translate="DP_CONFIG_COMMON_05">
+            </button>
+        </div>
+    </form>
+
+
+</div>

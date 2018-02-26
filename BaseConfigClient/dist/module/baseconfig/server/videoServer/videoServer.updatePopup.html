@@ -1,0 +1,181 @@
+<div ng-controller="videoServerUpdatePopupController as vsupCtrl" >
+
+    <form name="vsUpdataForm" class="form-horizontal u-baseconfig-popup">
+        <div class="form">
+            <span  class="title"><i class="color">*</i>名称</span>
+
+            <input type="text" valid-nonempty="名称"
+                   ng-model="vsupCtrl.currentServe.Name"
+                   class="text u-input"
+                   placeholder="名称"
+
+                   valid-m-nonempty="名称"
+                   valid-m-max = "32"
+                   valid-multiple
+            >
+        </div>
+
+        <div class="form">
+            <span  class="title"><i class="color">*</i>用户</span>
+
+            <input type="text"
+                   ng-model="vsupCtrl.currentServe.Uid"
+                   class="text u-input"  placeholder="请输入用户"
+
+                   valid-m-nonempty="用户"
+                   valid-m-max = "32"
+                   valid-multiple
+            >
+
+
+        </div>
+
+        <div class="form">
+            <span  class="title"><i class="color">*</i>密码</span>
+
+            <input type="password"
+                   ng-model="vsupCtrl.currentServe.Pwd"
+                   class="text u-input"
+                   placeholder="请输入密码"
+
+                   valid-m-nonempty="密码"
+                   valid-m-max = "32"
+                   valid-multiple
+            >
+
+        </div>
+
+
+        <div class="form">
+            <span  class="title"><i class="color">*</i>IP地址</span>
+
+            <input type="text"
+                   ng-model="vsupCtrl.currentServe.IpAddress"
+                   class="text u-input"
+                   placeholder="请输入IP地址"
+
+                   valid-m-nonempty="Ip地址"
+                   valid-m-max = "32"
+                   valid-M-Ip
+                   valid-multiple
+            >
+
+        </div>
+
+        <div class="form">
+            <span  class="title"><i class="color">*</i>端口</span>
+
+            <input type="number"
+                   ng-model="vsupCtrl.currentServe.Port"
+                   class="text u-input"
+                   placeholder="请输入端口"
+
+                   valid-m-nonempty="端口"
+                   valid-m-max = "11"
+                   valid-m-port
+                   valid-multiple
+            >
+
+        </div>
+
+
+
+        <div class="form">
+            <span class="title"><i class="color">*</i>服务器类型</span>
+
+            <select ng-model="vsupCtrl.currentServe.VideoServerType"
+                    class="text u-input"
+
+                    valid-m-nonempty="服务器类型"
+                    valid-multiple
+
+                    ng-options=" serverType.value as serverType.text for serverType in vsupCtrl.videoServerTypeList"
+            >
+                <option value="">请选择服务器类型</option>
+
+                </option>
+            </select>
+        </div>
+        <div class="form">
+            <span class="title"><i class="color">*</i><span translate="FDS_01_14_38"></span></span>
+            <select ng-model="vsupCtrl.currentServe.ProxyServerID" class="text u-input" valid-nonempty="{{'FDS_01_14_38'|translate}}" valid-multiple
+                    ng-options="type.ID as type.Name for type in vsupCtrl.proxyList">
+                <option value="">{{'FDS_01_14_39'|translate}}</option>
+            </select>
+        </div>
+
+        <div class="form">
+            <span  class="title"><i class="color">*</i>行政区域</span>
+            <div class="text u-input">
+                <span ng-bind="vsupCtrl.currentServe.AreaModel.Name||'点击选择行政区域'"
+                      ng-click="vsupCtrl.changeIsShowAreaTree()"
+                style="display: block"></span>
+
+                <div class="m-vserver-input-tree" ng-show="vsupCtrl.areaTreeDatas.isShow">
+                    <div class="m-vserver-area-list" ng-if="vsupCtrl.areaTreeDatas.treeDatas.length != 0">
+                        <util-tree tree-hide="vsupCtrl.areaTreeDatas.treeDatas.length"
+                                   tree-id="{{vsupCtrl.areaTreeDatas.treeId}}"
+                                   tree-datas="vsupCtrl.areaTreeDatas.treeDatas"
+                                   is-default-selected="true"
+                                   tree-init-complete="vsupCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                                   check-enable="false"
+                                   single-select="true"
+                                   is-simple-data="true"
+                                   show-icon="true"
+                                   show-line="false"
+                                   default-no-data-msg="vsupCtrl.areaTreeDatas.defaultNoDataMsg"
+                                   search-no-data-msg="vsupCtrl.areaTreeDatas.searchNoDataMsg"
+                                   on-click="vsupCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                                   tree-id-key="ID"
+                                   tree-pid-key="ParentID"
+                                   tree-key-name="Name"
+                                   default-select-tree-id="vsupCtrl.areaTreeDatas.defaultSelectTreeId"
+                                   default-expand-level="0"
+                        ></util-tree>
+                    </div>
+                    <div ng-if="vsupCtrl.areaTreeDatas.treeDatas.length==0 && vsupCtrl.areaTreeDatas.isShow" class="u-table-no-data">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <span  class="title"><i class="color">*</i>编码</span>
+
+            <input type="text"
+                   ng-model="vsupCtrl.currentServe.Code" class="text u-input"
+                   placeholder="请输入编码"
+
+                   valid-m-max="11"
+                   valid-m-code
+                   valid-m-nonempty = '编码'
+
+                   valid-multiple
+            >
+
+        </div>
+
+        <div class="form">
+            <span  class="title" style="text-indent: 10px">描述</span>
+
+            <textarea class="text u-textarea"
+                      ng-model="vsupCtrl.currentServe.Description"
+                      placeholder="描述" rows="3"
+                      valid-m-max="150"
+                      valid-multiple
+            ></textarea>
+
+        </div>
+
+        <div class="u-border"></div>
+
+        <div class="form f-cfb">
+            <button class="u-button u-button-blue-2 f-fr m-right15" type="submit" ng-click="vsupCtrl.closeUpdateModel(false)">取消</button>
+            <button class="u-button u-button-blue-1 f-fr m-right15" type="submit" ng-click="vsupCtrl.commitSaveOrUpdate()" ng-disabled="vsUpdataForm.$invalid">确定</button>
+        </div>
+    </form>
+
+
+
+
+
+</div>

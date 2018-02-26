@@ -1,0 +1,98 @@
+<ul class="m-totalTask-wrapper m-last-totalTask-wrapper" ng-controller="deviceAlarmController as deviceAlarmCtrl">
+    <li class="wrap-content">
+        <div class="wrap-cont-head f-cfb">
+            <span class="cont-head-title" translate="FDS_05_02_04"></span>
+            <span class="cont-head-detail"></span>
+        </div>
+
+        <div class="wrap-cont-table f-pr">
+            <div class="cont-table-top f-cfb">
+                <div class="f-fr f-cfb">
+
+                    <div class="f-fl f-cfb m-right15">
+                        <span class="f-fl m-right15" translate="FDS_05_11"></span>
+
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="deviceAlarmCtrl.changeTimeBtn('ALL')"
+                                ng-class="{'u-button-blue-3':deviceAlarmCtrl.duration !== 'ALL'}" translate="FDS_05_06">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="deviceAlarmCtrl.changeTimeBtn('SEVEN_DAYS')"
+                                ng-class="{'u-button-blue-3':deviceAlarmCtrl.duration !== 'SEVEN_DAYS'}" translate="FDS_05_07">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="deviceAlarmCtrl.changeTimeBtn('THIRY_DAYS')"
+                                ng-class="{'u-button-blue-3':deviceAlarmCtrl.duration !== 'THIRY_DAYS'}" translate="FDS_05_08">
+                        </button>
+                        <button class="u-button f-fl m-top5"
+                                ng-click="deviceAlarmCtrl.changeTimeBtn('SIX_MONTHS')"
+                                ng-class="{'u-button-blue-3':deviceAlarmCtrl.duration !== 'SIX_MONTHS'}" translate="FDS_05_09">
+                        </button>
+                    </div>
+
+                    <div class="f-fl f-pr">
+                        <input date-picker class="u-input cont-table-dateSelect" type="text" placeholder="{{'FDS_05_12'|translate}}"
+                               ng-model="deviceAlarmCtrl.startTime"
+                               format="YYYY-MM-DD"
+                               init-add-type="month"
+                               init-add-val="-1"
+                               is-clear="false">
+                    </div>
+
+                    <span class="f-fl m-right5 m-left5">-</span>
+
+                    <div class="f-fl m-right15 f-pr">
+                        <input date-picker class="u-input cont-table-dateSelect" type="text" placeholder="{{'FDS_05_12'|translate}}"
+                               ng-model="deviceAlarmCtrl.endTime"
+                               okfun="deviceAlarmCtrl.showCustomTime()"
+                               choosefun="deviceAlarmCtrl.showCustomTime()"
+                               format="YYYY-MM-DD"
+                               init-add-type="month"
+                               init-add-val="0"
+                               is-clear="false">
+                    </div>
+
+                    <div class="f-fl f-cfb m-right15">
+                        <span class="f-fl slideTitle m-right5" translate="FDS_05_10"></span>
+                        <div class="f-fl f-pr">
+                            <input class="u-select devStatus-select-width" type="text" readonly
+                                   ng-click="deviceAlarmCtrl.isShowAreaTree = !deviceAlarmCtrl.isShowAreaTree"
+                                   ng-model="deviceAlarmCtrl.areaName">
+
+                            <div class="tree-container" ng-show="deviceAlarmCtrl.isShowAreaTree">
+                                <util-tree tree-hide="deviceAlarmCtrl.areaTreeDataParams.treeDatas.length == 0"
+                                           tree-id="{{deviceAlarmCtrl.areaTreeDataParams.treeId}}"
+                                           tree-datas="deviceAlarmCtrl.areaTreeDataParams.treeDatas"
+                                           is-default-selected="true"
+                                           tree-init-complete="deviceAlarmCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                                           check-enable="false"
+                                           single-select="true"
+                                           is-simple-data="true"
+                                           show-icon="true"
+                                           show-line="false"
+                                           default-no-data-msg="deviceAlarmCtrl.areaTreeDataParams.defaultNoDataMsg"
+                                           search-no-data-msg="deviceAlarmCtrl.areaTreeDataParams.searchNoDataMsg"
+                                           on-click="deviceAlarmCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                                           tree-id-key="ID"
+                                           tree-pid-key="ParentID"
+                                           tree-key-name="Name"
+                                           default-select-tree-id="deviceAlarmCtrl.areaTreeDataParams.defaultSelectTreeId"
+                                           default-expand-level="0"
+                                ></util-tree>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--放e-chart图-->
+            <div class="cont-table-bottom" id="alarm-3">
+                <div class="m-echart-no-data" ng-show="deviceAlarmCtrl.isNoData" translate="FDS_00_01_18"></div>
+            </div>
+
+            <!--图表数据切换-->
+            <button class="alarm-left i-alarm-left" ng-click="deviceAlarmCtrl.prePage()"></button>
+            <button class="alarm-right i-alarm-right" ng-click="deviceAlarmCtrl.nextPage()"></button>
+        </div>
+    </li>
+</ul>

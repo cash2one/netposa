@@ -1,0 +1,153 @@
+<div class="m-alarm-detail-popup "
+     ng-controller="alarmDetailPopupController as alarmDetailPopupCtrl"
+       >
+    <div class="detail-content f-cfb">
+        <div class="car-detail">
+            <p class="detail-title">
+                布控车辆
+            </p>
+            <div class="car-img">
+                <!-- TODO 无图片字段-->
+                <img  util-img-center
+                        ng-src=""
+                >
+
+            </div>
+            <p class="detail-title">
+                车辆信息
+            </p>
+            <div class="detail-list">
+                <div class="info-item">
+                    <label>车牌号码：</label>
+                    <span
+                            ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.alarmObjName"
+                    ></span>
+                </div>
+                <div class="info-item">
+                    <label>车辆颜色：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.detail.vehicleColor"
+                    ></span>
+                </div>
+            </div>
+            <p class="detail-title">
+                布控信息
+            </p>
+            <div class="detail-list">
+                <div class="info-item">
+                   <label>布控人：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.dealUser"
+                        title="{{alarmDetailPopupCtrl.vehicleAlarmLog.dealUser}}"
+                    ></span>
+                </div>
+                <div class="info-item">
+                    <label>开始时间：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.absTime"
+                        title="{{alarmDetailPopupCtrl.vehicleAlarmLog.absTime}}"
+
+                    ></span>
+                </div>
+                <div class="info-item">
+                    <label>结束时间：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.statisticTime"
+                        title="{{alarmDetailPopupCtrl.vehicleAlarmLog.statisticTime}}"
+
+                    ></span>
+                </div>
+                <div class="info-item">
+                    <label>描述：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.comment"
+                        title="{{alarmDetailPopupCtrl.vehicleAlarmLog.comment}}"
+                    ></span>
+                </div>
+            </div>
+        </div>
+        <div class="car-detail">
+            <p class="detail-title">
+                报警车辆
+                <!--TODO alarmDetailPopupCtrl.vehicleAlarmLog.dealStatus -->
+                <i ng-if="alarmDetailPopupCtrl.vehicleAlarmLog.dealStatus === '0'"
+                    class="title-mark bg-color-red">
+                    未处理
+                </i>
+            </p>
+            <div class="car-img">
+                <img util-img-center
+                    ng-src="alarmDetailPopupCtrl.vehicleAlarmLog.detail.imageURLs"
+                >
+            </div>
+            <p class="detail-title">
+                车辆信息
+            </p>
+            <div class="detail-list">
+                <div class="info-item">
+                    <label>车牌号码：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.detail.vehicleBrand"
+                        title="{{alarmDetailPopupCtrl.vehicleAlarmLog.detail.vehicleBrand}}"
+                    >
+                    </span>
+                </div>
+                <div class="info-item">
+                    <label>车辆颜色：</label>
+                    <span
+                            ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.detail.vehicleColor"
+                    ></span>
+                </div>
+            </div>
+            <p class="detail-title">
+                通行信息
+            </p>
+            <div class="detail-list">
+                <div class="info-item">
+                    <label>经过时间：</label>
+                    <span
+                            ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.detail.passTime"
+                            title="{{alarmDetailPopupCtrl.vehicleAlarmLog.detail.passTime}}"
+                    ></span>
+                </div>
+                <div class="info-item">
+                    <label>行驶速度：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.detail.speed"
+                        title="{{alarmDetailPopupCtrl.vehicleAlarmLog.detail.speed}}"
+                    ></span>
+                </div>
+                <div class="info-item">
+                    <label>通行卡口：</label>
+                    <span
+                        ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.detail.monitorName"
+                        title="{{alarmDetailPopupCtrl.vehicleAlarmLog.detail.monitorName}}"
+                    ></span>
+                </div>
+                <div class="info-item">
+                    <label>通行车道：</label>
+                    <span
+                            ng-bind="alarmDetailPopupCtrl.vehicleAlarmLog.detail.channelName"
+                            title="{{alarmDetailPopupCtrl.vehicleAlarmLog.detail.channelName}}"
+                    ></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-footer f-cfb">
+        <div class="footer-btns">
+            <button class="u-button m-right10 u-button-blue-4"
+                    type="button"
+                    ng-click="alarmDetailPopupCtrl.dealAlarm(true)"
+            >
+                有效
+            </button>
+            <button class="u-button u-button-blue-6"
+                    type="button"
+                    ng-click="alarmDetailPopupCtrl.dealAlarm(false)"
+            >
+                无效
+            </button>
+        </div>
+    </div>
+</div>

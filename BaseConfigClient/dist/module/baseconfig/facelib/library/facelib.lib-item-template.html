@@ -1,0 +1,89 @@
+<!--人像库行数据  currentItem-->
+<li>
+    <ul class="table-tree">
+
+        <li class="f-cfb ">
+            <div class="tree-td name-width">
+                <div  style="width: 14px;height: 14px;top:12px;border-radius: 2px" class="table-tree-checkboxWrap"
+                >
+                     <span style="margin:0;border:none;border-radius: 0"  class="table-tree-checkbox"
+                           ng-class="{'i-checkbox-checked':currentData.currentTrItem.isCheckBox,
+                                      'i-checkbox-none':!currentData.currentTrItem.isCheckBox
+                                      }"
+                           ng-click="bcFaceLibLibCtrl.clickCheckbox(currentData.currentTrItem)"
+                     ></span>
+                </div>
+
+                <div class="table-tree-txtWidth  ellipsis"
+                     style="{{'padding-left :'+ (currentData.childLevel*5 + 31) +'px'}}"
+                     ng-class="{'has-child':currentData.currentTrItem.children.length>0}"
+                >
+                    <i class="open-child-btn"
+                          ng-if="currentData.currentTrItem.children.length>0"
+                          ng-class="{'i-rect-turn-right':!currentData.currentTrItem.isShowChild,
+                                    'i-rect-turn-down':currentData.currentTrItem.isShowChild}"
+                          ng-click="bcFaceLibLibCtrl.changeChildShow(currentData.currentTrItem)"
+                          title="{{(currentData.currentTrItem.isShowChild?'DP_CONFIG_FACELIB_46':'DP_CONFIG_FACELIB_47')|translate}}"
+                    ></i>
+
+                    <span class="tree-td-txt-1"
+                          ng-class="{'has-child':currentData.currentTrItem.children.length>0}"
+                          ng-click="bcFaceLibLibCtrl.goToAddPerson(currentData.currentTrItem,currentData.parentName,false)"
+                          ng-bind="currentData.currentTrItem.Name"
+                          title="{{currentData.currentTrItem.Name}}"
+                    ></span>
+                </div>
+            </div>
+            <div class="tree-td"><span class="tree-td-txt-2" ng-bind="currentData.parentName" ></span></div>
+
+
+            <div class="tree-td num-width"><span class="tree-td-txt-2" ng-bind="currentData.currentTrItem.PersonCount"></span></div>
+
+            <div class="tree-td"><span class="tree-td-txt-2"
+                                       ng-bind="currentData.currentTrItem.JsonUserData.user.Uid"
+            ></span></div>
+
+            <div class="tree-td"><span class="tree-td-txt-2" ng-bind="currentData.currentTrItem.CreateTime"></span></div>
+
+            <div class="tree-td"><span class="tree-td-txt-2"
+                                       ng-bind="currentData.currentTrItem.Memo"
+                                       title="{{currentData.currentTrItem.Memo}}"
+            ></span></div>
+
+            <div class="tree-td">
+                <div class="opera-btn f-cfb">
+                    <div class="f-fl" ng-if="bcFaceLibLibCtrl.constLibItem !== currentData.currentTrItem.ID">
+                        <!--修改-->
+                        <i class=" icon-btn i-edit z-gray f-fl"
+                           title="{{'DP_CONFIG_FACELIB_48' |translate}}"
+                           ng-click="bcFaceLibLibCtrl.updateFaceLib(currentData.currentTrItem,currentData.parentName)"
+                        ></i>
+                        <!--删除-->
+                        <i class="icon-btn i-delete z-gray f-fl"
+                           title="{{'DP_CONFIG_FACELIB_49' |translate}}"
+                           ng-click="bcFaceLibLibCtrl.deleteById(currentData.currentTrItem)"></i>
+                        <!--修改-->
+                        <i class="icon-btn i-circle-add z-gray f-fl"
+                           title="{{'DP_CONFIG_FACELIB_50' |translate}}"
+                           ng-click="bcFaceLibLibCtrl.addByParentId(currentData.currentTrItem.ID)"
+                        ></i>
+                    </div>
+                    <!--添加-->
+                    <i class="icon-btn i-person-add z-gray f-fl"
+                       title="{{'DP_CONFIG_FACELIB_51' |translate}}"
+                       ng-click="bcFaceLibLibCtrl.goToAddPerson(currentData.currentTrItem,currentData.parentName,true)"
+                    ></i>
+                </div>
+            </div>
+        </li>
+
+        <!-- 子节点容器 -->
+
+        <li class="f-cfb"
+            ng-if="currentData.currentTrItem.isShowChild"
+            ng-repeat="(_index,subItem) in currentData.currentTrItem.children"
+            ng-include="bcFaceLibLibCtrl.faceLibItemTemplUrl"
+            ng-init="currentData = {currentTrItem:subItem,parentName:currentData.currentTrItem.Name,childLevel:(currentData.childLevel+1)}"
+        >
+    </ul>
+</li>

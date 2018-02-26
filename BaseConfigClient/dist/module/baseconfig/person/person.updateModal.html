@@ -1,0 +1,291 @@
+<div ng-controller="personUpdateModalController as bcpumCtrl" class="m-person-popup">
+
+    <form name="personUpdateForm" novalidate>
+        <!--user params-->
+        <div class="u-baseconfig-popup f-cfb">
+            <div class="f-cfb" style="    padding-bottom: 10px;">
+                <div class="popup-subField f-fl">
+                    <div class="form">
+                        <span class="title"><i class="color">*</i><span translate="用户名"></span></span>
+
+                        <input type="text"
+                               autofocus="autofocus"
+                               valid-nonempty="{{'DP_CONFIG_PERSON_18'|translate}}"
+                               ng-model="bcpumCtrl.currentModel.UserModel.Uid"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_38'|translate}}">
+
+                    </div>
+
+                    <div class="form">
+                        <span class="title"><i ng-show="!bcpumCtrl.isUpdate" class="color">*</i><span translate="DP_CONFIG_PERSON_19"></span></span>
+
+                        <input ng-if="!bcpumCtrl.isUpdate" type="password"
+
+                               ng-model="bcpumCtrl.viewPwd"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_39'|translate}}" valid-nonempty="{{'DP_CONFIG_PERSON_19'|translate}}">
+
+
+                        <input ng-if="bcpumCtrl.isUpdate" type="password"
+                               ng-model="bcpumCtrl.viewPwd"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_39'|translate}}">
+
+                    </div>
+
+                    <div class="form">
+                        <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_20"></span></span>
+
+                        <select ng-model="bcpumCtrl.currentModel.Gender"
+                                class="text u-input"
+                                valid-m-nonempty="{{'DP_CONFIG_PERSON_20'|translate}}"
+                                valid-multiple
+                                ng-options="genderType.value as genderType.text | translate for genderType in bcpumCtrl.genderTypeList"
+                        >
+                            <option value="" translate="DP_CONFIG_PERSON_40"></option>
+                        </select>
+                    </div>
+
+                    <!--<div class="form">-->
+                        <!--<span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_21"></span></span>-->
+                        <!--<div style="float: left;">-->
+                            <!--<util-toggle-->
+                                    <!--class="text p-top5"-->
+                                    <!--ng-model="bcpumCtrl.currentModel.UserModel.IsForeverValid"-->
+                                    <!--toggle-change="bcpumCtrl.testChangeToggle(status)"-->
+                            <!--&gt;</util-toggle>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="form">
+                        <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_22"></span></span>
+                        <div style="float: left;">
+
+                            <span style="position: relative;top:5px;">
+                                    <switch-button class="m-switch-button" name="tbody_data.IsDisable"
+                                                   ng-model="bcpumCtrl.currentModel.UserModel.IsDisable"></switch-button>
+                                </span>
+                            <!---->
+                            <!--<util-toggle class="text p-top5" ng-model="bcpumCtrl.currentModel.UserModel.IsDisable"-->
+                                         <!--is-reverse="true"></util-toggle>-->
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <span class="title"><span translate="DP_CONFIG_PERSON_23"></span></span>
+
+                        <label class="person-date">
+                            <input date-picker class="u-input" placeholder="不填则默认为现在"
+                                   ng-model="bcpumCtrl.currentModel.UserModel.StartTimeValid"/>
+                            <i class="iconPosition i-calendar"></i>
+                        </label>
+                    </div>
+
+                    <div class="form">
+                        <span class="title"><span translate="DP_CONFIG_PERSON_24"></span></span>
+
+                        <label class="person-date">
+                            <input date-picker class="u-input"  placeholder="不填则默认为永久有效"
+                                   ng-model="bcpumCtrl.currentModel.UserModel.EndTimeValid"/>
+
+                            <i class="iconPosition i-calendar"></i>
+                        </label>
+                    </div>
+
+                    <!--<div class="form">-->
+                        <!--<span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_25"></span></span>-->
+                        <!--<select ng-model="bcpumCtrl.currentModel.UserModel.UserLevel"-->
+                                <!--class="text u-input"-->
+                                <!--valid-m-nonempty="{{'DP_CONFIG_PERSON_25'|translate}}"-->
+                                <!--valid-multiple-->
+                                <!--ng-options="serverType.value as serverType.text | translate for serverType in bcpumCtrl.userLevelList"-->
+                        <!--&gt;-->
+                            <!--<option value="" translate="DP_CONFIG_PERSON_41"></option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <div class="form">
+                        <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_26"></span></span>
+                        <select ng-model="bcpumCtrl.currentModel.UserModel.roleId"
+                                class="text u-input"
+                                valid-m-nonempty="{{'DP_CONFIG_PERSON_26'|translate}}"
+                                valid-multiple
+                                ng-options="roleType.ID as roleType.Name | translate for roleType in bcpumCtrl.roleList"
+                        >
+                            <option value="" translate="DP_CONFIG_PERSON_42"></option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="form">
+                        <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_27"></span></span>
+                        <select ng-model="bcpumCtrl.currentModel.UserModel.UserType"
+                                class="text u-input"
+                                valid-m-nonempty="{{'DP_CONFIG_PERSON_27'|translate}}"
+                                valid-multiple
+                                ng-options="userType.value as userType.text | translate for userType in bcpumCtrl.userTypeList"
+                        >
+                            <option value="" translate="DP_CONFIG_PERSON_43"></option>
+                        </select>
+                    </div> -->
+                    
+                    
+                    <div class="form">
+                        <span class="title f-ti3"><span translate="DP_CONFIG_PERSON_28"></span></span>
+                        
+                        <input type="text" ng-model="bcpumCtrl.currentModel.Position"
+                        class="text u-input"
+                        placeholder="{{'DP_CONFIG_PERSON_44'|translate}}"/>
+                    </div>
+                    <div class="form">
+                        <span class="title f-ti3"><span translate="DP_CONFIG_PERSON_37"></span></span>
+
+                        <input class="text u-input" ng-model="bcpumCtrl.currentModel.Description"
+                                    placeholder="{{'DP_CONFIG_PERSON_52'|translate}}"
+                                    rows="3"/>
+                    </div>
+
+                </div>
+                <div class="popup-subField f-fr">
+                    <div class="form">
+                        <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_29"></span></span>
+
+                        <input type="text"
+                               autofocus="autofocus"
+                               valid-nonempty="{{'DP_CONFIG_PERSON_29'|translate}}"
+                               ng-model="bcpumCtrl.currentModel.Name"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_45'|translate}}">
+                    </div>
+
+                    <div class="form">
+                        <span class="title f-ti3"><span translate="DP_CONFIG_PERSON_30"></span></span>
+
+                        <input type="tel"
+                               maxlength="11"
+                               ng-model="bcpumCtrl.currentModel.MobTel"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_46'|translate}}">
+                    </div>
+                    <div class="form">
+                        <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_31"></span></span>
+
+                        <input type="tel"
+                               valid-nonempty="{{'DP_CONFIG_PERSON_31'|translate}}"
+                               maxlength="18"
+                               ng-model="bcpumCtrl.currentModel.CardID"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_47'|translate}}">
+                    </div>
+
+                    <div class="form">
+                        <span class="title f-ti3"><span translate="DP_CONFIG_PERSON_32"></span></span>
+
+                        <input type="tel"
+                               maxlength="11"
+                               ng-model="bcpumCtrl.currentModel.TelePhone"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_48'|translate}}">
+                    </div>
+
+                    <div class="form">
+                        <span class="title f-ti3"><span translate="DP_CONFIG_PERSON_33"></span></span>
+
+                        <input type="tel" maxlength="11"
+                               ng-model="bcpumCtrl.currentModel.CallNo"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_49'|translate}}">
+                    </div>
+
+                    <div class="form">
+                        <span class="title f-ti3"><span translate="DP_CONFIG_PERSON_34"></span></span>
+
+                        <input type="tel"
+                               ng-model="bcpumCtrl.currentModel.EMail"
+                               class="text u-input"
+                               placeholder="{{'DP_CONFIG_PERSON_50'|translate}}">
+                    </div>
+
+                    <div  style="overflow: visible" class="form">
+                        <span class="title"><i class="color">*</i><span translate="DP_CONFIG_PERSON_35"></span></span>
+                        <div class="text u-select-tree">
+                            <input type="text" class="u-input" ng-model="bcpumCtrl.areaViewModel.Name"
+                                   readonly
+                                   placeholder="{{'DP_CONFIG_PERSON_51'|translate}}"
+                                   valid-nonempty="{{'DP_CONFIG_PERSON_35'|translate}}"
+                                   ng-click="bcpumCtrl.changeIsShowAreaTree()"/>
+                            <i class="tree-toggle-icon" ng-class="{'z-open': bcpumCtrl.areaTreeDatas.isShow}"></i>
+                            <div style="position: absolute" class="tree-cntr" ng-class="{'z-show':bcpumCtrl.areaTreeDatas.isShow}">
+                                <util-tree
+                                        tree-id="{{bcpumCtrl.areaTreeDatas.treeId}}"
+                                        tree-datas="bcpumCtrl.areaTreeDatas.treeDatas"
+                                        is-default-selected="{{bcpumCtrl.areaTreeDatas.isDefaultSelected}}"
+                                        check-enable="false"
+                                        single-select="true"
+                                        is-simple-data="true"
+                                        show-icon="true"
+                                        show-line="false"
+                                        default-no-data-msg="bcpumCtrl.areaTreeDatas.defaultNoDataMsg"
+                                        search-no-data-msg="bcpumCtrl.areaTreeDatas.searchNoDataMsg"
+                                        on-click="bcpumCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                                        tree-id-key="ID"
+                                        tree-pid-key="ParentID"
+                                        tree-key-name="Name"
+                                        default-select-tree-id="bcpumCtrl.areaTreeDatas.defaultSelectTreeId"
+                                        default-expand-level="0"
+                                ></util-tree>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form" style="overflow: visible">
+                        <span class="title f-ti3"><span translate="DP_CONFIG_PERSON_36"></span></span>
+                        <div class="text u-select-tree">
+                            <input type="text" class="u-input" ng-model="bcpumCtrl.unitViewModel.Name"
+                                   placeholder="{{'DP_CONFIG_PERSON_52'|translate}}"
+                                   ng-click="bcpumCtrl.changeIsShowUnitTree()"
+                                   readonly/>
+                            <i class="tree-toggle-icon" ng-class="{'z-open': bcpumCtrl.unitTreeDatas.isShow}"></i>
+                            <div style="position: absolute;" class="tree-cntr" ng-class="{'z-show':bcpumCtrl.unitTreeDatas.isShow}">
+                                <util-tree
+                                        tree-id="{{bcpumCtrl.unitTreeDatas.treeId}}"
+                                        tree-datas="bcpumCtrl.unitTreeDatas.treeDatas"
+                                        check-enable="false"
+                                        single-select="true"
+                                        is-simple-data="true"
+                                        show-icon="true"
+                                        show-line="false"
+                                        default-no-data-msg="bcpumCtrl.unitTreeDatas.defaultNoDataMsg"
+                                        search-no-data-msg="bcpumCtrl.unitTreeDatas.searchNoDataMsg"
+                                        on-click="bcpumCtrl.unitTreeDatas.onClick(event, treeId, treeNode)"
+                                        tree-id-key="ID"
+                                        tree-pid-key="ParentID"
+                                        tree-key-name="Name"
+                                        default-select-tree-id="bcpumCtrl.unitTreeDatas.defaultSelectTreeId"
+                                        default-expand-level="0"
+                                ></util-tree>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="u-border"></div>
+
+            <div class="form" style="padding-top:14px;">
+                <button class="u-button btnStyle u-button-blue-2 f-fr m-left15" type="submit"
+                        ng-click="bcpumCtrl.closeUpdateModel(false)" translate="DP_CONFIG_COMMON_19">
+                </button>
+
+                <button class="u-button u-button-blue-1 btnStyle f-fr m-left15" type="submit"
+                        ng-click="bcpumCtrl.commitSaveOrUpdate()" ng-disabled="personUpdateForm.$invalid"
+                        translate="DP_CONFIG_COMMON_05">
+                </button>
+            </div>
+        </div>
+
+
+    </form>
+
+
+</div>

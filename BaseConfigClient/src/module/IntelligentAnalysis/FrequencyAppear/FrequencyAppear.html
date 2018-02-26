@@ -1,0 +1,309 @@
+<div class="analysis-layout">
+    <!--表单区域-->
+    <div class="analysis-form" ng-class="{active:FrequencyAppearCtrl.showForm}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title frequency-appear-title">频繁出没</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="FrequencyAppearCtrl.goBack()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="face-track-form analaysis-body">
+                <div class="tab-list">
+                    <span ng-class="{'active':!FrequencyAppearCtrl.showAnalysisList}" ng-click="FrequencyAppearCtrl.showAnalysisListFn(false)">分析条件</span>
+                    <span ng-class="{'active':FrequencyAppearCtrl.showAnalysisList}" ng-click="FrequencyAppearCtrl.showAnalysisListFn(true)">分析结果</span>
+                </div>
+                <!--分析条件表单-->
+                <div class="analysis-form-con" ng-if="!FrequencyAppearCtrl.showAnalysisList">
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>任务名称</span>
+                        <span class="input-layer">
+                            <input ng-model="FrequencyAppearCtrl.FrequencyAppearParams.taskName" show-init="false" type="text" placeholder="请输入任务名称">
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">时间筛选</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in FrequencyAppearCtrl.FastDateList" ng-class="{'active':item.key === FrequencyAppearCtrl.FastDate.key}" ng-click="FrequencyAppearCtrl.setFastDate(item)">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                        <span class="input-layer pdp-icon-calendar">
+                            <input ng-model="FrequencyAppearCtrl.FrequencyAppearParams.startTime" date-picker show-init="false" type="text" placeholder="请选择开始时间">
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input analaysis-form-input-date">
+                        <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                        <span class="input-layer pdp-icon-calendar">
+                            <input ng-model="FrequencyAppearCtrl.FrequencyAppearParams.endTime" date-picker show-init="false" type="text" placeholder="请选择结束时间">
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>伴随阈值</span>
+                        <span class="input-layer">
+                            <input ng-model="FrequencyAppearCtrl.FrequencyAppearParams.hauntNum" type="number" min="1" placeholder="请输入伴随次数的最小值">
+                        </span>
+                    </div>
+                    <div class="face-track-select-camera">
+                        <span class="analaysis-form-title">摄像机</span>
+                        <div class="face-track-camera">
+                            <span ng-click="FrequencyAppearCtrl.selectCamera()" class="action pdp-icon-select-device" title="选择设备">选择设备</span>
+                            <span ng-click="FrequencyAppearCtrl.DrawRect()" class="action pdp-icon-map-square" title="框选"></span>
+                            <span ng-click="FrequencyAppearCtrl.DrawCircle()" class="action pdp-icon-map-round" title="圆选"></span>
+                            <span ng-click="FrequencyAppearCtrl.DrawPolygon()" class="action pdp-icon-map-polygon" title="多边选"></span>
+                            <span ng-click="FrequencyAppearCtrl.ClearDraw()" class="action pdp-icon-map-delete" title="删除"></span>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input threshold-progress">
+                        <span class="analaysis-form-title">相似度</span>
+                        <div class="analaysis-progress">
+                            <progress-drag
+                                    now-value="FrequencyAppearCtrl.FrequencyAppearParams.threshold"
+                                    min-value="FrequencyAppearCtrl.similarityMin"
+                                    max-value="FrequencyAppearCtrl.similarityMax"
+                                    lengd="200">
+                            </progress-drag>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">年龄</span>
+                        <div class="input-layer-select">
+                            <util-select selected-empty-val="请选择年龄段" select-data="FrequencyAppearCtrl.AgeDataList" select-repeat-by-key="text" select-click="FrequencyAppearCtrl.selectAge(selected)"
+                                         select-list-height="M" select-list-diy-icon="false" select-is-tree="false">
+                            </util-select>
+                        </div>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">性别</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in FrequencyAppearCtrl.SexDateList" ng-class="{'active':FrequencyAppearCtrl.SexDate.key===item.key}" ng-click="FrequencyAppearCtrl.SexDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">戴眼镜</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in FrequencyAppearCtrl.GlassDateList" ng-class="{'active':FrequencyAppearCtrl.GlassDate.key===item.key}" ng-click="FrequencyAppearCtrl.GlassDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title">戴口罩</span>
+                        <span class="tab-layer">
+                            <span ng-repeat="item in FrequencyAppearCtrl.MaskDateList" ng-class="{'active':FrequencyAppearCtrl.MaskDate.key===item.key}" ng-click="FrequencyAppearCtrl.MaskDate = item">{{item.text}}</span>
+                        </span>
+                    </div>
+                    <div class="searh-submit">
+                        <button ng-click="FrequencyAppearCtrl.submitSearch()">查询</button>
+                    </div>
+                </div>
+                <!--离线任务列表-->
+                <div class="analysis-task-list" ng-scrollbars ng-if="FrequencyAppearCtrl.showAnalysisList">
+                    <div class="task-item" ng-repeat="item in FrequencyAppearCtrl.FrequencyOffLine">
+                        <div class="task-content">
+                            <div class="task-name">
+                                {{item.TaskName}}
+                                <span ng-click="FrequencyAppearCtrl.delOffLineTask(item)" class="delete-task pdp-icon-delete-area"></span>
+                            </div>
+                            <div class="task-info">
+                                <ul>
+                                    <li>
+                                        <span class="info-key">创建时间：</span>
+                                        <span class="info-value">{{item.CreateTime}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="info-key">任务状态：</span>
+                                        <span class="info-value">{{(item.CompletePercent==="100")?"运行完成":"运行中"}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="task-result-btn">
+                                <button ng-click="FrequencyAppearCtrl.showAnalysisResult(item)" ng-disabled="(item.TaskStatus!=='200'||item.CompletePercent!=='100')">查看结果</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analysis-no-data pdp-icon-no-analysis" ng-show="FrequencyAppearCtrl.FrequencyOffLine.length === 0">暂无数据
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--结果列表-->
+    <div class="analysis-res result-left" ng-class="{'active':FrequencyAppearCtrl.showResult}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title frequency-analysis-title">频繁出没</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="FrequencyAppearCtrl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="head-title">
+                            <span class="head-right">共 <i>{{FrequencyAppearCtrl.resultParams.totalCount}}</i> 条记录</span>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="capture-layer" ng-scrollbars>
+                            <div class="item-group" ng-repeat="group in FrequencyAppearCtrl.resultParams.data">
+                                <div class="capture-item face">
+                                    <div class="item-group-cnt">
+                                        <div class="head-img">
+                                            <img ng-src="{{group.AccessLog.FacePath | imageUrlFilter}}"/>
+                                        </div>
+                                        <div class="desc">
+                                            <p ><span>出现次数：</span><span>{{group.Count}}次</span></p>
+                                            <p ><span>性别：</span><span>{{group.AccessLog.Gender | genderFilter}}</span></p>
+                                            <p ><span>特征：</span><span>{{group.AccessLog.Mask | markFilter}}</span></p>
+                                        </div>
+                                    </div>
+                                    <span
+                                            class="show-more"
+                                            ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[FrequencyAppearCtrl.isSlideResult[$index]]"
+                                            ng-click="FrequencyAppearCtrl.slideRightResult($index)">
+                                        {{FrequencyAppearCtrl.isSlideResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="capture-children face"  ng-class="{active:FrequencyAppearCtrl.isSlideResult[$index]}">
+                                    <div class="children-item"
+                                         ng-repeat="(i,item) in group.SearchAccessResultList"
+                                         ng-click="FrequencyAppearCtrl.openDetailPopup(item,i,'MapForAccpGroup')"
+                                         ng-mouseenter="FrequencyAppearCtrl.resultToMap(item,i,'Accp')"
+                                         ng-mouseleave="FrequencyAppearCtrl.unResultToMap(item,i,'Accp')">
+                                        <div class="item-info">
+                                            <span class="location pdp-icon-positon-num">{{$index+1}}</span>
+                                            <span class="same-scale">{{item.Score | roundNumber}}%</span>
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="FrequencyAppearCtrl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis">
+                                                    <ul class="analysis-ul">
+                                                        <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.Track.key)">{{FrequencyAppearCtrl.analysisGoTo.Track.name}}</li>
+                                                        <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.Accompanying.key)">{{FrequencyAppearCtrl.analysisGoTo.Accompanying.name}}</li>
+                                                        <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.Frequency.key)">{{FrequencyAppearCtrl.analysisGoTo.Frequency.name}}</li>
+                                                        <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.More.key)">{{FrequencyAppearCtrl.analysisGoTo.More.name}}</li>
+                                                    </ul>
+                                                </i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="FrequencyAppearCtrl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                        <div class="head-img" ng-click="FrequencyAppearCtrl.fullScreen($event, (item.AccessLog.ScenePath | imageUrlFilter))">
+                                            <img ng-src="{{item.AccessLog.FacePath|imageUrlFilter}}">
+                                        </div>
+                                        <div class="desc">
+                                            <p><i class="pdp-icon-time"></i>{{item.AccessLog.LogTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="relsut-delete">
+                                            <i class="pdp-icon-relsut-delete"></i>
+                                            删除
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <util-paging
+                            hide-size="true"
+                            page-params="FrequencyAppearCtrl.resultParams"
+                            prev-page="FrequencyAppearCtrl.changeResultPage(num)"
+                            next-page="FrequencyAppearCtrl.changeResultPage(num)"
+                            go-page="FrequencyAppearCtrl.changeResultPage(num)"
+                            show-type="small"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--更多结果列表-->
+    <div class="analysis-more-res" ng-class="{'active':FrequencyAppearCtrl.showAllResult}">
+        <div class="analysis-content" ng-style="{'width':FrequencyAppearCtrl.windowWidth + 'px'}">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title frequency-appear-title">频繁出没</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="FrequencyAppearCtrl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="result-operate">
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="analysis-more-result-group" ng-scrollbars>
+                            <div class="result-item" ng-repeat="group in FrequencyAppearCtrl.resultParams.data">
+                                <div class="item-head">
+                                    <div class="head-left">
+                                        <span>出现次数：</span>
+                                        <span class="num">{{group.Count}}</span>
+                                        <span>次</span>
+                                    </div>
+                                    <span
+                                            class="show-more"
+                                            ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[FrequencyAppearCtrl.isSlideResult[$index]]"
+                                            ng-click="FrequencyAppearCtrl.slideRightResult($index)">
+                                        {{FrequencyAppearCtrl.isSlideResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="item-row-table" ng-class="{active:FrequencyAppearCtrl.isSlideResult[$index]}">
+                                    <div class="table-item face" ng-repeat="(i,item) in group.SearchAccessResultList" ng-click="FrequencyAppearCtrl.openDetailPopup(item,i,'MapForAccpGroup')">
+                                        <div class="item-picture">
+                                            <div class="picture-box" ng-click="FrequencyAppearCtrl.fullScreen($event, (item.AccessLog.ScenePath | imageUrlFilter))">
+                                                <img ng-src="{{item.AccessLog.FacePath|imageUrlFilter}}"  alt="">
+                                            </div>
+                                            <div class="item-similarity" ng-if="item.Score">{{item.Score|roundNumber}}%</div>
+                                            <input class="item-checkbox" type="checkbox" />
+                                            <div class="mask">
+                                                <div class="fast-operate">
+                                                    <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="FrequencyAppearCtrl.clickCollect($event , item)"></i>
+                                                    <i class="pdp-icon-analysis">
+                                                        <ul class="analysis-ul">
+                                                            <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.Track.key)">{{FrequencyAppearCtrl.analysisGoTo.Track.name}}</li>
+                                                            <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.Accompanying.key)">{{FrequencyAppearCtrl.analysisGoTo.Accompanying.name}}</li>
+                                                            <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.Frequency.key)">{{FrequencyAppearCtrl.analysisGoTo.Frequency.name}}</li>
+                                                            <li class="analysis-li" ng-click="FrequencyAppearCtrl.clickAnalysis($event , item, FrequencyAppearCtrl.analysisGoTo.More.key)">{{FrequencyAppearCtrl.analysisGoTo.More.name}}</li>
+                                                        </ul>
+                                                    </i>
+                                                    <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="FrequencyAppearCtrl.clickSurveillance($event , item)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-desc">
+                                            <p>{{item.AccessLog.LogTime}}</p>
+                                            <p>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <div class="page-total">
+                            <div>
+                                共
+                                <i>{{FrequencyAppearCtrl.resultParams.totalCount}}</i>
+                                条记录
+                            </div>
+                        </div>
+                        <util-paging
+                                hide-size="true"
+                                hide-gopage="true"
+                                page-params="FrequencyAppearCtrl.resultParams"
+                                prev-page="FrequencyAppearCtrl.changeResultPage(num)"
+                                next-page="FrequencyAppearCtrl.changeResultPage(num)"
+                                go-page="FrequencyAppearCtrl.changeResultPage(num)"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taggle-result taggle-result-open pdp-icon-forward" ng-class="{'active':FrequencyAppearCtrl.showResult}" ng-click="FrequencyAppearCtrl.goAllResult()"></div>
+    <div class="taggle-result taggle-result-close pdp-icon-back" ng-class="{'active':FrequencyAppearCtrl.showAllResult}" ng-show="FrequencyAppearCtrl.showAllResult" ng-click="FrequencyAppearCtrl.closeAllResult()"></div>
+</div>

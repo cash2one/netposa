@@ -1,0 +1,53 @@
+<div class="mac-detail-popup-layer" ng-controller="MacPopupDetailController as MacPopupDetailCtrl">
+    <div class="mac-detail-popup">
+        <div class="mac-detail-content">
+            <div class="action">
+                <span class="sc">收藏</span>
+                <span class="fx">分析</span>
+                <span class="bk">布控</span>
+            </div>
+            <div class="cnt-left info">
+                <div class="info-cell">
+                    <span class="title">Mac地址:</span>
+                    <span class="text">AC-5S-A8-98-AS-DS</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">采集时间:</span>
+                    <span class="text">{{MacPopupDetailCtrl.result.accessLog.LogTime}}</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">采集设备:</span>
+                    <span class="text">WiFi 探针 FA001</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">采集地点:</span>
+                    <span class="text">{{MacPopupDetailCtrl.result.accessLog.address}}</span>
+                </div>
+            </div>
+            <div class="cnt-right info">
+
+                <div class="info-cell">
+                    <span class="title">热点SSID:</span>
+                    <span class="text">China-Net</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">热点MAC:</span>
+                    <span class="text">35506505331100 1/01</span>
+                </div>
+                <div class="info-cell">
+                    <span class="title">信号强度:</span>
+                    <span class="text">-63db</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="track-detail-bottom">
+            <p class="count">共<i>{{MacPopupDetailCtrl.allResult.length||0}}</i>条</p>
+            <div class="change-page">
+                <span class="current-index">当前第<i>{{MacPopupDetailCtrl.resultIndex +1}}</i>条</span>
+                <span class="prev" ng-click="MacPopupDetailCtrl.prevResult()"></span>
+                <span class="next" ng-click="MacPopupDetailCtrl.nextResult()"></span>
+            </div>
+        </div>
+    </div>
+</div>

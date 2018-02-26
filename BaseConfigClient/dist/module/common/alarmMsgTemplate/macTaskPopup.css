@@ -1,0 +1,154 @@
+.mac-callPoint-container {
+  width: 530px;
+  height: 230px;
+  z-index: 999;
+  overflow: hidden;
+}
+.mac-callPoint-container .callPoint-title-container {
+  width: 100%;
+  height: auto;
+  background-color: #f6f8fb;
+  position: relative;
+  border-bottom: 1px solid #e4e4e4;
+}
+.mac-callPoint-container .callPoint-title-container:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+.mac-callPoint-container .callPoint-title-container .callPoint-title-icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: url("../../../images/common/alarmCommon.png") no-repeat center center;
+  background-size: 12px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+.mac-callPoint-container .callPoint-title-container .callPoint-title {
+  color: rgba(51, 51, 51, 0.9);
+  font-size: 12px;
+  font-family: "Microsoft YaHei";
+  padding-left: 8px;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.mac-callPoint-container .callPoint-title-container .callPoint-exit {
+  width: 30px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: sans-serif;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.mac-callPoint-container .callPoint-title-container .callPoint-exit:before {
+  content: "\2716";
+  font-size: 14px;
+  color: #80b6ff;
+  height: 100%;
+  line-height: 100%;
+}
+.mac-callPoint-container .callPoint-content {
+  width: 100%;
+  height: 190px;
+  background-color: #ffffff;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container:after {
+  content: " ";
+  position: absolute;
+  height: 145px;
+  width: 1px;
+  background: #e4e4e4;
+  left: 50%;
+  top: 15px;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info .callPoint-info-li {
+  padding-bottom: 5px;
+  width: 100%;
+  height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(51, 51, 51, 0.9);
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info .callPoint-info-li span {
+  color: #333;
+  display: inline-block;
+  white-space: nowrap;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info .callPoint-info-li .info-title {
+  color: #999;
+  width: 56px;
+  text-align: right;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info .callPoint-info-line {
+  position: relative;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info .callPoint-info-line span {
+  width: 130px;
+  float: left;
+  position: absolute;
+  left: 56px;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info .callPoint-info-line .info-title {
+  position: static;
+  display: inline-block;
+  color: #999;
+  width: 56px;
+  text-align: right;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info .callPoint-info-line:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info-left {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  padding: 25px 20px 30px 20px;
+  position: relative;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info-right {
+  float: right;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  padding: 25px 20px 30px 20px;
+  position: relative;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info-li-title {
+  display: inline-block;
+  text-align: right;
+  width: 65px;
+  padding-right: 10px;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .callPoint-info-li-title span {
+  color: #898a8c;
+  font-size: 12px;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .alarm-mark {
+  clear: both;
+  width: 220px;
+  border: 1px solid #FEA80D;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+}
+.mac-callPoint-container .callPoint-content .callPoint-info-container .alarm-mark.mark-task {
+  border: 1px solid #91C41D;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hY1Rhc2tQb3B1cC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsY0FBYztFQUNkLGFBQWE7RUFDYixpQkFBaUI7Q0FDbEI7QUFDRDtFQUNFLFlBQVk7RUFDWixhQUFhO0VBQ2IsMEJBQTBCO0VBQzFCLG1CQUFtQjtFQUNuQixpQ0FBaUM7Q0FDbEM7QUFDRDtFQUNFLGFBQWE7RUFDYixlQUFlO0VBQ2YsWUFBWTtDQUNiO0FBQ0Q7RUFDRSxzQkFBc0I7RUFDdEIsWUFBWTtFQUNaLGFBQWE7RUFDYixrRkFBa0Y7RUFDbEYsc0JBQXNCO0VBQ3RCLG1CQUFtQjtFQUNuQixVQUFVO0VBQ1YsU0FBUztDQUNWO0FBQ0Q7RUFDRSw2QkFBNkI7RUFDN0IsZ0JBQWdCO0VBQ2hCLCtCQUErQjtFQUMvQixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLGtCQUFrQjtFQUNsQixpQ0FBaUM7Q0FDbEM7QUFDRDtFQUNFLFlBQVk7RUFDWixhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLFNBQVM7RUFDVCxPQUFPO0VBQ1Asd0JBQXdCO0VBQ3hCLG9CQUFvQjtFQUNwQixnQkFBZ0I7Q0FDakI7QUFDRDtFQUNFLGlCQUFpQjtFQUNqQixnQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLGFBQWE7RUFDYixrQkFBa0I7Q0FDbkI7QUFDRDtFQUNFLFlBQVk7RUFDWixjQUFjO0VBQ2QsMEJBQTBCO0NBQzNCO0FBQ0Q7RUFDRSxZQUFZO0VBQ1osYUFBYTtFQUNiLG1CQUFtQjtDQUNwQjtBQUNEO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixjQUFjO0VBQ2QsV0FBVztFQUNYLG9CQUFvQjtFQUNwQixVQUFVO0VBQ1YsVUFBVTtDQUNYO0FBQ0Q7RUFDRSxvQkFBb0I7RUFDcEIsWUFBWTtFQUNaLGFBQWE7RUFDYix3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLDZCQUE2QjtDQUM5QjtBQUNEO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0QixvQkFBb0I7Q0FDckI7QUFDRDtFQUNFLFlBQVk7RUFDWixZQUFZO0VBQ1osa0JBQWtCO0NBQ25CO0FBQ0Q7RUFDRSxtQkFBbUI7Q0FDcEI7QUFDRDtFQUNFLGFBQWE7RUFDYixZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLFdBQVc7Q0FDWjtBQUNEO0VBQ0UsaUJBQWlCO0VBQ2pCLHNCQUFzQjtFQUN0QixZQUFZO0VBQ1osWUFBWTtFQUNaLGtCQUFrQjtDQUNuQjtBQUNEO0VBQ0UsYUFBYTtFQUNiLGVBQWU7RUFDZixZQUFZO0NBQ2I7QUFDRDtFQUNFLFlBQVk7RUFDWixXQUFXO0VBQ1gsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQiw2QkFBNkI7RUFDN0IsbUJBQW1CO0NBQ3BCO0FBQ0Q7RUFDRSxhQUFhO0VBQ2IsV0FBVztFQUNYLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsNkJBQTZCO0VBQzdCLG1CQUFtQjtDQUNwQjtBQUNEO0VBQ0Usc0JBQXNCO0VBQ3RCLGtCQUFrQjtFQUNsQixZQUFZO0VBQ1osb0JBQW9CO0NBQ3JCO0FBQ0Q7RUFDRSxlQUFlO0VBQ2YsZ0JBQWdCO0NBQ2pCO0FBQ0Q7RUFDRSxZQUFZO0VBQ1osYUFBYTtFQUNiLDBCQUEwQjtFQUMxQixhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLFdBQVc7Q0FDWjtBQUNEO0VBQ0UsMEJBQTBCO0NBQzNCIiwiZmlsZSI6Im1vZHVsZS9jb21tb24vYWxhcm1Nc2dUZW1wbGF0ZS9tYWNUYXNrUG9wdXAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hYy1jYWxsUG9pbnQtY29udGFpbmVyIHtcbiAgd2lkdGg6IDUzMHB4O1xuICBoZWlnaHQ6IDIzMHB4O1xuICB6LWluZGV4OiA5OTk7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC10aXRsZS1jb250YWluZXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiBhdXRvO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjZmOGZiO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZTRlNGU0O1xufVxuLm1hYy1jYWxsUG9pbnQtY29udGFpbmVyIC5jYWxsUG9pbnQtdGl0bGUtY29udGFpbmVyOmFmdGVyIHtcbiAgY29udGVudDogJyAnO1xuICBkaXNwbGF5OiBibG9jaztcbiAgY2xlYXI6IGJvdGg7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC10aXRsZS1jb250YWluZXIgLmNhbGxQb2ludC10aXRsZS1pY29uIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB3aWR0aDogMjJweDtcbiAgaGVpZ2h0OiAyMnB4O1xuICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9pbWFnZXMvY29tbW9uL2FsYXJtQ29tbW9uLnBuZ1wiKSBuby1yZXBlYXQgY2VudGVyIGNlbnRlcjtcbiAgYmFja2dyb3VuZC1zaXplOiAxMnB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGxlZnQ6IDVweDtcbiAgdG9wOiA1cHg7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC10aXRsZS1jb250YWluZXIgLmNhbGxQb2ludC10aXRsZSB7XG4gIGNvbG9yOiByZ2JhKDUxLCA1MSwgNTEsIDAuOSk7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgZm9udC1mYW1pbHk6IFwiTWljcm9zb2Z0IFlhSGVpXCI7XG4gIHBhZGRpbmctbGVmdDogOHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIGxpbmUtaGVpZ2h0OiA0MHB4O1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2U0ZTRlNDtcbn1cbi5tYWMtY2FsbFBvaW50LWNvbnRhaW5lciAuY2FsbFBvaW50LXRpdGxlLWNvbnRhaW5lciAuY2FsbFBvaW50LWV4aXQge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHJpZ2h0OiAwO1xuICB0b3A6IDA7XG4gIGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmO1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC10aXRsZS1jb250YWluZXIgLmNhbGxQb2ludC1leGl0OmJlZm9yZSB7XG4gIGNvbnRlbnQ6IFwiXFwyNzE2XCI7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgY29sb3I6ICM4MGI2ZmY7XG4gIGhlaWdodDogMTAwJTtcbiAgbGluZS1oZWlnaHQ6IDEwMCU7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTkwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IC5jYWxsUG9pbnQtaW5mby1jb250YWluZXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IC5jYWxsUG9pbnQtaW5mby1jb250YWluZXI6YWZ0ZXIge1xuICBjb250ZW50OiBcIiBcIjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBoZWlnaHQ6IDE0NXB4O1xuICB3aWR0aDogMXB4O1xuICBiYWNrZ3JvdW5kOiAjZTRlNGU0O1xuICBsZWZ0OiA1MCU7XG4gIHRvcDogMTVweDtcbn1cbi5tYWMtY2FsbFBvaW50LWNvbnRhaW5lciAuY2FsbFBvaW50LWNvbnRlbnQgLmNhbGxQb2ludC1pbmZvLWNvbnRhaW5lciAuY2FsbFBvaW50LWluZm8gLmNhbGxQb2ludC1pbmZvLWxpIHtcbiAgcGFkZGluZy1ib3R0b206IDVweDtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMjJweDtcbiAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIGNvbG9yOiByZ2JhKDUxLCA1MSwgNTEsIDAuOSk7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IC5jYWxsUG9pbnQtaW5mby1jb250YWluZXIgLmNhbGxQb2ludC1pbmZvIC5jYWxsUG9pbnQtaW5mby1saSBzcGFuIHtcbiAgY29sb3I6ICMzMzM7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbn1cbi5tYWMtY2FsbFBvaW50LWNvbnRhaW5lciAuY2FsbFBvaW50LWNvbnRlbnQgLmNhbGxQb2ludC1pbmZvLWNvbnRhaW5lciAuY2FsbFBvaW50LWluZm8gLmNhbGxQb2ludC1pbmZvLWxpIC5pbmZvLXRpdGxlIHtcbiAgY29sb3I6ICM5OTk7XG4gIHdpZHRoOiA1NnB4O1xuICB0ZXh0LWFsaWduOiByaWdodDtcbn1cbi5tYWMtY2FsbFBvaW50LWNvbnRhaW5lciAuY2FsbFBvaW50LWNvbnRlbnQgLmNhbGxQb2ludC1pbmZvLWNvbnRhaW5lciAuY2FsbFBvaW50LWluZm8gLmNhbGxQb2ludC1pbmZvLWxpbmUge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IC5jYWxsUG9pbnQtaW5mby1jb250YWluZXIgLmNhbGxQb2ludC1pbmZvIC5jYWxsUG9pbnQtaW5mby1saW5lIHNwYW4ge1xuICB3aWR0aDogMTMwcHg7XG4gIGZsb2F0OiBsZWZ0O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDU2cHg7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IC5jYWxsUG9pbnQtaW5mby1jb250YWluZXIgLmNhbGxQb2ludC1pbmZvIC5jYWxsUG9pbnQtaW5mby1saW5lIC5pbmZvLXRpdGxlIHtcbiAgcG9zaXRpb246IHN0YXRpYztcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBjb2xvcjogIzk5OTtcbiAgd2lkdGg6IDU2cHg7XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xufVxuLm1hYy1jYWxsUG9pbnQtY29udGFpbmVyIC5jYWxsUG9pbnQtY29udGVudCAuY2FsbFBvaW50LWluZm8tY29udGFpbmVyIC5jYWxsUG9pbnQtaW5mbyAuY2FsbFBvaW50LWluZm8tbGluZTphZnRlciB7XG4gIGNvbnRlbnQ6ICcgJztcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNsZWFyOiBib3RoO1xufVxuLm1hYy1jYWxsUG9pbnQtY29udGFpbmVyIC5jYWxsUG9pbnQtY29udGVudCAuY2FsbFBvaW50LWluZm8tY29udGFpbmVyIC5jYWxsUG9pbnQtaW5mby1sZWZ0IHtcbiAgZmxvYXQ6IGxlZnQ7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWdodDogMTAwJTtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgcGFkZGluZzogMjVweCAyMHB4IDMwcHggMjBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLm1hYy1jYWxsUG9pbnQtY29udGFpbmVyIC5jYWxsUG9pbnQtY29udGVudCAuY2FsbFBvaW50LWluZm8tY29udGFpbmVyIC5jYWxsUG9pbnQtaW5mby1yaWdodCB7XG4gIGZsb2F0OiByaWdodDtcbiAgd2lkdGg6IDUwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBwYWRkaW5nOiAyNXB4IDIwcHggMzBweCAyMHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IC5jYWxsUG9pbnQtaW5mby1jb250YWluZXIgLmNhbGxQb2ludC1pbmZvLWxpLXRpdGxlIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB0ZXh0LWFsaWduOiByaWdodDtcbiAgd2lkdGg6IDY1cHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG59XG4ubWFjLWNhbGxQb2ludC1jb250YWluZXIgLmNhbGxQb2ludC1jb250ZW50IC5jYWxsUG9pbnQtaW5mby1jb250YWluZXIgLmNhbGxQb2ludC1pbmZvLWxpLXRpdGxlIHNwYW4ge1xuICBjb2xvcjogIzg5OGE4YztcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuLm1hYy1jYWxsUG9pbnQtY29udGFpbmVyIC5jYWxsUG9pbnQtY29udGVudCAuY2FsbFBvaW50LWluZm8tY29udGFpbmVyIC5hbGFybS1tYXJrIHtcbiAgY2xlYXI6IGJvdGg7XG4gIHdpZHRoOiAyMjBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgI0ZFQTgwRDtcbiAgaGVpZ2h0OiAzMHB4O1xuICBsaW5lLWhlaWdodDogMzBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGJvdHRvbTogMzBweDtcbiAgbGVmdDogMjBweDtcbn1cbi5tYWMtY2FsbFBvaW50LWNvbnRhaW5lciAuY2FsbFBvaW50LWNvbnRlbnQgLmNhbGxQb2ludC1pbmZvLWNvbnRhaW5lciAuYWxhcm0tbWFyay5tYXJrLXRhc2sge1xuICBib3JkZXI6IDFweCBzb2xpZCAjOTFDNDFEO1xufVxuIl19 */

@@ -1,0 +1,68 @@
+<ul class="m-totalTask-wrapper" ng-controller="areaTaskController as areaTaskCtrl">
+    <li class="wrap-content">
+        <div class="wrap-cont-head f-cfb">
+            <span class="cont-head-title" translate="FDS_05_01_00"></span>
+            <span class="cont-head-detail"></span>
+        </div>
+
+        <div class="wrap-cont-table">
+
+            <!--时间区段选择-->
+            <div class="cont-table-top f-cfb">
+                <div class="f-fr f-cfb">
+
+                    <div class="f-fl f-cfb m-right15">
+                        <span class="f-fl m-right15" translate="FDS_05_11"></span>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaTaskCtrl.changeTimeBtn('ALL')"
+                                ng-class="{'u-button-blue-3':areaTaskCtrl.duration !== 'ALL'}"
+                                translate="FDS_05_06">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaTaskCtrl.changeTimeBtn('SEVEN_DAYS')"
+                                ng-class="{'u-button-blue-3':areaTaskCtrl.duration !== 'SEVEN_DAYS'}"
+                                translate="FDS_05_07">
+                        </button>
+                        <button class="u-button f-fl m-top5 m-right15"
+                                ng-click="areaTaskCtrl.changeTimeBtn('THIRY_DAYS')"
+                                ng-class="{'u-button-blue-3': areaTaskCtrl.duration !== 'THIRY_DAYS'}"
+                                translate="FDS_05_08">
+                        </button>
+                        <button class="u-button f-fl m-top5"
+                                ng-click="areaTaskCtrl.changeTimeBtn('SIX_MONTHS')"
+                                ng-class="{'u-button-blue-3':areaTaskCtrl.duration !== 'SIX_MONTHS'}"
+                                translate="FDS_05_09">
+                        </button>
+                    </div>
+
+                    <div class="f-fl f-pr">
+                        <input date-picker class="u-input cont-table-dateSelect" type="text" placeholder="{{'FDS_05_12'|translate}}"
+                               ng-model="areaTaskCtrl.startTime"
+                               format="YYYY-MM-DD"
+                               init-add-type="month"
+                               init-add-val="-1"
+                               is-clear="false">
+                    </div>
+
+                    <span class="f-fl m-right5 m-left5">-</span>
+
+                    <div class="f-fl m-right15 f-pr">
+                        <input date-picker class="u-input cont-table-dateSelect" type="text" placeholder="{{'FDS_05_12'|translate}}"
+                               ng-model="areaTaskCtrl.endTime"
+                               okfun="areaTaskCtrl.showCustomTime()"
+                               choosefun="areaTaskCtrl.showCustomTime()"
+                               format="YYYY-MM-DD"
+                               init-add-type="month"
+                               init-add-val="0"
+                               is-clear="false">
+                    </div>
+                </div>
+            </div>
+
+            <div class="cont-table-bottom" id="task-1">
+                <div class="m-echart-no-data" ng-show="areaTaskCtrl.isNoData" translate="FDS_00_01_18"></div>
+            </div>
+        </div>
+    </li>
+</ul>
+

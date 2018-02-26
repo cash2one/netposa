@@ -1,0 +1,93 @@
+<div class="report-container">
+    <div class="report-ctn">
+        <div class="report-ctn-list" ng-if="collectData.collectResultArr.length > 0" ng-repeat="collectData in myCollectCtrl.collectDatas track by $index" ng-class="{'z-gray-color': $odd}">
+            <div class="list-content">
+                <div class="time-box">
+                    <div class="time">{{myCollectCtrl.getValueByTimeKey(collectData.timeKey, "MM")}}月{{myCollectCtrl.getValueByTimeKey(collectData.timeKey, "dd")}}日</div>
+                    <div class="year"><span>{{myCollectCtrl.getValueByTimeKey(collectData.timeKey, "yyyy")}}</span></div>
+                    <div class="count">总共<span>{{collectData.collectResultArr.length}}</span>条</div>
+                    <!-- <div class="time">{{collectData.timeKey}}</div> -->
+                    <div class="more f-csp" ng-click="myCollectCtrl.expanderMore(collectData)">
+                        <span>{{collectData.isExpand?'收起':'展开更多'}}</span>
+                        <i class="more-icon"></i>
+                    </div>
+                </div>
+                <div class="list-box-ctn f-cfb" ng-class="{'z-expand': collectData.isExpand}">
+
+                    <div class="list-box" ng-repeat="collectResult in collectData.collectResultArr track by $index">
+                        <!-- 人脸抓拍 -->
+                        <div ng-click="myCollectCtrl.showFacePopup(collectResult.JsonExtData)" ng-if="myCollectCtrl.isFaceType(collectResult.ObjectType)" style="width:200px" class="report-list f-cfb">
+                            <div class="face-img">
+                                <img util-img-center ng-src="{{collectResult.JsonExtData.AccessLog.FacePath|imageUrlFilter}}"/>
+                            </div>
+                            <div class="face-content">
+                                <span>{{collectResult.JsonExtData.AccessLog.LogTime}}</span>
+                                <span>{{collectResult.JsonExtData.DeviceName}}</span>
+                            </div>
+                        </div>
+                        <!--车辆-->
+                        <div ng-if="myCollectCtrl.isVehicleType(collectResult.ObjectType)" ng-click="myCollectCtrl.showCarPopup(collectResult.JsonExtData)" class="report-list f-cfb">
+                            <div class="face-img" style="height: 140px;">
+                                <img util-img-center ng-src="{{collectResult.JsonExtData.panoramaImage|imageUrlFilter}}"/>
+                            </div>
+                            <div class="face-content">
+                                <span class="licence">{{collectResult.JsonExtData.plateNumber}}</span>
+                                <span>{{collectResult.JsonExtData.passTime}}</span>
+                                <span>{{collectResult.JsonExtData.monitorName}}</span>
+                            </div>
+
+                        </div>
+                        <!--感知数据-->
+                        <div ng-if="myCollectCtrl.isEfenceType(collectResult.ObjectType)" ng-click="myCollectCtrl.showEfencePopup(collectResult.JsonExtData)" class="mac-list f-cfb">
+                            <div class="mac-title">{{collectResult.ObjectType | objectTypeFilter}}</div>
+                            <div class="mac-content" style="height: 150px;">
+                                <div class="list">
+                                    <i class="mac-icon"></i>
+                                    <span class="text z-bold">{{collectResult.JsonExtData.eFenceLog.IMEI}}</span>
+                                </div>
+                                <div class="list">
+                                    <i class="mac-icon"></i>
+                                    <span class="text z-bold">{{collectResult.JsonExtData.eFenceLog.IMSI}}</span>
+                                </div>
+                                <div class="list">
+                                    <i class="time-icon"></i>
+                                    <span class="text">{{collectResult.JsonExtData.eFenceLog.AcqTime}}</span>
+                                </div>
+                                <div class="list">
+                                    <i class="address-icon"></i>
+                                    <span class="text" title="{{collectResult.JsonExtData.DeviceName}}">{{collectResult.JsonExtData.DeviceName}}</span>
+                                </div>
+                            </div>
+                            <div class="cover f-cfb">
+                                <i class="icon report-icon1 f-csp" ng-click="myCollectCtrl.unAttention(collectResult, collectData)"></i>
+                            </div>
+                        </div>
+                        <div ng-if="myCollectCtrl.isWifiType(collectResult.ObjectType)" ng-click="myCollectCtrl.showWifiPopup(collectResult.JsonExtData)" class="mac-list f-cfb">
+                            <div class="mac-title">{{collectResult.ObjectType | objectTypeFilter}}</div>
+                            <div class="mac-content" style="height: 150px;">
+                                <div class="list">
+                                    <i class="mac-icon"></i>
+                                    <span class="text z-bold">{{collectResult.JsonExtData.wifiLog.Mac}}</span>
+                                </div>
+                                <div class="list">
+                                    <i class="time-icon"></i>
+                                    <span class="text">{{collectResult.JsonExtData.wifiLog.AcqTime}}</span>
+                                </div>
+                                <div class="list">
+                                    <i class="address-icon"></i>
+                                    <span class="text" title="{{collectResult.JsonExtData.DeviceName}}">{{collectResult.JsonExtData.DeviceName}}</span>
+                                </div>
+                            </div>
+
+                            <div class="cover f-cfb">
+                                <i class="icon report-icon1 f-csp" ng-click="myCollectCtrl.unAttention(collectResult, collectData)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="circle" src="../../../images/common/circle.png"/>
+        </div>
+    </div>
+    <div class="report-more-btn f-csp" ng-click="myCollectCtrl.getMoreAlarm()">加载更多</div>
+</div>

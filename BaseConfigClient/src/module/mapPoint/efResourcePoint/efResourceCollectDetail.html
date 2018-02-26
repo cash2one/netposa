@@ -1,0 +1,49 @@
+<div ng-controller="efResourceCollectDetailController as efResourceCollectDetailCtrl" class="pop-up-common ef-resource-alarm-detail">
+    <!--     <div class="title">
+        <div class="name">电子围栏详情</div>
+        <div class="close" ng-click="efResourceCollectDetailCtrl.closePopup()"></div>
+    </div> -->
+    <div class="con">
+        <div class="top">
+            <div class="surveillance" ng-class="{'active': efResourceCollectDetailCtrl.renderData.surveillanceStatus}" ng-click="efResourceCollectDetailCtrl.clickSurveillance(efResourceCollectDetailCtrl.renderData)"></div>
+            <div class="analyze" ng-click="efResourceCollectDetailCtrl.clickAnalysis(efResourceCollectDetailCtrl.renderData)"></div>
+            <div class="collect " ng-class="{'active': efResourceCollectDetailCtrl.renderData.collectStatus}" ng-click="efResourceCollectDetailCtrl.clickCollect(efResourceCollectDetailCtrl.renderData)"></div>
+        </div>
+        <div class="table-ul">
+            <div class="table-li">
+                <div class="name">用户识别码(IMSI)：</div>
+                <div class="text">{{efResourceCollectDetailCtrl.renderData.eFenceLog.IMSI}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">采集时间：</div>
+                <div class="text">{{efResourceCollectDetailCtrl.renderData.eFenceLog.AcqTime}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">设备身份码：</div>
+                <div class="text">{{efResourceCollectDetailCtrl.renderData.eFenceLog.IMEI}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">采集地点：</div>
+                <div class="text">{{efResourceCollectDetailCtrl.name}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">临时识别码：</div>
+                <div class="text">{{efResourceCollectDetailCtrl.renderData.eFenceLog.IMSI2}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">采集设备：</div>
+                <div class="text">{{efResourceCollectDetailCtrl.name}}</div>
+            </div>
+            <div class="table-li">
+                <div class="name">终端品牌：</div>
+                <div class="text">{{}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-con">
+            <div class="last-page" ng-click="efResourceCollectDetailCtrl.propeUp()"></div>
+            <div class="next-page" ng-click="efResourceCollectDetailCtrl.propeDown(true)"></div>
+        </div>
+    </div>
+</div>

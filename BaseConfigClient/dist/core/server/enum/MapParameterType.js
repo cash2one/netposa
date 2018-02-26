@@ -1,0 +1,18 @@
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.MapParameterObj = {
+        MapBaseInfo: { value: "MapBaseInfo", text: "地图基础参数" },
+        MapInitDefaultLevel: { value: "MapInitDefaultLevel", text: "地图初始化级别" },
+        PointClusterDistance: { value: "PointClusterDistance", text: "点位聚合距离" },
+        AppRefreshTime: { value: "AppRefreshTime", text: "APP 刷新时间" }
+    };
+    exports.MapParameterType = [
+        { value: exports.MapParameterObj.MapBaseInfo, text: "地图基础参数" },
+        { value: exports.MapParameterObj.MapInitDefaultLevel, text: "地图初始化级别" },
+        { value: exports.MapParameterObj.PointClusterDistance, text: "点位聚合距离" },
+        { value: exports.MapParameterObj.AppRefreshTime, text: "APP 刷新时间" }
+    ];
+});
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb3JlL3NlcnZlci9lbnVtL01hcFBhcmFtZXRlclR5cGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0lBSWEsUUFBQSxlQUFlLEdBQUc7UUFDM0IsV0FBVyxFQUFFLEVBQUMsS0FBSyxFQUFFLGFBQWEsRUFBRSxJQUFJLEVBQUUsUUFBUSxFQUFDO1FBQ25ELG1CQUFtQixFQUFFLEVBQUMsS0FBSyxFQUFFLHFCQUFxQixFQUFFLElBQUksRUFBRSxTQUFTLEVBQUM7UUFDcEUsb0JBQW9CLEVBQUUsRUFBQyxLQUFLLEVBQUUsc0JBQXNCLEVBQUUsSUFBSSxFQUFFLFFBQVEsRUFBQztRQUNyRSxjQUFjLEVBQUUsRUFBQyxLQUFLLEVBQUUsZ0JBQWdCLEVBQUUsSUFBSSxFQUFFLFVBQVUsRUFBQztLQUM5RCxDQUFDO0lBRVcsUUFBQSxnQkFBZ0IsR0FBRztRQUM1QixFQUFDLEtBQUssRUFBRSx1QkFBZSxDQUFDLFdBQVcsRUFBRSxJQUFJLEVBQUUsUUFBUSxFQUFDO1FBQ3BELEVBQUMsS0FBSyxFQUFFLHVCQUFlLENBQUMsbUJBQW1CLEVBQUUsSUFBSSxFQUFFLFNBQVMsRUFBQztRQUM3RCxFQUFDLEtBQUssRUFBRSx1QkFBZSxDQUFDLG9CQUFvQixFQUFFLElBQUksRUFBRSxRQUFRLEVBQUM7UUFDN0QsRUFBQyxLQUFLLEVBQUUsdUJBQWUsQ0FBQyxjQUFjLEVBQUUsSUFBSSxFQUFFLFVBQVUsRUFBQztLQUM1RCxDQUFDIiwiZmlsZSI6ImNvcmUvc2VydmVyL2VudW0vTWFwUGFyYW1ldGVyVHlwZS5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiDlrZjmlL7mlbDmja7lupPkuK3lrZjlnKjnmoTlnLDlm77ln7rmnKzphY3nva7lj4LmlbDnsbvlnotcclxuICogQHR5cGUge3t2YWx1ZTogc3RyaW5nOyB0ZXh0OiBzdHJpbmd9W119XHJcbiAqL1xyXG5leHBvcnQgY29uc3QgTWFwUGFyYW1ldGVyT2JqID0ge1xyXG4gICAgTWFwQmFzZUluZm86IHt2YWx1ZTogXCJNYXBCYXNlSW5mb1wiLCB0ZXh0OiBcIuWcsOWbvuWfuuehgOWPguaVsFwifSxcclxuICAgIE1hcEluaXREZWZhdWx0TGV2ZWw6IHt2YWx1ZTogXCJNYXBJbml0RGVmYXVsdExldmVsXCIsIHRleHQ6IFwi5Zyw5Zu+5Yid5aeL5YyW57qn5YirXCJ9LFxyXG4gICAgUG9pbnRDbHVzdGVyRGlzdGFuY2U6IHt2YWx1ZTogXCJQb2ludENsdXN0ZXJEaXN0YW5jZVwiLCB0ZXh0OiBcIueCueS9jeiBmuWQiOi3neemu1wifSxcclxuICAgIEFwcFJlZnJlc2hUaW1lOiB7dmFsdWU6IFwiQXBwUmVmcmVzaFRpbWVcIiwgdGV4dDogXCJBUFAg5Yi35paw5pe26Ze0XCJ9XHJcbn07XHJcblxyXG5leHBvcnQgY29uc3QgTWFwUGFyYW1ldGVyVHlwZSA9IFtcclxuICAgIHt2YWx1ZTogTWFwUGFyYW1ldGVyT2JqLk1hcEJhc2VJbmZvLCB0ZXh0OiBcIuWcsOWbvuWfuuehgOWPguaVsFwifSxcclxuICAgIHt2YWx1ZTogTWFwUGFyYW1ldGVyT2JqLk1hcEluaXREZWZhdWx0TGV2ZWwsIHRleHQ6IFwi5Zyw5Zu+5Yid5aeL5YyW57qn5YirXCJ9LFxyXG4gICAge3ZhbHVlOiBNYXBQYXJhbWV0ZXJPYmouUG9pbnRDbHVzdGVyRGlzdGFuY2UsIHRleHQ6IFwi54K55L2N6IGa5ZCI6Led56a7XCJ9LFxyXG4gICAge3ZhbHVlOiBNYXBQYXJhbWV0ZXJPYmouQXBwUmVmcmVzaFRpbWUsIHRleHQ6IFwiQVBQIOWIt+aWsOaXtumXtFwifVxyXG5dO1xyXG5cclxuIl19

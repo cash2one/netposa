@@ -1,0 +1,89 @@
+<div ng-controller="alarmDetailPoupController as alarmDetailPoupCtrl" class="maplayerAlarmDetailTpl">
+    <div class="datillayer">
+        <div class="alarm-layer">
+            <div class="alarm-cnt">
+                <div class="imginfo">
+                    <div class="captrue-img">
+                        <div class="img">
+                            <img
+                                    ng-src="{{alarmDetailPoupCtrl.alarmNowInfo.AlarmLog.CapFacePicUrl|imageUrlFilter}}">
+                        </div>
+                        <div class="type">
+                            <span>抓拍人脸</span>
+                            <span class="action">
+                                <i class="sc"></i>
+                                <i class="fx"></i>
+                            </span>
+                        </div>
+                        <div class="operate-box">
+                            <div class="full-screen" ng-click="alarmDetailPoupCtrl.fullScreen(personCtrl.face_path + personCtrl.accessRecords.AccessLog.ScenePath)"></div>
+                            <div class="full-play" ng-click="alarmDetailPoupCtrl.fullPlay()"></div>
+                        </div>
+                    </div>
+
+                    <div class="captrue-img captrue-match-img">
+                        <div class="img">
+                            <img
+                                    ng-src="{{alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].PersonInfo.FacePicPath[0] | imageUrlFilter}}">
+                        </div>
+                        <div class="type">
+                            <span>比中人脸</span>
+                            <span class="action">
+                                <i class="sc"></i>
+                                <i class="fx"></i>
+                            </span>
+                        </div>
+                        <div class="match-info">
+                            <span>{{alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].Similarty|roundNumber}}%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="alarm-desc">
+                    <div
+                            ng-class="{
+                                'man':alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].PersonInfo.Gender==0,
+                                'woman':alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].PersonInfo.Gender==1}">
+                        {{alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].PersonInfo.Name}}
+                    </div>
+                    <div class="id-card"><i>证件号 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].PersonInfo.IDCardNumber}}
+                    </div>
+                    <div class="time"><i>创建时间 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].PersonInfo.CreateTime}}
+                    </div>
+                    <div class="lib"><i>所在库 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.libName}}</div>
+                    <div class="address"><i>户籍地址 : </i>{{alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr[alarmDetailPoupCtrl.libIndex].PersonInfo.HomeAddress}}
+                    </div>
+                    <div class="lib"><i>详细信息 : </i>{{}}</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="captrue-content">
+            <span class="prev-back change-lib-page" ng-click="alarmDetailPoupCtrl.changeResultPage('prev')"></span>
+            <span class="next-go change-lib-page" ng-click="alarmDetailPoupCtrl.changeResultPage('next')"></span>
+            <!--<div ng-style="{left:(alarmDetailPoupCtrl.libIndex) * (120+13)+ 52 + 'px'}" class="captrue-index"></div>-->
+            <div class="captrue-layer-console">
+                <div class="captrue-layer" ng-style="{left:-1 * alarmDetailPoupCtrl.resultPageIndex * 520 + 'px'}">
+
+                    <div class="captrue-img"
+                         ng-repeat="item in alarmDetailPoupCtrl.alarmNowInfo.AlarmLogInfoArr track by item.ID"
+                         ng-class="{'active':$index === alarmDetailPoupCtrl.libIndex}"
+                         ng-click="alarmDetailPoupCtrl.changeLibResult($index)"
+                    >
+                        <div class="img"><img ng-src="{{item.PersonInfo.FacePicPath[0] | imageUrlFilter}}" alt=""></div>
+                        <div class="type">
+                            <span>{{item.PersonInfo.Name}}</span>
+                            <span>{{item.libName}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alarm-bottom">
+            <div class="action-btn">
+                <button class="my-btn wx">无效</button>
+                <button class="my-btn dd">待定</button>
+                <button class="my-btn yx">有效</button>
+            </div>
+        </div>
+    </div>
+</div>

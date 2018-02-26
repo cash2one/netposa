@@ -1,0 +1,74 @@
+.m-totalAlarm .cont-table-top{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+
+.m-totalAlarm.g-total-block .wrap-content{
+    height: 438px;
+}
+
+/*时间区段选择*/
+.m-totalAlarm .cont-table-dateSelect{
+    width: 102px;
+    padding-right: 28px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #999;
+    background: url(../../../images/common/riqi.png) 76px center no-repeat;
+    background-size: 20px 20px;
+}
+
+.m-totalAlarm .cont-table-dateIcon{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 28px;
+    height:100%;
+}
+
+.m-totalAlarm .cont-table-bottom{
+    height:358px;
+}
+
+.m-totalAlarm .alarm-left,.alarm-right{
+    position: absolute;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.m-totalAlarm .alarm-left{
+    top:50%;
+    left:2%;
+}
+
+.m-totalAlarm .alarm-right{
+    top:50%;
+    right:2%;
+}
+
+/*区域树容器*/
+.m-totalAlarm .tree-container{
+    position: absolute;
+    top: 35px;
+    z-index: 99;
+    background: #fff;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    border: 1px solid #ccc;
+    border-top: none;
+    overflow: auto;
+}
+
+.m-totalAlarm .slideTitle{
+    line-height: 40px;
+}
+
+.m-totalAlarm .devStatus-select-width{
+    width: 240px;
+}

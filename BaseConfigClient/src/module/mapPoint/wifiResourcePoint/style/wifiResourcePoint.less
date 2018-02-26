@@ -1,0 +1,191 @@
+@import "./base.less";
+
+// 资源检索wifi点位信息
+.wifi-resource-point.wifi-pop-up {
+  position: absolute;
+  width: 535px;
+  height: 390px;
+  background: #eee;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  color: #333;
+  border-radius: 5px;
+  bottom: 0;
+  transition: all .5s;
+  &:before {
+    content: ' ';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -10px;
+    transform: rotate(45deg);
+    box-shadow: 9px 9px 18px rgba(0, 0, 0, .09)
+  }
+  .con {
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+    .con-box {
+      position: relative;
+      width: 100%;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      margin-top: 10px;
+      .top{
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        border-bottom: 1px solid #ddd;
+        padding: 0 10px;
+        .description{
+          float: left;
+        }
+        .left{
+          float: left;
+        }
+        .right{
+          float: right;
+        }
+        .line{
+          padding: 0 10px;
+        }
+        .link{
+          color: @bg-blue;
+          cursor: pointer;
+        }
+      }
+      .item-ul {
+        padding: 0 10px;
+        .item-li {
+          position: relative;
+          width: 100%;
+          height: 40px;
+          line-height: 40px;
+          border-bottom: 1px solid #ddd;
+          .mac{
+            width: 150px;
+            float: left;
+            .icon-mac();
+          }
+          .time{
+            width: 145px;
+            float: left;
+            .icon-time();
+          }
+          .address{
+            width: 175px;
+            float: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .icon-address();
+          }
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+    .collect-info {
+      .top .description{
+        .icon-wifi-collect();
+      }
+    }
+    .alarm-info {
+      .top{
+        .description{
+          .icon-alarm();
+        }
+        .alarm-sign{
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          text-align: center;
+          border-radius: 20px;
+          background-color: #ff8d33;
+          color: #fff;
+          margin-left: 5px;
+          display: inline-block;
+        }
+      }
+      .item-ul{
+        overflow: hidden;
+        height: 0px;
+        transition: all .5s;
+      }
+      .arrows{
+        position: absolute;
+        cursor: pointer;
+        margin-left: 236px;
+        transform:rotate(0deg);
+        transition: all .2s;
+        width: 20px;
+        height: 6px;
+        background-color: #fff;
+        span{
+          width: 20px;
+          height: 6px;
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          .icon-arrows-bottom();
+        }
+      }
+      &.con-box{
+        .item-ul {
+          .item-li {
+            height: 60px;
+            line-height: 60px;
+            border-bottom: 1px dashed #ddd;
+            .time{
+              height: 20px;
+              line-height: 20px;
+              width: 210px;
+              margin-top: 10px;
+            }
+            .address{
+              height: 20px;
+              line-height: 20px;
+              width: 210px;
+            }
+            .alarm-status{
+              position: absolute;
+              width: 60px;
+              height: 20px;
+              line-height: 20px;
+              right: 0;
+              top: 20px;
+              border-left: 1px solid #ddd;
+              padding-left: 5px;
+              &.effectivity{
+                color: #8abb21;
+              }
+              &.untreated{
+                color: #ff5f5f;
+              }
+            }
+            &:last-child{
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  // 下拉显示报警信息
+  &.active{
+    height: 500px;
+    .con{
+      .alarm-info {
+        .item-ul{
+          height: 120px;
+        }
+        .arrows{
+          transform:rotate(180deg);
+        }
+      }
+    }
+  }
+}

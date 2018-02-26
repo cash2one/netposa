@@ -1,0 +1,18 @@
+.baseconfig-two-column .m-switch-button {
+  top: 5px;
+}
+.baseconfig-two-column .m-switch-button .switch {
+  width: 36px;
+  height: 16px;
+  border-radius: 8px;
+}
+.baseconfig-two-column .m-switch-button .switch small {
+  width: 16px;
+  height: 16px;
+  left: 1px;
+}
+.baseconfig-two-column .m-switch-button .switch.checked small {
+  left: 20px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN3aXRoLXRvZ2dsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxTQUFTO0NBQ1Y7QUFDRDtFQUNFLFlBQVk7RUFDWixhQUFhO0VBQ2IsbUJBQW1CO0NBQ3BCO0FBQ0Q7RUFDRSxZQUFZO0VBQ1osYUFBYTtFQUNiLFVBQVU7Q0FDWDtBQUNEO0VBQ0UsV0FBVztDQUNaIiwiZmlsZSI6Im1vZHVsZS9iYXNlY29uZmlnL3N0eWxlL3N3aXRoLXRvZ2dsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFzZWNvbmZpZy10d28tY29sdW1uIC5tLXN3aXRjaC1idXR0b24ge1xuICB0b3A6IDVweDtcbn1cbi5iYXNlY29uZmlnLXR3by1jb2x1bW4gLm0tc3dpdGNoLWJ1dHRvbiAuc3dpdGNoIHtcbiAgd2lkdGg6IDM2cHg7XG4gIGhlaWdodDogMTZweDtcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xufVxuLmJhc2Vjb25maWctdHdvLWNvbHVtbiAubS1zd2l0Y2gtYnV0dG9uIC5zd2l0Y2ggc21hbGwge1xuICB3aWR0aDogMTZweDtcbiAgaGVpZ2h0OiAxNnB4O1xuICBsZWZ0OiAxcHg7XG59XG4uYmFzZWNvbmZpZy10d28tY29sdW1uIC5tLXN3aXRjaC1idXR0b24gLnN3aXRjaC5jaGVja2VkIHNtYWxsIHtcbiAgbGVmdDogMjBweDtcbn1cbiJdfQ== */

@@ -1,0 +1,85 @@
+<div class="u-baseconfig-popup m-device-popup" ng-controller="WifiCreateController as wifiCreatePopup">
+
+    <form name="wifiEditForm" novalidate>
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_03"></span>
+            </span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_CAMERA_03'|translate}}" valid-multiple valid-m-max="30" class="text u-input"
+                ng-model="wifiCreatePopup.deviceData.Name" />
+        </div>
+        <!--所属区域-->
+        <!--<div class="form" style="overflow:visible">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_09"></span></span>
+            <input ng-if="!wifiCreatePopup.isRootIod" type="hidden" ng-model="wifiCreatePopup.Iod.ParentArea.ID" />
+            <div class="u-select-tree form-select" ng-if="!wifiCreatePopup.isRootIod">
+                <input type="text" class="u-input" ng-model="wifiCreatePopup.deviceData.JsonUserData.Area.Name" valid-nonempty="{{'FDS_01_14_17'|translate}}" readonly ng-click="wifiCreatePopup.isShowIodTree = !wifiCreatePopup.isShowIodTree" />
+                <i class="tree-toggle-icon" ng-class="{'z-open': wifiCreatePopup.isShowIodTree}"></i>
+                <div class="tree-cntr" ng-class="{'z-show': wifiCreatePopup.isShowIodTree}" style="position:absolute">
+                    <util-tree tree-id="{{wifiCreatePopup.areaTreeParams.treeId}}" tree-datas="wifiCreatePopup.areaTreeParams.treeDatas" is-default-selected="true" check-enable="false" single-select="true" is-simple-data="true" show-icon="true" show-line="false" default-no-data-msg=""
+                        search-no-data-msg="" on-click="wifiCreatePopup.areaTreeParams.onClick(event, treeId, treeNode)" tree-id-key="ID" tree-pid-key="ParentID" tree-key-name="Name" default-select-tree-id="wifiCreatePopup.areaTreeParams.defaultSelectTreeId"
+                        default-expand-level="0"></util-tree>
+                </div>
+            </div>
+            <div style="display: none;" ng-class="{'f-db': wifiCreatePopup.isRootIod}" class="u-select-tree form-select" ng-if="wifiCreatePopup.isRootIod">
+                <input type="text" disabled readonly class="u-input" placeholder="{{'FDS_01_14_18'|translate}}" />
+            </div>
+        </div>-->
+        <!--立杆-->
+        <div class="form" style="overflow:visible">
+            <span class="title">
+                <span translate="DP_CONFIG_COMMON_18"></span>
+            </span>
+            <input ng-if="!wifiCreatePopup.isRootArea" type="hidden" ng-model="wifiCreatePopup.deviceData.JsonUserData.lampPost.ID" />
+            <div class="u-select-tree form-select" ng-if="!wifiCreatePopup.isRootArea">
+                <input type="text" class="u-input" ng-model="wifiCreatePopup.deviceData.JsonUserData.lampPost.Name" readonly ng-click="wifiCreatePopup.isShowAreaTree = !wifiCreatePopup.isShowAreaTree"
+                />
+                <i class="tree-toggle-icon" ng-class="{'z-open': wifiCreatePopup.isShowAreaTree}"></i>
+                <div class="tree-cntr" ng-class="{'z-show': wifiCreatePopup.isShowAreaTree}" style="position:absolute">
+                    <util-tree tree-id="{{wifiCreatePopup.lampAreaParams.treeId}}" tree-datas="wifiCreatePopup.lampAreaParams.treeDatas" is-default-selected="true"
+                        check-enable="false" single-select="true" is-simple-data="true" show-icon="true" show-line="false" default-no-data-msg=""
+                        search-no-data-msg="" on-click="wifiCreatePopup.lampAreaParams.onClick(event, treeId, treeNode)" tree-id-key="ID"
+                        tree-pid-key="ParentID" tree-key-name="Name" default-select-tree-id="wifiCreatePopup.deviceData.JsonUserData.lampPost.ID"
+                        default-expand-level="0" ></util-tree>
+                </div>
+            </div>
+            <div style="display: none;" ng-class="{'f-db': wifiCreatePopup.isRootArea}" class="u-select-tree form-select" ng-if="wifiCreatePopup.isRootArea">
+                <input type="text" disabled readonly class="u-input" placeholder="{{'DP_CONFIG_COMMON_79'|translate}}" />
+            </div>
+        </div>
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_04"></span>
+            </span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_04'|translate}}" valid-multiple valid-m-max="30" class="text u-input"
+                ng-model="wifiCreatePopup.deviceData.Code" />
+        </div>
+        <!--坐标-->
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_13"></span>
+            </span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_13'|translate}}" valid-multiple valid-m-max="20" class="text u-input"
+                ng-model="wifiCreatePopup.deviceData.JsonUserData.Point.Lon" placeholder="{{'DP_CONFIG_CAMERA_07'|translate}}"
+            />
+        </div>
+        <div class="form">
+            <span class="title">
+                <span class="color">*</span>
+                <span translate="DP_CONFIG_COMMON_14"></span>
+            </span>
+            <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_14'|translate}}" valid-multiple valid-m-max="20" class="text u-input"
+                ng-model="wifiCreatePopup.deviceData.JsonUserData.Point.Lat" placeholder="{{'DP_CONFIG_CAMERA_07'|translate}}"
+            />
+        </div>
+    </form>
+    <div class="u-border"></div>
+    <div class="form f-cfb">
+        <button class="u-button f-fr m-right15 u-button-blue-2" ng-click="wifiCreatePopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+        <button class="u-button f-fr m-right15 u-button-blue-1" ng-click="wifiCreatePopup.submit()" ng-disabled="wifiEditForm.$invalid"
+            translate="DP_CONFIG_COMMON_05"></button>
+    </div>
+</div>

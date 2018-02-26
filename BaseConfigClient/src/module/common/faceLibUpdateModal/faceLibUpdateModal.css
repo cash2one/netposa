@@ -1,0 +1,16 @@
+.faceLib-update-layer .layui-layer-content{
+    overflow: visible;
+}
+/*人脸库 编辑*/
+.m-faceLib-update {
+
+}
+
+.m-faceLib-update {
+
+}
+
+.m-faceLib-update .input-tree-select{
+    width: 224px;
+    float: left;
+}

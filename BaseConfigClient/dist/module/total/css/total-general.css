@@ -1,0 +1,164 @@
+.m-totalGeneral.g-total-block{
+    max-width: 1600px;
+    margin: 15px auto;
+}
+
+.m-totalGeneral-wrapper{
+    margin-left: -1%;
+}
+
+.m-totalGeneral.g-total-block .wrap-content{
+    width: 40%;
+    height: 320px;
+    float: left;
+    margin-left: 1%;
+}
+
+.m-totalGeneral.g-total-block .wrap-content-w1{
+    width: 58%;
+}
+
+.m-totalGeneral.g-total-block .wrap-content-w2{
+    width: 99%;
+}
+
+/*每一块下面部分*/
+.m-totalGeneral .cont-table-left{
+    width: 100%;
+    height: 40px;
+}
+
+.m-totalGeneral .table-left-list{
+    width: 100%;
+    line-height: 40px;
+}
+
+.m-totalGeneral .cont-table-right{
+    width: 100%;
+    height: 240px;
+}
+
+.m-totalGeneral .left-everyList-num-black{
+    color: #333;
+}
+
+.m-totalGeneral .left-everyList-num-blue{
+    color: #45a2ff;
+}
+
+.m-totalGeneral .left-everyList-num-orange{
+    color: #f89f42;
+}
+
+.m-totalGeneral .left-everyList-num-gray{
+    color: #999;
+}
+
+.m-totalGeneral .wrap-content .left-everyList-title{
+    float: left;
+    text-align: right;
+    margin-left: 20px;
+    margin-right: 5px;
+    color: #666;
+}
+
+.m-totalGeneral .wrap-content .left-everyList-num{
+    float: left;
+    max-width: 50px;
+    font-weight: bold;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/*设备统计*/
+.m-totalGeneral .camera-device{
+    width:19%;
+    height: 110px;
+    margin-left: 1%;
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.m-totalGeneral .camera-device-content{
+    max-width: 240px;
+    height:100%;
+    margin: 0 auto;
+}
+
+.m-totalGeneral .camera-device .camera-d-img{
+    width: 42%;
+    height: 100%;
+}
+
+.m-totalGeneral .camera-device .img-content{
+    width: 60px;
+    height: 60px;
+    margin: 25px 15px auto;
+}
+
+.m-totalGeneral .camera-device .camera-d-txt{
+    width: 58%;
+    height:100%;
+}
+
+.m-totalGeneral .camera-device .camera-d-title{
+    width: 100%;
+    margin: 15px 0 5px;
+    color: #45a2ff;
+    line-height: 20px;
+}
+
+.m-totalGeneral .camera-device .camera-d-count{
+    width: 100%;
+    height:20px;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.m-totalGeneral .camera-device .count-detail{
+    line-height: 20px;
+    margin-top: 15px;
+}
+
+.m-totalGeneral .camera-device .count-detail-cont{
+    width: 50%;
+}
+
+.m-totalGeneral .camera-device .detail-cont-num{
+    width: 50%;
+    color: #f89f42;
+    margin-left: 5px;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.m-totalGeneral .camera-device .detail-online-num-color{
+    color: #666;
+}
+
+/*橙色*/
+.m-totalGeneral .camera-device .camera-d-title-orange{
+    color:#ff8761;
+}
+
+/*蓝色*/
+.m-totalGeneral .camera-device .camera-d-title-blue{
+    color:#269dfa;
+}
+
+/*草绿色*/
+.m-totalGeneral .camera-device .camera-d-title-cyan{
+    color:#70d8a1;
+}
+
+/*紫色*/
+.m-totalGeneral .camera-device .camera-d-title-purple{
+    color:#aa8fd9;
+}

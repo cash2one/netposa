@@ -1,0 +1,163 @@
+<div class="right-content m-faceLib">
+    <div class="m-baseconfig-topFixed faclib-topFixed">
+
+        <ol class="m-route f-cfb">
+            <li translate="DP_CONFIG_FACELIB_35"></li>
+            <li class="route-separate">/</li>
+            <li translate="DP_CONFIG_FACELIB_36"></li>
+        </ol>
+
+        <div class="m-facelib-top f-cfb">
+            <div class="m-faceLibForm f-fl m-right10">
+
+                <span class="faceLibForm-title" translate="DP_CONFIG_COMMON_03" translate-values="{value:':'}"></span>
+
+                <label>
+                    <input type="text"
+                           placeholder="{{'DP_CONFIG_FACELIB_26'|translate}}"
+                           ng-model="bcFaceLibLibCtrl.findListParams.keyword"
+                           ng-keyup="bcFaceLibLibCtrl.tableSearchInputKeyUp($event)"
+                    >
+                    <i class="iconPosition"></i>
+                </label>
+            </div>
+
+            <div class="m-faceLibForm f-fl m-right10">
+                <span class="faceLibForm-title" translate="DP_CONFIG_FACELIB_07" translate-values="{value:':'}"></span>
+                <label>
+
+                    <input  class="faceLibForm-input1 f-csp"
+                            type="text"
+                           name="newTaskStartTime"
+                           ng-model="bcFaceLibLibCtrl.findListParams.startTime"
+                           date-picker
+                           show-init="false"
+                            readonly
+                    />
+
+                    <i class="iconPosition i-calendar"></i>
+                </label>
+
+                <span class="faceLibForm-title">—</span>
+                <label>
+                    <input  class="faceLibForm-input1 f-csp"
+                            type="text"
+                            name="newTaskStartTime"
+                            ng-model="bcFaceLibLibCtrl.findListParams.endTime"
+                            date-picker
+                            show-init="false"
+                            readonly
+                    />
+                    <i class="iconPosition i-calendar"></i>
+                </label>
+            </div>
+
+            <div class="m-faceLibForm f-fl m-right10 f-cfb">
+                <button class="u-button"
+                        ng-click="bcFaceLibLibCtrl.searchLibListByParams()"
+                        translate="DP_CONFIG_COMMON_24"
+                        type="button"
+                ></button>
+            </div>
+
+        </div>
+
+        <div class="m-faceLib-search-top f-cfb">
+            <!--新增-->
+            <div class="u-button f-fl m-right10 faceLib-newCtrl"
+                 ng-click="bcFaceLibLibCtrl.addByParentId()">
+                <i class="i-add icon-add"></i>
+                <i translate="DP_CONFIG_FACELIB_03"></i>
+            </div>
+            <!--删除-->
+            <button class="u-button f-fl m-right10 u-button-blue-6"
+                    type="button"
+                    ng-disabled="bcFaceLibLibCtrl.selectedList.length ===0"
+                    ng-click="bcFaceLibLibCtrl.deleteByIds()"
+                    translate="DP_CONFIG_COMMON_78"></button>
+            <span class="f-fr faceLib-count">
+                {{'DP_CONFIG_FACELIB_28'|translate}}
+                <i class="c-font-orange2" ng-bind="bcFaceLibLibCtrl.tableCurrentCount"></i>
+                 {{'DP_CONFIG_FACELIB_29'|translate}}
+            </span>
+        </div>
+    </div>
+    <div class="m-faceLib-table-head">
+        <ul class="table-tree">
+            <li class="f-cfb">
+                <div class=" tree-th name-width">
+                    <div style="width: 14px;height: 14px;top:12px;border-radius: 2px" class="table-tree-checkboxWrap ">
+                         <span style="margin:0;border:none;border-radius: 0" class="table-tree-checkbox"
+                               ng-class="{'i-checkbox-checked':bcFaceLibLibCtrl.selectedList.length === bcFaceLibLibCtrl.tableCurrentCount,
+                                   'i-checkbox-none':bcFaceLibLibCtrl.selectedList.length !== bcFaceLibLibCtrl.tableCurrentCount
+                                   }"
+                               ng-click="bcFaceLibLibCtrl.clickCheckbox()"
+                         ></span>
+                    </div>
+
+                    <div class="table-tree-txtWidth ">
+                        <span class="tree-th-txt-1" translate="DP_CONFIG_FACELIB_04"></span>
+                    </div>
+                </div>
+
+                <div class="tree-th">
+                    <span class="tree-th-txt-2" translate="DP_CONFIG_FACELIB_41"></span>
+                </div>
+
+                <div class="tree-th num-width">
+                    <span class="tree-th-txt-2" translate="DP_CONFIG_FACELIB_05"></span>
+
+                </div>
+
+                <div class="tree-th ">
+
+                    <span class="tree-th-txt-2" translate="DP_CONFIG_FACELIB_06"></span>
+                </div>
+
+                <div class="tree-th">
+
+                    <span class="tree-th-txt-2" translate="DP_CONFIG_FACELIB_07"></span>
+                </div>
+
+                <div class="tree-th">
+
+                    <span class="tree-th-txt-2" translate="DP_CONFIG_COMMON_34"></span>
+                </div>
+
+                <div class="tree-th">
+
+                    <span class="tree-th-txt-2" translate="DP_CONFIG_COMMON_35"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--ng-scrollbars-->
+    <div class="m-baseconfig-centerFixed faclib-centerFixed" ng-scrollbars style="bottom: 49px;">
+        <div class="tree-table-content"
+             ng-if="bcFaceLibLibCtrl.tBodyList.length>0"
+
+        >
+            <ul class="table-tree" >
+
+
+                <li  class="f-cfb "
+                     ng-repeat="(_index,currentItem) in bcFaceLibLibCtrl.tBodyList"
+                     ng-include="bcFaceLibLibCtrl.faceLibItemTemplUrl"
+                     ng-init="currentData = {currentTrItem:currentItem,parentName:currentItem.JsonUserData.area.Name,childLevel:0}"
+                >
+
+            </ul>
+        </div>
+        <div class="u-scroll-no-data" ng-show="bcFaceLibLibCtrl.tableNoData" translate="DP_CONFIG_COMMON_16"></div>
+    </div>
+
+    <div class="m-baseconfig-bottomFixed">
+        <util-paging
+                page-params="bcFaceLibLibCtrl.pageParams"
+                prev-page="bcFaceLibLibCtrl.changePage(num)"
+                next-page="bcFaceLibLibCtrl.changePage(num)"
+                go-page="bcFaceLibLibCtrl.changePage(num)"
+                page-size="bcFaceLibLibCtrl.changePageSize(num)"
+        ></util-paging>
+    </div>
+</div>

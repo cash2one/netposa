@@ -1,0 +1,52 @@
+{
+	"mapOpts": {
+		"minZoom": 8,
+		"maxZoom": 18,
+		"centerPoint": [
+			114.0110895,
+			22.5489925
+		],
+		"restrictedExtent": [
+			113.68352,
+			22.240159,
+			114.658659,
+			22.857826
+		],
+		"projection": "EPSG:4326"
+	},
+	"vectorLayer": [
+		{
+			"layerName": "shenzhenMap",
+			"layerType": "NPMapLib.Layers.NPLayer",
+			"layerOpt": {
+				"url": "http://172.17.3.51:8888/netposa/NPGIS/services/shenzhenMap/MapServer",
+				"layerInfo": {
+					"centerPoint": [
+						114.0110895,
+						22.5489925
+					],
+					"fullExtent": [
+						113.68352,
+						22.240159,
+						114.658659,
+						22.857826
+					],
+					"defaultZoom": 14,
+					"layerType": "tiandi",
+					"maxZoom": 18,
+					"minZoom": 8,
+					"projection": "4326",
+					"restrictedExtent": [
+						113.68352,
+						22.240159,
+						114.658659,
+						22.857826
+					],
+					"type": "png",
+					"zoomLevelSequence": "2"
+				}
+			}
+		}
+	],
+	"sattilateLayer": []
+}

@@ -1,0 +1,47 @@
+<div class="analysis-camera-pop g-pop f-cb"  ng-controller="SelectAreaPupup as SelectArea">
+    <div class="camera-tree-area f-fl">
+        <div class="tree-search f-pr">
+            <input type="text" class="ipt" ng-model="SelectArea.searchStr"  ng-change="SelectArea.onChangeSearch()">
+            <a href="javascript:" class="u-input-search tree-search-btn"></a>
+        </div>
+        <div class="tree-area-content">
+            <util-tree tree-id="{{SelectArea.treeParams.treeId}}"
+                       tree-datas="SelectArea.treeParams.treeDatas"
+                       check-enable="true"
+                       on-check="SelectArea.treeParams.onCheck(event, treeId, treeNode)"
+                       single-select="true"
+                       edit-enable="false"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg=""
+                       search-no-data-msg=""
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-expand-level="0"
+                       tree-init-complete = "SelectArea.addCache()"
+            ></util-tree>
+        </div>
+    </div>
+    <div class="sel-area f-fl">
+        <div class="area-header f-cb">
+            <span>已选 <span>{{SelectArea.selNum}}</span></span>
+            <span class="f-fr c-font-blue f-csp" ng-click="SelectArea.clearAll()">清除所有</span>
+        </div>
+        <div class="sel-content f-cb">
+            <div class="camera-item f-fl f-pr" ng-repeat="node in SelectArea.cacheSelFaceLib">{{node.Name}}
+                <i class="u-close f-abs f-csp" ng-click="SelectArea.removeChecked(node)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="analysis-camera-pop-action">
+        <a href="javascript:" class="u-button u-button-blue-1  pop-btn-sty" ng-click="SelectArea.saveFacelib()">
+            保存
+        </a>
+        <a href="javascript:" class="u-button u-button-blue-2  pop-btn-sty" ng-click="SelectArea.cancelFacelibPop()">
+            取消
+        </a>
+
+    </div>
+</div>

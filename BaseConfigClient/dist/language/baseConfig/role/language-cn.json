@@ -1,0 +1,32 @@
+{
+  "note": "/** 编码规则**/",
+  "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+  "note": "/***************************************** 基础控件  start ****************************************************/",
+
+  "note": "/*******左侧操作*********/",
+  "DP_CONFIG_ROLE_01": "请输入关键字",
+  "DP_CONFIG_ROLE_02": "共计",
+  "DP_CONFIG_ROLE_03": "条记录",
+  "DP_CONFIG_ROLE_04": "新建",
+
+  "note": "/*******右侧操作*********/", 
+   "DP_CONFIG_ROLE_05": "基础配置",
+   "DP_CONFIG_ROLE_06": "角色管理",
+   "DP_CONFIG_ROLE_07": "角色名称",
+   "DP_CONFIG_ROLE_08": "导入角色模板",
+   "DP_CONFIG_ROLE_09": "请输入角色名称",
+   "DP_CONFIG_ROLE_10": "功能权限",
+   "DP_CONFIG_ROLE_11": "设备权限",
+   "DP_CONFIG_ROLE_12": "人像库权限",
+
+    "note": "/*******设备权限*********/", 
+     "DP_CONFIG_ROLE_13": "设备资源列表",
+     "DP_CONFIG_ROLE_14": "请输入摄像机关键字",
+     "DP_CONFIG_ROLE_15": "已选设备列表",
+     "DP_CONFIG_ROLE_16": "已选",
+     "DP_CONFIG_ROLE_17": "清空所有",
+
+  "note": "/*******input输入框placeholder*********/", 
+
+     "DP_CONFIG_ROLE_18": "请输入角色名称"
+}

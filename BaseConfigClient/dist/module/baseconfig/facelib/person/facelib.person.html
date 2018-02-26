@@ -1,0 +1,160 @@
+<div class="right-content m-faceLib-person">
+
+    <div class="m-baseconfig-topFixed facelib-person-topFixed">
+
+        <ol class="m-route f-cfb">
+            <li translate="DP_CONFIG_FACELIB_35"></li>
+            <li class="route-separate">/</li>
+            <li >
+                <a translate="DP_CONFIG_FACELIB_36" href="javascript:;"
+                   ng-click="bcFaceLibPersonCtrl.goBackToFaceLibView()"></a>
+            </li>
+            <li class="route-separate">/</li>
+            <li translate="DP_CONFIG_FACELIB_33"></li>
+        </ol>
+
+        <div class="m-facelib-person-info">
+
+            <div class="person-info-top f-cfb">
+                <div class="info-top-left f-fl f-cfb">
+                    <span class="info-t-left-title f-fl" ng-bind="bcFaceLibPersonCtrl.currentLib.Name"></span>
+
+                    <span class="info-t-left-txt f-fl">/</span>
+                    <span class="info-t-left-txt f-fl" ng-bind="bcFaceLibPersonCtrl.dataTotal || bcFaceLibPersonCtrl.currentLib.PersonCount || '0'"></span>
+
+                    <span class="info-t-left-txt f-fl" translate="DP_CONFIG_FACELIB_32"></span>
+                </div>
+
+                <div class="info-top-right f-fr" ng-if="bcFaceLibPersonCtrl.constLibItem !== bcFaceLibPersonCtrl.currentLib.ID">
+                    <div class="info-t-right-icon m-right10" ng-if="'FaceLibConfig.Update' | checkAuthority">
+                        <i class="icon-btn i-edit "
+                           title="{{'DP_CONFIG_FACELIB_37'|translate}}"
+                           ng-click="bcFaceLibPersonCtrl.updateFaceLib()"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="person-info-bottom">
+
+                <div class="info-bottom-inputs f-cfb">
+                    <div class="info-bom-input f-fl">
+                        <span class="info-bom-input-title" translate="DP_CONFIG_FACELIB_09"></span>
+                        <i ng-bind="bcFaceLibPersonCtrl.currentLib.ParentModel.Name"></i>
+                    </div>
+
+                    <div class="info-bom-input f-fl">
+                        <span class="info-bom-input-title" translate="DP_CONFIG_FACELIB_07" translate-values="{value:':'}"></span>
+                        <i ng-bind="bcFaceLibPersonCtrl.currentLib.CreateTime"></i>
+                    </div>
+
+                    <div class="info-bom-input f-fl">
+                        <span class="info-bom-input-title"  translate="DP_CONFIG_FACELIB_30" translate-values="{value:':'}"></span>
+                        <i ng-bind="bcFaceLibPersonCtrl.currentLib.Memo"></i>
+                    </div>
+                </div>
+
+                <div class="info-bottom-btns f-cfb">
+                    <div class="info-bom-btn f-fl" translate="DP_CONFIG_FACELIB_38" translate-values="{value:':'}">
+                    </div>
+
+                    <div class="u-button u-button-blue-7 f-fl m-right10">
+                        <i translate="DP_CONFIG_FACELIB_11"></i>
+                    </div>
+
+                    <div class="u-button u-button-blue-7 f-fl m-right10">
+                        <i translate="DP_CONFIG_FACELIB_12"></i>
+                    </div>
+
+                    <div class="u-button u-button-blue-7 f-fl m-right10">
+                        <i translate="DP_CONFIG_FACELIB_13"></i>
+                    </div>
+
+                    <div class="u-button u-button-blue-7 f-fl m-right10">
+                        <i translate="DP_CONFIG_FACELIB_14"></i>
+                    </div>
+
+                    <div class="info-bom-btn-add f-fl m-right10">
+                       <i class="info-bom-btn-addIcon i-gray-add"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--人像库各页面可复用-->
+        <div class="m-faceLib-search-top f-cfb">
+            <div class="u-button f-fl m-right10 faceLib-newCtrl"
+                 ng-click="bcFaceLibPersonCtrl.openUpdatePersonModel()">
+                <i class="i-add icon-add"></i>
+                <i translate="DP_CONFIG_FACELIB_15"></i>
+            </div>
+
+            <button class="u-button f-fl m-right10 "
+                    translate="DP_CONFIG_FACELIB_16"></button>
+
+            <button class="u-button f-fl m-right10 "
+                     translate="DP_CONFIG_FACELIB_40"></button>
+
+            <button class="u-button f-fl m-right10 u-button-blue-6"
+                    ng-if="bcFaceLibPersonCtrl.constLibItem !== bcFaceLibPersonCtrl.currentLib.ID"
+                    ng-disabled="bcFaceLibPersonCtrl.isSelectNone"
+                    ng-click="bcFaceLibPersonCtrl.deleteByIds()" translate="DP_CONFIG_FACELIB_31"></button>
+
+            <button class="u-button f-fl m-right10 u-button-blue-4"
+                    translate="DP_CONFIG_FACELIB_39"></button>
+
+            <div class="newAddrecord f-fr m-right10">
+                <span class="newAddrecord-txt" translate="DP_CONFIG_FACELIB_28"></span>
+                <span class="newAddrecord-count" ng-bind="bcFaceLibPersonCtrl.dataTotal"></span>
+                <span class="newAddrecord-txt" translate="DP_CONFIG_FACELIB_29"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="m-baseconfig-centerFixed facelib-person-centerFixed">
+
+            <div class="facelib-person-list f-cfb">
+                <div class="facelib-person-item"
+                     ng-repeat="(d_index,d_item) in bcFaceLibPersonCtrl.tBodyList"
+                >
+                    <div class="item-content">
+
+                        <div class="item-img" ng-click="bcFaceLibPersonCtrl.detailShow(d_item)">
+
+                            <img util-img-ctrl-size ng-src="{{d_item.FacePicPath | getValueFromListByIndex:0 | imageUrlFilter}}">
+                        </div>
+
+                        <i class="btn-checkbox"
+                           ng-click="bcFaceLibPersonCtrl.changeSelected(d_index)"
+                           ng-class = "{'i-checkbox-checked':bcFaceLibPersonCtrl.selectedList[d_index],
+                                      'i-checkbox-none':!bcFaceLibPersonCtrl.selectedList[d_index]
+                                      }"
+                        ></i>
+
+                        <div class="f-cfb oper-btns" ng-if="bcFaceLibPersonCtrl.constLibItem !== bcFaceLibPersonCtrl.currentLib.ID">
+                            <i class="icon-btn i-edit-white z-gray"
+                               ng-click="bcFaceLibPersonCtrl.update(d_item)"
+                            ></i>
+                            <i class="icon-btn i-delete-white z-gray"
+                               ng-click="bcFaceLibPersonCtrl.deleteById(d_item)"
+                            ></i>
+                        </div>
+                    </div>
+                    <div class="item-title" ng-bind="d_item.Name ||('未知' |translate)" ></div>
+                </div>
+            </div>
+        <div class="u-table-no-data" ng-show="bcFaceLibPersonCtrl.tableNoData" translate="DP_CONFIG_COMMON_16">
+
+        </div>
+    </div>
+    <div class="m-baseconfig-bottomFixed">
+        <util-paging
+                page-params="bcFaceLibPersonCtrl.pageParams"
+                prev-page="bcFaceLibPersonCtrl.goPrevPage(num)"
+                next-page="bcFaceLibPersonCtrl.goNextPage(num)"
+                go-page="bcFaceLibPersonCtrl.goPage(num)"
+                page-size="bcFaceLibPersonCtrl.changePageSize(num)"
+        ></util-paging>
+    </div>
+</div>

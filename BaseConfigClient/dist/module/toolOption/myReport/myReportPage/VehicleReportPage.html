@@ -1,0 +1,36 @@
+<div class="report-list f-cfb" style="width:410px">
+    <div class="face-img-box">
+        <div class="face-img img-tool-ctn">
+            <div class="report-img-tool">
+                <div class="tool-background"></div>
+                <div class="icon-ctn">
+                    <!-- 播放历史视频未实现 -->
+                    <!-- <i class="icon-ctx2 report-icon-fullplay"></i> -->
+                    <i class="icon-ctx2 report-icon-fullscreen" ng-click="myReportCtrl.fullScreen((alarmLogResult.AlarmLog.JsonUserData.detail.imageURLs|imageUrlFilter), $event)"></i>
+                </div>
+            </div>
+            <img util-img-center ng-src="{{alarmLogResult.AlarmLog.JsonUserData.detail.imageURLs|imageUrlFilter}}" />
+        </div>
+        <div class="face-content">
+            <span class="licence">{{alarmLogResult.AlarmLog.JsonUserData.alarmObjName}}</span>
+            <i class="icon report-icon1 f-csp" ng-class="{'z-uncollect': !alarmLogResult.Collected}" ng-click="myReportCtrl.attention(alarmLogResult)"></i>
+        </div>
+    </div>
+    <div class="report-content">
+        <div class="list">
+            <i class="address-icon"></i>
+            <p>{{alarmLogResult.AreaName}}</p>
+        </div>
+        <div class="list-f">
+            <span class="valid">未知</span>
+            <p>
+                <span class="title">时&emsp;间：</span>
+                <span>{{alarmLogResult.AlarmLog.JsonUserData.detail.passTime}}</span>
+            </p>
+            <p>
+                <span class="title">布控人：</span>
+                <span>{{alarmLogResult.AlarmLog.JsonUserData.comment}}</span>
+            </p>
+        </div>
+    </div>
+</div>

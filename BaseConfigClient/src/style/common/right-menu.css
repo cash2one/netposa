@@ -1,0 +1,37 @@
+.u-right-menu{
+    position: absolute;
+    left: -1000px;
+    top: -1000px;
+    background-color: #66ccff;
+}
+
+.u-right-menu .menu-ct{
+    display: block;
+    width: 160px;
+    height: 28px;
+    zoom:1;
+    cursor: pointer;
+}
+.u-right-menu .menu-ct:after{
+    display:block;
+    content:'clear';
+    clear:both;
+    line-height:0;
+    visibility:hidden;
+}
+.u-right-menu .menu-ct .menu-icon{
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+.u-right-menu .menu-ct .menu-text{
+    float: left;
+    width: 140px;
+    height: 28px;
+    line-height: 28px;
+    text-align: left;
+    overflow:hidden;
+    word-wrap:normal;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}

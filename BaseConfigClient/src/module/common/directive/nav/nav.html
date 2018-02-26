@@ -1,0 +1,13 @@
+<div>
+    <div class="u-accordion-header f-usn" ng-click="accordion.isShow = !accordion.isShow">
+        <span class="header-text" ng-bind="accordion.title"></span>
+    </div>
+    <div class="u-accordion-content">
+        <a class="content f-cfb" ng-if="item.children && item.children.length>0" ui-sref-active="content-selected" ng-repeat="item in accordion.expanderItem.children" ui-sref="item.key" ui-sref-opts="{reload: true}">
+            <span class="content-icon-cntr">
+                <i class="content-icon {{'i-'+item.icon}}"></i>
+            </span>
+            <span class="content-text" ng-bind="item.moduleName"></span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,260 @@
+html, body{
+	min-width: 980px;
+	background-color: #f8f9fa;
+}
+.log-content-container{
+	width: 980px;
+    margin: 0 auto;
+}
+.content-wrap{
+}
+
+.g-log-main{
+	min-height: 600px;
+}
+/*查询内容页面*/
+.content-container {
+
+}
+.m-search-condition{
+	
+}
+.m-search-condition .condition-separate{
+	height: 1px;
+	background: #d0d0d0;
+	overflow: hidden;
+	margin: 0 20px 0 0;
+}
+.m-search-condition .condition-list{
+	color: #666;
+	padding: 14px 0;
+	position: relative;
+}
+.m-search-condition .condition-no-padding{
+	padding: 0;
+}
+.m-search-condition .condition-list .channel-list{
+	width:100%;
+	height:37px;
+	position: relative;
+}
+.m-search-condition .condition-list .channel-list-1{
+	margin-right: 130px;
+}
+.m-search-condition .condition-list .channel-list-2{
+	float: right;
+	margin-left: -300px;
+	position: relative;
+}
+.m-search-condition .channel-list .data-remote{
+	border: 1px solid #cccccc;
+    border-right: none;
+    border-radius: 0;
+    color: #8a8a8a;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+    width: 100%;
+    min-height: 20px;
+    text-indent: 10px;
+    padding: 7px 0px 7px 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+}
+.m-search-condition .channel-list .data-remote:hover{
+	-webkit-box-shadow: none;
+	        box-shadow: none;	
+}
+.m-search-condition .channel-list .data-remote:focus{
+	border: 1px solid #f9c723;
+}
+.m-search-condition .event-type-title,.m-search-condition .event-time-title{
+	float: left;
+	text-align: left;
+	margin-right: 5px;
+}
+.m-search-condition .event-type-content, .m-search-condition .event-time-content{
+	float: left;
+	padding-top: 3px;
+}
+.g-main-content {
+	margin-top: 2px;
+	min-height: 255px;
+	position: relative;
+}
+/*-通行日志-报警日志-人员日志-*/
+.m-passlog-content {
+	margin: 3px 0;
+	position: relative;
+	width: 978px;
+	background: #fff;
+}
+.m-passlog-content .no-data-msg{
+    padding: 15% 0;
+    font-size: 20px;
+    text-align: center;
+    display: none;
+    border: 1px solid #dce0e2;
+    border-top: none;
+    width: 100%;
+}
+.m-passlog-content .no-data-msg.show{
+	display: block;
+	color: #666;
+}
+/*grid内容样式 开始*/
+.m-passlog-content .passlog-list{
+	padding: 24px 0;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+    white-space:normal;
+    word-wrap:break-word;
+    word-break:break-all;
+}
+.m-passlog-content .passlog-list .icon{
+	width: 16px;
+	height: 16px;
+	margin: 0 auto;
+	display: block;
+}
+.m-passlog-content .passlog-list .access{
+	background: url(../../../images/icon/pass.png) no-repeat;
+}
+.m-passlog-content .passlog-list .not-access{
+	background: url(../../../images/icon/nopass.png) no-repeat;
+}
+.m-passlog-content .passlog-list-red{
+	color: #f64644;
+}
+.m-passlog-content .popup{
+	cursor: pointer;
+}
+.m-passlog-content .popup:hover{
+	text-decoration: underline;
+}
+
+.m-passlog-content .passlog-image{
+	padding: 10px 0;
+}
+/*表格内容样式结束*/
+/*改变表格样式,需要放在最后*/
+/*修改用户管理表格样式*/
+.m-passlog-content .ui-widget-content .ui-state-default{
+	border: 1px solid #e6e6e6;
+	overflow: hidden;
+	background: #eee; 
+}
+.m-passlog-content .ui-jqgrid .ui-jqgrid-sortable{
+	height: auto;
+    padding: 10px 0;
+}
+.m-passlog-content .ui-jqgrid tr.ui-row-ltr td{
+	border:none;
+	border-bottom: 1px solid #dce0e2;
+	padding: 0;
+}
+.m-passlog-content .ui-th-ltr, .m-passlog-content .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr{
+	border-right: 0 none;
+}
+.m-passlog-content .ui-state-default .ui-icon{
+	background-image: url("../../../libs/jqueryui/images/ui-icons_222222_256x240.png");
+}
+.m-passlog-content .ui-state-hover .ui-icon,.m-passlog-content .ui-state-focus .ui-icon{
+	background-image: url("../../../libs/jqueryui/images/ui-icons_222222_256x240.png");
+}
+.m-passlog-content .ui-widget-content .ui-state-active{
+	border: 1px solid #e6e6e6;
+	overflow: hidden;
+	background: #eee;
+	font-weight: bold;
+	color: #eb8f00;	
+}
+
+/*mobile-search*/
+.m-mobile-content .mobile-list{
+	border: 1px solid #f4f4f4;
+	float: left;
+	height: 155px;
+	margin: 4px;
+	padding: 3px;
+	position: relative;
+	width: 122px;
+}
+.m-mobile-content .mobile-list .mobile-list-image{
+	padding: 8px 0px;
+}
+.m-mobile-content .mobile-list .list-font{
+	font-size: 12px;
+	float: left;
+}
+.m-mobile-content .dataGrid-title{
+	background: #eeeeee;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	height: 44px;
+	padding-bottom: 1px;
+}
+.m-mobile-content .dataGrid-title span{
+	margin: 0 70px 0 10px;
+	position: relative;
+	top: 15px;
+}
+.m-mobile-content .dataGrid-title .last-title{
+	float: right;
+	margin: 0 30px;
+}
+.m-mobile-content .dataGrid-title a{
+	text-decoration: underline;
+}
+
+/*隐藏表格首行 */
+.m-mobile-content .ui-widget-content .ui-state-default{
+	display: none;
+}
+
+/*mobile-search end*/
+
+.u-vertical-separate{
+	float: left;
+	text-align: center;
+	padding: 10px 20px 0 15px;
+	height: 16px;
+	line-height: 16px;
+	color: #dce0e2;
+}
+
+.u-vertical-separate-small{
+	padding: 10px 2px 0 6px;
+}
+
+.m-search-condition .condition-list .condition-left{
+	float: left;
+	width: 54%;
+}
+
+.m-search-condition .condition-list .condition-left-big{
+	float: left;
+	width: 48%;
+}
+
+.m-search-condition .condition-list .condition-right{
+	float: right;
+	text-align: right;
+	width: 46%;
+}
+
+.m-search-condition .condition-list .condition-right-big{
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+
+/*公共定义图片显示尺寸样式，命名参考人脸系统*/
+.fn-106-130 {
+	width: 106px;
+	height: 130px;
+}

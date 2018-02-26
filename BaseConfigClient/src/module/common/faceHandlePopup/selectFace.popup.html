@@ -1,0 +1,7 @@
+<div class="m-screenshot-wrap" ng-controller="selectFacePopupController as selectFacePopupCtrl">
+    <img class="screenshot-img imgWidth" ng-src="{{selectFacePopupCtrl.screenshotImgUrl}}" >
+
+    <div class="selectFace-box"
+         ng-repeat="item in selectFacePopupCtrl.data.faceInfo"
+         ng-click="selectFacePopupCtrl.selectFaceFun(item.rect)"></div>
+</div>

@@ -1,0 +1,63 @@
+<div class="search-device-con" ng-controller="personSearchPageController as personSearchPageCtrl" ng-show="quickSearchCtrl.faceResult.data.length&&!QuickCtrl.queryStatus">
+    <ul class="media-list face" ng-scrollbars>
+        <li class="media" ng-repeat="item in quickSearchCtrl.faceResult.data">
+            <div class="icon-ground-margin">
+                <span class="icon-margin">
+                    <i class="icon_rankPosition">{{$index+1}}</i>
+                    <span class="similarity-box" ng-if="item.Score">{{item.Score|roundNumber}}%</span>
+                    <span class="operate">
+                        <i class="icon_collect" ng-class="{'active': item.collectStatus}" ng-click="personSearchPageCtrl.clickCollect(item)">收藏</i>
+                        <i class="icon_analysis">
+                            分析
+                            <ul class="analysis-ul" ng-if="personSearchPageCtrl.checkAnalysis">
+                                <li class="analysis-li" ng-if="personSearchPageCtrl.checkFaceTrack" ng-click="personSearchPageCtrl.clickAnalysis(item, personSearchPageCtrl.analysisGoTo.Track.key)">{{personSearchPageCtrl.analysisGoTo.Track.name}}</li>
+                                <li class="analysis-li" ng-if="personSearchPageCtrl.checkAccompanyingAnalysis" ng-click="personSearchPageCtrl.clickAnalysis(item, personSearchPageCtrl.analysisGoTo.Accompanying.key)">{{personSearchPageCtrl.analysisGoTo.Accompanying.name}}</li>
+                                <li class="analysis-li" ng-if="personSearchPageCtrl.checkFrequencyAnalysis" ng-click="personSearchPageCtrl.clickAnalysis(item, personSearchPageCtrl.analysisGoTo.Frequency.key)">{{personSearchPageCtrl.analysisGoTo.Frequency.name}}</li>
+                                <li class="analysis-li" ng-click="personSearchPageCtrl.clickAnalysis(item, personSearchPageCtrl.analysisGoTo.More.key)">{{personSearchPageCtrl.analysisGoTo.More.name}}</li>
+                            </ul>
+                        </i>
+                        <i class="icon_dispatched" ng-class="{'active': item.surveillanceStatus}" ng-click="personSearchPageCtrl.clickSurveillance(item)">布控</i>
+                    </span>
+                </span>
+            </div>
+            <div class="media-next">
+                <div class="media-left" ng-click="personSearchPageCtrl.fullScreen((item.AccessLog.ScenePath|imageUrlFilter))" ng-drag="true" ng-drag-data="item" data-allow-transform="false">
+                    <img class="media-image" layer-src="{{item.AccessLog.FacePath|imageUrlFilter }}" ng-src="{{ item.AccessLog.FacePath|imageUrlFilter }}" />
+                </div>
+                <div class="media-right" ng-click="personSearchPageCtrl.detailPopup($index, quickSearchCtrl.faceResult.data)">
+                    <ul>
+                        <li class="time">
+                            <div class="name"></div>
+                            <div class="text">{{ item.AccessLog.LogTime }}</div>
+                        </li>
+                        <li class="address">
+                            <div class="name"></div>
+                            <div class="text">{{ item.deviceInfo.Name }}</div>
+                        </li>
+                        <li class="feature">
+                            <div class="name"></div>
+                            <div class="text">{{ item.AccessLog.Glass | glassFilter }} {{ item.AccessLog.Mask | maskFilter }}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="footer-page">
+        <div class="footer-page-con">
+            <div class="total">
+                共<i class="number"> {{quickSearchCtrl.faceResult.pageParams.totalCount}} </i>条记录
+            </div>
+            <util-paging
+                    page-params="quickSearchCtrl.faceResult.pageParams"
+                    prev-page="quickSearchCtrl.changePage(num, 'faceResult')"
+                    next-page="quickSearchCtrl.changePage(num, 'faceResult')"
+                    go-page="quickSearchCtrl.changePage(num, 'faceResult')"
+                    hide-size="quickSearchCtrl.hideSize"
+                    hide-gopage="quickSearchCtrl.hideGopage"
+            ></util-paging>
+        </div>
+    </div>
+</div>
+<div class="m-noMessage" ng-show="!quickSearchCtrl.faceResult.data.length&&!QuickCtrl.queryStatus">暂无数据</div>
+<div class="loading" ng-if="QuickCtrl.queryStatus"></div>

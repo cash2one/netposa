@@ -1,0 +1,104 @@
+.tree-table-content{
+
+}
+.tree-table{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tree-table-tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+
+}
+
+
+.tree-table-tbody .tree-table-tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    height: 39px;
+    line-height: 39px;
+    border-bottom: solid 1px #e1e1e1;
+    background: #fff;
+}
+
+.tree-table-tbody .tree-table-body-child{
+    /*margin-left: 20px;*/
+}
+
+
+.tree-table-tbody .tree-table-tr .tree-table-td{
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 2.2;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    padding: 5px 10px;
+    /*对齐样式暂用。。。*/
+    width: 12.5%;
+}
+
+
+/*TODO 测试 看列， 样式 对齐后去掉*/
+.tree-table-tbody .tree-table-tr .tree-table-td:nth-child(2n){
+    background-color: #eaf6fe;
+}
+.tree-table-tbody .tree-table-tr .tree-table-td:nth-child(2n+1){
+
+}
+
+.tree-table-first-tbody{
+    border:solid 1px #269dfa;
+    border-top: solid 1px #269dfa;
+    border-left: solid 1px #269dfa;
+}
+.tree-table-tbody .tree-table-first-tbody:nth-child(2n){
+    color:red
+}
+.tree-table-tbody .tree-table-first-tbody:nth-child(2n+1){
+    color:blue
+}
+/*--------------------------*/
+
+
+.tree-table-tbody .opera-btn {
+    vertical-align: middle;
+}
+
+.tree-table-tbody .opera-btn i {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.tree-table-tbody .icon-btn{
+    float: left;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.tree-table-td .tree-table-check-label{
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 700;
+    float: left;
+    width:15px;
+    height:15px;
+    border:1px solid #666;
+    margin: 7.5px 5px 0 10px;
+    border-radius:2px;
+    text-align:center;
+    line-height: 12px;
+    color: #333;
+}

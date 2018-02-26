@@ -1,0 +1,13 @@
+<!-- update by Zyh 2017 06 03-->
+
+<div class="g-dynamicControl" ui-view="dynamiccontrol" >
+    <!-- 左侧边栏 -->
+    <div ng-include="dynamicControlCtrl.leftHtmlUrl">
+    </div>
+    <!-- 中间区域 -->
+    <div ng-include="dynamicControlCtrl.centerHtmlUrl">
+    </div>
+    <!-- 右侧边栏 -->
+    <div ng-include="dynamicControlCtrl.rightHtmlUrl" >
+    </div>
+</div>

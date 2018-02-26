@@ -1,0 +1,45 @@
+{
+    "tooltip": {
+        "trigger": "item",
+        "formatter": "{a} <br/>{b}: {c} ({d}%)"
+    },
+    "color":["#5793F3","#FFB401","#F0F0F0","#2FCB76","#333333"],
+    "legend": {
+        "orient": "horizontal",
+        "itemWidth":10,
+        "itemHeight":10,
+        "x": "left",
+        "data":["轿车","客车","货车","面包车","皮卡"]
+    },
+    "series": [
+        {
+            "type":"pie",
+            "selectedMode": "single",
+            "radius": [0, "30%"],
+
+            "label": {
+                "normal": {
+                    "position": "inner"
+                }
+            },
+            "labelLine": {
+                "normal": {
+                    "show": false
+                }
+            }
+        },
+        {
+            "name":"访问来源",
+            "type":"pie",
+            "radius": ["30%", "55%"],
+
+            "data":[
+                {"value":3489, "name":"轿车"},
+                {"value":5890, "name":"客车"},
+                {"value":3000, "name":"货车"},
+                {"value":28290, "name":"面包车"},
+                {"value":32000, "name":"皮卡"}
+            ]
+        }
+    ]
+}

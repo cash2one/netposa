@@ -1,0 +1,143 @@
+<!-- 2017/04/24 -->
+<div class="m-map f-cfb bd-map-resource">
+    <div class="right-content">
+
+
+        <div class="header-tips">
+            <span>数据资源</span> / <span class="active">地图资源</span>
+        </div>
+
+        <!--导航切换-->
+        <div class="m-left-tab">
+                <span ng-class="{'z-select': mapResourceCtrl.selectIndex === 1}"
+                      ng-click="mapResourceCtrl.setSelectTab(1)">
+                    {{'DP_CONFIG_MAPRESOURCE_03' | translate}}
+                </span>
+            <span ng-class="{'z-select': mapResourceCtrl.selectIndex === 2}" ng-click="mapResourceCtrl.setSelectTab(2)">
+                    {{'DP_CONFIG_MAPRESOURCE_04'|translate}}
+                </span>
+            <span ng-class="{'z-select': mapResourceCtrl.selectIndex === 3}" ng-click="mapResourceCtrl.setSelectTab(3)">
+                    {{'DP_CONFIG_MAPRESOURCE_05'|translate}}
+                </span>
+        </div>
+
+        <div class="m-map-wrap">
+            <!--地图服务-->
+            <div ng-if="mapResourceCtrl.selectIndex === 1" class="map-layer-content map-service">
+                <form name="mapResourceEditForm" novalidate>
+                    <div class="pdp-form">
+                        <span class="form-title"><i
+                                style="color:red">*</i>{{'DP_CONFIG_MAPRESOURCE_08'|translate}}</span>
+                        <input type="text" valid-nonempty="{{'DP_CONFIG_COMMON_03'|translate}}"
+                               ng-model="mapResourceCtrl.mapServerInfo.layerName" placeholder="请输入名称"/>
+                    </div>
+
+
+                    <div class="pdp-form">
+                        <span class="form-title"><i
+                                style="color:red">*</i>{{'DP_CONFIG_MAPRESOURCE_09'|translate}}</span>
+                        <input type="text" valid-nonempty="{{'DP_CONFIG_MAPRESOURCE_09'|translate}}"
+                               ng-model="mapResourceCtrl.mapServerInfo.url" placeholder="请输入服务地址"/>
+                    </div>
+                    <div class="pdp-form">
+                        <span class="form-title"><i
+                                style="color:red">*</i>{{'DP_CONFIG_MAPRESOURCE_10'|translate}}</span>
+                        <input type="text" valid-nonempty="{{'DP_CONFIG_MAPRESOURCE_10'|translate}}"
+                               ng-model="mapResourceCtrl.mapServerInfo.projection" placeholder="请输入地图投影"/>
+                    </div>
+                    <div class="pdp-form pdp-form-write-more">
+                        <span class="form-title"><i
+                                style="color:red">*</i>{{'DP_CONFIG_MAPRESOURCE_11'|translate}}</span>
+
+                        <div class="more-layer">
+                            <input type="text" valid-nonempty="{{'DP_CONFIG_MAPRESOURCE_12'|translate}}"
+                                   placeholder="请输入经度" valid-m-point-lon
+                                   ng-model="mapResourceCtrl.mapServerInfo.centerPoint.Lon"/>
+
+                            <input type="text" valid-nonempty="{{'DP_CONFIG_MAPRESOURCE_13'|translate}}"
+                                   placeholder="请输入纬度" valid-m-point-lat 
+                                   ng-model="mapResourceCtrl.mapServerInfo.centerPoint.Lat"/>
+                        </div>
+                    </div>
+
+                    <div class="pdp-form pdp-form-write-more">
+                        <span class="form-title"><i
+                                style="color:red">*</i>{{'DP_CONFIG_MAPRESOURCE_14'|translate}}</span>
+                        <div class="more-layer">
+                            <input type="text" valid-nonempty="{{'请输入最小经度'|translate}}"
+                                   placeholder="请输入最小经度"
+                                   ng-model="mapResourceCtrl.mapServerInfo.restrictedExtent.minLon"/>
+
+                            <input type="text" valid-nonempty="{{'请输入最小纬度'|translate}}"
+                                   placeholder="请输入最小纬度"
+                                   ng-model="mapResourceCtrl.mapServerInfo.restrictedExtent.minLat"/>
+                        </div>
+                        <div class="more-layer">
+                            <input type="text" valid-nonempty="{{'请输入最大经度'|translate}}"
+                                   placeholder="请输入最大经度"
+                                   ng-model="mapResourceCtrl.mapServerInfo.restrictedExtent.manLon"/>
+
+                            <input type="text" valid-nonempty="{{'请输入最大纬度'|translate}}"
+                                   placeholder="请输入最大纬度"
+                                   ng-model="mapResourceCtrl.mapServerInfo.restrictedExtent.manLat"/>
+                        </div>
+
+                    </div>
+
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title" translate="DP_CONFIG_MAPRESOURCE_15"></span>
+                        <select class="u-select"
+                                ng-options="list.id as list.name for list in mapResourceCtrl.floorLists"
+                                ng-model="mapResourceCtrl.mapServerInfo.minZoom">
+                            <option value="">请选择最小缩放层级</option>
+                        </select>
+
+                    </div>
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title"></span>
+                        <select class="u-select" class="u-select"
+                                ng-options="list.id as list.name for list in mapResourceCtrl.floorLists"
+                                ng-model="mapResourceCtrl.mapServerInfo.maxZoom">
+                            <option value="">请选择最大缩放层级</option>
+                        </select>
+                    </div>
+                    <div class="pdp-form pdp-form-select">
+                        <span class="form-title" translate="DP_CONFIG_MAPRESOURCE_16"></span>
+                        <select class="u-select"
+                                ng-options="list.id as list.name for list in mapResourceCtrl.floorLists"
+                                ng-model="mapResourceCtrl.mapServerInfo.defaultZoom">
+                            <option value="">请选择默认显示缩放层级</option>
+                        </select>
+                    </div>
+                    <div class="pdp-form pdp-form-textarea">
+                        <span class="form-title" translate="DP_CONFIG_MAPRESOURCE_17"></span>
+                        <span class="text-area-layer">
+                                <textarea class="textarea-description" placeholder="请输入描述"
+                                          ng-model="mapResourceCtrl.mapServerInfo.desc"></textarea>
+                            </span>
+
+                    </div>
+
+                    <div class="form f-cfb form-wrap">
+                        <button class="u-button m-right15 u-button-blue-1 f-fr button-save"
+                                ng-click="mapResourceCtrl.save()" translate="保存"></button>
+                    </div>
+                </form>
+            </div>
+            <!-- 图层管理 -->
+            <div ng-if="mapResourceCtrl.selectIndex === 2"
+                 ng-include="'/module/baseconfig/map-resource/maplayer.html'" class="map-layer-content">
+
+
+            </div>
+            <!-- 地图布点 -->
+            <div ng-if="mapResourceCtrl.selectIndex === 3" class="map-layer-content map-setPoint"
+                 ng-include="'/module/baseconfig/map-resource/mappoint.html'">
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,12 @@
+.case-title{
+    margin-right: 20px;
+}
+.case-centerFixed{
+    top: 227px;
+}
+.case-rmSearchData{
+    color: #53aef4;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer
+}

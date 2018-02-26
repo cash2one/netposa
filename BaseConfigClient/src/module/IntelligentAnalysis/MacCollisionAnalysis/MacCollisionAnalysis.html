@@ -1,0 +1,262 @@
+<div class="analysis-layout mac-collision-analysis">
+    <!--表单区域-->
+    <div class="analysis-form" ng-class="{'active':macCollisionCtrl.showForm}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title mac-crash-title">MAC碰撞</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="macCollisionCtrl.goBack()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="face-track-form analaysis-body">
+                <div class="tab-list">
+                    <span ng-class="{'active':!macCollisionCtrl.showAnalysisList}" ng-click="macCollisionCtrl.showAnalysisListFn(false)">分析条件</span>
+                    <span ng-class="{'active':macCollisionCtrl.showAnalysisList}" ng-click="macCollisionCtrl.showAnalysisListFn(true)">分析结果</span>
+                </div>
+                <!--分析条件表单-->
+                <div class="analysis-form-con" ng-scrollbars  ng-if="!macCollisionCtrl.showAnalysisList">
+                    <div class="analaysis-form-input">
+                        <span class="analaysis-form-title"><i class="required">*</i>任务名称</span>
+                        <span class="input-layer">
+                            <input ng-model="macCollisionCtrl.requsetParams.taskName" show-init="false" type="text" placeholder="请输入任务名称" />
+                        </span>
+                    </div>
+                    <div class="face-track-select-camera">
+                        <span class="analaysis-form-title">区域选择</span>
+                        <div class="face-track-camera">
+                            <span ng-click="macCollisionCtrl.DrawRect()" class="action pdp-icon-map-square" title="框选"></span>
+                            <span ng-click="macCollisionCtrl.DrawCircle()" class="action pdp-icon-map-round" title="圆选"></span>
+                            <span ng-click="macCollisionCtrl.DrawPolygon()" class="action pdp-icon-map-polygon" title="多边选"></span>
+                        </div>
+                    </div>
+                    <div class="group-form">
+                        <div class="item-form" ng-repeat="(i,item) in macCollisionCtrl.MacImpact">
+                            <div class="item-form-title">
+                                <span>区域 {{i+1}}</span>
+                                <span ng-click="macCollisionCtrl.delArea(i)" class="delete-area pdp-icon-delete-area"></span>
+                            </div>
+                            <div class="analaysis-form-input">
+                                <span class="analaysis-form-title">时间筛选</span>
+                                <span class="tab-layer">
+                                    <span ng-repeat="item in macCollisionCtrl.FastDateList" ng-class="{'active':item.key === macCollisionCtrl.FastDate[i].key}" ng-click="macCollisionCtrl.setFastDate(item,i)">{{item.text}}</span>
+                                </span>
+                            </div>
+                            <div class="analaysis-form-input analaysis-form-input-date">
+                                <span class="analaysis-form-title"><i class="required">*</i>开始时间</span>
+                                <span class="input-layer">
+                                    <input ng-model="item.startTime" date-picker show-init="false" type="text" placeholder="请选择开始时间" />
+                                </span>
+                            </div>
+                            <div class="analaysis-form-input analaysis-form-input-date">
+                                <span class="analaysis-form-title"><i class="required">*</i>结束时间</span>
+                                <span class="input-layer">
+                                    <input ng-model="item.endTime" date-picker show-init="false" type="text" placeholder="请选择结束时间" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searh-submit">
+                        <button ng-click="macCollisionCtrl.submitSearch()">查询</button>
+                    </div>
+                </div>
+                <!--离线任务列表-->
+                <div class="analysis-task-list" ng-scrollbars ng-if="macCollisionCtrl.showAnalysisList">
+                    <div class="task-item" ng-repeat="item in macCollisionCtrl.MacCollisionOffLine">
+                        <div class="task-content">
+                            <div class="task-name">{{item.TaskName}}
+                                <span ng-click="macCollisionCtrl.delOffLineTask(item)" class="delete-task pdp-icon-delete-area"></span>
+                            </div>
+                            <div class="task-info">
+                                <ul>
+                                    <li>
+                                        <span class="info-key">创建时间：</span>
+                                        <span class="info-value">{{item.CreateTime}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="info-key">任务状态：</span>
+                                        <span class="info-value">{{(item.CompletePercent==="100")?"运行完成":"运行中"}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="task-result-btn">
+                                <button ng-disabled="(item.TaskStatus!=='200'||item.CompletePercent!=='100')"  ng-click="macCollisionCtrl.showAnalysisResult(item)">查看结果</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="macCollisionCtrl.MacCollisionOffLine.length === 0" class="analysis-no-data pdp-icon-no-analysis">暂无数据
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--结果列表-->
+    <div class="analysis-res result-left" ng-class="{'active':macCollisionCtrl.showResult}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title mac-crash-title">MAC碰撞</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="macCollisionCtrl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="head-title">
+                            <span class="head-right">共 <i>{{macCollisionCtrl.resultParams.totalCount}}</i> 条记录</span>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="capture-layer" ng-scrollbars>
+                            <div class="item-group" ng-repeat="group in macCollisionCtrl.resultParams.data">
+                                <div class="capture-item mac">
+                                    <div class="capture-item-name">
+                                        <span>碰撞次数:</span>
+                                        <i>{{group.PerceiveCollideAccesses.length}}</i>次
+                                    </div>
+                                    <span
+                                        class="show-more"
+                                        ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[macCollisionCtrl.isSlideResult[$index]]"
+                                        ng-click="macCollisionCtrl.slideRightResult($index)">
+                                        {{macCollisionCtrl.isSlideResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="capture-children mac" ng-class="{active:macCollisionCtrl.isSlideResult[$index]}">
+                                    <div class="children-item"
+                                         ng-repeat="(i,item) in group.PerceiveCollideAccesses"
+                                         ng-click="macCollisionCtrl.openDetailPopup(item,i)"
+                                         ng-mouseenter="macCollisionCtrl.resultToMap(item,i,'Accp','Mac')"
+                                         ng-mouseleave="macCollisionCtrl.unResultToMap(item,i,'Accp','Mac')"
+                                    >
+                                        <div class="item-info">
+                                            <span class="location pdp-icon-positon-num">{{$index+1}}</span>
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="macCollisionCtrl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis" title="分析"></i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="macCollisionCtrl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                        <div class="desc" ng-if="group.Type === 'MAC'">
+                                            <p><i class="pdp-icon-mac"></i>{{item.WiFiLog.Mac}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.WiFiLog.AcqTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="desc" ng-if="group.Type === 'IMSI'">
+                                            <p><i class="pdp-icon-imsi"></i>{{item.EFenceLog.IMSI}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.EFenceLog.AcqTime}}</p >
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="desc" ng-if="group.Type === 'IMEI'">
+                                            <p><i class="pdp-icon-imei"></i>{{item.EFenceLog.IMEI}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.EFenceLog.AcqTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <util-paging
+                            hide-size="true"
+                            hide-gopage="true"
+                            page-params="macCollisionCtrl.resultParams"
+                            prev-page="macCollisionCtrl.changeResultPage(num)"
+                            next-page="macCollisionCtrl.changeResultPage(num)"
+                            go-page="macCollisionCtrl.changeResultPage(num)">
+                        </util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--更多结果列表-->
+    <div class="analysis-more-res" ng-class="{'active':macCollisionCtrl.showAllResult}" ng-style="{'width':macCollisionCtrl.windowWidth + 'px'}">
+        <div class="analysis-content">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title face-collision-analysis-title">MAC碰撞</div>
+                <div class="analaysis-back pdp-icon-back" ng-click="macCollisionCtrl.goBackForm()">
+                    <span>返回上级</span>
+                </div>
+            </div>
+            <div class="analaysis-body">
+                <div class="content-layer">
+                    <div class="head-layer">
+                        <div class="result-operate">
+                            <button class="export">导出</button>
+                        </div>
+                    </div>
+                    <div class="before-layer">
+                        <div class="analysis-more-result-group" ng-scrollbars>
+                            <div class="result-item" ng-repeat="group in macCollisionCtrl.resultParams.data">
+                                <div class="item-head">
+                                    <div class="head-left">
+                                        <span>碰撞次数：</span>
+                                        <span class="num">{{group.PerceiveCollideAccesses.length}}</span>
+                                        <span>次</span>
+                                    </div>
+                                    <span class="show-more" ng-class="{true: 'pdp-icon-more-unfold', false: 'pdp-icon-more-pack-up'}[macCollisionCtrl.isSlideResult[$index]]" ng-click="macCollisionCtrl.slideRightResult($index)">
+                                        {{macCollisionCtrl.isSlideResult[$index]?'收起':'更多'}}
+                                    </span>
+                                </div>
+                                <div class="item-row-table" ng-class="{active:macCollisionCtrl.isSlideResult[$index]}" >
+                                    <div class="table-item mac" ng-repeat="(i,item) in group.PerceiveCollideAccesses" ng-click="macCollisionCtrl.openDetailPopup(item,i)">
+                                        <div class="desc" ng-if="group.Type === 'MAC'">
+                                            <p><i class="pdp-icon-mac"></i>{{item.WiFiLog.Mac}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.WiFiLog.AcqTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="desc" ng-if="group.Type === 'IMSI'">
+                                            <p><i class="pdp-icon-imsi"></i>{{item.EFenceLog.IMSI}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.EFenceLog.AcqTime}}</p >
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="desc" ng-if="group.Type === 'IMEI'">
+                                            <p><i class="pdp-icon-imei"></i>{{item.EFenceLog.IMEI}}</p>
+                                            <p><i class="pdp-icon-time"></i>{{item.EFenceLog.AcqTime}}</p>
+                                            <p><i class="pdp-icon-address"></i>{{item.deviceInfo.Name}}</p>
+                                        </div>
+                                        <div class="item-info">
+                                            <div class="fast-operate">
+                                                <i class="pdp-icon-collect" title="收藏" ng-class="{'active': item.collectStatus}" ng-click="macCollisionCtrl.clickCollect($event , item)"></i>
+                                                <i class="pdp-icon-analysis">
+                                                    <ul class="analysis-ul">
+                                                        <li class="analysis-li" ng-click="macCollisionCtrl.clickAnalysis($event , item, macCollisionCtrl.analysisGoTo.Track.key)">{{macCollisionCtrl.analysisGoTo.Track.name}}</li>
+                                                        <li class="analysis-li" ng-click="macCollisionCtrl.clickAnalysis($event , item, macCollisionCtrl.analysisGoTo.Accompanying.key)">{{macCollisionCtrl.analysisGoTo.Accompanying.name}}</li>
+                                                        <li class="analysis-li" ng-click="macCollisionCtrl.clickAnalysis($event , item, macCollisionCtrl.analysisGoTo.Frequency.key)">{{macCollisionCtrl.analysisGoTo.Frequency.name}}</li>
+                                                        <li class="analysis-li" ng-click="macCollisionCtrl.clickAnalysis($event , item, macCollisionCtrl.analysisGoTo.More.key)">{{macCollisionCtrl.analysisGoTo.More.name}}</li>
+                                                    </ul>
+                                                </i>
+                                                <i class="pdp-icon-dispatched" title="布控" ng-class="{'active': item.surveillanceStatus}" ng-click="macCollisionCtrl.clickSurveillance($event , item)"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bottom">
+                        <div class="page-total">
+                            共
+                            <i>{{macCollisionCtrl.resultParams.totalCount}}</i>
+                            条记录
+                        </div>
+                        <util-paging
+                                hide-size="true"
+                                hide-gopage="true"
+                                page-params="macCollisionCtrl.resultParams"
+                                prev-page="macCollisionCtrl.changeResultPage(num)"
+                                next-page="macCollisionCtrl.changeResultPage(num)"
+                                go-page="macCollisionCtrl.changeResultPage(num)"
+                        >
+                        </util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taggle-result taggle-result-open pdp-icon-forward" ng-class="{'active':macCollisionCtrl.showResult}" ng-click="macCollisionCtrl.goAllResult()"></div>
+    <div class="taggle-result taggle-result-close pdp-icon-back" ng-class="{'active':macCollisionCtrl.showAllResult}" ng-show="macCollisionCtrl.showAllResult" ng-click="macCollisionCtrl.closeAllResult()"></div>
+</div>

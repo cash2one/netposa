@@ -1,0 +1,451 @@
+<div class="main-part task-config" ui-view="taskconfig">
+    <div class="main-part-left">
+        <div class="part-title">
+            <div class="tree-search">
+                <input
+                       ng-model="taskConfigCtrl.areaTreeSearchInputStr"
+                       placeholder="{{'DP_CONFIG_COMMON_28'|translate}}"
+                       ng-keyup="taskConfigCtrl.areaTreeSearchInputKeyUp($event)"
+                />
+                <i class="icon-search" ng-click="taskConfigCtrl.areaTreeSearchInput()"></i>
+            </div>
+        </div>
+        <div class="part-con">
+            <div ng-hide="taskConfigCtrl.areaTreeDatas.treeDatas.length == 0" class="m-area-tree">
+                <util-tree tree-hide="taskConfigCtrl.areaTreeDatas.treeDatas.length == 0"
+                           tree-id="{{taskConfigCtrl.areaTreeDatas.treeId}}"
+                           tree-datas="taskConfigCtrl.areaTreeDatas.treeDatas"
+                           is-default-selected="true"
+                           tree-init-complete="taskConfigCtrl.areaTreeDatas.treeInitComplete(treeId)"
+                           check-enable="false"
+                           single-select="true"
+                           is-simple-data="true"
+                           show-icon=""
+                           show-line="false"
+                           default-no-data-msg="taskConfigCtrl.areaTreeDatas.defaultNoDataMsg"
+                           search-no-data-msg="taskConfigCtrl.areaTreeDatas.searchNoDataMsg"
+                           on-click="taskConfigCtrl.areaTreeDatas.onClick(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           default-select-tree-id="taskConfigCtrl.areaTreeDatas.defaultSelectTreeId"
+                           default-expand-level="0"
+                ></util-tree>
+
+            </div>
+
+            <div class="u-table-no-data"
+                 ng-show="taskConfigCtrl.treeDatas.length==0"
+                 ng-click="getAreaTreeList()" translate="DP_CONFIG_COMMON_16">
+            </div>
+        </div>
+    </div>
+    <div class="main-part-right">
+        <div class="top">
+            <ol class="m-route">
+                <li translate="DP_CONFIG_TASKCONFUG_01"></li>
+                <li class="route-separate">/</li>
+                <li translate="DP_CONFIG_TASKCONFUG_02"></li>
+            </ol>
+        </div>
+        <div class="search-tab">
+            <div class="switch-tab">
+                <div
+                        ng-repeat="btnItem in taskConfigCtrl.taskTypeBtnList"
+                        class="switch-tab-item "
+                        ng-class="{'active':btnItem.value === taskConfigCtrl.CurrentInfo.LibType}"
+                        ng-click="taskConfigCtrl.onClickTaskTypeBtn(btnItem)"
+                        ng-bind="btnItem.text | translate"></div>
+            </div>
+            <form class="form" ng-submit="taskConfigCtrl.onClickSearch()">
+                <div class="form-row">
+                    <div class="form-item" ng-show="taskConfigCtrl.CurrentInfo.LibType !==taskConfigCtrl.FaceType">
+                        <label translate="FDS_01_12_02"></label>
+                        <select class="form-input"
+                                ng-options="item.value as item.text for item in taskConfigCtrl.taskTypeOptions"
+                                ng-model="taskConfigCtrl.CurrentInfo.Type">
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label translate="DP_CONFIG_TASKCONFUG_03"></label>
+                        <select class="form-input"
+                                ng-options="item.value as item.text for item in taskConfigCtrl.MonitorStatusLib"
+                                ng-model="taskConfigCtrl.CurrentInfo.Status">
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label translate="DP_CONFIG_TASKCONFUG_04"></label>
+                        <select class="form-input"
+                                ng-options="item.value as item.text for item in taskConfigCtrl.AuditStatusLib"
+                                ng-model="taskConfigCtrl.CurrentInfo.AuditStatus">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-item" ng-show="taskConfigCtrl.CurrentInfo.LibType == taskConfigCtrl.FaceType">
+                        <label translate="DP_CONFIG_TASKCONFUG_12"></label>
+                        <input class="form-input" ng-model="taskConfigCtrl.findListFaceParams.name" placeholder="{{'DP_CONFIG_TASKCONFUG_12'|translate}}" />
+                    </div>
+                    <div class="form-item" ng-show="taskConfigCtrl.CurrentInfo.LibType == taskConfigCtrl.CarType">
+                        <label translate="车牌号码"></label>
+                        <input class="form-input" ng-model="taskConfigCtrl.findListCarParams.plateNumber" placeholder="{{'请填写车牌号码'|translate}}" />
+                    </div>
+                    <div class="form-item" ng-show="taskConfigCtrl.CurrentInfo.LibType == taskConfigCtrl.MacType">
+                        <label translate="DP_CONFIG_TASKCONFUG_23"></label>
+                        <input class="form-input" ng-model="taskConfigCtrl.findListMacParams.perceiveData" placeholder="{{'DP_CONFIG_TASKCONFUG_29'|translate}}">
+                    </div>
+                    <div class="form-item" ng-show="taskConfigCtrl.CurrentInfo.LibType == taskConfigCtrl.FaceType">
+                        <label>创建时间</label>
+                        <input class="form-input icon-calendar" name="newTaskEndTime"
+                               ng-model="taskConfigCtrl.findListFaceParams.startTime"
+                               placeholder="请选择开始时间"
+                               date-picker
+                               show-init="false"/>
+                        <span class="separator">-</span>
+                        <input class="form-input icon-calendar" name="newTaskEndTime"
+                               ng-model="taskConfigCtrl.findListFaceParams.endTime"
+                               placeholder="请选择结束时间"
+                               date-picker
+                               show-init="false"/>
+                    </div>
+                    <div class="form-item" ng-show="taskConfigCtrl.CurrentInfo.LibType == taskConfigCtrl.CarType">
+                        <label>创建时间</label>
+                        <input class="form-input icon-calendar" name="newTaskEndTime"
+                               ng-model="taskConfigCtrl.findListParams.startTime"
+                               placeholder="请选择开始时间"
+                               date-picker
+                               show-init="false"/>
+                        <span class="separator">-</span>
+                        <input class="form-input icon-calendar" name="newTaskEndTime"
+                               ng-model="taskConfigCtrl.findListParams.endTime"
+                               placeholder="请选择结束时间"
+                               date-picker
+                               show-init="false"/>
+                    </div>
+                    <div class="form-item" ng-show="taskConfigCtrl.CurrentInfo.LibType == taskConfigCtrl.MacType">
+                        <label>创建时间</label>
+                        <input class="form-input icon-calendar" name="newTaskEndTime"
+                               ng-model="taskConfigCtrl.findListMacParams.startTime"
+                               placeholder="请选择开始时间"
+                               date-picker
+                               show-init="false"/>
+                        <span class="separator">-</span>
+                        <input class="form-input icon-calendar" name="newTaskEndTime"
+                               ng-model="taskConfigCtrl.findListMacParams.endTime"
+                               placeholder="请选择结束时间"
+                               date-picker
+                               show-init="false"/>
+                    </div>
+                    <button type="submit" class="form-btn" translate="DP_CONFIG_COMMON_24"></button>
+                </div>
+            </form>
+        </div>
+        <div class="result-table">
+            <div class="result-table-con">
+                <div class="m-baseconfig-topFixed area-topFixed" >
+                    <!--table操作区域-->
+                    <div class="result-table-operation" ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.FaceType">
+                        <button class="form-btn add" ng-click="taskConfigCtrl.goNewMonitor()" translate="DP_CONFIG_TASKCONFUG_08"></button>
+                        <button
+                                class="form-btn gray play"
+                                ng-disabled="!taskConfigCtrl.isSelectFaceItems"
+                                ng-click="taskConfigCtrl.onClickTaskRunStatusBy(true)" translate="DP_CONFIG_TASKCONFUG_09">
+                        </button>
+                        <button class="form-btn gray pause"
+                                ng-disabled="!taskConfigCtrl.isSelectFaceItems"
+                                ng-click="taskConfigCtrl.onClickTaskRunStatusBy(false)"
+                                translate="DP_CONFIG_TASKCONFUG_10">
+                        </button>
+                        <button class="form-btn gray delete"
+                                ng-disabled="!taskConfigCtrl.isSelectFaceItems"
+                                ng-click="taskConfigCtrl.onClickDeleteByIds()"
+                                translate="DP_CONFIG_TASKCONFUG_11">
+                        </button>
+                    </div>
+                    <div class="result-table-operation" ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.CarType"  style="position:static">
+                        <button class="form-btn add" ng-click="taskConfigCtrl.goNewMonitor()" translate="DP_CONFIG_TASKCONFUG_08"></button>
+                        <!--<div class="u-button f-fl m-right15 task-newCtrl task-newCtrl-btn"-->
+                            <!--ng-click="taskConfigCtrl.targetNewCar($event)">-->
+                            <!--<i class="i-add icon-add"></i>-->
+                            <!--<i translate="DP_CONFIG_TASKCONFUG_08"></i>-->
+                            <!--<i class="tab-jb" ng-class="{'tab-jb-active':taskConfigCtrl.isNewCar}"></i>-->
+                            <!--<ul ng-show="taskConfigCtrl.isNewCar">-->
+                                <!--<li ng-click="taskConfigCtrl.goNewMonitor('Black')">{{'DP_CONFIG_TASKCONFUG_32'|translate}}</li>-->
+                                <!--<li ng-click="taskConfigCtrl.goNewMonitor('White')">{{'DP_CONFIG_TASKCONFUG_33'|translate}}</li>-->
+                                <!--<li ng-click="taskConfigCtrl.goNewMonitor('Red')">{{'DP_CONFIG_TASKCONFUG_34'|translate}}</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <button class="form-btn gray play"
+                                ng-disabled="!taskConfigCtrl.isSelectCarItems"
+                                ng-click="taskConfigCtrl.onClickTaskRunStatusBy(true)"
+                                translate="DP_CONFIG_TASKCONFUG_09"
+                        ></button>
+                        <button class="form-btn gray pause"
+                                ng-disabled="!taskConfigCtrl.isSelectCarItems"
+                                ng-click="taskConfigCtrl.onClickTaskRunStatusBy(false)"
+                                translate="DP_CONFIG_TASKCONFUG_10"
+                        ></button>
+                        <button class="form-btn gray delete"
+                                ng-disabled="!taskConfigCtrl.isSelectCarItems"
+                                ng-click="taskConfigCtrl.onClickDeleteByIds()"
+                                translate="DP_CONFIG_TASKCONFUG_11"
+                        ></button>
+                    </div>
+                    <div class="result-table-operation" ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.MacType" style="position:static">
+                        <!--<div class="u-button f-fl m-right15 task-newCtrl task-newCtrl-btn"-->
+                            <!--ng-click="taskConfigCtrl.targetNewMac($event)">-->
+                            <!--<i class="i-add icon-add"></i>-->
+
+                            <!--<i translate="DP_CONFIG_TASKCONFUG_08"></i>-->
+                            <!--<i class="tab-jb" ng-class="{'tab-jb-active':taskConfigCtrl.isNewMac}"></i>-->
+                            <!--<ul ng-show="taskConfigCtrl.isNewMac">-->
+                                <!--<li ng-click="taskConfigCtrl.goNewMonitor('Black')">{{'DP_CONFIG_TASKCONFUG_32'|translate}}</li>-->
+                                <!--<li ng-click="taskConfigCtrl.goNewMonitor('White')">{{'DP_CONFIG_TASKCONFUG_33'|translate}}</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <button class="form-btn add" ng-click="taskConfigCtrl.goNewMonitor()" translate="DP_CONFIG_TASKCONFUG_08"></button>
+                        <button class="form-btn gray play"
+                                ng-disabled="!taskConfigCtrl.isSelectMacItems"
+                                ng-click="taskConfigCtrl.onClickTaskRunStatusBy(true)"
+                                translate="DP_CONFIG_TASKCONFUG_09"
+                        ></button>
+                        <button class="form-btn gray pause"
+                                ng-disabled="!taskConfigCtrl.isSelectMacItems"
+                                ng-click="taskConfigCtrl.onClickTaskRunStatusBy(false)"
+                                translate="DP_CONFIG_TASKCONFUG_10"
+                        ></button>
+                        <button class="form-btn gray delete"
+                                ng-disabled="!taskConfigCtrl.isSelectMacItems"
+                                ng-click="taskConfigCtrl.onClickDeleteByIds()"
+                                translate="DP_CONFIG_TASKCONFUG_11"
+                        ></button>
+                    </div>
+                </div>
+                <div class="m-baseconfig-centerFixed area-centerFixed task-config-css" style="bottom: 55px;top: 55px;">
+                    <!--table内容区域-->
+                    <div ng-show="taskConfigCtrl.CurrentInfo.LibType == taskConfigCtrl.FaceType"
+                        class="result-list" style="height:100%;margin-top: 0px;" >
+                        <util-table-head table-headers="taskConfigCtrl.tFaceHeadList"
+                                        table-has-check='true'
+                                        table-after-check="taskConfigCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+                            <util-table-tr ng-repeat="(index,tbody_data) in taskConfigCtrl.tBodyListFace">
+                                <util-table-tr-td>
+                                    <!--TODO 蓝色字体-->
+                                    <i ng-if="taskConfigCtrl.taskAuditingValue === tbody_data.AuditStatus && taskConfigCtrl.currentUserId === tbody_data.AuditUser"
+                                    style="cursor: pointer;"
+                                    class="c-font-blue"
+                                    ng-click="taskConfigCtrl.changeTaskAuditStatus(tbody_data)">
+                                        [{{'FDS_01_12_06'| translate}}]
+                                    </i>
+                                    <span ng-bind="tbody_data.Name">
+
+                                </span>
+                                </util-table-tr-td>
+
+                                <util-table-tr-td ng-bind="tbody_data.JsonUserData.Area.Name"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="tbody_data.JsonUserData.Person.Name"></util-table-tr-td>
+                                <util-table-tr-td>
+                                <span ng-bind="tbody_data.IsLongEffective?'永久':(tbody_data.ValidTimeStart | limitTo:10) + ' - ' + (tbody_data.ValidTimeEnd | limitTo:10)"
+                                    title="{{tbody_data.ValidTimeStart + ' - ' + tbody_data.ValidTimeEnd}}">
+                                </span>
+                                </util-table-tr-td>
+                                <util-table-tr-td>
+                                    <span ng-bind="tbody_data.AuditStatus|auditStatusFilter"></span>
+                                </util-table-tr-td>
+                                <util-table-tr-td>
+                                    <span ng-bind="tbody_data.Status | monitorStatus"></span>
+                                </util-table-tr-td>
+
+                                <util-table-tr-td ng-bind="tbody_data.AuthStatus | authStatus"></util-table-tr-td>
+
+                                <util-table-tr-td>
+                                    <div class="table-icon-cntr f-cfb">
+                                        <i class="icon-btn "
+                                        ng-class="{
+                                        'z-disabled i-task-start A':tbody_data.AuditStatus === 'Verifing' || tbody_data.AuditStatus === 'Refuse',
+                                        'z-disabled i-task-start B':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Overdue'),
+                                        'z-disabled i-task-start C':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Waiting'),
+                                        'i-hover i-task-stop':tbody_data.Status === 'Run' && tbody_data.AuditStatus === 'Verified',
+                                        'i-hover i-task-start':tbody_data.AuditStatus === 'Verified' && tbody_data.Status === 'Stop'
+                                    }" ng-click="taskConfigCtrl.changeTaskRunStatus(tbody_data)"></i>
+                                        <i class="icon-btn i-edit z-gray"
+                                        ng-click="taskConfigCtrl.goToUpdateTask(tbody_data)"
+                                        title="{{'FDS_01_12_19'|translate}}"
+                                        ></i>
+
+                                        <i class="icon-btn i-delete z-gray"
+                                        ng-click="taskConfigCtrl.onClickDeleteById(tbody_data,'Face')"
+                                        title="{{'FDS_01_12_18'|translate}}"
+                                        ></i>
+
+                                    </div>
+                                </util-table-tr-td>
+                            </util-table-tr>
+
+                            <div class="u-table-no-data" ng-show="taskConfigCtrl.tBodyListFace.length === 0" translate="DP_CONFIG_COMMON_16">
+                            </div>
+                        </util-table-head>
+                    </div>
+                    <div ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.CarType"
+                        class="result-list" >
+                        <util-table-head table-headers="taskConfigCtrl.tCarHeadList"
+                                        table-has-check='true'
+                                        table-after-check="taskConfigCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+                            <util-table-tr ng-repeat="(index,tbody_data) in taskConfigCtrl.tBodyListCar">
+                                <util-table-tr-td>
+                                    <!--TODO 蓝色字体-->
+                                    <i ng-if="taskConfigCtrl.taskAuditingValue === tbody_data.AuditStatus && taskConfigCtrl.currentUserId === tbody_data.AuditUser"
+                                    style="cursor: pointer;"
+                                    class="c-font-blue"
+                                    ng-click="taskConfigCtrl.changeTaskAuditStatus(tbody_data)">
+                                        [{{'FDS_01_12_06'| translate}}]
+                                    </i>
+                                    <span ng-bind="tbody_data.PlateNumber">
+
+                                </span>
+                                </util-table-tr-td>
+
+                                <util-table-tr-td ng-bind="tbody_data.JsonUserData.Person.Name"></util-table-tr-td>
+                                <util-table-tr-td>
+                                <span
+                                        ng-bind="tbody_data.IsLongEffective?'永久':(tbody_data.ValidTimeStart | limitTo:10) + ' - ' + (tbody_data.ValidTimeEnd | limitTo:10)"
+                                        title="{{tbody_data.ValidTimeStart + ' - ' + tbody_data.ValidTimeEnd}}">
+                                </span>
+                                </util-table-tr-td>
+
+                                <util-table-tr-td ng-bind="tbody_data.ListType === 'BlackList'?'黑名单':'白名单'"></util-table-tr-td>
+                                <util-table-tr-td>
+                                    <span> {{tbody_data.AuditStatus|auditStatusFilter}}</span>
+                                </util-table-tr-td>
+
+                                <util-table-tr-td ng-bind="tbody_data.Status|monitorStatus"></util-table-tr-td>
+
+                                <util-table-tr-td>
+                                    <div class="table-icon-cntr f-cfb">
+                                        <i class="icon-btn "
+                                        ng-class="{
+                                        'z-disabled i-task-start A':tbody_data.AuditStatus === 'Verifing' || tbody_data.AuditStatus === 'Refuse',
+                                        'z-disabled i-task-start B':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Overdue'),
+                                        'z-disabled i-task-start C':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Waiting'),
+                                        'i-hover i-task-stop':tbody_data.Status === 'Run' && tbody_data.AuditStatus === 'Verified',
+                                        'i-hover i-task-start':tbody_data.AuditStatus === 'Verified' && tbody_data.Status === 'Stop'
+                                    }"
+                                        ng-click="taskConfigCtrl.changeTaskRunStatus(tbody_data)"
+                                        ></i>
+                                        <i class="icon-btn i-edit z-gray"
+                                        ng-click="taskConfigCtrl.goToUpdateTask(tbody_data)"
+                                        title="{{'FDS_01_12_19'|translate}}"
+                                        ></i>
+
+                                        <i class="icon-btn i-delete z-gray"
+                                        ng-click="taskConfigCtrl.onClickDeleteById(tbody_data,'Car')"
+                                        title="{{'FDS_01_12_18'|translate}}"
+                                        ></i>
+
+                                    </div>
+                                </util-table-tr-td>
+                            </util-table-tr>
+
+                            <div class="u-table-no-data"
+                                ng-show="taskConfigCtrl.tBodyListCar.length===0"translate="DP_CONFIG_COMMON_16">
+                            </div>
+                        </util-table-head>
+                    </div>
+                    <div ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.MacType"
+                        class="result-list" >
+                        <util-table-head table-headers="taskConfigCtrl.tMacHeadList"
+                                        table-has-check='true'
+                                        table-after-check="taskConfigCtrl.afterChangeCheck(checkList,isCheckAll)">
+
+                            <util-table-tr ng-repeat="(index,tbody_data) in taskConfigCtrl.tBodyListMac">
+                                <util-table-tr-td>
+                                    <span ng-bind="tbody_data.PerceiveData"></span>
+                                </util-table-tr-td>
+
+                                <!--<util-table-tr-td ng-bind="tbody_data.AreaName"></util-table-tr-td>-->
+                                <util-table-tr-td ng-bind="tbody_data.JsonUserData.Person.Name"></util-table-tr-td>
+                                <util-table-tr-td>
+                                <span ng-bind="tbody_data.IsLongEffective?'永久':(tbody_data.ValidTimeStart | limitTo:10) + ' - ' + (tbody_data.ValidTimeEnd | limitTo:10)"
+                                    title="{{tbody_data.ValidTimeStart + ' - ' + tbody_data.ValidTimeEnd}}">
+                                </span>
+                                </util-table-tr-td>
+
+                                <util-table-tr-td ng-bind="tbody_data.ListType === 'Blacklist'?'黑名单':'白名单'"></util-table-tr-td>
+
+                                <util-table-tr-td><span ng-bind="tbody_data.AuditStatus|auditStatusFilter"></span>
+                                </util-table-tr-td>
+
+                                <util-table-tr-td><span ng-bind="tbody_data.Status|monitorStatus">  </span></util-table-tr-td>
+
+
+                                <util-table-tr-td>
+                                    <div class="table-icon-cntr f-cfb">
+                                        <i class="icon-btn"
+                                        ng-class="{
+                                        'z-disabled i-task-start A':tbody_data.AuditStatus === 'Verifing' || tbody_data.AuditStatus === 'Refuse',
+                                        'z-disabled i-task-start B':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Overdue'),
+                                        'z-disabled i-task-start C':(tbody_data.AuditStatus === 'Verified' && tbody_data.Status==='Waiting'),
+                                        'i-hover i-task-stop':tbody_data.Status === 'Run' && tbody_data.AuditStatus === 'Verified',
+                                        'i-hover i-task-start':tbody_data.AuditStatus === 'Verified' && tbody_data.Status === 'Stop'
+                                    }"
+                                        ng-click="taskConfigCtrl.changeTaskRunStatus(tbody_data)"
+                                        ></i>
+                                        <i class="icon-btn i-edit z-gray"
+                                        ng-click="taskConfigCtrl.goToUpdateTask(tbody_data)"
+                                        title="{{'FDS_01_12_19'|translate}}"
+                                        ></i>
+
+                                        <i class="icon-btn i-delete z-gray"
+                                        ng-click="taskConfigCtrl.onClickDeleteById(tbody_data,'Mac')"
+                                        title="{{'FDS_01_12_18'|translate}}"
+                                        ></i>
+
+                                    </div>
+                                </util-table-tr-td>
+                            </util-table-tr>
+
+                            <div class="u-table-no-data"
+                                ng-show="taskConfigCtrl.tBodyListMac.length===0" translate="DP_CONFIG_COMMON_16">
+                            </div>
+                        </util-table-head>
+                    </div>
+                </div>
+                <div class="m-baseconfig-bottomFixed">
+                    <!--分页区域-->
+                    <div ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.FaceType"
+                        class="result-footer">
+                        <util-paging
+                                page-params="taskConfigCtrl.pageParamsFace"
+                                prev-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Face.value)"
+                                next-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Face.value)"
+                                go-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Face.value)"
+                                page-size="taskConfigCtrl.changePageSize(num,taskConfigCtrl.TaskTypes.Face.value)"
+                        ></util-paging>
+                    </div>
+                    <div ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.CarType"
+                        class="result-footer">
+                        <util-paging
+                                page-params="taskConfigCtrl.pageParamsCar"
+                                prev-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Car.value)"
+                                next-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Car.value)"
+                                go-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Car.value)"
+                                page-size="taskConfigCtrl.changePageSize(num,taskConfigCtrl.TaskTypes.Car.value)"
+                        ></util-paging>
+                    </div>
+                    <div ng-show="taskConfigCtrl.CurrentInfo.LibType === taskConfigCtrl.MacType"
+                        class="result-footer">
+                        <util-paging
+                                page-params="taskConfigCtrl.pageParamsMac"
+                                prev-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Mac.value)"
+                                next-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Mac.value)"
+                                go-page="taskConfigCtrl.changePage(num,taskConfigCtrl.TaskTypes.Mac.value)"
+                                page-size="taskConfigCtrl.changePageSize(num,taskConfigCtrl.TaskTypes.Mac.value)"
+                        ></util-paging>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

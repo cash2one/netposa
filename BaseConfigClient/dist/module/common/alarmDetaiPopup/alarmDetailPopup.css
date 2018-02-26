@@ -1,0 +1,71 @@
+.m-alarm-detail-visible{
+    overflow: visible;
+}
+.m-alarm-detail-popup{
+    width: 650px;
+    height: auto;
+}
+.m-alarm-detail-popup .detail-content{
+    width: 100%;
+}
+.m-alarm-detail-popup .detail-footer{
+    padding-bottom: 20px;
+}
+.m-alarm-detail-popup .footer-btns{
+    float: right;
+    padding-right: 20px;
+}
+
+.m-alarm-detail-popup .car-detail{
+    width: 50%;
+    float: left;
+    padding: 0 20px;
+    margin: 15px 0px;
+}
+.m-alarm-detail-popup .car-detail:first-child{
+    border-right: solid 1px #ccc
+}
+
+.m-alarm-detail-popup .car-img{
+    width:285px;
+    height: 210px;
+    position: relative;
+}
+.m-alarm-detail-popup .car-img img{
+}
+
+.m-alarm-detail-popup .detail-title{
+    margin: 0;
+    font-weight: 700;
+    line-height: 32px;
+    border-bottom: solid 1px #ccc;
+}
+.m-alarm-detail-popup .detail-title .title-mark{
+    color: #fff;
+    padding: 0 4px;
+    border-radius: 1px;
+}
+
+
+.m-alarm-detail-popup .detail-title:first-child{
+    border-bottom: none;
+}
+
+.m-alarm-detail-popup .detail-list{
+
+}
+
+.m-alarm-detail-popup .info-item{
+    line-height: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.m-alarm-detail-popup .info-item label{
+    color: #999;
+    font-weight: 500;
+}
+.m-alarm-detail-popup .info-item span{
+    font-weight: 700;
+}

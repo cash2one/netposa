@@ -1,0 +1,64 @@
+.u-layout-button{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: red;
+    z-index: 1000;
+}
+.u-layout-button.z-left{
+    top: 50%;
+    right: 0;
+    margin-right: -40px;
+}
+.u-layout-button.z-right{
+    top: 50%;
+    left: 0;
+    margin-left: -40px;
+}
+.u-layout-button.z-top{
+    left: 50%;
+    bottom: 0;
+    margin-bottom: -40px;
+}
+.u-layout-button.z-bottom{
+    left: 50%;
+    top: 0;
+    margin-top: -40px;
+}
+.u-layout-button.z-left.z-left-hide{
+}
+.u-layout-button.z-right.z-right-hide{
+    position: fixed;
+    left: 100%;
+    margin-top: 25px;
+}
+.u-layout-button.z-top.z-top-hide{
+}
+.u-layout-button.z-bottom.z-bottom-hide{
+}
+
+.u-layout-content{
+
+}
+.u-layout-content.z-left-show{
+    left: 0 !important;
+}
+.u-layout-content.z-right-show{
+    right: 0 !important;
+}
+.u-layout-content.z-top-show{
+    top: 0 !important;
+}
+.u-layout-content.z-bottom-show{
+    bottom: 0 !important;
+}
+
+.u-layout-button-mn.z-left-hide,
+.u-layout-button-mn.z-right-hide{
+    width: 0 !important;
+}
+.u-layout-button-mn.z-top-hide,
+.u-layout-button-mn.z-bottom-hide{
+    height: 0 !important;
+}

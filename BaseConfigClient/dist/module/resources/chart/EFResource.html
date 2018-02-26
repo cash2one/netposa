@@ -1,0 +1,75 @@
+<div class="m-EFChart">
+    <ul class="m-resource-left" ng-class="EFResourceCtrl.leftChartHidden?'switch-button3':'switch-button2'">
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{EFResourceCtrl.ResourceNameArr.EFStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="EFResourceCtrl.enlarge('EFStatisticsConfig')"></i>
+            </span>
+            <div id="EFStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="EFResourceCtrl.noMessage.EFStatistics" translate="{{EFResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{EFResourceCtrl.ResourceNameArr.AreaEFStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="EFResourceCtrl.enlarge('areaEFStatisticsConfig')"></i>
+            </span>
+            <div id="AreaEFStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="EFResourceCtrl.noMessage.AreaEFStatistics" translate="{{EFResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{EFResourceCtrl.ResourceNameArr.AreaEFAlarmStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="EFResourceCtrl.enlarge('areaEFAlarmStatisticsConfig')"></i>
+            </span>
+            <div id="AreaEFAlarmStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="EFResourceCtrl.noMessage.AreaEFAlarmStatistics" translate="{{EFResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+    </ul>
+    <i class="i-right-hide f-csp m-hidden-static" ng-class="EFResourceCtrl.leftChartHidden?'i-left-display':'i-right-hide'" ng-click="EFResourceCtrl.hiddenLeftRightChart('left')"></i>
+    <!--ng-show="resourceCtrl.EFRight"-->
+    <ul class="m-resource-right" ng-class="resourceCtrl.switchButton.switch||EFResourceCtrl.rightChartHidden?'switch-button1':'switch-button2'">
+    <!--<ul class="m-resource-right">-->
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{EFResourceCtrl.ResourceNameArr.EFTypeStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="EFResourceCtrl.enlarge('EFTypeStatisticsConfig')"></i>
+            </span>
+            <div id="EFTypeStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="EFResourceCtrl.noMessage.EFTypeStatistics" translate="{{EFResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{EFResourceCtrl.ResourceNameArr.EFColorStatistics}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="EFResourceCtrl.enlarge('EFColorStatisticsConfig')"></i>
+            </span>
+            <div id="EFColorStatistics" class="m-resource-eContent m-float-im">
+                <i class='resource-no-message' ng-if="EFResourceCtrl.noMessage.EFColorStatistics" translate="{{EFResourceCtrl.ResourceNameArr.NOData}}"></i>
+            </div>
+        </li>
+        <li class="m-chart-style m-resource-hidden">
+            <span class="m-resource-eTitle">
+                <i class="m-font-size14" translate="{{EFResourceCtrl.ResourceNameArr.EFRankList}}"></i>
+                <i class="i-fullScreen f-csp m-fullScreen-button" ng-click="EFResourceCtrl.enlarge('AllRankListConfig')"></i>
+            </span>
+            <div id="ResourcebKeywordSearch" class="m-resource-eContent m-float-im">
+                <table class="table" ng-if="EFResourceCtrl.AllRankListConfig.config.length">
+                    <tr ng-repeat="rankdata in EFResourceCtrl.AllRankListConfig.config">
+                        <td>
+                            <i class="f-csp" ng-class="EFResourceCtrl.rankClassName[$index]"></i>
+                        </td>
+                        <td>{{ rankdata.name }}</td>
+                        <td>{{ rankdata.value }}</td>
+                    </tr>
+                </table>
+                <i class='resource-no-message' ng-if="!EFResourceCtrl.AllRankListConfig.config.length" translate="{{EFResourceCtrl.ResourceNameArr.NOData}}">
+                    
+                </i>
+            </div>
+        </li>
+    </ul>
+    <i class="f-csp rightStatic" ng-class="EFResourceCtrl.rightChartHidden?'i-left-display':'i-right-hide'" ng-click="EFResourceCtrl.hiddenLeftRightChart('right')"></i>
+</div>

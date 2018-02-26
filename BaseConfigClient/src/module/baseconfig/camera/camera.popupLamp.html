@@ -1,0 +1,39 @@
+<div class="u-baseconfig-popup m-device-popup" ng-controller="baseConfigCameraPopupLamp as cameraPopupLamp">
+    <div class="f-cfb d-tree-content">
+
+        <div class="box-cntr2 f-fr">
+            <div class="box-head" translate="DP_CONFIG_COMMON_21"></div>
+            <div class="box-bottom">
+                <util-tree 
+                    tree-id="{{cameraPopupLamp.treeParams.treeId}}" 
+                    tree-datas="cameraPopupLamp.treeParams.treeDatas" 
+                    check-enable="{{cameraPopupLamp.treeParams.checkEnable}}" 
+                    single-select="{{cameraPopupLamp.treeParams.isSingleSelect}}" 
+                    is-simple-data="{{cameraPopupLamp.treeParams.isSimpleData}}"
+                    show-icon="{{cameraPopupLamp.treeParams.isShowIcon}}" 
+                    show-line="{{cameraPopupLamp.treeParams.isShowLine}}" 
+                    default-no-data-msg="{{cameraPopupLamp.treeParams.defaultNoDataMsg}}" 
+                    search-no-data-msg="{{cameraPopupLamp.treeParams.searchNoDataMsg}}"
+                    on-click="cameraPopupLamp.treeParams.onClick(event, treeId, treeNode)" 
+                    tree-id-key="ID" 
+                    tree-pid-key="ParentID" 
+                    tree-key-name="Name" 
+                    edit-enable="{{cameraPopupLamp.treeParams.editEnable}}" 
+                    show-remove-btn="{{cameraPopupLamp.treeParams.showRemoveBtn}}"
+                    show-rename-btn="{{cameraPopupLamp.treeParams.showRenameBtn}}" 
+                    is-prev="true" 
+                    is-next="true" 
+                    is-inner="true" 
+                    is-copy="false" 
+                    is-move="true" 
+                    default-expand-level="0"
+                    ></util-tree>
+            </div>
+        </div>
+    </div>
+    <div class="u-border"></div>
+    <div class="form f-cfb">
+        <button class="u-button f-fr m-right15 u-button-blue-2" ng-click="cameraPopupLamp.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+        <button class="u-button f-fr m-right15 u-button-blue-1" ng-click="cameraPopupLamp.submit()" translate="DP_CONFIG_COMMON_05"></button>
+    </div>
+</div>

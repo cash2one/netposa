@@ -1,0 +1,99 @@
+
+<div ng-controller="analysisController as analysisCtrl">
+    <div class="face-mac-crash-result" ng-class="{'active':analysisCtrl.initResult}">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">人脸MAC碰撞</div>
+                <div class="back-btn">
+                    <button ng-click="analysisCtrl.goBack()">返回上级</button>
+                </div>
+            </div>
+            <div class="face-mac-crash-tab">
+                <div class="tab-li" ng-class="{'active':analysisCtrl.isCondition}" ng-click="analysisCtrl.switchCondition()">分析条件</div> 
+                <div class="tab-li" ng-class="{'active':analysisCtrl.isResult}" ng-click="analysisCtrl.switchResult()">分析结果</div> 
+            </div>
+
+            <div class="result-crash-analysis">
+                <div class="result-crash-item" ng-repeat="item in analysisCtrl.analysisResult">
+                    <div class="result-mission-item">
+                        <span>任务名称：</span>
+                        <i>{{item.missionName}}</i>
+                    </div>
+                    <div class="result-mission-item">
+                        <span>创建时间：</span>
+                        <i>{{item.createTime}}</i>
+                    </div>
+                    <div class="result-mission-item">
+                        <span>任务状态：</span>
+                        <i ng-class="{active:item.missionStatus}" ng-click="analysisCtrl.showMissionDetail(item.missionStatus)">
+                            {{item.missionStatus?"查看详情":"运行中"}}</i>
+                    </div>
+                </div>
+            </div>            
+    </div>
+
+    <div class="result-crash-details" ng-class="{'active':analysisCtrl.isShowDetail}">
+        <div class="analaysis-head">
+            <div class="analaysis-head-title">MAC伴随</div>
+            <div class="back-btn">
+                <button ng-click="analysisCtrl.goResultAnalysis()">返回上级</button>
+            </div>
+        </div>
+        <div class="m-alarm-list-top">
+            <span>共计<i>200</i>条记录</span>
+            <span  class="showRoutes" ng-click="analysisCtrl.ShowAlarmDetail()">查看轨迹
+                <i class="m-alarm-arrow-right"></i>
+            </span>
+            
+        </div>
+        <div class="m-alarm-list-main"  ng-click="analysisCtrl.showMacLocation($index)"
+        ng-repeat="item in analysisCtrl.analysisList">
+            <div class="result-crash-left">
+                <img class="comparedImg" ng-src="{{item.url?item.url:'../../../images/analysis/human-default.png'}}">
+                <i class="similiar">{{item.similiarity}}%</i>
+                <i class="icon"></i>
+            </div>
+            <div class="result-crash-right">
+                <div class="m-trace-list-action"> 
+                    <i class="video">视频</i>    
+                    <i class="control">布控</i>
+                    <i class="analyse">分析</i>
+                    <i class="collect">收藏</i>
+                    
+                </div>
+                <p class="createTime">{{item.time}}</p>
+                <p class="location">{{item.location}}</p>
+                <p><span class="delete">删除</span></p>
+            </div>
+        </div>  
+    </div>
+
+    <div class="result-track-detail" id="result-track-detail" ng-class="{'active':analysisCtrl.showTrackdetail}">
+        <div class="analaysis-head">
+            <div class="analaysis-head-title">人脸MAC碰撞</div>
+            <div class="back-btn">
+                <button ng-click="analysisCtrl.goResultRecords()">返回上级</button>
+            </div>
+        </div>
+        <div class="analysis-result-sort">
+            <div class="sort-type">
+                <span class="orderType" ng-class="{'active':item.val==analysisCtrl.sortItem[0].val}" 
+                ng-repeat="item in analysisCtrl.sortList" ng-click="analysisCtrl.tabSortType(item)">{{item.text}}</span>
+
+            </div>
+            <div class="analysis-action">
+                <span class="analysis-all">全选</span>
+                <span class="analysis-export">导出</span>
+            </div>
+        </div>
+        <div class="analysis-result-detail">
+            <dl ng-repeat="item in  analysisCtrl.analysisDetailList">
+                <dt><img ng-src="{{item.url?item.url:'../../../images/analysis/human-default.png'}}"></dt>
+                <dd>
+                    <span class="createTime">{{item.time}}</span>
+                    <span class="location">{{item.location}}</span>
+                    <i class="similiar">{{item.similiarity}}%</i>
+                </dd>
+            </dl>
+        </div>
+    </div> 
+</div>    

@@ -1,0 +1,102 @@
+<div class="role-parent-tree" ng-class="{'role-wrap-parent-tree':roleTreeCtrl.currentIsParent}">
+    <li  ng-if="!roleTreeCtrl.currentIsParent"
+        class="f-cfb role-tree-line"
+
+    >
+        <div class="role-head f-cfb">
+            <span class="role-icon i-s1"
+                  ng-click="roleTreeCtrl.clickTreeChildShowBtn()"
+            ></span>
+            <div class="role-content-head">
+                    <span class="role-checkbox"
+                          ng-click="roleTreeCtrl.clickCheckBoxBtn()"
+                          ng-class="{'check-Part':roleTreeCtrl.currentTree.checkBoxStatus == -1}"
+                          ng-bind="roleTreeCtrl.currentTree.checkBoxStatus == 1?'✔':''"
+                    ></span>
+                <span class="role-title"
+                      ng-bind="roleTreeCtrl.currentTree.Name"
+                ></span>
+            </div>
+
+            <div class="role-btns f-cfb">
+                <button class="role-btn u-button u-button-blue-7"
+                        ng-repeat="(oper_index,currentOper) in roleTreeCtrl.currentTree.OperateList"
+
+                        ng-click="roleTreeCtrl.clickOperateSelectBtn(oper_index)"
+
+                        ng-class="{'role-btn-active':currentOper.isSelect}"
+
+                        ng-bind="currentOper.Name"
+                >
+                </button>
+            </div>
+        </div>
+
+        <ul class="role-sub-tree"
+            ng-show="roleTreeCtrl.currentTree.isShowChild"
+        >
+            <util-role-tree
+                    ng-repeat="(_index,treeItem) in roleTreeCtrl.currentTree.children"
+
+                    tree-child = "treeItem"
+
+                    tree-parent = "false"
+
+                    tree-parent-checkbox = "roleTreeCtrl.currentTree.checkBoxStatus"
+
+                    tree-child-level = "1"
+
+                    tree-child-change-check = "roleTreeCtrl.changeCheckBoxCallBack(childStatus)"
+            ></util-role-tree>
+        </ul>
+    </li>
+
+    <li ng-if="roleTreeCtrl.currentIsParent"
+        class="f-cfb role-tree-line role-wrap-tree-line"
+        ng-repeat = "(p_index,currentItem) in roleTreeCtrl.currentTree"
+    >
+        <div class="role-head f-cfb">
+            <span class="role-icon i-s1"
+                  ng-click="roleTreeCtrl.topClickTreeChildShowBtn(p_index)"
+            ></span>
+            <div class="role-content-head">
+                <span class="role-checkbox"
+                      ng-click="roleTreeCtrl.topClickCheckBoxBtn(-2,p_index)"
+                      ng-class="{'check-Part':currentItem.checkBoxStatus == -1}"
+                      ng-bind="currentItem.checkBoxStatus == 1?'✔':''"
+                ></span>
+                <span class="role-title"
+                      ng-bind="currentItem.Name"
+                ></span>
+            </div>
+
+            <div class="role-btns f-cfb">
+                <button class="role-btn u-button u-button-blue-7"
+                        ng-repeat="(oper_index,currentOper) in currentItem.OperateList"
+
+                        ng-click="roleTreeCtrl.topClickOperateSelectBtn(p_index,oper_index)"
+
+                        ng-class="{'role-btn-active':currentOper.isSelect}"
+
+                        ng-bind="currentOper.Name"
+                >
+                </button>
+            </div>
+        </div>
+        <ul class="role-sub-tree"
+            ng-show="currentItem.isShowChild"
+        >
+            <util-role-tree
+                    ng-repeat="(item_index,treeItem) in currentItem.children"
+                    tree-child = "treeItem"
+                    tree-parent = "false"
+
+                    tree-parent-checkbox = "currentItem.checkBoxStatus"
+
+                    tree-child-level = "{{roleTreeCtrl.currentLevel + 1}}"
+
+                    tree-child-change-check = "roleTreeCtrl.topChangeCheckBoxCallBack(childStatus,p_index,item_index)"
+            ></util-role-tree>
+        </ul>
+    </li>
+</div>

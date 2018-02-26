@@ -1,0 +1,44 @@
+<div class="person-callPoint-container" ng-controller="personAlarmPopupController as personAlarmPopupCtrl">
+    <div class="callPoint-title-container" ng-mouseenter="personAlarmPopupCtrl.changeAlarmPopupStatus(true)" ng-mouseleave="personAlarmPopupCtrl.changeAlarmPopupStatus(false)">
+        <div class="callPoint-title">
+            <span class="callPoint-title-icon"></span>
+            <span class="callPoint-title">{{personAlarmPopupCtrl.model.AlarmLog.ObjectName}}</span>
+            <span class="callPoint-exit" ng-click="personAlarmPopupCtrl.closeAlarmPopup()"></span>
+        </div>
+        <div class="callPoint-content">
+            <div class="callPoint-capture-face">
+                <img ng-src="{{personAlarmPopupCtrl.model.AlarmLog.CapFacePicUrl | imageUrlFilter}}" alt="">
+                <span class="callPoint-img-info callPoint-img-info-left">抓拍人脸</span>
+            </div>
+            <div class="callPoint-contrast-face">
+                <span class="similarty">{{personAlarmPopupCtrl.model.AlarmLogInfoArr[0].AlarmLogInfo.Similarty | roundNumber}}%</span>
+                <img ng-src="{{personAlarmPopupCtrl.model.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.FacePicPath[0] | imageUrlFilter}}" alt="">
+                <span class="callPoint-img-info  callPoint-img-info-right">比中人脸</span>
+            </div>
+            <div class="callPoint-info-container">
+                <div class="callPoint-info-head">
+                    <div class="info-name"><i
+                            class="man"
+                            ng-class="{women:personAlarmPopupCtrl.model.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.Gender == 1}"
+                    ></i> {{personAlarmPopupCtrl.model.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.Name}}</div>
+                    <div class="info-idcard"><i class="idcard"></i> {{personAlarmPopupCtrl.model.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.IDCardNumber}}</div>
+                </div>
+                <div class="callPoint-info">
+                    <div class="callPoint-info-li">
+                        <span class="info-title">布控人 : </span><span>{{personAlarmPopupCtrl.task.JsonUserData.Person.Name}}</span>
+                    </div>
+                    <div class="callPoint-info-li">
+                        <span class="info-title">所在库 : </span><span>{{personAlarmPopupCtrl.model.AlarmLogInfoArr[0].LibName}}</span>
+
+                    </div>
+                    <div class="callPoint-info-li">
+                        <span class="info-title">报警时间 : </span><span>{{personAlarmPopupCtrl.model.AlarmLog.AlarmTime}}</span>
+                    </div>
+                    <div class="callPoint-info-line">
+                        <span class="info-title">报警设备 : </span><span>{{personAlarmPopupCtrl.model.AlarmLog.ObjectName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

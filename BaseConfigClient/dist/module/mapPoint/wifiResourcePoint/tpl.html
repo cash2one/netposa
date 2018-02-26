@@ -1,0 +1,50 @@
+<div ng-controller="wifiResourcePointController as wifiResourcePointCtrl" class="wifi-resource-point wifi-pop-up" ng-class="{'active': wifiResourcePointCtrl.ShowAlarmStatus}">
+    <div class="title">
+        <div class="name">{{wifiResourcePointCtrl.deviceName}}</div>
+        <div class="close mylayer-close " ng-click="wifiResourcePointCtrl.mapWifiPopulClose()"></div>
+    </div>
+    <div class="con">
+        <div class="collect-info con-box">
+            <div class="top">
+                <div class="left">
+                    <div class="description">Wi-Fi采集</div>
+                </div>
+                <div class="right">
+                    <span>今日：</span>
+                    <span class="link">{{wifiResourcePointCtrl.dataListTotal}}</span>
+                    <span class="line">|</span>
+                    <span class="link" ng-click="wifiResourcePointCtrl.lookMoreCollect(true)">更多 > </span>
+                </div>
+            </div>
+            <div class="item-ul">
+                <div class="item-li" ng-repeat="item in wifiResourcePointCtrl.MockWifiList|toFiltSlice: 'key': 6">
+                    <div class="mac">{{item.Mac}}</div>
+                    <div class="time">{{item.AcqTime}}</div>
+                    <div class="address">{{wifiResourcePointCtrl.deviceName}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="alarm-info con-box">
+            <div class="top">
+                <div class="left">
+                    <div class="description">报警信息</div>
+                    <span class="alarm-sign">{{wifiResourcePointCtrl.alarmdataListTotal}}</span>
+                </div>
+                <div class="right">
+                    <span class="link" ng-click="wifiResourcePointCtrl.lookMoreCollect(false)">更多 > </span>
+                </div>
+            </div>
+            <div class="item-ul">
+                <div class="item-li" ng-repeat="item in wifiResourcePointCtrl.MockWifiAlarmList|toFiltSlice: 'key': 2">
+                    <div class="mac">{{item.AlarmLog.Mac}}</div>
+                    <div class="time">{{item.AlarmLog.AlarmTime}}</div>
+                    <div class="address">{{wifiResourcePointCtrl.deviceName}}</div>
+                    <div class="alarm-status effectivity">{{}}</div>
+                </div>
+            </div>
+            <div class="arrows" ng-click="wifiResourcePointCtrl.showAlarm()">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>

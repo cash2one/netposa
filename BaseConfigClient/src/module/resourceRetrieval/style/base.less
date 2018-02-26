@@ -1,0 +1,241 @@
+// 配置背景图片地址
+@base-image-url: "../../../images";
+
+@import "../../../style/child-base";
+
+// 资源检索公用样式
+.search-component {
+  .search-component-test {
+    position: relative;
+    z-index: 1000;
+  }
+  // 车牌
+  .licence {
+    background: #2D87F9;
+    color: #fff !important;
+    width: 80px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    display: inline-block;
+    padding: 2px 5px;
+    position: relative;
+    margin: 5px 0;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 98%;
+      height: 92%;
+      top: 3%;
+      left: 1%;
+      border: solid 1px #fff;
+    }
+  }
+  input::-webkit-input-placeholder {
+    color: #999;
+  }
+  input:-moz-placeholder {
+    color: #999;
+  }
+  input::-moz-placeholder {
+    color: #999;
+  }
+  input:-ms-input-placeholder {
+    color: #999;
+  }
+  // 没有数据图标样式
+  .m-noMessage {
+    text-align: center;
+    position: relative;
+    padding-top: 120px;
+    font-size: 14px;
+    color: #999;
+    margin-top: 90px;
+    background-position: top center;
+    .icon_m_noMessage();
+    &.m-noQuery {
+      background-size: auto 110px;
+      padding-top: 130px;
+      background-position: top center;
+      .icon_m_noQuery();
+    }
+  }
+
+  // 加载中动画
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+    width: 300px;
+    height: 300px;
+    .icon_loading();
+    background-position: center center;
+    background-size: 300px auto;
+  }
+
+  // 收藏分析等操作
+  .operate {
+    float: right;
+    user-select: none;
+    .icon_collect {
+      .icon_collect();
+    }
+    .icon_analysis {
+      .icon_analysis();
+    }
+    .icon_dispatched {
+      .icon_dispatched();
+      display: none;
+    }
+    i {
+      position: relative;
+      width: 45px;
+      height: 16px;
+      line-height: 20px;
+      display: inline-block;
+      padding-left: 20px;
+      .analysis-ul {
+        display: none;
+        position: absolute;
+        width: 85px;
+        top: 16px;
+        right: 2px;
+        background: @white;
+        z-index: 10;
+        padding: 5px 10px;
+        text-align: center;
+        .box_shadow();
+      }
+      &:hover {
+        .analysis-ul {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // 带图显示内容
+  .media-right {
+    float: left;
+    padding: 0;
+    ul li {
+      height: 20px;
+      line-height: 20px;
+      .name {
+        float: left;
+      }
+      .text {
+        float: left;
+        .wordBreak();
+      }
+      &.sex {
+        .name {
+          .icon_sex();
+          background-position: left center;
+        }
+      }
+      &.time {
+        .name {
+          .icon_time();
+          background-position: left center;
+        }
+      }
+      &.address {
+        .name {
+          .icon_address();
+          background-position: left center;
+        }
+      }
+      &.feature {
+        .name {
+          .icon_feature();
+          background-position: left center;
+        }
+      }
+      &.car-speed {
+        .name {
+          .car_speed();
+          background-position: left center;
+        }
+      }
+      &.car-feature {
+        .name {
+          .car_speed();
+          background-position: left center;
+        }
+      }
+      &.mac {
+        .name {
+          .icon_mac();
+          background-position: left center;
+        }
+      }
+      &.imsi {
+        .name {
+          .icon_imsi();
+          background-position: left center;
+        }
+      }
+      &.imei {
+        .name {
+          .icon_imei();
+          background-position: left center;
+        }
+      }
+    }
+  }
+
+  // 左侧导航切换
+  .search-device-switch {
+    position: absolute;
+    width: 95px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: #fff;
+    background-image: url(../../../images/resourceRetrieval/leftnav.png);
+    z-index: 10;
+    .search-borde-bottom{
+      border-bottom: 1px solid #54618E;
+      position: relative;
+      z-index: 1;
+      .search-device-button {
+        border-bottom: 1px solid #3b536e;
+        border-top: 1px solid #476d99;
+        width: 100%;
+        height: 77px;
+        cursor: pointer;
+        text-align: center;
+        &:first-child {
+          border-top: 0;
+        }
+        &:hover {
+          border-color: rgba(255, 255, 255, .2);
+          background: rgba(255, 255, 255, .2)
+        }
+        .search-device-one{
+          padding: 7px 24px;
+          width: 100%;
+          height: 100%;
+          .search-device-icon {
+            width: 40px;
+            height: 40px;
+          }
+          .search-device-text {
+            display: inline-block;
+            margin-top: 5px;
+          }
+        }
+      }
+      .search-device-button.icon-background {
+        background: #2D87F9;
+      }
+    }
+    .background-icon {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}

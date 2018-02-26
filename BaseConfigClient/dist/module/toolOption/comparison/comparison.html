@@ -1,0 +1,134 @@
+<div class="m-comparison" ui-view="toolOption">
+    <!--标定图片时展示-->
+    <div class="demarcate-wrap"
+         ng-class="{'z-index':comparisonCtrl.isShowDemarcate}">
+
+        <div class="demarcate-wrap-top f-cfb">
+            <div class="wrap-dem-title f-fl">手动标定</div>
+            <div class="wrap-dem-cancel f-fr" ng-click="comparisonCtrl.cancelDemarcate()"></div>
+        </div>
+
+        <div class="demarcate-wrap-center">
+            <p class="dem-cen-top">单击鼠标左键标定，依次按照眼睛、鼻子、嘴角两边的顺序进行标定</p>
+
+            <div class="dem-cen-bottom f-cfb">
+                <div class="dem-cen-bottom-img f-fl">
+                    <img src="{{comparisonCtrl.imgUrlArr[0]}}" alt="">
+                </div>
+                <div class="dem-cen-bottom-img f-fr">
+                    <img src="{{comparisonCtrl.imgUrlArr[1]}}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="demarcate-wrap-bottom f-cfb">
+            <div class="dem-bom-btns f-fr f-cfb">
+                <button class="u-button f-fl m-right15" ng-click="comparisonCtrl.demarcateResult()">比对</button>
+                <button class="u-button f-fl u-button-blue-2" ng-click="comparisonCtrl.cancelDemarcate()">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!--初始时展示-->
+    <!--现在为身份证查询比对结果-->
+    <div class="result-wrap_1 result-wrap_2"
+         ng-class="{'z-index':comparisonCtrl.isShowIdCardResult}">
+
+        <div class="result-wrap-top">
+            <div class="IDcard-search">
+                <input class="search-input" type="text" placeholder="输入身份证号找人">
+                <i class="search-input-icn i-sea"></i>
+            </div>
+        </div>
+
+        <div class="result-wrap-bottom f-cfb">
+            <div class="result-bom-img f-fl">
+
+                <div class="res-bom-img">
+                    <!--更换图片和标定的按钮-->
+                    <div class="res-bom-imgBtn-1" ng-show="false">
+                        <div class="replace-btn">
+                            <span>更换图片</span>
+                           <!-- <label class="upload-btn_2">
+                                <input type="file">
+                            </label>-->
+                        </div>
+                        <div class="demarcate-btn">手动标定</div>
+                    </div>
+
+                    <!--左右切换的按钮-->
+                    <div class="res-bom-imgBtn-2 f-cfb" ng-show="true">
+                        <div class="res-left-btn f-fl">
+                            <i class="res-left-icn"></i>
+                        </div>
+                        <div class="res-right-btn f-fr">
+                            <i class="res-right-icn"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="peopel-msg" ng-show="true">
+                    <div class="pe-info f-cfb">
+                        <div class="pe-name f-fl">
+                            <i></i>
+                            <span>孙丽丽</span>
+                        </div>
+
+                        <div class="f-fr">
+                            深圳在逃库
+                        </div>
+                    </div>
+
+                    <div class="pe-id-card ellipsis">
+                        <span class="m-right5">身份证号:</span>
+                        <span>888888888888888888</span>
+                    </div>
+
+                    <div class="pe-address ellipsis">
+                        <span class="m-right5">户籍地址:</span>
+                        <span>深圳市龙岗区布吉镇南湾街道一村</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="result-bom-circle f-fl">
+                <div class="res-bom-circle_1">
+                    <div class="res-bom-circle_2">
+                        <div class="res-bom-circle_3">
+                            90%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-bom-img f-fr">
+                <div class="res-bom-img">
+                    <div class="add-img add-img-margin" ng-show="true">
+                        <div class="first-circle">
+                            <div class="second-circle">
+                                <div class="third-circle">
+                                    <label class="upload-btn_1">
+                                        <input type="file">
+                                    </label>
+
+                                    <div class="add-icn-wrap">
+                                        <div class="add-icn"></div>
+                                        <p class="add-text">添加图片</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="width: 300px;height: 500px;background: #fff">
+        <div class="ceshi-contatainer f-pr">
+            <img class="ceshi" src="{{comparisonCtrl.imgUrlArr[0]}}"
+                 ng-click="comparisonCtrl._demarcate($event)">
+        </div>
+    </div>
+</div>

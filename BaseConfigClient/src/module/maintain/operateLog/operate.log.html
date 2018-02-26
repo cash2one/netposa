@@ -1,0 +1,23 @@
+<div class="m-operateLog m-maintain-box">
+    <ol class="m-route-maintain f-cfb">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="FDS_02_02"></li>
+    </ol>
+
+    <div class="m-operateLog-container">
+        <div class="m-maintain-topFixed">
+            <div class="operateLog-info-top f-cfb">
+                <div class="info-top-btn f-fl"
+                     ng-click="operateLogCtrl.switchDevicePage(item.type)"
+                     ng-class="{'info-top-btn-selected':item.status}"
+                     translate="{{item.name}}"
+                     ng-repeat="item in operateLogCtrl.deviceArray"
+                ></div>
+            </div>
+        </div>
+        <div class="m-maintain-bottomFixed operateLog-bottomFixed"
+             ng-include="operateLogCtrl.htmlUrl"></div>
+    </div>
+
+</div>

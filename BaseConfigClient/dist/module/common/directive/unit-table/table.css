@@ -1,0 +1,210 @@
+/*每个td或者th的宽度每个模块分别设置*/
+
+
+/*当有复选框时，将text-indent设为0*/
+.fn-thead .has-text-indent, .fn-tbody .has-text-indent{
+    text-indent: 0
+}
+
+/*================*/
+
+.fn-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.fn-thead tr{
+    height: 39px;
+    line-height: 39px;
+    background-color: #eef3f8;
+}
+
+.fn-thead th {
+    text-align: left;
+    text-indent: 1em;
+    font-weight: bold;
+   /* color: #666;*/
+    border-right: 1px solid #fff;
+    font-size: 14px;
+    vertical-align: middle;
+    line-height: 2.2;
+    overflow:hidden;
+    word-wrap:normal;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.table-display {
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.table-content-list{
+    float: left;
+    overflow-y: auto;
+    top: 39px;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+}
+
+.task-config-css .table-content-list{
+    float: left;
+    overflow-y: auto;
+    top: 39px;
+    right: 0px;
+    bottom: 50px;
+    margin-bottom: 0px;
+    position: absolute;
+}
+
+.table-content-list .table-check-label{
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 700;
+    float: left;
+    width:15px;
+    height:15px;
+    border:1px solid #666;
+    margin: 7.5px 5px 0 10px;
+    border-radius:2px;
+    text-align:center;
+    line-height: 12px;
+    color: #333;
+}
+
+.table-display-title .table-check-label{
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 700;
+    float: left;
+    width:15px;
+    height:15px;
+    border:1px solid #666;
+    margin: 7.5px 5px 0 10px;
+    border-radius:2px;
+    text-align:center;
+    line-height: 12px;
+    color: #333;
+}
+
+.engine-server-list-header .table-display-title{
+    display: none;
+}
+
+.table-content .table-check-label{
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 700;
+    float: left;
+    width:15px;
+    height:15px;
+    border:1px solid #666;
+    margin: 7.5px 5px 0 10px;
+    border-radius:2px;
+    text-align:center;
+    line-height: 12px;
+    color: #333;
+}
+
+
+.fn-thead th:last-child {
+    border-right: none;
+}
+
+/*正常情况下样式*/
+.fn-tbody tr {
+    height: 39px;
+    line-height: 39px;
+    border-bottom: solid 1px #e1e1e1;
+    background: #fff;
+    font-size: 12px;
+  /*  color: #333;*/
+}
+
+.fn-tbody tr td{
+    vertical-align: middle;
+    line-height: 2.2;
+    word-break: break-all;
+    word-wrap: break-word;
+    text-align: left;
+    text-indent: 1em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.fn-tbody tr:nth-child(2n){
+    background: #f9f9f9;
+}
+
+.fn-table .checkbox-bright-icon {
+    position: relative;
+    top: 4px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+.fn-tbody .status .switch {
+    position: relative;
+    top: 6px;
+    display: inline-block;
+    width: 38px;
+    height: 20px;
+}
+
+.fn-tbody .opera-btn {
+    vertical-align: middle;
+}
+
+.fn-tbody .opera-btn i {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.table-icon-cntr .icon-btn{
+    float: left;
+    margin: 0 10px;
+    cursor: pointer
+}
+
+.table-sorted-color{
+    color: #00c0ff;
+}
+
+/*待审核状态样式*/
+.fn-tbody .checkPending{
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+}
+
+.fn-tbody .checkPending td:last-child{
+    color: #4394ff;
+}
+
+/*审核状态样式*/
+.fn-tbody .auditing td:last-child{
+    color: #4394ff;
+}
+
+/*暂停和过期状态样式*/
+.fn-tbody .checkPending{
+    font-size: 12px;
+    color: #999;
+}
+
+/*草稿状态样式*/
+/* TODO 这段知道干啥用的 alter wyr*/
+/*.fn-tbody td:last-child{*/
+    /*color: #ff3a3e;*/
+/*}*/

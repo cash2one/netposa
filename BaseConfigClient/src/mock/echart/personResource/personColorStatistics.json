@@ -1,0 +1,93 @@
+{
+    "color":  ["#FFFF00","#5B9BD5","#00B050","#D9D9D9","#000000"],
+    "grid": {
+        "left": "3%",
+        "right": "4%",
+        "bottom": "3%",
+        "top": "5%",
+        "containLabel": true
+    },
+    "xAxis" : [
+        {
+            "type" : "category",
+            "data" : ["黄牌","蓝牌", "绿牌", "白牌", "黑牌"],
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": ["#F8F0E9"]
+                }
+            },
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#C9C9C9"
+                }
+            },
+            "axisLabel": {
+                "textStyle": {
+                    "color": "#6F6E6E",
+                    "fontSize":"10"
+                }
+            },
+            "axisTick": {
+                "alignWithLabel": true
+            }
+        }
+    ],
+    "yAxis" : [
+        {
+            "type" : "value",
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": ["#F8F0E9"]
+                }
+            },
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#C9C9C9"
+                }
+            },
+            "axisLabel": {
+                "textStyle": {
+                    "color": "#6F6E6E",
+                    "fontSize":"10"
+                }
+            }
+        }
+    ],
+    "series": [
+        {
+            "name": "直接访问",
+            "type": "bar",
+            "stack": "总量",
+            "barWidth" : 20,
+            "data": [320, 0, 0, 0, 0]
+        },
+        {
+            "name": "邮件营销",
+            "type": "bar",
+            "stack": "总量",
+            "data": [0, 200, 0, 0, 0]
+        },
+        {
+            "name": "联盟广告",
+            "type": "bar",
+            "stack": "总量",
+            "data": [0, 0, 400, 0, 0]
+        },
+        {
+            "name": "视频广告",
+            "type": "bar",
+            "stack": "总量",
+            "data": [0, 0, 0, 154, 0]
+        },
+        {
+            "name": "搜索引擎",
+            "type": "bar",
+            "stack": "总量",
+            "data": [0, 0, 0, 0, 500]
+        }
+    ]
+}

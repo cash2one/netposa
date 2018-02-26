@@ -1,0 +1,22 @@
+<div class="mac-list f-cfb">
+    <!-- <div class="mac-title">{{alarmLogResult.AlarmLog.ObjectType | objectTypeFilter}}</div> -->
+    <div class="list">
+        <i class="mac-icon"></i>
+        <span class="text z-bold">{{alarmLogResult.AlarmLog.Notes}}</span>
+    </div>
+    <div class="f-toe">
+        <span class="valid">{{alarmLogResult.AlarmLog.ResponseState|alarmResponseStateFilter}}</span>
+    </div>
+    <div class="list">
+        <i class="time-icon"></i>
+        <span class="text">{{alarmLogResult.AlarmLog.AlarmTime}}</span>
+    </div>
+    <div class="list">
+        <i class="address-icon"></i>
+        <span class="text" title="{{alarmLogResult.AlarmLog.ObjectName}}">{{alarmLogResult.AlarmLog.ObjectName}}</span>
+    </div>
+    <div class="cover f-cfb">
+        <!-- <i class="icon report-icon2"></i> -->
+        <i class="icon report-icon1 f-csp" ng-class="{'z-uncollect': !alarmLogResult.Collected}" ng-click="myReportCtrl.attention(alarmLogResult)"></i>
+    </div>
+</div>

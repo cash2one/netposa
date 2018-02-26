@@ -1,0 +1,82 @@
+<div class="u-baseconfig-popup m-device-popup" ng-controller="baseConfigRmpgatePopup as rmpgatePopup">
+    <div class="f-cfb d-tree-content" style="padding: 10px 20px;">
+
+        <div class="box-cntr">
+            <div class="box-head" translate="DP_CONFIG_COMMON_22"></div>
+            <div class="box-center">
+                <input class="u-input box-center-input" ng-model="rmpgatePopup.searchLeftTreeInput" ng-keyup="rmpgatePopup.searchLeftTreeInputKeyUp($event,rmpgatePopup.searchLeftTreeInput)" type="text" placeholder="{{'DP_CONFIG_COMMON_28'|translate}}">
+                <i class="u-input-search" ng-click="rmpgatePopup.searchLeftTree(rmpgatePopup.searchLeftTreeInput)"></i>
+            </div>
+            <div class="box-bottom" style="height:290px" ng-scrollbars>
+                <util-tree tree-id="{{rmpgatePopup.leftTreeParams.treeId}}"
+                           tree-datas="rmpgatePopup.leftTreeParams.treeDatas"
+                           check-enable="{{rmpgatePopup.leftTreeParams.checkEnable}}"
+                           single-select="{{rmpgatePopup.leftTreeParams.isSingleSelect}}"
+                           is-simple-data="{{rmpgatePopup.leftTreeParams.isSimpleData}}"
+                           show-icon="{{rmpgatePopup.leftTreeParams.isShowIcon}}"
+                           show-line="{{rmpgatePopup.leftTreeParams.isShowLine}}"
+                           default-no-data-msg="{{rmpgatePopup.leftTreeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{rmpgatePopup.leftTreeParams.searchNoDataMsg}}"
+                           on-click="rmpgatePopup.leftTreeParams.onClick(event, treeId, treeNode)" 
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           edit-enable="{{rmpgatePopup.leftTreeParams.editEnable}}"
+                           show-remove-btn="{{rmpgatePopup.leftTreeParams.showRemoveBtn}}"
+                           show-rename-btn="{{rmpgatePopup.leftTreeParams.showRenameBtn}}"
+                           add-diy-dom="rmpgatePopup.leftTreeParams.addDiyDom(treeId,treeNode)"
+                           is-prev="false"
+                           is-next="false"
+                           is-inner="false"
+                           is-copy="true"
+                           is-move="false"
+                           before-drag="rmpgatePopup.leftTreeParams.beforeDrag(treeId, treeNodes)"
+                           before-drop="rmpgatePopup.leftTreeParams.beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy)"
+                           default-expand-level="0"></util-tree>
+            </div>
+        </div>
+
+        <div class="center-btns">
+            <div class="center-btn">
+                <button class="center-btn-right u-button" ng-class="{'z-hide': rmpgatePopup.rightSelectTreeNodeId == null}" ng-disabled="rmpgatePopup.rightSelectTreeNodeId == null" ng-click="rmpgatePopup.moveLeftNode2RightNode()"></button>
+            </div>
+        </div>
+
+        <div class="box-cntr f-fr">
+            <div class="box-head">{{rmpgatePopup.type == 'lamp'? '立杆': '行政区域'}}</div>
+            <div class="box-bottom" style="height:335px" ng-scrollbars>
+                <util-tree tree-id="{{rmpgatePopup.rightTreeParams.treeId}}"
+                           tree-datas="rmpgatePopup.rightTreeParams.treeDatas"
+                           check-enable="{{rmpgatePopup.rightTreeParams.checkEnable}}"
+                           single-select="{{rmpgatePopup.rightTreeParams.isSingleSelect}}"
+                           is-simple-data="{{rmpgatePopup.rightTreeParams.isSimpleData}}"
+                           show-icon="{{rmpgatePopup.rightTreeParams.isShowIcon}}"
+                           show-line="{{rmpgatePopup.rightTreeParams.isShowLine}}"
+                           default-no-data-msg="{{rmpgatePopup.rightTreeParams.defaultNoDataMsg}}"
+                           search-no-data-msg="{{rmpgatePopup.rightTreeParams.searchNoDataMsg}}"
+                           on-click="rmpgatePopup.rightTreeParams.onClick(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           edit-enable="{{rmpgatePopup.rightTreeParams.editEnable}}"
+                           show-remove-btn="{{rmpgatePopup.rightTreeParams.showRemoveBtn}}"
+                           show-rename-btn="{{rmpgatePopup.rightTreeParams.showRenameBtn}}"
+                           is-prev="true"
+                           is-next="true"
+                           is-inner="true"
+                           is-copy="false"
+                           is-move="true"
+                           before-drag="rmpgatePopup.rightTreeParams.beforeDrag(treeId, treeNodes)"
+                           before-drop="rmpgatePopup.rightTreeParams.beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy)"
+                           default-expand-level="0"></util-tree>
+            </div>
+        </div>
+
+    </div>
+    <div class="form f-cfb"  style="padding:10px 15px;border-top:1px solid #e4e4e4;margin-top:10px;">
+        <img src="../../../images/common/alerm-Icon.png"/>
+        <label style="color: gray;font-weight: 400;position: relative;top: 1px;" translate="DP_CONFIG_COMMON_87"></label>
+        <button class="u-button f-fr m-right15 u-button-blue-2" ng-click="rmpgatePopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+        <button class="u-button f-fr m-right15 u-button-blue-1" ng-click="rmpgatePopup.submit()" translate="DP_CONFIG_COMMON_05"></button>
+    </div>
+</div>

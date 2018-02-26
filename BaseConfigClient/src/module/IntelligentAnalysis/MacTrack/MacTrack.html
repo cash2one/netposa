@@ -1,0 +1,169 @@
+<div class="mac-track-box">
+    <!-- Mac轨迹首页 -->
+    <div class="mac-trace-Index" ng-class="{'active':MacTrackCtrl.showIndex}">
+        <div class="analaysis-head">
+            <div class="analaysis-head-title">Mac轨迹</div>
+            <div class="back-btn">
+                <button ng-click="MacTrackCtrl.goBack()">返回上级</button>
+            </div>
+        </div>
+        <div class="mac-track-form">
+            <div class="mac-track-index-title">
+                <button class="add"  ng-click="MacTrackCtrl.addMacAddress()">添加MAC地址</button>
+            </div>
+            <div class="track-form">
+                <div class="mc-track-title-border">
+                    <div class="mac-track-index-address">
+                        <div ng-repeat="item in MacTrackCtrl.MacTrackIndexParams track by $index" class="mac-track-address-line">
+                            <span class="title analaysis-form-title">
+                                <select class="macType"
+                                        ng-options="i.name as i.name for i in MacTrackCtrl.addType"
+                                        ng-model="MacTrackCtrl.defaultName"
+                                        ng-change="MacTrackCtrl.changeAddType(MacTrackCtrl.defaultName)"
+                                ></select>
+                            </span>
+                            <span class="fillin"><input type="text" placeholder="{{MacTrackCtrl.placeHolder  || '请输入mac地址'}}" ng-model="item.macAddress"></span>
+                            <span class="delete-position">
+                                <i class="layui-layer-ico layui-layer-close layui-layer-close1 m-mac-delete" ng-click="MacTrackCtrl.deleteMacAddress($index)"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analaysis-form-input">
+                    <span class="analaysis-form-title">时间筛选</span>
+                    <div class="fast-date">
+                        <span
+                                ng-class="{active:item.key==MacTrackCtrl.dataList[0].key}"
+                                ng-click="MacTrackCtrl.swatchDateRange(item)"
+                                ng-repeat="item in MacTrackCtrl.dataAllLists">{{item.text}}</span>
+                    </div>
+                </div>
+                <div class="analaysis-form-input analaysis-form-input-date">
+                    <span class="analaysis-form-title">开始时间: </span>
+                    <span class="input-layer">
+                    <input type="text" placeholder="请选择开始时间" date-picker ng-model="MacTrackCtrl.MacTrackIndexParams.startTime">
+                </span>
+                </div>
+                <div class="analaysis-form-input analaysis-form-input-date">
+                    <span class="analaysis-form-title">结束时间: </span>
+                    <span class="input-layer">
+                        <input type="text" placeholder="请选择结束时间"  date-picker ng-model="MacTrackCtrl.MacTrackIndexParams.endTime">
+                    </span>
+                </div>
+                <div class="face-track-select-camera">
+                    <span class="form-title">设备</span>
+                    <div class="face-track-camera">
+                        <span class="action choose-camera">选择设备</span>
+                        <span ng-click="MacTrackCtrl.DrawRect()" class="action square"></span>
+                        <span ng-click="MacTrackCtrl.DrawCircle()" class="action round"></span>
+                        <span ng-click="MacTrackCtrl.DrawPolygon()" class="action polygon"></span>
+                    </div>
+                </div>
+
+                <div class="analaysis-form-input">
+                    <div class="analysis-alarm-inquiry find-data bg-blue" ng-click="MacTrackCtrl.requireList()">开始检索</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mac轨迹列表 -->
+    <div class="face-track-res"
+         ng-class="{'active':MacTrackCtrl.isShowList}"
+         ng-if="MacTrackCtrl.isShowList"
+    >
+        <div class="image-result">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">Mac轨迹</div>
+                <div class="back-btn">
+                    <button ng-click="MacTrackCtrl.gotoIndex()">返回上级</button>
+                </div>
+            </div>
+            <div class="mac-track-form mac-mytrack-form">
+                <div class="before-layer">
+                    <div class="capture-layer" ng-scrollbars>
+                        <div ng-repeat="item in [1,2,3]" class="mac-trace-list">
+                            <div class="macTraceList">
+                                <div class="macTraceList-title mac-address">
+                                    <i>12-BN-90-FO-WE-24</i>
+                                </div>
+                                <div class="button-content">
+                                    <span class="find-result" ng-click="MacTrackCtrl.findResult()">查看结果</span>
+                                    <span class="find-trace" ng-click="MacTrackCtrl.findTrack(item)">查看轨迹</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mac轨迹详情 -->
+    <div class="face-track-res face-track-result-res"
+         ng-class="{'active':MacTrackCtrl.showResult}"
+         ng-if = "MacTrackCtrl.showResult"
+    >
+        <div class="image-result">
+            <div class="analaysis-head">
+                <div class="analaysis-head-title">Mac轨迹</div>
+                <div class="back-btn">
+                    <button ng-click="MacTrackCtrl.gotoIndex()">返回上级</button>
+                </div>
+            </div>
+            <div class="track-result-content">
+                    <div class="head-layer find-track-head">
+
+                        <div class="head-title">
+                            <div class="mac-head-text">
+                                <span class="mac-address">12-BN-90-FO-WE-24</span>
+                            </div>
+                            <div>
+                                <span class="head-left">
+                                    <button ng-click="MacTrackCtrl.setFaceTrack()">查看轨迹</button>
+                                </span>
+                                <span class="head-right">
+                                    共 <i>{{MacTrackCtrl.resultParams.data.totalCount}}</i> 条结果
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-layer" ng-scrollbars>
+                            <div class="capture-item"
+                                 ng-repeat="item in MacTrackCtrl.resultParams.data.result track by MacTrackCtrl.getKey(item)"
+                                 ng-click="MacTrackCtrl.resultToMap()">
+                                <div class="img-info">
+                                    <span ng-click="MacTrackCtrl.showMapPoint($index)"
+                                          class="location">{{$index+1}}</span>
+                                    <div class="action">
+                                        <span ng-class="{'active':item.isCollection===0}" class="sc"></span>
+                                        <span class="fx"></span>
+                                        <span ng-class="{'active':item.isMonitor===0}" class="bk"></span>
+                                    </div>
+                                </div>
+                                <div class="desc">
+                                    <div class="mac-address">AC-5S-A8-98-AS-DS</div>
+                                    <div class="time">{{item.accessLog.LogTime}}</div>
+                                    <div class="info">{{item.accessLog.address}}</div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="page-bottom">
+                        <util-paging
+                                hide-size="true"
+                                page-params="MacTrackCtrl.resultParams"
+                                prev-page="MacTrackCtrl.changeResultPage(num)"
+                                next-page="MacTrackCtrl.changeResultPage(num)"
+                                go-page="MacTrackCtrl.changeResultPage(num)"
+                                show-type="small"
+                        ></util-paging>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="taggle-result taggle-result-open" ng-class="{'active':MacTrackCtrl.showResult}"
+         ng-click="MacCarCrashCtrl.goAllResult()"></div>
+</div>

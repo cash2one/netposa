@@ -1,0 +1,772 @@
+@charset "UTF-8";
+
+/*登录页面
+  create by pxy
+*/
+
+
+/*@charset "UTF-8";*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+abbr,
+acronym {
+    border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+}
+
+input,
+img {
+    vertical-align: middle;
+    outline: none;
+}
+
+body {
+    background-color: #ececec;
+    color: #787878;
+    font-family: "Microsoft YaHei";
+    font-size: 12px !important;
+    display: block;
+    overflow: hidden;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%
+}
+
+
+/*input密码框 在ie浏览器的兼容问题*/
+
+input::-ms-clear {
+    display: none;
+}
+
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+
+/*input框添加required 在火狐浏览器的兼容问题*/
+
+input[required]:invalid,
+input:focus:invalid,
+textarea[required]:invalid,
+textarea:focus:invalid {
+    box-shadow: none;
+}
+
+input {
+    font-family: "Microsoft YaHei"
+}
+
+::-webkit-input-placeholder {
+    color: #a0acb9;
+}
+
+:-moz-input-placeholder {
+    color: #a0acb9;
+}
+
+::-moz-input-placeholder {
+    color: #a0acb9;
+}
+
+:-ms-input-placeholder {
+    color: #a0acb9;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -khtml-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-family: 'Oswald', 'Arial CE', Arial, sans-serif;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+.m-login {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.m-login a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.m-login a:hover {
+    text-decoration: none;
+}
+
+.m-login .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1968c4;
+    overflow: hidden;
+}
+
+.m-login .circle-first {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -636px;
+    margin-left: -636px;
+    width: 1272px;
+    height: 1272px;
+    border-radius: 640px;
+    border: 25px dashed #fff;
+    opacity: .05;
+    background-color: #354ea1;
+    filter: alpha(opacity=2);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.m-login .circle-second {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -549px;
+    margin-left: -549px;
+    width: 1098px;
+    height: 1098px;
+    border-radius: 550px;
+    border: 10px dotted #fff;
+    opacity: .05;
+    filter: alpha(opacity=5);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.m-login .circle-last {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -300px;
+    margin-left: -300px;
+    width: 600px;
+    height: 600px;
+    opacity: .08;
+    filter: alpha(opacity=5);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.m-login .circle-last svg {
+    width: 100%;
+    height: 100%;
+}
+
+.m-login .circle-last-after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -290px;
+    margin-left: -290px;
+    width: 580px;
+    height: 580px;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.m-login .circle-last-after svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*改变内部圆圈背景颜色*/
+
+.m-login .bg-placeholder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -355px 0 0 -355px;
+    width: 710px;
+    height: 710px;
+    border-radius: 360px;
+    background: #1968c4;
+    border: 1px solid #fff;
+    opacity: .05;
+}
+
+.m-login .beeline {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+}
+
+.m-login .beeline:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: -100%;
+}
+
+.m-login .beeline:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+}
+
+.m-login section {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -300px 0 0 -300px;
+    width: 600px;
+    height: 600px;
+}
+
+.m-login .section-home {
+    margin: -255px 0 0 -255px;
+    width: 510px;
+    height: 510px;
+    z-index: 5;
+}
+
+.m-login .section-home-bg {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 450px;
+    height: 450px;
+    background: url(../../../images/login/background.png) center center no-repeat;
+    background-size: 450px 450px;
+    opacity: .2;
+}
+
+.m-login .content_inner-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 510px;
+    height: 510px;
+    margin-left: -255px;
+    margin-top: -255px;
+}
+
+.m-login .section-home-circle-first {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -220px;
+    margin-left: -220px;
+    width: 440px;
+    height: 440px;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.m-login .section-home-circle-first svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*登录输入框容器*/
+
+.m-login .content__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    padding: 2.5em 2.5em 0;
+}
+
+.m-login .module-login {
+    position: absolute;
+    width: 350px;
+    height: 380px;
+    left: 50%;
+    top: 50%;
+    margin-top: -190px;
+    margin-left: -175px;
+    overflow: hidden;
+}
+
+.m-login .login-theme {
+    width: 300px;
+    height: 48px;
+    background: url('../../../images/login/LOGO .png') center bottom no-repeat;
+    background-size: 266px 60px;
+    background-position: center center;
+    margin: auto;
+}
+
+.m-login .login-container {
+    padding: 0 0px;
+    margin-top: 70px;
+}
+
+.m-login .field {
+    position: relative;
+    margin-top: 8px;
+}
+
+.m-login .field .login-text {
+    width: 100%;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    /* IE < 8: 伪造 inline-block */
+    font-size: 15px;
+    padding: 14px 36px 14px 20px;
+    color: #333;
+    font-weight: 500;
+    border: 1px solid #3a8aee;
+    outline: none;
+    border-radius: 4px;
+    background-color: #419ffa;
+}
+
+.m-login .field .login-text::-ms-placeholder {
+    color: white;
+}
+
+.m-login .field .login-text::-webkit-placeholder {
+    color: white;
+}
+
+.m-login .field .login-text::placeholder {
+    color: white;
+}
+
+.m-login .field input.active {
+    border-color: #00c0ff;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #419ffa inset;
+    -ms-box-shadow: 0 0 0px 1000px #419ffa inset;
+}
+
+.m-login .field i {
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: absolute;
+    top: 11px;
+    left: 16px;
+    zoom: 1;
+    *display: inline;
+    /* IE < 8: 伪造 inline-block */
+}
+
+.m-login .field span i.icon-user {
+    background: url(../../../images/login/lg-user.png);
+}
+
+.m-login .field span i.icon-pwd {
+    background: url(../../../images/login/lg-pwd.png);
+}
+
+.m-login .J-submit {
+    width: 350px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 8px;
+    border: 0 none;
+    background: #8abb21;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 92px;
+}
+
+.m-login .j-pwd {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border: 1px solid #0797de;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.m-login .j-pwd input {
+    opacity: 0;
+}
+
+.m-login .j-pwd-text {
+    font-size: 12px;
+    position: absolute;
+    left: 30px;
+    top: 5px;
+}
+
+
+/*国际化*/
+
+.m-login .loginTitle {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: gray;
+    z-index: 9999;
+}
+
+.m-login .logo-left {
+    position: absolute;
+    left: 0;
+}
+
+.m-login .international {
+    position: absolute;
+    right: 100px;
+}
+
+.m-login .inter-txt {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    color: #000;
+}
+
+.m-login .inter-break {
+    float: left;
+    margin: 0 5px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.m-login .international a:hover {
+    color: #fff;
+}
+
+
+/*登录错误弹框样式*/
+
+.m-login .notify {
+    position: absolute;
+    top: 276px;
+    z-index: 9999;
+    padding: 10px;
+    color: #fff;
+    font-size: 15px;
+    left: 62%;
+    width: 180px;
+    margin-left: -100px;
+    text-align: center;
+    border-radius: 3px;
+    background: #000;
+    transition: all .25s ease-in-out;
+    transform: translate(0px);
+    opacity: 0;
+}
+
+.m-login .notify-warn {
+    opacity: 1;
+}
+
+
+/*图标定位*/
+
+.m-login .icon-point-1 {
+    top: -20px;
+    left: 255px;
+    background: url("../../../images/login/视频.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-2 {
+    top: 255px;
+    left: -20px;
+    background: url("../../../images/login/人员信息.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-3 {
+    top: 510px;
+    left: 255px;
+    background: url("../../../images/login/人脸识别.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-4 {
+    top: 255px;
+    left: 510px;
+    background: url("../../../images/login/视频.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-5 {
+    top: 76px;
+    left: 40px;
+    background: url("../../../images/login/报警.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-6 {
+    position: absolute;
+    top: 420px;
+    left: 40px;
+    background: url("../../../images/login/布控.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-7 {
+    top: 420px;
+    left: 440px;
+    background: url("../../../images/login/统计分析.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-8 {
+    top: 76px;
+    left: 440px;
+    background: url("../../../images/login/app定位.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-pointBig-1 {
+    position: absolute;
+    top: -25px;
+    left: 240px;
+}
+
+.m-login .icon-pointBig-2 {
+    position: absolute;
+    top: 250px;
+    left: -35px;
+}
+
+.m-login .icon-pointBig-3 {
+    position: absolute;
+    top: 505px;
+    left: 240px;
+}
+
+.m-login .icon-pointBig-4 {
+    position: absolute;
+    top: 250px;
+    left: 495px;
+}
+
+.m-login .icon-pointBig-5 {
+    position: absolute;
+    top: 71px;
+    left: 25px;
+}
+
+.m-login .icon-pointBig-6 {
+    position: absolute;
+    top: 415px;
+    left: 25px;
+}
+
+.m-login .icon-pointBig-7 {
+    position: absolute;
+    top: 415px;
+    left: 425px;
+}
+
+.m-login .icon-pointBig-8 {
+    position: absolute;
+    top: 71px;
+    left: 425px;
+}
+
+.m-login .icon-point-11 {
+    background: url("../../../images/login/视频2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-22 {
+    background: url("../../../images/login/人员信息2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-33 {
+    background: url("../../../images/login/人脸识别2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-44 {
+    background: url("../../../images/login/视频2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-55 {
+    background: url("../../../images/login/报警2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-66 {
+    background: url("../../../images/login/布控2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-77 {
+    background: url("../../../images/login/统计分析2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point-88 {
+    background: url("../../../images/login/app定位2.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.m-login .icon-point {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.m-login .icon-point-h {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.m-login .text-point {
+    display: block;
+    width: 60px;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    opacity: .5;
+    color: #00c1f9;
+}
+
+.m-login .content_inner-icon .icon-pointBig {
+    width: 60px;
+    display: none;
+}
+
+.m-login .iconContent:hover .icon-point {
+    display: none;
+}
+
+.m-login .iconContent:hover .icon-pointBig {
+    display: block;
+}
+
+.m-login .field .j-right {
+    width: 100%;
+    height: 100%;
+    color: #333;
+    position: static;
+    font-size: 14px;
+    margin-left: -4px;
+    text-align: center;
+    line-height: 20px;
+}

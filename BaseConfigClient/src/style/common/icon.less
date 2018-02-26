@@ -1,0 +1,1008 @@
+/*baseconfig*/
+.i-area, .i-unit, .i-user, .i-role, .i-device, .i-cameraIcon, .i-rmpgate, .i-wifi, .i-ele, .i-lampIcon,
+.i-facelib, .i-task, .i-mapresource, .i-runplan, .i-systemproperties, .i-person, .i-area-node,
+.i-edit, .i-lamp, .i-delete, .i-locate,
+.i-ivsserver,.i-engineserver, .i-videoserver, .i-proxyserver,
+.i-task-stop,.i-task-start,
+.i-circle-turn-up,.i-circle-turn-down,
+.i-checkbox-checked,.i-checkbox-part,.i-checkbox-none
+{
+    background-image: url("../../images/baseconfig/baseconfig_ico.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+/*---------baseconfig nav----------*/
+.i-cameraIcon {
+    background-position: -138px 0;
+}
+.i-hover:hover .i-cameraIcon,
+.z-active .i-cameraIcon{
+    background-position: -154px 0;
+}
+.i-rmpgate {
+    background-position: -138px -16px;
+}
+
+.i-hover:hover .i-rmpgate,
+.z-active .i-rmpgate{
+    background-position: -154px -16px;
+}
+.i-wifi {
+    background-position: -138px -32px;
+}
+
+.i-hover:hover .i-wifi,
+.z-active .i-wifi{
+    background-position: -154px -32px;
+}
+.i-ele {
+    background-position: -138px -48px;
+}
+
+.i-hover:hover .i-ele,
+.z-active .i-ele{
+    background-position: -154px -48px;
+}
+.i-lampIcon {
+    background-position: -138px -64px;
+}
+.i-hover:hover .i-lampIcon,
+.z-active .i-lampIcon{
+    background-position: -154px -64px;
+}
+.i-area {
+    background-position: 0 0;
+}
+
+.i-hover:hover .i-area,
+.z-active .i-area{
+    background-position: -16px 0;
+}
+
+.i-unit {
+    background-position: 0 -16px;
+}
+
+.i-hover:hover .i-unit,
+.z-active .i-unit{
+    background-position: -16px -16px;
+}
+
+.i-user {
+    background-position: 0 -32px;
+}
+
+.i-hover:hover .i-user,
+.z-active .i-user{
+    background-position: -16px -32px;
+}
+
+.i-person {
+    background-position: 0 -32px;
+}
+
+.i-hover:hover .i-person,
+.z-active .i-person{
+    background-position: -16px -32px;
+}
+
+.i-role {
+    background-position: 0 -48px;
+}
+
+.i-hover:hover .i-role,
+.z-active .i-role{
+    background-position: -16px -48px;
+}
+
+.i-proxyserver{
+    background-position: 0px -64px;
+}
+.i-hover:hover .i-proxyserver,
+.z-active .i-proxyserver{
+    background-position: -16px -64px;
+}
+
+.i-ivsserver{
+    background-position: 0px -80px;
+}
+.i-engineserver{
+    background-position: 0px -80px;
+}
+.i-hover:hover .i-ivsserver,
+.i-hover:hover .i-enginserver,
+.z-active .i-enginserver{
+    background-position: -16px -80px;
+}
+
+.i-videoserver{
+    background-position: 0px -96px;
+}
+.i-hover:hover .i-videoserver,
+.z-active .i-videoserver{
+    background-position: -16px -96px;
+}
+
+.i-device{
+    background-position: 0 -112px;
+}
+.i-hover:hover .i-device,
+.z-active .i-device{
+    background-position: -16px -112px;
+}
+
+.i-facelib{
+     background-position: 0 -128px;
+}
+.i-hover:hover .i-facelib,
+.z-active .i-facelib{
+    background-position: -16px -128px;
+}
+
+.i-task{
+    background-position: 0 -144px;
+}
+.i-hover:hover .i-task,
+.z-active .i-task{
+    background-position: -16px -144px;
+}
+
+.i-mapresource{
+    background-position: 0 -160px;
+}
+.i-hover:hover .i-mapresource,
+.z-active .i-mapresource{
+    background-position: -16px -160px;
+}
+
+.i-runplan{
+    background-position: 0 -176px;
+}
+.i-hover:hover .i-runplan,
+.z-active .i-runplan{
+    background-position: -16px -176px;
+}
+
+.i-systemproperties{
+    background-position: 0 -192px;
+}
+.i-hover:hover .i-systemproperties,
+.z-active .i-systemproperties{
+    background-position: -16px -192px;
+}
+
+/* 任务暂停 */
+.i-task-stop{
+    background-position: -32px -64px;
+}
+
+.z-disabled.i-task-stop,.z-disabled.i-task-start,
+.z-disabled.z-active.i-task-stop,
+.z-disabled.i-hover:hover.i-task-stop{
+    background-position: -64px -48px;
+    cursor: not-allowed;
+}
+
+.i-hover:hover.i-task-stop,
+.z-active.i-task-stop
+{
+    background-position: -48px -64px;
+}
+/* 任务开启 */
+.i-task-start{
+    background-position: -32px -48px;
+}
+
+.i-hover:hover.i-task-start,
+.z-active.i-task-start
+{
+    background-position: -48px -48px;
+}
+/*===================*/
+
+/*-----common icon button---------*/
+.i-edit,
+.i-edit.z-gray:hover{
+    background-position: -48px 0;
+}
+.i-edit.z-gray{
+    background-position: -32px 0;
+}
+.i-lamp,
+.i-lamp.z-gray:hover{
+    background-position: -48px -208px;
+}
+.i-lamp.z-gray{
+    background-position: -32px -208px;
+}
+.i-delete,
+.i-delete.z-gray:hover{
+    background-position: -48px -16px;
+}
+.i-delete.z-gray{
+    background-position: -32px -16px;
+}
+.i-locate,
+.i-locate.z-gray:hover{
+    background-position: -48px -32px;
+}
+.i-locate.z-gray{
+    background-position: -32px -32px;
+}
+
+/*圆圈包裹的添加*/
+.i-addition{
+    background: url("../../images/common/addition.png") center center no-repeat;
+    background-size: 24px 24px;
+}
+
+/*白色加号*/
+.i-add{
+    background: url("../../images/common/add.png") center center no-repeat;
+    background-size: 15px 15px;
+}
+
+/*#666加号*/
+.i-gray-add{
+    background: url("../../images/common/grayadd.png") center center no-repeat;
+    background-size: 15px 15px;
+}
+
+/*日历*/
+.i-calendar{
+    background: url("../../images/common/rili.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+
+/*日期*/
+.i-date{
+    background: url("../../images/common/riqi.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+
+/*眼睛*/
+.i-eye{
+    background: url("../../images/common/eye.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+/*下拉菜单未下拉状态*/
+.i-top{
+    background:#bdbdc2 url("../../images/common/shangla.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+/*下拉菜单处于下拉状态*/
+.i-down{
+    background:#45a2ff url("../../images/common/xiala.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+/*下拉菜单中树形三角形操作前*/
+.i-s1{
+    background: url("../../images/common/s1.png") center no-repeat;
+    background-size: 20px 20px ;
+}
+/*下拉菜单中树形三角形操作后*/
+.i-s2{
+    background: url("../../images/common/s2.png") center no-repeat;
+    background-size: 20px 20px ;
+}
+/*摄像头*/
+.i-camera{
+    background: url("../../images/common/shexiangtou.png") center no-repeat;
+    background-size: 20px 20px ;
+}
+
+/*摄像机*/
+.i-cameraVideo{
+    background: url("../../images/common/shexiangji.png") center no-repeat;
+    background-size: 20px 20px ;
+}
+
+/*定位图标*/
+.i-mapPosition{
+    background: url("../../images/common/ditudingwei.png") center no-repeat;
+    background-size: 16px 16px ;
+}
+
+/*灯杆坐标*/
+.i-lamp-position333 {
+    background: url("../../images/baseconfig/lamp/position333.png") center no-repeat;
+    background-size: 16px 16px ;
+    width:16px;
+    height:16px;
+}
+.i-lamp-positionGreen {
+    background: url("../../images/baseconfig/lamp/positonGreen.png") center no-repeat;
+    background-size: 16px 16px ;
+    width:16px;
+    height:16px;
+}
+.i-lamp-DevicePopul {
+    background: url("../../images/baseconfig/lamp/Associated.png") center no-repeat;
+    background-size: 16px 16px ;
+    width:16px;
+    height:16px;
+}
+.i-lamp-unDevicePopul {
+    background: url("../../images/baseconfig/lamp/unAssociated.png") center no-repeat;
+    background-size: 16px 16px ;
+    width:16px;
+    height:16px;
+}
+
+/*取消*/
+.i-cancel{
+    background: url("../../images/common/quxiao.png") center no-repeat;
+    background-size: 14px 14px ;
+}
+
+/*nav头部 退出icon*/
+.i-quit{
+    background: url("../../images/common/tuichu.png") center center no-repeat;
+    background-size: 16px 16px;
+}
+
+/*nav头部 设置icon*/
+.i-setUp{
+    background: url("../../images/common/shezhi.png") center center no-repeat;
+    background-size: 14px 14px;
+}
+
+.i-center{
+    background: url("../../images/common/center.png") center center no-repeat;
+    background-size: 10px 10px;
+    margin-right: 50px;
+}
+
+.i-sign{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #fff;
+    position: absolute;
+    left: 20px;
+    top: -10px;
+}
+
+.i-collect{
+    background: url("../../images/common/mycollect.png") center center no-repeat;
+    background-size: 16px 16px;
+}
+
+.i-check{
+    background: url("../../images/common/mycheck.png") center center no-repeat;
+    background-size: 16px 16px;
+}
+
+.i-report{
+    background: url("../../images/common/myreport.png") center center no-repeat;
+    background-size: 16px 16px;
+}
+
+.i-feedback{
+    background: url("../../images/common/feedback.png") center center no-repeat;
+    background-size: 16px 16px;
+}
+
+.i-about{
+    background: url("../../images/common/about.png") center center no-repeat;
+    background-size: 16px 16px;
+}
+
+
+
+/*nav头部 用户icon*/
+.i-userName{
+    background: url("../../images/common/face1.png") center center no-repeat;
+    width: 35px !important;
+    height: 35px !important;
+    margin-top: 8px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-size: cover;
+}
+/*nav头部 通知icon*/
+.i-notice{
+    background: url("../../images/common/notice.png") center center no-repeat;
+    width: 30px;
+    height: 30px;
+    margin-top:10px;
+    float:left;
+}
+
+/*放大icon*/
+.i-enlarge{
+    background: url("../../images/common/fangda.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+
+/*缩小icon*/
+.i-shrink{
+    background: url("../../images/common/suoxiao.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+
+
+
+/*分页icon*/
+.i-pading-first{
+    background: url("../../images/common/shouye.png") center center no-repeat;
+    background-size: 12px 12px;
+}
+
+.i-pading-last{
+    background: url("../../images/common/weiye.png") center center no-repeat;
+    background-size: 12px 12px;
+}
+
+.i-pading-up{
+    background: url("../../images/common/shangyiye.png") center center no-repeat;
+    background-size: 12px 12px;
+}
+
+.i-pading-down{
+    background: url("../../images/common/xiayiye.png") center center no-repeat;
+    background-size: 12px 12px;
+}
+
+/*自定义select icon图标*/
+.i-select-down{
+    background: url("../../images/common/selectIcon.png") center center no-repeat;
+    background-size: 10px 10px;
+}
+
+/*树节点图标*/
+.i-ztree-attention,
+.i-ztree-locate{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url("../../images/dynamicControl/dynamicControl.png") center center no-repeat;
+}
+.i-ztree-locate{
+    background-position: -48px 0;
+}
+.i-ztree-attention{
+    background-position: -16px 0;
+    /*模拟没有选中的效果*/
+    opacity: 0.3;
+}
+.i-ztree-attention.z-select{
+    background-position: 0 0;
+    opacity: 1;
+}
+
+/* 打叉 */
+.i-btn-close{
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url("../../images/common/i-close-blue.png") 0 0 no-repeat;
+}
+
+
+/*统计分析图表左按钮*/
+.i-alarm-left{
+    background: url("../../images/common/alarm-left.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+
+/*统计分析图表右按钮*/
+.i-alarm-right{
+    background: url("../../images/common/alarm-right.png") center center no-repeat;
+    background-size: 20px 20px;
+}
+
+/*统计分析图标*/
+.i-total-allCamera{
+    background: url("../../images/total/totalIcon.png") 0 0 no-repeat;
+}
+
+.i-total-normalCamera{
+    background: url("../../images/total/totalIcon.png") -60px 0 no-repeat;
+}
+
+.i-total-faceCamera{
+    background: url("../../images/total/totalIcon.png") -120px 0 no-repeat;
+}
+
+.i-total-vedioCamera{
+    background: url("../../images/total/totalIcon.png") 0 -60px no-repeat;
+}
+
+.i-total-bodyCamera{
+    background: url("../../images/total/totalIcon.png") -60px -60px no-repeat;
+}
+
+
+/*TODO 缺图*/
+
+.i-checkbox-checked{
+    background-position: -96px 0px;
+}
+.i-checkbox-part{
+    background-position: -112px 0px;
+}
+.i-checkbox-none{
+    background-position: -80px -1px;
+}
+
+
+.i-circle-turn-up{
+    background-position: 18px -18px;
+    width: 18px;
+    height: 18px;
+}
+.i-circle-turn-down{
+    background-position: 18px 0px;
+    width: 18px;
+    height: 18px;
+}
+
+/*基础配置*/
+.i-position-device{
+    background: url("../../images/baseconfig/lamp/positonGreen.png");
+}
+
+/*资源态势*/
+/*放大*/
+.i-fullScreen{
+    background: url("../../images/resource/fullScreen.png") center center no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-test{
+    background: url("../../images/bo-test.jpg") center center no-repeat;
+    display: block;
+    width: 141px;
+    height: 90px;
+
+}
+.i-car-test{
+    background: url("../../images/car-test.jpg") center center no-repeat;
+    display: block;
+    width: 141px;
+    height: 90px;
+}
+/*排行榜图标*/
+.i-rank-first{
+    background: url("../../images/resource/rankFirst.png") center center no-repeat;
+    display: block;
+    width: 27px;
+    height: 23px;
+}
+.i-rank-second{
+    background: url("../../images/resource/rankSecond.png") center center no-repeat;
+    display: block;
+    width: 27px;
+    height: 23px;
+}
+.i-rank-third{
+    background: url("../../images/resource/rankThird.png") center center no-repeat;
+    display: block;
+    width: 27px;
+    height: 23px;
+}
+.i-rank-four{
+    background: url("../../images/resource/rankFour.png") center center no-repeat;
+    display: block;
+    width: 27px;
+    height: 23px;
+}
+.i-rank-five{
+    background: url("../../images/resource/rankFive.png") center center no-repeat;
+    display: block;
+    width: 27px;
+    height: 23px;
+}
+.i-left-display{
+    background: url("../../images/resource/display.png") center center no-repeat;
+    display: block;
+    width: 27px;
+    height: 23px;
+}
+.i-right-hide{
+    background: url("../../images/resource/hide.png") center center no-repeat;
+    display: block;
+    width: 27px;
+    height: 23px;
+}
+/*资源检索图标*/
+.i-search-image{
+    background: url("../../images/resourceRetrieval/photoupload.png") center center no-repeat;
+    display: block;
+    width: 28px;
+    height: 29px;
+}
+.i-search-button{
+    background: url("../../images/resourceRetrieval/search.png") center center no-repeat;
+    display: block;
+    width: 28px;
+    height: 29px;
+}
+
+
+.i-person-add,
+.i-circle-add
+{
+    background-image: url("../../images/baseconfig/baseconfig_ico.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-person-add,
+.i-person-add.z-gray:hover{
+    background-position: -48px -144px
+}
+.i-person-add.z-gray{
+    background-position: -32px -144px
+}
+
+.i-circle-add,
+.i-circle-add.z-gray:hover{
+    background-position: -48px -128px;
+}
+.i-circle-add.z-gray{
+    background-position: -32px -128px;
+}
+
+/*运维管理*/
+.i-statisticalAnalysis{
+    background-image: url("../../images/maintain/statisticsoverview-white.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-statisticalAnalysis-gray{
+    background-image: url("../../images/maintain/statisticsoverview-gray.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-taskStatistics{
+    background-image: url("../../images/maintain/taskStatistics-white.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-alarmStatistics{
+    background-image: url("../../images/maintain/alarmStatistics-white.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-trafficStatistics{
+    background-image: url("../../images/maintain/trafficStatistics-white.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-retrievalStatistics{
+    background-image: url("../../images/maintain/retrievalStatistics-white.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-analysisStatistics{
+    background-image: url("../../images/maintain/analysisStatistics-white.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.i-devicestatus{
+    background-image: url("../../images/maintain/devicestatus-white.png");
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.i-userstatus{
+    background-image: url("../../images/maintain/userstatus.png");
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.i-operatelog{
+    background-image: url("../../images/maintain/operatelog-white.png");
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+/*我的*/
+.i-incheck{
+    background-image: url("../../images/common/incheck-icon.png");
+    float: left;
+    width: 16px;
+    height: 16px; 
+}
+.i-checked{
+    background-image: url("../../images/common/checked-icon.png");
+    float: left;
+    width: 16px;
+    height: 16px; 
+}
+.i-checkedit{
+    background-image: url("../../images/common/check-info.png");
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+.f-synchronize{
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABUklEQVQ4T61TQVLCQBDs3oNe4Qf4g/gC4w9YPgBcTLyY5AXqC0K8QLyQF2TxB/oC4Af4Ar1qlTvWClgJIFaJc9qq7enpmekhDgwemI+dBHe5iS3QpeApCnWc3huPgi4hM0vOkws9WxeuEayAYwIeRB4sWSSBnqRj01DveHFJBJKrQA+2CByIb5iS0rSkX63iwFleLgA0RDiNQ32+RZDl5gbAtSVON5Md2KmDoKUAYy36yaUuVoqWXNmodH0torDT3jfYTdz3DLLcCIDbKNBOyY+xVhoF+iv3HwlG5QREIwo6/i8tTAC0orDj1RSkQ9NTCmMLaPfh1rdJ5AapBNNqqzUfZHn5CPBMBIs41CdVgnRofCoYijzbY/pJX7/WFCx3bdxquu5tj9B0oDQ3bTpXAm2IzK1ib68T8QFPEZ5VKBwwG5kBID7JourAnVb+y2EdfI2fYECZEWV/LxoAAAAASUVORK5CYII=");
+}
+
+/* 资源检索、智能分析相关图标*/
+// 收藏
+.pdp-icon-collect {
+    min-width: 16px;
+    min-height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background-position: center center;
+    background-image: url("../../images/icon/collection.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    &.active {
+        background-image: url("../../images/icon/collection-active.png");
+    }
+}
+// 分析
+.pdp-icon-analysis {
+    min-width: 16px;
+    min-height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background-position: center center;
+    background-image: url("../../images/icon/analysis.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+// 布控
+.pdp-icon-dispatched {
+    min-width: 16px;
+    min-height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background-position: center center;
+    background-image: url("../../images/icon/dispatched.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    &.active {
+        background-image: url("../../images/icon/dispatched-active.png");
+    }
+}
+// 设备框选选择设备
+.pdp-icon-select-device {
+    min-width: 70px;
+    min-height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-select-device.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    &:hover {
+        background-image: url("../../images/icon/icon-select-device-hover.png");
+    }
+}
+// 设备框选删除
+.pdp-icon-map-delete {
+    min-width: 16px;
+    min-height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-map-delete.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+// 设备框选圆形
+.pdp-icon-map-round {
+    min-width: 24px;
+    min-height: 24px;
+    line-height: 24px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-map-round.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    &:hover {
+        background-image: url("../../images/icon/icon-map-round-hover.png");
+    }
+}
+// 设备框选方形
+.pdp-icon-map-square {
+    min-width: 24px;
+    min-height: 24px;
+    line-height: 24px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-map-square.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    &:hover {
+        background-image: url("../../images/icon/icon-map-square-hover.png");
+    }
+}
+// 设备框选菱形
+.pdp-icon-map-polygon {
+    min-width: 24px;
+    min-height: 24px;
+    line-height: 24px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-map-polygon.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    &:hover {
+        background-image: url("../../images/icon/icon-map-polygon-hover.png");
+    }
+}
+// 日历
+.pdp-icon-calendar {
+    min-width: 16px;
+    min-height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-calendar.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    &:hover {
+        background-image: url("../../images/icon/icon-calendar-hover.png");
+    }
+}
+// 上传图片
+.pdp-icon-camera-upload {
+    min-width: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-camera-upload.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+// 返回
+.pdp-icon-back {
+    min-width: 14px;
+    min-height: 14px;
+    line-height: 14px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-back.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    &:hover {
+        background-image: url("../../images/icon/icon-back-hover.png");
+    }
+}
+// 向前
+.pdp-icon-forward {
+    min-width: 14px;
+    min-height: 14px;
+    line-height: 14px;
+    display: inline-block;
+    background-image: url("../../images/icon/icon-forward.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    &:hover {
+        background-image: url("../../images/icon/icon-forward-hover.png");
+    }
+}
+// 删除上传图片
+.pdp-icon-delete {
+    background-image: url("../../images/icon/icon-close.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+// 删除区域
+.pdp-icon-delete-area {
+    background-image: url("../../images/icon/icon-delete-area.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    &:hover {
+        background-image: url("../../images/icon/icon-delete-area-hover.png");
+    }
+}
+// 没有离线任务
+.pdp-icon-no-analysis {
+    background-image: url("../../images/icon/no-analysis.png");
+    background-repeat: no-repeat
+}
+// 展开
+.pdp-icon-more-unfold {
+    background-image: url("../../images/icon/icon-more-unfold.png");
+    background-repeat: no-repeat
+}
+// 收起
+.pdp-icon-more-pack-up {
+    background-image: url("../../images/icon/icon-more-pack-up.png");
+    background-repeat: no-repeat
+}
+// mac地址
+.pdp-icon-mac {
+    background-image: url("../../images/icon/mac.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// imsi地址
+.pdp-icon-imsi {
+    background-image: url("../../images/icon/imsi.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// imei地址
+.pdp-icon-imei {
+    background-image: url("../../images/icon/imei.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 时间
+.pdp-icon-time {
+    background-image: url("../../images/icon/time.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 地址
+.pdp-icon-address {
+    background-image: url("../../images/icon/address.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 中标
+.pdp-icon-number {
+    background-image: url("../../images/icon/number.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 性别
+.pdp-icon-sex {
+    background-image: url("../../images/icon/icon-six.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 特征
+.pdp-icon-feature {
+    background-image: url("../../images/icon/icon-feature.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 排序图标
+.pdp-icon-rankPosition {
+    background-image: url("../../images/icon/rankPosition.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 车速
+.pdp-icon-speed {
+    background-image: url("../../images/icon/icon-speed.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+// 字母位置
+.pdp-icon-positon-letter {
+    background-image: url("../../images/icon/analysis-icon/icon-positon-letter.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+// num位置
+.pdp-icon-positon-num {
+    background-image: url("../../images/icon/analysis-icon/icon-positon-num.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+// red位置
+.pdp-icon-positon-red {
+    background-image: url("../../images/icon/analysis-icon/icon-positon-red.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+

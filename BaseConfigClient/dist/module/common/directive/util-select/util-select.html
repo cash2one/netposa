@@ -1,0 +1,37 @@
+<div class="u-util-select"
+     onselectstart="return false"
+     ng-mouseleave="utilselectDir.mouseLeave()"
+     ng-class="{'option-show' : utilselectDir.optionListIsShow}"
+     title="{{ utilselectDir.initHasSelectedVal?utilselectDir.emptyVal:utilselectDir.selectedVal | translate }}">
+
+    <a class="text selected-val" ng-class="{'empty' :  utilselectDir.initHasSelectedVal}">
+        {{utilselectDir.initHasSelectedVal?utilselectDir.emptyVal:utilselectDir.selectedVal | translate}}
+    </a>
+   <i class="icon"></i>
+
+    <div class="mask" ng-click="utilselectDir.normalClick()"></div>
+
+    <div class="context"
+         ng-class="{'is-tree' : utilselectDir.isShowTree}"
+         style="max-height:{{ utilselectDir.optionListHeight }}"
+         ng-show="utilselectDir.optionListIsShow">
+        <!--列表模式-->
+        <ul class="list" ng-show="!utilselectDir.isShowTree" ng-class="{'has-icon' : utilselectDir.showDiyIcon}">
+            <li class="oneOf first" ng-show="utilselectDir.emptyVal" ng-click="utilselectDir.optionListClick($event ,null)">{{ utilselectDir.emptyVal}}
+            </li>
+
+            <li class="oneOf"
+                ng-repeat="data in utilselectDir.optionListData track by $index"
+                ng-click="utilselectDir.optionListClick($event ,data)">
+                {{ utilselectDir.repeatByKey === null ? data : data[utilselectDir.repeatByKey] }}
+
+                <a class="diy-icon" ng-show="utilselectDir.showDiyIcon"
+                   ng-click="utilselectDir.diyIconFun($event ,data)">
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+        <!--树结构模式-->
+        <div class="tree" ng-transclude ng-show="utilselectDir.isShowTree"></div>
+    </div>
+</div>

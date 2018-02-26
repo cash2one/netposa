@@ -1,0 +1,91 @@
+.tree-table{
+
+}
+
+.tree-table-head{
+    vertical-align: middle;
+    line-height: 2.2;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    clear: both;
+}
+
+.tree-table-child-body{
+
+}
+.tree-table-child-body.tree-table-tbody{
+
+}
+.tree-table-tr{
+
+}
+
+.tree-table-head.tree-table-thead{
+    height: 39px;
+}
+.tree-table-head.tree-table-thead .tree-table-td{
+    background-color: #eef3f8;
+    font-weight: bold;
+    color: #666;
+     height: 39px;
+    line-height: 39px;
+    border-right: solid 1px #fff;
+}
+
+.tree-table-td{
+    float: left;
+    width: 12.5%;
+    line-height: 2.2;
+    color: #000;
+    border-top: 1px solid #666;
+    font-size: 14px;
+    vertical-align: middle;
+    word-break: break-all;
+    word-wrap: break-word;
+    height: 39px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.tree-table-td:hover {
+    height: auto;
+    white-space: normal;
+}
+
+
+.tree-table-td .tree-table-check-label{
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 700;
+    float: left;
+    width:15px;
+    height:15px;
+    border:1px solid #666;
+    margin: 7.5px 5px 0 10px;
+    border-radius:2px;
+    text-align:center;
+    line-height: 12px;
+    color: #333;
+}
+.tree-table-td .opera-btn {
+    vertical-align: middle;
+}
+
+.tree-table-td .opera-btn i {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.tree-table-td .icon-btn{
+    float: left;
+    margin: 0 10px;
+    cursor: pointer;
+}

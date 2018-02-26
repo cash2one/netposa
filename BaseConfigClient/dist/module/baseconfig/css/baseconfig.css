@@ -1,0 +1,317 @@
+/*@import "./baseconfig-area.css";*//*css加载放到controller中*/
+/*@import "./baseconfig-unit.css";*//*css加载放到controller中*/
+/*@import './baseconfig-person.css';*//*css加载放到controller中*/
+/*@import './baseconfig-map.css';*//*css加载放到controller中*/
+/*@import './baseconfig-task.css';*//*css加载放到controller中*/
+/*@import './baseconfig-serve.css';*/ /*css加载放到controller中*/
+@import './system-properties.css';
+/*@import './baseconfig-device.css';*/ /*css加载放到controller中*/
+@import './baseconfig-face.css';
+@import './baseconfig-runPlan.css';
+.g-baseconfig-container{
+    width:100%;
+    height: 100%;
+}
+.m-baseconfig-nav-layer{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 160px;
+    height: 100%;
+    overflow: hidden;
+    -webkit-transition: width .4s;
+    transition: width .4s;
+}
+.g-baseconfig-nav{
+    width: 160px;
+    height: 100%;
+}
+.m-baseconfig-nav-layer.is-slide{
+    width: 40px;
+}
+.g-baseconfig-mn{
+    width: 100%;
+    height: 100%;
+    min-width: 1191px;
+    padding-left: 160px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.m-baseconfig-mn.z-nav-putway{
+    padding-left: 40px;
+}
+.m-baseconfig-item{
+    padding: 10px 5px;
+}
+.m-baseconfig-item a{
+    font-size: 15px;
+}
+.m-baseconfig-nav{
+    background-color: #383e4c;
+    overflow: hidden;
+}
+
+/*-------人脸库管理-------*/
+.m-facelib .facelib-left-container{
+    width:240px;
+    margin-right: -250px;
+}
+.g-facelib-tree{
+    position: absolute;
+    background: #66ccff;
+}
+.m-facelib .facelib-right-container{
+    margin-left: 250px;
+}
+.m-facelib-search{
+    border: 1px solid #000;
+}
+.m-facelib-tool{
+    border: 1px solid #000;
+}
+.m-facelib-search{
+    border: 1px solid #000;
+}
+
+/*左边固定右边自适应公共样式*/
+
+.baseconfig-two-column{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /*padding-left:250px;*/
+}
+.g-baseconfig-left{
+    position: absolute;
+    left:0;
+    top:0;
+    height: 100%;
+    width: 250px;
+    background: #fff;
+
+}
+
+.g-baseconfig-right{
+    background: #ebeef1;
+    position: absolute;
+    width: auto;
+    height: 100%;
+    top: 0;
+    left: 250px;
+    right: 0;
+    padding: 15px;
+    opacity: 1;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.g-baseconfig-tree{
+    background: #f6f9fb;
+}
+
+.g-baseconfig-left .tree-search{
+    position: relative;
+    display: block;
+    margin: 10px auto;
+}
+
+.g-baseconfig-right .right-content{
+    width: 100%;
+    height: 100%;
+    min-width: 926px;
+    position: relative;
+
+
+}
+
+/*====*/
+.m-baseconfig-topFixed{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.m-baseconfig-centerFixed{
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    background: #fff;
+}
+
+.m-baseconfig-bottomFixed{
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+/*====*/
+
+/*弹出框样式*/
+.u-baseconfig-popup {
+    margin-top: 5px;
+}
+
+.u-baseconfig-popup .form,
+.u-baseconfig-popup .static{
+    padding: 5px 15px;
+    zoom: 1;
+    position: relative;
+    overflow: hidden
+}
+
+.form .form-right{
+    float:left
+}
+.form .form-right .form-right-content{
+    display:inline-block
+}
+
+.u-baseconfig-popup .form .color,
+.u-baseconfig-popup .static .color{
+    color: #ff3838;
+    margin-right: 3px;
+}
+
+.u-baseconfig-popup .form:after,
+.u-baseconfig-popup .static:after{
+    display: block;
+    content: 'clear';
+    clear: both;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.u-baseconfig-popup .form .title,
+.u-baseconfig-popup .static .title{
+    float: left;
+    min-width: 70px;
+    line-height: 30px;
+    text-align: right;
+    padding-right:10px;
+}
+
+
+.u-baseconfig-popup .btnStyle{
+    padding: 0 20px;
+    float: right;
+    margin-left: 15px;
+}
+
+button[disabled].btnStyle:hover{
+    background: #eaf6fe;
+    color: #0994ff;
+    cursor: not-allowed;
+}
+
+.u-border{
+    height: 1px;
+    margin: 0 5px;
+    background: #f1f1f1;
+}
+
+/*------tree-change-popup--------*/
+.u-baseconfig-popup .left-tree-cntr,
+.u-baseconfig-popup .split-btn-cntr,
+.u-baseconfig-popup .right-tree-cntr{
+    float: left;
+    height: 300px;
+    overflow: auto;
+}
+.u-baseconfig-popup .left-tree-cntr{
+    width: 35%;
+}
+.u-baseconfig-popup .split-btn-cntr{
+    width: 25%;
+}
+.u-baseconfig-popup .right-tree-cntr{
+    width: 35%;
+}
+
+/*----------left upload right content------------------*/
+
+.u-baseconfig-popup .left-webuploader-cntr{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    bottom: 23px;
+    float: left;
+    width: 45%;
+    border: 1px solid #ccc;
+}
+.u-baseconfig-popup .webuploader-image-cntr{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+}
+.u-baseconfig-popup .webuploader-image-cntr .image-num{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    height: 24px;
+    line-height: 24px;
+    z-index: 1000;
+    background-color: rgba(0,0,0,.6);
+    font-size: 14px;
+    border-radius: 5px;
+    color: #fff;
+}
+.u-baseconfig-popup .webuploader-image-cntr img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+}
+.u-baseconfig-popup .webuploader-image-btn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    line-height: 40px;
+    right: 0;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+.u-baseconfig-popup .webuploader-image-btn .webuploader-pick{
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.u-baseconfig-popup .right-webupload-cntr{
+    float: right;
+    width: 45%;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+/*----------left upload right content end------------------*/
+
+/*路由导航条*/
+.m-route{
+    padding: 12px 0;
+}
+.m-route li{
+    float: left;
+}
+.m-route .route-separate{
+    margin: 0 12px;
+}
+
+
+
+

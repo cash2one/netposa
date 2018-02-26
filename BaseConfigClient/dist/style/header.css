@@ -1,0 +1,298 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, 'Microsoft Yahei';
+    font-size: 12px;
+}
+
+html {}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.g-head {
+    background-color: #1470f7;
+    width: 100%;
+    height: 53px;
+}
+
+.g-head .head-title {
+    float: left;
+    width: 300px;
+    height: 53px;
+    line-height: 53px;
+    background: url("../images/common/logo.png") center no-repeat;
+}
+
+.g-head .head-content {
+    float: left;
+    min-height: 10px;
+    position: relative;
+    display: block;
+    height: 53px;
+}
+
+.g-head .head-tool {
+    float: right;
+    height: 53px;
+}
+
+.g-head .module-list {
+    text-align: center;
+    margin: 0 0 0 20px;
+    height: 100%;
+}
+
+
+/*下拉菜单样式*/
+
+.g-head .module-list-slide {
+    width: 100%;
+    background: green;
+    position: absolute;
+    top: 53px;
+    left: 0;
+    display: none;
+}
+
+.g-head .module-list li:hover .module-list-slide {
+    display: block;
+}
+
+
+/*=====================*/
+
+.g-head .module-list>li {
+    float: left;
+    height: 100%;
+    position: relative;
+}
+
+.g-head .module-list>li>a {
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    height: 100%;
+    padding: 19px 21px 0 22px;
+}
+
+.g-head .module-list>li:hover
+/*, .m-module-list > li.selected > a*/
+
+{
+    /*color: #1b89fb;*/
+    /*border-bottom-color: #fff;*/
+    background: #1b89fb;
+}
+
+.g-head .module-list>li.selected {
+    /*color: #1b89fb;*/
+    /*border-bottom-color: #fff;*/
+    background: #1b89fb;
+}
+
+.g-head .child-module-list {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 53px;
+    background-color: #3282f8;
+}
+
+.g-head .child-module-list>li {
+    /*padding: 5px 0px;*/
+}
+
+
+/*.g-head .child-module-list li a{*/
+
+
+/*color: #333;*/
+
+
+/*}*/
+
+.g-head .child-module-list>li>a {
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    height: 100%;
+    padding: 10px 21px;
+}
+
+.g-head .child-module-list>li:hover {
+    /*color: #f9c625;*/
+    background: #1b89fb;
+}
+
+.g-head .tool-content {
+    float: left;
+    padding: 0 10px 0 10px;
+    color: #fff;
+    position: relative;
+    height: 100%;
+    line-height: 53px;
+}
+
+.g-head .tool-content-font {
+    font-size: 12px;
+}
+
+.g-head .tool-content-icon {
+    float: left;
+    width: 30px;
+    height: 53px;
+}
+
+.g-head .tool-content-text {
+    float: left;
+    height: 53px;
+    line-height: 53px;
+}
+
+.g-head .tool-cont-time {
+    height: 50%;
+    line-height: 24px;
+    text-align: center;
+}
+
+.g-head .tool-cont-time.z-top {
+    margin-top: 6px;
+}
+
+.g-head .tool-cont-time.z-bottom {
+    margin-top: -10px;
+}
+
+.g-head .tool-dropList {
+    width: 100%;
+    background: #fff;
+    color: #333;
+    position: absolute;
+    left: 0;
+    top: 53px;
+    z-index: 9999;
+    -webkit-box-shadow: 2px 2px 15px rgba(51, 51, 51, .3);
+    box-shadow: 2px 2px 15px rgba(51, 51, 51, .3);
+    display: none;
+}
+
+.g-head .tool-dropListCol {
+    text-align: left;
+    line-height: 24px;
+    padding: 4px 0;
+    cursor: pointer;
+}
+
+.g-head .tool-dropListCol-left {
+    line-height: 24px;
+    float: left;
+    margin-left: 10px;
+}
+
+.g-head .tool-dropListCol-right {
+    float: left;
+    line-height: 24px;
+    margin-left: 10px;
+    color: #e24a4a;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.g-head .tool-messageCount {
+    position: absolute;
+    top: 2px;
+    left: 36px;
+    background: #e24a4a;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.g-head .tool-dropListCol-icon {
+    width: 20px;
+    height: 24px;
+    float: left;
+    margin-left: 10px;
+}
+
+.g-head .tool-dropListCol-text {
+    float: left;
+    line-height: 24px;
+    margin-left: 2px;
+}
+
+.g-head .tool-content:hover .tool-dropList {
+    display: block;
+}
+
+.g-head .tool-dropList:hover {
+    display: block;
+}
+
+.g-head .tool-dropListCol:hover {
+    background: #ecf6fd;
+    color: #33a3fa;
+}
+
+.g-navigation-top {
+    background: #f8f9fa;
+}
+
+.m-navigation-top {
+    margin: 0 auto;
+    width: 980px;
+    height: 14px;
+    line-height: 14px;
+}
+
+.m-navigation-top a,
+.m-navigation-top span {
+    color: #555555;
+}
+
+.g-main {
+    position: relative;
+    background-color: #ebeef1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*存在底部块*/
+
+.g-main.g-has-foot {
+    padding-bottom: 72px;
+}
+
+.g-foot-normal {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    color: #787878;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.foot-relative {
+    position: relative;
+}
+
+.center-list:hover a {
+    color: #75B0EA;
+}

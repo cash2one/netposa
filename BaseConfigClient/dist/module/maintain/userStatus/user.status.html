@@ -1,0 +1,136 @@
+<div class="m-userStatus m-maintain-box">
+    <ol class="m-route-maintain f-cfb">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="FDS_02_01"></li>
+    </ol>
+
+    <div class="m-userStatus-container">
+
+        <!--做固定容器用，如在容器内有滚动条-->
+        <div class="m-maintain-topFixed">
+
+            <div class="dev-status-info">
+
+                <div class="user-status-info-top f-cfb">
+
+                    <div class="f-cfb f-fl m-right15">
+                        <span class="info-top-txt f-fl m-right5" translate="FDS_02_01_12"></span>
+                        <div class="f-cfb f-pr f-fl">
+                            <input date-picker 
+                                    class="u-input info-top-dateSelect" 
+                                    type="text"
+                                    range="false"
+                                    placeholder="{{'FDS_02_01_05' | translate}}"
+                                    ng-model="userStatusCtrl.handleStartTime"/>
+                        </div>
+                    </div>
+
+                    <div class="f-cfb f-fl m-right15">
+                        <div class="f-cfb f-pr">
+                            <input date-picker 
+                                    class="u-input info-top-dateSelect" 
+                                    type="text"
+                                    range="false"
+                                    placeholder="{{'FDS_02_01_05' | translate}}"
+                                    ng-model="userStatusCtrl.handleEndTime"/>
+                        </div>
+                    </div>
+
+                    <div class="f-fl m-right15 f-cfb">
+                        <span class="f-fl slideTitle m-right5" translate="FDS_02_00_02"></span>
+                        <div class="f-fl f-pr">
+                            <input class="u-select user-select-width" type="text" readonly
+                                   ng-click="userStatusCtrl.isShowAreaTree = !userStatusCtrl.isShowAreaTree"
+                                   ng-model="userStatusCtrl.areaName">
+
+                            <div class="tree-container" ng-show="userStatusCtrl.isShowAreaTree">
+                                <util-tree tree-hide="userStatusCtrl.areaTreeDataParams.treeDatas.length == 0"
+                                           tree-id="{{userStatusCtrl.areaTreeDataParams.treeId}}"
+                                           tree-datas="userStatusCtrl.areaTreeDataParams.treeDatas"
+                                           is-default-selected="true"
+                                           tree-init-complete="userStatusCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                                           check-enable="false"
+                                           single-select="true"
+                                           is-simple-data="true"
+                                           show-icon="true"
+                                           show-line="false"
+                                           default-no-data-msg="userStatusCtrl.areaTreeDataParams.defaultNoDataMsg"
+                                           search-no-data-msg="userStatusCtrl.areaTreeDataParams.searchNoDataMsg"
+                                           on-click="userStatusCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                                           tree-id-key="ID"
+                                           tree-pid-key="ParentID"
+                                           tree-key-name="Name"
+                                           default-select-tree-id="userStatusCtrl.areaTreeDataParams.defaultSelectTreeId"
+                                           default-expand-level="0"
+                                ></util-tree>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="f-fl m-right15">
+                        <span class="m-right5" translate="FDS_02_01_01"></span>
+                        <input class="u-input u-input-width" type="text" placeholder="{{'FDS_02_01_06'|translate}}"
+                               ng-model="userStatusCtrl.personNameInput">
+                    </div>
+
+                    <div class="f-f1 f-cfb">
+                        <button class="u-button f-fl m-right15" ng-click="userStatusCtrl.searchUser()" translate="FDS_02_00_11"></button>
+                        <button class="u-button u-button-blue-4 f-fl" ng-click="userStatusCtrl.operatorExport()" translate="FDS_02_06_12"></button>
+                    </div>
+                </div>
+
+                <div class="m-maintain-bottomFixed user-status-bottomFixed">
+                    <div class="table-box">
+                        <!--表格-->
+                        <util-table-head table-headers="userStatusCtrl.tHeadList"
+                                         table-has-check='false'>
+                            <util-table-tr ng-repeat="(index,tbody_data) in userStatusCtrl.PageParamsAndResult.data">
+                                <util-table-tr-td ng-bind="tbody_data.userName"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="tbody_data.areaName"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="tbody_data.unit"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="tbody_data.role"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="tbody_data.IP"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="tbody_data.lastLogintime"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="userStatusCtrl.PortraitTool.getChineseModuleName(tbody_data.lastcheckModel)"></util-table-tr-td>
+                                <util-table-tr-td ng-bind="tbody_data.isLogin ? '在线':'离线'" ng-class= "tbody_data.isLogin?'m-circle-green':'m-circle-ddd'">
+                                </util-table-tr-td>
+                            </util-table-tr>
+
+                            <div class="u-table-no-data" ng-show="userStatusCtrl.TotalCount" ng-cloak
+                                 translate="FDS_00_01_18"></div>
+
+                        </util-table-head>
+                    </div>
+
+                    <div class="table-paging">
+                        <util-paging
+                                page-params="userStatusCtrl.PageParamsAndResult"
+                                prev-page="userStatusCtrl.changePage(num)"
+                                next-page="userStatusCtrl.changePage(num)"
+                                go-page="userStatusCtrl.changePage(num)"
+                                hide-size="true"
+                        ></util-paging>
+                    </div>
+                </div>
+
+                <!--<div class="user-status-info-bottom f-cfb">-->
+                <!--<div class="f-fl m-right15">-->
+                <!--<span class="info-bottom-txt f-fl" translate="FDS_02_01_02"></span>-->
+                <!--<span class="info-bottom-num f-fl m-right5 m-left5"-->
+                <!--ng-bind="userStatusCtrl.count"></span>-->
+                <!--<span class="info-bottom-txt f-fl" translate="FDS_02_01_03"></span>-->
+                <!--</div>-->
+
+
+                <!--<div class="f-fl">-->
+                <!--<button class="u-button u-button-blue-4"-->
+                <!--ng-click="userStatusCtrl.exportFile()" translate="FDS_02_06_12"></button>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+    </div>
+
+</div>

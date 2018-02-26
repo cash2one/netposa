@@ -1,0 +1,53 @@
+{
+	"mapOpts": {
+		"minZoom": 10,
+		"defaultZoom": 10,
+		"maxZoom": 18,
+		"centerPoint": [
+			1.32701227757765E7,
+			4112375.5700599
+		],
+		"restrictedExtent": [
+			1.3158218966367E7,
+			4024931.6097017,
+			1.3382026585186E7,
+			4199819.5304181
+		],
+		"projection": "EPSG:900913"
+	},
+	"vectorLayer": [
+		{
+			"layerName": "liangyungang",
+			"layerType": "NPMapLib.Layers.NPLayer",
+			"layerOpt": {
+				"url": "http://webrd01.is.autonavi.com/netposa/NPGIS/services/liangyungang/MapServer",
+				"layerInfo": {
+					"centerPoint": [
+						1.32701227757765E7,
+						4112375.5700599
+					],
+					"defaultZoom": 10,
+					"fullExtent": [
+						-2.003750834E7,
+						-2.003750834E7,
+						2.003750834E7,
+						2.003750834E7
+					],
+					"layerType": "gaode",
+					"maxZoom": 18,
+					"minZoom": 10,
+					"projection": "900913",
+					"restrictedExtent": [
+						1.3158218966367E7,
+						4024931.6097017,
+						1.3382026585186E7,
+						4199819.5304181
+					],
+					"type": "png",
+					"zoomLevelSequence": "2"
+				}
+			}
+		}
+	],
+	"sattilateLayer": []
+}

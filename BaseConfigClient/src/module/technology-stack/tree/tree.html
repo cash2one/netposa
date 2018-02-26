@@ -1,0 +1,25 @@
+<div class="m-technologystack-tree">
+    <div class="tree-container">
+        <util-tree
+                   tree-id="{{technologyStackTreeCtrl.areaTreeDataParams.treeId}}"
+                   tree-datas="technologyStackTreeCtrl.areaTreeDataParams.treeDatas"
+                   is-default-selected="true"
+                   tree-init-complete="technologyStackTreeCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                   check-enable="false"
+                   single-select="true"
+                   is-simple-data="true"
+                   show-icon="true"
+                   show-line="false"
+                   default-no-data-msg="technologyStackTreeCtrl.areaTreeDataParams.defaultNoDataMsg"
+                   search-no-data-msg="technologyStackTreeCtrl.areaTreeDataParams.searchNoDataMsg"
+                   tree-id-key="ID"
+                   tree-pid-key="ParentID"
+                   tree-key-name="Name"
+                   default-select-tree-id="technologyStackTreeCtrl.areaTreeDataParams.defaultSelectTreeId"
+                   default-expand-level="0"
+                   show-locate-and-attention-btn="true"
+                   diy-dom-func1="technologyStackTreeCtrl.areaTreeDataParams.diyDomFunc1(treeId, treeNode)"
+                   diy-dom-func2="technologyStackTreeCtrl.areaTreeDataParams.diyDomFunc2(treeId, treeNode)"
+        ></util-tree>
+    </div>
+</div>

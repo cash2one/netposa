@@ -1,0 +1,147 @@
+<div ui-view="technologystack">
+    <div class="m-technology-stack container-fluid">
+        <div class="part">
+            <h2>按钮样式</h2>
+            <div class="row">
+                <div class="col-xs-1">
+                    <button class="pdp-btn">确定</button>
+                    <button disabled class="pdp-btn">确定</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn btn-cancel">取消</button>
+                    <button disabled class="pdp-btn btn-cancel">取消</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn-icon btn-add">
+                        <i></i>新建任务</button>
+                    <button disabled class="pdp-btn-icon btn-add">
+                        <i></i>新建任务</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn-icon btn-export">
+                        <i></i>导出</button>
+                    <button disabled class="pdp-btn-icon btn-export">
+                        <i></i>导出</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn-large btn-light-blue-large">
+                        <i></i>看轨迹</button>
+                    <button disabled class="pdp-btn-large btn-light-blue-large">
+                        <i></i>看轨迹</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn-large btn-blue-large">
+                        <i></i>看结果</button>
+                    <button disabled class="pdp-btn-large btn-blue-large">
+                        <i></i>看结果</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn-icon btn-open">
+                        <i></i>开启</button>
+                    <button disabled class="pdp-btn-icon btn-open">
+                        <i></i>开启</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn-icon btn-stop">
+                        <i></i>暂停</button>
+                    <button disabled class="pdp-btn-icon btn-stop">
+                        <i></i>暂停</button>
+                </div>
+                <div class="col-xs-1">
+                    <button class="pdp-btn-icon btn-delete">
+                        <i></i>删除</button>
+                    <button disabled class="pdp-btn-icon btn-delete">
+                        <i></i>删除</button>
+                </div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+            </div>
+        </div>
+        <div class="part">
+            <h2>图标样式</h2>
+            <div class="row">
+                <div class="col-xs-1">
+                    <i class="pdp-icon icon-stop"></i>
+                    <i class="pdp-icon icon-stop" disabled></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon icon-run"></i>
+                    <i class="pdp-icon icon-run" disabled></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon icon-edit"></i>
+                    <i class="pdp-icon icon-edit" disabled></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon icon-delete"></i>
+                    <i class="pdp-icon icon-delete" disabled></i>
+                </div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1"></div>
+            </div>
+        </div>
+
+        <div class="part">
+            <h2>单选、复选框</h2>
+            <div class="row">
+                <div class="col-xs-4">
+                    <switch-button name="switch" ng-model="technologyStackCtrl.switchTrue" change-status="technologyStackCtrl.changeStatus(checked)"></switch-button>
+                    <switch-button name="switch" ng-model="technologyStackCtrl.switchFalse" change-status="technologyStackCtrl.changeStatus(checked)"></switch-button>
+                    <switch-button name="switch" disabled="true" ng-model="technologyStackCtrl.switchTrue" change-status="technologyStackCtrl.changeStatus(checked)"></switch-button>
+                </div>
+            </div>
+        </div>
+        <div class="part">
+            <h2>收藏、分析、布控</h2>
+            <div class="row">
+                <div class="col-xs-1">
+                    <i class="pdp-icon-collect"></i>
+                    <i class="pdp-icon-collect active"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-analysis active"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-dispatched"></i>
+                    <i class="pdp-icon-dispatched active"></i>
+                </div>
+            </div>
+        </div>
+        <div class="part">
+            <h2>常用图标</h2>
+            <div class="row">
+                <div class="col-xs-1">
+                    <i class="pdp-icon-select-device"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-map-delete"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-map-round"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-map-square"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-map-polygon"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-calendar"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-camera-upload"></i>
+                </div>
+                <div class="col-xs-1">
+                    <i class="pdp-icon-back"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,335 @@
+@import './baseconfig-runPlan-timeRange.css';
+
+.m-runPlan{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}
+.m-runPlan .right-content{
+    width: 100%;
+    height:100%;
+    position: relative;
+}
+.m-runPlan .server-info{
+    padding: 15px;
+    background:#fff;
+    border-radius:0 0 5px 5px;
+}
+
+.m-runPlan .runPlan-centerFixed{
+    top: 155px;
+}
+
+.m-runPlan-info{
+    border-radius: 5px;
+    background-color: #fff;
+    min-width: 900px;
+    display: inline-block;
+    font-size: 12px;
+    position: absolute;
+    color: #828a98;
+    top: 1px;
+}
+
+.m-form-search{
+    position: absolute;
+    top: 37px;
+}
+
+.m-runPlan-info .form-inline{
+    padding: 15px;
+    border-bottom: 1px solid #e8ebec;
+    min-width: 867px;
+    height: 52px;
+}
+
+.m-runPlan-info .form{
+    display: inline-block;
+    font-size: 12px;
+    color: #828a98;
+    margin-right: 15px;
+}
+
+.m-runPlan-info .form .text{
+    width: 160px;
+    border-radius: 2px;
+    padding: 0 12px;
+}
+
+.m-runPlan-info .form label{
+    height: 100%;
+    line-height: 30px;
+    font-size: 14px;
+    color: #828a98;
+    position: relative;
+    display: inline-block;
+    font-weight: 100;
+}
+
+.m-runPlan-oper{
+    margin-top: 6px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    min-width: 900px;
+}
+
+
+/*运行计划更新*/
+.runPlan-modal{
+    max-height: 860px;
+    overflow: hidden;
+}
+
+.m-runPlanForm{
+    display: block;
+    padding: 0 15px;
+}
+
+.m-runPlanForm .runPlanForm-title{
+    font-size: 12px;
+    color: #767f8f;
+    display: inline-block;
+    max-width: 100%;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+.m-runPlanForm input{
+    height: 30px;
+    line-height: 30px;
+    width: 158px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #333;
+    font-size: 12px;
+    text-indent: 5px;
+    padding:0 28px 0 5px;
+}
+
+.m-runPlan-check{
+    display: block;
+    padding: 15px 15px 0px 15px;
+}
+.m-runPlan-check .runPlan-check-title{
+    font-size: 14px;
+    color: #767f8f;
+    display: inline-block;
+    max-width: 100%;
+    line-height: 30px;
+    margin-right: 5px;
+}
+.m-runPlan-check .circleBox{
+    line-height: 30px;
+    font-weight: bold;
+
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
+.m-runPlan-check .bigCircle{
+    width: 18px;
+    height:18px;
+    border-radius: 50%;
+    border:1px solid #ccc;
+    margin-top: 6px;
+}
+.m-runPlan-check .smallCircle{
+    width: 8px;
+    height:8px;
+    border-radius: 50%;
+    margin: 4px;
+}
+.m-runPlan-check .smallCircle-selected{
+    background: #91c41d;
+}
+
+.m-runPlan-input{
+    padding: 15px 0;
+}
+.runPlan-modal-content{
+    margin-left: 56px;
+    margin-bottom: 21px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 450px;
+}
+.runPlan-modal-content .runPlan-timeTable{
+    margin: 10px 0px;
+}
+.m-modal-button{
+    position: absolute;
+    left: 757px;
+    top: 48px;
+}
+/*时间过滤*/
+.m-runPlan-time{
+    position: absolute;
+    bottom: 67px;
+    left: 314px;
+}
+
+.m-runPlanForm .runPlanForm-title{
+    font-size: 14px;
+    color: #767f8f;
+  /*  display: inline-block;*/
+    max-width: 100%;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+.m-runPlanForm input{
+    height: 30px;
+    line-height: 30px;
+    width: 158px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #333;
+    font-size: 12px;
+    text-indent: 5px;
+    padding:0 28px 0 5px;
+}
+
+.m-runPlanForm .runPlanForm-input1{
+    width: 336px;
+}
+
+.m-runPlanForm .runPlanForm-input3{
+    width: 126px;
+}
+
+.m-runPlanForm .runPlanForm-select{
+    height: 30px;
+    line-height: 30px;
+    width: 126px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #666;
+    font-size: 12px;
+    display:inline-block;
+    position: relative;
+    padding: 0 30px 0 3px;
+}
+
+.m-runPlanForm .runPlanForm-select ul{
+    position: absolute;
+    z-index: 2;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    width: 100%;
+    border-top: none;
+    text-align: left;
+    left:0;
+    top:29px;
+    display: none;
+}
+
+.m-runPlanForm .runPlanForm-select ul li{
+    padding: 0 30px 0 3px;
+    position: relative;
+}
+
+.m-runPlanForm .runPlanForm-select ul li:hover{
+    background: #ecf6fd;
+    color:#269dfa;
+}
+
+.m-runPlanForm .runPlanForm-select:hover ul{
+    display: block;
+}
+
+.m-runPlanForm .iconSelect{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 28px;
+    height: 28px;
+}
+
+.m-runPlanForm .iconAddition{
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.m-runPlanForm label{
+    position: relative;
+    margin: 0;
+}
+
+.m-runPlanForm .iconPosition{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.m-runPlanForm .timePrompt{
+    margin-left: 5px;
+    color: #ffad33;
+    display:inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+
+.m-runPlanForm .runPlanForm-checkbox{
+    display: inline-block;
+    width: 14px;
+    height:14px;
+    border:1px solid #959596;
+    background: #fff;
+    text-align: center;
+    line-height: 12px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.m-runPlanForm .runPlanForm-checkbox .runPlanForm-btn{
+    padding:9px 11px;
+    font-size:12px;
+}
+
+.m-runPlanForm .runPlanForm-btn{
+    padding: 9px 11px;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    margin-left:5px;
+}
+
+/*模板类型*/
+.runPlan-title{
+    height: 100%;
+    line-height: 30px;
+    font-size: 14px;
+    color: #828a98;
+    /* width: 75px; */
+    position: relative;
+    display: inline-block;
+}
+
+.runPlan-centerFixed{
+    top: 227px;
+}
+
+.runPlan-rmSearchData{
+    color: #53aef4;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer
+}
+.m-runPlan-info-top{
+    padding: 11px 15px 12px 15px;
+}
+
+.m-runPlan-info-top h3{
+    float: left;
+    font-weight: normal;
+}
+.m-right17{
+    margin-left: 17px;
+}

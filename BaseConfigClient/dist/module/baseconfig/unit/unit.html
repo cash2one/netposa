@@ -1,0 +1,105 @@
+<div class="m-unit f-cfb baseconfig-two-column">
+    <div class="g-baseconfig-left">
+        <span class="tree-search">
+            <input type="text" class="u-input tree-search" ng-keyup="unitCtrl.treeSearchInputKeyUp($event)" ng-model="unitCtrl.treeSearchInput" placeholder="{{'DP_CONFIG_COMMON_28'|translate}}" />
+            <i class="u-input-search" ng-click="unitCtrl.treeSearchInputFunc()"></i>
+        </span>
+
+        <div ng-hide="unitCtrl.treeNoData" class="m-unit-tree-container" ng-scrollbars>
+            <util-tree tree-hide="unitCtrl.areaTreeDataParams.treeDatas.length == 0"
+                       tree-id="{{unitCtrl.areaTreeDataParams.treeId}}"
+                       tree-datas="unitCtrl.areaTreeDataParams.treeDatas"
+                       is-default-selected="true"
+                       tree-init-complete="unitCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                       check-enable="false"
+                       single-select="true"
+                       is-simple-data="true"
+                       show-icon="true"
+                       show-line="false"
+                       default-no-data-msg="unitCtrl.areaTreeDataParams.defaultNoDataMsg"
+                       search-no-data-msg="unitCtrl.areaTreeDataParams.searchNoDataMsg"
+                       on-click="unitCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                       tree-id-key="ID"
+                       tree-pid-key="ParentID"
+                       tree-key-name="Name"
+                       default-select-tree-id="unitCtrl.areaTreeDataParams.defaultSelectTreeId"
+                       default-expand-level="0"
+            ></util-tree>
+        </div>
+        <div ng-show="unitCtrl.treeNoData" class="u-table-no-data" translate="DP_CONFIG_COMMON_16"></div>
+
+    </div>
+
+     <div class="g-baseconfig-right">
+        <div class="right-content">
+             <div class="m-baseconfig-topfixed unit-topFixed">
+                 <ol class="m-route f-cfb">
+                     <li translate="DP_CONFIG_COMMON_30"></li>
+                     <li class="route-separate">/</li>
+                     <li translate="DP_CONFIG_UNIT_01"></li>
+                 </ol>
+
+                 <div class="m-unit-info">
+                     <div class="f-cfb m-unit-info-top">
+                         <h3 translate="DP_CONFIG_COMMON_31"></h3>
+                     </div>
+
+                     <div class="f-cfb m-unit-info-bottom">
+                         <div class="unit-info"><span class="c-font-gray m-right5" translate="DP_CONFIG_COMMON_32"></span><span ng-bind="unitCtrl.currentArea.Name"></span></div>
+                         <div class="unit-info"><span class="c-font-gray m-right5" translate="DP_CONFIG_COMMON_33"></span><span ng-bind="unitCtrl.currentArea.Code"></span></div>
+                         <div class="unit-info"><span class="c-font-gray m-right5" translate="DP_CONFIG_COMMON_34"></span><span ng-bind="unitCtrl.currentArea.Description"></span></div>
+                     </div>
+                 </div>
+
+                 <div class="m-unit-search-top f-cfb">
+                     <button class="u-button f-usn f-fl m-right15" ng-click="unitCtrl.addUnit(unitCtrl.currentArea)" translate="DP_CONFIG_AREA_02"></button>
+                     <button class="u-button f-usn f-fl u-button-blue-6" ng-click="unitCtrl.deleteByIds()" ng-disabled="!unitCtrl.isSelectItems" translate="DP_CONFIG_COMMON_37"></button>
+                     <span class="search-unit-input">
+                        <input type="text" class="u-input" placeholder="{{'DP_CONFIG_AREA_09'|translate}}" ng-model="unitCtrl.tableSearchInput" ng-keyup="unitCtrl.tableSearchInputKeyUp($event)" placeholder="" />
+                        <i class="u-input-search unit-input-search" ng-click="unitCtrl.tableSearchInputFunc()"></i>
+                    </span>
+                 </div>
+             </div>
+
+            <div class="m-baseconfig-centerFixed unit-centerFixed">
+                <util-table-head table-headers="unitCtrl.tHeadList"
+                                 table-has-check='true'
+                                 class="table-content"
+                                 table-sort-fun="unitCtrl.sortByField(index,fieldName,sortStatus)"
+                                 table-after-check = "unitCtrl.afterChangeCheck(checkList,isCheckAll)"
+                >
+                    <util-table-tr ng-repeat="(index,tbody_data) in unitCtrl.tBodyList">
+
+                        <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+
+                        <util-table-tr-td ng-bind="tbody_data.Code"></util-table-tr-td>
+
+                        <util-table-tr-td ng-bind="tbody_data.Description || (''|translate)"></util-table-tr-td>
+
+                        <util-table-tr-td>
+                            <div class="table-icon-cntr f-cfb">
+                                <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="unitCtrl.editTd(tbody_data)"></i>
+                                <i class="icon-btn i-delete z-gray f-csp" title="{{'DP_CONFIG_COMMON_878'|translate}}" ng-click="unitCtrl.deleteTd(tbody_data)"></i>
+                            </div>
+                        </util-table-tr-td>
+                    </util-table-tr>
+
+                    <div class="u-table-no-data" ng-show="unitCtrl.tableNoData" ng-cloak translate="DP_CONFIG_COMMON_16">
+                    </div>
+
+                </util-table-head>
+            </div>
+
+            <div class="m-baseconfig-bottomFixed">
+                <util-paging
+                        page-params="unitCtrl.pageParams"
+                        prev-page="unitCtrl.changePage(num)"
+                        next-page="unitCtrl.changePage(num)"
+                        go-page="unitCtrl.changePage(num)"
+                        page-size="unitCtrl.changePageSize(num)"
+                ></util-paging>
+            </div>
+                    
+        </div>
+    </div>
+</div>

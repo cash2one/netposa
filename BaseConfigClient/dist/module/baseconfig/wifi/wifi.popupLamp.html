@@ -1,0 +1,34 @@
+<div class="u-baseconfig-popup m-device-popup" ng-controller="baseConfigWifiPopupLamp as wifiPopupLamp">
+    <div class="f-cfb d-tree-content">
+
+        <div class="box-cntr2 f-fr">
+            <div class="box-head" translate="DP_CONFIG_COMMON_21"></div>
+            <div class="box-bottom">
+                <util-tree 
+                    tree-id="{{wifiPopupLamp.treeParams.treeId}}" 
+                    tree-datas="wifiPopupLamp.treeParams.treeDatas" 
+                    check-enable="{{wifiPopupLamp.treeParams.checkEnable}}" 
+                    single-select="{{wifiPopupLamp.treeParams.isSingleSelect}}" 
+                    is-simple-data="{{wifiPopupLamp.treeParams.isSimpleData}}"
+                    show-icon="{{wifiPopupLamp.treeParams.isShowIcon}}" 
+                    show-line="{{wifiPopupLamp.treeParams.isShowLine}}" 
+                    default-no-data-msg="{{wifiPopupLamp.treeParams.defaultNoDataMsg}}" 
+                    search-no-data-msg="{{wifiPopupLamp.treeParams.searchNoDataMsg}}"
+                    on-click="wifiPopupLamp.treeParams.onClick(event, treeId, treeNode)" 
+                    tree-id-key="ID" tree-pid-key="ParentID" tree-key-name="Name" 
+                    edit-enable="{{wifiPopupLamp.treeParams.editEnable}}" 
+                    show-remove-btn="{{wifiPopupLamp.treeParams.showRemoveBtn}}"
+                    show-rename-btn="{{wifiPopupLamp.treeParams.showRenameBtn}}" 
+                    is-prev="true" is-next="true" is-inner="true" is-copy="false" is-move="true" 
+                    default-expand-level="0"
+                    default-select-tree-id="wifiPopupLamp.deviceData.JsonUserData.lampPost.ID"></util-tree>
+            </div>
+        </div>
+
+    </div>
+    <div class="u-border"></div>
+    <div class="form f-cfb">
+        <button class="u-button f-fr m-right15 u-button-blue-2" ng-click="wifiPopupLamp.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+        <button class="u-button f-fr m-right15 u-button-blue-1" ng-click="wifiPopupLamp.submit()" translate="DP_CONFIG_COMMON_05"></button>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+<ul class="tree-table">
+    <li class="tree-table-tr" ng-if="!tableTreeCtrl.isTreeTop">
+        <ul class="tree-table-head">
+            <li class="tree-table-td has-text-indent"
+                ng-if="tableTreeCtrl.treeChildIndex != -2"
+            >
+                <label class="tree-table-check-label"
+                       ng-click="tableTreeCtrl.changeCheckBox()"
+                >
+                    <i class="table-check-box"
+                       ng-show="tableTreeCtrl.dataChild.isCheckBox"
+                    >✔</i>
+                </label>
+            </li>
+            <li class="tree-table-td">
+
+                <label class="tree-table-check-label"
+                       ng-if="tableTreeCtrl.dataChild.children.length>0"
+                       ng-click="tableTreeCtrl.changeChildShow()">
+                    <!--TODO 打钩要换设计图上的图标样式 -->
+                    <i class="table-check-box"
+                       ng-show="tableTreeCtrl.dataChild.isShowChild"
+                    >✔</i>
+                </label>
+
+                <span
+                        ng-bind="tableTreeCtrl.dataChild.Name"
+                >
+            </span>
+            </li>
+            <li class="tree-table-td">
+                <span ng-bind="tableTreeCtrl.treeChildParentName"></span>
+            </li>
+            <li class="tree-table-td">
+                <span ng-bind="tableTreeCtrl.dataChild.PersonCount"></span>
+            </li>
+            <li class="tree-table-td">
+                <span ng-bind="tableTreeCtrl.dataChild.Creator"></span>
+            </li>
+            <li class="tree-table-td">
+                <span ng-bind="tableTreeCtrl.dataChild.CreateTime"></span>
+            </li>
+            <li class="tree-table-td">
+                <span ng-bind="tableTreeCtrl.dataChild.Memo"></span>
+            </li>
+            <li class="tree-table-td">
+                <div class="opera-btn f-cfb">
+                    <i class="icon-btn i-edit z-gray"
+                       ng-click="tableTreeCtrl.childUpdateBtnCallBack(tableTreeCtrl.dataChild,tableTreeCtrl.treeChildParentName)"></i>
+                    <i class="icon-btn i-delete z-gray"
+                       ng-click="tableTreeCtrl.childDeleteBtnCallBack(tableTreeCtrl.dataChild)"></i>
+                    <i class="icon-btn i-edit z-gray"
+                       ng-click="tableTreeCtrl.childAddPersonBtnCallBack(tableTreeCtrl.dataChild,tableTreeCtrl.treeChildParentName)"
+                    ></i>
+                </div>
+            </li>
+        </ul>
+
+        <!--子节点容器-->
+        <div class="tree-table-child-body"
+                ng-if="tableTreeCtrl.dataChild.children.length>0"
+                ng-show="tableTreeCtrl.dataChild.isShowChild"
+        >
+            <util-table-tree
+                    ng-repeat="(index,d_data) in tableTreeCtrl.dataChild.children"
+
+                    tree-child = "d_data"
+
+                    tree-child-level = "{{tableTreeCtrl.currentLevel}}"
+
+                    tree-child-index = "index"
+
+                    tree-child-parent = "false"
+
+                    tree-child-parent-name = "{{tableTreeCtrl.dataChild.Name}}"
+
+                    tree-child-check = "tableTreeCtrl.dataChild.isCheckBox"
+
+                    tree-child-check-btn = "tableTreeCtrl.childCheckBtnCallBack(checkResult,preStatus)"
+
+                    tree-child-update-btn="tableTreeCtrl.childUpdateBtnCallBack(itemData,parentName)"
+                    tree-child-delete-btn="tableTreeCtrl.childDeleteBtnCallBack(itemData)"
+                    tree-child-add-person-btn="tableTreeCtrl.childAddPersonBtnCallBack(itemData,parentName)"
+            ></util-table-tree>
+        </div>
+    </li>
+
+    <li class="tree-table-tr" ng-if="tableTreeCtrl.isTreeTop && tableTreeCtrl.dataChild && tableTreeCtrl.dataChild.length > 0"
+    >
+        <ul class="tree-table-head tree-table-thead">
+            <li class="tree-table-td has-text-indent"
+                ng-if="tableTreeCtrl.treeChildIndex != -2"
+            >
+                <label class="tree-table-check-label"
+                       ng-click="tableTreeCtrl.changeTopChildShow()">
+                    <i class="table-check-box"
+                       ng-show="tableTreeCtrl.dataChild.isCheckBox"
+
+                    >✔</i>
+                </label>
+            </li>
+            <li class="tree-table-td">
+                <span>
+                    人像库名称
+                </span>
+            </li>
+            <li class="tree-table-td">
+                <span >所属区域</span>
+            </li>
+            <li class="tree-table-td">
+                <span >包含人数</span>
+            </li>
+            <li class="tree-table-td">
+                <span >创建人员</span>
+            </li>
+            <li class="tree-table-td">
+                <span >创建时间</span>
+            </li>
+            <li class="tree-table-td">
+                <span >备注</span>
+            </li>
+            <li class="tree-table-td">
+                <span > 操作</span>
+            </li>
+        </ul>
+
+        <ul class="tree-table-child-body tree-table-tbody">
+            <util-table-tree
+                    ng-repeat="(p_index,d_data) in tableTreeCtrl.dataChild track by $index"
+
+                    tree-child = "d_data"
+
+                    tree-child-level = "0"
+
+                    tree-child-index = "p_index"
+
+                    tree-child-parent-name = "{{d_data.Name}}"
+
+                    tree-child-parent = "false"
+
+                    tree-child-check = "tableTreeCtrl.dataChild.isCheckBox"
+
+                    tree-child-check-btn = "tableTreeCtrl.mainCheckBtnCallBack(checkResult,preStatus)"
+
+                    tree-child-update-btn="tableTreeCtrl.childUpdateBtnCallBack(itemData,parentName)"
+
+                    tree-child-delete-btn="tableTreeCtrl.childDeleteBtnCallBack(itemData)"
+
+                    tree-child-add-person-btn="tableTreeCtrl.childAddPersonBtnCallBack(itemData,parentName)"
+            ></util-table-tree>
+        </ul>
+    </li>
+
+</ul>

@@ -1,0 +1,99 @@
+<div ng-controller="updatePwdModalController as uPwdCtrl"
+     class="m-update-psd-modal">
+
+
+    <form name="uPwdForm">
+        <div class="u-form f-cfb">
+            <label class="title">
+                <i class="u-red-star"></i>
+                <span translate="FDS_00_14_06"></span>
+            </label>
+            <div class="controls">
+                <input type="password"
+                       ng-model="uPwdCtrl.viewPwds.oldPwd"
+                       class="text u-input"
+                       placeholder="{{'FDS_01_16_49'|translate}}"
+                       valid-multiple
+                       valid-m-min="6"
+                       valid-m-nonempty="{{'FDS_00_14_06'|translate}}"
+
+                       ng-maxlenth = "20"
+
+
+                       name ="uPwdFormPsd"
+                       ng-blur="uPwdCtrl.compareOldPwd(uPwdForm.uPwdFormPsd.$valid)"
+                       ng-focus="uPwdCtrl.compareOldPwd(false)"
+                >
+                <span class="errorText"
+                      ng-if="uPwdCtrl.isOldPwdError"
+                      ng-bind="uPwdCtrl.provingTexts[0] |translate"
+                >
+                </span>
+            </div>
+        </div>
+        <div class="u-form f-cfb">
+            <label class="title">
+                <i class="u-red-star"></i>
+                <span translate="FDS_00_14_04"></span>
+            </label>
+            <div class="controls">
+                <input type="password"
+                       ng-model="uPwdCtrl.viewPwds.newPwd"
+                       class="text u-input"
+                       placeholder="{{'FDS_00_14_05'|translate}}"
+                       valid-multiple
+                       valid-m-min="6"
+                       valid-m-nonempty="{{'FDS_00_14_04'|translate}}"
+
+                       ng-maxlenth = 20
+                >
+            </div>
+        </div>
+        <div class="u-form f-cfb">
+            <label class="title">
+                <i class="u-red-star"></i>
+                <span translate="FDS_01_16_15"></span>
+            </label>
+            <div class="controls">
+                <input type="password"
+                       ng-model="uPwdCtrl.viewPwds.rePwd"
+                       class="text u-input"
+                       placeholder="{{'FDS_00_14_03'|translate}}"
+
+                       valid-multiple
+                       valid-m-min="6"
+                       valid-m-nonempty="{{'FDS_00_14_04'|translate}}"
+
+                       name ="uPwdFormRePsd"
+
+                       ng-maxlenth = "20"
+
+                       ng-blur="uPwdCtrl.compareNewPwd(uPwdForm.uPwdFormRePsd.$valid)"
+                       ng-focus="uPwdCtrl.compareNewPwd(false)"
+                >
+                <span class="errorText"
+                      ng-if="uPwdCtrl.isRePwdError"
+                      ng-bind="uPwdCtrl.provingTexts[1] |translate"
+                >
+                </span>
+            </div>
+        </div>
+
+        <div class="modal-bottom">
+            <div class="u-border"></div>
+            <div class="u-form  f-cfb ">
+                <button class="u-button u-button-blue-2  f-fr"
+                        type="button"
+                        ng-click="uPwdCtrl.closeUpdateModel(false)"
+                        translate="FDS_00_07_02"
+                ></button>
+                <button class="u-button m-right15 f-fr"
+                        type="button"
+                        ng-click="uPwdCtrl.commitUpdate()"
+                        ng-disabled="uPwdCtrl.isOldPwdError || uPwdForm.isRePwdError || uPwdForm.$invalid"
+                        translate="FDS_00_07_15"
+                ></button>
+            </div>
+        </div>
+    </form>
+</div>

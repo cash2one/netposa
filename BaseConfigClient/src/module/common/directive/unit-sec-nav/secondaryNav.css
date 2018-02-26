@@ -1,0 +1,66 @@
+.g-model-tab{
+    position: absolute;
+    width:38px;
+    top:0;
+    left: 0;
+    bottom:0;
+    background-color:#383e4c;
+}
+
+.g-model-tab .tab-content{
+    margin-top: 38px;
+    border-top:#626570 1px solid;
+}
+
+.g-model-tab .tab-content li{
+    width: 100%;
+    padding: 10px 0;
+    text-align:center;
+    border-bottom:#626570 1px solid;
+}
+
+.g-model-tab .tab-content li.active,.g-model-tab .tab-content li:hover{
+  background-color: #3482f2;
+}
+
+.g-model-tab .tab-content i{
+    display:inline-block;
+    width: 24px;
+    height:22px;
+    background-image:url("../../../../images/common/ico.png");;
+}
+
+
+/*************Nav图标****************/
+
+.nav-ico-trail{
+    background-position: -29px 2px;
+}
+
+.g-model-tab li:hover .nav-ico-trail,.nav-ico-trail.active{
+    background-position: 0 2px;
+}
+
+.nav-ico-face{
+    background-position: -29px -21px;
+}
+
+.g-model-tab li:hover .nav-ico-face,.nav-ico-face.active{
+    background-position: 0 -21px;
+}
+
+.nav-ico-alarm{
+    background-position: -29px -44px;
+}
+
+.g-model-tab li:hover .nav-ico-alarm,.nav-ico-alarm.active{
+    background-position: 0 -44px;
+}
+
+.nav-ico-record{
+    background-position: -29px -68px;
+}
+
+.g-model-tab li:hover .nav-ico-record,.nav-ico-record.active{
+    background-position: 0 -68px;
+}

@@ -1,0 +1,111 @@
+<div class="m-check-details" ng-controller="MyCheckDetailsController as detailsCtrl">
+    <div class="head-ctn">
+        <span class="title">查看详情</span>
+        <span class="close" ng-click="detailsCtrl.cancel()">×</span>
+    </div>
+    <div class="content-center">
+        <div class="content-list">
+            <span class="title">审核任务：</span>
+            <span class="text">{{detailsCtrl.TaskTypeMap[detailsCtrl.MyCheck.taskType]}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">有效时间：</span>
+            <span class="text"><span ng-if="detailsCtrl.MyCheck.isLongEffective|isLongEffectiveFilter">长期有效</span>
+            <span class="text" ng-if="!(detailsCtrl.MyCheck.isLongEffective|isLongEffectiveFilter)">
+                <p>{{detailsCtrl.MyCheck.validTimeStart}}</p>
+                <p>-</p>
+                <p>{{detailsCtrl.MyCheck.validTimeEnd}}</p>
+            </span> 
+        </div>
+        <div class="content-list">
+            <span class="title">任务名称：</span>
+            <span class="text">{{detailsCtrl.MyCheck.tName}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">任务状态：</span>
+            <span class="text">{{detailsCtrl.TaskStatusMap[detailsCtrl.MyCheck.tStatus]}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">所属区域：</span>
+            <span class="text">{{detailsCtrl.MyCheck.createUserAreaName}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">审核状态：</span>
+            <span class="text">{{detailsCtrl.AuditStatusMap[detailsCtrl.MyCheck.auditStatus]}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">创建人/布控人：</span>
+            <span class="text">{{detailsCtrl.MyCheck.createUserName}}</span>
+        </div>
+        <div class="content-list">
+            <span class="title">任务类型：</span>
+            <span class="text">{{detailsCtrl.TaskTypeMap[detailsCtrl.MyCheck.taskType]}}</span>
+        </div>
+        <div class="content-list z-long">
+            <span class="title">描述：</span>
+            <span class="text" title="{{detailsCtrl.MyCheck.description}}">{{detailsCtrl.MyCheck.description}}</span>
+        </div>
+    </div>
+    <div class="content-bottom f-cfb">
+        <div class="bottom-ctn z-left-border">
+            <div class="bottom-ctn-title">
+                可见用户
+            </div>
+            <util-tree class="bottom-ctx"
+                tree-id="{{detailsCtrl.userTreeParams.treeId}}"
+                tree-datas="detailsCtrl.userTreeParams.treeDatas"
+                is-default-selected="true"
+                check-enable="true"
+                is-simple-data="true"
+                show-icon="true"
+                show-line="false"
+                tree-id-key="ID"
+                tree-pid-key="ParentID"
+                tree-key-name="Name"
+                before-check="detailsCtrl.beforeCheck()"
+                tree-init-complete="detailsCtrl.treeInitComplete(treeId)"
+                default-expand-level="0">
+            </util-tree>
+        </div>
+        <div class="bottom-ctn">
+            <div class="bottom-ctn-title">
+                布控库
+            </div>
+            <util-tree class="bottom-ctx"
+                tree-id="{{detailsCtrl.businessLibExParams.treeId}}"
+                tree-datas="detailsCtrl.businessLibExParams.treeDatas"
+                is-default-selected="true"
+                tree-init-complete="detailsCtrl.treeInitComplete(treeId)"
+                check-enable="true"
+                is-simple-data="true"
+                show-icon="true"
+                show-line="false"
+                tree-id-key="{{detailsCtrl.businessLibExParams.treeIdKey}}"
+                tree-pid-key="{{detailsCtrl.businessLibExParams.treePidKey}}"
+                tree-key-name="Name"
+                before-check="detailsCtrl.beforeCheck()"
+                default-expand-level="0">
+            </util-tree>
+        </div>
+        <div class="bottom-ctn">
+            <div class="bottom-ctn-title">
+                布控摄像机
+            </div>
+            <util-tree class="bottom-ctx"
+                tree-id="{{detailsCtrl.cameraExParams.treeId}}"
+                tree-datas="detailsCtrl.cameraExParams.treeDatas"
+                is-default-selected="true"
+                tree-init-complete="detailsCtrl.treeInitComplete(treeId)"
+                check-enable="true"
+                is-simple-data="true"
+                show-icon="true"
+                show-line="false"
+                tree-id-key="ID"
+                tree-pid-key="ParentID"
+                tree-key-name="Name"
+                before-check="detailsCtrl.beforeCheck()"
+                default-expand-level="0">
+            </util-tree>
+        </div>
+    </div>
+</div>

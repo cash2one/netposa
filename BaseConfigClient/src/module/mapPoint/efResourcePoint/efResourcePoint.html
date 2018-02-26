@@ -1,0 +1,54 @@
+<div ng-controller="efResourcePointController as efResourcePointCtrl" class="pop-up-common ef-resource-pop-up" ng-class="{'active': efResourcePointCtrl.ShowAlarmStatus}">
+    <div class="title">
+        <div class="name">{{efResourcePointCtrl.deviceName}}</div>
+        <div class="close mylayer-close " ng-click="efResourcePointCtrl.mapWifiPopulClose()"></div>
+    </div>
+    <div class="con">
+        <div class="collect-info con-box">
+            <div class="top">
+                <div class="left">
+                    <div class="description">电子围栏采集</div>
+                </div>
+                <div class="right">
+                    <span>今日：</span>
+                    <span class="link">{{efResourcePointCtrl.dataListTotal}}</span>
+                    <span class="line">|</span>
+                    <span class="link" ng-click="efResourcePointCtrl.lookMoreCollect()">更多 > </span>
+                </div>
+            </div>
+            <div class="item-ul">
+                <div class="item-li" ng-repeat="item in efResourcePointCtrl.dataList|toFiltSlice: 'key': 6">
+                    <div class="imsi">{{item.IMSI}}</div>
+                    <div class="imei">{{item.IMEI}}</div>
+                    <div class="time">{{item.AcqTime}}</div>
+                    <div class="address">{{efResourcePointCtrl.deviceName}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="alarm-info con-box">
+            <div class="top">
+                <div class="left">
+                    <div class="description">报警信息</div>
+                    <span class="alarm-sign">{{efResourcePointCtrl.alarmdataListTotal}}</span>
+                </div>
+                <div class="right">
+                    <span class="link" ng-click="efResourcePointCtrl.lookMoreAlarm()">更多 > </span>
+                </div>
+            </div>
+            <div class="item-ul">
+                <div class="item-li" ng-repeat="item in efResourcePointCtrl.alarmdataList|toFiltSlice: 'key': 2">
+                    <div class="item-li-left">
+                        <div class="imsi">{{item.AlarmLog.IMSI}}</div>
+                        <div class="time">{{item.AlarmLog.AlarmTime}}</div>
+                        <div class="imei">{{item.AlarmLog.IMEI}}</div>
+                        <div class="address">{{efResourcePointCtrl.deviceName}}</div>
+                    </div>
+                    <div class="alarm-status effectivity">{{}}</div>
+                </div>
+            </div>
+            <div class="arrows" ng-click="efResourcePointCtrl.showAlarm()">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>

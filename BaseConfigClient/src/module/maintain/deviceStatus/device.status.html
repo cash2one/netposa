@@ -1,0 +1,27 @@
+<div class="m-deviceStatus m-maintain-box">
+    <ol class="m-route-maintain f-cfb">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="FDS_02_00"></li>
+    </ol>
+
+    <div class="m-deviceStatus-container">
+        <div class="m-maintain-topFixed">
+            <div class="dev-status-info-top f-cfb">
+                <div class="info-top-btn f-fl"
+                     ng-repeat="item in deviceStatusCtrl.deviceArray"
+                     ng-click="deviceStatusCtrl.switchDevicePage(item.type)"
+                     ng-class="{'info-top-btn-selected':item.status}"
+                     translate="{{item.name}}"
+                >
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="m-maintain-bottomFixed dev-status-bottomFixed"-->
+             <!--ng-include="deviceStatusCtrl.htmlUrl"></div>-->
+
+        <div class="m-maintain-bottomFixed dev-status-bottomFixed"
+             ng-include="'/module/maintain/deviceStatus/templateHtml.html'"></div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div ng-controller="mapPopupController as mapPopupCtrl" class="mapPopup-set-point">
+    <div class="popup-layer">
+        <div class="head-title">
+            <span>{{mapPopupCtrl.model.ObjectName}}</span>
+        </div>
+        <div class="content">
+            <div class="pdp-form">
+                <span><i style="color: red">*</i>经度</span>
+                <input type="text" ng-model="mapPopupCtrl.model.Lon">
+            </div>
+            <div class="pdp-form">
+                <span><i style="color: red">*</i>纬度</span>
+                <input type="text" ng-model="mapPopupCtrl.model.Lat">
+            </div>
+            <div class="form-bottom">
+                <button ng-click="mapPopupCtrl.submit()">确定</button>
+                <button ng-click="mapPopupCtrl.cancel()">取消</button>
+            </div>
+        </div>
+
+    </div>
+</div>

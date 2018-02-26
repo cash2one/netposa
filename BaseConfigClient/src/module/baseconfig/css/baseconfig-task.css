@@ -1,0 +1,396 @@
+
+.m-task .task-centerFixed{
+    top: 280px;
+}
+
+.m-structure-task-info .m-taskForm input,.m-structure-task-info .m-taskForm select,.m-structure-task-info .text {
+    width: 160px;
+}
+.m-task-tree-container{
+    position: absolute;
+    top: 43px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+.m-task-tab{
+    background: #fff;
+    padding:15px;
+    border-bottom:1px solid #ededed;
+    border-radius:5px;
+    margin-bottom:10px;
+    overflow: hidden;
+    zoom: 1;
+
+}
+.m-task-search-top .tab-jb:after{
+    content: " ";
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #fff;
+    border-style: solid;
+    -webkit-transform: matrix(.71,.71,-.71,.71,0,0) rotate(90deg);
+    transform: matrix(.71,.71,-.71,.71,0,0) rotate(90deg);
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    right: 8px;
+    -webkit-transition: -webkit-transform .3s;
+    transition: transform .3s;
+}
+.m-task-search-top .tab-jb-active:after{
+    -webkit-transform: matrix(.71,.71,-.71,.71,0,0) rotate(-90deg);
+    transform: matrix(.71,.71,-.71,.71,0,0) rotate(-90deg);
+}
+.task-newCtrl-btn{
+    position:relative;
+    padding:0 15px 0 10px !important;
+    width:97px !important;
+}
+.task-newCtrl-btn ul{
+    position:absolute;
+    left:0;
+    top:30px;
+    background: #000;
+    z-index: 99999;
+    border-radius:5px;
+    border:1px solid #dedede;
+}
+.task-newCtrl-btn li{
+    width:95px;
+    height:30px;
+    line-height:30px;
+    padding:0 15px;
+    background:#fefefe;
+    color:#333;
+}
+.task-newCtrl-btn li:hover{
+    background:#4394ff;
+    color:#fff;
+}
+.m-task-info{
+    padding: 15px;
+    background:#fff;
+    border-radius:5px;
+}
+
+.m-task .info-top{
+   /* margin-bottom: 10px;*/
+}
+
+.m-task .taskBtn{
+    float: left;
+    margin-right: 15px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    zoom:1;
+}
+.m-task .tasklistlayer{
+    float: none;
+}
+
+
+/*===========*/
+
+.m-taskForm{
+    display: inline-block;
+}
+
+.m-taskForm .taskForm-title{
+    font-size: 14px;
+    color: #767f8f;
+  /*  display: inline-block;*/
+    max-width: 100%;
+    line-height: 30px;
+    width:58px;
+}
+.m-task .taskBtn-title{
+    height: 100%;
+    line-height:30px;
+    font-size: 14px;
+    color: #767f8f;
+    width:58px;
+    position:relative;
+    display: inline-block;
+
+}
+
+.m-taskForm input{
+    height: 30px;
+    line-height: 30px;
+    width: 158px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #333;
+    font-size: 12px;
+    text-indent: 5px;
+    padding:0 28px 0 5px;
+}
+
+.m-taskForm .taskForm-input1{
+    width: 336px;
+}
+
+.m-taskForm .taskForm-input2{
+
+}
+
+.m-taskForm .taskForm-input3{
+    width: 126px;
+}
+
+.m-taskForm .taskForm-select{
+    height: 30px;
+    line-height: 30px;
+    width: 126px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #666;
+    font-size: 12px;
+    display:inline-block;
+    position: relative;
+    padding: 0 30px 0 3px;
+}
+
+.m-taskForm .taskForm-select ul{
+    position: absolute;
+    z-index: 2;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    width: 100%;
+    border-top: none;
+    text-align: left;
+    left:0;
+    top:29px;
+    display: none;
+}
+
+.m-taskForm .taskForm-select ul li{
+    padding: 0 30px 0 3px;
+    position: relative;
+}
+
+.m-taskForm .taskForm-select ul li:hover{
+    background: #ecf6fd;
+    color:#269dfa;
+}
+
+.m-taskForm .taskForm-select:hover ul{
+    display: block;
+}
+
+.m-taskForm .iconSelect{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 28px;
+    height: 28px;
+}
+
+.m-taskForm .iconAddition{
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.m-taskForm label{
+    position: relative;
+    margin: 0;
+}
+
+.m-taskForm .iconPosition{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.m-taskForm .timePrompt{
+    margin-left: 5px;
+    color: #ffad33;
+    display:inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+
+.m-taskForm .taskForm-checkbox{
+    display: inline-block;
+    width: 14px;
+    height:14px;
+    border:1px solid #959596;
+    background: #fff;
+    text-align: center;
+    line-height: 12px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.m-taskForm .taskForm-checkbox .taskForm-btn{
+    padding:9px 11px;
+    font-size:12px;
+}
+
+.m-taskForm .taskForm-btn{
+    padding: 9px 11px;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    margin-left:5px;
+}
+
+/*选中时添加的类名*/
+.m-taskForm .taskForm-checkbox-color{
+    color: #fff;
+    background: #45a2ff;
+    border-color: #45a2ff;
+}
+
+.m-taskForm .taskForm-title-color{
+    color:#51b1fb;
+}
+
+.m-taskForm .taskForm-btn-color{
+    background: #51b1fb;
+    color:#fff;
+}
+
+
+/*===========*/
+.m-task-search-top{
+    padding: 15px;
+    background: #fff;
+    margin-top: 15px;
+}
+
+.m-task-search-top .task-newCtrl{
+    position: relative;
+}
+
+.m-task-search-top .task-newCtrl .icon-add{
+    width: 15px;
+    height:15px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 7px;
+}
+
+.m-task .table-icon-cntr {
+    margin: 0 auto;
+}
+.m-task .table-icon-cntr .icon-btn{
+    margin: auto 7px;
+}
+
+
+.m-task-person-select-popup{
+    overflow: hidden;
+}
+.m-task-person-select-popup .popup-btns{
+    margin: 10px 0;
+}
+.m-task-person-select-popup .person-select-popup-content{
+    width: 100%;
+    height: 515px;
+    padding: 0px 10px 0 10px;
+    border-bottom: 1px solid #e7e7e7;
+    background: #fff;
+}
+
+
+.m-task-person-select-popup .person-select-popup-content .person-select-popup-left{
+    display: block;
+    width: 40%;
+    float: left;
+    border-right: 1px solid #e7e7e7;
+    padding-right: 18px;
+    height: 100%;
+    position: relative;
+}
+
+.m-task-person-select-popup .person-select-popup-left .box-center{
+    position: relative;
+    padding-left: 10px;
+    width: 100%;
+    height: 45px;
+}
+
+.m-task-person-select-popup .person-select-popup-left .box-center-input{
+    width: 100%;
+}
+
+.m-task-person-select-popup .person-select-popup-content .person-select-popup-right{
+    width: 60%;
+    float: right;
+    height: 100%;
+    padding-left: 18px;
+    position: relative;
+}
+
+.m-task-person-select-popup .person-select-popup-right .d-box{
+
+}
+
+.m-task-person-select-popup .person-select-popup-right .center-head-left{
+    float: left;
+}
+
+.m-task-person-select-popup .person-select-popup-right .center-head-right{
+    float: right;
+    color: #29a2ff;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.m-task-person-select-popup .person-select-popup-right .center-head-left-color{
+    color: #45a2ff;
+}
+
+.m-task-person-select-popup .box-bottom{
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    top: 50px;
+}
+.m-task-person-select-popup .box-center{
+    margin-top: 10px;
+}
+
+.m-task-person-select-popup .center-head{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+}
+.m-task-person-select-popup .select-person-list{
+
+}
+.m-task-person-select-popup .select-person-list .select-person-item{
+    float: left;
+    margin: 5px;
+    padding: 5px;
+}
+
+.m-task-person-select-popup .select-person-item .icon-btn{
+    float:right;
+    margin-left:10px;
+    cursor: pointer;
+}
+
+/*.m-taskNewMonitor .taskNew-capture .box-bottom{
+    max-height: 633px;
+}*/
+.m-taskNew .taskNew-base .taskNew-content {
+    bottom: 0px;
+    height: auto;
+}
+

@@ -1,0 +1,21 @@
+<div ng-controller="EnlargeController as EnlargeCtrl">
+    <div id="enlargeEchart" class="enlargeEchart m-large-chart"></div>
+
+    <table class="table m-enlarge-table table-striped" ng-if="EnlargeCtrl.isAllRankList">
+        <tbody style="border-bottom: 1px solid #ddd">
+            <tr>
+                <th>排名</th>
+                <th>关键字</th>
+                <th>检索次数</th>
+            </tr>
+            <tr ng-repeat="rankdata in EnlargeCtrl.RankTable.config">
+                <td style="height: 40px;">
+                    <i ng-if="$index<3" class="f-csp" ng-class="EnlargeCtrl.rankClassName[$index]"></i>
+                    <i ng-if="$index>=3" class="m-rank-tr">{{ $index>2?$index+1:'' }}</i>
+                </td>
+                <td>{{ rankdata.name }}</td>
+                <td>{{ rankdata.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

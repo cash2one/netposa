@@ -1,0 +1,54 @@
+<div class="u-baseconfig-popup" ng-controller="unitPopupController as unitPopup">
+    <form name="unitUpdateForm" novalidate>
+        <div class="form"  style="overflow: visible">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_COMMON_39"></span></span>
+            <input type="hidden" valid-nonempty = "{{'DP_CONFIG_COMMON_39'|translate}}" ng-model="unitPopup.Unit.ParentArea.ID"/>
+            <div class="u-select-tree form-select">
+                <!--<span class="tree-toggle u-input f-usn f-cfb" ng-click="unitPopup.isShowAreaTree = !unitPopup.isShowAreaTree">-->
+                    <!--<span class="tree-toggle-ct" ng-bind="unitPopup.Unit.ParentArea.Name"></span>-->
+                    <!--<i class="tree-toggle-icon" ng-class="{'z-open': unitPopup.isShowAreaTree}"></i>-->
+                <!--</span>-->
+                <input type="text" class="u-input" ng-model="unitPopup.Unit.ParentArea.Name" readonly ng-click="unitPopup.isShowAreaTree = !unitPopup.isShowAreaTree" />
+                <i class="tree-toggle-icon" ng-class="{'z-open': unitPopup.isShowAreaTree}"></i>
+                <div style="position: absolute" class="tree-cntr" ng-class="{'z-show': unitPopup.isShowAreaTree}">
+                    <util-tree tree-id="{{unitPopup.treeParams.treeId}}"
+                               tree-datas="unitPopup.treeParams.treeDatas"
+                               is-default-selected="true"
+                               check-enable="false"
+                               single-select="true"
+                               is-simple-data="true"
+                               show-icon="true"
+                               show-line="false"
+                               default-no-data-msg=""
+                               search-no-data-msg=""
+                               on-click="unitPopup.treeParams.onClick(event, treeId, treeNode)"
+                               tree-id-key="ID"
+                               tree-pid-key="ParentID"
+                               tree-key-name="Name"
+                               default-select-tree-id="unitPopup.treeParams.defaultSelectTreeId"
+                               default-expand-level="0"
+                    ></util-tree>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_UNIT_05"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_COMMON_48'|translate}}"  placeholder="{{'DP_CONFIG_COMMON_48'|translate}}" ng-model="unitPopup.Unit.Name" class="text u-input"/>
+        </div>
+        <div class="form">
+            <span class="title"><span class="color">*</span><span translate="DP_CONFIG_UNIT_06"></span></span>
+            <input type="text" valid-nonempty = "{{'DP_CONFIG_COMMON_49'|translate}}"  ng-model="unitPopup.Unit.Code" placeholder="{{'DP_CONFIG_COMMON_49'|translate}}" class="text u-input"/>
+        </div>
+        <div class="form">
+            <span class="title" style="text-indent:10px;"><span translate="DP_CONFIG_COMMON_34"></span></span>
+            <textarea class="text u-textarea u-area" placeholder="{{'DP_CONFIG_COMMON_50'|translate}}"  ng-model="unitPopup.Unit.Description"></textarea>
+        </div>
+
+        <div class="u-border"></div>
+
+        <div class="form">
+            <button class="u-button u-button-blue-2 btnStyle" ng-click="unitPopup.cancel()" translate="DP_CONFIG_COMMON_19"></button>
+            <button class="u-button u-button-blue-1 btnStyle" ng-click="unitPopup.submit()" ng-disabled="unitUpdateForm.$invalid" translate="DP_CONFIG_COMMON_05"></button>
+        </div>
+    </form>
+</div>

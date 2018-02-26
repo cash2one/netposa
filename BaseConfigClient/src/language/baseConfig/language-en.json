@@ -1,0 +1,120 @@
+{
+  "note": "/** 编码规则**/",
+  "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+  "note": "/***************************************** 基础控件  start ****************************************************/",
+
+  "note": "------列表--------",
+  "DP_CONFIG_ELECTRONICFENCE_01": "No Data",
+  "DP_CONFIG_ELECTRONICFENCE_02": "Serial number",
+
+  "note": "/*******用户信息********/",
+  "DP_CONFIG_ELECTRONICFENCE_03": "Unknown",
+
+  "note": "/*********后台返回Code*************/",
+  "DP_CONFIG_ELECTRONICFENCE_04": "Operate Error",
+  "DP_CONFIG_ELECTRONICFENCE_05": "Fail",
+  "DP_CONFIG_ELECTRONICFENCE_06": "unknown Error",
+  "DP_CONFIG_ELECTRONICFENCE_07": "BackServer Error",
+  "DP_CONFIG_ELECTRONICFENCE_08": "Operate Success",
+
+  "note": "/************基本操作提示*************/",
+  "DP_CONFIG_ELECTRONICFENCE_09": "No Data Selected",
+  "DP_CONFIG_ELECTRONICFENCE_10": "Sure to delete?",
+  "DP_CONFIG_ELECTRONICFENCE_11": "Sure to delete this {{value}} items?",
+
+  "note": "/****************弹出框标题*********************/",
+  "DP_CONFIG_ELECTRONICFENCE_12": "confirm",
+  "DP_CONFIG_ELECTRONICFENCE_13": "error",
+  "DP_CONFIG_ELECTRONICFENCE_14": "tooltip",
+  "DP_CONFIG_ELECTRONICFENCE_15": "warn",
+  "DP_CONFIG_ELECTRONICFENCE_16": "add",
+  "DP_CONFIG_ELECTRONICFENCE_17": "edit",
+  "DP_CONFIG_ELECTRONICFENCE_18": "delete",
+  "DP_CONFIG_ELECTRONICFENCE_19": "Re-confirm",
+
+  "note": "/******************基础表单验证*****************************/",
+  "DP_CONFIG_ELECTRONICFENCE_20": "Input length is not more than {{value}}",
+  "DP_CONFIG_ELECTRONICFENCE_21": "Input length is not less than {{value}}",
+  "DP_CONFIG_ELECTRONICFENCE_22": "{{value}} is required",
+  "DP_CONFIG_ELECTRONICFENCE_23": "This item is required",
+  "DP_CONFIG_ELECTRONICFENCE_24": "input correct {{value}}",
+
+  "note": "/***************************按钮文字*******************************/",
+  "DP_CONFIG_ELECTRONICFENCE_25": "confirm",
+  "DP_CONFIG_ELECTRONICFENCE_26": "cancel",
+  "DP_CONFIG_ELECTRONICFENCE_27": "search",
+  "DP_CONFIG_ELECTRONICFENCE_28": "open",
+  "DP_CONFIG_ELECTRONICFENCE_29": "close",
+  "DP_CONFIG_ELECTRONICFENCE_30": "delete",
+  "DP_CONFIG_ELECTRONICFENCE_31": "enable",
+  "DP_CONFIG_ELECTRONICFENCE_32": "disable",
+  "DP_CONFIG_ELECTRONICFENCE_33": "Clean All",
+  "DP_CONFIG_ELECTRONICFENCE_34": "Pre Step",
+  "DP_CONFIG_ELECTRONICFENCE_35": "Next Step",
+
+  "DP_CONFIG_ELECTRONICFENCE_36": "Shrink",
+  "DP_CONFIG_ELECTRONICFENCE_37": "Spread",
+  "DP_CONFIG_ELECTRONICFENCE_38": "Selected ",
+
+  "note": "/****************************下拉框等***************************/",
+  "DP_CONFIG_ELECTRONICFENCE_39": "select all",
+  "DP_CONFIG_ELECTRONICFENCE_40": "Please Select",
+
+
+
+
+
+  "note": "/**********************一些特殊的枚举, 为了便于确认与维护, 枚举的key就是枚举中文名本身************************************/",
+  "note": "/**************************(若存在重复的枚举名,则在枚举名key后面加_1 _2 依次类推)************/",
+  "未知": "unknown",
+  "未设置": "unknown",
+  "note": "/******************用户等级枚举**************************/",
+  "用户等级1": "Level 1",
+  "用户等级2": "Level 2",
+  "用户等级3": "Level 3",
+  "用户等级4": "Level 4",
+  "用户等级5": "Level 5",
+  "用户等级6": "Level 6",
+
+  "note": "/**********用户类型枚举*********************************/",
+  "管理员": "Administrator",
+  "普通用户": "NormalUser",
+
+  "note": "/**********性别枚举*********************************/",
+  "未知": "unknown",
+  "男": "male",
+  "女": "female",
+
+  "note": "/**********任务权限枚举*********************************/",
+  "所有人可见": "EveryBody",
+  "仅自己可见": "Self",
+  "部分人可见": "Part",
+
+  "note": "/**********任务类型枚举*********************************/",
+  "人像抓拍": "VedioStruct",
+  "人像布控": "FaceMonitor",
+
+  "note": "/**********运行状态枚举*********************************/",
+  "停止": "Stop",
+  "运行": "Run",
+  "已过期": "Overdue",
+
+  "note": "/**********审核状态枚举*********************************/",
+  "审核中": "Verifing",
+  "已审核": "Verified",
+  "未通过": "Refuse",
+
+
+  "note": "/**********报警类型枚举*********************************/",
+  "高阈值报警": "High Alarm",
+  "低阈值报警": "Low Alarm",
+  "只抓拍不报警": "Don't Low Alarm,Only Capture",
+
+
+  "note": "/**********联动动作类型枚举*********************************/",
+  "发送短信": "Send Message",
+  "客户端接收报警": "Send Alarm To Client",
+  "声光报警器": "SoundLight Alarm",
+  "推送给消息服务": "Send Alarm To Message Server",
+  "微信推送": "Send Alarm To WeChat"
+}

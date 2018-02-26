@@ -1,0 +1,32 @@
+{
+  "note": "/** 编码规则**/",
+  "note": "/* FDS_xx_xx_xx_xx (FDS_模块编码_子模块编码_功能编码_动作编码)*/",
+  "note": "/***************************************** 基础控件  start ****************************************************/",
+
+  "note": "/*******左侧操作*********/",
+  "DP_CONFIG_ROLE_01": "Please enter key words",
+  "DP_CONFIG_ROLE_02": "total",
+  "DP_CONFIG_ROLE_03": "records",
+  "DP_CONFIG_ROLE_04": "New",
+
+  "note": "/*******右侧操作*********/", 
+   "DP_CONFIG_ROLE_05": "Basic configuration",
+   "DP_CONFIG_ROLE_06": "Role management",
+   "DP_CONFIG_ROLE_07": "Role Name",
+   "DP_CONFIG_ROLE_08": "Import the role template",
+   "DP_CONFIG_ROLE_09": "Please enter a role name",
+   "DP_CONFIG_ROLE_10": "Functional permission",
+   "DP_CONFIG_ROLE_11": "Device permissions",
+   "DP_CONFIG_ROLE_12": "Portrait library permissions",
+
+    "note": "/*******设备权限*********/", 
+     "DP_CONFIG_ROLE_13": "Camera resource list",
+     "DP_CONFIG_ROLE_14": "Please enter the camera keyword",
+     "DP_CONFIG_ROLE_15": "Selected camera off list",
+     "DP_CONFIG_ROLE_16": "selected",
+     "DP_CONFIG_ROLE_17": "Empty all",
+
+  "note": "/*******input输入框placeholder*********/", 
+
+     "DP_CONFIG_ROLE_18": "Please enter a role name"
+}

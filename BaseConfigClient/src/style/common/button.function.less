@@ -1,0 +1,27 @@
+@import "color.less";
+
+.btn-add(@height:28px,@bgColor:@color-bg-btn-blue,@color:@color-bg-white){
+  height: @height;
+  line-height: @height;
+  border-radius: 2px;
+  border: 0;
+  outline: none;
+  padding: 0 10px 0 32px;
+  background: @bgColor url("../../images/icon/icon-add-white.png") no-repeat 10px center;
+  color: @color;
+  cursor: pointer;
+}
+
+.btn(@width:60px,@height:28px,@bgColor:@color-bg-btn-blue,@color:@color-bg-white,@borderColor:@color-bg-btn-blue){
+  width: @width;
+  height: @height;
+  line-height: @height;
+  padding: 0;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  background-color: @bgColor;
+  color: @color;
+  border: 1px solid @borderColor;
+}
+

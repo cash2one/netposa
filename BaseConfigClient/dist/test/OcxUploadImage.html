@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+    <script src="jquery.json.min.js"></script>
+</head>
+<body>
+<object id="plugin0" type="application/x-snimg" width="300" height="300">
+    <param name="onload" value="pluginLoaded" />
+</object>
+<br />
+    <h3>当前机器IP</h3>
+    <div id="currentMachineIp"></div>
+    <h3>当前机器IP</h3>
+    <div id="currentMachineMac"></div>
+</body>
+
+<script>
+    $(function(){
+        var _ocx = document.getElementById("plugin0");
+        $("#currentMachineIp").text(_ocx.GetLocalIP());
+        $("#currentMachineMac").text(_ocx.GetLocalMac());
+        _ocx.UploadImgs($.toJSON({img_servip: "10.0.8.52", img_servport: "6552"}), upload_imgs_status_cb, 12345);
+
+        function upload_imgs_status_cb(a,b,c,d){
+            console.log(a,b,c,d);
+        }
+    });
+
+</script>
+</html>

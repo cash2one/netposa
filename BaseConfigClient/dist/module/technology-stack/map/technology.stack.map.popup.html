@@ -1,0 +1,7 @@
+<div class="m-technologystack-map-popup" ng-controller="technologyStackMapPopupController as stackMapPopupCtrl" ng-init="stackMapPopupCtrl.init(winId, closeEventName)">
+    <div>
+        <input type="text" class="ui-input" ng-model="buttonName"/>
+    </div>
+    <p>输入的信息内容为: {{buttonName}}</p>
+    <button class="u-button u-button-blue-1" ng-click="stackMapPopupCtrl.closePopup()">关闭弹出框</button>
+</div>

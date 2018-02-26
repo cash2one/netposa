@@ -1,0 +1,11 @@
+{
+     
+    "note": "/*******视频服务器*********/",
+    "DP_CONFIG_VIDEOSERVER_00": "视频服务器",
+    "DP_CONFIG_VIDEOSERVER_01": "确定删除该条视频服务器配置吗?",
+    "DP_CONFIG_VIDEOSERVER_02": "用户名",
+    "DP_CONFIG_VIDEOSERVER_03": "密码",
+    "DP_CONFIG_VIDEOSERVER_04": "代理服务",
+    "DP_CONFIG_VIDEOSERVER_05": "请选择服务器类型"
+    
+  }

@@ -1,0 +1,49 @@
+{
+    "mapOpts": {
+        "minZoom": 6,
+        "maxZoom": 17,
+        "centerPoint": [
+            113.8830195,
+            22.5339103
+        ],
+        "restrictedExtent": [
+            113.735253,
+            22.240159,
+            114.030786,
+            22.658642
+        ],
+        "projection": "EPSG:4326"
+    },
+    "vectorLayer": [{
+        "layerName": "nanshan",
+        "layerType": "NPMapLib.Layers.NPLayer",
+        "layerOpt": {
+            "url": "http://webrd01.is.autonavi.com/netposa/NPGIS/services/nanshan/MapServer",
+            "layerInfo": {
+                "centerPoint": [
+                    113.8830195,
+                    22.4494005
+                ],
+                "fullExtent": [
+                    113.735253,
+                    22.240159,
+                    114.030786,
+                    22.658642
+                ],
+                "layerType": "tiandi",
+                "maxZoom": 17,
+                "minZoom": 6,
+                "projection": "4326",
+                "restrictedExtent": [
+                    113.735253,
+                    22.240159,
+                    114.030786,
+                    22.658642
+                ],
+                "type": "png",
+                "zoomLevelSequence": "2"
+            }
+        }
+    }],
+    "sattilateLayer": []
+}

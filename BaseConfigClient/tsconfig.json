@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "removeComments": true,
+    "module": "AMD",
+    "noImplicitAny": true,
+    "declaration": false,
+    "target": "ES5",
+    "sourceMap": false,
+    "allowJs": false,
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom",
+      "es7",
+      "es6",
+      "es5"
+    ],
+    "rootDir": "./src",
+    "outDir": ""
+  },
+  "files": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "../../BaseConfigCommon/entity"
+  ]
+}

@@ -1,0 +1,145 @@
+.m-device-tree-container{
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    height: 100%;
+    padding-bottom: 10px;
+}
+.m-device-info{
+    padding: 11px 15px 11px 15px;
+    background:#fff;
+    border-radius:5px 5px 0 0;
+}
+.m-device-menu{
+    padding: 11px 15px 11px 15px;
+    background:#fff;
+    border-radius:5px;
+    margin-bottom: 10px
+}
+.m-device-info .tree-change-cntr{
+    padding: 0 10px;
+}
+
+.m-device .device-topFixed{
+    /*height: 99px;*/
+}
+
+.m-device .device-centerFixed{
+    top: 150px;
+}
+.m-device-tree-container{
+    margin-top:-10px;
+}
+.camera-centerFixed{
+    top: 170px;
+}
+/*弹出框*/
+.m-device-popup .d-tree-content{
+    padding: 0 15px;
+}
+
+.m-device-popup .center-btns{
+    float: left;
+    width: 80px;
+}
+
+/* 》向右*/
+.m-device-popup .center-btn-right{
+    width: 60px;
+    height: 30px;
+    border-radius: 2px;
+    background:#44a2ff url("../../../images/common/right.png") center center no-repeat;
+    background-size: 20px 20px;
+    margin: 0 auto;
+}
+.m-device-popup .center-btn-right.z-hide{
+    display: none;
+}
+
+/*《向左*/
+.m-device-popup .center-btn-left{
+    width: 60px;
+    height: 30px;
+    border-radius: 2px;
+    background:#ddd url("../../../images/common/left.png") center center no-repeat;
+    background-size: 20px 20px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.m-device-popup .center-btn{
+    margin-top: 140px;
+    text-align: center;
+}
+
+.m-device-popup .box-cntr{
+    width: 42%;
+    height:376px;
+    border: 1px solid #bad3f6;
+    float: left;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.m-device-popup .box-cntr2{
+    width: 100%;
+    height:376px;
+    border: 1px solid #bad3f6;
+    float: left;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.m-device-popup .box-head{
+    padding: 8px 0;
+    text-align: center;
+    background: #e2ecfa;
+    line-height: 20px;
+}
+
+.m-device-popup .box-center{
+    position: relative;
+    padding: 0 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.m-device-popup .box-center-input{
+    width:100%;
+}
+
+.m-device-popup .box-bottom{
+    height: 330px;
+    overflow: auto;
+}
+.device-label{
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    font-size:12px;
+    margin-left: 10px;
+}
+.device-label-right{
+    position: relative;
+    margin-right: 10px;
+    font-size:12px;
+    margin-left: 10px;
+}
+.device-input{
+    position: relative;
+}
+.device-item {
+    display: inline-block;
+    width: 15%;
+    height:30px;
+}
+.device-hr{
+    margin-top: 10px;
+}
+.device-label-top14{
+
+}
+.device-cButton{
+    margin-left:20px;
+}

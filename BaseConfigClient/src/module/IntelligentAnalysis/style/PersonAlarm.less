@@ -1,0 +1,183 @@
+@import "./base";
+/**
+     * @title 引用公用变量与方法
+     * @update chendm
+     * @time  2018-01-15
+     */
+@import "../../../style/common/factory/button";
+@import "../../../style/common/color/mian";
+// 阴影
+.box_shadow() {
+  box-shadow: @btn-gray-shadow 0px 5px 5px 5px;
+}
+// 超出显示省略号
+.wordBreak() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@border-radius: 4px;
+
+.person-alarm {
+  .person-alarm-detail {
+    position: absolute;
+    width: 0;
+    left: 310px;
+    top: 20px;
+    bottom: 20px;
+    background: @background-white;
+    border-radius: @border-radius;
+    display: none;
+    overflow: hidden;
+    .box_shadow();
+    &.active {
+      display: block;
+    }
+    .analysis-content {
+      .analaysis-body {
+        padding: 0 !important;
+        .pdp-icon-delete-area {
+          float: right;
+          width: 24px;
+          height: 24px;
+          margin-top: 8px;
+          margin-left: 12px;
+          background-size: 50% 50%;
+          cursor: pointer;
+        }
+        .content-layer .before-layer .analysis-more-result-group {
+          background-color: @background-sub;
+          .item-row-table {
+            padding: 0 10px;
+          }
+          .analysis-person-alarm {
+            width: 505px;
+            height: 200px;
+            float: left;
+            .alarm-cnt {
+              position: relative;
+              background-color: @background-white;
+              margin: 10px;
+              padding: 10px;
+              .box_shadow();
+              &:after {
+                .clearfix;
+              }
+              .imginfo {
+                width: 260px;
+                height: 160px;
+                float: left;
+              }
+              .captrue-img {
+                width: 120px;
+                margin-right: 10px;
+                float: left;
+                border: 1px solid #ddd;
+                position: relative;
+                .fast-operate {
+                  position: absolute;
+                  right: 0;
+                  bottom: 4px;
+                  text-align: right;
+                  .pdp-icon-analysis {
+                    margin-right: 5px;
+                  }
+                }
+                .img {
+                  width: 118px;
+                  height: 118px;
+                  overflow: hidden;
+                  margin-bottom: 5px;
+                }
+                img {
+                  display: block;
+                  width: 120px;
+                  height: 120px;
+                }
+                .type {
+                  width: 118px;
+                  padding: 8px 0;
+                  background: #fff;
+                  text-align: left;
+                  margin:0 auto;
+                  span{
+                    padding:0;
+                    padding-left:5px;
+                  }
+                  i{
+                    width: 14px;
+                    margin-left:5px;
+                  }
+                  .sc{
+                    .scicon();
+                    display: none;
+                  }
+                  .fx{
+                    .fxicon();
+                    display: none;
+                  }
+                }
+              }
+              .captrue-match-img {
+                border: 1px solid #FFC699;
+              }
+              .match-info {
+                position: absolute;
+                right: 0;
+                top: 0;
+                span {
+                  font-size: 12px;
+                  display: block;
+                  background: #FF8D33;
+                  color: #fff;
+                  border-radius: 10px 0 0 10px;
+                  padding: 4px 4px 4px 10px;
+                }
+              }
+              .alarm-desc {
+                position: relative;
+                color: #333;
+                width: 200px;
+                float: right;
+                .address {
+                  padding: 10px 0 30px 18px;
+                  font-size: 14px;
+                  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyZTk3OTU3MS1hYWY3LTM2NGMtYTQwZS02ZDI0NWEwNjhkZjQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUYwNTBDQTg5OUUzMTFFNzlCOTNGOEMyOERBQzEyMzkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUYwNTBDQTc5OUUzMTFFNzlCOTNGOEMyOERBQzEyMzkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Njg0MDZkMzktZDNlYi1lMjRhLWI2YWItZThhMDk1ZTcwNGYwIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6ZGRmMjlkZTctOTlkOC0xMWU3LWEwMDAtZjE0OWUyNjI5OGIxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3K0kEAAAAa9JREFUeNpi/P//PwMlgImBQsCCTZCxiCEMSGUDsRFU6DQQT/3fx7AWQy2yF4AaGYHULH72fynCnP8Yfv8DigFFmIH43Xcmho8/mSYCDSnAZ0CKEMe/2Zys/xiefmb5ARRaD8RsQOwtzfuH4+svJoYPP5migYYswxUGOUJcf0GavwPZlkCFUUAcAmSbA8W+gOSAIBdfIGp9/w3yBcMSoMYLMEEg+xKQWv7zD1hOD58BP///Byv6iSVsYXJ/8Blwmp0FHCb+wPDgRQobEDuACxg2QHALXzROA4a2oyjXX9nX35iPATX2AMVYgTgfKCbz7gczSM0cQtG4Dqg4gI/9HzDqmMECoMD7+IOJAWjobiDXHRgm/7EaADWEB0jtEeP+ay7ODQ51hpdfmRlefWU+CdX8EW9SBir4oi32Jwho+61XEI0gl9wAiaFrxmrA2zev1XZEPzcsVTvc8e7b/zfvv/17WaZ+pGtnzAsDoJwSMXlBfvny5Uxr5sx5w8BhXQP04v81W46/Ef2awRwbE6MAlL+HMxChLuAGUiCbRIGYCyr8DYhfA/FtYRHRH8jqAQIMAIN2uYH3TFeyAAAAAElFTkSuQmCC') no-repeat left 10px;
+                  white-space: nowrap;
+                }
+                i {
+                  display: inline-block;
+                  color: #999;
+                  width: 45px;
+                }
+                .time {
+                  margin: 10px 0;
+                }
+                .man {
+                  .manicon;
+                }
+                .women {
+                  .womanicon;
+                }
+                .lib {
+                  margin: 10px 0;
+                }
+              }
+              .action-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+                color: #999;
+                background: #eee;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 4px 6px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

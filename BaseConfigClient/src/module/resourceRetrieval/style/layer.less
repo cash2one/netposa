@@ -1,0 +1,763 @@
+@import "./base";
+// 弹框样式
+.layer-component{
+    width: 575px;
+    height: 350px;
+    left:600px;
+    top:200px;
+    .box_shadow();
+    background-color: #fff;
+    // 头部
+    .media-title{
+        height: 41px;
+        width: 100%;
+        background-color: #F6F8FB;
+        border-bottom: 1px solid #E1E2E2;
+        .licence-plate{
+            height: 20px;
+            line-height: 20px;
+            margin-top: 10px;
+            margin-left:20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #606060;
+            display: inline-block;
+            float: left;
+        }
+        .m-layui-close{
+            width: 16px;
+            height: 16px;
+            font-size: 12px;
+            margin-top: 12px;
+            margin-right: 12px;
+            float: right;
+            background-position: 1px -40px;
+            display: inline-block;
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
+    // 内容
+    .media-fix-margin{
+        margin: 10px 0 10px 0;
+        .media-image {
+            width: 338px;
+            height: 278px;
+        }
+        .media-image1 {
+            width: 338px;
+            height: 252px;
+        }
+        .media-body {
+            .m-item-block{
+                position: absolute;
+                left: 270px;
+                top: 102px;
+                .m-car-margin {
+                    position: relative;
+                    top: -4px;
+                    left: 25px;
+                }
+                .m-car-type {
+                    position: relative;
+                    top: -1px;
+                    left: 30px;
+                }
+                .m-car-license {
+                    background: #2D8DF9;
+                    padding: 2px;
+                    display: inline-block;
+                    color: #fff;
+                    position: relative;
+                    width: 80px;
+                    height: 20px;
+                    text-align: center;
+                    border-radius: 2px;
+                    &:after {
+                        position: absolute;
+                        content: "";
+                        border: 1px solid #fff;
+                        width: 96%;
+                        height: 94%;
+                        left: 2%;
+                        top: 3%;
+                    }
+                }
+
+                .m-person-margin {
+                    position: relative;
+                    top: -4px;
+                    left: 25px;
+                }
+                .m-person-type {
+                    position: relative;
+                    top: -1px;
+                    left: 30px;
+                }
+                .m-person-license {
+                    background: #FA0;
+                    padding: 1px;
+                    display: inline-block;
+                    color: #fff;
+                    position: relative;
+                    width: 33px;
+                    height: 20px;
+                    line-height: 20px;
+                    left: -41px;
+                    text-align: center;
+                    border-radius: 2px;
+                }
+            }
+            .person-block{
+                top: 130px;
+            }
+            .icon-ground-block{
+                position: relative;
+                left: 37px;
+                top: 4px;
+            }
+            .icon-person-block{
+                width: 165px;
+                border: 1px solid #ccc;
+                height: 43px;
+                position: relative;
+                left: 27px;
+            }
+            .m-btn-groupCar{
+                padding: 4px 0 0 25px;
+                color: #2D8DF9;
+                top: -4px;
+                .active {
+                    background-color: #2D8DF9;
+                    color: #fff;
+                }
+                .m-btn-sizeCar {
+                    font-size: 12px;
+                    width: 84px;
+                    height: 22px;
+                    border-color: #2D8DF9;
+                    color: #2D8DF9;
+                    overflow: hidden;
+                    i {
+                        position: relative;
+                        top: -5px;
+                    }
+                    &:hover{
+                        background-color: #2D8DF9;
+                        color: #fff;
+                    }
+                    &.active{
+                        background-color: #2D8DF9;
+                        color: #fff;
+                    }
+                }
+            }
+            dd {
+                margin-left: 166px;
+            }
+            .m-color-l {
+                color: #8e8e8a;
+                font-weight: 100;
+            }
+            .m-color-h {
+                color: #686868;
+                font-weight: bold;
+            }
+            .m-color-w {
+                color: #2D8DF9;
+                font-weight: 100;
+            }
+            .m-color-b {
+                color: #2D8DF9;
+                font-weight: bold;
+            }
+        }
+        .media-fix-left{
+            position: relative;
+            left: 20px;
+            z-index: 2;
+            .operate-box{
+                position: absolute;
+                width: 110px;
+                height: 30px;
+                left: 50%;
+                margin-left: -55px;
+                bottom: 8px;
+                border-radius: 15px;
+                background-color: rgba(0, 0, 0, 0.4);
+                .full-screen{
+                    width: 20px;
+                    height: 20px;
+                    background-image: url(../../../images/resourceRetrieval/full-screen.png);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 16px 16px;
+                    cursor: pointer;
+                    margin-top: 5px;
+                    margin-left: 30px;
+                    float: left;
+                }
+                .full-play{
+                    width: 20px;
+                    height: 20px;
+                    background-image: url(../../../images/resourceRetrieval/full-play.png);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 16px 16px;
+                    cursor: pointer;
+                    margin-top: 5px;
+                    margin-left: 10px;
+                    float: left;
+                }
+            }
+        }
+    }
+    // 底部
+    .media-footer {
+        height: 47px;
+        width: 100%;
+        padding: 0 20px;
+        background-color: #fff;
+        .m-footer-text {
+            position: relative;
+            line-height: 48px;
+            border-top: 1px solid #E1E2E2;
+            .ambitus-info {
+                i {
+                    padding: 2px 5px;
+                    cursor: pointer;
+                    color: #444;
+                    &.active {
+                        color: @bg-blue;
+                    }
+                }
+            }
+        }
+        .m-footer-input {
+            width: 130px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-left: 8px;
+            padding-left: 6px;
+        }
+        .m-footer-last{
+            position: absolute;
+            right: 0;
+        }
+        .m-toggle-border{
+            border: 1px solid #ccc;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            position: relative;
+            background: #FFFFFF;
+            cursor: pointer;
+            margin-top: 14px;
+        }
+        .m-left-triangle{
+            border: 1px solid #ddd;
+            display: inline-block;
+            border-top: 6px solid transparent;
+            border-right: 9px solid #CCCCCC;
+            border-bottom: 6px solid transparent;
+            position: absolute;
+            left: 3px;
+            top: 3px;
+        }
+        .m-right-triangle{
+            border: 1px solid #ddd;
+            display: inline-block;
+            border-top: 6px solid transparent;
+            border-left: 9px solid #CCCCCC;
+            border-bottom: 6px solid transparent;
+            position: absolute;
+            left: 5px;
+            top: 3px;
+        }
+        .search-border {
+            background-image: url(../../../images/resourceRetrieval/search-border.png);
+            width: 20px;
+            height: 16px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            position: absolute;
+            float: left;
+            margin-top: 16px;
+            margin-left: -20px;
+            cursor: pointer;
+        }
+    }
+}
+
+//wifi
+.wifi-component{
+    height: 220px;
+    .wifi-content{
+        position: relative;
+        width: 100%;
+        height: 129px;
+        padding: 10px 20px;
+        .m-item-wifi{
+            position: relative;
+            width: 100%;
+            height: 90px;
+            top: 0;
+            left: 0;
+            margin-top: 5px;
+            .m-itemwifi-left{
+                position: relative;
+                width: 280px;
+                float: left;
+                .m-color-l {
+                    width: 60px;
+                    text-align: right;
+                    color: #8e8e8a;
+                    font-weight: 100;
+                    display: block;
+                    float: left;
+                    height: 20px;
+                    line-height: 20px;
+                }
+                .m-color-h {
+                    width: 220px;
+                    text-indent: 6px;
+                    color: #686868;
+                    font-weight: bold;
+                    display: block;
+                    float: left;
+                    height: 20px;
+                    line-height: 20px;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+                &.ef {
+                    .m-color-l {
+                        width: 105px;
+                    }
+                    .m-color-h {
+                        width: 175px;
+                    }
+                }
+            }
+            .m-itemwifi-right{
+                position: relative;
+                width: 220px;
+                float: right;
+                .m-color-l {
+                    width: 60px;
+                    text-align: right;
+                    color: #8e8e8a;
+                    font-weight: 100;
+                    display: block;
+                    float: left;
+                    height: 20px;
+                    line-height: 20px;
+                }
+                .m-color-h {
+                    width: 160px;
+                    text-indent: 6px;
+                    color: #686868;
+                    font-weight: bold;
+                    display: block;
+                    float: left;
+                    height: 20px;
+                    line-height: 20px;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+        // 收藏区域
+        .icon-ground-wifi{
+            &.operate {
+                user-select: none;
+                .icon_collect {
+                    .icon_collect();
+                }
+                .icon_analysis {
+                    .icon_analysis();
+                }
+                .icon_dispatched {
+                    .icon_dispatched();
+                }
+                i {
+                    height: 18px;
+                    line-height: 18px;
+                    display: inline-block;
+                    padding-left: 20px;
+                }
+            }
+        }
+        // 待删样式
+        .m-btn-wifi{
+            width: 86px;
+            height: 26px;
+            padding: 2px;
+            border: 1px solid #2D8DF9;
+            color: #2D8DF9;
+            position: absolute;
+            left: 19px;
+            top: 35px;
+        }
+        .m-btn-wifi{
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-top: 10px;
+            padding-left: 20px;
+            background-image: url(../../../images/resourceRetrieval/search-border.png);
+            background-repeat: no-repeat;
+            background-position: 5px center;
+        }
+    }
+    .media-footer{
+        width: 100%;
+    }
+}
+
+.user() {
+    background-image: url(../../../images/resourceRetrieval/lg-user.png);
+    width: 20px;
+    height: 16px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    left: -37px;
+}
+
+.search-user {
+    .user();
+    position: absolute;
+}
+.search-user2 {
+     .user();
+ }
+.search-user3 {
+    .user();
+    width: 69px;
+    padding: 0 12px;
+}
+
+// 查看原图
+#mylayerfullScreenPopup{
+    z-index: 104;
+}
+.full-screen-popup{
+    width:100%;
+    height: 100%;
+    .media-con{
+        position: relative;
+        width: 100%;
+        height: 380px;
+        padding: 0 20px;
+        .media{
+            position: relative;
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+// 查看视频
+#mylayerfullPlayPopup{
+    z-index: 104;
+}
+.full-play-popup{
+    width:100%;
+    height: 100%;
+    .media-con{
+        position: relative;
+        width: 100%;
+        height: 380px;
+        padding: 0 20px;
+        .media{
+            position: relative;
+            width: 640px;
+            height: 360px;
+        }
+    }
+}
+
+// 车辆档案详情
+#mylayercarRecordPopup{
+    z-index: 4;
+}
+.car-record-popup{
+    width: 560px;
+    height: 410px;
+    overflow: hidden;
+    border-radius: 4px;
+    .media-con{
+        position: relative;
+        width: 100%;
+        height: 369px;
+        background: #fff;
+        .media-fix-margin{
+            margin: 0;
+            padding: 0 20px;
+        }
+    }
+    .car-info{
+        position: relative;
+        width: 100%;
+        height: 185px;
+        border-bottom: 1px solid #ddd;
+        .car-picture{
+            position: relative;
+            width: 265px;
+            height: 170px;
+            margin-top: 10px;
+            overflow: hidden;
+            float: left;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    .owner-info{
+        position: relative;
+        width: 100%;
+        height: 190px;
+        .owner-picture{
+            position: relative;
+            width: 265px;
+            height: 165px;
+            margin-top: 10px;
+            overflow: hidden;
+            float: left;
+            img{
+                width: 150px;
+            }
+        }
+    }
+    .info-ul{
+        position: relative;
+        float: right;
+        width: 250px;
+        height: 100%;
+        padding-top: 5px;
+        .info-li{
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            .name{
+                width: 65px;
+                text-align: right;
+                float: left;
+                color: #8e8e8a;
+            }
+            .text{
+                width: 180px;
+                float: left;
+                font-weight: 700;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+//
+// 车辆弹框
+#mylayercarPopup{
+    z-index: 4;
+    .car-component{
+        width: 670px;
+        height: 420px;
+        .media-fix-margin{
+            height: 332px;
+            .media-left.media-fix-left{
+                width: 410px;
+                height: 308px;
+            }
+            .media-body{
+                width: 200px;
+                height: 312px;
+                .m-item-block{
+                    .m-person-margin{
+                        .m-car-license{
+                            float: left;
+                            margin-right: 12px;
+                        }
+                        span{
+                            float: left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// 人脸弹框
+#mylayerpersonPopup{
+    z-index: 104;
+    .person-component{
+        width: 590px;
+        height: 440px;
+        border: 1px solid #cccccc;
+        .media-fix-margin{
+            .media-left.media-fix-left{
+                width: 330px;
+                height: 330px;
+            }
+            .media-body{
+                width: 200px;
+                height: 330px;
+            }
+        }
+    }
+}
+// 车辆、人脸公用样式
+.person-component,
+.car-component{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .media-fix-margin{
+        height: 352px;
+        margin: 0;
+        padding: 10px 20px;
+        .media-left.media-fix-left{
+            left:0;
+            padding: 0;
+            width: 330px;
+            height: 330px;
+            display: block;
+            float: left;
+            overflow: hidden;
+            .media-image{
+                width: 100%;
+                height: auto;
+            }
+        }
+        .media-body{
+            width: 200px;
+            height: 330px;
+            display: block;
+            float: right;
+            .m-btn-groupCar{
+                position: relative;
+                border-radius: 0;
+                width: 100%;
+                padding: 0;
+                height: 28px;
+                top: 0;
+                .m-btn-sizeCar{
+                    width: 50%;
+                    height: 28px;
+                    border-radius: 0;
+                    i{
+                        top:0;
+                    }
+                }
+            }
+            .icon-ground-block{
+                position: relative;
+                width: 100%;
+                height: 35px;
+                left: 0;
+                top: 12px;
+                bottom: 0;
+                &.icon-person-block{
+                    position: relative;
+                    width: 100%;
+                    height: 70px;
+                }
+                .icon_inline_block{
+                    padding: 1px 20px;
+                }
+                .icon-record{
+                    background-image: url(../../../images/resourceRetrieval/complete_archives.png);
+                    background-repeat: no-repeat;
+                    background-size: 16px 16px;
+                    display: inline-block;
+                }
+                .icon-view-cube{
+                    background-image: url(../../../images/resourceRetrieval/view_cube.png);
+                    background-repeat: no-repeat;
+                    background-size: 16px 16px;
+                }
+
+                .icon_collect {
+                    .icon_collect();
+                }
+                .icon_analysis {
+                    .icon_analysis();
+                }
+                .icon_dispatched {
+                    .icon_dispatched();
+                }
+            }
+            .m-item-block{
+                position: relative;
+                width: 100%;
+                height: auto;
+                left: 0;
+                top: 0;
+                .m-person-margin{
+                    width: 100%;
+                    height: 20px;
+                    left: 0;
+                    top: 0;
+                    margin-bottom: 5px;
+                    user-select: none;
+                    .m-person-license{
+                        left: 0;
+                        float: left;
+                        width: 40px;
+                        height: 20px;
+                        border-radius: 4px;
+                        margin-right: 12px;
+                    }
+                    .search-user{
+                        width: auto;
+                        left: 0;
+                        float: left;
+                        position: relative;
+                        margin-top: 2px;
+                        padding-left: 20px;
+                        margin-right: 12px;
+                    }
+                    .search-phone{
+                        padding-left: 20px;
+                        float: left;
+                        height: 16px;
+                        background-image: url(../../../images/resourceRetrieval/ring-up.png);
+                        background-repeat: no-repeat;
+                        background-size: 16px 16px;
+                        display: inline-block;
+                        margin-top: 2px;
+                    }
+                }
+                .m-color-l{
+                    width: 65px;
+                    height: 20px;
+                    line-height: 20px;
+                    float: left;
+                    text-align: right;
+                    padding-right: 6px;
+                }
+                .m-color-h{
+                    width: 135px;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: left;
+                    margin: 0;
+                    display: inline-block;
+                }
+
+            }
+        }
+    }
+
+
+}
+// wifi详情
+#mylayerdetailPopup {
+    z-index: 104;
+}
+

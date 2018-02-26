@@ -1,0 +1,68 @@
+<div class="report-list f-cfb">
+    <div class="face-img-box">
+        <div class="face-img img-tool-ctn f-csp" ng-click="myReportCtrl.showAlarmFacePopup(alarmLogResult)">
+            <div class="report-img-tool">
+                <div class="tool-background"></div>
+                <div class="icon-ctn">
+                    <!-- 播放历史视频未实现 -->
+                    <!-- <i class="icon-ctx2 report-icon-fullplay"></i> -->
+                    <i class="icon-ctx2 report-icon-fullscreen" ng-click="myReportCtrl.fullScreen((alarmLogResult.AlarmLog.CapFacePicUrl|imageUrlFilter), $event)"></i>
+                </div>
+            </div>
+            <img util-img-center ng-src="{{alarmLogResult.AlarmLog.CapFacePicUrl|imageUrlFilter}}" />
+        </div>
+        <div class="face-content">
+            <span>抓拍人脸</span>
+            <!-- <i class="icon report-icon2"></i> -->
+            <i class="icon report-icon1 f-csp" ng-class="{'z-uncollect': !alarmLogResult.Collected}" ng-click="myReportCtrl.attention(alarmLogResult)"></i>
+        </div>
+    </div>
+    <div class="lib-img-box">
+        <div class="lib-img img-tool-ctn f-csp" ng-click="myReportCtrl.showAlarmFacePopup(alarmLogResult)">
+            <div class="report-img-tool">
+                <div class="tool-background"></div>
+                <div class="icon-ctn">
+                    <!-- 播放历史视频未实现 -->
+                    <!-- <i class="icon-ctx2 report-icon-fullplay"></i> -->
+                    <i class="icon-ctx2 report-icon-fullscreen" ng-click="myReportCtrl.fullScreen((alarmLogResult.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.FacePicPath[0]|imageUrlFilter), $event)"></i>
+                </div>
+            </div>
+            <img util-img-center ng-src="{{alarmLogResult.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.FacePicPath[0]|imageUrlFilter}}"
+            />
+            <div class="similarity">
+                {{alarmLogResult.AlarmLogInfoArr[0].AlarmLogInfo.Similarty|roundNumber}}%
+            </div>
+        </div>
+        <div class="face-content">
+            <span>比中人脸</span>
+            <!-- 播放历史视频未实现 -->
+            <!-- <i class="icon report-icon2"></i> -->
+            <i class="icon report-icon1 f-csp" ng-class="{'z-uncollect': !alarmLogResult.Collected}" ng-click="myReportCtrl.attention(alarmLogResult)"></i>
+        </div>
+    </div>
+    <div class="report-content">
+        <div class="list f-cfb">
+            <i class="address-icon"></i>
+            <p>{{alarmLogResult.AlarmLog.ObjectName}}</p>
+        </div>
+        <div class="list f-cfb z-bottom">
+            <i class="face-icon" ng-class="{'z-man': (alarmLogResult.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.Gender|genderFilter) === '男'}"></i>
+            <p>{{alarmLogResult.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.Name}}</p>
+        </div>
+        <div class="list-f">
+            <span class="valid">{{alarmLogResult.AlarmLog.ResponseState|alarmResponseStateFilter}}</span>
+            <p>
+                <span class="title">时&emsp;间：</span>
+                <span>{{alarmLogResult.AlarmLog.AlarmTime}}</span>
+            </p>
+            <p>
+                <span class="title">所在库：</span>
+                <span>{{alarmLogResult.AlarmLogInfoArr[0].LibName}}</span>
+            </p>
+            <p>
+                <span class="title">证件号：</span>
+                <span>{{alarmLogResult.AlarmLogInfoArr[0].AlarmLogInfo.PersonInfo.IDCardNumber}}</span>
+            </p>
+        </div>
+    </div>
+</div>

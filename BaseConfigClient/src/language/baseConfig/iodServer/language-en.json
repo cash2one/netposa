@@ -1,0 +1,20 @@
+{
+    
+   "note": "/*******数据服务器*********/",
+   "DP_CONFIG_IODSERVER_01": "Data server?",
+   "DP_CONFIG_IODSERVER_02": "Add service",
+   "DP_CONFIG_IODSERVER_03": "Server name",
+   "DP_CONFIG_IODSERVER_04": "Proxy service",
+   "DP_CONFIG_IODSERVER_05": "Message Service IP",
+   "DP_CONFIG_IODSERVER_06": "Message service port",
+   "DP_CONFIG_IODSERVER_07": "Proxy service",
+   "DP_CONFIG_IODSERVER_08": "Server code",
+   "DP_CONFIG_IODSERVER_09": "Please select the server type",
+   "DP_CONFIG_IODSERVER_10": "Please select the proxy service type",
+   "DP_CONFIG_IODSERVER_11": "Synchronous server",
+
+   "DP_CONFIG_IODSERVER_12": "Are you sure you want to delete the {value} data?",
+   "DP_CONFIG_IODSERVER_13": "Server type",
+   "DP_CONFIG_IODSERVER_14": "Proxy server type"
+   
+}

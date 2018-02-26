@@ -1,0 +1,433 @@
+/**
+     * @title 配置通用图标
+     * @update chendm
+     * @time  2017-11-14
+     */
+// 颜色定义
+@bg-blue: #2D87F9;
+@bg-blue-hover: rgba(45, 135, 249, 0.8);
+@bg-blue-hover-shallow: rgba(45, 135, 249, 0.05);
+@font-color: #3fa9fe;
+@white: #ffffff;
+@gray-shallow-bg: #f8f8f8;
+@gray-dark-bg: #eef2f5;
+@light-gray: #f6f9fb;
+@border-dark: #cccccc;
+@border-shallow: #e4e4e4;
+@border-style: 1px solid #e4e4e4;
+@gray-color: #666666;
+@transition-action: all 0.5s;
+@border-radius: 3px;
+@yellow: #ffaa00;
+@gray-color-shallow: #999999;
+@base-font-color: #333;
+@font-color-red: red;
+
+// 超出显示省略号
+.wordBreak() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+// 清除浮动
+.clearfix() {
+  content: " ";
+  display: block;
+  clear: both;
+}
+// 阴影
+.box_shadow() {
+  //box-shadow: rgba(0, 0, 0, .1)  5px 5px 0;
+  //box-shadow: rgba(0, 0, 0, .1) 0px 5px 5px 5px;
+  box-shadow:  5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+// 按钮样式--通用
+.button-blue() {
+  background-color: @bg-blue;
+  color: @white;
+  cursor: pointer;
+  &:hover {
+    background-color: @bg-blue-hover;
+  }
+}
+// 按钮样式--蓝边
+.button-blue-box() {
+  background-color: #e6f4ff;
+  color: @bg-blue;
+  cursor: pointer;
+  border: 1px solid @bg-blue;
+  &:hover {
+    background-color: rgba(41, 131, 238, 0.3);
+  }
+}
+// 按钮样式--灰色
+.button-gray() {
+  background-color: #e4e4e4;
+  color: @gray-color;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(228, 228, 228, 0.8);
+  }
+}
+// 收藏
+.icon_collect() {
+  background-image: url("@{base-image-url}/icon/collection.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+  &.active {
+    background-image: url("@{base-image-url}/icon/collection-active.png");
+  }
+}
+// 分析
+.icon_analysis() {
+  background-image: url("@{base-image-url}/icon/analysis.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+// 布控
+.icon_dispatched() {
+  background-image: url("@{base-image-url}/icon/dispatched.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+  &.active {
+    background-image: url("@{base-image-url}/icon/dispatched-active.png");
+  }
+}
+
+
+// mac地址
+.icon_mac() {
+  background-image: url("@{base-image-url}/icon/mac.png");
+  background-repeat: no-repeat;
+}
+// imsi地址
+.icon_imsi() {
+  background-image: url("@{base-image-url}/icon/imsi.png");
+  background-repeat: no-repeat;
+}
+// imei地址
+.icon_imei() {
+  background-image: url("@{base-image-url}/icon/imei.png");
+  background-repeat: no-repeat;
+}
+// 时间
+.icon_time() {
+  background-image: url("@{base-image-url}/icon/time.png");
+  background-repeat: no-repeat;
+}
+// 地址
+.icon_address() {
+  background-image: url("@{base-image-url}/icon/address.png");
+  background-repeat: no-repeat;
+}
+// 中标
+.icon_number() {
+  background-image: url("@{base-image-url}/icon/number.png");
+  background-repeat: no-repeat;
+}
+// 日历
+.icon_calendar() {
+  background-image: url("@{base-image-url}/icon/calendar.png");
+  background-repeat: no-repeat;
+}
+// 性别
+.icon_sex() {
+  background-image: url("@{base-image-url}/icon/icon-six.png");
+  background-repeat: no-repeat;
+}
+// 特征
+.icon_feature() {
+  background-image: url("@{base-image-url}/icon/icon-feature.png");
+  background-repeat: no-repeat;
+}
+// 排序图标
+.icon_rankPosition() {
+  background-image: url("@{base-image-url}/icon/rankPosition.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+// 车速
+.car_speed() {
+  background-image: url("@{base-image-url}/icon/icon-speed.png");
+  background-repeat: no-repeat;
+}
+// 搜索
+.icon_search_white() {
+  background-image: url("@{base-image-url}/icon/search.png");
+  background-repeat: no-repeat;
+}
+// 搜索历史
+.icon_search_gray() {
+  background-image: url("@{base-image-url}/icon/search-history.png");
+  background-repeat: no-repeat;
+}
+// 删除历史
+.circle_delete() {
+  background-image: url("@{base-image-url}/icon/icon-delete.png");
+  background-repeat: no-repeat;
+}
+// 返回
+.icon_return() {
+  background-image: url("@{base-image-url}/icon/icon-return.png");
+  background-repeat: no-repeat;
+}
+// 过滤
+.icon_filter() {
+  background-image: url("@{base-image-url}/icon/icon-filter.png");
+  background-repeat: no-repeat;
+}
+// 向下箭头
+.icon_arrow_down() {
+  background-image: url("@{base-image-url}/icon/icon-arrow-down.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+// 向上箭头
+.icon_arrow_up() {
+  background-image: url("@{base-image-url}/icon/icon-arrow-up.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+// 向左箭头
+.icon_arrow_left() {
+  background-image: url("@{base-image-url}/icon/icon-arrow-left.png");
+  background-repeat: no-repeat;
+}
+// 向右箭头
+.icon_arrow_right() {
+  background-image: url("@{base-image-url}/icon/icon-arrow-right.png");
+  background-repeat: no-repeat;
+}
+// 向右箭头-白色单个
+.icon_arrow_right_white() {
+  background-image: url("@{base-image-url}/icon/icon-arrow-right-white.png");
+  background-repeat: no-repeat;
+}
+// 向左箭头
+.icon_arrow_left_gray() {
+  background-image: url("@{base-image-url}/icon/icon-arrow-left-gray.png");
+  background-repeat: no-repeat;
+}
+// 向右箭头
+.icon_arrow_right_gray() {
+  background-image: url("@{base-image-url}/icon/icon-arrow-right-gray.png");
+  background-repeat: no-repeat;
+}
+// 关闭按钮
+.icon-close-button() {
+  background-image: url("@{base-image-url}/icon/icon-advanced-close.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  &:hover {
+    background-image: url("@{base-image-url}/icon/icon-advanced-close-hover.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+// 关闭图标
+.icon-close() {
+  background-image: url("@{base-image-url}/icon/icon-close.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+// 列表结果
+// 导出
+.icon-export() {
+  background: url("@{base-image-url}/icon/icon-export.png");
+}
+// 显示模式table
+.icon-table-model() {
+  cursor: pointer;
+  background-image: url("@{base-image-url}/icon/icon-tableimgs-off.png");
+  background-position: center center;
+  &.iconActive {
+    pointer-events: none;
+    background-image: url("@{base-image-url}/icon/icon-tableimgs.png");
+  }
+}
+// 显示模式UL
+.icon-ul-model() {
+  cursor: pointer;
+  background-image: url("@{base-image-url}/icon/icon-table-off.png");
+  background-position: center center;
+  &.iconActive {
+    pointer-events: none;
+    background-image: url("@{base-image-url}/icon/icon-table.png");
+  }
+}
+// 地图框选
+.icon-device-map-select() {
+  cursor: pointer;
+  background-image: url("@{base-image-url}/icon/device-map-select.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+// 分析模块
+.icon_back() {
+  background-image: url("@{base-image-url}/icon/back.png");
+  background-repeat: no-repeat;
+}
+// 分析模块图标
+.icon_analaysis() {
+  background-image: url("@{base-image-url}/icon/analaysis.png");
+  background-repeat: no-repeat;
+}
+// 没有数据
+.icon_m_noMessage() {
+  background-repeat: no-repeat;
+  background-image: url("@{base-image-url}/icon/m-noMessage.png");
+}
+// 没有查询
+.icon_m_noQuery() {
+  background-repeat: no-repeat;
+  background-image: url("@{base-image-url}/icon/m-noQuery.png");
+}
+// 加载中
+.icon_loading() {
+  background-image: url("@{base-image-url}/icon/loading.gif");
+  background-repeat: no-repeat;
+}
+.icon_camera() {
+  background-image: url("@{base-image-url}/icon/icon-camera.png");
+  background-repeat: no-repeat;
+}
+.advanced-search-sign() {
+  background-image: url("@{base-image-url}/icon/advanced-search-sign.png");
+  background-repeat: no-repeat;
+}
+//  添加
+.icon_add() {
+  background-image: url("@{base-image-url}/icon/icon-add-white.png");
+  background-repeat: no-repeat;
+}
+//  删除
+.icon_delete() {
+  background-image: url("@{base-image-url}/icon/icon-delete-white.png");
+  background-repeat: no-repeat;
+}
+//  删除--灰色
+.icon_delete_gray() {
+  background-image: url("@{base-image-url}/icon/icon-delete-gray.png");
+  background-repeat: no-repeat;
+}
+//   播放--灰色
+.icon_play_gray() {
+  background-image: url("@{base-image-url}/icon/icon-play-gray.png");
+  background-repeat: no-repeat;
+}
+//  暂停--灰色
+.icon_pause_gray() {
+  background-image: url("@{base-image-url}/icon/icon-pause-gray.png");
+  background-repeat: no-repeat;
+}
+// 任务-查看更多
+.new-task-more() {
+  background-image: url("@{base-image-url}/icon/new-task-more.png");
+  background-repeat: no-repeat;
+}
+// 添加按钮-蓝色
+.icon-add-blue() {
+  background-image: url("@{base-image-url}/icon/icon-add-blue.png");
+  background-repeat: no-repeat;
+}
+// 男性
+.icon_men() {
+  background-image: url("@{base-image-url}/icon/icon-men.png");
+  background-repeat: no-repeat;
+}
+// 女性
+.icon_women() {
+  background-image: url("@{base-image-url}/icon/icon-women.png");
+  background-repeat: no-repeat;
+}
+// 未知
+.icon_sex_unknown() {
+  background-image: url("@{base-image-url}/icon/icon-sex-unknown.png");
+  background-repeat: no-repeat;
+}
+// 全屏大图
+.icon_full_screen() {
+  background-image: url("@{base-image-url}/icon/full-screen.png");
+  background-repeat: no-repeat;
+}
+// 全屏播放
+.icon_full_play() {
+  background-image: url("@{base-image-url}/icon/full-play.png");
+  background-repeat: no-repeat;
+}
+// 完整档案
+.icon_record() {
+  background-image: url("@{base-image-url}/icon/icon-record.png");
+  background-repeat: no-repeat;
+}
+// 视图立方
+.icon_view_cube() {
+  background-image: url("@{base-image-url}/icon/icon-view-cube.png");
+  background-repeat: no-repeat;
+}
+// 收起
+.icon_pack_up() {
+  background-image: url("@{base-image-url}/icon/icon-pack-up.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+// 更多
+.icon_more() {
+  background-image: url("@{base-image-url}/icon/icon-more.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+// 显示更多
+.icon_show_more() {
+  background-image: url("@{base-image-url}/icon/icon-show-more.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+// 显示更少
+.icon_show_less() {
+  background-image: url("@{base-image-url}/icon/icon-show-less.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+// 任务删除按钮
+.icon_task_delete() {
+  background-image: url("@{base-image-url}/icon/icon-task-delete.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+}
+// 设备框选删除
+.icon_map_delete() {
+  background-image: url("@{base-image-url}/icon/icon-map-delete.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75% 75%;
+  cursor: pointer;
+}
+// 设备框选圆形
+.icon_map_round() {
+  background-image: url("@{base-image-url}/icon/icon-map-round.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75% 75%;
+  cursor: pointer;
+}
+// 设备框选方形
+.icon_map_square() {
+  background-image: url("@{base-image-url}/icon/icon-map-square.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75% 75%;
+  cursor: pointer;
+}
+// 设备框选菱形
+.icon_map_polygon() {
+  background-image: url("@{base-image-url}/icon/icon-map-polygon.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75% 75%;
+  cursor: pointer;
+}

@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+
+/************** 时间模版 timeTable  ZengYunHu  2016-9-13 ******************/
+
+
+.content-t,#popupTable{left:0;top:0;bottom:0;right:0}
+/*表格内容*/
+.input-wrapper ul li.bg-f7a82b.revise{margin-left:0}
+.content-table tr>td>button.btn-default{width:36px;height:20px;line-height: 20px;color:#fff;font-size: 12px;margin-right:10px}
+
+.btn-orange.empty{visibility: hidden}
+
+.content-table>table{height:33px}
+.content-table>div.tab-msg{width:100%;top:33px;bottom:0}
+
+/*弹出框 全屏背景*/
+#popupTable{width:100%;height:100%;background-color: rgba(0,0,0,.3);z-index: 999;position: fixed;}
+/*弹出框内容区域*/
+.popupWindow{width:780px;height:500px;background-color: #fff;left:50%;top:50%;margin:-240px 0 0 -390px}
+.timeTableWindow{width:780px}
+
+/*关闭按钮*/
+.textLeft .close{width:16px;height:16px;right:10px;top:10px;background: url('../images/common/pop_icon_close_s.png')}
+
+.popupWindow p.bg-f2{padding:0 15px;line-height:34px}
+
+.popupWindow .p2{line-height:32px;padding:15px;margin-bottom:5px;border-bottom:1px solid #eee}
+
+.popupWindow .p2 input{height:30px;padding:0 10px;border: 1px solid #cdcee2}
+/*文本框*/
+.popupWindow  p input.timeTable-name{width:180px}
+.popupWindow  p input.timeTable-describe{width:300px}
+/*绘图区域*/
+#timeTable,.time-bg-grid,.grids-line{width:100%;}
+/*时间日段*/
+#timeTable ul.week li>span,#timeTable ul.week li>a{color:#787878}
+#timeTable ul.week li>span{position: absolute;right:0;
+    white-space: nowrap;}
+/*删除icon*/
+#timeTable ul.week li>i{width:16px;height:16px;cursor:pointer;z-index: 100}
+#timeTable ul.week li>a{white-space: nowrap;position: absolute;line-height: 0;right:0;}
+#timeTable ul.week li>a:first-child{}
+#timeTable ul.week li>a:last-child{}
+
+/*有效拉框区域*/
+#draw{bottom:0;background-color:rgba(255,0,0,0)}
+/*时间段图形属性*/
+#draw p.time-range{z-index: 102;background-color: #efefef;border:1px solid #d6d6d6;width: 200px;padding:5px 8px 5px 5px;box-shadow: 0 0 10px 2px rgba(0,0,0,.3)}
+
+/**/
+/*竖向网线*/
+.grids-line{height:100%;background-color: rgba(255,0,0,0)}
+.grids-line>div,.grids-line>span{position: absolute;}
+.grids-line>span{color:#777983}
+.grids-line>div{width:1px;background-color:#f1f1f1;top:20px;bottom:0}
+/*横向矩形背景*/
+.grids-rect{/*border:1px solid #d6d6d6;*/left:0;bottom:0;right:0}
+/*灰白条*/
+.grids-rect>div{width:100%;}
+.grids-rect>div.gray{background-color:#f9f9f9}
+.grids-rect>div.white{background-color:#fff }
+/**/
+
+#draw p.time-range span{float: left;width:48px;height:20px;border:1px solid #d6d6d6;overflow: hidden;}
+#draw p.time-range i{float: left;width:10px;line-height: 20px;padding:0 0 0 2px}
+#draw p.time-range span input{float: left;width:23px;height:20px;border:0;text-align: center;color: #666}
+#draw p.time-range input.btn-set,#draw p.time-range input.btn-del{line-height: 20px;padding:0 5px;margin-top:1px}
+#draw p.time-range span a{float: left;width:6px;line-height: 18px;margin:0 0 0 -6px}
+#draw p.time-range input.btn-del{margin-left:8px;color:#999}
+#draw p.time-range input.btn-del:hover{background-color:#ccc;color:#666}
+/*框选区域*/
+#drawBox{width:0;height:0;background-color: rgba(0,0,0,0.1);top:0;left:0;z-index: 97;}
+/*绘制区域*/
+#drawArea{width:100%;height:100%;background-color: rgba(255,0,0,0);top:0;left:0;z-index: 98}
+/*ol事件*/
+
+#drawShow{top:0px;bottom:0;z-index: 99;}
+.border-rect{border:1px solid #d6d6d6;/*left:60px;top:0;width:696px;bottom:0*/}
+p.time-dot{width:76px;height:22px;padding:2px;color:#ff3e3e;border:1px solid #ff3e3e;z-index: 1000;font-size: 10px;}
+/*时间段显示图形区域*/
+#timeTable ol li{background-color: rgba(255,0,0,0);}
+/*时间段显示图形*/
+#timeTable ol li span{height:25px;position:absolute;background-color: #8dc6ff;left:0;width:100px;
+    cursor: pointer;box-sizing: border-box}
+
+#timeTable ol li span.active{border:1px solid red}
+#timeTable .time-bg-grid img{display: block}
+/*添加自定义时间段操作异常信息提示*/
+.popupWindow > .timeInfo{width:280px;height:60px;line-height: 60px;background-color: rgba(0,0,0,.7);border:2px solid #fbd902;left:50%;top:50%;color:#fff;font-size: 14px;margin-left: -140px;margin-top: -30px;z-index: 103}
+
+.timeDefined{padding:10px 15px 15px 15px;line-height: 30px;margin-top:10px;border-top:1px solid #eee}
+.timeDefined>div{margin-right:15px}
+.timeDefined input.btn-add{width:60px;height:30px;color:#4d4d4d;padding:0;background-color: #f3f3f3;border-color: #cdcee2}
+.timeDefined i.inBlock{margin-left:-6px}
+p.btn-3{margin-right:15px}
+p.btn-3 button{width:90px;height:30px}
+p.btn-3 .btn-cancel{color:#666;margin-left:15px}
+/**************************************************************/
+
+.position-r{position: relative;} /* 相对定位 */
+.position-a{position: absolute;} /*绝对定位*/
+.border-0{border:0} /* 去除边框 */
+
+.pointer{cursor: pointer;} /* 手型鼠标 */
+.box-sizing{box-sizing: border-box}/*盒模型*/
+
+
+.time-range-hide{
+    display: none;
+}
+#timeTable .time-bg-grid {
+
+}
+.overflow-y{
+    overflow-y: auto;
+    overflow-x: hidden;
+}

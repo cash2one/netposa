@@ -1,0 +1,109 @@
+<div ng-controller="cameraCarPointHistoryAll as cameraPointHistoryAllCtrl" class="maplayer popul layer-min  carmaplayer">
+    <!--<div class="head">-->
+    <!--<div class="maplayer-title">摄像机IOS-0060</div>-->
+    <!--<div class="maplayer-close mylayer-close"></div>-->
+    <!--</div>-->
+    <div class="history-all">
+        <div class="history-btn">
+            <div class="history-alarm" ng-class="{'active': !cameraPointHistoryAllCtrl.showStatus}" ng-click="cameraPointHistoryAllCtrl.showCameraStatus(false)">更多抓拍</div>
+            <div class="history-snapshot" ng-class="{'active': cameraPointHistoryAllCtrl.showStatus}" ng-click="cameraPointHistoryAllCtrl.showCameraStatus(true)">更多报警</div>
+        </div>
+        <div class="time-pick">
+            <div class="time-pick-input">
+                <div class="start-time-pick pick">
+                    <input placeholder="开始时间" readonly type="text" ng-model="cameraPointHistoryAllCtrl.startTime" date-picker show-init="false">
+                </div>
+                <div class="pick hen"></div>
+                <div class="end-time-pick pick">
+                    <input placeholder="结束时间" readonly type="text" ng-model="cameraPointHistoryAllCtrl.endTime" date-picker show-init="false">
+                </div>
+            </div>
+            <div class="searchbtn" ng-click="cameraPointHistoryAllCtrl.changeTime()"></div>
+        </div>
+    </div>
+    <div class="maplayer-cntlayer">
+        <!--抓拍-->
+        <div class="maplayer-content" ng-show="!cameraPointHistoryAllCtrl.showStatus">
+            <div class="lllayer">
+                <div class="llitem" ng-repeat="item in cameraPointHistoryAllCtrl.SubcribeAccessList" ng-click="cameraPointHistoryAllCtrl.detailPopup($event, item)">
+                    <div class="img">
+                        <!-- <img ng-src="{{item.panoramaImage}}" /> -->
+                        <div ng-style="{'background-image': 'url({{item.panoramaImage}})'}" class="imgbg" style="width:100%;height:100%;background-size:100% 100%;background-repeat:no-repeat;"></div>
+                    </div>
+                    <div class="action carplatenumberbox">
+                        <div class="carplatenumber">
+                            <p>{{item.plateNumber}}</p>
+                        </div>
+                        <span ng-class="{'active':item.collectStatus}" class="sc" ng-click="cameraPointHistoryAllCtrl.clickCollect($event, item)"></span>
+                        <span class="fx" ng-click="camCarMapPointCtrl.clickAnalysis($event,item)"></span>
+                        <span class="bk" ng-class="{'active': item.surveillanceStatus}" ng-click="cameraPointHistoryAllCtrl.clickSurveillance($event, item)"></span>
+                    </div>
+                    <div class="info">
+                        <div class="time">{{item.passTime}}</div>
+                        <div class="desc">
+                            {{item.vehicleType}} {{item.vehicleColor}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="paging-positon">
+                <div class="total">共<span>{{cameraPointHistoryAllCtrl.dataListTotal}}</span>条数据</div>
+                <util-paging page-params="cameraPointHistoryAllCtrl.resultParams" prev-page="cameraPointHistoryAllCtrl.changePage(num)" next-page="cameraPointHistoryAllCtrl.changePage(num)" go-page="cameraPointHistoryAllCtrl.changePage(num)" hide-size="true"></util-paging>
+            </div>
+        </div>
+
+        <!--报警-->
+        <div class="maplayer-right-content-history SubcribeAlarm" ng-show="cameraPointHistoryAllCtrl.showStatus">
+            <div class="gjlayer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>抓拍信息</th>
+                            <th>车牌信息</th>
+                            <th>报警时间</th>
+                            <th>报警设备</th>
+                            <th>布控人</th>
+                            <th>处理状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in cameraPointHistoryAllCtrl.SubcribeAlarmList">
+                            <td width="80">
+                                <div style="width: 40px;height: 40px;">
+                                    <img ng-src="{{item.AlarmLog.JsonUserData.detail.imageURLs}}" alt="">
+                                </div>
+                            </td>
+                            <td width="100">
+                                <div class="carplatenumber">
+                                    <p>{{item.AlarmLog.JsonUserData.alarmObjName}}</p>
+                                </div>
+                            </td>
+                            <td width="136">
+                                {{item.AlarmLog.JsonUserData.detail.passTime}}
+                            </td>
+                            <td width="146">
+                                {{item.AlarmLog.ObjectName}}
+                            </td>
+                            <td width='140'>
+
+                            </td>
+                            <td ng-if="item.AlarmLog.JsonUserData.alarmType == -1" width='100'>无效</td>
+                            <td ng-if="item.AlarmLog.JsonUserData.alarmType == 0" width='100'>待处理</td>
+                            <td ng-if="item.AlarmLog.JsonUserData.alarmType == 1" width='100'>有效</td>
+                            <td width="78" class="action">
+                                <!--<span ng-class="{'active':item.Collected}" class="sc" ng-click="cameraPointHistoryAllCtrl.clickCollect($event, item);"></span>-->
+                                <!--<span class="fx"></span>-->
+                                <span class="lx" ng-click="cameraPointHistoryAllCtrl.fullPlay($event, item)"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="paging-positon">
+                <div class="total">共 <span>{{cameraPointHistoryAllCtrl.alarmdataListTotal}}</span> 条数据</div>
+                <util-paging page-params="cameraPointHistoryAllCtrl.resultAlarmParams" prev-page="cameraPointHistoryAllCtrl.changePage(num)" next-page="cameraPointHistoryAllCtrl.changePage(num)" go-page="cameraPointHistoryAllCtrl.changePage(num)" hide-size="true"></util-paging>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="m-person-statistic" id="carStatistic" ng-class="resourceCtrl.switchButton.switch?'switch-button2':'switch-button1'" ng-controller="carStatisticController as carstatisticCtrl">
+    <div class="m-image-title">实时信息</div>
+    <div class="m-loop-board">
+        <div class="m-loop-message">
+            <div class="m-new-border statistic-message" ng-repeat="item in carstatisticCtrl.CarAllData">
+                <img ng-src="{{item.panoramaImage|imageUrlFilter}}" class="m-image-margin">
+                <span class="m-image-text">{{item.plateNumber}}</span>
+            </div>
+        </div>
+    </div>
+</div>

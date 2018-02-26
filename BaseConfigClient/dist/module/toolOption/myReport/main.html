@@ -1,0 +1,27 @@
+<div class="m-myreport">
+    <div class="report-head">
+        <div class="report-left">
+            <span class="report-text">我的报警</span>
+            <span class="report-report-icon"></span>
+        </div>
+        <ul class="report-list">
+            <li class="collect-list"
+                ng-repeat="item in myReportCtrl.ButtonList track by $index"
+                ng-class="{'active': item.index == myReportCtrl.selectedIndex}"
+                ng-click="myReportCtrl.changeIndex(item)"
+            >{{item.text}}
+            </li>
+        </ul>
+    </div>
+    <div class="report-inline">
+        <div class="form-label">
+            <input class="input-t1" placeholder="开始时间" date-picker
+                   ng-model="myReportCtrl.startTime"/>
+            <span>一</span>
+            <input class="input-t2" placeholder="结束时间" date-picker
+                   ng-model="myReportCtrl.endTime"/>
+        </div>
+        <button class="search-btn" ng-click="myReportCtrl.search()">搜索</button>
+    </div>
+    <div class="report-collect-all" ng-include="myReportCtrl.allReportPage"></div>
+</div>

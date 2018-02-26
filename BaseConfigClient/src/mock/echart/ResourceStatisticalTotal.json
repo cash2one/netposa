@@ -1,0 +1,48 @@
+{
+    "tooltip" : {
+        "trigger": "item",
+        "formatter": "{a} {b} : {c} ({d}%)"
+    },
+    "color":["#396AB1", "#FF5D9E"] ,
+    "legend": {
+        "top": 5,
+        "left": 5,
+        "itemHeight":5,
+        "itemWidth":10,
+        "data": [
+            {
+                "name": "流量总量",
+                "textStyle": {
+                    "fontSize": 12
+                },
+                "icon":"stack"
+            },
+            {
+                "name": "报警总量",
+                "textStyle": {
+                    "fontSize": 12
+                },
+                "icon":"stack"
+            }
+        ]
+    },
+    "series" : [
+        {
+            "name": "访问来源",
+            "type": "pie",
+            "radius" : "55%",
+            "center": ["50%", "50%"],
+            "data":[
+                {"value": 12000, "name":"流量总量"},
+                {"value": 1500, "name":"报警总量"}
+            ],
+            "itemStyle": {
+                "emphasis": {
+                    "shadowBlur": 10,
+                    "shadowOffsetX": 0,
+                    "shadowColor": "rgba(0, 0, 0, 0.5)"
+                }
+            }
+        }
+    ]
+}

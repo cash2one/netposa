@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>视频大数据平台</title>
+
+    <link rel="shortcut icon" href="/cloudplatform.ico"/>
+    <link rel="bookmark" href="/cloudplatform.ico" type="image/x-icon"/>
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/simple-common.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/header.css"/>
+</head>
+
+<body style="min-width:1366px;">
+<div class="main-container" ng-controller="mainMenuController as mainCtrl">
+    <!-- headerContainer -->
+    <div class="g-head f-cfb" id="menu-group">
+        <div class="head-title"></div>
+
+        <div class="head-content f-cfb">
+            <ul class="module-list f-cfb">
+                <!--<li ui-sref-active="selected" ng-repeat="item in mainCtrl.moduleItems" ng-click="go(item)" ng-mouseenter="mainCtrl.showChildList(item,$index)">-->
+                <li ui-sref-active="selected"
+                    ng-repeat="(navIndex,item) in mainCtrl.moduleItems"
+                    ng-click="go(item)"
+                    ng-mouseenter="mainCtrl.showChildList(item,$index)"
+                    ng-mouseleave="mainCtrl.index = -1"
+                    ng-if="item.key.indexOf('toolOption') == -1"
+                >
+                    <!--<a  ui-sref="log" ng-bind="item.moduleName"></a>-->
+                    <a ui-sref="{{item.key}}" translate="{{item.moduleName}}"></a>
+                    <!--下拉菜单-->
+                    <!--<ul class="module-list-slide">
+                        <li ng-repeat="item in mainCtrl.moduleItems">{{item.moduleName}}</li>
+                    </ul>-->
+                    <ul class="child-module-list" ng-if="$index == mainCtrl.index">
+                        <li ui-sref-active="selected" ng-repeat="item in mainCtrl.moduleChildItems" ng-click="go(item)">
+                            <a ui-sref="{{item.key}}" translate="{{item.moduleName}}"></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="head-tool f-cfb">
+            <!--<span>
+                <button class="u-button u-button-blue-1" ng-click="mainCtrl.changeLang('cn')">中文</button>
+                <button class="u-button u-button-blue-1" ng-click="mainCtrl.changeLang('en')">英文</button>
+            </span>
+
+            <span class="user">某用户</span>
+
+            <span ng-click="mainCtrl.loginOut()">登出</span>-->
+
+            <!--<div class="tool-content">
+                <span class="tool-content-font">语言</span>
+                <ul class="tool-dropList">
+                    <li class="tool-dropListCol f-cfb" ng-click="mainCtrl.changeLang('cn')">
+                        <span></span>
+                        <span class="tool-dropListCol-left">中文</span>
+                    </li>
+
+                    <li class="tool-dropListCol f-cfb" ng-click="mainCtrl.changeLang('en')">
+                        <span></span>
+                        <span class="tool-dropListCol-left">英文</span>
+                    </li>
+                </ul>
+            </div>-->
+        
+            <div class="tool-content-one"  ng-click="mainCtrl.openComparePopup()"></div> 
+            <div class="tool-content f-cfb">
+                <span class="i-userName tool-content-icon"></span>
+                <span class="tool-content-text tool-content-font" ng-bind="mainCtrl.loginUserName"></span>
+
+                <ul class="tool-dropList">
+                    <li class="tool-dropListCol f-cfb" ng-click="mainCtrl.openUpdatePwdModal()">
+                        <span class="tool-dropListCol-icon i-setUp"></span>
+                        <span class="tool-dropListCol-text">修改密码</span>
+                    </li>
+
+                    <li class="tool-dropListCol f-cfb" ng-click="mainCtrl.loginOut()">
+                        <span class="tool-dropListCol-icon i-quit"></span>
+                        <span class="tool-dropListCol-text">退出</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="tool-content"> -->
+                <!-- <span class="i-notice"></span>
+                <span class="tool-content-font" style="float:right">通知</span> -->
+                <!--<span class="tool-messageCount">3</span>-->
+
+                <!-- <ul class="tool-dropList">
+                    <li class="tool-dropListCol f-cfb">
+                        <span class="tool-dropListCol-left">任务</span>
+                        <span class="tool-dropListCol-right">1</span>
+                    </li>
+
+                    <li class="tool-dropListCol f-cfb">
+                        <span class="tool-dropListCol-left">反馈</span>
+                        <span class="tool-dropListCol-right">2</span>
+                    </li>
+                </ul>
+            </div> -->
+            <div class="tool-content f-center" ng-if="mainCtrl.userCenterRight">
+                <span class="i-center tool-content-icon"></span>
+                <ul class="tool-dropList" style="width:94px">
+                    <li class="tool-dropListCol f-cfb center-list">
+                        <i class="i-sign"></i>
+                        <span class="tool-dropListCol-icon i-collect"></span>
+                        <a class="tool-dropListCol-text" ui-sref="toolOption.myCollect">我的收藏</a>
+                    </li>
+                    <li class="tool-dropListCol f-cfb center-list">
+                        <span class="tool-dropListCol-icon i-check"></span>
+                        <a class="tool-dropListCol-text" ui-sref="toolOption.myCheck">我的审核</a>
+                    </li>
+                    <li class="tool-dropListCol f-cfb center-list">
+                        <span class="tool-dropListCol-icon i-report"></span>
+                        <span class="tool-dropListCol-text" ui-sref="toolOption.myReport">我的报警</span>
+                    </li>
+                    <li class="tool-dropListCol f-cfb center-list">
+                        <span class="tool-dropListCol-icon i-feedback"></span>
+                        <span class="tool-dropListCol-text">意见反馈</span>
+                    </li>
+                    <li class="tool-dropListCol f-cfb center-list">
+                        <span class="tool-dropListCol-icon i-about"></span>
+                        <span class="tool-dropListCol-text">关于我们</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!--<div class="tool-content">
+                <div class="tool-cont-time z-top">15:15:15</div>
+                <div class="tool-cont-time z-bottom">2017/04/04</div>
+            </div>-->
+
+        </div>
+
+
+    </div>
+
+    <div class="g-main" ui-view>
+
+    </div>
+</div>
+
+<!--<div class="g-foot-normal">Copyright ©2017 SenseNets Cooperation.深圳市深网视界科技有限公司  版本信息：v1.1</div>-->
+<script type="text/javascript">
+    (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "/libs/require/require.js";
+        script.setAttribute("data-main", "/require-config.js?v=" + new Date().getTime());
+        document.getElementsByTagName('head')[0].appendChild(script);
+    })();
+</script>
+</body>
+
+</html>

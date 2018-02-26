@@ -1,0 +1,853 @@
+@import "./base";
+// 高级检索区域
+.search-component-advanced {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  overflow: hidden;
+  display: none;
+  color: #999;
+  &.active {
+    width: 100%;
+    height: 100%;
+    display: inline;
+    padding: 83px 30px 30px 30px;
+    margin-top: -53px;
+  }
+  .advanced-list-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-left: 95px;
+    padding-top: 55px;
+    background-color: @white;
+    .box_shadow();
+    // 顶部样式
+    .advanced-list-title {
+      position: absolute;
+      width: 100%;
+      height: 55px;
+      padding-top: 7px;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-bottom: 0;
+      .name {
+        position: relative;
+        width: 160px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 18px;
+        padding-left: 50px;
+        float: left;
+        color: #444;
+        .advanced-search-sign();
+        background-position: 18px center;
+      }
+      .advanced-close {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        float: right;
+        margin: 11px 20px;
+        .icon-close-button();
+      }
+    }
+    // 左侧导航切换
+    .search-device-switch {
+      position: relative;
+      float: left;
+      margin-left: -95px;
+    }
+    // 右侧主体内容区域
+    .advanced-device-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      color: #c9c9c9;
+      float: left;
+      border-top: 1px solid #e4e4e4;
+      .search-advanced-box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        padding: 0 0 60px 0;
+        background: #f8f8f8;
+        .search-advanced-main {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          .custom-drag.face {
+            width: 168px;
+            height: 168px;
+            overflow: hidden;
+            z-index: 100;
+            img {
+              width: 100%;
+            }
+          }
+          // 参数区域样式
+          .advanced-condition {
+            width: 100%;
+            border-bottom: 0;
+            padding: 0 20px 10px 20px;
+            background-color: #fafafa;
+            .container-fluid {
+              padding: 0;
+              position: relative;
+              .row {
+                margin: 0;
+                .col-md-6:nth-child(odd) {
+                  padding: 0 35px 0 0;
+                }
+                .col-md-6:nth-child(even) {
+                  padding: 0 0 0 35px;
+                }
+                .col-md-6 {
+                  height: 51px;
+                  .params-item {
+                    position: relative;
+                    width: 100%;
+                    float: left;
+                    height: 51px;
+                    line-height: 50px;
+                    border-bottom: 1px dotted #E5E5E5;
+                    .select-device-total {
+                      position: relative;
+                      display: inline-block;
+                      margin-left: 10px;
+                      color: @gray-color-shallow;
+                      .number {
+                        color: @bg-blue;
+                      }
+                    }
+                    &.special {
+                      padding-left: 445px;
+                      .params-item-name {
+                        width: 75px;
+                      }
+                    }
+                    &.z-vehicle{
+                      float: right;
+                      width: 288px;
+                      .params-item-name {
+                        width: 100px;
+                      }
+                    }
+                    .params-item-name {
+                      width: 65px;
+                      float: left;
+                      color: #999;
+                    }
+                    .params-item-input {
+                      position: relative;
+                      width: 302px;
+                      height: 32px;
+                      margin-left: 8px;
+                      text-indent: 5px;
+                      border: 1px solid #e4e4e4;
+                      color: #444;
+                      &::-webkit-input-placeholder {
+                        color: #999;
+                      }
+                    }
+                    .params-item-select {
+                      width: auto;
+                      padding: 0 8px;
+                      cursor: pointer;
+                      float: left;
+                      color: #444;
+                      &.select-camera {
+                        width: 89px;
+                        text-align: center;
+                        height: 28px;
+                        line-height: 28px;
+                        border: 0;
+                        color: #fff;
+                        background-color: @bg-blue;
+                        &:hover {
+                          background-color: rgba(45, 135, 249, 0.8);
+                        }
+                      }
+                      &.active {
+                        color: @bg-blue;
+                      }
+                      &.z-active{
+                        color: @bg-blue;
+                      }
+                      // 选择色块
+                      &.color {
+                        position: relative;
+                        width: auto;
+                        height: 20px;
+                        margin-right: 20px;
+                        float: left;
+                        margin-top: 15px;
+                        padding: 0;
+                        &.active {
+                          width: 24px;
+                          height: 24px;
+                          border: 1px solid @bg-blue;
+                          margin-top: 13px;
+                          margin-right: 16px;
+                          .color-box {
+                            margin: 1px;
+                          }
+                        }
+                        .all {
+                          width: 28px;
+                          height: 20px;
+                          line-height: 20px;
+                          margin-left: 8px;
+                          &.active {
+                            color: @bg-blue;
+                          }
+                        }
+                        .color-box {
+                          position: relative;
+                          width: 20px;
+                          height: 20px;
+                          &.z-vehicle{
+                            display: block;
+                          }
+                          &:hover {
+                            border: 2px solid @bg-blue-hover;
+                          }
+                          &.z-active{
+                            border: 2px solid @font-color-red;
+                          }
+                        }
+                        .white-box {
+                          border: 1px solid #ddd;
+                        }
+                      }
+                      // 滑杆
+                      .progress-content {
+                        margin-top: 20px;
+                        .progress-notice {
+                          line-height: 1;
+                        }
+                      }
+                      // 选择摄像头
+                      &.select-camera {
+                        position: relative;
+                        top: 8px;
+                        margin-left: 8px;
+                        color: #fff;
+                        border-radius: 0;
+                        background-color: @bg-blue;
+                        &:hover {
+                          background-color: rgba(45, 135, 249, 0.8);
+                        }
+                      }
+                      .text-box {
+                        &:hover {
+                          color: @bg-blue;
+                        }
+                        &.text-select {
+                          color: @bg-blue;
+                        }
+                      }
+                      // 车辆品牌
+                      &.vehicle-brandList {
+                        padding: 0 5px;
+                      }
+                      &.z-vehicle{
+                        line-height:20px;
+                      }
+                    }
+                    .icon-device-map-select {
+                      position: relative;
+                      width: 28px;
+                      height: 28px;
+                      background-color: #a8ccfa;
+                      display: inline-block;
+                      margin-left: 10px;
+                      top: 8px;
+                      &:hover {
+                        background-color: rgba(168, 204, 250, 0.8);
+                      }
+                      i {
+                        width: 28px;
+                        height: 28px;
+                        display: inline-block;
+                        .icon-device-map-select();
+                      }
+                    }
+                    // 自定义时间
+                    .custom-time {
+                      position: relative;
+                      height: 30px;
+                      border: 1px solid #ddd;
+                      float: left;
+                      margin-top: 10px;
+                      .custom-time-input {
+                        width: 130px;
+                        height: 28px;
+                        line-height: 28px;
+                        border: 0;
+                        float: left;
+                        text-align: center;
+                      }
+                      span {
+                        width: 20px;
+                        text-align: center;
+                        float: left;
+                        height: 28px;
+                        line-height: 28px;
+                      }
+                    }
+                    .params-item-downselect-ctn{
+                      float: left;
+                      width: 400px;
+                      .params-item-downselect-title{
+                        width: 100%;
+                        background-color: #fff;
+                      }
+                    }
+                  }
+                }
+              }
+              // 图片框
+              .advanced-upload {
+                position: absolute;
+                height: 80px;
+                top: 10px;
+                left: 25px;
+                background: #fafafa;
+                overflow: hidden;
+                z-index: 5;
+                .upload-ul {
+                  height: 80px;
+                  .upload-li {
+                    position: relative;
+                    width: 80px;
+                    height: 80px;
+                    margin-right: 5px;
+                    margin-bottom: 0;
+                    float: left;
+                    background-color: #eeeeee;
+                    background-position: center center;
+                    .icon_camera();
+                    border: 1px dashed #cccccc;
+                    overflow: hidden;
+                    cursor: pointer;
+                    .upload-li-box {
+                      position: relative;
+                      width: 100%;
+                      height: 100%;
+                      cursor: pointer;
+                    }
+                    .upload-file {
+                      opacity: 0;
+                    }
+                    .close {
+                      position: absolute;
+                      width: 78px;
+                      height: 78px;
+                      top: 78px;
+                      left: 0;
+                      .icon-close();
+                      background-position: center center;
+                      background-color: rgba(255, 255, 255, 0.6);
+                      opacity: 0;
+                      transition: top 0.3s, opacity 0.3s;
+                      z-index: 4;
+                    }
+                    &:hover {
+                      .close {
+                        top: 0px;
+                        opacity: 1;
+                      }
+                    }
+                    img {
+                      position: absolute;
+                      width: 80px;
+                      top: 0;
+                      left: 0;
+                      z-index: 2;
+                    }
+                  }
+                }
+              }
+              // 更多操作
+              .more {
+                position: absolute;
+                width: 50px;
+                height: 17px;
+                cursor: pointer;
+                bottom: 0;
+                left: 50%;
+                margin-left: -25px;
+                .down {
+                  position: relative;
+                  width: 50px;
+                  height: 17px;
+                  display: block;
+                  background-color: #a8ccfa;
+                  border-radius: 3px 3px 0 0;
+                  .icon_arrow_down();
+                }
+                .up {
+                  position: relative;
+                  width: 50px;
+                  height: 17px;
+                  display: block;
+                  background-color: #a8ccfa;
+                  border-radius: 3px 3px 0 0;
+                  .icon_arrow_up();
+                }
+              }
+              // 查询按钮
+              .search-advanced-submit {
+                position: absolute;
+                width: 74px;
+                height: 30px;
+                line-height: 30px;
+                background-color: @bg-blue;
+                border: 0;
+                color: #fff;
+                right: 0;
+                bottom: 10px;
+                z-index: 100;
+                &:hover {
+                  background-color: rgba(45, 135, 249, 0.8);
+                }
+                &.active {
+                  pointer-events: none;
+                }
+                .icon-search {
+                  position: relative;
+                  height: 100%;
+                  padding-left: 18px;
+                  display: inline-block;
+                  .icon_search_white();
+                  background-position: 0 center;
+                  background-size: 16px 16px;
+                }
+              }
+            }
+          }
+          // 底部分页样式
+          .all-result-footer {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            bottom: -60px;
+            background: #fff;
+            border-top: 1px solid #e4e4e4;
+            .row {
+              height: 55px;
+              .col-md-3 {
+                line-height: 55px;
+                padding: 0 20px;
+              }
+              .col-md-9 {
+                padding: 0 20px;
+              }
+              .page-total {
+                display: inline-block;
+                width: auto;
+                height: 43px;
+                line-height: 30px;
+                color: #999;
+                padding-top: 13px;
+                float: right;
+                margin-right: 20px;
+                .blue-font {
+                  color: @bg-blue;
+                }
+              }
+              .u-paging {
+                display: inline-block;
+                width: auto;
+                padding: 0;
+                margin-top: 13px;
+                float: right;
+                border: 0;
+              }
+            }
+          }
+          // 查询结果内容样式
+          .search-advanced-maincon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background-color: #f2f2f2;
+            // 结果头部操作
+            .advanced-operate-tab {
+              width: auto;
+              height: 40px;
+              line-height: 40px;
+              border: solid 1px #e9e9e9;
+              margin: 0 15px 10px 15px;
+              box-sizing: border-box;
+              background: #ffffff;
+              .advanced-left {
+                float: left;
+                margin-left: 20px;
+                label {
+                  margin: 0;
+                }
+                span {
+                  margin-right: 20px;
+                  color: #505050;
+                }
+              }
+              .advanced-right {
+                float: right;
+                label {
+                  margin: 0;
+                  float: left;
+                }
+                input {
+                  float: left;
+                  margin-top: 12px;
+                  margin-right: 5px;
+                }
+                span {
+                  margin-right: 8px;
+                  color: #505050;
+                }
+                button {
+                  width: 73px;
+                  height: 28px;
+                  line-height: 28px;
+                  float: left;
+                  margin-top: 6px;
+                  margin-right: 20px;
+                  border: 0;
+                  color: #fff;
+                  background-color: #91c41d;
+                  &:hover {
+                    background-color: rgba(145, 196, 29, 0.8);
+                  }
+                  i {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    float: left;
+                    margin: 7px 0 0 14px;
+                    .icon-export();
+                  }
+                  span {
+                    color: #fff;
+                  }
+                }
+                .icon-table-model {
+                  width: 24px;
+                  height: 24px;
+                  display: inline-block;
+                  margin-left: 10px;
+                  margin-top: 7px;
+                  float: left;
+                  .icon-table-model();
+                }
+                .icon-ul-model {
+                  width: 24px;
+                  height: 24px;
+                  display: inline-block;
+                  margin-left: 10px;
+                  margin-right: 50px;
+                  margin-top: 7px;
+                  float: left;
+                  .icon-ul-model();
+                }
+              }
+            }
+            // 列表样式
+            .advanced-result-content {
+              width: 100%;
+              padding: 20px 5px 0 5px;
+              background-color: #f2f2f2;
+              .advanced-result-data {
+                width: 100%;
+                overflow: hidden;
+                .result-data {
+                  margin: 0 15px 28px 15px;
+                  background-color: #fff;
+                  border: 1px solid #e4e4e4;
+                  cursor: pointer;
+                  color: #444;
+                  .data-img {
+                    margin: 9px auto 0 auto;
+                    .checkbox {
+                      position: absolute;
+                      width: 16px;
+                      height: 16px;
+                      top: 1px;
+                      left: 1px;
+                      display: none;
+                    }
+                    .similarity-box {
+                      position: absolute;
+                      width: 32px;
+                      height: 18px;
+                      line-height: 18px;
+                      text-align: center;
+                      border-radius: 3px;
+                      top: 2px;
+                      right: 1px;
+                      background-color: #ff8d33;
+                      color: #fff;
+                    }
+                    .operate {
+                      position: absolute;
+                      width: 100%;
+                      height: 30px;
+                      left: 0;
+                      bottom: 0px;
+                      opacity: 0;
+                      transition: all 0.5s ease-out;
+                      background-color: rgba(0, 0, 0, 0.2);
+                      i {
+                        width: 56px;
+                        height: 30px;
+                        float: left;
+                        display: block;
+                        text-align: center;
+                        background-position: center center;
+                        &.icon_dispatched {
+                          display: none;
+                        }
+                      }
+                    }
+                    &:hover {
+                      .checkbox {
+                        display: inherit;
+                      }
+                      .similarity-box {
+                        display: inherit;
+                      }
+                      .operate {
+                        position: absolute;
+                        width: 100%;
+                        height: 30px;
+                        left: 0;
+                        opacity: 1;
+                      }
+                    }
+                  }
+                  .data-info {
+                    margin: 5px auto 0 auto;
+                    p {
+                      width: 100%;
+                      height: 20px;
+                      line-height: 20px;
+                      .wordBreak();
+                    }
+                  }
+                  &:hover {
+                    border: 1px solid #2d87f9;
+                    .box_shadow();
+                  }
+                  &.alarm {
+                    border: 5px solid #ffaa00;
+                    .data-img {
+                      margin: 5px auto 0 auto;
+                    }
+                  }
+                  // 人像
+                  &.face {
+                    width: 140px;
+                    height: 200px;
+                    margin: 0 16px 28px 16px;
+                    .data-img {
+                      position: relative;
+                      width: 120px;
+                      height: 120px;
+                      overflow: inherit;
+                      margin: 9px auto 0 auto;
+                      img {
+                        width: 120px;
+                        height: 120px;
+                        cursor: pointer;
+                      }
+                      .operate {
+                        i {
+                          width: 50%;
+                        }
+                      }
+                    }
+                    .data-info {
+                      width: 120px;
+                      .device-name {
+                        height:40px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: inherit;
+                      }
+                    }
+                  }
+                  // 车辆
+                  &.car {
+                    width: 150px;
+                    height: 215px;
+                    margin: 0 12px 28px 12px;
+                    .data-img {
+                      position: relative;
+                      width: 130px;
+                      height: 102px;
+                      overflow: hidden;
+                      img {
+                        width: 130px;
+                        height: 102px;
+                        cursor: pointer;
+                      }
+                    }
+                    .data-info {
+                      width: 130px;
+                      .device-name {
+                        height:40px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: inherit;
+                      }
+                    }
+                  }
+                  // wifi
+                  &.wifi {
+                    position: relative;
+                    width: 189px;
+                    height: 110px;
+                    border-radius: 4px;
+                    .mac {
+                      font-size: 14px;
+                      font-weight: 700;
+                    }
+                    &:hover {
+                      .mac .name {
+                        visibility: hidden;
+                      }
+                    }
+                    .operate .icon_analysis {
+                      display: none;
+                    }
+                    ul.data-img {
+                      position: relative;
+                      width: 170px;
+                      margin: 5px auto 0 auto;
+                      .checkbox {
+                        left: 5px;
+                      }
+                      li {
+                        height: 24px;
+                        line-height: 24px;
+                        .name {
+                          position: relative;
+                          width: 26px;
+                          height: 24px;
+                          float: left;
+                          background-position: center center;
+                        }
+                        .text {
+                          position: relative;
+                          width: 144px;
+                          padding-left: 5px;
+                          .wordBreak();
+                        }
+                      }
+                    }
+                    .data-info {
+                      position: absolute;
+                      width: 100%;
+                      height: 28px;
+                      left: 0;
+                      bottom: 0;
+                      margin: 0;
+                      border-top: 1px solid #e4e4e4;
+                      .operate {
+                        float: right;
+                        margin-right: 5px;
+                        i {
+                          width: 30px;
+                          height: 25px;
+                          float: left;
+                          padding: 0;
+                          background-position: center center;
+                        }
+                      }
+                    }
+                  }
+                  // electronic
+                  &.electronic {
+                    position: relative;
+                    width: 189px;
+                    height: 135px;
+                    border-radius: 4px;
+                    &:hover {
+                      .imsi .name {
+                        visibility: hidden;
+                      }
+                    }
+                    .operate .icon_analysis {
+                      display: none;
+                    }
+                    ul.data-img {
+                      position: relative;
+                      width: 170px;
+                      margin: 5px auto 0 auto;
+                      .checkbox {
+                        left: 5px;
+                      }
+                      li {
+                        height: 24px;
+                        line-height: 24px;
+                        .name {
+                          position: relative;
+                          width: 26px;
+                          height: 24px;
+                          float: left;
+                          background-position: center center;
+                        }
+                        .text {
+                          position: relative;
+                          width: 144px;
+                          padding-left: 5px;
+                          .wordBreak();
+                        }
+                      }
+                    }
+                    .data-info {
+                      position: absolute;
+                      width: 100%;
+                      height: 28px;
+                      left: 0;
+                      bottom: 0;
+                      margin: 0;
+                      border-top: 1px solid #e4e4e4;
+                      .operate {
+                        float: right;
+                        margin-right: 5px;
+                        i {
+                          width: 30px;
+                          height: 25px;
+                          float: left;
+                          padding: 0;
+                          background-position: center center;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              .loading {
+                position: relative;
+                margin-top: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

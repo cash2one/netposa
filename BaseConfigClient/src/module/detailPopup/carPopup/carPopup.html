@@ -1,0 +1,153 @@
+<div class="layer-component car-component" ng-controller="carPopupController as carPopupCtrl">
+    <div class="media-title">
+        <span class="licence-plate">{{carPopupCtrl.accessRecords.plateNumber}}</span>
+        <a class="layui-layer-ico m-layui-close" ng-click="carPopupCtrl.closeLayer()"></a>
+    </div>
+    <div class="media-box-con">
+        <div class="box-con-left">
+            <img class="image"  ng-src="{{ carPopupCtrl.accessRecords.panoramaImage|imageUrlFilter}}">
+            <div class="operate-box">
+                <div class="full-screen" ng-click="carPopupCtrl.fullScreen((carPopupCtrl.accessRecords.panoramaImage|imageUrlFilter))"></div>
+                <div class="full-play" ng-click="carPopupCtrl.fullPlay()"></div>
+            </div>
+        </div>
+        <div class="box-con-right">
+            <div class="switch-group">
+                <div
+                    class="switch-item"
+                    ng-class="{'active':carPopupCtrl.switchButton}"
+                    ng-click="carPopupCtrl.switchButton=true">
+                    过车记录
+                </div>
+                <div
+                    class="switch-item"
+                    ng-class="{'active':!carPopupCtrl.switchButton}"
+                    ng-click="carPopupCtrl.switchButton=false">
+                    车辆档案
+                </div>
+            </div>
+            <div class="records" ng-if="carPopupCtrl.switchButton">
+                <span class="operate">
+                    <i class="icon_collect" ng-class="{'active': carPopupCtrl.accessRecords.collectStatus}" ng-click="carPopupCtrl.clickCollect()">收藏</i>
+                    <i class="icon_analysis" ng-click="carPopupCtrl.clickAnalysis()">分析</i>
+                    <i class="icon_dispatched" ng-class="{'active': carPopupCtrl.accessRecords.surveillanceStatus}" ng-click="carPopupCtrl.clickSurveillance()">布控</i>
+                </span>
+                <div class="plate-number">
+                    <i class="m-car-license">{{carPopupCtrl.accessRecords.plateNumber}}</i>
+                    <span class="m-car-type">{{carPopupCtrl.accessRecords.vehicleType}}</span>
+                </div>
+                <ul class="group-ul">
+                    <li class="group-li">
+                        <div class="name">行驶速度 :</div>
+                        <div class="text">{{carPopupCtrl.accessRecords.speed}}km/h</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">通行时间 :</div>
+                        <div class="text">{{carPopupCtrl.accessRecords.passTime}}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">车道方向 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">采集设备 :</div>
+                        <div class="text">{{carPopupCtrl.accessRecords.monitorName}}</div>
+                    </li>
+                    <li class="group-li" ng-if="carPopupCtrl.accessRecords.score">
+                        <div class="name">相似度 :</div>
+                        <div class="text">{{carPopupCtrl.accessRecords.score|roundNumber}}%</div>
+                    </li>
+                </ul>
+                <ul class="group-ul blue-color">
+                    <li class="group-li">
+                        <div class="name">车辆品牌 :</div>
+                        <div class="text">{{carPopupCtrl.accessRecords.vehicleBrand}}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">车辆子款 :</div>
+                        <div class="text">{{carPopupCtrl.accessRecords.vehicleSubBrand}}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">车辆颜色 :</div>
+                        <div class="text">{{carPopupCtrl.accessRecords.vehicleColor}}</div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">细节特征 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">违章测试 :</div>
+                        <div class="text"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="lience" ng-if="!carPopupCtrl.switchButton">
+                <div class="operate">
+                    <i class="icon_record" ng-click="carPopupCtrl.lookRecordDetail()">完整档案 ></i>
+                    <i class="icon_view_cube">视图立方 ></i>
+                </div>
+                <ul class="group-ul">
+                    <li class="group-li">
+                        <div class="name">识别代码 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">车型 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">车身颜色 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">发动机号 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">初次登记 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">违章情况 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">机动车主 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">身份证号 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">联系电话 :</div>
+                        <div class="text"></div>
+                    </li>
+                    <li class="group-li">
+                        <div class="name">登记住址 :</div>
+                        <div class="text"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="media-footer" ng-if="!carPopupCtrl.showFooter">
+        <div class="m-footer-text">
+            搜周边 :
+            <span class="ambitus-info">
+                <i ng-repeat="item in carPopupCtrl.ambitusInfo" ng-click="carPopupCtrl.selectAmbitusInfo(item)" ng-class="{'active': item.status}">{{item.value}}</i>
+            </span>
+            <input type="text" class="m-footer-input" ng-model="carPopupCtrl.quickSearchAgainText" placeholder="请输入关键字">
+            <i class="search-border" ng-click="carPopupCtrl.quickSearchAgain()"></i>
+
+            <span class="m-footer-last">
+                <span class="m-toggle-border" ng-click="carPopupCtrl.popupUp()" ng-if="carPopupCtrl.activeRank > 1">
+                    <i class="m-left-triangle"></i>
+                </span>
+                <span class="m-toggle-border" ng-click="carPopupCtrl.popupDown()" ng-if="carPopupCtrl.activeRank < carPopupCtrl.totalRank">
+                    <i class="m-right-triangle"></i>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

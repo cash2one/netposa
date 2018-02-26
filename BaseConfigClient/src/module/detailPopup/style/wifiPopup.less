@@ -1,0 +1,118 @@
+@import "./base";
+
+/**
+     * @title 人员弹框
+     * @update chendm
+     * @time  2017-11-30
+     */
+.detail-popup-box {
+  z-index: 4;
+  .detail-popup-box();
+  .wifi-component{
+    height: 220px;
+    .wifi-content{
+      position: relative;
+      width: 100%;
+      height: 129px;
+      padding: 0;
+      .m-item-wifi{
+        position: relative;
+        width: 100%;
+        height: 90px;
+        top: 0;
+        left: 0;
+        margin-top: 5px;
+        .m-itemwifi-left{
+          position: relative;
+          width: 280px;
+          float: left;
+          .m-color-l {
+            width: 60px;
+            text-align: right;
+            color: #8e8e8a;
+            font-weight: 100;
+            display: block;
+            float: left;
+            height: 20px;
+            line-height: 20px;
+          }
+          .m-color-h {
+            width: 220px;
+            text-indent: 6px;
+            color: #686868;
+            font-weight: bold;
+            display: block;
+            float: left;
+            height: 20px;
+            line-height: 20px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+          }
+          &.ef {
+            .m-color-l {
+              width: 105px;
+            }
+            .m-color-h {
+              width: 175px;
+            }
+          }
+        }
+        .m-itemwifi-right{
+          position: relative;
+          width: 220px;
+          float: right;
+          .m-color-l {
+            width: 60px;
+            text-align: right;
+            color: #8e8e8a;
+            font-weight: 100;
+            display: block;
+            float: left;
+            height: 20px;
+            line-height: 20px;
+          }
+          .m-color-h {
+            width: 160px;
+            text-indent: 6px;
+            color: #686868;
+            font-weight: bold;
+            display: block;
+            float: left;
+            height: 20px;
+            line-height: 20px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+      // 收藏区域
+      .icon-ground-wifi{
+        &.operate {
+          user-select: none;
+          .icon_collect {
+            .icon_collect();
+          }
+          .icon_analysis {
+            .icon_analysis();
+            display: none;
+          }
+          .icon_dispatched {
+            .icon_dispatched();
+            display: none;
+          }
+          i {
+            height: 18px;
+            line-height: 18px;
+            display: inline-block;
+            padding-left: 20px;
+          }
+        }
+      }
+    }
+    .media-footer{
+      width: 100%;
+    }
+  }
+}

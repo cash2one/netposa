@@ -1,0 +1,118 @@
+{
+    "tooltip": {
+        "trigger": "item"
+    },
+    "legend": {
+        "top": 5,
+        "left": 5,
+        "itemHeight":5,
+        "itemWidth":10,
+        "data": [
+            {"name": "车辆",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            },
+            {"name": "人像",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            },
+            {"name": "WIFI",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            },
+            {"name": "电围",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            }
+        ]
+    },
+    "color":["#B752F8", "#3D5DE3", "#00A3FB", "#03FBD9"] ,
+    "grid": {
+        "left": 55,
+        "right": 20,
+        "top":40,
+        "bottom":40
+    },
+    "xAxis": {
+        "type": "category",
+        "axisLine": {
+            "show": true,
+            "lineStyle": {
+                "color": "#C9C9C9"
+            }
+        },
+        "axisLabel": {
+            "textStyle": {
+                "color": "#6F6E6E",
+                "fontSize":"10"
+            }
+        },     
+        "boundaryGap": false,
+        "data": ["08-01","08-02","08-03","08-04","08-05"],
+        "splitLine": {
+            "show": true,
+            "lineStyle": {
+                "color": "#F8F0E9",
+                "interval":false 
+            }
+        }
+    },
+    "yAxis": {
+        "type": "value",
+        "max": 40000,
+        "min": 0,
+        "axisLine": {
+            "show": true,
+            "lineStyle": {
+                "color": "#C9C9C9"
+            }
+        },
+        "axisLabel": {
+            "textStyle": {
+                "color": "#6F6E6E",
+                "fontSize":"10"
+            }
+        },     
+        "splitLine": {
+            "show": true,
+            "lineStyle": {
+                "color": "#F8F0E9",
+                "interval":false 
+            }
+        }
+    },
+    "series": [
+        {
+            "name":"车辆",
+            "type":"line",
+            "stack": "总量",
+            "data":[12000, 13200, 10100, 13400, 9000]
+        },
+        {
+            "name":"人像",
+            "type":"line",
+            "stack": "总量",
+            "data":[12000, 18200, 19100, 23400, 29000]
+        },
+        {
+            "name":"WIFI",
+            "type":"line",
+            "stack": "总量",
+            "data":[600, 9000, 1000, 600, 500]
+        },
+        {
+            "name":"电围",
+            "type":"line",
+            "stack": "总量",
+            "data":[100, 300, 400, 100, 300]
+        }
+    ]
+}

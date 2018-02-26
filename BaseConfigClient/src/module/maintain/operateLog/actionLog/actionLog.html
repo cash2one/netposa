@@ -1,0 +1,104 @@
+<!--操作日志-->
+<div ng-controller="actionLogController as actionLogCtrl">
+    <div class="operateLog-info-bottom f-cfb">
+
+        <div class="f-cfb f-fl m-right15">
+            <span class="info-bottom-txt f-fl m-right5" translate="FDS_02_01_00"></span>
+            <div class="f-cfb f-pr f-fl">
+                <input date-picker 
+                    range="false"   
+                    class="u-input info-top-dateSelect"
+                    type="text"
+                    placeholder="{{'FDS_02_01_05'|translate}}"
+                    ng-model="actionLogCtrl.handleStartTime"/>
+            </div>
+        </div>
+
+        <div class="f-cfb f-fl m-right15">
+            <div class="f-cfb f-pr">
+                <input date-picker 
+                    range="false"
+                    class="u-input info-top-dateSelect" 
+                    type="text"
+                    placeholder="{{'FDS_02_01_05'|translate}}"
+                    ng-model="actionLogCtrl.handleEndTime"/>
+            </div>
+        </div>
+
+        <div class="f-fl m-right15">
+            <span class="m-right5" translate="FDS_02_02_02"></span>
+            <select class="u-select u-select-width"
+                    ng-model="actionLogCtrl.operatorModule"
+                    placeholder="{{'FDS_00_08_02'|translate}}"
+                    ng-init="value='All'">
+
+                <option value="" translate="FDS_00_08_02"></option>
+
+                <option ng-repeat="item in actionLogCtrl.allOperatorModule track by $index"
+                        value="{{item.code}}"
+                        ng-bind="item.name"></option>
+            </select>
+        </div>
+
+        <div class="f-fl m-right15">
+            <span class="m-right5" translate="FDS_02_02_03"></span>
+            <input class="u-input u-input-width"
+                   type="text"
+                   placeholder="{{'FDS_02_02_04'|translate}}"
+                   ng-model="actionLogCtrl.operatorManInput"/>
+        </div>
+
+        <div class="f-fl f-cfb">
+            <button class="u-button f-fl m-right15"
+                    ng-click="actionLogCtrl.changePage()" translate="FDS_02_00_11"></button>
+            <button class="u-button u-button-blue-4 f-fl"
+                    ng-click="actionLogCtrl.exportFile()" translate="FDS_02_06_12"></button>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <div class="table-box">
+            <!--表格-->
+            <util-table-head table-headers="actionLogCtrl.tHeadList"
+                             table-has-check='false'>
+
+                <util-table-tr ng-repeat="(index,tbody_data) in actionLogCtrl.PageParamsAndResult.data">
+
+                    <util-table-tr-td ng-bind="tbody_data.uid"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.areaName"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.unitName"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.operaTime"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.ip"></util-table-tr-td>
+
+                    <util-table-tr-td
+                            ng-bind="actionLogCtrl.PortraitTool.getChineseModuleName(tbody_data.moudle)"></util-table-tr-td>
+
+                    <util-table-tr-td ng-bind="tbody_data.Descrption"></util-table-tr-td>
+
+                </util-table-tr>
+
+                <!--无数据是展示-->
+                <div class="u-table-no-data" ng-show="actionLogCtrl.tableNoData" ng-cloak
+                     translate="FDS_00_01_18"></div>
+
+            </util-table-head>
+        </div>
+
+        <div class="table-paging">
+            <util-paging
+                    page-params="actionLogCtrl.PageParamsAndResult"
+                    prev-page="actionLogCtrl.changePage(num)"
+                    next-page="actionLogCtrl.changePage(num)"
+                    go-page="actionLogCtrl.changePage(num)"
+                    hide-size="true"
+            ></util-paging>
+        </div>
+    </div>
+</div>
+
+
+

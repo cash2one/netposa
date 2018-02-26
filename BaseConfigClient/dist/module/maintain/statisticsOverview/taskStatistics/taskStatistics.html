@@ -1,0 +1,146 @@
+<div class="container-fluid" id="container-fluid002">
+    <ol class="m-route f-cfb col-sm-12 col-xs-12">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="任务统计"></li>
+    </ol>
+
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height326">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{taskStatisticsCtrl.echartNameArr.areaTaskStatistics}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="taskStatisticsCtrl.areaTaskList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="taskStatisticsCtrl.areaTaskHistogram('areaTaskHistogram')">柱状图</i>
+                        <i ng-class="taskStatisticsCtrl.areaTaskList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="taskStatisticsCtrl.areaTaskHistogram('areaTaskList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                    <span class="icon-menu-box" ng-click="taskStatisticsCtrl.exportImage('areaTaskStatistics')">柱状图</span>
+                                    <span class="icon-menu-box"
+                                          ng-click="taskStatisticsCtrl.exportExcel(taskStatisticsCtrl.ModuleNameArr.areaTaskStatistics,taskStatisticsCtrl.areaTaskStatisticsList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div id="areaTaskStatistics" ng-show="taskStatisticsCtrl.areaTaskList"></div>
+                <div class="table-tr-th">
+                    <span ng-style="{width:taskStatisticsCtrl.areaTaskTableTitleWidth}" ng-repeat="item in taskStatisticsCtrl.areaTaskTableTitle">{{item}}</span>
+                </div>
+                <div class="areaTaskStatistics" ng-show="!taskStatisticsCtrl.areaTaskList" ng-scrollbars  style="position: relative">
+                    <table class="table table-striped table-title">
+                        <tr ng-repeat="item in taskStatisticsCtrl.superData.areaTaskStatistics.xData track by $index">
+                            <td ng-style="{width:taskStatisticsCtrl.areaTaskTableTitleWidth}">{{item}}</td>
+                            <td ng-style="{width:taskStatisticsCtrl.areaTaskTableTitleWidth}">{{taskStatisticsCtrl.superData.areaTaskStatistics.seriesData[0][$index]}}</td>
+                            <td ng-style="{width:taskStatisticsCtrl.areaTaskTableTitleWidth}">{{taskStatisticsCtrl.superData.areaTaskStatistics.seriesData[1][$index]}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height326">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{taskStatisticsCtrl.echartNameArr.areaDispatchedTaskStatistics}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="taskStatisticsCtrl.areaDispatchedTaskList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="taskStatisticsCtrl.areaTaskHistogram('areaDispatchedTaskHistogram')">柱状图</i>
+                        <i ng-class="taskStatisticsCtrl.areaDispatchedTaskList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="taskStatisticsCtrl.areaTaskHistogram('areaDispatchedTaskList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                        <span class="icon-menu-box" ng-click="taskStatisticsCtrl.exportImage(taskStatisticsCtrl.ModuleNameArr.areaDispatchedTaskStatistics)">柱状图</span>
+                                        <span class="icon-menu-box"
+                                              ng-click="taskStatisticsCtrl.exportExcel(taskStatisticsCtrl.ModuleNameArr.areaDispatchedTaskStatistics,taskStatisticsCtrl.areaDispatchedTaskStatisticsList)">列表视图</span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div id="areaDispatchedTaskStatistics" ng-show="taskStatisticsCtrl.areaDispatchedTaskList"></div>
+                <div class="areaDispatchedTaskStatistics" ng-show="!taskStatisticsCtrl.areaDispatchedTaskList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>行政区域</th>
+                            <th>人像布控任务</th>
+                            <th>车辆布控任务</th>
+                            <th>MAC布控任务</th>
+                        </tr>
+                        <tr ng-repeat="item in taskStatisticsCtrl.superData.areaDispatchedTaskStatistics.xData track by $index">
+                            <td>{{item}}</td>
+                            <td>{{taskStatisticsCtrl.superData.areaDispatchedTaskStatistics.seriesData[0][$index]}}</td>
+                            <td>{{taskStatisticsCtrl.superData.areaDispatchedTaskStatistics.seriesData[1][$index]}}</td>
+                            <td>{{taskStatisticsCtrl.superData.areaDispatchedTaskStatistics.seriesData[2][$index]}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top m-bottom-chart">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-height420">
+                <div class="m-status-title">
+                    <span class="m-border-name" translate="{{taskStatisticsCtrl.echartNameArr.dispatchedAboutTaskStatistics}}">
+                    </span>
+                    <span class="m-bar-tool">
+                        <i ng-class="taskStatisticsCtrl.dispatchedAboutTaskList?'icon-histogram-blue':'icon-histogram-ddd'"
+                           ng-click="taskStatisticsCtrl.areaTaskHistogram('dispatchedAboutTaskHistogram')">柱状图</i>
+                        <i ng-class="taskStatisticsCtrl.dispatchedAboutTaskList?'icon-listview-ddd':'icon-listview-blue'"
+                           ng-click="taskStatisticsCtrl.areaTaskHistogram('dispatchedAboutList')">列表视图</i>
+                        <button class="btn icon-export-blue">
+                            <span class="icon-dropText">导出</span>
+                            <span class="icon-dropList">
+                                <span class="m-icon-drop-menu">
+                                        <span class="icon-menu-box" ng-click="taskStatisticsCtrl.exportImage('dispatchedAboutTaskStatistics')">柱状图</span>
+                                        <span class="icon-menu-box" 
+                                            ng-click="taskStatisticsCtrl.exportExcel(taskStatisticsCtrl.ModuleNameArr.dispatchedAboutTaskStatistics,taskStatisticsCtrl.dispatchedAboutTaskStatisticsList)">
+                                            列表视图
+                                        </span>
+                                </span>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="drop-list-com">
+                    <label class="title">
+                        <span translate="行政区域"></span>
+                    </label>
+                    <div class="m-droplist-select">
+                        <util-select
+                                select-data="taskStatisticsCtrl.dropList"
+                                select-repeat-by-key="text"
+                                select-list-height="M"
+                                selected-empty-val="请选择行政区域"
+                                selected-val="taskStatisticsCtrl.dropList[0].text"
+                                select-list-diy-icon="false"
+                                select-is-tree="false">
+                        </util-select>
+                    </div>
+                </div>
+                <div id="dispatchedAboutTaskStatistics" ng-show="taskStatisticsCtrl.dispatchedAboutTaskList"></div>
+                <div class="dispatchedAboutTaskStatistics" ng-show="!taskStatisticsCtrl.dispatchedAboutTaskList">
+                    <table class="table table-striped">
+                        <tr>
+                            <th ng-repeat="itemTh in taskStatisticsCtrl.dispatchedAboutTaskStatisticsList.legendData track by $index">{{itemTh}}</th>
+                        </tr>
+                        <tr ng-repeat="item in taskStatisticsCtrl.dispatchedAboutTaskStatisticsList.yData track by $index">
+                            <td>{{item}}</td>
+                            <td>{{taskStatisticsCtrl.dispatchedAboutTaskStatisticsList.seriesData[$index]}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,370 @@
+{
+  "note": "/******配置中心******/",
+
+  "note": "/******行政区域******/",
+  "FDS_01_01_01": "new district",
+
+  "FDS_01_01_10": "Please enter district name.",
+  "FDS_01_01_11": "district whose name is <strong>{{value}}</strong> cannot do this operation (filtered).",
+  "FDS_01_01_12": "Are you sure to delete this administrative district and all relevant cascaded statistics including services,configurations,etc?",
+  "FDS_01_01_13": "Are you sure to delete those {{value}} districts and their relevant statistics?",
+  "FDS_01_01_14": "Please enter the district code.",
+  "FDS_01_01_15": "Please enter the administrative region name.",
+  "FDS_01_01_16": "Please enter the district discription.",
+
+  "FDS_01_01_18": "Please choose the parent district.",
+
+  "note": "/******行政单位******/",
+  "FDS_01_02_01": "Are you sure to delete those {{value}} administrative units and all relevant cascaded statistics including services,configurations,etc?",
+  "FDS_01_02_02": "Are you sure to delete this administrative unit and all relevant cascaded statistics including services,configurations,etc?",
+  "FDS_01_02_03": "department name",
+  "FDS_01_02_04": "department code",
+
+  "FDS_01_02_08": "unit name",
+  "FDS_01_02_09": "Please enter the unit name.",
+  "FDS_01_02_10": "unit code",
+  "FDS_01_02_11": "Please enter the unit code.",
+  "FDS_01_02_12": "Please enter the unit description.",
+  "FDS_01_02_13": "add",
+
+  "FDS_01_02_15": "Please enter the unit name.",
+
+  "note": "/******用户管理******/",
+  "FDS_01_03_01": "username",
+
+  "FDS_01_03_04": "real name",
+
+  "FDS_01_03_06": "available?",
+  "FDS_01_03_07": "last login time",
+
+  "FDS_01_03_10": "user search",
+  "FDS_01_03_11": "user <strong>{{value}}</strong> cannot do this operation (filtered)",
+  "FDS_01_03_14": "add",
+  "FDS_01_03_15": "user batch import",
+
+  "note":"************用户管理 弹出窗口*******************",
+  "FDS_01_03_17": "account",
+  "FDS_01_03_18": "Please enter account.",
+  "FDS_01_03_19": "password",
+
+  "FDS_01_03_22": "Please choose gender.",
+  "FDS_01_03_23": "valid?",
+  "FDS_01_03_24": "enabled?",
+
+  "FDS_01_03_27": "user level",
+  "FDS_01_03_28": "Please choose user level.",
+
+  "FDS_01_03_30": "Please choose user role.",
+
+  "FDS_01_03_32": "Please choose user type.",
+  "FDS_01_03_33": "contact address",
+  "FDS_01_03_34": "Please enter contact address.",
+
+  "FDS_01_03_36": "Please enter name.",
+  "FDS_01_03_37": "phone number",
+  "FDS_01_03_38": "Please enter phone number.",
+
+  "FDS_01_03_40": "Please enter ID number.",
+  "FDS_01_03_41": "telephone number",
+  "FDS_01_03_42": "Please enter telephone number.",
+  "FDS_01_03_43": "call number",
+  "FDS_01_03_44": "Please enter call number.",
+  "FDS_01_03_45": "contact email",
+  "FDS_01_03_46": "Please enter contact email.",
+  "FDS_01_03_47": "Please choose valid start time.",
+  "FDS_01_03_48": "Please choose valid end time.",
+  "FDS_01_03_50": "choose unit",
+  "FDS_01_03_51": "remark",
+  "FDS_01_03_52": "Please enter remark.",
+  "FDS_01_03_53": "modify",
+  "FDS_01_03_54": "delete",
+
+  "FDS_01_03_55": "Select the user type",
+  "FDS_01_03_56": "Please select user roles",
+
+  "note": "/***************************角色管理*******************************/",
+  "FDS_01_04_06": "role name{{value}}",
+
+  "FDS_01_04_08": "import role template{{value}}",
+  "FDS_01_04_09": "function privilege",
+  "FDS_01_04_10": "device privilege",
+  "FDS_01_04_11": "protrait library privilege",
+
+  "FDS_01_04_14": "selected camere list",
+
+  "FDS_01_04_16": "Please choose role function privilege.",
+  "FDS_01_04_17": "Please choose role device privilege.",
+  "FDS_01_04_18": "Please choose privilege of role portrait library.",
+  "FDS_01_04_19": "Are you sure to delete this role record {{value}}?",
+
+  "note": "/***************************设备管理*******************************/",
+  "FDS_01_05_01": "type batch configuration",
+  "FDS_01_05_02": "Supplement: support dragging one camera from the left to the right. ",
+  "FDS_01_05_03": "Please choose type.",
+
+  "FDS_01_05_08": "batch configuration",
+
+  "FDS_01_05_09": "camera batch configuration",
+  "FDS_01_05_10": "external camera",
+
+  "FDS_01_05_11": "system camera",
+  "FDS_01_05_12": "Please enter a tree node name.",
+  "FDS_01_05_13": "capturing type",
+  "FDS_01_05_14": "rtsp batch configuration",
+  "FDS_01_05_15": "Rtsp address",
+  "FDS_01_05_16": "configurable Rtsp address",
+
+  "note": "/***************************人像库管理*******************************/",
+
+  "FDS_01_06_02": "Enter face library name",
+  "FDS_01_06_03": "add a face library",
+
+  "FDS_01_06_06": "face library name",
+  "FDS_01_06_07": "Region/library",
+
+  "FDS_01_06_08": "the number of people",
+  "FDS_01_06_09": "creator",
+
+  "FDS_01_06_11": "Please enter the face library description",
+
+  "FDS_01_06_13": "edit",
+  "FDS_01_06_14": "delete",
+  "FDS_01_06_15": "add a sub library",
+  "FDS_01_06_16": "add library portrait",
+  "FDS_01_06_17": "unfold all sub libraries",
+  "FDS_01_06_18": "fold all sub libraries",
+  "FDS_01_06_19": "add a face library",
+  "FDS_01_06_20": "edit",
+  "FDS_01_06_21": "library name{{value}}",
+  "FDS_01_06_22": "parent library name{{value}}",
+  "FDS_01_06_23": "Please select the superior library or the area to which it belongs",
+  "FDS_01_06_24": "add success",
+  "FDS_01_06_25": "The portrait library:<strong>{{value}}</strong> has been created successfully,and whether do you upload images immediately?",
+  "FDS_01_06_26": "<strong>{{value}})</strong> Cannot be a superior library",
+  "FDS_01_06_27": "Choose parent library",
+
+  "FDS_01_06_28": "Are you sure to delete all information of <strong>{{value}}</strong> portrait library completely?",
+  "FDS_01_06_29": "Are you sure to delete all information of those <strong>{{value}}</strong> portrait libraries completely?",
+
+  "FDS_01_06_30": "Like library <strong>{{value}}</strong> cannot do this operation (filtered)",
+
+  "FDS_01_06_32": "add image",
+
+  "FDS_01_06_36": "ID type",
+  "FDS_01_06_37": "ID number",
+  "FDS_01_06_38": "birth date",
+
+  "FDS_01_06_40": "residence",
+
+  "FDS_01_06_42": "name",
+  "FDS_01_06_43": "Please enter name.",
+  "FDS_01_06_44": "Please enter ID number.",
+  "FDS_01_06_45": "Choose birth date.",
+  "FDS_01_06_46": "Please enter domicile place.",
+  "FDS_01_06_47": "Please enter residence.",
+  "FDS_01_06_48": "Please enter detail information.",
+
+  "FDS_01_06_49": "Check selected pictures",
+  "FDS_01_06_50": "library staff management",
+
+  "FDS_01_06_51": "parent library name{{value}}",
+
+  "FDS_01_06_54": "face information field{{value}}",
+
+  "FDS_01_06_55": "add staff",
+
+  "FDS_01_06_56": "No face is detected.",
+
+  "FDS_01_06_57":"batch import",
+  "FDS_01_06_58":"export staff",
+  "FDS_01_06_59":"download template",
+
+  "FDS_01_06_61": "add portrait",
+  "FDS_01_06_62": "edit",
+  "FDS_01_06_63": "face image",
+  "FDS_01_06_64": "The attached photos can be 5 at most for one person!",
+  "FDS_01_06_65": "The size of photo cannot be over 10M!",
+
+  "FDS_01_06_67": "remove",
+
+  "note": "/***************************接入服务管理*******************************/",
+  "FDS_01_08_01": "modify the service configuration",
+  "FDS_01_08_02": "delete the service configuration",
+
+  "note": "/***************************系统参数配置*******************************/",
+  "FDS_01_11_01": "Please input corrent threshold from 0 to 100.",
+
+  "note": "/***************************任务管理*******************************/",
+  "FDS_01_12_02": "task type{{value}}",
+
+  "FDS_01_12_06": "to be approved",
+
+  "FDS_01_12_08": "location",
+  "FDS_01_12_09": "task creator",
+  "FDS_01_12_10": "valid time",
+
+  "FDS_01_12_13": "privilege",
+
+  "FDS_01_12_15": "add surveillance task",
+  "FDS_01_12_16": "batch activation",
+  "FDS_01_12_17": "batch suspend",
+
+  "FDS_01_12_19": "edit",
+
+  "FDS_01_12_23": "add task",
+  "FDS_01_12_24": "add portrait capturing",
+  "FDS_01_12_25": "add portrait surveillance",
+
+  "FDS_01_12_26": "First:basic information",
+  "FDS_01_12_27": "fill in basic information",
+
+  "FDS_01_12_29": "privilege setting{{value}}",
+
+  "FDS_01_12_31": "Supplement: the default time is permanent.",
+
+  "FDS_01_12_34": "Valid start time cannot be later than end time.",
+
+  "FDS_01_12_36": "selected",
+  "FDS_01_12_37": "Please enter user name/ location keyword.",
+
+  "FDS_01_12_38": "Please select some available users first.",
+
+  "FDS_01_12_42": "Please enter face library keyword.",
+
+  "FDS_01_12_46": "portrait capturing resource",
+  "FDS_01_12_47": "portrait surveillance resource",
+  "FDS_01_12_49": "Start to run",
+  "FDS_01_12_50": "submit",
+
+  "FDS_01_12_51": "Please select operation plan.",
+  "FDS_01_12_52": "Please select capturing camera.",
+
+  "FDS_01_12_53": "Please select face library.",
+
+  "FDS_01_12_56": "auditor{{value}}",
+
+  "FDS_01_12_57": "Please select auditor.",
+
+  "FDS_01_12_58": "Please select surveillance camera.",
+
+  "FDS_01_12_59": "Please enter correct alarm threshold from 0 to 100.",
+
+  "FDS_01_12_62": "Supplement:just choose one type of threshold setting.",
+
+  "FDS_01_12_63": "message content",
+  "FDS_01_12_64": "select the user",
+
+  "FDS_01_12_65": "select acoustooptical alarm device",
+
+  "FDS_01_12_66": "Please enter message content.",
+
+  "FDS_01_12_68": "Please select user of sending message.",
+  "FDS_01_12_69": "Please select client user of receiving alarm.",
+  "FDS_01_12_70": "Please select audio channel",
+  "FDS_01_12_71": "Please enter the name of the audio channel",
+  "FDS_01_12_73": "Face frame of the camera is applied successfully.",
+
+  "note": "/***************************运行计划*******************************/",
+
+  "FDS_01_13_01": "search by name",
+
+  "FDS_01_13_03": "Please enter plan name",
+  "FDS_01_13_04": "add plan",
+
+  "FDS_01_13_05": "Please complete running plan name.",
+  "FDS_01_13_06": "Please complete running plan period.",
+  "FDS_01_13_07": "Self-defined number exceeds the maximum.",
+  "FDS_01_13_08": "The start time must not be empty",
+  "FDS_01_13_09": "begins more than ends",
+
+  "FDS_01_13_10": "plan name",
+
+  "FDS_01_13_13": "Please enter relevant plan description.",
+  "FDS_01_13_14": "plan type",
+
+  "FDS_01_13_15": "Are you sure to delete those {{value}} operation plans?",
+  "FDS_01_13_16": "Are you sure to delete those {{value}} selected operation plans?",
+
+  "FDS_01_13_18": "to",
+  "FDS_01_13_19": "Please select user-defined time.",
+  "FDS_01_13_20": "Please select end time.",
+  "FDS_01_13_21": "Please enter a description of the custom time template",
+
+  "FDS_01_13_23": "Monday",
+  "FDS_01_13_24": "Tuesday",
+  "FDS_01_13_25": "Wednesday",
+  "FDS_01_13_26": "Thirsday",
+  "FDS_01_13_27": "Friday",
+  "FDS_01_13_28": "Saturday",
+  "FDS_01_13_29": "Sunday",
+
+  "FDS_01_13_31": "set",
+  "FDS_01_13_32": "This date has already existed!",
+
+  "node": "/********************  智能分析服务器  ****************************/",
+  "FDS_01_14_14": "access server",
+
+  "node": "/********************  视频服务管理  ****************************/",
+
+
+  "node": "/********************  当前模块公共  ****************************/",
+  "FDS_01_16_01" : "district name{{value}}",
+  "FDS_01_16_02" : "district code{{value}}",
+  "FDS_01_16_03" : "description{{value}}",
+  "FDS_01_16_04" : "batch deletion",
+  "FDS_01_16_05" : "parent district",
+  "FDS_01_16_06" : "edit",
+  "FDS_01_16_07" : "draw",
+  "FDS_01_16_08" : "delete",
+  "FDS_01_16_09" : "modify",
+  "FDS_01_16_10" : "delete",
+  "FDS_01_16_11" : "user role",
+  "FDS_01_16_12" : "Please enter information to retrieve.",
+  "FDS_01_16_13" : "Please enter user name.",
+  "FDS_01_16_14" : "name",
+  "FDS_01_16_15" : "input again",
+  "FDS_01_16_16" : "Please input password again.",
+  "FDS_01_16_17" : "If valid time period is not set,the default will be permanent.",
+  "FDS_01_16_18" : "No need to fill it if not changing password.",
+  "FDS_01_16_19" : "Choose effective start time",
+  "FDS_01_16_20": "Choose effective end time ",
+  "FDS_01_16_21": "in total",
+  "FDS_01_16_22": "records",
+  "FDS_01_16_23": "basic information",
+  "FDS_01_16_24": "camera resource list",
+  "FDS_01_16_25": "Please enter camera keyword.",
+  "FDS_01_16_26": "Please enter role name.",
+  "FDS_01_16_27": "code",
+  "FDS_01_16_28": "search{{value}}",
+  "FDS_01_16_29": "image upload failure,please choose again!",
+  "FDS_01_16_30": "Please select new photo.",
+  "FDS_01_16_31": "task status{{value}}",
+  "FDS_01_16_32": "task name{{value}}",
+  "FDS_01_16_33": "valid time{{value}}",
+  "FDS_01_16_34": "Please enter task name.",
+  "FDS_01_16_35": "select user",
+  "FDS_01_16_36": "Second:select portrait capturing resource",
+  "FDS_01_16_37": "Second:select surveillance resource",
+  "FDS_01_16_38": "Third:joint action",
+  "FDS_01_16_39": "Start time cannot be later than end time.",
+  "FDS_01_16_40": "user",
+  "FDS_01_16_41": "password",
+  "FDS_01_16_42": "port",
+  "FDS_01_16_43": "choose district",
+  "FDS_01_16_44": "edit",
+  "FDS_01_16_45": "add server",
+  "FDS_01_16_46": "Are you sure to delete this agent configuration?",
+  "FDS_01_16_47": "Are you sure to delete those",
+  "FDS_01_16_48": "districts and their relevant statistics?",
+
+  "FDS_01_16_49": "Please enter password.",
+  "FDS_01_16_50": "The two input passwords are inconsistent, please check the reentry.",
+  "FDS_01_16_51": "User account does not support modification",
+  "node": "/**************** 地图资源模块 ********************************/",
+  "FDS_01_17_01": "visible",
+  "FDS_01_17_02": "layer config",
+  "FDS_01_17_03": "map location",
+  "FDS_01_17_04": "basic parameters",
+  "FDS_01_17_05": "level",
+  "FDS_01_17_06": "pixels"
+}

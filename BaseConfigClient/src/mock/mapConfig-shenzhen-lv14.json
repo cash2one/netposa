@@ -1,0 +1,51 @@
+{
+	"mapOpts": {
+		"minZoom": 10,
+		"maxZoom": 18,
+		"centerPoint": [
+			114.052912,
+			22.540465
+		],
+		"restrictedExtent": [
+			113.68352,
+			22.240159,
+			114.658659,
+			22.857826
+		],
+		"projection": "EPSG:4326"
+	},
+	"vectorLayer": [
+		{
+			"layerName": "tangshanTiandi",
+			"layerType": "NPMapLib.Layers.NPLayer",
+			"layerOpt": {
+				"url": "http://webrd01.is.autonavi.com/netposa/NPGIS/services/tangshanTiandi/MapServer",
+				"layerInfo": {
+					"centerPoint": [
+						114.052912,
+						22.540465
+					],
+					"fullExtent": [
+						113.68352,
+						22.240159,
+						114.658659,
+						22.857826
+					],
+					"layerType": "tiandi",
+					"maxZoom": 18,
+					"minZoom": 10,
+					"projection": "4326",
+					"restrictedExtent": [
+						113.68352,
+						22.240159,
+						114.658659,
+						22.857826
+					],
+					"type": "png",
+					"zoomLevelSequence": "2"
+				}
+			}
+		}
+	],
+	"sattilateLayer": []
+}

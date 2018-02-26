@@ -1,0 +1,11 @@
+<div class="mac-popup-layer map-mac-popup" ng-controller="MacPopupController as MacPopupCtrl">
+    <div class="mac-popup">
+        <ul>
+            <li class="icon-mac" ng-if="MacPopupCtrl.traceData.Mac">{{MacPopupCtrl.traceData.Mac}}</li>
+            <li class="icon-imei" ng-if="MacPopupCtrl.traceData.IMEI">{{MacPopupCtrl.traceData.IMEI}}</li>
+            <li class="icon-imsi" ng-if="MacPopupCtrl.traceData.IMSI">{{MacPopupCtrl.traceData.IMSI}}</li>
+            <li class="icon-time" ng-if="MacPopupCtrl.traceData.AcqTime">{{MacPopupCtrl.traceData.AcqTime}}</li>
+            <li class="icon-address" ng-if="MacPopupCtrl.traceData.address">{{MacPopupCtrl.traceData.address}}</li>
+        </ul>
+    </div>
+</div>

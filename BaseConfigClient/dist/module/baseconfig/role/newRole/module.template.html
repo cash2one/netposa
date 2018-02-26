@@ -1,0 +1,46 @@
+<div class="left-tab">
+    <ul ng-scrollbars>
+        <li ng-repeat="(index,item) in newRoleCtrl.funcModuleList"
+            ng-class="{active:newRoleCtrl.selectModuleIndex == index}"
+            ng-click="newRoleCtrl.changeSelectModule(item,index)">
+            <i ng-class="{'isAll':newRoleCtrl.funcModuleListMap[item.Key].checkboxStatus == 0,
+                          'isPart':newRoleCtrl.funcModuleListMap[item.Key].checkboxStatus == 1}"
+               ng-click="newRoleCtrl.changeCheckedStatus(newRoleCtrl.funcModuleListMap[item.Key],newRoleCtrl.funcModuleListMap[item.Key].checkboxStatus)"></i>{{item.Name}}
+        </li>
+    </ul>
+</div>
+
+<div class="right-content" ng-scrollbars>
+    <ul>
+        <li ng-repeat="(index,item) in newRoleCtrl.funcModuleList[newRoleCtrl.selectModuleIndex].children">
+            <div class="auth-title">
+                <i ng-class="{'isAll':newRoleCtrl.funcModuleListMap[item.Key].checkboxStatus == 0,
+                          'isPart':newRoleCtrl.funcModuleListMap[item.Key].checkboxStatus == 1}"
+                   ng-click="newRoleCtrl.changeCheckedStatus(newRoleCtrl.funcModuleListMap[item.Key],newRoleCtrl.funcModuleListMap[item.Key].checkboxStatus)"></i>
+                {{item.Name}}
+            </div>
+            <div ng-if="item.children" class="auth-action"
+                 ng-repeat="(i,action) in item.children"
+                 ng-style="{marginLeft:(i==0)?0:100+'px'}">
+                <div class="auth-title">
+                    <i ng-class="{'isAll':newRoleCtrl.funcModuleListMap[action.Key].checkboxStatus == 0,
+                              'isPart':newRoleCtrl.funcModuleListMap[action.Key].checkboxStatus == 1}"
+                       ng-click="newRoleCtrl.changeCheckedStatus(newRoleCtrl.funcModuleListMap[action.Key],newRoleCtrl.funcModuleListMap[action.Key].checkboxStatus)"></i>{{action.Name}}
+                </div>
+                <div class="auth-action-level">
+                    <div class="auth-action-btn"
+                         ng-repeat="(i2,action2) in action.operateItemList">
+                    <span ng-class="{'isEnable':newRoleCtrl.funcModuleListMap[action.Key].operateItemList[i2].IsEnabled}"
+                          ng-click="newRoleCtrl.changeActionStatus(action2)">{{action2.Name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!item.children" class="auth-action">
+                <div class="auth-action-btn" ng-repeat="(i,action) in item.operateItemList">
+                <span ng-class="{'isEnable':newRoleCtrl.funcModuleListMap[item.Key].operateItemList[i].IsEnabled}"
+                      ng-click="newRoleCtrl.changeActionStatus(action)">{{action.Name}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

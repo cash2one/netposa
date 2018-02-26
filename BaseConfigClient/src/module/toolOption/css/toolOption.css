@@ -1,0 +1,25 @@
+@import "comparison.css";
+@import "downCenter.css";
+@import "suggestions.css";
+
+/*路由导航条*/
+.m-route{
+    padding: 12px 0;
+}
+.m-route li{
+    float: left;
+    font-size: 14px;
+}
+.m-route .route-separate{
+    margin: 0 12px;
+}
+
+.g-toolOption{
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom:0;
+    _height: 100%;
+    min-width: 1366px;
+}

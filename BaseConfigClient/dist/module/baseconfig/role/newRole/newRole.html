@@ -1,0 +1,61 @@
+<div class="m-baseconfig-new-role">
+    <div class="header-tips">
+        <span>基础配置</span> /
+        <span>角色管理</span> /
+        <span class="active">新建角色</span>
+    </div>
+    <div class="new-role-content">
+        <div class="pdp-form">
+            <span class="form-title"><i>*</i>角色名称</span>
+            <input type="text" ng-model="newRoleCtrl.roleData.role.Name" placeholder="请输入角色名称">
+        </div>
+        <div class="pdp-form pdp-form-textarea new-role-form">
+            <span class="form-title">描述</span>
+            <span class="text-area-layer">
+                 <textarea type="text" ng-model="newRoleCtrl.roleData.role.Description"
+                           placeholder="请填写角色描述"></textarea>
+            </span>
+        </div>
+
+        
+        <div ng-cloak ng-hide="newRoleCtrl.roleData.role.ID" class="pdp-form pdp-form-select">
+            <span class="form-title">选择角色模版</span>
+            <select name="role"
+                    ng-model="newRoleCtrl.roleTplID"
+                    ng-options="item.ID as item.Name for item in newRoleCtrl.roleList" ng-change="newRoleCtrl.changeRoleTpl()">
+                <option value="">请选择复用角色模版</option>
+            </select>
+        </div>
+        <div class="select-resource-auth">
+            <span class="title"><i style="color:red">*</i>选择权限</span>
+            <div class="resource-layer">
+                <div class="resource-content">
+
+                    <div class="head-tab">
+                        <div class="tab-item" ng-click="newRoleCtrl.changeSelectTab(0)"
+                             ng-class="{active:newRoleCtrl.selectTabIndex == 0}">功能权限
+                        </div>
+                        <div class="tab-item" ng-click="newRoleCtrl.changeSelectTab(1)"
+                             ng-class="{active:newRoleCtrl.selectTabIndex == 1}">设备权限
+                        </div>
+                        <div class="tab-item" ng-click="newRoleCtrl.changeSelectTab(2)"
+                             ng-class="{active:newRoleCtrl.selectTabIndex == 2}">人像库权限
+                        </div>
+                    </div>
+                    <div class="content-tab">
+                        <div ng-show="newRoleCtrl.selectTabIndex === 0" ng-include="newRoleCtrl.moduleTpl"></div>
+                        <div ng-show="newRoleCtrl.selectTabIndex === 1" ng-include="newRoleCtrl.deviceTpl"></div>
+                        <div ng-show="newRoleCtrl.selectTabIndex === 2" ng-include="newRoleCtrl.facelibTpl"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="new-role-submit">
+            <button ng-click="newRoleCtrl.submitNewRole()" class="pdp-btn-submit">确定</button>
+            <button ng-click="newRoleCtrl.cancelSubmit()" class="pdp-btn-cancel">取消</button>
+        </div>
+    </div>
+
+
+</div>

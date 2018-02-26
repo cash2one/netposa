@@ -1,0 +1,97 @@
+<div class="container-fluid" id="container-fluid001">
+    <ol class="m-route f-cfb col-sm-12 col-xs-12">
+        <li translate="FDS_02"></li>
+        <li class="route-separate">/</li>
+        <li translate="FDS_02_02_09"></li>
+    </ol>
+    <div class="row">
+        <div class="col-sm-3 col-xs-3 m-device-bar" ng-repeat="item in statisticalAnalysisCtrl.StatisticsOverview">
+            <div class="m-device-bar-item" ng-style="{backgroundImage:'url('+item.imagesPath +')'}">
+                <span class="m-common-weight" translate="{{item.title}}"></span>
+                <div class="media">
+                    <div class="media-body m-media-body">
+                        <ul class="ul-total-info">
+                            <li>总数  <i class="m-common-weight">{{item.total}}</i></li>
+                            <li>在线  <i class="m-common-weight">{{item.online}}</i></li>
+                            <li>报警  <i class="m-common-weight">{{item.alarm}}</i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top">
+        <div class="col-md-6 m-device-bar">
+            <div class="m-device-bar-title">
+                <div class="m-status-title">
+                    <span class="m-border-name">
+                        任务统计
+                    </span>
+                    <a class="m-device-detail" ui-sref="maintain.taskStatistics">
+                        详情 >
+                    </a>
+                </div>
+                <div id="taskStatistics"></div>
+            </div>
+        </div>
+        <div class="col-md-6 m-device-bar">
+            <div class="m-device-bar-title">
+                <div class="m-status-title">
+                    <span class="m-border-name">
+                        报警统计
+                    </span>
+                    <a class="m-device-detail" ui-sref="maintain.alarmStatistics">
+                        详情 >
+                    </a>
+                </div>
+                <div id="alarmStatistics"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row m-row-top">
+        <div class="col-md-12 m-device-bar">
+            <div class="m-device-bar-title m-device-traffic">
+                <div class="m-status-title">
+                    <span class="m-border-name">
+                        流量统计
+                    </span>
+                        <span class="m-device-detail" ui-sref="maintain.trafficStatistics">
+                        详情 >
+                    </span>
+                </div>
+                <div id="trafficStatistics"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-row-top m-bottom-chart">
+        <div class="col-md-6 m-device-bar">
+            <div class="m-device-bar-title">
+                <div class="m-status-title">
+                    <span class="m-border-name">
+                        检索统计
+                    </span>
+                    <span class="m-device-detail" ui-sref="maintain.retrievalStatistics">
+                        详情 >
+                    </span>
+                </div>
+                <div id="retrievalStatistics"></div>
+            </div>
+        </div>
+        <div class="col-md-6 m-device-bar">
+            <div class="m-device-bar-title">
+                <div class="m-status-title">
+                    <span class="m-border-name">
+                        分析统计
+                    </span>
+                    <span class="m-device-detail" ui-sref="maintain.analysisStatistics">
+                        详情 >
+                    </span>
+                </div>
+                <div id="analysissTatistics"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

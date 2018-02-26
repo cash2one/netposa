@@ -1,0 +1,94 @@
+/*--------行政区域管理----------*/
+/*.m-area .right-content{
+    min-width: 926px;
+}*/
+
+.m-area-tree-container{
+    position: absolute;
+    top: 43px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+
+.m-area-info{
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.m-area-info-top{
+    padding: 11px 15px 12px 15px;
+    border-bottom: 1px solid #e8ebec;
+}
+
+.m-area-info-top h3{
+    float: left;
+    line-height: 28px;
+    font-weight: normal;
+    color: #333;
+}
+
+.m-area-tool{
+    float: right;
+}
+
+.m-area-tool .tool-icon{
+    float: left;
+    cursor: pointer;
+}
+
+.m-area-tool .tool-icon.z-icon{
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    margin: 0 5px;
+    background-color: #eaf6fe;
+}
+
+.m-area-info-bottom{
+    padding: 20px 15px;
+}
+
+
+.m-area-info-bottom .area-info{
+    float: left;
+    width: 30%;
+    overflow:hidden;
+    word-wrap:normal;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.m-area-search-top{
+    padding: 11px 15px;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+    margin-top: 15px;
+}
+
+.m-area-search-top .u-input-search{
+    right: 8px;
+}
+
+.m-area-search-top h3{
+    float: left;
+    padding-top: 7px;
+    font-weight: normal;
+}
+
+.m-area-search-top .search-area-input{
+    float: right;
+    position: relative;
+}
+
+.m-area .area-centerFixed{
+    top: 209px;
+}
+
+
+
+
+
+

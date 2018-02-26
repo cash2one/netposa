@@ -1,0 +1,125 @@
+<div ng-controller="proxyServerUpdateModalController as psupCtrl" >
+        <form name="psUpdateFrom" novalidate class="form-horizontal u-baseconfig-popup">
+            <div class="form">
+                <span class="title" ng-click="psupCtrl.changeShowTooltip()"><i class="color">*</i>名称</span>
+
+                <input type="text"   class="text u-input"
+
+                       valid-m-nonempty="名称"
+                       valid-m-max = "32"
+                       valid-multiple
+
+                       ng-model="psupCtrl.currentServe.Name" placeholder="名称">
+            </div>
+
+            <div class="form">
+                <span class="title"><i class="color">*</i>IP地址</span>
+
+                <!-- <span  class="baseconfig-proving-error"><i class="content-icon i-server"></i></span>-->
+               <!-- <input type="text"
+                       tooltip=""
+                       tooltip-trigger="focus"
+                       tooltip-placement="top"
+                       util-proving
+                       ng-model="psupCtrl.currentServe.IpAddress"
+                       class="u-input" placeholder="Ip地址">-->
+
+
+                <input type="text"
+
+                       valid-m-nonempty="Ip地址"
+                       valid-m-max = "32"
+                       valid-M-Ip
+                       valid-multiple
+
+                       ng-model="psupCtrl.currentServe.IpAddress"
+                       class="text u-input" placeholder="Ip地址">
+
+            </div>
+
+            <div class="form">
+                <span class="title"><i class="color">*</i>端口</span>
+                <input type="number"
+                       ng-model="psupCtrl.currentServe.Port"
+
+                       valid-m-nonempty="端口"
+                       valid-m-max = "11"
+                       valid-m-port
+                       valid-multiple
+
+                       maxlength="11" class="text u-input" placeholder="端口">
+            </div>
+
+            <div class="form">
+                <span class="title"><i class="color">*</i>服务器类型</span>
+
+                <!--<select ng-model="psupCtrl.currentServe.ProxyServerType"
+                        class="text u-input"
+
+                        valid-m-nonempty="服务器类型"
+                        valid-multiple
+
+                        ng-change="psupCtrl.changeTypeSelect()"
+                        ng-options=" serverType.value as serverType.text for serverType in psupCtrl.proxyServerTypeList"
+                >
+                    <option value="">请选择服务器类型</option>
+
+                    </option>
+                </select>-->
+
+                <div style="width:224px;height:30px">
+                    <util-select
+                            select-data="psupCtrl.proxyServerTypeList"
+                            select-repeat-by-key="text"
+                            select-click="psupCtrl.changeTypeSelect(selected)"
+                            selected-val=""
+                            select-list-height="S"></util-select>
+                </div>
+
+            </div>
+
+            <div class="form">
+                <span class="title"><i class="color">*</i>编码</span>
+                <!--valid-nonempty="编码"-->
+                <input type="text"
+                       ng-model="psupCtrl.currentServe.Code"
+                       class="text u-input"
+                       placeholder="编码"
+
+                       valid-m-max="11"
+                       valid-m-code
+                       valid-m-nonempty = '编码'
+
+                       valid-multiple
+                >
+            </div>
+
+
+            <div class="form">
+                <span class="title" style="text-indent: 10px;">描述</span>
+
+                <textarea   class="text u-textarea"
+
+                            valid-m-max="150"
+                            valid-multiple
+
+                          ng-model="psupCtrl.currentServe.Description" placeholder="描述"
+                          rows="3"></textarea>
+            </div>
+
+            <div class="u-border"></div>
+
+            <div class="form f-cfb">
+                <button class="u-button u-button-blue-2 f-fr m-right15" type="submit" ng-click="psupCtrl.closeUpdateModel(false)">取消</button>
+                <button class="u-button u-button-blue-1 f-fr m-right15" type="submit" ng-click="psupCtrl.commitSaveOrUpdate()" ng-disabled="psUpdateFrom.$invalid">确定</button>
+            </div>
+    </form>
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,34 @@
+<div class="car-callPoint-container" ng-controller="carAlarmPopupController as carAlarmPopupCtrl">
+    <div class="callPoint-title-container" ng-mouseenter="carAlarmPopupCtrl.changeAlarmPopupStatus(true)" ng-mouseleave="carAlarmPopupCtrl.changeAlarmPopupStatus(false)">
+        <div class="callPoint-title">
+             <span class="callPoint-title-icon"></span>
+            <span class="callPoint-title">{{carAlarmPopupCtrl.model.alarmObjName}}</span>
+            <span class="callPoint-exit" ng-click="carAlarmPopupCtrl.closeAlarmPopup()"></span>
+        </div>
+        <div class="callPoint-content">
+            <div class="callPoint-capture-face">
+                <span>{{carAlarmPopupCtrl.model.alarmObjName}}</span>
+                <img ng-src="{{carAlarmPopupCtrl.model.detail.imageURLs}}" alt="">
+                <span class="callPoint-img-info callPoint-img-info-left">报警车辆</span>
+            </div>
+            <div class="callPoint-contrast-face">
+                <span>{{carAlarmPopupCtrl.task.PlateNumber}}</span>
+                <img ng-src="{{carAlarmPopupCtrl.task.CarPhoto?carAlarmPopupCtrl.task.CarPhoto:'/images/baseconfig/car-photo-default.png'}}" alt="">
+                <span class="callPoint-img-info  callPoint-img-info-right">布控车辆</span>
+            </div>
+            <div class="callPoint-info-container">
+                <div class="callPoint-info">
+                    <div class="callPoint-info-li">
+                        <span class="info-title">布控人 : </span><span>{{carAlarmPopupCtrl.task.JsonUserData.Person.Name}}</span>
+                    </div>
+                    <div class="callPoint-info-li">
+                        <span class="info-title">报警时间 : </span><span>{{carAlarmPopupCtrl.model.detail.passTime}}</span>
+                    </div>
+                    <div class="callPoint-info-line">
+                        <span class="info-title">报警设备 : </span><span>{{carAlarmPopupCtrl.model.detail.monitorName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+{
+    "grid": {
+        "left": 55,
+        "right": 50,
+        "top":40,
+        "bottom":40
+    },
+    "color":["#B752F8","#6E91C6"],
+    "tooltip": {
+        "trigger": "axis"
+    },
+    "legend": {
+        "top": 5,
+        "left": 5,
+        "itemHeight":5,
+        "itemWidth":10,
+        "data": [
+            {"name": "流量总量",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+            },
+            {"name": "报警总量",
+                "textStyle":{
+                    "fontSize":12
+                },
+                "icon":"stack"
+        }]
+    },
+    "dataZoom": {
+        "show": false,
+        "start": 0,
+        "end": 100
+    },
+    "xAxis": [
+        {
+            "type": "category",
+            "boundaryGap": true,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": ["#F8F0E9"]
+                }
+            },
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#C9C9C9"
+                }
+            },
+            "axisLabel": {
+                "textStyle": {
+                    "color": "#6F6E6E",
+                    "fontSize":"10"
+                }
+            },
+            "data": ["1月","2月","3月","4月","5月","6月"]
+        },
+        {
+            "type": "category",
+            "show": false
+        }
+    ],
+    "yAxis": [
+        {
+            "type": "value",
+            "max": 40000,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": ["#F8F0E9"],
+                    "interval":false 
+                }
+            },
+            "min": 0,
+            "boundaryGap": [0.2, 0.2],
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#C9C9C9"
+                }
+            },
+            "axisLabel": {
+                "textStyle": {
+                    "color": "#6F6E6E",
+                    "fontSize":"10"
+                }
+            }
+        },
+        {
+            "type": "value",
+            "splitLine": {
+                "show": false
+            },
+            "max": 700,
+            "min": 0,
+            "boundaryGap": [0.2, 0.2],
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#C9C9C9"
+                }
+            },
+            "axisLabel": {
+                "textStyle": {
+                    "color": "#6F6E6E",
+                    "fontSize":"10"
+                }
+            }
+        }
+    ],
+    "series": [
+        {
+            "name":"报警总量",
+            "type":"bar",
+            "xAxisIndex": 1,
+            "yAxisIndex": 1,
+            "barWidth" : 20,
+            "data":[500,410,120,550,200,310]
+        },
+        {
+            "name":"流量总量",
+            "type":"line",
+            "data":[10000,31000,2000,33000,28000,35000]
+        }
+    ]
+}

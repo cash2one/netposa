@@ -1,0 +1,107 @@
+<div class="search-component" ng-controller="QuickSearchController as QuickCtrl">
+
+    <!-- 搜索框 -->
+    <div class="search-content" id="clickArea" ng-if="QuickCtrl.searchPatternStatus<2" ng-keydown="QuickCtrl.keySearch();" ng-drop="true" ng-drop-success="QuickCtrl.onDropComplete($data,$event)">
+        <div class="search-small-pic">
+            <div class="searchThumb-img">
+                <span class="searchThumb-close">X</span>
+            </div>
+        </div>
+
+        <input type="text"
+               placeholder="搜资源、查设备、找位置"
+               class="text-search"
+               ng-model="QuickCtrl.keyword"
+               ng-change="QuickCtrl.changeQuery(QuickCtrl.keyword)"
+               ng-focus="QuickCtrl.showHistoryLog()"
+               ng-blur="QuickCtrl.hideHistoryLog()"
+               ng-class="{'visibility-hide':(QuickCtrl.carImgList.length||QuickCtrl.faceImgList.length)}"
+        />
+
+        <div ng-if="QuickCtrl.keyword||QuickCtrl.carImgList.length||QuickCtrl.faceImgList.length" ng-click="QuickCtrl.clearKeywordText()">
+            <i class="icon_delete_history" ng-click="MapCtrl.ClearDraw()"></i>
+        </div>
+
+        <!-- 图片上传按钮 -->
+        <div class="cameraSearch">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <label>
+                    <span>车辆以图搜图</span>
+                    <input type="file" ng-if="QuickCtrl.carImgList.length <= 4" ng-upload-change="QuickCtrl.CarImgUploading($event)">
+                    <input type="button" ng-if="QuickCtrl.carImgList.length > 4" ng-click="QuickCtrl.ExceedWarn()">
+                </label>
+                <label>
+                    <span>人像以图搜图</span>
+                    <input type="file" ng-if="QuickCtrl.faceImgList.length <= 4" ng-upload-change="QuickCtrl.faceImgUploading($event)">
+                    <input type="button" ng-if="QuickCtrl.faceImgList.length > 4" ng-click="QuickCtrl.ExceedWarn()">
+                </label>
+            </div>
+        </div>
+
+        <!-- 图片上传区域 -->
+        <div class="cameraSearch-upload" ng-if="QuickCtrl.carImgList.length||QuickCtrl.faceImgList.length">
+            <div class="car-img-list" ng-if="QuickCtrl.carImgList.length">
+                <div class="car-img" ng-repeat="item in QuickCtrl.carImgList">
+                    <img ng-src="{{item.value | imageUrlFilter}}" alt="">
+                    <div class="close" ng-click="QuickCtrl.carImgCancel(item)" title="删除"></div>
+                </div>
+            </div>
+            <div class="face-img-list" ng-if="QuickCtrl.faceImgList.length">
+                <div class="face-img" ng-repeat="item in QuickCtrl.faceImgList">
+                    <img ng-src="{{item.value | imageUrlFilter}}" alt="">
+                    <div class="close" ng-click="QuickCtrl.faceImgCancel(item)" title="删除"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史与搜索记录区域 -->
+        <div class="history-list" ng-if="QuickCtrl.showStatus">
+            <ul class="history-log">
+                <!--循环历史搜索记录-->
+                <li class="bdsug-overflow"
+                    ng-repeat="item in QuickCtrl.queryHistoryLog"
+                    ng-click="QuickCtrl.changeKeyWord(item)"
+                >
+                    <i class="icon_time icon-history-block"></i>
+                    <span class="history-log-text">{{item.value}}</span>
+                </li>
+
+                <!--循环联想信息-->
+                <li class="bdsug-overflow"
+                    ng-repeat="item in QuickCtrl.queryThinkLog"
+                    ng-click="QuickCtrl.changeKeyWord(item)"
+                >
+                    <i class="icon_search_history icon-history-block"></i>
+                    <span class="history-log-text">{{item.value}}</span>
+                </li>
+            </ul>
+            <div class="history-list-footer" ng-show="QuickCtrl.queryHistoryLog.length > 0">
+                <div class="clear-history-log" ng-click="QuickCtrl.clearHistoryLog()">删除历史</div>
+            </div>
+        </div>
+
+        <!-- 检索查询 -->
+        <div class="seniorSearch">
+            <i class="icon-search" ng-class="{'active':QuickCtrl.queryStatus}" ng-click='QuickCtrl.baseSearch()' title="查询"></i>
+            <i class="icon-arrow-right" ng-click='QuickCtrl.goToAdvanced()' title="高级检索"></i>
+        </div>
+
+    </div>
+
+    <!-- 导航列表 -->
+    <div class="search-component-quick resourceRetrievalCtrl active"
+         ng-show="(QuickCtrl.searchPatternStatus === 1) && QuickCtrl.mapSelectStatus"
+         ng-include="'../module/resourceRetrieval/search/quickSearch/quickSearch.html'"
+         ng-click="QuickCtrl.hiddenHistoryLog()"></div>
+
+    <div class="search-component-advanced active"
+         ng-show="(QuickCtrl.searchPatternStatus === 2) && QuickCtrl.mapSelectStatus"
+         ng-include="'../module/resourceRetrieval/search/advancedSearch/advancedSearch.html'"
+         ng-click="QuickCtrl.hiddenHistoryLog()"></div>
+
+    <!-- 拖拽克隆对象 -->
+    <div class="custom-drag" ng-class="clonedData.DeviceType==='Camera'?'face':'car'" ng-drag-clone="">
+        <img ng-if="clonedData.AccessLog.FacePath" ng-src="{{clonedData.AccessLog.FacePath|imageUrlFilter}}">
+        <img ng-if="clonedData.panoramaImage" ng-src="{{clonedData.panoramaImage|imageUrlFilter}}">
+    </div>
+</div>

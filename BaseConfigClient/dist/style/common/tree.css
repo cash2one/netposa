@@ -1,0 +1,190 @@
+/*---tree-node--*/
+
+.ztree * {
+    font-size: 13px !important;
+    font-family: 'Microsoft YaHei' !important;
+}
+
+.ztree li {
+    padding: 3px 0 !important;
+    color: #333;
+}
+
+/* .ztree li span.button {
+    margin: 0px !important;
+} */
+
+.ztree li a.curSelectedNode {
+    background: none !important;
+    border: none !important;
+    color: #4394ff !important;
+}
+
+.ztree li span.button.noline_open {
+    background-image: url("../../images/baseconfig/tree_expander_ico.png") !important;
+    width: 18px !important;
+    height: 18px !important;
+    background-position: 0 0 !important;
+    position: relative;
+    top: 1px;
+}
+
+.ztree li span.button.noline_close {
+    background-image: url("../../images/baseconfig/tree_no_expander_ico.png") !important;
+    width: 18px !important;
+    height: 18px !important;
+    background-position: 0 0 !important;
+    position: relative;
+    top: 1px;
+}
+
+.ztree li span.button.area_ico_open,
+.ztree li span.button.area_ico_close,
+.ztree li span.button.area_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 0;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: -2px;
+    left: -2px;
+}
+
+.ztree li span.button.unit_ico_open,
+.ztree li span.button.unit_ico_close,
+.ztree li span.button.unit_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 0;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.camera_ico_open,
+.ztree li span.button.camera_ico_close,
+.ztree li span.button.camera_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -96px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.facecamera_ico_open,
+.ztree li span.button.facecamera_ico_close,
+.ztree li span.button.facecamera_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -48px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.bodycamera_ico_open,
+.ztree li span.button.bodycamera_ico_close,
+.ztree li span.button.bodycamera_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -80px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.portraitcamera_ico_open,
+.ztree li span.button.portraitcamera_ico_close,
+.ztree li span.button.portraitcamera_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -64px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.user_ico_open,
+.ztree li span.button.user_ico_close,
+.ztree li span.button.user_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -16px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.person_ico_open,
+.ztree li span.button.person_ico_close,
+.ztree li span.button.person_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -16px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.police_ico_open,
+.ztree li span.button.police_ico_close,
+.ztree li span.button.police_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -32px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.businessLib_ico_open,
+.ztree li span.button.businessLib_ico_close,
+.ztree li span.button.businessLib_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -112px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.lamp_ico_open,
+.ztree li span.button.lamp_ico_close,
+.ztree li span.button.lamp_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -130px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.wifi_ico_open,
+.ztree li span.button.wifi_ico_close,
+.ztree li span.button.wifi_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -184px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.rmpGate_ico_open,
+.ztree li span.button.rmpGate_ico_close,
+.ztree li span.button.rmpGate_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -152px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.electronicFence_ico_open,
+.ztree li span.button.ElectronicFence_ico_close,
+.ztree li span.button.ElectronicFence_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -149px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree li span.button.rmpGate_ico_open,
+.ztree li span.button.rmpGate_ico_close,
+.ztree li span.button.rmpGate_ico_docu {
+    background-image: url("../../images/common/tree_ico.png");
+    background-position: 0 -168px;
+    width: 16px;
+    height: 16px;
+}
+
+.ztree.zTreeDragUL {
+    z-index: 20170628;
+}
+
+.ztree .js-locate-diy-dom {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #91c41d;
+    border-radius: 8px;
+    margin-left: -10px;
+}

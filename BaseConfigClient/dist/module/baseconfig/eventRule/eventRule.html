@@ -1,0 +1,102 @@
+<div class="main-part policy-linkage" ui-view="case">
+    <div class="main-part-left">
+        <div class="part-title">
+            <div class="tree-search">
+                <input type="text" ng-model="eventRuleCtrl.treeSearchInput" placeholder="{{'DP_CONFIG_COMMON_28'|translate}}" ng-keyup="eventRuleCtrl.treeSearchInputKeyUp($event)"/>
+                <i class="icon-search" ng-click="eventRuleCtrl.treeSearchInputFunc()"></i>
+            </div>
+        </div>
+        <div class="part-con">
+            <div class="m-area-tree" ng-scrollbars>
+                <util-tree tree-hide="eventRuleCtrl.areaTreeDataParams.treeDatas.length == 0"
+                           tree-id="{{eventRuleCtrl.areaTreeDataParams.treeId}}"
+                           tree-datas="eventRuleCtrl.areaTreeDataParams.treeDatas"
+                           is-default-selected="true"
+                           tree-init-complete="eventRuleCtrl.areaTreeDataParams.treeInitComplete(treeId)"
+                           check-enable="false"
+                           single-select="true"
+                           is-simple-data="true"
+                           show-icon="true"
+                           show-line="false"
+                           on-click="eventRuleCtrl.areaTreeDataParams.onClick(event, treeId, treeNode)"
+                           tree-id-key="ID"
+                           tree-pid-key="ParentID"
+                           tree-key-name="Name"
+                           default-select-tree-id="eventRuleCtrl.areaTreeDataParams.defaultSelectTreeId"
+                           default-expand-level="0"
+                ></util-tree>
+            </div>
+            <div ng-show="eventRuleCtrl.treeNoData" class="u-table-no-data" translate="DP_CONFIG_COMMON_16"></div>
+        </div>
+    </div>
+    <div class="main-part-right">
+        <div class="top">
+            <ol class="m-route">
+                <li translate="联动预案"></li>
+                <li class="route-separate">/</li>
+                <li translate="联动预案管理"></li>
+            </ol>
+        </div>
+        <div class="search-tab">
+            <form class="form">
+                 <div class="form-row">
+                     <div class="form-item">
+                         <label>预案名称</label>
+                         <input type="text" class="form-input" ng-model="eventRuleCtrl.tableListParams.Name" placeholder="输入名称">
+                     </div>
+                     <div class="form-item">
+                         <label>创建时间</label>
+                         <input type="text" class="form-input icon-calendar" ng-model="eventRuleCtrl.tableListParams.startTime" date-picker  placeholder="开始时间">
+                         <span class="separator">-</span>
+                         <input type="text" class="form-input icon-calendar" ng-model="eventRuleCtrl.tableListParams.endTime" date-picker  placeholder="结束时间">
+                     </div>
+                     <button ng-click="eventRuleCtrl.searchWithParams()" class="form-btn">查询</button>
+                 </div>
+            </form>
+        </div>
+        <div class="result-table">
+            <div class="result-table-con">
+                <div class="result-table-operation" style="left: 18px;top: 8px;">
+                    <button class="u-button f-fl m-right15" ng-click="eventRuleCtrl.openEventRulePopup(false)">新建</button>
+                    <button class="u-button f-fl m-right15 u-button-blue-6" ng-click="eventRuleCtrl.deleteByIds()" ng-disabled="!eventRuleCtrl.isSelectItems">删除</button>
+                </div>
+                <div class="result-list" style="margin-top:50px">
+                    <util-table-head table-headers="eventRuleCtrl.tHeadList"
+                                     table-has-check='true'
+                                     table-sort-fun="eventRuleCtrl.sortByField(sortIndex,fieldName,sortStatus)"
+                                     table-after-check="eventRuleCtrl.afterChangeCheck(checkList,isCheckAll)"
+                                     class="table-content" 
+                    >
+                        <util-table-tr ng-repeat="(index,tbody_data) in eventRuleCtrl.tBodyList">
+
+                            <util-table-tr-td ng-bind="tbody_data.Name"></util-table-tr-td>
+
+
+                            <util-table-tr-td ng-bind="tbody_data.CreateTime"></util-table-tr-td>
+
+                            <util-table-tr-td ng-bind="tbody_data.Description"></util-table-tr-td>
+
+                            <util-table-tr-td>
+                                <div class="table-icon-cntr f-cfb">
+                                    <i class="icon-btn i-edit z-gray f-csp" title="{{'DP_CONFIG_COMMON_77'|translate}}" ng-click="eventRuleCtrl.editEventRule(tbody_data)"></i>
+                                    <i class="icon-btn i-delete z-gray f-csp" title="{{'DP_CONFIG_COMMON_78'|translate}}" ng-click="eventRuleCtrl.deleteEventRule(tbody_data)"></i>
+                                </div>
+                            </util-table-tr-td>
+                        </util-table-tr>
+                        <div class="u-table-no-data" ng-show="eventRuleCtrl.tableNoData" ng-cloak translate="DP_CONFIG_COMMON_16">
+                        </div>
+                    </util-table-head>
+                </div>
+                <div class="result-footer">
+                    <util-paging
+                            page-params="eventRuleCtrl.pageParams"
+                            prev-page="eventRuleCtrl.changePage(num)"
+                            next-page="eventRuleCtrl.changePage(num)"
+                            go-page="eventRuleCtrl.changePage(num)"
+                            page-size="eventRuleCtrl.changePageSize(num)"
+                    ></util-paging>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
